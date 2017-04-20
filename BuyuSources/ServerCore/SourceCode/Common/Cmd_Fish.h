@@ -681,6 +681,8 @@ struct tagItemConfig
 	DWORD	ItemID;//物品ID
 	BYTE    ItemType;//物品类型
 	DWORD   ItemParam;//物品的数值  特殊处理用的 可以没有 没有为0
+	TCHAR	ItemName[256];
+	TCHAR	ItemDesc[256];
 };
 
 struct tagItemOnce  //配置文件使用的数据 
@@ -7843,11 +7845,14 @@ enum ControlSub
 	GM_CL_REWARD_CONFIGS_REQ = 104,
 	CL_GM_REWARD_CONFIGS_ACK = 105,
 
-	GM_ADD_NEW_OPERATOR_MAIL = 106,
+	GM_CL_ITEM_CONFIGS_REQ = 106,
+	CL_GM_ITEM_CONFIGS_ACK = 107,
+
+	GM_ADD_NEW_OPERATOR_MAIL = 108,
 	
-	CENTRAL_GS_ADD_NEW_OPERATOR_MAIL = 107,
-	GS_CENTRAL_ALL_OPERATOR_MAIL_REQ = 108,
-	CENTRAL_GS_ALL_OPERATOR_MAIL_ACK = 109,
+	CENTRAL_GS_ADD_NEW_OPERATOR_MAIL = 109,
+	GS_CENTRAL_ALL_OPERATOR_MAIL_REQ = 110,
+	CENTRAL_GS_ALL_OPERATOR_MAIL_ACK = 111,
 
 };
 //牛牛,舞会,碰碰车通用
@@ -7873,6 +7878,20 @@ enum  CONTROL_COMMON_INNER//通用控制代码,,返回状态
 };
 
 ///GMYOOL
+struct GM_CL_ItemConfigsReq : public NetCmd
+{
+
+};
+
+#define MAX_ITEMS 30
+
+struct CL_GM_ItemConfigsACK : public NetCmd
+{
+	int			  ItemSum;
+	bool		  End;
+	tagItemConfig Items[MAX_ITEMS];
+};
+
 #define MAX_REWARDS 100
 struct GM_Cl_RewardConfigReq : public NetCmd
 {

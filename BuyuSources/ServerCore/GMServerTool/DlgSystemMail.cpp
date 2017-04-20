@@ -48,9 +48,11 @@ BOOL DlgSystemMail::OnInitDialog()
 	dwStyle |= LVS_EX_GRIDLINES;//网格线（只适用与report风格的listctrl）
 	dwStyle |= LVS_EX_CHECKBOXES;//item前生成checkbox控件
 	_ListCtrlRewardItems.SetExtendedStyle(dwStyle); //设置扩展风格
-	_ListCtrlRewardItems.InsertColumn(0, TEXT("ItemID"), LVCFMT_CENTER, 40, 50);
-	_ListCtrlRewardItems.InsertColumn(1, TEXT("ItemSum"), LVCFMT_CENTER, 40, 50);
-	_ListCtrlRewardItems.InsertColumn(2, TEXT("LastMin"), LVCFMT_CENTER, 40, 50);
+	_ListCtrlRewardItems.InsertColumn(0, TEXT("ItemID"), LVCFMT_CENTER, 80, 50);
+	_ListCtrlRewardItems.InsertColumn(1, TEXT("ItemSum"), LVCFMT_CENTER, 80, 50);
+	_ListCtrlRewardItems.InsertColumn(2, TEXT("LastMin"), LVCFMT_CENTER, 80, 50);
+	_ListCtrlRewardItems.InsertColumn(3, TEXT("Name"), LVCFMT_CENTER, 140, 50);
+	_ListCtrlRewardItems.InsertColumn(4, TEXT("Desc"), LVCFMT_CENTER, 140, 50);
 	std::map<DWORD, tagRewardOnce>* rewards = g_GMToolManager.GetRewards();
 	std::map<DWORD, tagRewardOnce>::iterator it = rewards->begin();
 	CString reward_id;
@@ -145,6 +147,31 @@ void DlgSystemMail::OnLbnSelchangeListRewardId()
 
 			item.Format(TEXT("%u"), entry.LastMin);
 			_ListCtrlRewardItems.SetItemText(i, 2, item);
+			
+			_ListCtrlRewardItems.SetItemText(i, 3, TEXT(""));
+			_ListCtrlRewardItems.SetItemText(i, 4, TEXT(""));
+			const tagItemConfig* EntryConfig = g_GMToolManager.GetItemConfig(entry.ItemID);
+			if (EntryConfig)
+			{
+
+				char sz_temp[512];
+				int len = lstrlenW(EntryConfig->ItemName);
+				 
+				char* temp_entry = g_GMToolManager.w2c(sz_temp, EntryConfig->ItemName, sizeof(sz_temp));
+				std::string utf8 = temp_entry;
+				std::wstring unicode;
+				
+				g_GMToolManager.utf8ToUnicode(utf8, unicode);
+				unicode = unicode.substr(0, len);
+				_ListCtrlRewardItems.SetItemText(i, 3, unicode.c_str());
+				len = lstrlenW(EntryConfig->ItemDesc);
+
+				temp_entry = g_GMToolManager.w2c(sz_temp, EntryConfig->ItemDesc, sizeof(sz_temp));
+				utf8 = temp_entry;
+				g_GMToolManager.utf8ToUnicode(utf8, unicode);
+				unicode = unicode.substr(0, len);
+				_ListCtrlRewardItems.SetItemText(i, 4, unicode.c_str());
+			}
 		}
 	}
 	// TODO: 在此添加控件通知处理程序代码
@@ -168,6 +195,9 @@ void DlgSystemMail::OnBnClickedOk()
 	}
 	else
 	{
+
+		time_t cur_time = time(NULL);
+
 		CTime timeTime_Begin;
 		CTime timeTime_End;
 		_CtrlBeginTime.GetTime(timeTime_Begin);

@@ -160,6 +160,64 @@ bool GMToolManager::Init()
 	return true;
 }
 
+void GMToolManager::utf8ToUnicode(const string& src, wstring& result)
+{
+	int n = MultiByteToWideChar(CP_UTF8, 0, src.c_str(), -1, NULL, 0);
+	result.resize(n);
+	::MultiByteToWideChar(CP_UTF8, 0, src.c_str(), -1, (LPWSTR)result.c_str(), result.length());
+}
+char *GMToolManager::w2c(char *pcstr, const wchar_t *pwstr, size_t len)
+
+{
+
+	int nlength = wcslen(pwstr);
+
+	//获取转换后的长度
+
+	int nbytes = WideCharToMultiByte(0, // specify the code page used to perform the conversion
+
+		0,         // no special flags to handle unmapped characters
+
+		pwstr,     // wide character string to convert
+
+		nlength,   // the number of wide characters in that string
+
+		NULL,      // no output buffer given, we just want to know how long it needs to be
+
+		0,
+
+		NULL,      // no replacement character given
+
+		NULL);    // we don't want to know if a character didn't make it through the translation
+
+				  // make sure the buffer is big enough for this, making it larger if necessary
+
+	if (nbytes>len)   nbytes = len;
+
+	// 通过以上得到的结果，转换unicode 字符为ascii 字符
+
+	WideCharToMultiByte(0, // specify the code page used to perform the conversion
+
+		0,         // no special flags to handle unmapped characters
+
+		pwstr,   // wide character string to convert
+
+		nlength,   // the number of wide characters in that string
+
+		pcstr, // put the output ascii characters at the end of the buffer
+
+		nbytes,                           // there is at least this much space there
+
+		NULL,      // no replacement character given
+
+		NULL);
+
+	return pcstr;
+
+}
+
+
+
 
 void GMToolManager::ConnectControl()
 {
@@ -240,11 +298,19 @@ void GMToolManager::SendQueryUser(QueryUserType en, CString NickName)
 	
 }
 
+void GMToolManager::ReqLoadItemConfig()
+{
+	GM_CL_ItemConfigsReq req;
+	SetMsgInfo(req, GetMsgType(Main_Control, GM_CL_ITEM_CONFIGS_REQ), sizeof(GM_CL_QueryUserInfoReq));
+	SendNetCmdToControl(&req);
+}
+
 
 void GMToolManager::ReqLoadRewardConfig()
 {
 	GM_Cl_RewardConfigReq req;
 	SetMsgInfo(req, GetMsgType(Main_Control, GM_CL_REWARD_CONFIGS_REQ), sizeof(GM_Cl_RewardConfigReq));
+	_Rewards.clear();
 	SendNetCmdToControl(&req);
 }
 
@@ -259,6 +325,7 @@ bool GMToolManager::HandleControlMsg(NetCmd* pCmd)
 			if (msg->ret == true)
 			{
 				ReqLoadRewardConfig();
+				ReqLoadItemConfig();
 				_login_successful = true;
 				g_dlg->LoginSucessful();
 			}
@@ -315,6 +382,17 @@ bool GMToolManager::HandleControlMsg(NetCmd* pCmd)
 				}
 			}
 			break;
+			case CL_GM_ITEM_CONFIGS_ACK:
+			{
+				CL_GM_ItemConfigsACK* pMsg = (CL_GM_ItemConfigsACK*)pCmd;
+				for (size_t i = 0; i < pMsg->ItemSum; i++)
+				{
+					tagItemConfig& entry = pMsg->Items[i];
+
+					_ItemConfigs[entry.ItemID] = entry;
+				}
+				break;
+			}
 			default:
 				break;
 			}
@@ -324,7 +402,16 @@ bool GMToolManager::HandleControlMsg(NetCmd* pCmd)
 	return true;
 }
 
-
+const tagItemConfig* GMToolManager::GetItemConfig(DWORD ItemID)
+{
+	tagItemConfig* config = NULL;
+	std::map<DWORD, tagItemConfig>::iterator it = _ItemConfigs.find(ItemID);
+	if (it != _ItemConfigs.end())
+	{
+		config = &it->second;
+	}
+	return config;
+}
 void GMToolManager::OnTcpClientLeave(TCPClient* pClient)
 {
 	if (!pClient)

@@ -126,6 +126,18 @@ void RoleManager::OnDelUserResult(DBO_Cmd_SaveRoleAllInfo* pResult)
 		return;
 	}
 }
+
+
+void RoleManager::TryGetSystemMail()
+{
+	HashMap<DWORD, CRoleEx*>::iterator Iter = m_RoleMap.begin();
+	for (; Iter != m_RoleMap.end(); ++Iter)
+	{
+		CRoleEx* Role = Iter->second;
+		Role->CheckSystemOperatorMail();
+	}
+}
+
 void RoleManager::OnKickAllUser()
 {
 	//直接踢掉所有的玩家 

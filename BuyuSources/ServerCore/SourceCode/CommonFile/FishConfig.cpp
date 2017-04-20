@@ -1354,10 +1354,22 @@ bool FishConfig::LoadFishItemConfig(WHXmlNode* pFishConfig)
 		{
 			return false;
 		}
+		if (!pFishItem->GetAttribute(TEXT("Name"), pItemConfig.ItemName, CountArray(pItemConfig.ItemName) / 2))
+		{
+
+
+		}
+
+		if (!pFishItem->GetAttribute(TEXT("ItemDec"), pItemConfig.ItemDesc, CountArray(pItemConfig.ItemDesc) / 2))
+		{
+
+		}
 		if (!pFishItem->GetAttribute(TEXT("ItemParam"), pItemConfig.ItemParam))
 		{
 			pItemConfig.ItemParam = 0;
 		}
+
+
 
 		m_ItemMap.insert(HashMap<DWORD, tagItemConfig>::value_type(pItemConfig.ItemID, pItemConfig));
 		pFishItem = pFishItem->GetNextSignelNode();

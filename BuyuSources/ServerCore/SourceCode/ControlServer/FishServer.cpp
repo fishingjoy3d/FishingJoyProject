@@ -815,6 +815,30 @@ void FishServer::HandleGMToolMsg(ServerClientData* pClient, NetCmd* pCmd)
 		SendNetCmdToCenter(pCmd);
 	}
 	break;
+	case GM_CL_ITEM_CONFIGS_REQ:
+	{
+		CL_GM_ItemConfigsACK msg;
+		msg.ItemSum = 0;
+		msg.End = false;
+		SetMsgInfo(msg, GetMsgType(Main_Control, CL_GM_ITEM_CONFIGS_ACK), sizeof(CL_GM_ItemConfigsACK));
+		const HashMap<DWORD, tagItemConfig>& ItemConfigs =  m_FishConfig.GetAllItemConfigs();
+		HashMap<DWORD, tagItemConfig>::const_iterator it = ItemConfigs.begin();
+		for (; it != ItemConfigs.end(); ++it, msg.ItemSum ++)
+		{
+			if (msg.ItemSum < MAX_ITEMS)
+			{
+				msg.Items[msg.ItemSum] = it->second;
+			}
+			else
+			{
+				SendNetCmdToClient(pClient, &msg);
+				msg.ItemSum = 0;
+			}
+		}
+		msg.End = true;
+		SendNetCmdToClient(pClient, &msg);
+	}
+	break;
 	case GM_CL_REWARD_CONFIGS_REQ:
 	{
 		tagRewardMap& rewardConfig = m_FishConfig.GetFishRewardConfig();

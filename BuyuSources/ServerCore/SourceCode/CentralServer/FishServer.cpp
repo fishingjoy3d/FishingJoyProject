@@ -1918,11 +1918,35 @@ bool FishServer::HandleGameServerMsg(ServerClientData* pClient, NetCmd* pCmd)
 		case GC_GetAllSystemMail:
 			{
 				GC_Cmd_GetAllOperatorSystemMail* pMsg = (GC_Cmd_GetAllOperatorSystemMail*)pCmd;
+
 				
+				BYTE GameID = ConvertDWORDToBYTE(pClient->OutsideExtraData);
+
+				ServerClientData* pClient = g_FishServer.GetUserClientDataByIndex(GameID);
+				if (!pClient)
+				{
+					ASSERT(false);
+					return false; 
+				}
+				CG_Cmd_GetAllOperatorSystemMail msg;
+				SetMsgInfo(msg, GetMsgType(Main_OperatorSystemMail, CG_GetAllSystemMail), sizeof(CG_Cmd_GetAllOperatorSystemMail));
+				msg.sum = 0;
+				const OperatorSystemMailManager::MAILS* mails = m_OperatorMailManager.GetMails();
+				OperatorSystemMailManager::MAILS::const_iterator mails_it = mails->begin();
+				for (; mails_it != mails->end(); ++mails_it, msg.sum++)
+				{
+					msg.mail[msg.sum] = mails_it->second;
+					if (msg.sum >= MAX_SYSTEM_MAIL_COUNT)
+					{
+						g_FishServer.SendNetCmdToClient(pClient, &msg);
+						msg.sum = 0;
+					}
+				}
+				g_FishServer.SendNetCmdToClient(pClient, &msg);
 			}
-			break;
+			return true;
 		default:
-			break;
+			return true;
 		}
 
 	}

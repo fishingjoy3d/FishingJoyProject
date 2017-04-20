@@ -21,22 +21,17 @@ public:
 	void SendSystemMail(DWORD UserID, CString Context, int RewardID, int RewardSum);
 	void SendSystemOperatorMail(CString Context, int RewardID, int RewardSum, DWORD BeginTime, DWORD EndTime);
 	void SendMsgToAllGame(CString Context, int Sum, int Sec, int param, DWORD color);
+	const tagItemConfig* GetItemConfig(DWORD ItemID);
+	char *w2c(char *pcstr, const wchar_t *pwstr, size_t len);
 
-	/*
-	TCHAR		Context[MAX_MAIL_CONTEXT + 1];//邮件内容
-	WORD		RewardID;
-	DWORD		RewardSum;//奖励的数量
 
-	DWORD	BeginTime;
-	DWORD   EndTime;
-	DWORD   ID;
-	*/
-public:
+
+	void utf8ToUnicode(const string& src, wstring& result);
 	std::map<DWORD, tagRoleInfo>* GetRoleList();
 	std::map<DWORD, tagRewardOnce>* GetRewards();
 protected:
 	void ReqLoadRewardConfig();
-	
+	void ReqLoadItemConfig();
 protected:
 	void OnTcpClientConnect(TCPClient* pClient);
 	void OnTcpClientLeave(TCPClient* pClient);
@@ -48,6 +43,7 @@ public:
 	bool _login_successful;
 	std::map<DWORD, tagRoleInfo> _RoleList;
 	std::map<DWORD, tagRewardOnce> _Rewards;
+	std::map<DWORD, tagItemConfig> _ItemConfigs;
 };
 
 

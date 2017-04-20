@@ -17,7 +17,7 @@ void OperatorSystemMailManager::AddNewMail(tagOperatorSystemMail& mail)
 	if (mail.ID != 0)
 	{
 		MAILS::iterator it = _OperatorMails.find(mail.ID);
-		if (it != _OperatorMails.end())
+		if (it == _OperatorMails.end())
 		{
 			_OperatorMails[mail.ID] = mail;
 			CG_Cmd_AddNewOperatorMail msg;

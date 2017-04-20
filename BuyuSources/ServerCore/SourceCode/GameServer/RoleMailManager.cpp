@@ -87,6 +87,7 @@ bool RoleMailManager::OnLoadUserMailByPageResult(DBO_Cmd_LoadUserMail* pDB)
 		m_pUser->GetRoleMessageStates().OnChangeRoleMessageStates(RMT_Mail);
 		m_pUser->IsLoadFinish();//判断玩家是否上线完毕
 	}
+	m_pUser->CheckSystemOperatorMail();
 	return true;
 }
 //void RoleMailManager::OnLoadUserMailFinish()

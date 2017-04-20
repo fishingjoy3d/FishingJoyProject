@@ -1,6 +1,7 @@
 #pragma once
 class OperatorSystemMailManager
 {
+public:
 	typedef std::map<DWORD, tagOperatorSystemMail> MAILS;
 public:
 	OperatorSystemMailManager();

@@ -26,7 +26,7 @@ public:
 	//void SetRoleOnLine(CRoleEx* pRole, DWORD SocketID);
 
 	void SendSystemMailToUser(DWORD dwUserID, LPTSTR pContext, WORD RewardID);
-
+	void TryGetSystemMail();
 	void OnSaveInfoToDB();
 	//void OnGetRoleAchievementIndex();
 
