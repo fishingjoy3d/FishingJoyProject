@@ -19,6 +19,7 @@
 #define ACCOUNT_MIN_LENGTH 4
 
 #define	MAC_ADDRESS_LENGTH 56
+#define LOGON_EXTERNAL_LENGTH 512
 
 #define MAX_CHARM_ITEMSUM 8  //魅力数组的长度
 
@@ -4387,7 +4388,34 @@ enum LogonCmd
 	//
 	LC_RsgNewAccount		= 88,
 
+	CL_ChannelLogon			= 89,
 };
+
+enum ChannelType
+{
+	Self_ChannelType,
+	Dome_ChannelType, //冰穹渠道
+
+};
+
+struct tagLogon
+{
+	TCHAR	AccountName[ACCOUNT_LENGTH + 1];
+	DWORD	PasswordCrc1;
+	DWORD	PasswordCrc2;
+	DWORD	PasswordCrc3;
+	TCHAR	MacAddress[MAC_ADDRESS_LENGTH + 1];//Mac地址
+	BYTE	PlateFormID;//平台的ID
+	ChannelType   ChannelID;
+	DWORD   VersionID;
+	DWORD	PathCrc;
+	TCHAR	External[LOGON_EXTERNAL_LENGTH + 1];//Mac地址
+};
+struct CL_Cmd_ChannelLogon : public NetCmd
+{
+	tagLogon logon;
+};
+
 struct CL_Cmd_QueryLogon : public NetCmd
 {
 	TCHAR	AccountName[ACCOUNT_LENGTH + 1];
