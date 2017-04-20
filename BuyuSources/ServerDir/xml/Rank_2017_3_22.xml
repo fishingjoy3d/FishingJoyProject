@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<FishRanks>
+    <FishRook TypeID="3">
+        <Info Index="1" UserID="19772" FaceID="1" Gender="1" TitleID="6" Param="150" Name="用户ee308e"/>
+        <Info Index="2" UserID="19648" FaceID="3" Gender="1" TitleID="4" Param="150" Name="用户21b731"/>
+        <Info Index="3" UserID="18157" FaceID="0" Gender="1" TitleID="6" Param="150" Name="用户764ced"/>
+        <Info Index="4" UserID="19099" FaceID="2" Gender="1" TitleID="3" Param="150" Name="用户416ed9"/>
+        <Info Index="5" UserID="19647" FaceID="1" Gender="0" TitleID="3" Param="150" Name="用户47147a"/>
+        <Info Index="6" UserID="18326" FaceID="1" Gender="0" TitleID="6" Param="150" Name="用户3f5d9f"/>
+        <Info Index="7" UserID="19071" FaceID="2" Gender="1" TitleID="6" Param="150" Name="用户6e1d9f"/>
+        <Info Index="8" UserID="19580" FaceID="3" Gender="0" TitleID="4" Param="150" Name="用户438779"/>
+        <Info Index="9" UserID="18418" FaceID="1" Gender="1" TitleID="4" Param="150" Name="用户f3477c"/>
+        <Info Index="10" UserID="19955" FaceID="0" Gender="1" TitleID="7" Param="149" Name="用户e47013"/>
+        <Info Index="11" UserID="18991" FaceID="2" Gender="1" TitleID="6" Param="149" Name="用户afd9fe"/>
+        <Info Index="12" UserID="18462" FaceID="0" Gender="1" TitleID="8" Param="149" Name="用户dd9fe1"/>
+        <Info Index="13" UserID="19111" FaceID="0" Gender="0" TitleID="6" Param="149" Name="用户87b7d9"/>
+        <Info Index="14" UserID="18535" FaceID="1" Gender="0" TitleID="1" Param="149" Name="用户b8d7d9"/>
+        <Info Index="15" UserID="19382" FaceID="1" Gender="0" TitleID="3" Param="149" Name="用户6ac7d9"/>
+        <Info Index="16" UserID="19279" FaceID="1" Gender="0" TitleID="8" Param="149" Name="用户1c333e"/>
+        <Info Index="17" UserID="18270" FaceID="3" Gender="0" TitleID="4" Param="149" Name="用户18dfe7"/>
+        <Info Index="18" UserID="19415" FaceID="3" Gender="1" TitleID="7" Param="149" Name="用户d3d0d5"/>
+        <Info Index="19" UserID="19256" FaceID="0" Gender="1" TitleID="7" Param="149" Name="用户57d9fe"/>
+        <Info Index="20" UserID="19544" FaceID="2" Gender="0" TitleID="7" Param="149" Name="用户10cf43"/>
+    </FishRook>
+    <FishRook TypeID="1">
+        <Info Index="1" UserID="20184" FaceID="0" Gender="1" TitleID="0" Param="35" Name="123456"/>
+        <Info Index="2" UserID="19645" FaceID="3" Gender="0" TitleID="7" Param="30" Name="用户b9d9fe"/>
+        <Info Index="3" UserID="19619" FaceID="1" Gender="1" TitleID="4" Param="30" Name="用户97d9fe"/>
+        <Info Index="4" UserID="19639" FaceID="4" Gender="1" TitleID="9" Param="30" Name="用户6a956d"/>
+        <Info Index="5" UserID="19670" FaceID="0" Gender="0" TitleID="3" Param="30" Name="用户22ad9f"/>
+        <Info Index="6" UserID="19604" FaceID="1" Gender="0" TitleID="7" Param="30" Name="用户ffd9fe"/>
+        <Info Index="7" UserID="19628" FaceID="1" Gender="1" TitleID="8" Param="30" Name="用户d73d9f"/>
+        <Info Index="8" UserID="19621" FaceID="3" Gender="0" TitleID="5" Param="30" Name="用户aaf3d9"/>
+        <Info Index="9" UserID="19667" FaceID="0" Gender="1" TitleID="8" Param="30" Name="用户482598"/>
+        <Info Index="10" UserID="19681" FaceID="3" Gender="1" TitleID="6" Param="30" Name="用户8e3617"/>
+        <Info Index="11" UserID="19683" FaceID="1" Gender="1" TitleID="2" Param="30" Name="用户4e6ad9"/>
+        <Info Index="12" UserID="19632" FaceID="3" Gender="0" TitleID="4" Param="30" Name="用户d45fbd"/>
+        <Info Index="13" UserID="19605" FaceID="3" Gender="1" TitleID="10" Param="30" Name="用户608ed9"/>
+        <Info Index="14" UserID="19629" FaceID="1" Gender="0" TitleID="7" Param="30" Name="用户1a3d75"/>
+        <Info Index="15" UserID="19684" FaceID="0" Gender="1" TitleID="4" Param="30" Name="用户1caba5"/>
+        <Info Index="16" UserID="19655" FaceID="4" Gender="1" TitleID="0" Param="30" Name="用户477e9d"/>
+        <Info Index="17" UserID="19766" FaceID="3" Gender="1" TitleID="0" Param="30" Name="用户190d9f"/>
+        <Info Index="18" UserID="19945" FaceID="2" Gender="0" TitleID="3" Param="30" Name="用户85be92"/>
+        <Info Index="19" UserID="19896" FaceID="0" Gender="1" TitleID="6" Param="30" Name="用户559052"/>
+        <Info Index="20" UserID="19917" FaceID="0" Gender="0" TitleID="4" Param="30" Name="用户f1d7d9"/>
+    </FishRook>
+    <FishRook TypeID="2">
+        <Info Index="1" UserID="16047" FaceID="2748528386" Gender="1" TitleID="0" Param="1327582472" Name="用户fofWee"/>
+        <Info Index="2" UserID="16052" FaceID="0" Gender="1" TitleID="0" Param="723772300" Name="徐达2"/>
+        <Info Index="3" UserID="16046" FaceID="0" Gender="1" TitleID="0" Param="245941365" Name="用户ItkESQ"/>
+        <Info Index="4" UserID="16049" FaceID="0" Gender="1" TitleID="0" Param="74737460" Name="用户TPI5ge"/>
+        <Info Index="5" UserID="20121" FaceID="0" Gender="1" TitleID="0" Param="24375800" Name="用户N71E3j"/>
+        <Info Index="6" UserID="20129" FaceID="2794723340" Gender="1" TitleID="0" Param="20449400" Name="1111111"/>
+        <Info Index="7" UserID="20182" FaceID="0" Gender="1" TitleID="0" Param="16395520" Name="游客Y98Yki"/>
+        <Info Index="8" UserID="20165" FaceID="0" Gender="1" TitleID="0" Param="7194230" Name="游客Nhhg9A"/>
+        <Info Index="9" UserID="16033" FaceID="0" Gender="0" TitleID="0" Param="7155265" Name="徐达"/>
+        <Info Index="10" UserID="20124" FaceID="0" Gender="1" TitleID="0" Param="5835000" Name="徐达4"/>
+        <Info Index="11" UserID="20190" FaceID="0" Gender="1" TitleID="0" Param="5424880" Name="用户un0ye0"/>
+        <Info Index="12" UserID="16067" FaceID="0" Gender="1" TitleID="0" Param="5246500" Name="用户8vta1Y"/>
+        <Info Index="13" UserID="20122" FaceID="0" Gender="1" TitleID="0" Param="5180000" Name="用户dXwbdc"/>
+        <Info Index="14" UserID="19994" FaceID="1" Gender="0" TitleID="7" Param="5097853" Name="用户b92aac"/>
+        <Info Index="15" UserID="19850" FaceID="3" Gender="0" TitleID="9" Param="5068451" Name="用户e7c943"/>
+        <Info Index="16" UserID="19856" FaceID="3" Gender="1" TitleID="6" Param="5053416" Name="用户533409"/>
+        <Info Index="17" UserID="19824" FaceID="2" Gender="0" TitleID="6" Param="5034423" Name="用户396d9f"/>
+        <Info Index="18" UserID="19812" FaceID="4" Gender="0" TitleID="4" Param="5028178" Name="用户feb2dd"/>
+        <Info Index="19" UserID="19888" FaceID="1" Gender="1" TitleID="5" Param="5018561" Name="用户f7d9fe"/>
+        <Info Index="20" UserID="19802" FaceID="3" Gender="1" TitleID="8" Param="5017673" Name="用户3d1d9f"/>
+    </FishRook>
+    <FishRook TypeID="4">
+        <Info Index="1" UserID="18845" FaceID="4" Gender="1" TitleID="0" Param="5000018" Name="用户825ed9"/>
+        <Info Index="2" UserID="18909" FaceID="4" Gender="1" TitleID="3" Param="5000017" Name="用户59fbc0"/>
+        <Info Index="3" UserID="18970" FaceID="2" Gender="1" TitleID="9" Param="5000015" Name="用户d007d9"/>
+        <Info Index="4" UserID="18912" FaceID="3" Gender="0" TitleID="2" Param="5000015" Name="用户3dafd9"/>
+        <Info Index="5" UserID="18898" FaceID="2" Gender="1" TitleID="1" Param="5000014" Name="用户002d9f"/>
+        <Info Index="6" UserID="18913" FaceID="1" Gender="1" TitleID="1" Param="5000014" Name="用户04c3d9"/>
+        <Info Index="7" UserID="18968" FaceID="1" Gender="1" TitleID="3" Param="5000013" Name="用户bc7dd6"/>
+        <Info Index="8" UserID="18797" FaceID="2" Gender="0" TitleID="3" Param="5000012" Name="用户99d9fe"/>
+        <Info Index="9" UserID="18800" FaceID="3" Gender="1" TitleID="6" Param="5000012" Name="用户03ac33"/>
+        <Info Index="10" UserID="18932" FaceID="2" Gender="0" TitleID="2" Param="5000012" Name="用户5884d9"/>
+        <Info Index="11" UserID="18642" FaceID="1" Gender="0" TitleID="8" Param="5000012" Name="用户696e77"/>
+        <Info Index="12" UserID="18651" FaceID="4" Gender="0" TitleID="7" Param="5000011" Name="用户10b9d9"/>
+        <Info Index="13" UserID="18685" FaceID="3" Gender="0" TitleID="2" Param="5000011" Name="用户8efd9f"/>
+        <Info Index="14" UserID="18734" FaceID="4" Gender="1" TitleID="5" Param="5000011" Name="用户c94001"/>
+        <Info Index="15" UserID="18620" FaceID="1" Gender="0" TitleID="9" Param="5000011" Name="用户d5d9fe"/>
+        <Info Index="16" UserID="18720" FaceID="3" Gender="1" TitleID="3" Param="5000010" Name="用户6d360d"/>
+        <Info Index="17" UserID="18870" FaceID="2" Gender="0" TitleID="3" Param="5000010" Name="用户723d9f"/>
+        <Info Index="18" UserID="18878" FaceID="1" Gender="0" TitleID="2" Param="5000010" Name="用户1e6d9f"/>
+        <Info Index="19" UserID="18937" FaceID="1" Gender="0" TitleID="7" Param="5000010" Name="用户fd81cf"/>
+        <Info Index="20" UserID="18611" FaceID="1" Gender="0" TitleID="9" Param="5000010" Name="用户20ad9f"/>
+    </FishRook>
+    <FishRook TypeID="5">
+        <Info Index="1" UserID="19620" FaceID="2" Gender="1" TitleID="7" Param="1105" Name="用户138efd"/>
+        <Info Index="2" UserID="19718" FaceID="0" Gender="1" TitleID="8" Param="248" Name="用户4b484b"/>
+        <Info Index="3" UserID="19759" FaceID="3" Gender="1" TitleID="9" Param="163" Name="用户d007fd"/>
+        <Info Index="4" UserID="19788" FaceID="4" Gender="1" TitleID="5" Param="147" Name="用户fb1210"/>
+        <Info Index="5" UserID="19646" FaceID="1" Gender="0" TitleID="4" Param="147" Name="用户7d0d9f"/>
+        <Info Index="6" UserID="19795" FaceID="2" Gender="1" TitleID="2" Param="143" Name="用户00c286"/>
+        <Info Index="7" UserID="19627" FaceID="0" Gender="0" TitleID="5" Param="143" Name="用户2aed9f"/>
+        <Info Index="8" UserID="19673" FaceID="2" Gender="0" TitleID="4" Param="134" Name="用户99ed9f"/>
+        <Info Index="9" UserID="19642" FaceID="3" Gender="0" TitleID="9" Param="134" Name="用户d4ad9f"/>
+        <Info Index="10" UserID="19760" FaceID="1" Gender="1" TitleID="0" Param="133" Name="用户08fd9f"/>
+        <Info Index="11" UserID="19737" FaceID="1" Gender="0" TitleID="1" Param="133" Name="用户a96d4b"/>
+        <Info Index="12" UserID="19732" FaceID="3" Gender="0" TitleID="6" Param="132" Name="用户656c43"/>
+        <Info Index="13" UserID="19631" FaceID="1" Gender="1" TitleID="7" Param="132" Name="用户71966d"/>
+        <Info Index="14" UserID="19785" FaceID="1" Gender="0" TitleID="2" Param="131" Name="用户8b7ec6"/>
+        <Info Index="15" UserID="19790" FaceID="3" Gender="1" TitleID="6" Param="131" Name="用户fcbbb9"/>
+        <Info Index="16" UserID="19705" FaceID="3" Gender="0" TitleID="6" Param="131" Name="用户99ab74"/>
+        <Info Index="17" UserID="19662" FaceID="4" Gender="1" TitleID="10" Param="131" Name="用户7e3da9"/>
+        <Info Index="18" UserID="19661" FaceID="2" Gender="1" TitleID="10" Param="131" Name="用户7d56f9"/>
+        <Info Index="19" UserID="19658" FaceID="1" Gender="0" TitleID="2" Param="130" Name="用户6c12ed"/>
+        <Info Index="20" UserID="19712" FaceID="0" Gender="1" TitleID="3" Param="128" Name="用户d17ed9"/>
+    </FishRook>
+</FishRanks>

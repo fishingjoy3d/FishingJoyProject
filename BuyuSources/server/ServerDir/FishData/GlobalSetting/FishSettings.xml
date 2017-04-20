@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FishSetting>
+  <!-- 网络相关设置-->
+  <Net>
+    <ServerIP>115.29.226.48</ServerIP>
+    <ServerIP>115.29.226.48</ServerIP>
+  </Net>
+  <!-- 版本号 -->
+  <Version>
+    <!-- 客户端版本号 -->
+    <Client>0.0.0.1</Client>
+    <!-- 模型版本号 -->
+    <ModelResource>0.0.0.1</ModelResource>
+    <!-- UI版本号 -->
+    <UIResource>0.0.0.1</UIResource>
+    <!-- 特效版本号 -->
+    <EffectResource>0.0.0.1</EffectResource>
+    <!-- 路径版本号 -->
+    <PathResource>0.0.0.1</PathResource>
+    <!-- 其他资源版本号 -->
+    <OtherResource>0.0.0.1</OtherResource>
+  </Version>
+</FishSetting>

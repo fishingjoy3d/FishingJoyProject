@@ -1,0 +1,5 @@
+╤оят[2017 4 12 11:6:25]: ..\..\CommonFile\FishServerConfig.cpp FishServerConfig::LoadServerConfigFile 19
+╤оят[2017 4 12 11:6:25]: OperateServer.cpp wmain 38
+╤оят[2017 4 12 11:6:38]: ..\..\CommonFile\FishServerConfig.cpp FishServerConfig::LoadServerConfigFile 19
+╤оят[2017 4 12 11:6:38]: OperateServer.cpp wmain 38
+╤оят[2017 4 12 11:18:51]: ..\..\CommonFile\FishServerConfig.cpp FishServerConfig::LoadServerConfigFile 19

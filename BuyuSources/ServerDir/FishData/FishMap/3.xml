@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<map BackgroundImage="3" Repeat="true" Name="100倍房间">
+  <packages>
+    <packge StartSeconds="30" EndSeconds="40" IntervalSeconds="30" Chance="5" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>200</fishgroup>
+    </packge>
+    <packge StartSeconds="90" EndSeconds="100" IntervalSeconds="30" Chance="5" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>201</fishgroup>
+    </packge>
+    <packge StartSeconds="150" EndSeconds="160" IntervalSeconds="30" Chance="5" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>202</fishgroup>
+    </packge>
+    <packge StartSeconds="210" EndSeconds="220" IntervalSeconds="30" Chance="5" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>200</fishgroup>
+    </packge>
+    <packge StartSeconds="270" EndSeconds="280" IntervalSeconds="30" Chance="5" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>201</fishgroup>
+    </packge>
+    <packge StartSeconds="330" EndSeconds="340" IntervalSeconds="30" Chance="5" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>202</fishgroup>
+    </packge>
+  </packages>
+  <random_flows>
+    <!-- 随机发射的流程-->
+    <flow>0</flow>
+    <flow>1</flow>
+    <flow>2</flow>
+    <flow>3</flow>
+    <flow>4</flow>
+    <flow>14</flow>
+  </random_flows>
+  <fixed_flows>
+    <orders>
+      <!-- 固定流程发射顺序 第1、4次发射流程-->
+      <order>2</order>
+      <order>5</order>
+    </orders>
+    <flows>
+      <!--固定流程列表，从下面中随机发射-->
+      <flow>5</flow>
+      <flow>6</flow>
+      <flow>8</flow>
+      <flow>9</flow>
+      <flow>10</flow>
+	  <flow>11</flow>
+	  <flow>12</flow>
+	  <flow>13</flow>
+    </flows>
+  </fixed_flows>
+</map>

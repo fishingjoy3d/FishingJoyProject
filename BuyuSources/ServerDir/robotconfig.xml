@@ -1,0 +1,98 @@
+﻿<!--
+  RobotCountInterval 机器人数变化间隔(分钟)
+  RobotCountControl StartTime=开始时间(小时) EndTime=结束时间 RobotCountMin="最低人数" RobotCountMax="最多人数" 
+  
+  RobotActionRate //占座机器人比例
+  RobotMinGameTime //游戏时间（分钟）
+  RobotBankerRate  做庄概率
+  RobotWaitBankerMin 等几局上申请上庄
+  RobotBankerCountMin  一次上庄持续局数
+  RobotListCountMin  机器人申请上庄使列表到达指定长度
+  RobotListCountInterval  改变长度周期(分钟)
+  RobotMinBetTime 一局下注次数
+  RobotMinJetton 下注筹码
+  RobotBankerScoreMin 庄家机器人分数
+  RobotPlayerScoreMin 非庄家机器人分数
+  -->
+<config>
+  <ox
+    RobotCountInterval="10"
+    RobotActionRate="50"
+    RobotMinGameTime="4"
+    RobotMaxGameTime="10"
+    RobotBankerRate="50"
+    RobotWaitBankerMin="0"
+    RobotWaitBankerMax="5"
+    RobotBankerCountMin="2"
+    RobotBankerCountMax="10"
+    RobotListCountMin="2"
+    RobotListCountMax="10"
+    RobotListCountInterval="5"
+    RobotMinBetTime="0"
+    RobotMaxBetTime="5"
+    RobotMinJetton="1000"
+    RobotMaxJetton="100000"
+    RobotAreaLimit="10000000"
+
+    RobotBankerScoreMin="20000000"
+    RobotBankerScoreMax="200000000"
+    RobotPlayerScoreMin="10000"
+    RobotPlayerScoreMax="1000000" >
+    <RobotCountControl StartTime="0" EndTime="6" RobotCountMin="50" RobotCountMax="60" />
+    <RobotCountControl StartTime="7" EndTime="23" RobotCountMin="70" RobotCountMax="110" />
+  </ox>
+
+  <animal
+    RobotCountInterval="10"
+    RobotActionRate="50"
+    RobotMinGameTime="4"
+    RobotMaxGameTime="10"
+    RobotBankerRate="50"
+    RobotWaitBankerMin="0"
+    RobotWaitBankerMax="5"
+    RobotBankerCountMin="2"
+    RobotBankerCountMax="10"
+    RobotListCountMin="2"
+    RobotListCountMax="10"
+    RobotListCountInterval="5"
+    RobotMinBetTime="0"
+    RobotMaxBetTime="5"
+    RobotMinJetton="1000"
+    RobotMaxJetton="100000"
+    RobotAreaLimit="10000000"
+
+    RobotBankerScoreMin="20000000"
+    RobotBankerScoreMax="200000000"
+    RobotPlayerScoreMin="10000"
+    RobotPlayerScoreMax="1000000" >
+    <RobotCountControl StartTime="0" EndTime="6" RobotCountMin="50" RobotCountMax="60" />
+    <RobotCountControl StartTime="7" EndTime="23" RobotCountMin="70" RobotCountMax="110" />
+  </animal>
+  
+ <car
+    RobotCountInterval="10"
+    RobotActionRate="50"
+    RobotMinGameTime="4"
+    RobotMaxGameTime="10"
+    RobotBankerRate="50"
+    RobotWaitBankerMin="0"
+    RobotWaitBankerMax="5"
+    RobotBankerCountMin="2"
+    RobotBankerCountMax="10"
+    RobotListCountMin="2"
+    RobotListCountMax="10"
+    RobotListCountInterval="5"
+    RobotMinBetTime="0"
+    RobotMaxBetTime="5"
+    RobotMinJetton="1000"
+    RobotMaxJetton="100000"
+    RobotAreaLimit="10000000"
+
+    RobotBankerScoreMin="20000000"
+    RobotBankerScoreMax="200000000"
+    RobotPlayerScoreMin="10000"
+    RobotPlayerScoreMax="1000000" >
+    <RobotCountControl StartTime="0" EndTime="6" RobotCountMin="50" RobotCountMax="60" />
+    <RobotCountControl StartTime="7" EndTime="23" RobotCountMin="70" RobotCountMax="110" />
+  </car>
+</config>

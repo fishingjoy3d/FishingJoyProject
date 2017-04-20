@@ -1,0 +1,6 @@
+╤оят[2017 4 5 16:33:7]: e:\code\hardwareproject\hardwareproject\hardwareproject\buyusources\servercore\sourcecode\commonfile\fishserverconfig.cpp FishServerConfig::LoadServerConfigFile 19
+╤оят[2017 4 5 16:33:7]: e:\code\hardwareproject\hardwareproject\hardwareproject\buyusources\servercore\sourcecode\controlserver\controlserver.cpp wmain 45
+╤оят[2017 4 5 16:33:15]: e:\code\hardwareproject\hardwareproject\hardwareproject\buyusources\servercore\sourcecode\commonfile\fishserverconfig.cpp FishServerConfig::LoadServerConfigFile 19
+╤оят[2017 4 5 16:33:16]: e:\code\hardwareproject\hardwareproject\hardwareproject\buyusources\servercore\sourcecode\controlserver\controlserver.cpp wmain 45
+╤оят[2017 4 5 16:33:25]: e:\code\hardwareproject\hardwareproject\hardwareproject\buyusources\servercore\sourcecode\commonfile\fishserverconfig.cpp FishServerConfig::LoadServerConfigFile 19
+╤оят[2017 4 5 16:33:29]: e:\code\hardwareproject\hardwareproject\hardwareproject\buyusources\servercore\sourcecode\controlserver\controlserver.cpp wmain 45

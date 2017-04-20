@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F8E5E6B2-55BB-4649-AA85-2C224CC3DB8A}</ProjectGuid>
+    <RootNamespace>GameServer</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)\Output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\Output\Temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(DXSDK_DIR)Lib\x86</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)\Output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\Output\Temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(DXSDK_DIR)Lib\x86</LibraryPath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(DXSDK_DIR)Include</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\SourceCode\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GAMESERVEAR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/Zm110 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Output\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)\Include\;$(SolutionDir)\SourceCode\Common;D:\tools\Microsoft DirectX SDK (February 2010)\Include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>Common.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Output\$(Configuration);D:\tools\Microsoft DirectX SDK (February 2010)\Lib\x86\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\CommonFile\DBLogManager.cpp" />
+    <ClCompile Include="..\CommonFile\FishConfig.cpp" />
+    <ClCompile Include="..\CommonFile\FishServerConfig.cpp" />
+    <ClCompile Include="..\CommonFile\tinyxml\tinyxml2.cpp" />
+    <ClCompile Include="..\CommonFile\tinyxml\XmlReader.cpp" />
+    <ClCompile Include="AnnouncementManager.cpp" />
+    <ClCompile Include="EventManager.cpp" />
+    <ClCompile Include="ExChangeManager.cpp" />
+    <ClCompile Include="FishLogic\Config.cpp" />
+    <ClCompile Include="FishLogic\FishCallback.cpp" />
+    <ClCompile Include="FishLogic\FishDesk.cpp" />
+    <ClCompile Include="FishLogic\FishDeskCmd.cpp" />
+    <ClCompile Include="FishLogic\FishScene.cpp" />
+    <ClCompile Include="FishLogic\FishScene\Bullet.cpp" />
+    <ClCompile Include="FishLogic\FishScene\BulletManager.cpp" />
+    <ClCompile Include="FishLogic\FishScene\DeadStayTimer.cpp" />
+    <ClCompile Include="FishLogic\FishScene\Fish.cpp" />
+    <ClCompile Include="FishLogic\FishScene\FishCamera.cpp" />
+    <ClCompile Include="FishLogic\FishScene\FishCollider.cpp" />
+    <ClCompile Include="FishLogic\FishScene\FishLauncher.cpp" />
+    <ClCompile Include="FishLogic\FishScene\FishManager.cpp" />
+    <ClCompile Include="FishLogic\FishScene\FishMap.cpp" />
+    <ClCompile Include="FishLogic\FishScene\FishResData.cpp" />
+    <ClCompile Include="FishLogic\FishScene\FishResManager.cpp" />
+    <ClCompile Include="FishLogic\FishScene\PathController.cpp" />
+    <ClCompile Include="FishLogic\FishScene\PathEvent.cpp" />
+    <ClCompile Include="FishLogic\FishScene\PathLinearInterpolator.cpp" />
+    <ClCompile Include="FishLogic\FishScene\PathTimeController.cpp" />
+    <ClCompile Include="FishLogic\FishScene\RuntimeInfo.cpp" />
+    <ClCompile Include="FishLogic\FishUtility.cpp" />
+    <ClCompile Include="FishPackageManager.cpp" />
+    <ClCompile Include="FishServer.cpp" />
+    <ClCompile Include="FishTimer.cpp" />
+    <ClCompile Include="GameRobot.cpp" />
+    <ClCompile Include="GameServer.cpp" />
+    <ClCompile Include="GameTable.cpp" />
+    <ClCompile Include="LotteryManager.cpp" />
+    <ClCompile Include="Role.cpp" />
+    <ClCompile Include="RoleAchievement.cpp" />
+    <ClCompile Include="RoleAction.cpp" />
+    <ClCompile Include="RoleCache.cpp" />
+    <ClCompile Include="RoleCharManager.cpp" />
+    <ClCompile Include="RoleCheck.cpp" />
+    <ClCompile Include="RoleChest.cpp" />
+    <ClCompile Include="RoleEx.cpp" />
+    <ClCompile Include="RoleFtpManager.cpp" />
+    <ClCompile Include="RoleGameData.cpp" />
+    <ClCompile Include="RoleGiff.cpp" />
+    <ClCompile Include="RoleIdEntity.cpp" />
+    <ClCompile Include="RoleItemManager.cpp" />
+    <ClCompile Include="RoleLauncherManager.cpp" />
+    <ClCompile Include="RoleLogonManager.cpp" />
+    <ClCompile Include="RoleMailManager.cpp" />
+    <ClCompile Include="RoleManager.cpp" />
+    <ClCompile Include="RoleMessageStates.cpp" />
+    <ClCompile Include="RoleMonth.cpp" />
+    <ClCompile Include="RoleMonthCard.cpp" />
+    <ClCompile Include="RoleOnlineReward.cpp" />
+    <ClCompile Include="RoleProtect.cpp" />
+    <ClCompile Include="RoleQueueManager.cpp" />
+    <ClCompile Include="RoleRank.cpp" />
+    <ClCompile Include="RoleRate.cpp" />
+    <ClCompile Include="RoleRelation.cpp" />
+    <ClCompile Include="RoleRelationRequest.cpp" />
+    <ClCompile Include="RoleTask.cpp" />
+    <ClCompile Include="RoleTitleManager.cpp" />
+    <ClCompile Include="RoleVip.cpp" />
+    <ClCompile Include="ShopManager.cpp" />
+    <ClCompile Include="SkillInfo.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="SystemMailManager.cpp" />
+    <ClCompile Include="TableManager.cpp" />
+    <ClCompile Include="UserLogonManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\CommonFile\DBLogManager.h" />
+    <ClInclude Include="..\CommonFile\FishConfig.h" />
+    <ClInclude Include="..\CommonFile\FishServerConfig.h" />
+    <ClInclude Include="..\CommonFile\ip.h" />
+    <ClInclude Include="..\CommonFile\tinyxml\tinyxml2.h" />
+    <ClInclude Include="..\CommonFile\tinyxml\XmlReader.h" />
+    <ClInclude Include="AnnouncementManager.h" />
+    <ClInclude Include="EventManager.h" />
+    <ClInclude Include="ExChangeManager.h" />
+    <ClInclude Include="FishLogic\Config.h" />
+    <ClInclude Include="FishLogic\FishCallbak.h" />
+    <ClInclude Include="FishLogic\FishDesk.h" />
+    <ClInclude Include="FishLogic\FishScene.h" />
+    <ClInclude Include="FishLogic\FishScene\Bullet.h" />
+    <ClInclude Include="FishLogic\FishScene\BulletManager.h" />
+    <ClInclude Include="FishLogic\FishScene\DeadStayTimer.h" />
+    <ClInclude Include="FishLogic\FishScene\Fish.h" />
+    <ClInclude Include="FishLogic\FishScene\FishCamera.h" />
+    <ClInclude Include="FishLogic\FishScene\FishCollider.h" />
+    <ClInclude Include="FishLogic\FishScene\FishLauncher.h" />
+    <ClInclude Include="FishLogic\FishScene\FishManager.h" />
+    <ClInclude Include="FishLogic\FishScene\FishMap.h" />
+    <ClInclude Include="FishLogic\FishScene\FishResData.h" />
+    <ClInclude Include="FishLogic\FishScene\FishResManager.h" />
+    <ClInclude Include="FishLogic\FishScene\FishSendInterface.h" />
+    <ClInclude Include="FishLogic\FishScene\PathController.h" />
+    <ClInclude Include="FishLogic\FishScene\PathEvent.h" />
+    <ClInclude Include="FishLogic\FishScene\PathLinearInterpolator.h" />
+    <ClInclude Include="FishLogic\FishScene\PathTimeController.h" />
+    <ClInclude Include="FishLogic\FishScene\RuntimeInfo.h" />
+    <ClInclude Include="FishLogic\FishScene\TArray.h" />
+    <ClInclude Include="FishLogic\FishUtility.h" />
+    <ClInclude Include="FishLogic\NetCmd.h" />
+    <ClInclude Include="FishPackageManager.h" />
+    <ClInclude Include="FishServer.h" />
+    <ClInclude Include="FishTimer.h" />
+    <ClInclude Include="GameRobot.h" />
+    <ClInclude Include="GameTable.h" />
+    <ClInclude Include="LotteryManager.h" />
+    <ClInclude Include="Role.h" />
+    <ClInclude Include="RoleAchievement.h" />
+    <ClInclude Include="RoleAction.h" />
+    <ClInclude Include="RoleCache.h" />
+    <ClInclude Include="RoleCharManager.h" />
+    <ClInclude Include="RoleCheck.h" />
+    <ClInclude Include="RoleChest.h" />
+    <ClInclude Include="RoleEx.h" />
+    <ClInclude Include="RoleFtpManager.h" />
+    <ClInclude Include="RoleGameData.h" />
+    <ClInclude Include="RoleGiff.h" />
+    <ClInclude Include="RoleIdEntity.h" />
+    <ClInclude Include="RoleItemManager.h" />
+    <ClInclude Include="RoleLauncherManager.h" />
+    <ClInclude Include="RoleLogonManager.h" />
+    <ClInclude Include="RoleMailManager.h" />
+    <ClInclude Include="RoleManager.h" />
+    <ClInclude Include="RoleMessageStates.h" />
+    <ClInclude Include="RoleMonth.h" />
+    <ClInclude Include="RoleMonthCard.h" />
+    <ClInclude Include="RoleOnlineReward.h" />
+    <ClInclude Include="RoleProtect.h" />
+    <ClInclude Include="RoleQueueManager.h" />
+    <ClInclude Include="RoleRank.h" />
+    <ClInclude Include="RoleRate.h" />
+    <ClInclude Include="RoleRelation.h" />
+    <ClInclude Include="RoleRelationRequest.h" />
+    <ClInclude Include="RoleTask.h" />
+    <ClInclude Include="RoleTitleManager.h" />
+    <ClInclude Include="RoleVip.h" />
+    <ClInclude Include="ShopManager.h" />
+    <ClInclude Include="SkillInfo.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SystemMailManager.h" />
+    <ClInclude Include="TableManager.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="UserLogonManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.vcxproj">
+      <Project>{38605bbd-b50c-4e9a-a873-8026d6676f1a}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

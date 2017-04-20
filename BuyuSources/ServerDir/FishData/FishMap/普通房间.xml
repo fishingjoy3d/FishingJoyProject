@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<map BackgroundImage="1" Repeat="true" Name="30倍房间">
+  <packages>
+    <package StartSeconds="0" EndSeconds="200" IntervalSeconds="60" Chance="60" MaxCount="3" PackageType="1">
+      <fishgroup>137</fishgroup>
+    </package>
+    <package StartSeconds="250" EndSeconds="500" IntervalSeconds="50" Chance="50" MaxCount="6" PackageType="1">
+      <fishgroup>137</fishgroup>
+    </package>
+  </packages>
+  <random_flows>
+    <flow>0</flow>
+    <flow>1</flow>
+    <flow>2</flow>
+    <flow>3</flow>
+    <flow>4</flow>
+  </random_flows>
+  <fixed_flows>
+    <order>
+      <order>3</order>
+    </order>
+    <flows>
+      <flow>5</flow>
+      <flow>6</flow>
+    </flows>
+  </fixed_flows>
+</map>

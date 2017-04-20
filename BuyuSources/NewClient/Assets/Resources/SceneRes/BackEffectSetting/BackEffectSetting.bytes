@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BackgroundEffect>
+  <EffectList>
+    <Effect id="0" path="BackgroundEffect0" x="-220" y="-77" z ="1000" life="999"/>
+    <Effect id="1" path="BackgroundEffect1" x="190.6" y="101.1" z ="1936.6" life="999"/>
+    <Effect id="2" path="BackgroundEffect2" x="168" y="-151" z ="1976" life="999"/>
+    <Effect id="3" path="BackgroundEffect3" x="-220" y="-77" z ="1000" life="999"/>
+  </EffectList>
+  <BackgroundList>
+    <Background id="0" interval_min="5" interval_max="20">
+      <Effect id="3"/>
+      <Effect id="1"/>
+    </Background>
+    <Background id="1" interval_min="7" interval_max="35">
+      <Effect id="3"/>
+      <Effect id="2"/>
+    </Background>
+    <Background id="2" interval_min="13" interval_max="42">
+      <Effect id="3"/>
+    </Background>
+    <Background id="3" interval_min="14" interval_max="33">
+      <Effect id="3"/>
+    </Background>
+  </BackgroundList>
+</BackgroundEffect>

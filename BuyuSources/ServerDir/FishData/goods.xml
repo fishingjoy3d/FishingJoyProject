@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Goods>
+  <item id="0"  name="通用卡"   price="1"  />
+  <item id="1"  name="龙卷风卡" price="1"/>
+  <item id="2"  name="冰冻卡"   price="1"/>
+  <item id="3"  name="闪电卡"   price="1"/>
+  <item id="4"  name="天灾卡"   price="1"/>
+
+</Goods>

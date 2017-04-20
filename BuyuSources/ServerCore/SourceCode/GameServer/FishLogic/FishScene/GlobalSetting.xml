@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<map BackgroundImage="0" Repeat="true">
+  <packages>
+    <packge StartSeconds="0" EndSeconds="100" IntervalSeconds="10" Chance="50" MaxCount="4" PackageType="1"/>
+    <packge StartSeconds="200" EndSeconds="300" IntervalSeconds="10" Chance="50" MaxCount="4" PackageType="1"/>
+  </packages>
+  <random_flows>
+    <flow>0</flow>
+    <flow>1</flow>
+    <flow>2</flow>
+    <flow>3</flow>
+    <flow>4</flow>
+    <flow>5</flow>
+    <flow>6</flow>
+    <flow>7</flow>
+    <flow>8</flow>
+  </random_flows>
+  <fixed_flows>
+    <order>
+      <index>0</index>
+      <index>1</index>
+      <index>2</index>
+    </order>
+    <flows>
+      <flow>0</flow>
+      <flow>1</flow>
+    </flows>
+  </fixed_flows>
+</map>

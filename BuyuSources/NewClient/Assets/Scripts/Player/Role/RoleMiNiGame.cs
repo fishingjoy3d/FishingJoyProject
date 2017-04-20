@@ -1,0 +1,151 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+class RoleMiNiGame
+{
+    //用户mlni游戏
+    public RoleNiuNiu m_NiuNiuGame = new RoleNiuNiu();
+    public RoleDial m_DialGame = new RoleDial();
+    public RoleCar m_CarGame = new RoleCar();
+    public bool HandleCmd(NetCmdBase obj)
+    {
+        switch (obj.GetCmdType())
+        {
+            case NetCmdType.CMD_LC_RoleJoinTable:
+                return m_NiuNiuGame.OnHandleRoleJoinTable(obj);
+            case NetCmdType.CMD_LC_RoleBetGlobel:
+                return m_NiuNiuGame.OnHandleAddGlobel(obj);
+            case NetCmdType.CMD_LC_GetBankerList:
+                return m_NiuNiuGame.OnHandleGetWritebankerList(obj);
+            case NetCmdType.CMD_LC_BankerListChange:
+                return m_NiuNiuGame.OnHandleWriteBankerListChange(obj);
+            case NetCmdType.CMD_LC_BankerUserChange:
+                return m_NiuNiuGame.OnHandleBankerUserChange(obj);
+            case NetCmdType.CMD_LC_TableJoinBegin:
+                return m_NiuNiuGame.OnHandleTableJoinBegin(obj);
+            case NetCmdType.CMD_LC_TableUpdate:
+                return m_NiuNiuGame.OnHandleUpdateTable(obj);
+            case NetCmdType.CMD_LC_TableJoinEnd:
+                return m_NiuNiuGame.OnHandleTableJoinEnd(obj);
+            case NetCmdType.CMD_LC_RoleJoinBankerList:
+                return m_NiuNiuGame.OnHandleJoinWriteBankerList(obj);
+            case NetCmdType.CMD_LC_RoleGetBankerFirstSeat:
+                return m_NiuNiuGame.OnHandleRoleGetWriteBankerFirstSeat(obj);
+            case NetCmdType.CMD_LC_RoleLeaveBankerList:
+                return m_NiuNiuGame.OnHandleRoleLeaveWriteBankerList(obj);
+            case NetCmdType.CMD_LC_RoleCanelBankerSeat:
+                return m_NiuNiuGame.OnHandleRoleCanelBanker(obj);
+            case NetCmdType.CMD_LC_BankerUserGlobelChange:
+                return m_NiuNiuGame.OnHandleBankerUserGlobelChange(obj);
+            case NetCmdType.CMD_LC_WriteBankerUserGlobelMsg:
+                return m_NiuNiuGame.OnHandleWriteBankerUserGlobelMsg(obj);
+            case NetCmdType.CMD_LC_RoleJoinVipSeat:
+                return m_NiuNiuGame.OnHandleRoleJoinVipSeat(obj);
+            case NetCmdType.CMD_LC_RoleLeaveVipSeat:
+                return m_NiuNiuGame.OnHandleRoleLeaveVipSeat(obj);
+            case NetCmdType.CMD_LC_RoleBeLeaveVipSeat:
+                return m_NiuNiuGame.OnHandleRoleBeLeaveVipSeat(obj);
+            case NetCmdType.CMD_LC_GetNormalSeatInfo:
+                return m_NiuNiuGame.OnHandleGetNormalSeatInfo(obj);
+            case NetCmdType.CMD_LC_VipSeatGlobelChange:
+                return m_NiuNiuGame.OnHandleVipGetGlobel(obj);
+            case NetCmdType.CMD_LC_TableStopUpdate:
+                return m_NiuNiuGame.OnHandleTableStopUpdate(obj);
+            case NetCmdType.CMD_LC_VipGlobelChange:
+                return m_NiuNiuGame.OnHandleVipGlobelChange(obj);
+            case NetCmdType.CMD_LC_DialRoleJoinTable:
+                return m_DialGame.OnHandleRoleJoinTable(obj);
+            case NetCmdType.CMD_LC_DialRoleBetGlobel:
+                return m_DialGame.OnHandleAddGlobel(obj);
+            case NetCmdType.CMD_LC_DialGetBankerList:
+                return m_DialGame.OnHandleGetWritebankerList(obj);
+            case NetCmdType.CMD_LC_DialBankerListChange:
+                return m_DialGame.OnHandleWriteBankerListChange(obj);
+            case NetCmdType.CMD_LC_DialBankerUserChange:
+                return m_DialGame.OnHandleBankerUserChange(obj);
+            case NetCmdType.CMD_LC_DialTableJoinBegin:
+                return m_DialGame.OnHandleTableJoinBegin(obj);
+            case NetCmdType.CMD_LC_DialTableUpdate:
+                return m_DialGame.OnHandleUpdateTable(obj);
+            case NetCmdType.CMD_LC_DialTableJoinEnd:
+                return m_DialGame.OnHandleTableJoinEnd(obj);
+            case NetCmdType.CMD_LC_DialRoleJoinBankerList:
+                return m_DialGame.OnHandleJoinWriteBankerList(obj);
+            case NetCmdType.CMD_LC_DialRoleGetBankerFirstSeat:
+                return m_DialGame.OnHandleRoleGetWriteBankerFirstSeat(obj);
+            case NetCmdType.CMD_LC_DialRoleLeaveBankerList:
+                return m_DialGame.OnHandleRoleLeaveWriteBankerList(obj);
+            case NetCmdType.CMD_LC_DialRoleCanelBankerSeat:
+                return m_DialGame.OnHandleRoleCanelBanker(obj);
+            case NetCmdType.CMD_LC_DialBankerUserGlobelChange:
+                return m_DialGame.OnHandleBankerUserGlobelChange(obj);
+            case NetCmdType.CMD_LC_DialWriteBankerUserGlobelMsg:
+                return m_DialGame.OnHandleWriteBankerUserGlobelMsg(obj);
+            case NetCmdType.CMD_LC_DialRoleJoinVipSeat:
+                return m_DialGame.OnHandleRoleJoinVipSeat(obj);
+            case NetCmdType.CMD_LC_DialRoleLeaveVipSeat:
+                return m_DialGame.OnHandleRoleLeaveVipSeat(obj);
+            case NetCmdType.CMD_LC_DialRoleBeLeaveVipSeat:
+                return m_DialGame.OnHandleRoleBeLeaveVipSeat(obj);
+            case NetCmdType.CMD_LC_DialGetNormalSeatInfo:
+                return m_DialGame.OnHandleGetNormalSeatInfo(obj);
+            case NetCmdType.CMD_LC_DialVipSeatGlobelChange:
+                return m_DialGame.OnHandleVipGetGlobel(obj);
+            case NetCmdType.CMD_LC_DialTableStopUpdate:
+                return m_DialGame.OnHandleTableStopUpdate(obj);
+            case NetCmdType.CMD_LC_DialVipGlobelChange:
+                return m_DialGame.OnHandleVipGlobelChange(obj);
+            case NetCmdType.CMD_LC_DialRoleBetGlobelByLog:
+                return m_DialGame.OnHandleRoleBetGlobelByLog(obj);
+            case NetCmdType.CMD_LC_CarRoleJoinTable:
+                return m_CarGame.OnHandleRoleJoinTable(obj);
+            case NetCmdType.CMD_LC_CarRoleBetGlobel:
+                return m_CarGame.OnHandleAddGlobel(obj);
+            case NetCmdType.CMD_LC_CarGetBankerList:
+                return m_CarGame.OnHandleGetWritebankerList(obj);
+            case NetCmdType.CMD_LC_CarBankerListChange:
+                return m_CarGame.OnHandleWriteBankerListChange(obj);
+            case NetCmdType.CMD_LC_CarBankerUserChange:
+                return m_CarGame.OnHandleBankerUserChange(obj);
+            case NetCmdType.CMD_LC_CarTableJoinBegin:
+                return m_CarGame.OnHandleTableJoinBegin(obj);
+            case NetCmdType.CMD_LC_CarTableUpdate:
+                return m_CarGame.OnHandleUpdateTable(obj);
+            case NetCmdType.CMD_LC_CarTableJoinEnd:
+                return m_CarGame.OnHandleTableJoinEnd(obj);
+            case NetCmdType.CMD_LC_CarRoleJoinBankerList:
+                return m_CarGame.OnHandleJoinWriteBankerList(obj);
+            case NetCmdType.CMD_LC_CarRoleGetBankerFirstSeat:
+                return m_CarGame.OnHandleRoleGetWriteBankerFirstSeat(obj);
+            case NetCmdType.CMD_LC_CarRoleLeaveBankerList:
+                return m_CarGame.OnHandleRoleLeaveWriteBankerList(obj);
+            case NetCmdType.CMD_LC_CarRoleCanelBankerSeat:
+                return m_CarGame.OnHandleRoleCanelBanker(obj);
+            case NetCmdType.CMD_LC_CarBankerUserGlobelChange:
+                return m_CarGame.OnHandleBankerUserGlobelChange(obj);
+            case NetCmdType.CMD_LC_CarWriteBankerUserGlobelMsg:
+                return m_CarGame.OnHandleWriteBankerUserGlobelMsg(obj);
+            case NetCmdType.CMD_LC_CarRoleJoinVipSeat:
+                return m_CarGame.OnHandleRoleJoinVipSeat(obj);
+            case NetCmdType.CMD_LC_CarRoleLeaveVipSeat:
+                return m_CarGame.OnHandleRoleLeaveVipSeat(obj);
+            case NetCmdType.CMD_LC_CarRoleBeLeaveVipSeat:
+                return m_CarGame.OnHandleRoleBeLeaveVipSeat(obj);
+            case NetCmdType.CMD_LC_CarGetNormalSeatInfo:
+                return m_CarGame.OnHandleGetNormalSeatInfo(obj);
+            case NetCmdType.CMD_LC_CarVipSeatGlobelChange:
+                return m_CarGame.OnHandleVipGetGlobel(obj);
+            case NetCmdType.CMD_LC_CarTableStopUpdate:
+                return m_CarGame.OnHandleTableStopUpdate(obj);
+            case NetCmdType.CMD_LC_CarVipGlobelChange:
+                return m_CarGame.OnHandleVipGlobelChange(obj);
+            case NetCmdType.CMD_LC_CarRoleBetGlobelByLog:
+                return m_CarGame.OnHandleRoleBetGlobelByLog(obj);
+        }
+        return true;
+    }
+}
+
+              
+  

@@ -1,0 +1,4234 @@
+﻿<FishConfig>
+  <FishAchievements MaxJoinAchievementSum="10">
+    <!--
+	文本格式为 UTF-8
+
+	成就的配置文件
+		MaxJoinAchievementSum 一个玩家同时接取的成就的数量 从1开始 最大值为 255
+		<Task>
+			ID 表示成就的唯一标记ID 从1开始 最大值为 255
+			AchievementName 成就的名称
+			AchievementIcon="Achieve_200" AchievementDec 成就的描述
+			UpperFishAchievement 父类的成就ID  从1开始 最大值为 255
+			RewardID 成就的奖励的ID 从1开始 最大值为 65535 引用于FishReward.xml
+			AchievementStar 成就的星级 从0到3
+			JoinLevel 成就的接取等级 从0开始 最大值为 255
+			<Event> 目前一个成就只可以用于一个事件
+				OnlyID 事件的唯一ID 从1开始 最大值为 255
+				ID 表示当前的事件的ID  有其特殊的描述
+					ET_GetGlobel = 1,//获得金币 累加的
+					ET_GetMadel = 2,//获得奖牌 累加
+					ET_GetCurren = 3,//获得乐币 累加
+					ET_UpperLevel = 4,//提升等级 累加等级
+					ET_CatchFish = 5,//捕获鱼   绑定参数0 表示任意鱼
+					ET_SendGiff = 6,//发送赠送 
+					ET_UseSkill = 7,//使用技能
+					ET_LauncherGlobel = 8,//炮台获得金币
+					ET_MaxGlobelSum = 9,//拥有的最大金币数量 需要修改 最大金币数量 应该带进度的
+					ET_ToLevel = 10,//到指定等级
+					ET_MaxCurren = 11,//最大拥有乐币  
+				BindParam 当前事件绑定参数 从0开始 最大值为 0xffffffff
+				FinishValue 当前事件的完成参数  从0开始 最大值为 0xffffffff
+
+-->
+    <Achievement ID="1" AchievementName="海洋之心" AchievementIcon="Achieve_210" AchievementDec="等级提升到5级" UpperFishAchievement="2" RewardID="300" AchievementStar="0" JoinLevel="0">
+      <Event OnlyID="1" ID="10" BindParam="0" FinishParam="5" />
+    </Achievement>
+    <Achievement ID="2" AchievementName="海洋之心" AchievementIcon="Achieve_210" AchievementDec="等级提升到10级" UpperFishAchievement="3" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="10" BindParam="0" FinishParam="10" />
+    </Achievement>
+    <Achievement ID="3" AchievementName="海洋之心" AchievementIcon="Achieve_210" AchievementDec="等级提升到15级" UpperFishAchievement="4" RewardID="350" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="10" BindParam="0" FinishParam="15" />
+    </Achievement>
+    <Achievement ID="4" AchievementName="我！征服海洋" AchievementIcon="Achieve_210" AchievementDec="等级提升到20级" UpperFishAchievement="5" RewardID="303" AchievementStar="0"
+
+JoinLevel="15">
+      <Event OnlyID="1" ID="10" BindParam="0" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="5" AchievementName="我！征服海洋" AchievementIcon="Achieve_210" AchievementDec="等级提升到25级" UpperFishAchievement="6" RewardID="304" AchievementStar="1"
+
+JoinLevel="15">
+      <Event OnlyID="1" ID="10" BindParam="0" FinishParam="25" />
+    </Achievement>
+    <Achievement ID="6" AchievementName="我！征服海洋" AchievementIcon="Achieve_210" AchievementDec="等级提升到30级" UpperFishAchievement="0" RewardID="351" AchievementStar="2"
+
+JoinLevel="15">
+      <Event OnlyID="1" ID="10" BindParam="0" FinishParam="30" />
+    </Achievement>
+    <Achievement ID="50" AchievementName="小鱼贩" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条鱼" UpperFishAchievement="51" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="51" AchievementName="小鱼贩" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条鱼" UpperFishAchievement="52" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="52" AchievementName="小鱼贩" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条鱼" UpperFishAchievement="53" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="53" AchievementName="海产批发商" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条鱼" UpperFishAchievement="54" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="54" AchievementName="海产批发商" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条鱼" UpperFishAchievement="55" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="55" AchievementName="海产批发商" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条鱼" UpperFishAchievement="56" RewardID="352" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="56" AchievementName="海产大亨" AchievementIcon="Achieve_200" AchievementDec="累积捕获1000条鱼" UpperFishAchievement="57" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="1000" />
+    </Achievement>
+    <Achievement ID="57" AchievementName="海产大亨" AchievementIcon="Achieve_200" AchievementDec="累积捕获2000条鱼" UpperFishAchievement="58" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="2000" />
+    </Achievement>
+    <Achievement ID="58" AchievementName="海产大亨" AchievementIcon="Achieve_200" AchievementDec="累积捕获5000条鱼" UpperFishAchievement="0" RewardID="353" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="5000" />
+    </Achievement>
+    <Achievement ID="59" AchievementName="传说中的鱼翅" AchievementIcon="Achieve_208" AchievementDec="累计捕获5条黑鲨" UpperFishAchievement="60" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="5" />
+    </Achievement>
+    <Achievement ID="60" AchievementName="传说中的鱼翅" AchievementIcon="Achieve_208" AchievementDec="累计捕获10条黑鲨" UpperFishAchievement="61" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="10" />
+    </Achievement>
+    <Achievement ID="61" AchievementName="传说中的鱼翅" AchievementIcon="Achieve_208" AchievementDec="累计捕获20条黑鲨" UpperFishAchievement="62" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="62" AchievementName="鲨鱼克星" AchievementIcon="Achieve_208" AchievementDec="累积捕获30条黑鲨" UpperFishAchievement="63" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="30" />
+    </Achievement>
+    <Achievement ID="63" AchievementName="鲨鱼克星" AchievementIcon="Achieve_208" AchievementDec="累积捕获50条黑鲨" UpperFishAchievement="64" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="64" AchievementName="鲨鱼克星" AchievementIcon="Achieve_208" AchievementDec="累积捕获100条黑鲨" UpperFishAchievement="65" RewardID="354" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="65" AchievementName="黑夜君王" AchievementIcon="Achieve_208" AchievementDec="累积捕获150条黑鲨" UpperFishAchievement="66" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="66" AchievementName="黑夜君王" AchievementIcon="Achieve_208" AchievementDec="累积捕获200条黑鲨" UpperFishAchievement="67" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="67" AchievementName="黑夜君王" AchievementIcon="Achieve_208" AchievementDec="累积捕获500条黑鲨" UpperFishAchievement="0" RewardID="355" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="68" AchievementName="Lady First" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条公主鱼" UpperFishAchievement="69" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="6" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="69" AchievementName="Lady First" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条公主鱼" UpperFishAchievement="70" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="6" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="70" AchievementName="Lady First" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条公主鱼" UpperFishAchievement="71" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="6" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="71" AchievementName="辣手摧花！" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条公主鱼" UpperFishAchievement="72" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="6" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="72" AchievementName="辣手摧花！" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条公主鱼" UpperFishAchievement="73" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="6" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="73" AchievementName="辣手摧花！" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条公主鱼" UpperFishAchievement="74" RewardID="356" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="6" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="74" AchievementName="凶残的刽子手" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条公主鱼" UpperFishAchievement="75" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="6" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="75" AchievementName="凶残的刽子手" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条公主鱼" UpperFishAchievement="76" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="6" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="76" AchievementName="凶残的刽子手" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条公主鱼" UpperFishAchievement="0" RewardID="357" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="6" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="77" AchievementName="华尔兹" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条燕尾鱼" UpperFishAchievement="78" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="12" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="78" AchievementName="华尔兹" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条燕尾鱼" UpperFishAchievement="79" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="12" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="79" AchievementName="华尔兹" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条燕尾鱼" UpperFishAchievement="80" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="12" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="80" AchievementName="优雅的绅士" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条燕尾鱼" UpperFishAchievement="81" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="12" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="81" AchievementName="优雅的绅士" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条燕尾鱼" UpperFishAchievement="82" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="12" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="82" AchievementName="优雅的绅士" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条燕尾鱼" UpperFishAchievement="83" RewardID="358" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="12" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="83" AchievementName="绅士你懂吗？" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条燕尾鱼" UpperFishAchievement="84" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="12" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="84" AchievementName="绅士你懂吗？" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条燕尾鱼" UpperFishAchievement="85" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="12" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="85" AchievementName="绅士你懂吗？" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条燕尾鱼" UpperFishAchievement="86" RewardID="359" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="12" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="86" AchievementName="尼莫！马林" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条小丑鱼" UpperFishAchievement="87" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="11" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="87" AchievementName="尼莫！马林" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条小丑鱼" UpperFishAchievement="88" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="11" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="88" AchievementName="尼莫！马林" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条小丑鱼" UpperFishAchievement="89" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="11" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="89" AchievementName="我很温柔" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条小丑鱼" UpperFishAchievement="90" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="11" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="90" AchievementName="我很温柔" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条小丑鱼" UpperFishAchievement="91" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="11" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="91" AchievementName="我很温柔" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条小丑鱼" UpperFishAchievement="92" RewardID="360" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="11" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="92" AchievementName="笑话终结者" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条小丑鱼" UpperFishAchievement="93" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="11" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="93" AchievementName="笑话终结者" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条小丑鱼" UpperFishAchievement="94" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="11" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="94" AchievementName="笑话终结者" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条小丑鱼" UpperFishAchievement="0" RewardID="361" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="11" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="95" AchievementName="上帝说要有光" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条灯笼鱼" UpperFishAchievement="96" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="0" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="96" AchievementName="上帝说要有光" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条灯笼鱼" UpperFishAchievement="97" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="0" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="97" AchievementName="上帝说要有光" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条灯笼鱼" UpperFishAchievement="98" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="0" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="98" AchievementName="失明了！" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条灯笼鱼" UpperFishAchievement="99" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="0" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="99" AchievementName="失明了！" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条灯笼鱼" UpperFishAchievement="100" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="0" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="100" AchievementName="失明了！" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条灯笼鱼" UpperFishAchievement="101" RewardID="362" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="0" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="101" AchievementName="无光世界" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条灯笼鱼" UpperFishAchievement="102" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="0" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="102" AchievementName="无光世界" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条灯笼鱼" UpperFishAchievement="103" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="0" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="103" AchievementName="无光世界" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条灯笼鱼" UpperFishAchievement="0" RewardID="363" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="0" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="104" AchievementName="看！剑客！" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条剑鱼" UpperFishAchievement="105" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="16" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="105" AchievementName="看！剑客！" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条剑鱼" UpperFishAchievement="106" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="16" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="106" AchievementName="看！剑客！" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条剑鱼" UpperFishAchievement="107" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="16" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="107" AchievementName="别跑，看剑！" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条剑鱼" UpperFishAchievement="108" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="16" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="108" AchievementName="别跑，看剑！" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条剑鱼" UpperFishAchievement="109" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="16" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="109" AchievementName="别跑，看剑！" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条剑鱼" UpperFishAchievement="110" RewardID="364" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="16" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="110" AchievementName="再也戳不动了" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条剑鱼" UpperFishAchievement="111" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="16" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="111" AchievementName="再也戳不动了" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条剑鱼" UpperFishAchievement="112" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="16" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="112" AchievementName="再也戳不动了" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条剑鱼" UpperFishAchievement="0" RewardID="365" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="16" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="113" AchievementName="我不是海豚" AchievementIcon="Achieve_200" AchievementDec="累计捕获5条虎鲸" UpperFishAchievement="114" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="5" />
+    </Achievement>
+    <Achievement ID="114" AchievementName="我不是海豚" AchievementIcon="Achieve_200" AchievementDec="累计捕获10条虎鲸" UpperFishAchievement="115" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="10" />
+    </Achievement>
+    <Achievement ID="115" AchievementName="我不是海豚" AchievementIcon="Achieve_200" AchievementDec="累计捕获20条虎鲸" UpperFishAchievement="116" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="116" AchievementName="庞然巨物" AchievementIcon="Achieve_200" AchievementDec="累积捕获30条虎鲸" UpperFishAchievement="117" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="30" />
+    </Achievement>
+    <Achievement ID="117" AchievementName="庞然巨物" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条虎鲸" UpperFishAchievement="118" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="118" AchievementName="庞然巨物" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条虎鲸" UpperFishAchievement="119" RewardID="366" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="119" AchievementName="海洋公敌" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条虎鲸" UpperFishAchievement="120" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="120" AchievementName="海洋公敌" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条虎鲸" UpperFishAchievement="121" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="121" AchievementName="海洋公敌" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条虎鲸" UpperFishAchievement="0" RewardID="367" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="122" AchievementName="海底最快" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条乌龟" UpperFishAchievement="123" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="123" AchievementName="海底最快" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条乌龟" UpperFishAchievement="124" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="124" AchievementName="海底最快" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条乌龟" UpperFishAchievement="125" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="125" AchievementName="兔子在哪？" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条乌龟" UpperFishAchievement="126" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="126" AchievementName="兔子在哪？" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条乌龟" UpperFishAchievement="127" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="127" AchievementName="兔子在哪？" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条乌龟" UpperFishAchievement="128" RewardID="368" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="128" AchievementName="赛跑冠军" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条乌龟" UpperFishAchievement="129" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="129" AchievementName="赛跑冠军" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条乌龟" UpperFishAchievement="130" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="130" AchievementName="赛跑冠军" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条乌龟" UpperFishAchievement="0" RewardID="369" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="131" AchievementName="精诚所至" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条石头鱼" UpperFishAchievement="132" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="14" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="132" AchievementName="精诚所至" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条石头鱼" UpperFishAchievement="133" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="14" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="133" AchievementName="精诚所至" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条石头鱼" UpperFishAchievement="134" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="14" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="134" AchievementName="深海顽石" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条石头鱼" UpperFishAchievement="135" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="14" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="135" AchievementName="深海顽石" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条石头鱼" UpperFishAchievement="136" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="14" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="136" AchievementName="深海顽石" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条石头鱼" UpperFishAchievement="137" RewardID="370" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="14" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="137" AchievementName="点石成金" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条石头鱼" UpperFishAchievement="138" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="14" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="138" AchievementName="点石成金" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条石头鱼" UpperFishAchievement="139" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="14" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="139" AchievementName="点石成金" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条石头鱼" UpperFishAchievement="0" RewardID="371" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="14" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="140" AchievementName="噼里啪啦" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条鞭炮鱼" UpperFishAchievement="141" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="141" AchievementName="噼里啪啦" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条鞭炮鱼" UpperFishAchievement="142" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="142" AchievementName="噼里啪啦" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条鞭炮鱼" UpperFishAchievement="143" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="143" AchievementName="严禁烟火" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条鞭炮鱼" UpperFishAchievement="144" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="144" AchievementName="严禁烟火" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条鞭炮鱼" UpperFishAchievement="145" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="145" AchievementName="严禁烟火" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条鞭炮鱼" UpperFishAchievement="146" RewardID="372" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="146" AchievementName="恭贺新年！" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条鞭炮鱼" UpperFishAchievement="147" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="147" AchievementName="恭贺新年！" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条鞭炮鱼" UpperFishAchievement="148" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="148" AchievementName="恭贺新年！" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条鞭炮鱼" UpperFishAchievement="0" RewardID="373" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="149" AchievementName="水产养殖户" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条小草鱼" UpperFishAchievement="151" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="150" AchievementName="水产养殖户" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条小草鱼" UpperFishAchievement="152" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="151" AchievementName="水产养殖户" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条小草鱼" UpperFishAchievement="153" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="152" AchievementName="水产养殖大户" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条小草鱼" UpperFishAchievement="154" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="153" AchievementName="水产养殖大户" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条小草鱼" UpperFishAchievement="155" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="154" AchievementName="水产养殖大户" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条小草鱼" UpperFishAchievement="156" RewardID="374" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="155" AchievementName="水产养殖专家" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条小草鱼" UpperFishAchievement="157" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="156" AchievementName="水产养殖专家" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条小草鱼" UpperFishAchievement="158" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="157" AchievementName="水产养殖专家" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条小草鱼" UpperFishAchievement="0" RewardID="375" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="158" AchievementName="黄！澄！澄！" AchievementIcon="Achieve_200" AchievementDec="累积捕获20条小黄鱼" UpperFishAchievement="159" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="8" FinishParam="20" />
+    </Achievement>
+    <Achievement ID="159" AchievementName="黄！澄！澄！" AchievementIcon="Achieve_200" AchievementDec="累积捕获50条小黄鱼" UpperFishAchievement="160" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="8" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="160" AchievementName="黄！澄！澄！" AchievementIcon="Achieve_200" AchievementDec="累积捕获100条小黄鱼" UpperFishAchievement="161" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="8" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="161" AchievementName="油炸小黄鱼" AchievementIcon="Achieve_200" AchievementDec="累积捕获150条小黄鱼" UpperFishAchievement="162" RewardID="301" AchievementStar="0"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="8" FinishParam="150" />
+    </Achievement>
+    <Achievement ID="162" AchievementName="油炸小黄鱼" AchievementIcon="Achieve_200" AchievementDec="累积捕获200条小黄鱼" UpperFishAchievement="163" RewardID="302" AchievementStar="1"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="8" FinishParam="200" />
+    </Achievement>
+    <Achievement ID="163" AchievementName="油炸小黄鱼" AchievementIcon="Achieve_200" AchievementDec="累积捕获250条小黄鱼" UpperFishAchievement="164" RewardID="376" AchievementStar="2"
+
+JoinLevel="5">
+      <Event OnlyID="1" ID="5" BindParam="8" FinishParam="250" />
+    </Achievement>
+    <Achievement ID="164" AchievementName="快到我的碗里来" AchievementIcon="Achieve_200" AchievementDec="累积捕获300条小黄鱼" UpperFishAchievement="165" RewardID="302"
+
+AchievementStar="0" JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="8" FinishParam="300" />
+    </Achievement>
+    <Achievement ID="165" AchievementName="快到我的碗里来" AchievementIcon="Achieve_200" AchievementDec="累积捕获500条小黄鱼" UpperFishAchievement="166" RewardID="303"
+
+AchievementStar="1" JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="8" FinishParam="500" />
+    </Achievement>
+    <Achievement ID="166" AchievementName="快到我的碗里来" AchievementIcon="Achieve_200" AchievementDec="累积捕获800条小黄鱼" UpperFishAchievement="0" RewardID="377" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="5" BindParam="8" FinishParam="800" />
+    </Achievement>
+    <Achievement ID="200" AchievementName="小有身家" AchievementIcon="Achieve_204" AchievementDec="最大拥有金币10000" UpperFishAchievement="201" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="9" BindParam="0" FinishParam="10000" />
+    </Achievement>
+    <Achievement ID="201" AchievementName="小有身家" AchievementIcon="Achieve_204" AchievementDec="最大拥有金币20000" UpperFishAchievement="202" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="9" BindParam="0" FinishParam="20000" />
+    </Achievement>
+    <Achievement ID="202" AchievementName="小有身家" AchievementIcon="Achieve_204" AchievementDec="最大拥有金币50000" UpperFishAchievement="203" RewardID="302" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="9" BindParam="0" FinishParam="50000" />
+    </Achievement>
+    <Achievement ID="203" AchievementName="暴发户" AchievementIcon="Achieve_204" AchievementDec="最大拥有金币100000" UpperFishAchievement="204" RewardID="301" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="9" BindParam="0" FinishParam="100000" />
+    </Achievement>
+    <Achievement ID="204" AchievementName="暴发户" AchievementIcon="Achieve_204" AchievementDec="最大拥有金币200000" UpperFishAchievement="205" RewardID="302" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="9" BindParam="0" FinishParam="200000" />
+    </Achievement>
+    <Achievement ID="205" AchievementName="暴发户" AchievementIcon="Achieve_204" AchievementDec="最大拥有金币500000" UpperFishAchievement="206" RewardID="378" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="9" BindParam="0" FinishParam="500000" />
+    </Achievement>
+    <Achievement ID="206" AchievementName="金融家" AchievementIcon="Achieve_211" AchievementDec="累积金币超过一百万" UpperFishAchievement="207" RewardID="302" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="1" BindParam="0" FinishParam="1000000" />
+    </Achievement>
+    <Achievement ID="207" AchievementName="金融家" AchievementIcon="Achieve_211" AchievementDec="累积金币超过五百万" UpperFishAchievement="208" RewardID="303" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="1" BindParam="0" FinishParam="5000000" />
+    </Achievement>
+    <Achievement ID="208" AchievementName="金融家" AchievementIcon="Achieve_211" AchievementDec="累积金币超过一千万" UpperFishAchievement="0" RewardID="379" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="1" BindParam="0" FinishParam="1000000" />
+    </Achievement>
+    <Achievement ID="209" AchievementName="神捕" AchievementIcon="Achieve_206" AchievementDec="3次单炮获得5000金币" UpperFishAchievement="210" RewardID="302" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="8" BindParam="5000" FinishParam="3" />
+    </Achievement>
+    <Achievement ID="210" AchievementName="神捕" AchievementIcon="Achieve_206" AchievementDec="3次单炮获得10000金币" UpperFishAchievement="211" RewardID="303" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="8" BindParam="10000" FinishParam="3" />
+    </Achievement>
+    <Achievement ID="211" AchievementName="神捕" AchievementIcon="Achieve_206" AchievementDec="3次单炮获得50000金币" UpperFishAchievement="0" RewardID="380" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="8" BindParam="50000" FinishParam="3" />
+    </Achievement>
+    <Achievement ID="212" AchievementName="两元店老板" AchievementIcon="Achieve_207" AchievementDec="拥有超过10钻石" UpperFishAchievement="213" RewardID="300" AchievementStar="0"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="11" BindParam="0" FinishParam="10" />
+    </Achievement>
+    <Achievement ID="213" AchievementName="两元店老板" AchievementIcon="Achieve_207" AchievementDec="拥有超过50钻石" UpperFishAchievement="214" RewardID="301" AchievementStar="1"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="11" BindParam="0" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="214" AchievementName="两元店老板" AchievementIcon="Achieve_207" AchievementDec="拥有超过100钻石" UpperFishAchievement="215" RewardID="381" AchievementStar="2"
+
+JoinLevel="0">
+      <Event OnlyID="1" ID="11" BindParam="0" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="215" AchievementName="珠宝大亨" AchievementIcon="Achieve_207" AchievementDec="拥有超过2000钻石" UpperFishAchievement="216" RewardID="302" AchievementStar="0"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="11" BindParam="0" FinishParam="2000" />
+    </Achievement>
+    <Achievement ID="216" AchievementName="珠宝大亨" AchievementIcon="Achieve_207" AchievementDec="拥有超过5000钻石" UpperFishAchievement="217" RewardID="303" AchievementStar="1"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="11" BindParam="0" FinishParam="5000" />
+    </Achievement>
+    <Achievement ID="217" AchievementName="珠宝大亨" AchievementIcon="Achieve_207" AchievementDec="拥有超过10000钻石" UpperFishAchievement="0" RewardID="382" AchievementStar="2"
+
+JoinLevel="10">
+      <Event OnlyID="1" ID="11" BindParam="0" FinishParam="10000" />
+    </Achievement>
+    <Achievement ID="218" AchievementName="卡徒" AchievementIcon="Achieve_209" AchievementDec="累积使用50次技能" UpperFishAchievement="219" RewardID="302" AchievementStar="0"
+
+JoinLevel="2">
+      <Event OnlyID="1" ID="7" BindParam="255" FinishParam="50" />
+    </Achievement>
+    <Achievement ID="219" AchievementName="卡徒" AchievementIcon="Achieve_209" AchievementDec="累积使用100次技能" UpperFishAchievement="220" RewardID="303" AchievementStar="1"
+
+JoinLevel="2">
+      <Event OnlyID="1" ID="7" BindParam="255" FinishParam="100" />
+    </Achievement>
+    <Achievement ID="220" AchievementName="卡徒" AchievementIcon="Achieve_209" AchievementDec="累积使用500次技能" UpperFishAchievement="0" RewardID="383" AchievementStar="2"
+
+JoinLevel="2">
+      <Event OnlyID="1" ID="7" BindParam="255" FinishParam="500" />
+    </Achievement>
+  </FishAchievements>
+  <FishActions MaxJoinActionSum="10">
+    <!--
+	文本格式为 UTF-8
+
+	活动的配置
+		MaxJoinActionSum 玩家同时可以接取的最多的活动数量
+		<Action>
+			ID 活动的唯一ID 从1开始 最大值为 255
+			GroupName 活动的名称
+			GroupButtonPic 无效
+			GroupHeadPic 无效
+			GroupCommon 无效
+			BeginYear 开始的年 从 2000开始到 3000 之间就可以了
+			BeginMonth 月份 从1开始到12 
+			BeginDay 天数 从1 开始 到 31
+			BeginHour 小时 从 0开始到23
+			BeginMin 分钟 从0开始到59
+			LastHour 从0开始 最大值为 65535 如果为0的话 表示这个活动是无限制的 是永久的 
+			<Event>
+				<Once> 
+					ID 从1 开始 其值乘2 递增  一个 活动最多有32个阶段  比如 1,2,4,8,16,32,64,128,256....等
+						表示活动的其中的一个阶段  从1开始 最大值为 0xffffffff  
+					Common 活动当前阶段的描述
+					FinishParam 完成参数 从1开始 最大值为 0xffffffff  
+					RewardID 奖励ID 从1开始最大值为 65535 引用 FishReward.xml文件
+-->
+    <Action ID="1" GroupName="冲级" BeginYear="2015" BeginMonth="9" BeginDay="1" BeginHour="0" BeginMin="0" LastHour="0">
+      <Event ID="10" BindParam="0">
+        <Once ID="1" Common="5级" FinishParam="5" RewardID="3010" />
+        <Once ID="2" Common="10级" FinishParam="10" RewardID="3011" />
+        <Once ID="4" Common="15级" FinishParam="15" RewardID="3012" />
+        <Once ID="8" Common="20级" FinishParam="20" RewardID="3013" />
+      </Event>
+    </Action>
+    <Action ID="2" GroupName="充值奖励" BeginYear="2015" BeginMonth="9" BeginDay="1" BeginHour="0" BeginMin="0" LastHour="0">
+      <Event ID="12" BindParam="0">
+        <Once ID="1" Common="1元" FinishParam="1" RewardID="3005" />
+        <Once ID="2" Common="20元" FinishParam="20" RewardID="3006" />
+        <Once ID="4" Common="50元" FinishParam="50" RewardID="3007" />
+        <Once ID="8" Common="100元" FinishParam="100" RewardID="3008" />
+        <Once ID="16" Common="600元" FinishParam="600" RewardID="3009" />
+      </Event>
+    </Action>
+    <Action ID="3" GroupName="元旦活动" BeginYear="2014" BeginMonth="1" BeginDay="1" BeginHour="0" BeginMin="0" LastHour="72">
+      <Event ID="5" BindParam="17">
+        <Once ID="1" Common="阶段一：捕获20只鞭炮鱼" FinishParam="20" RewardID="4001" />
+        <Once ID="2" Common="阶段二：捕获50只鞭炮鱼" FinishParam="50" RewardID="4002" />
+        <Once ID="4" Common="阶段三：捕获200只鞭炮鱼" FinishParam="200" RewardID="4003" />
+        <Once ID="8" Common="阶段四：捕获500只鞭炮鱼" FinishParam="500" RewardID="4004" />
+        <Once ID="16" Common="阶段五：捕获1000只鞭炮鱼" FinishParam="1000" RewardID="4005" />
+      </Event>
+    </Action>
+    <Action ID="4" GroupName="春节活动" BeginYear="2014" BeginMonth="2" BeginDay="8" BeginHour="0" BeginMin="0" LastHour="720">
+      <Event ID="12" BindParam="0">
+        <Once ID="1" Common="阶段一：充值8元" FinishParam="8" RewardID="4006" />
+        <Once ID="2" Common="阶段二：充值88元" FinishParam="88" RewardID="4007" />
+        <Once ID="4" Common="阶段三：充值888元" FinishParam="888" RewardID="4008" />
+        <Once ID="8" Common="阶段四：充值8888元" FinishParam="8888" RewardID="4009" />
+      </Event>
+    </Action>
+    <Action ID="5" GroupName="情人节活动" BeginYear="2014" BeginMonth="2" BeginDay="14" BeginHour="0" BeginMin="0" LastHour="24">
+      <Event ID="5" BindParam="6">
+        <Once ID="1" Common="阶段一：捕获20只公主鱼" FinishParam="20" RewardID="4001" />
+        <Once ID="2" Common="阶段二：捕获50只公主鱼" FinishParam="50" RewardID="4002" />
+        <Once ID="4" Common="阶段三：捕获200只公主鱼" FinishParam="200" RewardID="4003" />
+        <Once ID="8" Common="阶段四：捕获500只公主鱼" FinishParam="500" RewardID="4004" />
+        <Once ID="16" Common="阶段五：捕获1000只公主鱼" FinishParam="1000" RewardID="4005" />
+      </Event>
+    </Action>
+  </FishActions>
+  <FishCharms MaxSum="5">
+    <!--
+	文本格式为 UTF-8
+
+	魅力功能的配置
+	MaxSum 宝箱礼物栏位的最大值 与UI相关 从1开始 最大值为255  目前配置为5
+	<Charm>
+		Index 当前礼物的栏位 从0开始 到 (MaxSum-1)
+		LostGlobel 赠送这礼物 销毁的金币数 从0开始 最大值为 0xffffffff		
+		ChangeCharmValue 这个礼物 改变的魅力值 取值范围可以为负数 从-20亿到正20亿 之间
+		PicName 这个礼物的图标
+-->
+    <Charm Index="0" LostGlobel="100" LostMedal="0" LostCurrcey="0" ItemID="1101" ItemSum="1" ChangeCharmValue="1" PicName="1101" />
+    <Charm Index="1" LostGlobel="0" LostMedal="0" LostCurrcey="5" ItemID="1104" ItemSum="1" ChangeCharmValue="50" PicName="1104" />
+    <Charm Index="2" LostGlobel="0" LostMedal="0" LostCurrcey="100" ItemID="1103" ItemSum="1" ChangeCharmValue="999" PicName="1103" />
+    <Charm Index="3" LostGlobel="100" LostMedal="0" LostCurrcey="0" ItemID="1102" ItemSum="1" ChangeCharmValue="-1" PicName="1102" />
+    <Charm Index="4" LostGlobel="0" LostMedal="0" LostCurrcey="5" ItemID="1100" ItemSum="1" ChangeCharmValue="-50" PicName="1100" />
+  </FishCharms>
+  <FishCheck CheckOtherUser="10">
+    <!--
+	文本格式为 UTF-8
+	签到 功能
+	CheckOtherUser 玩家补签需要花费的乐币的数量(人民币货币) 从1开始 最大值为 0xFFFFFFFF
+	CheckDay 
+		MaxDaySum 表示最大签到的天数 一般填31就OK了
+		DaySum
+			Day 表示一个月中的天数 从1开始 最大值为 31
+			RewardID 奖励的ID 引用表 FishReward.xml里的数据 从1开始 最大值为 65535
+	MonthCheck
+		DaySum
+			Day 表示一个月中的连续签到的天数 从1开始 最大值为 31
+			RewardID 奖励的ID 引用表 FishReward.xml里的数据 从1开始 最大值为 65535
+-->
+    <CheckDay MaxDaySum="31">
+      <DaySum Day="1" RewardID="100" />
+      <DaySum Day="2" RewardID="101" />
+      <DaySum Day="3" RewardID="102" />
+      <DaySum Day="4" RewardID="103" />
+      <DaySum Day="5" RewardID="104" />
+      <DaySum Day="6" RewardID="105" />
+      <DaySum Day="7" RewardID="106" />
+      <DaySum Day="8" RewardID="107" />
+      <DaySum Day="9" RewardID="108" />
+      <DaySum Day="10" RewardID="109" />
+      <DaySum Day="11" RewardID="110" />
+      <DaySum Day="12" RewardID="111" />
+      <DaySum Day="13" RewardID="112" />
+      <DaySum Day="14" RewardID="113" />
+      <DaySum Day="15" RewardID="114" />
+      <DaySum Day="16" RewardID="115" />
+      <DaySum Day="17" RewardID="116" />
+      <DaySum Day="18" RewardID="117" />
+      <DaySum Day="19" RewardID="118" />
+      <DaySum Day="20" RewardID="119" />
+      <DaySum Day="21" RewardID="120" />
+      <DaySum Day="22" RewardID="121" />
+      <DaySum Day="23" RewardID="122" />
+      <DaySum Day="24" RewardID="123" />
+      <DaySum Day="25" RewardID="124" />
+      <DaySum Day="26" RewardID="125" />
+      <DaySum Day="27" RewardID="126" />
+      <DaySum Day="28" RewardID="127" />
+      <DaySum Day="29" RewardID="128" />
+      <DaySum Day="30" RewardID="129" />
+      <DaySum Day="31" RewardID="130" />
+    </CheckDay>
+    <MonthCheck>
+      <DaySum Day="3" RewardID="131" />
+      <DaySum Day="5" RewardID="132" />
+      <DaySum Day="7" RewardID="133" />
+      <DaySum Day="10" RewardID="134" />
+      <DaySum Day="15" RewardID="135" />
+      <DaySum Day="22" RewardID="136" />
+      <DaySum Day="30" RewardID="137" />
+    </MonthCheck>
+  </FishCheck>
+  <FishChests>
+    <!--
+	文本格式为 UTF-8
+	鱼群宝箱配置
+	<Chest>
+		ID 宝箱的唯一ID 从1开始 最大值为255
+		ExistsSec 宝箱存在的秒数  从1开始 最大值为255
+    ImmediateRewardid 鱼头上的物品，通过奖励id实现,非0
+    CatchChance 宝箱跟正常概率比的一个系数非0
+    
+		<<Costs> 开启宝箱的花费
+			Num 开启宝箱的次数 从1开始 最大值为255  这个和UI相关 所以实际范围为 1-3
+			UserCurrcey 开启需要花费的金币的数 从0开始 最大值为 0xffffffff  比赛为比赛金币 游戏为游戏金币
+		<Rewards> 宝箱的奖励选项
+			SpecialRewardTypeID 特殊奖励的类型ID 从1开始最大值为 255  这个值必须是下面的奖励选项中的一个ID
+			SpecialRewardUseRp 获取特殊奖励需要花费的RP值 从0开始 最大值为 255
+			OtherAddRp 如果抽到非特殊奖励 增加的RP值 从0开始 最大值为 255
+			<Reward>
+				ID 奖励的唯一ID 从1开始 最大值为 255  ID可以的值为: 1,2,4,8,16,32,64,128
+				Chances 奖励随机权重 从0开始到0xffffffff
+					<Once> 唯一奖励
+						ID 表示 唯一ID 从1开始 最大值为 255
+						Chances 奖励随机权重 从0开始到0xffffffff
+						RewardID 奖励ID 从1开始到65535  引用 FishReward.xml
+-->
+    <Chest ID="1" CatchChance="2" ExistsSec="30" ImmediateRewardid="0">
+      <Costs MaxCostSum="3">
+        <Cost Num="1" UserCurrcey="0" />
+        <Cost Num="2" UserCurrcey="1" />
+        <Cost Num="3" UserCurrcey="5" />
+      </Costs>
+      <Rewards SpecialRewardTypeID="4" SpecialRewardUseRp="10" OtherAddRp="1">
+        <Reward ID="1" Chances="50">
+          <Once ID="1" Chances="20" RewardID="700" />
+          <Once ID="2" Chances="20" RewardID="701" />
+          <Once ID="3" Chances="20" RewardID="702" />
+          <Once ID="4" Chances="20" RewardID="706" />
+          <Once ID="5" Chances="20" RewardID="707" />
+          <Once ID="6" Chances="10" RewardID="712" />
+          <Once ID="7" Chances="10" RewardID="713" />
+          <Once ID="8" Chances="10" RewardID="714" />
+          <Once ID="9" Chances="10" RewardID="715" />
+          <Once ID="10" Chances="10" RewardID="720" />
+        </Reward>
+        <Reward ID="2" Chances="30">
+          <Once ID="1" Chances="20" RewardID="701" />
+          <Once ID="2" Chances="20" RewardID="702" />
+          <Once ID="3" Chances="20" RewardID="703" />
+          <Once ID="4" Chances="20" RewardID="707" />
+          <Once ID="5" Chances="20" RewardID="708" />
+          <Once ID="6" Chances="10" RewardID="712" />
+          <Once ID="7" Chances="10" RewardID="713" />
+          <Once ID="8" Chances="10" RewardID="714" />
+          <Once ID="9" Chances="10" RewardID="715" />
+          <Once ID="10" Chances="10" RewardID="720" />
+        </Reward>
+        <Reward ID="4" Chances="15">
+          <Once ID="1" Chances="20" RewardID="703" />
+          <Once ID="2" Chances="20" RewardID="704" />
+          <Once ID="3" Chances="10" RewardID="705" />
+          <Once ID="4" Chances="20" RewardID="708" />
+          <Once ID="5" Chances="20" RewardID="709" />
+          <Once ID="6" Chances="20" RewardID="712" />
+          <Once ID="7" Chances="20" RewardID="713" />
+          <Once ID="8" Chances="20" RewardID="714" />
+          <Once ID="9" Chances="20" RewardID="715" />
+          <Once ID="10" Chances="10" RewardID="720" />
+          <Once ID="11" Chances="4" RewardID="721" />
+        </Reward>
+        <Reward ID="8" Chances="5">
+          <Once ID="1" Chances="30" RewardID="704" />
+          <Once ID="2" Chances="10" RewardID="705" />
+          <Once ID="3" Chances="30" RewardID="709" />
+          <Once ID="4" Chances="20" RewardID="710" />
+          <Once ID="5" Chances="10" RewardID="711" />
+          <Once ID="6" Chances="20" RewardID="712" />
+          <Once ID="7" Chances="20" RewardID="713" />
+          <Once ID="8" Chances="20" RewardID="714" />
+          <Once ID="9" Chances="20" RewardID="715" />
+          <Once ID="10" Chances="10" RewardID="716" />
+          <Once ID="11" Chances="10" RewardID="717" />
+          <Once ID="12" Chances="10" RewardID="718" />
+          <Once ID="13" Chances="10" RewardID="719" />
+          <Once ID="14" Chances="20" RewardID="720" />
+          <Once ID="15" Chances="10" RewardID="721" />
+          <Once ID="16" Chances="4" RewardID="722" />
+        </Reward>
+      </Rewards>
+    </Chest>
+    <Chest ID="100" CatchChance="2" ExistsSec="30" ImmediateRewardid="900">
+      <Costs MaxCostSum="3" />
+      <Rewards SpecialRewardTypeID="4" SpecialRewardUseRp="10" OtherAddRp="1" />
+    </Chest>
+    <Chest ID="101" CatchChance="2" ExistsSec="30" ImmediateRewardid="901">
+      <Costs MaxCostSum="3" />
+      <Rewards SpecialRewardTypeID="4" SpecialRewardUseRp="10" OtherAddRp="1" />
+    </Chest>
+    <Chest ID="102" CatchChance="2" ExistsSec="30" ImmediateRewardid="902">
+      <Costs MaxCostSum="3" />
+      <Rewards SpecialRewardTypeID="4" SpecialRewardUseRp="10" OtherAddRp="1" />
+    </Chest>
+    <Chest ID="103" CatchChance="2" ExistsSec="30" ImmediateRewardid="903">
+      <Costs MaxCostSum="3" />
+      <Rewards SpecialRewardTypeID="4" SpecialRewardUseRp="10" OtherAddRp="1" />
+    </Chest>
+    <Chest ID="104" CatchChance="1" ExistsSec="30" ImmediateRewardid="65535">
+      <Costs MaxCostSum="3" />
+      <Rewards SpecialRewardTypeID="4" SpecialRewardUseRp="10" OtherAddRp="1" />
+    </Chest>
+  </FishChests>
+  <FishGiff LimitDay="7" SendSumByDay="10" AcceptSumByDay="10" SendOnceUserLimitByDay="1" MaxUserGiffSum="50" RewardID="6">
+    <!--
+	文本格式为 UTF-8
+	赠送功能配置
+	LimitDay 赠送过期时间 从1开始 最大值为 255
+	SendSumByDay 每天可以发送的最大赠送次数  从1开始 最大值为 255
+	AcceptSumByDay 每天可以接收的最大赠送次数  从1开始 最大值为 255
+	SendOnceUserLimitByDay 每天对同一个玩家发送的赠送最大次数  从1开始 最大值为 255
+	MaxUserGiffSum 玩家最多同时存在的赠送个数  从1开始 最大值为 255
+	RewardID 接收赠送的奖励ID 从1开始到65535  用于 FishReward.xml
+-->
+  </FishGiff>
+  <FishGlobelShop>
+    <!--
+	文本格式为 UTF-8
+	金币商店的配置
+	<Item>
+		ID 商品的唯一ID  从1开始 最大值为255
+		Icon 商品图标
+		Name 商品名称
+		Dec  商品描述
+		LoseCurrey 购买商品 需要花费的乐币  从0开始 最大值为0xffffffff	
+		GlobelSum 商品添加的金币数量 从0开始 最大值为0xffffffff	
+-->
+    <Item ID="1" Icon="101" Name="一小堆金币" Dec="xx" LoseCurrey="10" GlobelSum="10000" />
+    <Item ID="2" Icon="102" Name="一小袋金币" Dec="xx" LoseCurrey="95" GlobelSum="100000" />
+    <Item ID="3" Icon="103" Name="一箱金币" Dec="xx" LoseCurrey="850" GlobelSum="1000000" />
+  </FishGlobelShop>
+  <FishItems>
+    <!--
+	文本格式为 UTF-8
+	物品配置
+		ID 物品的唯一ID 从1开始到 0xffffffff
+		TypeID 物品的类型ID 值必须为一下枚举
+			IT_Globel   = 1,//金币 
+			IT_Medal    = 2,//奖牌
+			IT_AchievementPoint = 3,//成就点
+			IT_Title    = 4,//称号
+			IT_Currey   = 5,//乐币
+			IT_MonthSocre = 6,//比赛积分
+			IT_MonthGlobel=7,//比赛金币
+			IT_Normal	  =8,//普通物品
+			IT_Skill      =9,//技能物品
+			IT_Package    =10,//礼包物品
+			IT_Charm      =11,//魅力物品
+			IT_Giff		  =12,//赠送物品
+			IT_Cannon     =13,//炮台物品
+			IT_OsCar	  =14,//潜艇物品
+			IT_Entity	  =15,//实体物品 现实的物品
+			IT_MonthCard  =16//月卡
+			IT_GlobelBag  =17//聚宝盆
+		Name 物品名称
+		ItemIcon 物品图标
+		ItemDec 物品描述
+-->
+    <!--  
+    金币类道具从100开始
+-->
+    <Item ID="100" TypeID="1" Name="一个金币" ItemIcon="100" ItemDec="xx" />
+    <Item ID="101" TypeID="1" Name="几个金币" ItemIcon="101" ItemDec="xx" />
+    <Item ID="102" TypeID="1" Name="一袋金币" ItemIcon="102" ItemDec="xx" />
+    <Item ID="103" TypeID="1" Name="一箱金币" ItemIcon="103" ItemDec="xx" />
+    <!--  
+     200以后为奖牌
+-->
+    <Item ID="200" TypeID="2" Name="奖牌" ItemIcon="200" ItemDec="xx" />
+    <!--  
+     300以后为成就点
+-->
+    <Item ID="300" TypeID="3" Name="成就点" ItemIcon="300" ItemDec="xx" />
+    <!--  
+     400以后为称号
+-->
+    <Item ID="400" TypeID="4" Name="称号" ItemIcon="400" ItemDec="xx" />
+    <!--  
+     500以后为钻石（乐币）
+-->
+    <Item ID="500" TypeID="5" Name="一个钻石" ItemIcon="500" ItemDec="xx" />
+    <Item ID="501" TypeID="5" Name="少量钻石" ItemIcon="501" ItemDec="xx" />
+    <Item ID="502" TypeID="5" Name="多个钻石" ItemIcon="502" ItemDec="xx" />
+    <Item ID="503" TypeID="5" Name="一袋钻石" ItemIcon="503" ItemDec="xx" />
+    <Item ID="504" TypeID="5" Name="一箱钻石" ItemIcon="504" ItemDec="xx" />
+    <!--  
+     600以后为比赛积分
+-->
+    <Item ID="600" TypeID="6" Name="比赛积分" ItemIcon="600" ItemDec="xx" />
+    <!--  
+     700以后为比赛金币
+-->
+    <Item ID="700" TypeID="7" Name="比赛金币" ItemIcon="700" ItemDec="xx" />
+    <!--  
+     800以后为普通物品
+-->
+    <Item ID="800" TypeID="8" Name="晋级赛信物" ItemIcon="800" ItemDec="参加万元大奖晋级赛的消耗品，初赛前20名可获得" />
+    <Item ID="801" TypeID="8" Name="决赛信物" ItemIcon="801" ItemDec="参加万元大奖决赛的消耗品，晋级赛前20名可获得" />
+    <Item ID="802" TypeID="8" Name="改名卡" ItemIcon="801" ItemDec="修改昵称需要的道具" />
+    <Item ID="803" TypeID="8" Name="变性卡" ItemIcon="801" ItemDec="修改性别需要的道具" />
+    <Item ID="804" TypeID="8" Name="1.5倍经验" ItemIcon="801" ItemDec="使用后提升1.5倍经验提升速度，效果持续10分钟" />
+    <Item ID="805" TypeID="8" Name="2倍经验" ItemIcon="801" ItemDec="使用后提升2倍经验提升速度，效果持续10分钟" />
+    <Item ID="806" TypeID="8" Name="参赛次数减半" ItemIcon="801" ItemDec="使用后减少一半的比赛参与场次" />
+    <Item ID="807" TypeID="8" Name="改名卡" ItemIcon="807" ItemDec="修改昵称所需要的道具" />
+    <!--  
+     900以后为技能物品
+-->
+    <Item ID="900" TypeID="9" Name="闪电卡" ItemIcon="900" ItemDec="使用闪电技能需消耗50张闪电卡" />
+    <Item ID="901" TypeID="9" Name="寒冰卡" ItemIcon="901" ItemDec="使用寒冰技能需消耗50张寒冰卡" />
+    <Item ID="902" TypeID="9" Name="暴风卡" ItemIcon="902" ItemDec="使用暴风技能需消耗50张暴风卡" />
+    <Item ID="903" TypeID="9" Name="陨石卡" ItemIcon="903" ItemDec="使用陨石技能需消耗50张陨石卡" />
+    <Item ID="904" TypeID="9" Name="锁定卡" ItemIcon="904" ItemDec="使用锁定技能需消耗1张锁定卡" />
+    <!--  
+     1000以后为礼包物品
+-->
+    <Item ID="1000" TypeID="10" Name="技能卡礼包（小）" ItemIcon="1000" ItemDec="一小包技能卡" />
+    <Item ID="1001" TypeID="10" Name="技能卡礼包（大）" ItemIcon="1000" ItemDec="一大包技能卡" />
+    <Item ID="1002" TypeID="10" Name="等级达人礼包1" ItemIcon="1000" ItemDec="周度等级榜冠军奖励" />
+    <Item ID="1003" TypeID="10" Name="等级达人礼包2" ItemIcon="1000" ItemDec="周度等级榜亚军奖励" />
+    <Item ID="1004" TypeID="10" Name="等级达人礼包3" ItemIcon="1000" ItemDec="周度等级榜季军奖励" />
+    <Item ID="1005" TypeID="10" Name="等级达人礼包4" ItemIcon="1000" ItemDec="周度等级榜第4~20名奖励" />
+    <Item ID="1006" TypeID="10" Name="奖牌达人礼包1" ItemIcon="1000" ItemDec="周度奖牌榜冠军奖励" />
+    <Item ID="1007" TypeID="10" Name="奖牌达人礼包2" ItemIcon="1000" ItemDec="周度奖牌榜亚军奖励" />
+    <Item ID="1008" TypeID="10" Name="奖牌达人礼包3" ItemIcon="1000" ItemDec="周度奖牌榜季军奖励" />
+    <Item ID="1009" TypeID="10" Name="奖牌达人礼包4" ItemIcon="1000" ItemDec="周度奖牌榜第4~20名奖励" />
+    <Item ID="1010" TypeID="10" Name="财富达人礼包1" ItemIcon="1000" ItemDec="周度财富榜冠军奖励" />
+    <Item ID="1011" TypeID="10" Name="财富达人礼包2" ItemIcon="1000" ItemDec="周度财富榜亚军奖励" />
+    <Item ID="1012" TypeID="10" Name="财富达人礼包3" ItemIcon="1000" ItemDec="周度财富榜季军奖励" />
+    <Item ID="1013" TypeID="10" Name="财富达人礼包4" ItemIcon="1000" ItemDec="周度财富榜第4~20名奖励" />
+    <Item ID="1014" TypeID="10" Name="魅力达人礼包1" ItemIcon="1000" ItemDec="周度魅力榜冠军奖励" />
+    <Item ID="1015" TypeID="10" Name="魅力达人礼包2" ItemIcon="1000" ItemDec="周度魅力榜亚军奖励" />
+    <Item ID="1016" TypeID="10" Name="魅力达人礼包3" ItemIcon="1000" ItemDec="周度魅力榜季军奖励" />
+    <Item ID="1017" TypeID="10" Name="魅力达人礼包4" ItemIcon="1000" ItemDec="周度魅力榜第4~20名奖励" />
+    <Item ID="1018" TypeID="10" Name="成就达人礼包1" ItemIcon="1000" ItemDec="周度成就榜冠军奖励" />
+    <Item ID="1019" TypeID="10" Name="成就达人礼包2" ItemIcon="1000" ItemDec="周度成就榜亚军奖励" />
+    <Item ID="1020" TypeID="10" Name="成就达人礼包3" ItemIcon="1000" ItemDec="周度成就榜季军奖励" />
+    <Item ID="1021" TypeID="10" Name="成就达人礼包4" ItemIcon="1000" ItemDec="周成就榜第4~20名奖励" />
+    <Item ID="1022" TypeID="10" Name="整蛊小礼包" ItemIcon="1000" ItemDec="满满的装着许多好玩的东西" />
+    <!--  
+     1100以后为魅力物品
+-->
+    <Item ID="1100" TypeID="11" Name="炸弹" ItemIcon="1100" ItemDec="对其他玩家使用能减少其50点魅力" />
+    <Item ID="1101" TypeID="11" Name="啤酒" ItemIcon="1101" ItemDec="对其他玩家使用能增加其1点魅力" />
+    <Item ID="1102" TypeID="11" Name="鸡蛋" ItemIcon="1102" ItemDec="对其他玩家使用能减少其1点魅力" />
+    <Item ID="1103" TypeID="11" Name="一大束玫瑰" ItemIcon="1103" ItemDec="对其他玩家使用能增加其999点魅力" />
+    <Item ID="1104" TypeID="11" Name="鸡尾酒" ItemIcon="1104" ItemDec="对其他玩家使用能增加其50点魅力" />
+    <!--  
+     1200以后为赠送物品
+-->
+    <Item ID="1200" TypeID="12" Name="每日赠礼" ItemIcon="1200" ItemDec="xx" />
+    <!--  
+     1300以后为大炮物品
+-->
+    <Item ID="1300" TypeID="13" Name="玄光" ItemIcon="1300" ItemDec="xx" />
+    <Item ID="1301" TypeID="13" Name="碧影" ItemIcon="1301" ItemDec="xx" />
+    <Item ID="1302" TypeID="13" Name="旋刃" ItemIcon="1302" ItemDec="xx" />
+    <Item ID="1303" TypeID="13" Name="凝霜" ItemIcon="1303" ItemDec="xx" />
+    <Item ID="1304" TypeID="13" Name="穿云" ItemIcon="1304" ItemDec="xx" />
+    <!--  
+     1400以后为潜艇物品（暂未开发）
+-->
+    <Item ID="1400" TypeID="14" Name="潜艇" ItemIcon="1400" ItemDec="xx" />
+    <!--  
+     1500实体物品（暂未开发）
+-->
+    <Item ID="1500" TypeID="15" Name="1元话费充值卡" ItemIcon="1500" ItemDec="1元话费充值卡" ItemParam="1" />
+    <Item ID="1501" TypeID="15" Name="10元话费充值卡" ItemIcon="1501" ItemDec="10元话费充值卡" ItemParam="10" />
+    <Item ID="1502" TypeID="15" Name="100元话费充值卡" ItemIcon="1502" ItemDec="100元话费充值卡" ItemParam="100" />
+    <Item ID="1503" TypeID="15" Name="小米移动电源" ItemIcon="1503" ItemDec="小米移动电源" />
+    <Item ID="1504" TypeID="15" Name="小米手环" ItemIcon="1504" ItemDec="小米手环" />
+    <Item ID="1505" TypeID="15" Name="小米体重秤" ItemIcon="1505" ItemDec="小米体重秤" />
+    <Item ID="1506" TypeID="15" Name="Leme蓝牙耳机" ItemIcon="1506" ItemDec="Leme蓝牙耳机" />
+    <Item ID="1507" TypeID="15" Name="360智能摄像机" ItemIcon="1507" ItemDec="360智能摄像机" />
+    <Item ID="1508" TypeID="15" Name="Levr Cool1" ItemIcon="1508" ItemDec="Levr Cool1" />
+    <Item ID="1509" TypeID="15" Name="洛可可55度杯" ItemIcon="1509" ItemDec="洛可可55度杯" />
+    <Item ID="1510" TypeID="15" Name="苏泊尔豆浆机" ItemIcon="1510" ItemDec="苏泊尔豆浆机" />
+    <Item ID="1511" TypeID="15" Name="除螨仪吸尘器" ItemIcon="1511" ItemDec="除螨仪吸尘器" />
+    <Item ID="1512" TypeID="15" Name="乐视盒子" ItemIcon="1512" ItemDec="乐视盒子" />
+    <Item ID="1513" TypeID="15" Name="360儿童手表" ItemIcon="1513" ItemDec="360儿童手表" />
+    <Item ID="1514" TypeID="15" Name="小米运动相机" ItemIcon="1514" ItemDec="小米运动相机" />
+    <Item ID="1515" TypeID="15" Name="乐1S手机" ItemIcon="1515" ItemDec="乐1S手机" />
+    <Item ID="1516" TypeID="15" Name="360手机青春版" ItemIcon="1516" ItemDec="360手机青春版" />
+    <Item ID="1517" TypeID="15" Name="小米NOTE" ItemIcon="1517" ItemDec="小米NOTE" />
+    <Item ID="1518" TypeID="15" Name="乐视超级电视" ItemIcon="1518" ItemDec="乐视超级电视" />
+    <Item ID="1519" TypeID="15" Name="乐视超级头盔" ItemIcon="1519" ItemDec="乐视超级头盔" />
+    <Item ID="1520" TypeID="15" Name="小米平衡车" ItemIcon="1520" ItemDec="小米平衡车" />
+    <Item ID="1521" TypeID="15" Name="乐1Pro手机" ItemIcon="1521" ItemDec="乐1Pro手机" />
+    <Item ID="1522" TypeID="15" Name="Iwatch" ItemIcon="1522" ItemDec="Iwatch" />
+    <Item ID="1523" TypeID="15" Name="IPADmini4" ItemIcon="1523" ItemDec="IPADmini4" />
+    <Item ID="1524" TypeID="15" Name="Iphone 6s" ItemIcon="1524" ItemDec="Iphone 6s" />
+    <!--  
+     1600月卡
+-->
+    <Item ID="1600" TypeID="16" Name="月卡" ItemIcon="1600" ItemDec="" ItemParam="1" />
+    <!--  
+     1700聚宝盆
+-->
+    <Item ID="1700" TypeID="17" Name="聚宝盆" ItemIcon="1700" ItemDec="使用后获得48万金币，也可以赠送给其他人" ItemParam="524302" />
+
+    <!--
+	1800 喇叭
+-->
+    <Item ID="1800" TypeID="18" Name="喇叭" ItemIcon="1800" ItemDec="" ItemParam="0"/>
+
+  </FishItems>
+  <FishMail LimitDay="7" UserMaxMailSum="30" ClientShowMailSum="5">
+    <!--
+	文本格式为 UTF-8
+	服务器邮件控制 
+	LimitDay 邮件最长的保存天数 邮件更新的天数 与 FishServerUpdateTime.xml 里配置的更新时间相关  从1开始 最大值为 255
+	UserMaxMailSum 服务器端用户邮箱最大的数量 从1开始 最大值为 255
+	ClientShowMailSum 客户端一次最多显示的邮件数量  从1开始 最大值为 255
+-->
+  </FishMail>
+  <FishMonths BeginMonthLevel="3">
+    <!--
+	文本格式为 UTF-8
+	比赛的配置
+		<Month>
+			ID 比赛的唯一ID 从1开始 最大 255
+			MonthName 比赛名称
+			MonthIcon 比赛的图标
+			MonthDec 比赛描述
+			SignGlobel 比赛报名需要花费的金币 从0到 0xffffffff
+			SignMedal 比赛报名需要花费的奖牌 从0到 0xffffffff
+			SignCurrey 比赛报名需要花费的乐币 从0到 0xffffffff
+			SignItemID 比赛报名需要花费的物品的物品ID 从0开始 到 0xffffffff 引用 FishItem.xml
+			SignItemSum 比赛报名需要花费物品的数量 从0开始到65535
+			InitMatchGlobel 比赛初始化的时候 给予全部报名玩家的比赛专用金币 从0开始到 0xffffffff
+			TableTypeID 桌子类型的ID 从1开始到255 引用 FishTable.xml
+			RankSum 比赛玩家排名的数量 从1开始 到 255
+			<Converts> 比赛续币的操作
+				BeginSum EndSum 续币的次数 开始 和 结束的次数 从1开始到255  
+				LostGlobel 续币扣除的金币数量 从0开始 到 0xffffffff
+				LostMedal 续币扣除的奖牌数量 从0开始 到 0xffffffff
+				LostCurrey 续币扣除的乐币数量 从0开始 到 0xffffffff
+				AddMonthGlobel 续币添加的比赛金币的数量 从0开始 到 0xffffffff
+			<Time>
+				ID 游戏时间阶段的唯一ID 从1开始到255
+					<SignTime> 报名阶段 唯一的节点
+						Week 星期数 从0到6  0表示星期天 1-6表示星期1到星期6
+						Hour 小时 0-23
+						Min 分钟 0-59
+						LastMin 持续分钟 从1到65535	
+					<StartTime> 比赛阶段 唯一的节点
+						Week 星期数 从0到6  0表示星期天 1-6表示星期1到星期6
+						Hour 小时 0-23
+						Min 分钟 0-59
+						LastMin 持续分钟 从1到65535
+			 <Rewards> 比赛奖励的节点
+					BeginIndex  EndIndex 从1到65535 比赛奖励开始 和 结束的名称 [BeginIndex,EndIndex]
+					RewardID  奖励的ID 从1到65535  引用 FishReward.xml
+-->
+    <Month ID="1" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比赛时长：10分钟/n报名条件：免费/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分，比赛
+
+币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换话费等实体物品。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
+
+SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="0" TypeID="1">
+      <Converts>
+        <Convert BeginSum="1" EndSum="1" LostGlobel="0" LostMedal="0" LostCurrey="1" AddMonthGlobel="10000" />
+        <Convert BeginSum="2" EndSum="3" LostGlobel="0" LostMedal="0" LostCurrey="2" AddMonthGlobel="10000" />
+      </Converts>
+      <Time ID="1" WriteNextMin="0" BeginWeek="8" BeginHour="0" BeginMin="0" MonthLastMin="20" IsContinue="1" RunSum="72">
+        <SignTime BeginWriteMin="0" LastMin="10" />
+        <StartTime BeginWriteMin="0" LastMin="20" />
+      </Time>
+      <Rewards>
+        <Reward BeginIndex="1" EndIndex="1" RewardID="800" />
+        <Reward BeginIndex="2" EndIndex="2" RewardID="801" />
+        <Reward BeginIndex="3" EndIndex="3" RewardID="802" />
+        <Reward BeginIndex="4" EndIndex="20" RewardID="803" />
+      </Rewards>
+      <Robots>
+        <Robot Level="1" AddScore="1000" Rate="20" Sum="1" MaxScore="41000" SumRate="0" SkillSum="0" SkillUseRate="50" SkillScore="100000" SkillScoreRate="20" />
+        <Robot Level="2" AddScore="900" Rate="20" Sum="1" MaxScore="34000" SumRate="50" />
+        <Robot Level="3" AddScore="800" Rate="20" Sum="1" MaxScore="28000" SumRate="50" />
+        <Robot Level="4" AddScore="800" Rate="20" Sum="1" MaxScore="21000" SumRate="50" />
+        <Robot Level="5" AddScore="500" Rate="20" Sum="6" MaxScore="15000" SumRate="50" />
+        <Robot Level="6" AddScore="700" Rate="20" Sum="6" MaxScore="9000" SumRate="50" />
+        <Robot Level="7" AddScore="600" Rate="20" Sum="8" MaxScore="8000" SumRate="50" />
+        <Robot Level="8" AddScore="500" Rate="20" Sum="10" MaxScore="5000" SumRate="50" />
+        <Robot Level="9" AddScore="300" Rate="20" Sum="5" MaxScore="4000" SumRate="50" />
+        <Robot Level="10" AddScore="200" Rate="20" Sum="5" MaxScore="2000" SumRate="50" />
+        <Robot Level="11" AddScore="100" Rate="20" Sum="5" MaxScore="1000" SumRate="50" />
+        <Robot Level="12" AddScore="0" Rate="0" Sum="10" MaxScore="0" SumRate="50" />
+      </Robots>
+    </Month>
+    <Month ID="2" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比赛时长：10分钟/n报名条件：免费/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分，比赛
+
+币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换话费等实体物品。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
+
+SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="0" TypeID="1">
+      <Converts>
+        <Convert BeginSum="1" EndSum="1" LostGlobel="0" LostMedal="0" LostCurrey="1" AddMonthGlobel="10000" />
+        <Convert BeginSum="2" EndSum="3" LostGlobel="0" LostMedal="0" LostCurrey="2" AddMonthGlobel="10000" />
+      </Converts>
+      <Time ID="1" WriteNextMin="0" BeginWeek="8" BeginHour="0" BeginMin="10" MonthLastMin="20" IsContinue="1" RunSum="72">
+        <SignTime BeginWriteMin="0" LastMin="10" />
+        <StartTime BeginWriteMin="0" LastMin="20" />
+      </Time>
+      <Rewards>
+        <Reward BeginIndex="1" EndIndex="1" RewardID="800" />
+        <Reward BeginIndex="2" EndIndex="2" RewardID="801" />
+        <Reward BeginIndex="3" EndIndex="3" RewardID="802" />
+        <Reward BeginIndex="4" EndIndex="20" RewardID="803" />
+      </Rewards>
+      <Robots>
+        <Robot Level="1" AddScore="1000" Rate="20" Sum="1" MaxScore="35000" SumRate="0" SkillSum="0" SkillUseRate="50" SkillScore="100000" SkillScoreRate="20" />
+        <Robot Level="2" AddScore="900" Rate="20" Sum="1" MaxScore="24000" SumRate="50" />
+        <Robot Level="3" AddScore="800" Rate="20" Sum="1" MaxScore="22000" SumRate="50" />
+        <Robot Level="4" AddScore="800" Rate="20" Sum="1" MaxScore="21000" SumRate="50" />
+        <Robot Level="5" AddScore="500" Rate="20" Sum="6" MaxScore="15000" SumRate="50" />
+        <Robot Level="6" AddScore="700" Rate="20" Sum="6" MaxScore="9000" SumRate="50" />
+        <Robot Level="7" AddScore="600" Rate="20" Sum="8" MaxScore="8000" SumRate="50" />
+        <Robot Level="8" AddScore="500" Rate="20" Sum="10" MaxScore="5000" SumRate="50" />
+        <Robot Level="9" AddScore="300" Rate="20" Sum="5" MaxScore="4000" SumRate="50" />
+        <Robot Level="10" AddScore="200" Rate="20" Sum="5" MaxScore="2000" SumRate="50" />
+        <Robot Level="11" AddScore="100" Rate="20" Sum="5" MaxScore="1000" SumRate="50" />
+        <Robot Level="12" AddScore="0" Rate="0" Sum="10" MaxScore="0" SumRate="50" />
+      </Robots>
+    </Month>
+    <Month ID="3" MonthName="10" MonthIcon="Match_Kind_2" MonthDec="比赛时长：10分钟/n报名条件：10000金币/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分
+
+，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换话费等实体物品。" SignGlobel="10000" SignMedal="0"
+
+SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="17" TypeID="2">
+      <Converts>
+        <Convert BeginSum="1" EndSum="1" LostGlobel="0" LostMedal="0" LostCurrey="1" AddMonthGlobel="10000" />
+        <Convert BeginSum="2" EndSum="3" LostGlobel="0" LostMedal="0" LostCurrey="5" AddMonthGlobel="10000" />
+      </Converts>
+      <Time ID="1" WriteNextMin="0" BeginWeek="8" BeginHour="8" BeginMin="40" MonthLastMin="60" IsContinue="1" RunSum="15">
+        <SignTime BeginWriteMin="0" LastMin="50" />
+        <StartTime BeginWriteMin="50" LastMin="10" />
+      </Time>
+      <Rewards>
+        <Reward BeginIndex="1" EndIndex="1" RewardID="804" />
+        <Reward BeginIndex="2" EndIndex="2" RewardID="805" />
+        <Reward BeginIndex="3" EndIndex="3" RewardID="806" />
+        <Reward BeginIndex="4" EndIndex="20" RewardID="807" />
+      </Rewards>
+      <Robots>
+        <Robot Level="1" AddScore="2800" Rate="20" Sum="1" MaxScore="92000" SumRate="0" SkillSum="2" SkillUseRate="30" SkillScore="100000" SkillScoreRate="20" />
+        <Robot Level="2" AddScore="3600" Rate="20" Sum="1" MaxScore="51000" SumRate="50" />
+        <Robot Level="3" AddScore="3200" Rate="20" Sum="1" MaxScore="50000" SumRate="50" />
+        <Robot Level="4" AddScore="3000" Rate="20" Sum="2" MaxScore="48000" SumRate="50" />
+        <Robot Level="5" AddScore="2800" Rate="20" Sum="5" MaxScore="40000" SumRate="50" />
+        <Robot Level="6" AddScore="2000" Rate="20" Sum="5" MaxScore="30000" SumRate="50" />
+        <Robot Level="7" AddScore="1400" Rate="20" Sum="10" MaxScore="16000" SumRate="50" />
+        <Robot Level="8" AddScore="1200" Rate="20" Sum="5" MaxScore="14000" SumRate="50" />
+        <Robot Level="9" AddScore="1000" Rate="20" Sum="5" MaxScore="10000" SumRate="50" />
+        <Robot Level="10" AddScore="800" Rate="20" Sum="5" MaxScore="8000" SumRate="50" />
+        <Robot Level="11" AddScore="500" Rate="20" Sum="5" MaxScore="5000" SumRate="50" />
+        <Robot Level="12" AddScore="300" Rate="20" Sum="5" MaxScore="3000" SumRate="50" />
+        <Robot Level="13" AddScore="200" Rate="20" Sum="5" MaxScore="1000" SumRate="50" />
+        <Robot Level="14" AddScore="0" Rate="0" Sum="5" MaxScore="0" SumRate="50" />
+      </Robots>
+    </Month>
+    <Month ID="4" MonthName="50" MonthIcon="Match_Kind_3" MonthDec="比赛时长：20分钟/n报名条件：50000金币/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分
+
+，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换话费等实体物品。" SignGlobel="50000" SignMedal="0"
+
+SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="27" TypeID="3">
+      <Converts>
+        <Convert BeginSum="1" EndSum="1" LostGlobel="0" LostMedal="0" LostCurrey="1" AddMonthGlobel="10000" />
+        <Convert BeginSum="2" EndSum="3" LostGlobel="0" LostMedal="0" LostCurrey="5" AddMonthGlobel="10000" />
+      </Converts>
+      <Time ID="1" WriteNextMin="60" BeginWeek="8" BeginHour="8" BeginMin="0" MonthLastMin="300" IsContinue="1" RunSum="2">
+        <SignTime BeginWriteMin="0" LastMin="280" />
+        <StartTime BeginWriteMin="280" LastMin="20" />
+      </Time>
+      <Rewards>
+        <Reward BeginIndex="1" EndIndex="1" RewardID="808" />
+        <Reward BeginIndex="2" EndIndex="2" RewardID="809" />
+        <Reward BeginIndex="3" EndIndex="3" RewardID="810" />
+        <Reward BeginIndex="4" EndIndex="20" RewardID="811" />
+      </Rewards>
+      <Robots>
+        <Robot Level="1" AddScore="3000" Rate="20" Sum="1" MaxScore="510000" SumRate="0" SkillSum="5" SkillUseRate="50" SkillScore="100000" SkillScoreRate="20" />
+        <Robot Level="2" AddScore="2800" Rate="20" Sum="1" MaxScore="290000" SumRate="50" SkillSum="3" SkillUseRate="50" SkillScore="100000" SkillScoreRate="20" />
+        <Robot Level="3" AddScore="2600" Rate="20" Sum="1" MaxScore="288000" SumRate="50" SkillSum="3" SkillUseRate="50" SkillScore="100000" SkillScoreRate="20" />
+        <Robot Level="4" AddScore="2500" Rate="20" Sum="2" MaxScore="265000" SumRate="50" SkillSum="3" SkillUseRate="50" SkillScore="100000" SkillScoreRate="20" />
+        <Robot Level="5" AddScore="2400" Rate="20" Sum="2" MaxScore="245000" SumRate="50" SkillSum="3" SkillUseRate="50" SkillScore="100000" SkillScoreRate="20" />
+        <Robot Level="6" AddScore="4000" Rate="20" Sum="5" MaxScore="50000" SumRate="50" />
+        <Robot Level="7" AddScore="3500" Rate="20" Sum="5" MaxScore="45000" SumRate="50" />
+        <Robot Level="8" AddScore="1000" Rate="20" Sum="5" MaxScore="30000" SumRate="50" />
+        <Robot Level="9" AddScore="800" Rate="20" Sum="10" MaxScore="25000" SumRate="50" />
+        <Robot Level="10" AddScore="600" Rate="20" Sum="5" MaxScore="10000" SumRate="50" />
+        <Robot Level="11" AddScore="400" Rate="20" Sum="5" MaxScore="5000" SumRate="50" />
+        <Robot Level="12" AddScore="300" Rate="20" Sum="5" MaxScore="3000" SumRate="50" />
+        <Robot Level="13" AddScore="200" Rate="20" Sum="5" MaxScore="1000" SumRate="50" />
+        <Robot Level="14" AddScore="0" Rate="0" Sum="5" MaxScore="0" SumRate="50" />
+      </Robots>
+    </Month>
+  </FishMonths>
+  <FishPackages>
+    <!--
+	文本格式为 UTF-8
+	礼包配置
+		<FishPackage>
+			ItemID 物品的ID 从1开始到0xffffffff 用于 FishItem.xml
+			IsAutoOpen 是否在获得的时候自动打开 自动打开为1 否则为 0
+			<Group>  一个Group下只可能参数一个奖励
+				ID 礼包下面的一个组 唯一的ID 从1到255  
+				<Item> 
+					RewardID 奖励ID 从1到65535 用于 FishReward.xml 
+					RankValue 随机的权重值 从0开始到 0xffffffff
+-->
+    <FishPackage ItemID="1000" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1000" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1001" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1001" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1002" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1022" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1003" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1023" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1004" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1024" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1005" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1025" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1006" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1026" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1007" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1027" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1008" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1028" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1009" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1029" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1010" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1030" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1011" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1031" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1012" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1032" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1013" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1033" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1014" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1034" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1015" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1035" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1016" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1036" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1017" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1037" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1018" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1038" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1019" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1039" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1020" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1040" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1021" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1041" RankValue="10" />
+      </Group>
+    </FishPackage>
+    <FishPackage ItemID="1022" IsAutoOpen="0">
+      <Group ID="1">
+        <Item RewardID="1042" RankValue="1" />
+      </Group>
+    </FishPackage>
+  </FishPackages>
+  <FishOnlineReward>
+    <!--
+	文本格式为 UTF-8
+	玩家在线奖励的配置
+	<Once> 最多 31个在线奖励
+		ID 在线奖励的唯一ID 从1开始最大值为 0xffffffff	
+			取值为 1,2,4,8,16,32,64,128....  
+			后一个ID 为前一个ID 的2倍 
+		OnlineMin 在线的分钟  从1开始 最大值为 65535
+		RewardID 奖励ID 从1开始 最大值为 65535 引用FishReward.xml
+-->
+    <!--
+			ID 的范围 为 [1,32]
+	-->
+    <Once ID="1" OnlineMin="2" RewardID="200" />
+    <Once ID="2" OnlineMin="7" RewardID="201" />
+    <Once ID="4" OnlineMin="17" RewardID="202" />
+    <Once ID="8" OnlineMin="37" RewardID="203" />
+    <Once ID="16" OnlineMin="57" RewardID="204" />
+  </FishOnlineReward>
+  <FishRanks ReawrdWeekDay="0">
+    <!--
+	文本格式为 UTF-8
+	排行榜配置
+	<FishRanks>
+		ReawrdWeekDay 周排行榜统计的天数 0表示星期天 1-6 表示星期1到星期6  从0开始 最大值为 6
+		<Rank>
+			ID 表示排行榜的唯一ID  这个值 与服务器存储过程相关 无法随意设定  
+				1  等级排行榜
+				2  财富排行榜
+				3  成就点排行榜
+				4  奖牌数量排行榜
+				5  魅力排行榜
+			MaxRowSum 排行榜最大的人数 从1开始 最大值为 255
+			<Reward>
+				BeginIndex EndIndex  开始和结束的名称 从1开始最大值为255 [BeginIndex,EndIndex]
+				RewardID 奖励的ID 从1开始 最大值为65535 引用 FishReward.xml
+-->
+    <Rank ID="1" MaxRowSum="20">
+      <Reward BeginIndex="1" EndIndex="1" RewardID="1002" />
+      <Reward BeginIndex="2" EndIndex="2" RewardID="1003" />
+      <Reward BeginIndex="3" EndIndex="3" RewardID="1004" />
+      <Reward BeginIndex="4" EndIndex="20" RewardID="1005" />
+    </Rank>
+    <Rank ID="2" MaxRowSum="20">
+      <Reward BeginIndex="1" EndIndex="1" RewardID="1006" />
+      <Reward BeginIndex="2" EndIndex="2" RewardID="1007" />
+      <Reward BeginIndex="3" EndIndex="3" RewardID="1008" />
+      <Reward BeginIndex="4" EndIndex="20" RewardID="1009" />
+    </Rank>
+    <Rank ID="3" MaxRowSum="20">
+      <Reward BeginIndex="1" EndIndex="1" RewardID="1010" />
+      <Reward BeginIndex="2" EndIndex="2" RewardID="1011" />
+      <Reward BeginIndex="3" EndIndex="3" RewardID="1012" />
+      <Reward BeginIndex="4" EndIndex="20" RewardID="1013" />
+    </Rank>
+    <Rank ID="4" MaxRowSum="20">
+      <Reward BeginIndex="1" EndIndex="1" RewardID="1014" />
+      <Reward BeginIndex="2" EndIndex="2" RewardID="1015" />
+      <Reward BeginIndex="3" EndIndex="3" RewardID="1016" />
+      <Reward BeginIndex="4" EndIndex="20" RewardID="1017" />
+    </Rank>
+    <Rank ID="5" MaxRowSum="20">
+      <Reward BeginIndex="1" EndIndex="1" RewardID="1018" />
+      <Reward BeginIndex="2" EndIndex="2" RewardID="1019" />
+      <Reward BeginIndex="3" EndIndex="3" RewardID="1020" />
+      <Reward BeginIndex="4" EndIndex="20" RewardID="1021" />
+    </Rank>
+  </FishRanks>
+  <FishRelations MaxSum="50" RequestMaxSum="50" RequestLimitDay="7">
+    <!--
+	文本格式为 UTF-8
+	关系配置文件
+	MaxSum  最大的关系数量 从1开始 最大值为 255
+-->
+  </FishRelations>
+  <FishRewardInfo>
+    <!--
+	文本格式为 UTF-8
+	奖励配置 用于给其他的功能提供支持 
+	需要使用的配置文件 FishItem.xml
+	RewardID 奖励的唯一ID 从1 开始 最大值为 65535
+		ItemID 一个奖励下的 物品ID  从1开始 最大值为 0xffffffff 
+		ItemSum 物品的数量 从1开始 最大值为 65535
+		LastMin 持续的分组数 0表无限 从1开始 最大值为 0xffffffff
+-->
+    <Reward RewardID="1">
+      <Item ItemID="901" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2">
+      <Item ItemID="101" ItemSum="1000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3">
+      <Item ItemID="500" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="4">
+      <Item ItemID="900" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5">
+      <Item ItemID="300" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6">
+      <Item ItemID="101" ItemSum="500" LastMin="0" />
+    </Reward>
+    <!--
+    7为绑定手机奖励
+-->
+    <Reward RewardID="7">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+      <Item ItemID="501" ItemSum="10" LastMin="0" />
+      <Item ItemID="1104" ItemSum="1" LastMin="0" />
+    </Reward>
+    <!--
+    8为聚宝盆奖励
+-->
+    <Reward RewardID="8">
+      <Item ItemID="100" ItemSum="480000" LastMin="0" />
+    </Reward>
+    <!--
+    9为月卡奖励
+-->
+    <Reward RewardID="9">
+      <Item ItemID="500" ItemSum="20" LastMin="0" />
+      <Item ItemID="100" ItemSum="20000" LastMin="0" />
+      <Item ItemID="902" ItemSum="20" LastMin="0" />
+      <Item ItemID="904" ItemSum="5" LastMin="0" />
+    </Reward>
+    <!--
+    10-12为邮箱专用奖励钻石、金币、奖牌
+-->
+    <Reward RewardID="10">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="11">
+      <Item ItemID="100" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="12">
+      <Item ItemID="200" ItemSum="1" LastMin="0" />
+    </Reward>
+    <!--
+    13为月卡
+-->
+    <Reward RewardID="13">
+      <Item ItemID="1600" ItemSum="1" LastMin="0" />
+    </Reward>
+    <!--
+    14为奖励聚宝盆
+-->
+    <Reward RewardID="14">
+      <Item ItemID="1700" ItemSum="1" LastMin="0" />
+    </Reward>
+    <!--
+    签到奖励ID从100开始
+-->
+    <Reward RewardID="100">
+      <Item ItemID="101" ItemSum="1500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="101">
+      <Item ItemID="101" ItemSum="1600" LastMin="0" />
+    </Reward>
+    <Reward RewardID="102">
+      <Item ItemID="500" ItemSum="5" LastMin="0" />
+      <Item ItemID="101" ItemSum="1700" LastMin="0" />
+    </Reward>
+    <Reward RewardID="103">
+      <Item ItemID="101" ItemSum="1800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="104">
+      <Item ItemID="101" ItemSum="1900" LastMin="0" />
+    </Reward>
+    <Reward RewardID="105">
+      <Item ItemID="101" ItemSum="2000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="106">
+      <Item ItemID="500" ItemSum="10" LastMin="0" />
+      <Item ItemID="101" ItemSum="2500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="107">
+      <Item ItemID="101" ItemSum="2600" LastMin="0" />
+    </Reward>
+    <Reward RewardID="108">
+      <Item ItemID="101" ItemSum="2700" LastMin="0" />
+    </Reward>
+    <Reward RewardID="109">
+      <Item ItemID="800" ItemSum="1" LastMin="0" />
+      <Item ItemID="101" ItemSum="3000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="110">
+      <Item ItemID="101" ItemSum="3100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="111">
+      <Item ItemID="101" ItemSum="3200" LastMin="0" />
+    </Reward>
+    <Reward RewardID="112">
+      <Item ItemID="101" ItemSum="3300" LastMin="0" />
+    </Reward>
+    <Reward RewardID="113">
+      <Item ItemID="101" ItemSum="3400" LastMin="0" />
+    </Reward>
+    <Reward RewardID="114">
+      <Item ItemID="800" ItemSum="5" LastMin="0" />
+      <Item ItemID="101" ItemSum="3500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="115">
+      <Item ItemID="101" ItemSum="3600" LastMin="0" />
+    </Reward>
+    <Reward RewardID="116">
+      <Item ItemID="101" ItemSum="3700" LastMin="0" />
+    </Reward>
+    <Reward RewardID="117">
+      <Item ItemID="101" ItemSum="3800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="118">
+      <Item ItemID="101" ItemSum="3900" LastMin="0" />
+    </Reward>
+    <Reward RewardID="119">
+      <Item ItemID="101" ItemSum="4000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="120">
+      <Item ItemID="101" ItemSum="4100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="121">
+      <Item ItemID="800" ItemSum="1" LastMin="0" />
+      <Item ItemID="101" ItemSum="4500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="122">
+      <Item ItemID="101" ItemSum="4600" LastMin="0" />
+    </Reward>
+    <Reward RewardID="123">
+      <Item ItemID="101" ItemSum="4700" LastMin="0" />
+    </Reward>
+    <Reward RewardID="124">
+      <Item ItemID="101" ItemSum="4800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="125">
+      <Item ItemID="101" ItemSum="4900" LastMin="0" />
+    </Reward>
+    <Reward RewardID="126">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="127">
+      <Item ItemID="101" ItemSum="5100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="128">
+      <Item ItemID="101" ItemSum="5200" LastMin="0" />
+    </Reward>
+    <Reward RewardID="129">
+      <Item ItemID="101" ItemSum="5500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="130">
+      <Item ItemID="800" ItemSum="1" LastMin="0" />
+      <Item ItemID="101" ItemSum="6000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="131">
+      <Item ItemID="1101" ItemSum="10" LastMin="0" />
+      <Item ItemID="501" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="132">
+      <Item ItemID="1102" ItemSum="20" LastMin="0" />
+      <Item ItemID="501" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="133">
+      <Item ItemID="1104" ItemSum="10" LastMin="0" />
+      <Item ItemID="501" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="134">
+      <Item ItemID="1100" ItemSum="20" LastMin="0" />
+      <Item ItemID="502" ItemSum="15" LastMin="0" />
+    </Reward>
+    <Reward RewardID="135">
+      <Item ItemID="1000" ItemSum="1" LastMin="0" />
+      <Item ItemID="502" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="136">
+      <Item ItemID="1001" ItemSum="1" LastMin="0" />
+      <Item ItemID="502" ItemSum="25" LastMin="0" />
+    </Reward>
+    <Reward RewardID="137">
+      <Item ItemID="1103" ItemSum="1" LastMin="0" />
+      <Item ItemID="503" ItemSum="30" LastMin="0" />
+    </Reward>
+    <!--
+    在线赠送奖励ID从200开始
+-->
+    <Reward RewardID="200">
+      <Item ItemID="101" ItemSum="225" LastMin="0" />
+    </Reward>
+    <Reward RewardID="201">
+      <Item ItemID="101" ItemSum="300" LastMin="0" />
+    </Reward>
+    <Reward RewardID="202">
+      <Item ItemID="101" ItemSum="450" LastMin="0" />
+    </Reward>
+    <Reward RewardID="203">
+      <Item ItemID="101" ItemSum="825" LastMin="0" />
+    </Reward>
+    <Reward RewardID="204">
+      <Item ItemID="101" ItemSum="1200" LastMin="0" />
+    </Reward>
+    <!--
+    成就奖励ID从300开始
+-->
+    <Reward RewardID="300">
+      <Item ItemID="300" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="301">
+      <Item ItemID="300" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="302">
+      <Item ItemID="300" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="303">
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="304">
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="305">
+      <Item ItemID="300" ItemSum="50" LastMin="0" />
+    </Reward>
+    <!--
+    称号奖励ID从350开始
+-->
+    <Reward RewardID="350">
+      <Item ItemID="400" ItemSum="1" LastMin="0" />
+      <Item ItemID="300" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="351">
+      <Item ItemID="400" ItemSum="2" LastMin="0" />
+      <Item ItemID="300" ItemSum="50" LastMin="0" />
+    </Reward>
+    <Reward RewardID="352">
+      <Item ItemID="400" ItemSum="3" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="353">
+      <Item ItemID="400" ItemSum="4" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="354">
+      <Item ItemID="400" ItemSum="5" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="355">
+      <Item ItemID="400" ItemSum="6" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="356">
+      <Item ItemID="400" ItemSum="7" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="357">
+      <Item ItemID="400" ItemSum="8" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="358">
+      <Item ItemID="400" ItemSum="9" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="359">
+      <Item ItemID="400" ItemSum="10" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="360">
+      <Item ItemID="400" ItemSum="11" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="361">
+      <Item ItemID="400" ItemSum="12" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="362">
+      <Item ItemID="400" ItemSum="13" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="363">
+      <Item ItemID="400" ItemSum="14" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="364">
+      <Item ItemID="400" ItemSum="15" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="365">
+      <Item ItemID="400" ItemSum="16" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="366">
+      <Item ItemID="400" ItemSum="17" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="367">
+      <Item ItemID="400" ItemSum="18" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="368">
+      <Item ItemID="400" ItemSum="19" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="369">
+      <Item ItemID="400" ItemSum="20" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="370">
+      <Item ItemID="400" ItemSum="21" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="371">
+      <Item ItemID="400" ItemSum="22" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="372">
+      <Item ItemID="400" ItemSum="23" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="373">
+      <Item ItemID="400" ItemSum="24" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="374">
+      <Item ItemID="400" ItemSum="25" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="375">
+      <Item ItemID="400" ItemSum="26" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="376">
+      <Item ItemID="400" ItemSum="27" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="377">
+      <Item ItemID="400" ItemSum="28" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="378">
+      <Item ItemID="400" ItemSum="29" LastMin="0" />
+      <Item ItemID="300" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="379">
+      <Item ItemID="400" ItemSum="30" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="380">
+      <Item ItemID="400" ItemSum="31" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="381">
+      <Item ItemID="400" ItemSum="32" LastMin="0" />
+      <Item ItemID="300" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="382">
+      <Item ItemID="400" ItemSum="33" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="383">
+      <Item ItemID="400" ItemSum="34" LastMin="0" />
+      <Item ItemID="300" ItemSum="20" LastMin="0" />
+    </Reward>
+    <!--
+    任务奖励ID从500开始
+-->
+    <Reward RewardID="500">
+      <Item ItemID="101" ItemSum="500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="501">
+      <Item ItemID="101" ItemSum="800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="502">
+      <Item ItemID="101" ItemSum="1000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="503">
+      <Item ItemID="101" ItemSum="1200" LastMin="0" />
+    </Reward>
+    <Reward RewardID="504">
+      <Item ItemID="101" ItemSum="1500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="505">
+      <Item ItemID="101" ItemSum="1800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="506">
+      <Item ItemID="101" ItemSum="2000" LastMin="0" />
+    </Reward>
+    <!--
+    宝箱（场景内抽卡）奖励ID从700开始
+-->
+    <!--
+    积分
+-->
+    <Reward RewardID="700">
+      <Item ItemID="600" ItemSum="200" LastMin="0" />
+    </Reward>
+    <Reward RewardID="701">
+      <Item ItemID="600" ItemSum="500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="702">
+      <Item ItemID="600" ItemSum="1000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="703">
+      <Item ItemID="600" ItemSum="2000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="704">
+      <Item ItemID="600" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="705">
+      <Item ItemID="600" ItemSum="10000" LastMin="0" />
+    </Reward>
+    <!--
+    比赛金币
+-->
+    <Reward RewardID="706">
+      <Item ItemID="700" ItemSum="2000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="707">
+      <Item ItemID="700" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="708">
+      <Item ItemID="700" ItemSum="8000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="709">
+      <Item ItemID="700" ItemSum="10000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="710">
+      <Item ItemID="700" ItemSum="20000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="711">
+      <Item ItemID="700" ItemSum="50000" LastMin="0" />
+    </Reward>
+    <!--
+    技能卡
+-->
+    <Reward RewardID="712">
+      <Item ItemID="900" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="713">
+      <Item ItemID="901" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="714">
+      <Item ItemID="902" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="715">
+      <Item ItemID="903" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="716">
+      <Item ItemID="900" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="717">
+      <Item ItemID="901" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="718">
+      <Item ItemID="902" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="719">
+      <Item ItemID="903" ItemSum="5" LastMin="0" />
+    </Reward>
+    <!--
+    奖牌
+-->
+    <Reward RewardID="720">
+      <Item ItemID="200" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="721">
+      <Item ItemID="200" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="722">
+      <Item ItemID="200" ItemSum="10" LastMin="0" />
+    </Reward>
+    <!--
+    比赛奖励ID从800开始
+-->
+    <Reward RewardID="800">
+      <Item ItemID="200" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="801">
+      <Item ItemID="200" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="802">
+      <Item ItemID="200" ItemSum="3" LastMin="0" />
+    </Reward>
+    <Reward RewardID="803">
+      <Item ItemID="200" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="804">
+      <Item ItemID="200" ItemSum="80" LastMin="0" />
+    </Reward>
+    <Reward RewardID="805">
+      <Item ItemID="200" ItemSum="40" LastMin="0" />
+    </Reward>
+    <Reward RewardID="806">
+      <Item ItemID="200" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="807">
+      <Item ItemID="200" ItemSum="4" LastMin="0" />
+    </Reward>
+    <Reward RewardID="808">
+      <Item ItemID="200" ItemSum="400" LastMin="0" />
+    </Reward>
+    <Reward RewardID="809">
+      <Item ItemID="200" ItemSum="200" LastMin="0" />
+    </Reward>
+    <Reward RewardID="810">
+      <Item ItemID="200" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="811">
+      <Item ItemID="200" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="812">
+      <Item ItemID="200" ItemSum="1600" LastMin="0" />
+    </Reward>
+    <Reward RewardID="813">
+      <Item ItemID="200" ItemSum="800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="814">
+      <Item ItemID="200" ItemSum="400" LastMin="0" />
+    </Reward>
+    <Reward RewardID="815">
+      <Item ItemID="200" ItemSum="70" LastMin="0" />
+    </Reward>
+    <Reward RewardID="816">
+      <Item ItemID="200" ItemSum="4000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="817">
+      <Item ItemID="200" ItemSum="2000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="818">
+      <Item ItemID="200" ItemSum="1000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="819">
+      <Item ItemID="200" ItemSum="175" LastMin="0" />
+    </Reward>
+    <Reward RewardID="820">
+      <Item ItemID="200" ItemSum="16000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="821">
+      <Item ItemID="200" ItemSum="8000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="822">
+      <Item ItemID="200" ItemSum="4000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="823">
+      <Item ItemID="200" ItemSum="700" LastMin="0" />
+    </Reward>
+    <!--
+    鱼带技能卡奖励ID从900开始
+-->
+    <Reward RewardID="900">
+      <Item ItemID="900" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="901">
+      <Item ItemID="901" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="902">
+      <Item ItemID="902" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="903">
+      <Item ItemID="903" ItemSum="1" LastMin="0" />
+    </Reward>
+    <!--
+    升级奖励（付费引导）ID从950开始
+-->
+    <Reward RewardID="950">
+      <Item ItemID="1302" ItemSum="1" LastMin="1" />
+    </Reward>
+    <Reward RewardID="951">
+      <Item ItemID="1303" ItemSum="1" LastMin="1" />
+    </Reward>
+    <Reward RewardID="952">
+      <Item ItemID="1304" ItemSum="1" LastMin="1" />
+    </Reward>
+    <!--
+    礼包奖励ID从1000开始
+-->
+    <Reward RewardID="1000">
+      <Item ItemID="900" ItemSum="10" LastMin="0" />
+      <Item ItemID="901" ItemSum="10" LastMin="0" />
+      <Item ItemID="902" ItemSum="10" LastMin="0" />
+      <Item ItemID="903" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1001">
+      <Item ItemID="900" ItemSum="20" LastMin="0" />
+      <Item ItemID="901" ItemSum="20" LastMin="0" />
+      <Item ItemID="902" ItemSum="20" LastMin="0" />
+      <Item ItemID="903" ItemSum="20" LastMin="0" />
+    </Reward>
+    <!--
+    1002-1021是排行榜奖励礼包的ID
+-->
+    <Reward RewardID="1002">
+      <Item ItemID="1002" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1003">
+      <Item ItemID="1003" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1004">
+      <Item ItemID="1004" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1005">
+      <Item ItemID="1005" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1006">
+      <Item ItemID="1006" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1007">
+      <Item ItemID="1007" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1008">
+      <Item ItemID="1008" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1009">
+      <Item ItemID="1009" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1010">
+      <Item ItemID="1010" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1011">
+      <Item ItemID="1011" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1012">
+      <Item ItemID="1012" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1013">
+      <Item ItemID="1013" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1014">
+      <Item ItemID="1014" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1015">
+      <Item ItemID="1015" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1016">
+      <Item ItemID="1016" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1017">
+      <Item ItemID="1017" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1018">
+      <Item ItemID="1018" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1019">
+      <Item ItemID="1019" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1020">
+      <Item ItemID="1020" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1021">
+      <Item ItemID="1021" ItemSum="1" LastMin="0" />
+    </Reward>
+    <!--
+    1022-1041是排行榜礼包开启后得到的物品
+-->
+    <Reward RewardID="1022">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="500" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1023">
+      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="500" ItemSum="50" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1024">
+      <Item ItemID="101" ItemSum="20000" LastMin="0" />
+      <Item ItemID="500" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1025">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1026">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="500" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1027">
+      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="500" ItemSum="50" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1028">
+      <Item ItemID="101" ItemSum="20000" LastMin="0" />
+      <Item ItemID="500" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1029">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1030">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="500" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1031">
+      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="500" ItemSum="50" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1032">
+      <Item ItemID="101" ItemSum="20000" LastMin="0" />
+      <Item ItemID="500" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1033">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1034">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="500" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1035">
+      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="500" ItemSum="50" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1036">
+      <Item ItemID="101" ItemSum="20000" LastMin="0" />
+      <Item ItemID="500" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1037">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1038">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="500" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1039">
+      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="500" ItemSum="50" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1040">
+      <Item ItemID="101" ItemSum="20000" LastMin="0" />
+      <Item ItemID="500" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1041">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1042">
+      <Item ItemID="1102" ItemSum="50" LastMin="0" />
+      <Item ItemID="1101" ItemSum="50" LastMin="0" />
+      <Item ItemID="1104" ItemSum="10" LastMin="0" />
+      <Item ItemID="1100" ItemSum="10" LastMin="0" />
+    </Reward>
+    <!--
+    兑换礼包奖励从1100开始
+-->
+    <Reward RewardID="1100">
+      <Item ItemID="101" ItemSum="2000" LastMin="0" />
+      <Item ItemID="900" ItemSum="1" LastMin="0" />
+      <Item ItemID="901" ItemSum="1" LastMin="0" />
+      <Item ItemID="902" ItemSum="1" LastMin="0" />
+      <Item ItemID="903" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1101">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+      <Item ItemID="501" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1103">
+      <Item ItemID="900" ItemSum="2" LastMin="0" />
+      <Item ItemID="901" ItemSum="2" LastMin="0" />
+      <Item ItemID="902" ItemSum="2" LastMin="0" />
+      <Item ItemID="903" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1104">
+      <Item ItemID="501" ItemSum="20" LastMin="0" />
+      <Item ItemID="800" ItemSum="1" LastMin="0" />
+      <Item ItemID="900" ItemSum="2" LastMin="0" />
+      <Item ItemID="901" ItemSum="2" LastMin="0" />
+      <Item ItemID="902" ItemSum="2" LastMin="0" />
+      <Item ItemID="903" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1105">
+      <Item ItemID="501" ItemSum="50" LastMin="0" />
+      <Item ItemID="801" ItemSum="1" LastMin="0" />
+      <Item ItemID="900" ItemSum="2" LastMin="0" />
+      <Item ItemID="901" ItemSum="2" LastMin="0" />
+      <Item ItemID="902" ItemSum="2" LastMin="0" />
+      <Item ItemID="903" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1106">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+      <Item ItemID="501" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1107">
+      <Item ItemID="101" ItemSum="1000000" LastMin="0" />
+      <Item ItemID="501" ItemSum="1000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1108">
+      <Item ItemID="101" ItemSum="10000" LastMin="0" />
+      <Item ItemID="501" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1109">
+      <Item ItemID="101" ItemSum="30000" LastMin="0" />
+      <Item ItemID="501" ItemSum="30" LastMin="0" />
+    </Reward>
+    <Reward RewardID="1110">
+      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="501" ItemSum="30" LastMin="0" />
+    </Reward>
+    <!--
+    鱼掉落从2000开始
+-->
+    <Reward RewardID="2000">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2001">
+      <Item ItemID="500" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2002">
+      <Item ItemID="500" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2003">
+      <Item ItemID="900" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2004">
+      <Item ItemID="900" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2005">
+      <Item ItemID="900" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2006">
+      <Item ItemID="901" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2007">
+      <Item ItemID="901" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2008">
+      <Item ItemID="901" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2009">
+      <Item ItemID="902" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2010">
+      <Item ItemID="902" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2011">
+      <Item ItemID="902" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2012">
+      <Item ItemID="903" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2013">
+      <Item ItemID="903" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2014">
+      <Item ItemID="903" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2015">
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2016">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="900" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2017">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="901" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2018">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="902" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2019">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="903" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2020">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="900" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2021">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="901" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2022">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="902" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2023">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="903" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2024">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="900" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2025">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="901" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2026">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="902" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="2027">
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="500" ItemSum="1" LastMin="0" />
+      <Item ItemID="904" ItemSum="1" LastMin="0" />
+      <Item ItemID="903" ItemSum="1" LastMin="0" />
+    </Reward>
+    <!--
+    活动奖励从3000开始
+-->
+    <Reward RewardID="3000">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="501" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3001">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="501" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3002">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="501" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3003">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="501" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3004">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="501" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3005">
+      <Item ItemID="500" ItemSum="5" LastMin="0" />
+      <Item ItemID="101" ItemSum="15000" LastMin="0" />
+      <Item ItemID="1104" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3006">
+      <Item ItemID="500" ItemSum="50" LastMin="0" />
+      <Item ItemID="101" ItemSum="25000" LastMin="0" />
+      <Item ItemID="1104" ItemSum="5" LastMin="0" />
+      <Item ItemID="1100" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3007">
+      <Item ItemID="500" ItemSum="100" LastMin="0" />
+      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="1104" ItemSum="10" LastMin="0" />
+      <Item ItemID="1100" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3008">
+      <Item ItemID="500" ItemSum="200" LastMin="0" />
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="1103" ItemSum="1" LastMin="0" />
+      <Item ItemID="1000" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3009">
+      <Item ItemID="500" ItemSum="1000" LastMin="0" />
+      <Item ItemID="101" ItemSum="250000" LastMin="0" />
+      <Item ItemID="1103" ItemSum="10" LastMin="0" />
+      <Item ItemID="1001" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3010">
+      <Item ItemID="101" ItemSum="10000" LastMin="0" />
+      <Item ItemID="500" ItemSum="5" LastMin="0" />
+      <Item ItemID="1022" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3011">
+      <Item ItemID="101" ItemSum="20000" LastMin="0" />
+      <Item ItemID="500" ItemSum="10" LastMin="0" />
+      <Item ItemID="1000" ItemSum="1" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3012">
+      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="500" ItemSum="50" LastMin="0" />
+      <Item ItemID="1001" ItemSum="1" LastMin="0" />
+      <Item ItemID="800" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="3013">
+      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="500" ItemSum="100" LastMin="0" />
+      <Item ItemID="801" ItemSum="1" LastMin="0" />
+    </Reward>
+    <!--
+    临时活动奖励从4000开始
+-->
+    <Reward RewardID="4001">
+      <Item ItemID="101" ItemSum="500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="4002">
+      <Item ItemID="101" ItemSum="1000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="4003">
+      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="4004">
+      <Item ItemID="501" ItemSum="10" LastMin="0" />
+    </Reward>
+    <Reward RewardID="4005">
+      <Item ItemID="101" ItemSum="10000" LastMin="0" />
+      <Item ItemID="501" ItemSum="20" LastMin="0" />
+    </Reward>
+    <Reward RewardID="4006">
+      <Item ItemID="501" ItemSum="8" LastMin="0" />
+    </Reward>
+    <Reward RewardID="4007">
+      <Item ItemID="501" ItemSum="88" LastMin="0" />
+    </Reward>
+    <Reward RewardID="4008">
+      <Item ItemID="501" ItemSum="888" LastMin="0" />
+    </Reward>
+    <Reward RewardID="4009">
+      <Item ItemID="501" ItemSum="8888" LastMin="0" />
+    </Reward>
+    <!--
+    奖池抽奖从5000开始
+-->
+    <!--
+    普通
+-->
+    <Reward RewardID="5000">
+      <Item ItemID="200" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5001">
+      <Item ItemID="500" ItemSum="5" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5002">
+      <Item ItemID="500" ItemSum="2" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5003">
+      <Item ItemID="100" ItemSum="600" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5004">
+      <Item ItemID="100" ItemSum="300" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5005">
+      <Item ItemID="100" ItemSum="100" LastMin="0" />
+    </Reward>
+    <!--
+    青铜
+-->
+    <Reward RewardID="5006">
+      <Item ItemID="200" ItemSum="30" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5007">
+      <Item ItemID="500" ItemSum="50" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5008">
+      <Item ItemID="500" ItemSum="25" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5009">
+      <Item ItemID="100" ItemSum="50000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5010">
+      <Item ItemID="100" ItemSum="24000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5011">
+      <Item ItemID="100" ItemSum="8000" LastMin="0" />
+    </Reward>
+    <!--
+    白银
+-->
+    <Reward RewardID="5012">
+      <Item ItemID="200" ItemSum="50" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5013">
+      <Item ItemID="500" ItemSum="400" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5014">
+      <Item ItemID="500" ItemSum="200" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5015">
+      <Item ItemID="100" ItemSum="250000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5016">
+      <Item ItemID="100" ItemSum="120000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5017">
+      <Item ItemID="100" ItemSum="40000" LastMin="0" />
+    </Reward>
+    <!--
+    黄金
+-->
+    <Reward RewardID="5018">
+      <Item ItemID="200" ItemSum="100" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5019">
+      <Item ItemID="500" ItemSum="800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5020">
+      <Item ItemID="500" ItemSum="400" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5021">
+      <Item ItemID="100" ItemSum="500000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5022">
+      <Item ItemID="100" ItemSum="240000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5023">
+      <Item ItemID="100" ItemSum="80000" LastMin="0" />
+    </Reward>
+    <!--
+    钻石
+-->
+    <Reward RewardID="5024">
+      <Item ItemID="200" ItemSum="200" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5025">
+      <Item ItemID="500" ItemSum="1600" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5026">
+      <Item ItemID="500" ItemSum="800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5027">
+      <Item ItemID="100" ItemSum="1000000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5028">
+      <Item ItemID="100" ItemSum="480000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5029">
+      <Item ItemID="100" ItemSum="160000" LastMin="0" />
+    </Reward>
+    <!--
+    至尊
+-->
+    <Reward RewardID="5030">
+      <Item ItemID="200" ItemSum="400" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5031">
+      <Item ItemID="500" ItemSum="4800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5032">
+      <Item ItemID="500" ItemSum="2400" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5033">
+      <Item ItemID="100" ItemSum="3000000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5034">
+      <Item ItemID="100" ItemSum="1440000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="5035">
+      <Item ItemID="100" ItemSum="480000" LastMin="0" />
+    </Reward>
+    <!--
+    6000以后为解锁倍率奖励
+-->
+    <Reward RewardID="6000">
+      <Item ItemID="100" ItemSum="200" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6001">
+      <Item ItemID="100" ItemSum="300" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6002">
+      <Item ItemID="100" ItemSum="400" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6003">
+      <Item ItemID="100" ItemSum="500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6004">
+      <Item ItemID="100" ItemSum="600" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6005">
+      <Item ItemID="100" ItemSum="700" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6006">
+      <Item ItemID="100" ItemSum="800" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6007">
+      <Item ItemID="100" ItemSum="900" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6008">
+      <Item ItemID="100" ItemSum="1000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6009">
+      <Item ItemID="100" ItemSum="1500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6010">
+      <Item ItemID="100" ItemSum="2000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6011">
+      <Item ItemID="100" ItemSum="2500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6012">
+      <Item ItemID="100" ItemSum="3000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6013">
+      <Item ItemID="100" ItemSum="3500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6014">
+      <Item ItemID="100" ItemSum="4000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6015">
+      <Item ItemID="100" ItemSum="4500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6016">
+      <Item ItemID="100" ItemSum="5000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6017">
+      <Item ItemID="100" ItemSum="5500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6018">
+      <Item ItemID="100" ItemSum="6000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6019">
+      <Item ItemID="100" ItemSum="6500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6020">
+      <Item ItemID="100" ItemSum="7000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6021">
+      <Item ItemID="100" ItemSum="7500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6022">
+      <Item ItemID="100" ItemSum="8000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6023">
+      <Item ItemID="100" ItemSum="8500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6024">
+      <Item ItemID="100" ItemSum="9000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6025">
+      <Item ItemID="100" ItemSum="9500" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6026">
+      <Item ItemID="100" ItemSum="10000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6027">
+      <Item ItemID="100" ItemSum="15000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6028">
+      <Item ItemID="100" ItemSum="20000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6029">
+      <Item ItemID="100" ItemSum="25000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6030">
+      <Item ItemID="100" ItemSum="30000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6031">
+      <Item ItemID="100" ItemSum="35000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6032">
+      <Item ItemID="100" ItemSum="40000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6033">
+      <Item ItemID="100" ItemSum="45000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6034">
+      <Item ItemID="100" ItemSum="50000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6035">
+      <Item ItemID="100" ItemSum="55000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6036">
+      <Item ItemID="100" ItemSum="60000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6037">
+      <Item ItemID="100" ItemSum="65000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6038">
+      <Item ItemID="100" ItemSum="70000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6039">
+      <Item ItemID="100" ItemSum="75000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6040">
+      <Item ItemID="100" ItemSum="80000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6041">
+      <Item ItemID="100" ItemSum="85000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6042">
+      <Item ItemID="100" ItemSum="90000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6043">
+      <Item ItemID="100" ItemSum="95000" LastMin="0" />
+    </Reward>
+    <Reward RewardID="6044">
+      <Item ItemID="100" ItemSum="100000" LastMin="0" />
+    </Reward>
+  </FishRewardInfo>
+  <FishServerUpdateTime UpdateHour="4" UpdateMin="0">
+    <!--
+	文本格式为 UTF-8
+	UpdateHour 服务器端 每天更新的小时 从0开始 最大值为 23
+	UpdateMin 服务器端每天更新的分钟  从0开始 最大值为 59
+	合起来 决定了 服务器在每天什么时候进行更新操作 (任务刷新 邮件过期判断 赠送过期判断 签到的刷新 不包括排行榜的 排行榜特殊处理 过天更新)
+-->
+  </FishServerUpdateTime>
+  <FishShops>
+    <!--
+	文本格式为 UTF-8
+	商店的配置
+		<Shop>
+			ID 商店的唯一ID 从1开始最大值为 255
+			<Item> 商店里的一个商品
+				ID 商品的唯一ID 从1开始 最大值为255
+				ItemID 物品ID 从1开始到0xffffffff 引用 FishItem.xml
+				ItemSum 物品数量 从1开始到65535 
+				ItemName 商品的名称
+				ItemName 商品的图标
+				ItemDec 商品描述
+				LastMin 商品持续分钟 从0开始 最大值为 0xffffffff 
+				PriceGlobel 商品的价格金币  从0开始 最大值为0xffffffff 
+				PriceMabel 商品的价格奖牌  从0开始 最大值为0xffffffff 
+				PriceCurrey 商品的价格乐币  从0开始 最大值为0xffffffff 
+				IsEntityItem 是否为实体物品 1表示为实体物品 0表示非实体物品
+				<Time> 商品上架的时间 可以没有 没有表示 当前商品一直上架 不会下架
+					BeginYear 开始的年 从2000到3000
+					BeginMonth 开始的月 从1到12
+					BeginDay 开始的天 从1到31
+					BeginMin 开始的分钟 从0到59
+					LastHour 持续的小时 从1到65535
+	<Time BeginYear="2014" BeginMonth="1" BeginDay="1" BeginHour="1" BeginMin="1" LastHour="10000" />
+-->
+    <Shop ID="1">
+      <Item ID="1" ItemID="900" ItemSum="1" ItemName="闪电卡" ItemIcon="900" ItemDec="使用闪电技能需消耗50张闪电卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="2"
+
+IsEntityItem="0" />
+      <Item ID="2" ItemID="901" ItemSum="1" ItemName="寒冰卡" ItemIcon="901" ItemDec="使用寒冰技能需消耗50张寒冰卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="2"
+
+IsEntityItem="0" />
+      <Item ID="3" ItemID="902" ItemSum="1" ItemName="暴风卡" ItemIcon="902" ItemDec="使用暴风技能需消耗50张暴风卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="2"
+
+IsEntityItem="0" />
+      <Item ID="4" ItemID="903" ItemSum="1" ItemName="陨石卡" ItemIcon="903" ItemDec="使用陨石技能需消耗50张陨石卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="2"
+
+IsEntityItem="0" />
+      <Item ID="5" ItemID="904" ItemSum="1" ItemName="锁定卡" ItemIcon="904" ItemDec="使用锁定技能需消耗1张锁定卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="2"
+
+IsEntityItem="0" />
+      <Item ID="6" ItemID="900" ItemSum="50" ItemName="闪电卡" ItemIcon="900" ItemDec="使用闪电技能需消耗50张闪电卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="90"
+
+IsEntityItem="0" />
+      <Item ID="7" ItemID="901" ItemSum="50" ItemName="寒冰卡" ItemIcon="901" ItemDec="使用寒冰技能需消耗50张寒冰卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="90"
+
+IsEntityItem="0" />
+      <Item ID="8" ItemID="902" ItemSum="50" ItemName="暴风卡" ItemIcon="902" ItemDec="使用暴风技能需消耗50张暴风卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="90"
+
+IsEntityItem="0" />
+      <Item ID="9" ItemID="903" ItemSum="50" ItemName="陨石卡" ItemIcon="903" ItemDec="使用陨石技能需消耗50张陨石卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="90"
+
+IsEntityItem="0" />
+      <Item ID="10" ItemID="904" ItemSum="50" ItemName="锁定卡" ItemIcon="904" ItemDec="使用锁定技能需消耗1张锁定卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="90"
+
+IsEntityItem="0" />
+      <Item ID="11" ItemID="1102" ItemSum="10" ItemName="鸡蛋" ItemIcon="1102" ItemDec="对其他玩家使用减少其1点魅力" LastMin="0" PriceGlobel="1000" PriceMabel="0" PriceCurrey="0"
+
+IsEntityItem="0" />
+      <Item ID="12" ItemID="1101" ItemSum="10" ItemName="啤酒" ItemIcon="1101" ItemDec="对其他玩家使用增加其1点魅力" LastMin="0" PriceGlobel="1000" PriceMabel="0" PriceCurrey="0"
+
+IsEntityItem="0" />
+      <Item ID="13" ItemID="1100" ItemSum="10" ItemName="炸弹" ItemIcon="1100" ItemDec="对其他玩家使用减少其50点魅力" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="50"
+
+IsEntityItem="0" />
+      <Item ID="14" ItemID="1104" ItemSum="10" ItemName="鸡尾酒" ItemIcon="1104" ItemDec="对其他玩家使用增加其50点魅力" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="50"
+
+IsEntityItem="0" />
+      <Item ID="15" ItemID="1103" ItemSum="10" ItemName="一大束玫瑰" ItemIcon="1103" ItemDec="对其他玩家使用增加其999点魅力" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="999"
+
+IsEntityItem="0" />
+      <Item ID="16" ItemID="800" ItemSum="1" ItemName="晋级赛信物" ItemIcon="800" ItemDec="报名万元大奖晋级赛的必需品，初赛前20名可获得" LastMin="0" PriceGlobel="0" PriceMabel="0"
+
+PriceCurrey="10" IsEntityItem="0" />
+      <Item ID="17" ItemID="801" ItemSum="1" ItemName="决赛信物" ItemIcon="801" ItemDec="报名万元大奖决赛的必需品，晋级赛前20名可获得" LastMin="0" PriceGlobel="0" PriceMabel="0"
+
+PriceCurrey="50" IsEntityItem="0" />
+      <Item ID="18" ItemID="807" ItemSum="1" ItemName="改名卡" ItemIcon="807" ItemDec="修改昵称所需要的道具" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="200" IsEntityItem="0"
+
+/>
+      <Item ID="19" ItemID="1700" ItemSum="1" ItemName="聚宝盆" ItemIcon="1700" ItemDec="使用后获得48万金币，VIP2可以赠送给其他人" LastMin="0" PriceGlobel="500000" PriceMabel="0"
+
+PriceCurrey="0" IsEntityItem="0" ShopType="4" />
+
+      <Item ID="20" ItemID="1800" ItemSum="1" ItemName="喇叭" ItemIcon="1800" ItemDec="" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="50" IsEntityItem="0"/>
+    </Shop>
+    <Shop ID="2">
+      <Item ID="1" ItemID="1302" ItemSum="1" ItemName="风刃炮" ItemIcon="1302" ItemDec="速度如风，子弹成刃，给予致命打击" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="10"
+
+IsEntityItem="0" />
+      <Item ID="2" ItemID="1303" ItemSum="1" ItemName="冰冻炮" ItemIcon="1303" ItemDec="靠近它便能感受丝丝寒意/n[DA0000FF]特性：被击中减速[-]" LastMin="0" PriceGlobel="0" PriceMabel="0"
+
+PriceCurrey="100" IsEntityItem="0" />
+      <Item ID="3" ItemID="1304" ItemSum="1" ItemName="穿透炮" ItemIcon="1304" ItemDec="颤抖吧！一个都跑不掉！/n[DA0000FF]特性：穿过的鱼都可能被捕获[-]" LastMin="0" PriceGlobel="0"
+
+PriceMabel="0" PriceCurrey="300" IsEntityItem="0" />
+    </Shop>
+    <Shop ID="3">
+		<Item ID="1" ItemID="103" ItemSum="500000" ItemName="50万金币" ItemIcon="103" ItemDec="50万金币" LastMin="0" PriceGlobel="0" PriceMabel="1000" PriceCurrey="0" ShopType="0" />
+		<Item ID="2" ItemID="103" ItemSum="1000000" ItemName="100万金币" ItemIcon="103" ItemDec="100万金币" LastMin="0" PriceGlobel="0" PriceMabel="2000" PriceCurrey="0" ShopType="0" />
+		<Item ID="3" ItemID="103" ItemSum="2000000" ItemName="200万金币" ItemIcon="103" ItemDec="200万金币" LastMin="0" PriceGlobel="0" PriceMabel="4000" PriceCurrey="0" ShopType="0" />
+      <Item ID="4" ItemID="1500" ItemSum="1" ItemName="1元话费充值卡" ItemIcon="1500" ItemDec="1元话费充值卡" LastMin="0" PriceGlobel="0" PriceMabel="20" PriceCurrey="0" ShopType="2" />
+      <Item ID="5" ItemID="1501" ItemSum="1" ItemName="10元话费充值卡" ItemIcon="1501" ItemDec="10元话费充值卡" LastMin="0" PriceGlobel="0" PriceMabel="200" PriceCurrey="0" ShopType="2"
+
+/>
+      <Item ID="6" ItemID="1502" ItemSum="1" ItemName="100元话费充值卡" ItemIcon="1502" ItemDec="100元话费充值卡" LastMin="0" PriceGlobel="0" PriceMabel="2000" PriceCurrey="0"
+
+ShopType="2" />
+      <Item ID="7" ItemID="1503" ItemSum="1" ItemName="小米移动电源" ItemIcon="1503" ItemDec="小米移动电源" LastMin="0" PriceGlobel="0" PriceMabel="1800" PriceCurrey="0" ShopType="1" />
+      <Item ID="8" ItemID="1504" ItemSum="1" ItemName="小米手环" ItemIcon="1504" ItemDec="小米手环" LastMin="0" PriceGlobel="0" PriceMabel="2000" PriceCurrey="0" ShopType="1" />
+      <Item ID="9" ItemID="1505" ItemSum="1" ItemName="小米体重秤" ItemIcon="1505" ItemDec="小米体重秤" LastMin="0" PriceGlobel="0" PriceMabel="2500" PriceCurrey="0" ShopType="1" />
+      <Item ID="10" ItemID="1506" ItemSum="1" ItemName="Leme蓝牙耳机" ItemIcon="1506" ItemDec="Leme蓝牙耳机" LastMin="0" PriceGlobel="0" PriceMabel="2500" PriceCurrey="0" ShopType="1" />
+      <Item ID="11" ItemID="1507" ItemSum="1" ItemName="360智能摄像机" ItemIcon="1507" ItemDec="360智能摄像机" LastMin="0" PriceGlobel="0" PriceMabel="4000" PriceCurrey="0" ShopType="1"
+
+/>
+      <Item ID="12" ItemID="1508" ItemSum="1" ItemName="Levr Cool1" ItemIcon="1508" ItemDec="Levr Cool1" LastMin="0" PriceGlobel="0" PriceMabel="4000" PriceCurrey="0" ShopType="1" />
+      <Item ID="13" ItemID="1509" ItemSum="1" ItemName="洛可可55度杯" ItemIcon="1509" ItemDec="洛可可55度杯" LastMin="0" PriceGlobel="0" PriceMabel="6000" PriceCurrey="0" ShopType="1" />
+      <Item ID="14" ItemID="1510" ItemSum="1" ItemName="苏泊尔豆浆机" ItemIcon="1510" ItemDec="苏泊尔豆浆机（DJ12B-Y84E）" LastMin="0" PriceGlobel="0" PriceMabel="7000" PriceCurrey="0"
+
+ShopType="1" />
+      <Item ID="15" ItemID="1511" ItemSum="1" ItemName="除螨仪吸尘器" ItemIcon="1511" ItemDec="C2 鲸灵除螨仪吸尘器" LastMin="0" PriceGlobel="0" PriceMabel="8000" PriceCurrey="0"
+
+ShopType="1" />
+      <Item ID="16" ItemID="1512" ItemSum="1" ItemName="乐视盒子" ItemIcon="1512" ItemDec="乐视盒子" LastMin="0" PriceGlobel="0" PriceMabel="8000" PriceCurrey="0" ShopType="1" />
+      <Item ID="17" ItemID="1513" ItemSum="1" ItemName="360儿童手表" ItemIcon="1513" ItemDec="360儿童手表" LastMin="0" PriceGlobel="0" PriceMabel="8000" PriceCurrey="0" ShopType="1" />
+      <Item ID="18" ItemID="1514" ItemSum="1" ItemName="小米运动相机" ItemIcon="1514" ItemDec="小米运动相机" LastMin="0" PriceGlobel="0" PriceMabel="9000" PriceCurrey="0" ShopType="1" />
+      <Item ID="19" ItemID="1515" ItemSum="1" ItemName="乐1S手机" ItemIcon="1515" ItemDec="乐1S手机 （32G）" LastMin="0" PriceGlobel="0" PriceMabel="24000" PriceCurrey="0" ShopType="1"
+
+/>
+      <Item ID="20" ItemID="1516" ItemSum="1" ItemName="360手机青春版" ItemIcon="1516" ItemDec="360手机青春版" LastMin="0" PriceGlobel="0" PriceMabel="24000" PriceCurrey="0" ShopType="1"
+
+/>
+      <Item ID="21" ItemID="1517" ItemSum="1" ItemName="小米NOTE" ItemIcon="1517" ItemDec="小米NOTE（16G标配）" LastMin="0" PriceGlobel="0" PriceMabel="40000" PriceCurrey="0"
+
+ShopType="1" />
+      <Item ID="22" ItemID="1518" ItemSum="1" ItemName="乐视超级电视" ItemIcon="1518" ItemDec="乐视超级电视" LastMin="0" PriceGlobel="0" PriceMabel="40000" PriceCurrey="0" ShopType="1"
+
+/>
+      <Item ID="23" ItemID="1519" ItemSum="1" ItemName="乐视超级头盔" ItemIcon="1519" ItemDec="乐视超级头盔" LastMin="0" PriceGlobel="0" PriceMabel="45000" PriceCurrey="0" ShopType="1"
+
+/>
+      <Item ID="24" ItemID="1520" ItemSum="1" ItemName="小米平衡车" ItemIcon="1520" ItemDec="小米平衡车" LastMin="0" PriceGlobel="0" PriceMabel="50000" PriceCurrey="0" ShopType="1" />
+      <Item ID="25" ItemID="1521" ItemSum="1" ItemName="乐1Pro手机" ItemIcon="1521" ItemDec="乐1Pro手机（32G）" LastMin="0" PriceGlobel="0" PriceMabel="54000" PriceCurrey="0"
+
+ShopType="1" />
+      <Item ID="26" ItemID="1522" ItemSum="1" ItemName="Iwatch" ItemIcon="1522" ItemDec="Iwatch（SPORT）" LastMin="0" PriceGlobel="0" PriceMabel="60000" PriceCurrey="0" ShopType="1" />
+      <Item ID="27" ItemID="1523" ItemSum="1" ItemName="IPADmini4" ItemIcon="1523" ItemDec="IPADmini4（64G）" LastMin="0" PriceGlobel="0" PriceMabel="70000" PriceCurrey="0" ShopType="1"
+
+/>
+      <Item ID="28" ItemID="1524" ItemSum="1" ItemName="Iphone 6s" ItemIcon="1524" ItemDec="Iphone 6s（16G）" LastMin="0" PriceGlobel="0" PriceMabel="106000" PriceCurrey="0" ShopType="1"
+
+/>
+    </Shop>
+    <Shop ID="4" />
+  </FishShops>
+  <FishSystem Version="0" PathCrc="0" MaxAchievementRankSum="2000" CacheMin="30" RsgInitGlobel="5000" AnnouncementSum="10" FirstBindPhoneRewardID="7" UserQueueHandleSumBySec="10"
+
+MaxGobelSum="4200000000" ChangeNickNameNeedItemID="807" ChangeNickNameNeedItemSum="1" ChangeGenderNeedItemID="0" ChangeGenderNeedItemSum="0" LeaveTableNonLauncherMin="2"
+
+InitRateValue="1" EmailCurrceyRewardID="10" EmailMedalRewradID="12" EmailGlobelRewardID="11" RoleSaveMin="5" RateInitRewardTime="2016-02-02 09:27:00" SendMessageItemID="1800"
+
+SendMessageItemSum="1">
+    <!--
+	文本格式为 UTF-8
+	Version 版本号 从1开始 最大值 0xffffffff
+	PathCrc 路径的CRC值 从1开始 最大值 0xffffffff
+	MaxAchievementRankSum 服务器最大的成就排名的人数 从1开始 最大值 0xffffffff
+	CacheMin 服务器玩家离线 缓存的时间 0表示 不缓存 从0开始 最大值 0xffffffff
+-->
+  </FishSystem>
+  <FishTables>
+    <!--
+	文本格式为 UTF-8
+	桌子的配置
+		<Table>
+			ID 桌子的唯一ID 从1开始 最大值为 255
+			MinGlobelSum 最小金币限制 从0开始 最大值为 0xffffffff -1为无限制
+			MaxGlobelSum 最大金币限制 从0开始 最大值为 0xffffffff -1为无限制
+			MinCurrey 最小乐币限制 从0开始 最大值为 0xffffffff -1为无限制
+			MaxCurrey 最大乐币限制 从0开始 最大值为 0xffffffff -1为无限制
+			TableName 房间名称
+			MaxPlayerSum 桌子上最大玩家数 1到255
+			PoolRate 奖池倍率
+			MinRate  MaxRate 房间倍率的选择 与其他配置相关 取值从0到255
+			MapName 地图名称  不是随便配置的 与鱼群流程文件相关 
+		<JoinItem> 进入房间需要的门票 只需要存在就可以了 不会扣除
+			ItemID 物品ID 从1开始到0xffffffff 引用 FishItem.xml
+			ItemSum 物品数量 从0开始 到65535
+-->
+    <Table ID="0" MinGlobelSum="0" MaxGlobelSum="200000" MinCurrey="0" MaxCurrey="-1" TableName="普通1" MaxPlayerSum="4" MinRate="0" MaxRate="17" MinLevel="-1" MaxLevel="30"
+
+TableRate="5" MapName="0">
+      <JoinItem ItemID="0" ItemSum="0" />
+    </Table>
+    <Table ID="1" MinGlobelSum="0" MaxGlobelSum="2000000" MinCurrey="0" MaxCurrey="-1" TableName="普通2" MaxPlayerSum="4" MinRate="13" MaxRate="27" MinLevel="-1" MaxLevel="-1"
+
+TableRate="50" MapName="1">
+      <JoinItem ItemID="0" ItemSum="0" />
+    </Table>
+    <Table ID="2" MinGlobelSum="1000000" MaxGlobelSum="20000000" MinCurrey="0" MaxCurrey="-1" TableName="普通3" MaxPlayerSum="4" MinRate="27" MaxRate="45" MinLevel="-1" MaxLevel="-1"
+
+TableRate="200" MapName="2">
+      <JoinItem ItemID="0" ItemSum="0" />
+    </Table>
+    <Table ID="3" MinGlobelSum="10000000" MaxGlobelSum="-1" MinCurrey="0" MaxCurrey="-1" TableName="普通4" MaxPlayerSum="4" MinRate="45" MaxRate="45" MinLevel="-1" MaxLevel="-1"
+
+TableRate="600" MapName="3">
+      <JoinItem ItemID="0" ItemSum="0" />
+    </Table>
+    <Table ID="4" MinGlobelSum="-1" MaxGlobelSum="-1" MinCurrey="0" MaxCurrey="-1" TableName="比赛1" MaxPlayerSum="4" MinRate="0" MaxRate="9" MinLevel="-1" MaxLevel="-1" TableRate="1"
+
+MapName="4">
+      <JoinItem ItemID="0" ItemSum="0" />
+    </Table>
+  </FishTables>
+  <FishTasks MaxJoinTaskSum="10">
+    <!--
+	文本格式为 UTF-8
+	任务的配置文件
+		MaxJoinTaskSum 一个玩家同时接取的任务的数量 从1开始 最大值为 255
+		<Task>
+			ID 表示任务的唯一标记ID 从1开始 最大值为 255
+			TaskName 任务的名称
+			TaskIcon="xx" TaskDec 任务的描述
+			UpperTaskID 父类的任务ID  从1开始 最大值为 255
+			IsDayClear 任务是否为每日任务  目前无效
+			RewardID 任务的奖励的ID 从1开始 最大值为 65535 引用于FishReward.xml
+			GroupID 分组的ID 从0开始 最大值为 255  0表示无分组 相同分组的任务 互斥
+			JoinLevel 任务的接取等级 从0开始 最大值为 255
+			<Event> 目前一个任务只可以用于一个事件
+				OnlyID 事件的唯一ID 从1开始 最大值为 255
+				ID 表示当前的事件的ID  有其特殊的描述
+					ET_GetGlobel = 1,//获得金币 累加的
+					ET_GetMadel = 2,//获得奖牌 累加
+					ET_GetCurren = 3,//获得乐币 累加
+					ET_UpperLevel = 4,//提升等级 累加等级
+					ET_CatchFish = 5,//捕获鱼   绑定参数0 表示任意鱼
+					ET_SendGiff = 6,//发送赠送 
+					ET_UseSkill = 7,//使用技能
+					ET_LauncherGlobel = 8,//炮台获得金币
+					ET_MaxGlobelSum = 9,//拥有的最大金币数量 需要修改 最大金币数量 应该带进度的
+					ET_ToLevel = 10,//到指定等级
+					ET_MaxCurren = 11,//最大拥有乐币  
+				BindParam 当前事件绑定参数 从0开始 最大值为 0xffffffff
+				FinishValue 当前事件的完成参数  从0开始 最大值为 0xffffffff
+
+-->
+    <Task ID="1" TaskName="勤劳的渔夫" TaskIcon="task_129" TaskDec="捕获100条鱼" UpperTaskID="0" IsDayClear="1" RewardID="500" GroupID="8" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="100" />
+    </Task>
+    <Task ID="2" TaskName="勤劳的渔夫" TaskIcon="task_129" TaskDec="捕获150条鱼" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="8" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="150" />
+    </Task>
+    <Task ID="3" TaskName="勤劳的渔夫" TaskIcon="task_129" TaskDec="捕获200条鱼" UpperTaskID="0" IsDayClear="1" RewardID="502" GroupID="8" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="200" />
+    </Task>
+    <Task ID="4" TaskName="勤劳的渔夫" TaskIcon="task_129" TaskDec="捕获500条鱼" UpperTaskID="0" IsDayClear="1" RewardID="503" GroupID="8" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="255" FinishParam="500" />
+    </Task>
+    <Task ID="5" TaskName="蝙蝠侠" TaskIcon="task_100" TaskDec="捕获20条蝙蝠鱼" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="7" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="22" FinishParam="20" />
+    </Task>
+    <Task ID="6" TaskName="天气好热" TaskIcon="task_111" TaskDec="捕获50条热带鱼" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="7" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="15" FinishParam="50" />
+    </Task>
+    <Task ID="7" TaskName="大蓝鲨" TaskIcon="task_110" TaskDec="捕获10条蓝鲨" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="7" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="20" FinishParam="10" />
+    </Task>
+    <Task ID="8" TaskName="鲸的悲鸣" TaskIcon="task_106" TaskDec="捕获10条虎鲸" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="7" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="18" FinishParam="10" />
+    </Task>
+    <Task ID="9" TaskName="小心鲨鱼" TaskIcon="task_105" TaskDec="捕获10条黑鲨" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="7" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="9" FinishParam="10" />
+    </Task>
+    <Task ID="10" TaskName="交际达人" TaskIcon="task_122" TaskDec="赠送1次礼物给好友" UpperTaskID="11" IsDayClear="1" RewardID="502" GroupID="0" JoinLevel="2">
+      <Event OnlyID="1" ID="6" BindParam="0" FinishParam="1" />
+    </Task>
+    <Task ID="11" TaskName="交际达人" TaskIcon="task_122" TaskDec="赠送8次礼物给好友" UpperTaskID="0" IsDayClear="1" RewardID="505" GroupID="0" JoinLevel="2">
+      <Event OnlyID="1" ID="6" BindParam="0" FinishParam="8" />
+    </Task>
+    <Task ID="12" TaskName="世界末日I" TaskIcon="task_127" TaskDec="使用1次陨石技能" UpperTaskID="13" IsDayClear="1" RewardID="502" GroupID="0" JoinLevel="1">
+      <Event OnlyID="1" ID="7" BindParam="3" FinishParam="1" />
+    </Task>
+    <Task ID="13" TaskName="世界末日II" TaskIcon="task_127" TaskDec="使用5次陨石技能" UpperTaskID="0" IsDayClear="1" RewardID="506" GroupID="0" JoinLevel="1">
+      <Event OnlyID="1" ID="7" BindParam="3" FinishParam="5" />
+    </Task>
+    <Task ID="14" TaskName="冰天雪地I" TaskIcon="task_124" TaskDec="使用1次冰冻技能" UpperTaskID="15" IsDayClear="1" RewardID="502" GroupID="0" JoinLevel="1">
+      <Event OnlyID="1" ID="7" BindParam="1" FinishParam="1" />
+    </Task>
+    <Task ID="15" TaskName="冰天雪地II" TaskIcon="task_124" TaskDec="使用5次冰冻技能" UpperTaskID="0" IsDayClear="1" RewardID="506" GroupID="0" JoinLevel="1">
+      <Event OnlyID="1" ID="7" BindParam="1" FinishParam="5" />
+    </Task>
+    <Task ID="16" TaskName="电闪雷鸣I" TaskIcon="task_126" TaskDec="使用1次闪电技能" UpperTaskID="17" IsDayClear="1" RewardID="502" GroupID="0" JoinLevel="1">
+      <Event OnlyID="1" ID="7" BindParam="0" FinishParam="1" />
+    </Task>
+    <Task ID="17" TaskName="电闪雷鸣II" TaskIcon="task_126" TaskDec="使用5次闪电技能" UpperTaskID="0" IsDayClear="1" RewardID="506" GroupID="0" JoinLevel="1">
+      <Event OnlyID="1" ID="7" BindParam="0" FinishParam="5" />
+    </Task>
+    <Task ID="18" TaskName="狂风呼啸I" TaskIcon="task_125" TaskDec="使用1次风暴技能" UpperTaskID="19" IsDayClear="1" RewardID="502" GroupID="0" JoinLevel="1">
+      <Event OnlyID="1" ID="7" BindParam="2" FinishParam="1" />
+    </Task>
+    <Task ID="19" TaskName="狂风呼啸II" TaskIcon="task_125" TaskDec="使用5次风暴技能" UpperTaskID="0" IsDayClear="1" RewardID="506" GroupID="0" JoinLevel="1">
+      <Event OnlyID="1" ID="7" BindParam="2" FinishParam="5" />
+    </Task>
+    <Task ID="20" TaskName="日进斗金" TaskIcon="task_123" TaskDec="获得5000金币" UpperTaskID="21" IsDayClear="1" RewardID="500" GroupID="0" JoinLevel="0">
+      <Event OnlyID="1" ID="1" BindParam="0" FinishParam="5000" />
+    </Task>
+    <Task ID="21" TaskName="金币狂潮" TaskIcon="task_123" TaskDec="获得10000金币" UpperTaskID="0" IsDayClear="1" RewardID="502" GroupID="0" JoinLevel="0">
+      <Event OnlyID="1" ID="1" BindParam="0" FinishParam="10000" />
+    </Task>
+    <Task ID="22" TaskName="草鱼杀手" TaskIcon="task_115" TaskDec="捕获100条草鱼" UpperTaskID="0" IsDayClear="1" RewardID="500" GroupID="2" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="100" />
+    </Task>
+    <Task ID="23" TaskName="草鱼杀手" TaskIcon="task_115" TaskDec="捕获200条草鱼" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="2" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="200" />
+    </Task>
+    <Task ID="24" TaskName="草鱼杀手" TaskIcon="task_115" TaskDec="捕获500条草鱼" UpperTaskID="0" IsDayClear="1" RewardID="502" GroupID="2" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="7" FinishParam="500" />
+    </Task>
+    <Task ID="25" TaskName="热带雨林" TaskIcon="task_111" TaskDec="捕获50条热带鱼" UpperTaskID="0" IsDayClear="1" RewardID="500" GroupID="3" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="15" FinishParam="50" />
+    </Task>
+    <Task ID="26" TaskName="热带雨林" TaskIcon="task_111" TaskDec="捕获100条热带鱼" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="3" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="15" FinishParam="100" />
+    </Task>
+    <Task ID="27" TaskName="热带雨林" TaskIcon="task_111" TaskDec="捕获200条热带鱼" UpperTaskID="0" IsDayClear="1" RewardID="502" GroupID="3" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="15" FinishParam="200" />
+    </Task>
+    <Task ID="28" TaskName="恭喜发财" TaskIcon="task_101" TaskDec="捕获50条鞭炮鱼" UpperTaskID="0" IsDayClear="1" RewardID="500" GroupID="4" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="50" />
+    </Task>
+    <Task ID="29" TaskName="恭喜发财" TaskIcon="task_101" TaskDec="捕获100条鞭炮鱼" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="4" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="100" />
+    </Task>
+    <Task ID="30" TaskName="恭喜发财" TaskIcon="task_101" TaskDec="捕获200条鞭炮鱼" UpperTaskID="0" IsDayClear="1" RewardID="502" GroupID="4" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="17" FinishParam="200" />
+    </Task>
+    <Task ID="31" TaskName="龟仙人" TaskIcon="task_114" TaskDec="捕获20只乌龟" UpperTaskID="0" IsDayClear="1" RewardID="500" GroupID="5" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="20" />
+    </Task>
+    <Task ID="32" TaskName="龟仙人" TaskIcon="task_114" TaskDec="捕获50只乌龟" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="5" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="50" />
+    </Task>
+    <Task ID="33" TaskName="龟仙人" TaskIcon="task_114" TaskDec="捕获100只乌龟" UpperTaskID="0" IsDayClear="1" RewardID="502" GroupID="5" JoinLevel="0">
+      <Event OnlyID="1" ID="5" BindParam="13" FinishParam="100" />
+    </Task>
+    <Task ID="34" TaskName="捕鱼达人" TaskIcon="task_129" TaskDec="一炮获取100金币" UpperTaskID="0" IsDayClear="1" RewardID="500" GroupID="6" JoinLevel="2">
+      <Event OnlyID="1" ID="8" BindParam="100" FinishParam="1" />
+    </Task>
+    <Task ID="35" TaskName="捕鱼达人" TaskIcon="task_129" TaskDec="一炮获取500金币" UpperTaskID="0" IsDayClear="1" RewardID="501" GroupID="6" JoinLevel="2">
+      <Event OnlyID="1" ID="8" BindParam="500" FinishParam="1" />
+    </Task>
+    <Task ID="36" TaskName="捕鱼达人" TaskIcon="task_129" TaskDec="一炮获取1000金币" UpperTaskID="0" IsDayClear="1" RewardID="502" GroupID="6" JoinLevel="2">
+      <Event OnlyID="1" ID="8" BindParam="1000" FinishParam="1" />
+    </Task>
+    <Task ID="37" TaskName="捕鱼达人" TaskIcon="task_129" TaskDec="一炮获取5000金币" UpperTaskID="0" IsDayClear="1" RewardID="503" GroupID="6" JoinLevel="2">
+      <Event OnlyID="1" ID="8" BindParam="5000" FinishParam="1" />
+    </Task>
+    <Task ID="38" TaskName="捕鱼达人" TaskIcon="task_129" TaskDec="一炮获取10000金币" UpperTaskID="0" IsDayClear="1" RewardID="504" GroupID="6" JoinLevel="2">
+      <Event OnlyID="1" ID="8" BindParam="10000" FinishParam="1" />
+    </Task>
+  </FishTasks>
+  <FishTitles>
+    <!--
+	文本格式为 UTF-8
+	称号配置
+		ID 称号的唯一ID 从1开始到 255
+		Name 称号的名称
+-->
+    <Title ID="1" Name="海洋之心" />
+    <Title ID="2" Name="我！征服海洋" />
+    <Title ID="3" Name="海产批发商" />
+    <Title ID="4" Name="海产大亨" />
+    <Title ID="5" Name="鲨鱼克星" />
+    <Title ID="6" Name="黑夜君王" />
+    <Title ID="7" Name="辣手摧花" />
+    <Title ID="8" Name="凶残的刽子手" />
+    <Title ID="9" Name="优雅的绅士" />
+    <Title ID="10" Name="绅士你懂吗？" />
+    <Title ID="11" Name="我很温柔" />
+    <Title ID="12" Name="笑话终结者" />
+    <Title ID="13" Name="失明了！" />
+    <Title ID="14" Name="无光世界" />
+    <Title ID="15" Name="别跑，看剑！" />
+    <Title ID="16" Name="再也戳不动了" />
+    <Title ID="17" Name="庞然巨物" />
+    <Title ID="18" Name="海洋公敌" />
+    <Title ID="19" Name="兔子在哪？" />
+    <Title ID="20" Name="赛跑冠军" />
+    <Title ID="21" Name="深海顽石" />
+    <Title ID="22" Name="点石成金" />
+    <Title ID="23" Name="严禁烟火" />
+    <Title ID="24" Name="恭贺新年！" />
+    <Title ID="25" Name="水产养殖大户" />
+    <Title ID="26" Name="水产养殖专家" />
+    <Title ID="27" Name="油炸小黄鱼" />
+    <Title ID="28" Name="快到我的碗里来" />
+    <Title ID="29" Name="暴发户" />
+    <Title ID="30" Name="金融家" />
+    <Title ID="31" Name="神捕" />
+    <Title ID="32" Name="两元店老板" />
+    <Title ID="33" Name="珠宝大亨" />
+    <Title ID="34" Name="卡徒" />
+  </FishTitles>
+  <FishConvertItems>
+    <!--
+	文本格式为 UTF-8
+	物品与货币自动转换功能
+	<FishItem>
+		ItemID 物品ID 从1开始最大值为0xffffffff 用于FishItem.xml
+		Globel 转换物品需要消耗的金币 从0开始 最大值为0xffffffff 
+		Medal 转换物品需要消耗的奖牌 从0开始 最大值为0xffffffff 
+		Currey 转换物品需要消耗的乐币 从0开始 最大值为0xffffffff 
+-->
+    <FishItem ItemID="1" Globel="0" Medal="0" Currey="8" />
+  </FishConvertItems>
+  <FishRecharges>
+    <!--
+		人民币 换 乐币 
+
+		ID 唯一的标记 从1 开始 到 0xffffffff
+		Name 名称
+		Icon  图标名称
+		LoseRMB 需要花费的人民币 从1开始到0xffffffff
+		AddMoney  添加的货币数 从1开始到0xffffffff	
+		IsCurreyOrGlobel 
+				1 乐币
+				0 金币
+		{
+    RT_FirstCurrcey = 1,//首冲钻石
+    RT_FirstGlobel = 2,//首冲金币
+    RT_Currcey = 3,//充值钻石
+    RT_Globel = 4,//充值金币
+    RT_Reward = 5,//充值奖励ID
+};
+	-->
+    <FishRecharge ID="1" Name="首充专享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30000" DisCountPicName="Pay_300" RechargeType="2" AddRewardID="0" />
+    <FishRecharge ID="2" Name="少量金币" Icon="101" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60000" DisCountPicName="Pay_100" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="3" Name="小堆金币" Icon="102" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360000" DisCountPicName="Pay_112" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="4" Name="小袋金币" Icon="103" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800000" DisCountPicName="Pay_117" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="5" Name="大袋金币" Icon="104" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600000" DisCountPicName="Pay_125" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="6" Name="满箱金币" Icon="105" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300000" DisCountPicName="Pay_131" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="7" Name="首充专享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30" DisCountPicName="Pay_300" RechargeType="1" AddRewardID="0" />
+    <FishRecharge ID="8" Name="少量钻石" Icon="501" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60" DisCountPicName="Pay_100" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="9" Name="小堆钻石" Icon="502" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360" DisCountPicName="Pay_112" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="10" Name="小袋钻石" Icon="503" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800" DisCountPicName="Pay_117" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="11" Name="大袋钻石" Icon="504" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600" DisCountPicName="Pay_125" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="12" Name="满箱钻石" Icon="505" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300" DisCountPicName="Pay_131" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="13" Name="购买月卡" Icon="505" DisCountPrice="28" PreDisCountPrice="28" AddMoney="0" DisCountPicName="Pay_131" RechargeType="5" AddRewardID="13" />
+  </FishRecharges>
+  <FishScript>
+    <!--
+		一些写死的 东西 客户端用的  
+	-->
+    <LauncherToShop LauncherType="2" ShopID="2" ShopOnlyID="1" />
+    <LauncherToShop LauncherType="3" ShopID="2" ShopOnlyID="2" />
+    <LauncherToShop LauncherType="4" ShopID="2" ShopOnlyID="3" />
+    <TableConvert GroupID="1">
+      <Table TableID="3" />
+      <Table TableID="2" />
+      <Table TableID="1" />
+      <Table TableID="0" />
+    </TableConvert>
+    <SkillToShop SkillTypeID="0" RateType="0" ShopID="1" ShopOnlyID="1" />
+    <SkillToShop SkillTypeID="1" RateType="0" ShopID="1" ShopOnlyID="2" />
+    <SkillToShop SkillTypeID="2" RateType="0" ShopID="1" ShopOnlyID="3" />
+    <SkillToShop SkillTypeID="3" RateType="0" ShopID="1" ShopOnlyID="4" />
+    <SkillToShop SkillTypeID="4" RateType="0" ShopID="1" ShopOnlyID="5" />
+  </FishScript>
+  <FishScript>
+    <!--
+		一些写死的 东西 客户端用的  
+	-->
+    <LauncherToShop LauncherType="2" ShopID="2" ShopOnlyID="1" />
+    <LauncherToShop LauncherType="3" ShopID="2" ShopOnlyID="2" />
+    <LauncherToShop LauncherType="4" ShopID="2" ShopOnlyID="3" />
+    <TableConvert GroupID="1">
+      <Table TableID="3" />
+      <Table TableID="2" />
+      <Table TableID="1" />
+      <Table TableID="0" />
+    </TableConvert>
+    <SkillToShop SkillTypeID="0" RateType="0" ShopID="1" ShopOnlyID="1" />
+    <SkillToShop SkillTypeID="1" RateType="0" ShopID="1" ShopOnlyID="2" />
+    <SkillToShop SkillTypeID="2" RateType="0" ShopID="1" ShopOnlyID="3" />
+    <SkillToShop SkillTypeID="3" RateType="0" ShopID="1" ShopOnlyID="4" />
+    <SkillToShop SkillTypeID="4" RateType="0" ShopID="1" ShopOnlyID="5" />
+  </FishScript>
+  <FishExChanges>
+    <!--
+    ID  1-255 礼包ID
+    Type 类型ID  [1,32] 
+    RewardID  1-65535
+
+	ID:6  360新手礼包 5钻石+5000金币
+  	ID:7  当乐新手礼包 5钻石+5000金币
+
+   	ID:17  特权礼包：3W金币，30个钻石
+   	ID:18  独家礼包：5W金币，30个钻石
+  -->
+    <ExChange ID="1" TypeID="2" ChannelID="xiaomi" RewardID="1100" />
+    <ExChange ID="2" TypeID="4" ChannelID="" RewardID="1101" />
+    <ExChange ID="3" TypeID="8" ChannelID="xiaomi" RewardID="1102" />
+    <ExChange ID="4" TypeID="16" ChannelID="xiaomi" RewardID="1103" />
+    <ExChange ID="5" TypeID="32" ChannelID="xiaomi" RewardID="1104" />
+    <ExChange ID="6" TypeID="1" ChannelID="360" RewardID="1106" />
+    <ExChange ID="7" TypeID="1" ChannelID="dangle" RewardID="1106" />
+    <ExChange ID="8" TypeID="1" ChannelID="uc" RewardID="1106" />
+    <ExChange ID="9" TypeID="2" ChannelID="liebao" RewardID="1100" />
+    <ExChange ID="10" TypeID="4" ChannelID="liebao" RewardID="1101" />
+    <ExChange ID="11" TypeID="8" ChannelID="liebao" RewardID="1102" />
+    <ExChange ID="12" TypeID="16" ChannelID="liebao" RewardID="1103" />
+    <ExChange ID="13" TypeID="32" ChannelID="liebao" RewardID="1104" />
+    <ExChange ID="14" TypeID="64" ChannelID="chuyou" RewardID="1107" />
+    <ExChange ID="15" TypeID="128" ChannelID="" RewardID="1108" />
+    <ExChange ID="16" TypeID="1" ChannelID="" RewardID="1106" />
+  </FishExChanges>
+  <FishLevelReward>
+    <!--
+        Level  对应的等级  1-255
+        RewardID   1-65535  
+    -->
+    <LevelReward Level="1" RewardID="950" />
+    <LevelReward Level="2" RewardID="951" />
+    <LevelReward Level="4" RewardID="952" />
+    <LevelReward Level="5" RewardID="951" />
+    <LevelReward Level="7" RewardID="952" />
+  </FishLevelReward>
+  <FishRoleProtect ProtectSum="5" ProtectTimeMin="5" AddGlobel="5000" MaxGlobelSum="100000" OpenProtectGlobelSum="500">
+    <!--
+      新手保护 
+        ProtectSum  保护次数  1-255
+        ProtectTimeMin 保护CD 单位分钟  1-255
+        AddGlobel 新手保护赠送的金币  1-0xffffffff
+        
+        Table
+            ID  允许的桌子ID  1-255
+  -->
+    <Table ID="0" />
+    <Table ID="1" />
+  </FishRoleProtect>
+  <FishLottery MaxLotteryFishSum="20">
+    <!--
+		抽奖系统
+	-->
+    <Lotterys>
+      <Lottery ID="1" UpperID="2" OpenNeedScore="1">
+        <Reward RewardID="5000" RewardRate="5" />
+        <Reward RewardID="5001" RewardRate="50" />
+        <Reward RewardID="5002" RewardRate="50" />
+        <Reward RewardID="5003" RewardRate="50" />
+        <Reward RewardID="5004" RewardRate="50" />
+        <Reward RewardID="5005" RewardRate="50" />
+      </Lottery>
+      <Lottery ID="2" UpperID="3" OpenNeedScore="20000">
+        <Reward RewardID="5006" RewardRate="1" />
+        <Reward RewardID="5007" RewardRate="10" />
+        <Reward RewardID="5008" RewardRate="15" />
+        <Reward RewardID="5009" RewardRate="25" />
+        <Reward RewardID="5010" RewardRate="50" />
+        <Reward RewardID="5011" RewardRate="50" />
+      </Lottery>
+      <Lottery ID="3" UpperID="4" OpenNeedScore="100000">
+        <Reward RewardID="5012" RewardRate="1" />
+        <Reward RewardID="5013" RewardRate="10" />
+        <Reward RewardID="5014" RewardRate="15" />
+        <Reward RewardID="5015" RewardRate="25" />
+        <Reward RewardID="5016" RewardRate="50" />
+        <Reward RewardID="5017" RewardRate="100" />
+      </Lottery>
+      <Lottery ID="4" UpperID="5" OpenNeedScore="200000">
+        <Reward RewardID="5018" RewardRate="1" />
+        <Reward RewardID="5019" RewardRate="10" />
+        <Reward RewardID="5020" RewardRate="15" />
+        <Reward RewardID="5021" RewardRate="25" />
+        <Reward RewardID="5022" RewardRate="50" />
+        <Reward RewardID="5023" RewardRate="100" />
+      </Lottery>
+      <Lottery ID="5" UpperID="6" OpenNeedScore="400000">
+        <Reward RewardID="5024" RewardRate="1" />
+        <Reward RewardID="5025" RewardRate="10" />
+        <Reward RewardID="5026" RewardRate="15" />
+        <Reward RewardID="5027" RewardRate="25" />
+        <Reward RewardID="5028" RewardRate="50" />
+        <Reward RewardID="5029" RewardRate="100" />
+      </Lottery>
+      <Lottery ID="6" UpperID="0" OpenNeedScore="1200000">
+        <Reward RewardID="5030" RewardRate="1" />
+        <Reward RewardID="5031" RewardRate="10" />
+        <Reward RewardID="5032" RewardRate="15" />
+        <Reward RewardID="5033" RewardRate="25" />
+        <Reward RewardID="5034" RewardRate="50" />
+        <Reward RewardID="5035" RewardRate="100" />
+      </Lottery>
+    </Lotterys>
+    <FishScore>
+      <Fish TypeID="10" Score="3" />
+      <Fish TypeID="9" Score="4" />
+      <Fish TypeID="18" Score="5" />
+      <Fish TypeID="20" Score="6" />
+      <Fish TypeID="1" Score="10" />
+      <Fish TypeID="3" Score="12" />
+      <Fish TypeID="19" Score="14" />
+    </FishScore>
+  </FishLottery>
+  <FishMonthCards>
+    <MonthCard ID="1" CardLastMin="43200" OnceDayRewardID="9" IsCanAutoFire="1" AddLotteryRate="10" />
+  </FishMonthCards>
+  <FishVips DefaultLauncherReBoundNum="0" DefaultAlmsSum="3" DefaultUseMedalSum="1">
+    <!--
+VIP 配置 
+	DefaultLauncherReBoundNum 非VIP玩家基本子弹反弹次数
+	DefaultAlmsSum  非VIP玩家基本领取救济金的次数
+	DefaultUseMedalSum 非VIP玩家基本每天兑换次数
+	
+	VipLevel VIP等级
+	UpperVipLevel 下一级VIP等级  没有填0 
+	VipName VIP名称
+	VipTitle VIP标题
+	VipDec VIP描述
+	LauncherReBoundNum 添加指定反弹次数
+        IsCanLauncherLocking 是否可以技能锁定  0 或者1
+	AddAlmsSum 接取救济金的次数
+	AddAlmsRate 救济金提升 50表示 50%
+        AddMonthScoreRate 比赛积分提升 50表示 50%
+        AddReChargeRate 充值提升 50表示提升 50%
+        RechargeRMBSum 开启当前VIP需要的RMB数 单位元
+	AddLauncherID 当前等级VIP赠送的炮
+        AddUseMedalSum 当前VIP提升的每天兑换次数
+        AddCatchFishRate 当前VIP 提升的捕鱼概率  50表示提升 50%		
+	-->
+    <Vip VipLevel="1" UpperVipLevel="2" VipName="累积充值 10 元" VipTitle="VIP1" VipDec="救济金领取次数 +2" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="2" AddAlmsRate="0"
+
+AddMonthScoreRate="0" AddReChargeRate="0" RechargeRMBSum="10" AddLauncherID="1" AddUseMedalSum="1" AddCatchFishRate="0" />
+    <Vip VipLevel="2" UpperVipLevel="3" VipName="累积充值 50 元" VipTitle="VIP2" VipDec="开启“炮弹锁定”技能" LauncherReBoundNum="1" IsCanLauncherLocking="1" AddAlmsSum="3"
+
+AddAlmsRate="0" AddMonthScoreRate="0" AddReChargeRate="10" RechargeRMBSum="50" AddLauncherID="2" AddUseMedalSum="1" AddCatchFishRate="0" />
+    <Vip VipLevel="3" UpperVipLevel="4" VipName="累积充值 200 元" VipTitle="VIP3" VipDec="充值额外返利 10%" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="0"
+
+AddAlmsRate="50" AddMonthScoreRate="0" AddReChargeRate="0" RechargeRMBSum="200" AddLauncherID="3" AddUseMedalSum="1" AddCatchFishRate="0" />
+    <Vip VipLevel="4" UpperVipLevel="0" VipName="累积充值 800 元" VipTitle="VIP4" VipDec="比赛额外积分 +2%" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="0" AddAlmsRate="0"
+
+AddMonthScoreRate="2" AddReChargeRate="0" RechargeRMBSum="800" AddLauncherID="4" AddUseMedalSum="1" AddCatchFishRate="0" />
+    <Vip VipLevel="5" UpperVipLevel="0" VipName="累积充值 999999 元" VipTitle="VIP5" VipDec="额外提升捕鱼几率" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="0"
+
+AddAlmsRate="0" AddMonthScoreRate="0" AddReChargeRate="0" RechargeRMBSum="999999" AddLauncherID="5" AddUseMedalSum="1" AddCatchFishRate="0" />
+  </FishVips>
+  <FishDrop>
+    <type ID="1">
+      <Once ID="1" Chances="70" RewardID="2000" />
+      <Once ID="11" Chances="30" RewardID="2015" />
+    </type>
+    <type ID="2">
+      <Once ID="1" Chances="160" RewardID="2000" />
+      <Once ID="4" Chances="10" RewardID="2003" />
+      <Once ID="7" Chances="10" RewardID="2006" />
+      <Once ID="10" Chances="10" RewardID="2009" />
+      <Once ID="13" Chances="10" RewardID="2012" />
+      <Once ID="16" Chances="40" RewardID="2015" />
+    </type>
+    <type ID="3">
+      <Once ID="1" Chances="10" RewardID="2016" />
+      <Once ID="2" Chances="10" RewardID="2017" />
+      <Once ID="3" Chances="10" RewardID="2018" />
+      <Once ID="4" Chances="10" RewardID="2019" />
+    </type>
+    <type ID="4">
+      <Once ID="5" Chances="10" RewardID="2020" />
+      <Once ID="6" Chances="10" RewardID="2021" />
+      <Once ID="7" Chances="10" RewardID="2022" />
+      <Once ID="7" Chances="10" RewardID="2023" />
+    </type>
+    <type ID="5">
+      <Once ID="5" Chances="10" RewardID="2024" />
+      <Once ID="6" Chances="10" RewardID="2025" />
+      <Once ID="7" Chances="10" RewardID="2026" />
+      <Once ID="7" Chances="10" RewardID="2027" />
+    </type>
+  </FishDrop>
+  <FishMiniGame>
+    <!--
+		牛牛 
+
+		BeginWriteSec  下注阶段等待的秒数
+		EndWriteSec    开牌后等待的秒数
+BeginWriteSec="20"   下注阶段时间
+EndWriteSec="20"     开牌阶段时间
+TableUpdateSec="2"   桌子更新时间
+InitTableGlobel="20000"   系统初始库存金币
+JoinRoomGlobel="1000"     进入桌子需要的最小金币
+MaxAddGlobel="50000000"   最大下注金币
+ChangeGlobelRate="5"      库存金币衰减  千分之5
+JoinBankerGlobelSum="20000000"   上庄需要的最小金币
+GetNextBankerNeedGlobel="10000"   抢庄需要花费的金币
+BankerGameSum="10"   庄家可以进行 的最大的游戏局数
+VipNonBetSum="5"    贵宾席玩家如果连续5局未下注 自动离开贵宾席
+RobotMaxBetTime="8"  机器人 方面的参数
+	
+	-->
+    <niuniu BeginWriteSec="20" EndWriteSec="20" TableUpdateSec="2" InitTableGlobel="20000000" JoinRoomGlobel="1000" MaxAddGlobel="50000000" ChangeGlobelRate="1"
+
+JoinBankerGlobelSum="20000000" GetNextBankerNeedGlobel="100000" BankerGameSum="10" VipNonBetSum="5">
+      <Level ID="1" Rate="1" Dec="无牛" />
+      <Level ID="2" Rate="1" Dec="牛1" />
+      <Level ID="3" Rate="1" Dec="牛2" />
+      <Level ID="4" Rate="1" Dec="牛3" />
+      <Level ID="5" Rate="1" Dec="牛4" />
+      <Level ID="6" Rate="1" Dec="牛5" />
+      <Level ID="7" Rate="1" Dec="牛6" />
+      <Level ID="8" Rate="2" Dec="牛7" />
+      <Level ID="9" Rate="3" Dec="牛8" />
+      <Level ID="10" Rate="4" Dec="牛9" />
+      <Level ID="11" Rate="5" Dec="牛牛" />
+      <Level ID="12" Rate="5" Dec="五花牛" />
+      <Level ID="13" Rate="5" Dec="炸弹" />
+      <Level ID="14" Rate="5" Dec="五小牛" />
+    </niuniu>
+    <dial BeginWriteSec="40" EndWriteSec="25" TableUpdateSec="2" InitTableGlobel="20000000" JoinRoomGlobel="1000" MaxAddGlobel="50000000" ChangeGlobelRate="1"
+
+JoinBankerGlobelSum="20000000" GetNextBankerNeedGlobel="100000" BankerGameSum="10" VipNonBetSum="5" MaxRate="24">
+      <Area ID="0" Value="1"/>
+      <Area ID="1" Value="2"/>
+      <Area ID="2" Value="1"/>
+      <Area ID="3" Value="3"/>
+      <Area ID="4" Value="2"/>
+      <Area ID="5" Value="1"/>
+      <Area ID="6" Value="2"/>
+      <Area ID="7" Value="0"/>
+      <Area ID="8" Value="2"/>
+      <Area ID="9" Value="1"/>
+      <Area ID="10" Value="3"/>
+      <Area ID="11" Value="0"/>
+      <Area ID="12" Value="2"/>
+      <Area ID="13" Value="1"/>
+      <Area ID="14" Value="2"/>
+      <Area ID="15" Value="3"/>
+      <Area ID="16" Value="2"/>
+      <Area ID="17" Value="1"/>
+      <Area ID="18" Value="2"/>
+      <Area ID="19" Value="0"/>
+      <Area ID="20" Value="2"/>
+      <Area ID="21" Value="1"/>
+      <Area ID="22" Value="3"/>
+      <Area ID="23" Value="0"/>
+      <TypeRates>
+        <TypeRate ID="1">
+          <Type ID="0" Sum="1" Rate="23"/>
+          <Type ID="1" Sum="2" Rate="13"/>
+          <Type ID="2" Sum="2" Rate="8"/>
+          <Type ID="3" Sum="1" Rate="46"/>
+          <Type ID="4" Sum="2" Rate="12"/>
+          <Type ID="5" Sum="3" Rate="7"/>
+          <Type ID="6" Sum="4" Rate="4"/>
+          <Type ID="7" Sum="2" Rate="25"/>
+          <Type ID="8" Sum="1" Rate="20"/>
+          <Type ID="9" Sum="2" Rate="11"/>
+          <Type ID="10" Sum="3" Rate="7"/>
+          <Type ID="11" Sum="1" Rate="40"/>
+        </TypeRate>
+        <TypeRate ID="2">
+          <Type ID="0" Sum="1" Rate="21"/>
+          <Type ID="1" Sum="2" Rate="13"/>
+          <Type ID="2" Sum="3" Rate="8"/>
+          <Type ID="3" Sum="1" Rate="40"/>
+          <Type ID="4" Sum="2" Rate="15"/>
+          <Type ID="5" Sum="2" Rate="8"/>
+          <Type ID="6" Sum="3" Rate="5"/>
+          <Type ID="7" Sum="2" Rate="31"/>
+          <Type ID="8" Sum="1" Rate="18"/>
+          <Type ID="9" Sum="3" Rate="15"/>
+          <Type ID="10" Sum="3" Rate="10"/>
+          <Type ID="11" Sum="1" Rate="36"/>
+        </TypeRate>
+        <TypeRate ID="3">
+          <Type ID="0" Sum="1" Rate="17"/>
+          <Type ID="1" Sum="3" Rate="10"/>
+          <Type ID="2" Sum="3" Rate="6"/>
+          <Type ID="3" Sum="1" Rate="35"/>
+          <Type ID="4" Sum="1" Rate="20"/>
+          <Type ID="5" Sum="2" Rate="11"/>
+          <Type ID="6" Sum="3" Rate="7"/>
+          <Type ID="7" Sum="1" Rate="40"/>
+          <Type ID="8" Sum="2" Rate="15"/>
+          <Type ID="9" Sum="2" Rate="8"/>
+          <Type ID="10" Sum="3" Rate="5"/>
+          <Type ID="11" Sum="2" Rate="31"/>
+        </TypeRate>
+        <TypeRate ID="4">
+          <Type ID="0" Sum="2" Rate="14"/>
+          <Type ID="1" Sum="2" Rate="8"/>
+          <Type ID="2" Sum="4" Rate="5"/>
+          <Type ID="3" Sum="2" Rate="28"/>
+          <Type ID="4" Sum="1" Rate="17"/>
+          <Type ID="5" Sum="3" Rate="10"/>
+          <Type ID="6" Sum="3" Rate="6"/>
+          <Type ID="7" Sum="1" Rate="35"/>
+          <Type ID="8" Sum="1" Rate="23"/>
+          <Type ID="9" Sum="2" Rate="13"/>
+          <Type ID="10" Sum="2" Rate="8"/>
+          <Type ID="11" Sum="1" Rate="46"/>
+        </TypeRate>
+        <TypeRate ID="5">
+          <Type ID="0" Sum="2" Rate="12"/>
+          <Type ID="1" Sum="3" Rate="7"/>
+          <Type ID="2" Sum="4" Rate="4"/>
+          <Type ID="3" Sum="2" Rate="25"/>
+          <Type ID="4" Sum="1" Rate="23"/>
+          <Type ID="5" Sum="2" Rate="13"/>
+          <Type ID="6" Sum="2" Rate="8"/>
+          <Type ID="7" Sum="1" Rate="46"/>
+          <Type ID="8" Sum="1" Rate="20"/>
+          <Type ID="9" Sum="2" Rate="11"/>
+          <Type ID="10" Sum="3" Rate="7"/>
+          <Type ID="11" Sum="1" Rate="40"/>
+        </TypeRate>
+        <TypeRate ID="6">
+          <Type ID="0" Sum="1" Rate="23"/>
+          <Type ID="1" Sum="2" Rate="13"/>
+          <Type ID="2" Sum="2" Rate="8"/>
+          <Type ID="3" Sum="1" Rate="46"/>
+          <Type ID="4" Sum="1" Rate="20"/>
+          <Type ID="5" Sum="2" Rate="11"/>
+          <Type ID="6" Sum="3" Rate="7"/>
+          <Type ID="7" Sum="1" Rate="40"/>
+          <Type ID="8" Sum="2" Rate="12"/>
+          <Type ID="9" Sum="3" Rate="7"/>
+          <Type ID="10" Sum="4" Rate="4"/>
+          <Type ID="11" Sum="2" Rate="25"/>
+        </TypeRate>
+        <TypeRate ID="7">
+          <Type ID="0" Sum="1" Rate="17"/>
+          <Type ID="1" Sum="3" Rate="10"/>
+          <Type ID="2" Sum="3" Rate="6"/>
+          <Type ID="3" Sum="1" Rate="35"/>
+          <Type ID="4" Sum="1" Rate="23"/>
+          <Type ID="5" Sum="2" Rate="13"/>
+          <Type ID="6" Sum="2" Rate="8"/>
+          <Type ID="7" Sum="1" Rate="46"/>
+          <Type ID="8" Sum="2" Rate="14"/>
+          <Type ID="9" Sum="2" Rate="8"/>
+          <Type ID="10" Sum="4" Rate="5"/>
+          <Type ID="11" Sum="2" Rate="28"/>
+        </TypeRate>
+        <TypeRate ID="8">
+          <Type ID="0" Sum="1" Rate="17"/>
+          <Type ID="1" Sum="3" Rate="10"/>
+          <Type ID="2" Sum="3" Rate="6"/>
+          <Type ID="3" Sum="1" Rate="35"/>
+          <Type ID="4" Sum="2" Rate="14"/>
+          <Type ID="5" Sum="2" Rate="8"/>
+          <Type ID="6" Sum="4" Rate="5"/>
+          <Type ID="7" Sum="2" Rate="28"/>
+          <Type ID="8" Sum="1" Rate="23"/>
+          <Type ID="9" Sum="2" Rate="13"/>
+          <Type ID="10" Sum="2" Rate="8"/>
+          <Type ID="11" Sum="1" Rate="46"/>
+        </TypeRate>
+      </TypeRates>
+    </dial>
+    <car BeginWriteSec="30" EndWriteSec="20" TableUpdateSec="2" InitTableGlobel="20000000" JoinRoomGlobel="1000" MaxAddGlobel="50000000" ChangeGlobelRate="1"
+
+JoinBankerGlobelSum="20000000" GetNextBankerNeedGlobel="10000" BankerGameSum="10" VipNonBetSum="5">
+      <Types>
+        <Type ID="0" RateValue="40" RateF="20"/>
+        <Type ID="1" RateValue="5" RateF="20"/>
+        <Type ID="2" RateValue="30" RateF="20"/>
+        <Type ID="3" RateValue="5" RateF="20"/>
+        <Type ID="4" RateValue="20" RateF="20"/>
+        <Type ID="5" RateValue="5" RateF="20"/>
+        <Type ID="6" RateValue="10" RateF="20"/>
+        <Type ID="7" RateValue="5" RateF="20"/>
+      </Types>
+      <Values>
+        <Value ID="0" TypeID="0"/>
+        <Value ID="1" TypeID="1"/>
+        <Value ID="2" TypeID="2"/>
+        <Value ID="3" TypeID="3"/>
+        <Value ID="4" TypeID="4"/>
+        <Value ID="5" TypeID="5"/>
+        <Value ID="6" TypeID="6"/>
+        <Value ID="7" TypeID="7"/>
+        <Value ID="8" TypeID="0"/>
+        <Value ID="9" TypeID="1"/>
+        <Value ID="10" TypeID="2"/>
+        <Value ID="11" TypeID="3"/>
+        <Value ID="12" TypeID="4"/>
+        <Value ID="13" TypeID="5"/>
+        <Value ID="14" TypeID="6"/>
+        <Value ID="15" TypeID="7"/>
+        <Value ID="16" TypeID="0"/>
+        <Value ID="17" TypeID="1"/>
+        <Value ID="18" TypeID="2"/>
+        <Value ID="19" TypeID="3"/>
+        <Value ID="20" TypeID="4"/>
+        <Value ID="21" TypeID="5"/>
+        <Value ID="22" TypeID="6"/>
+        <Value ID="23" TypeID="7"/>
+        <Value ID="24" TypeID="0"/>
+        <Value ID="25" TypeID="1"/>
+        <Value ID="26" TypeID="2"/>
+        <Value ID="27" TypeID="3"/>
+        <Value ID="28" TypeID="4"/>
+        <Value ID="29" TypeID="5"/>
+        <Value ID="30" TypeID="6"/>
+        <Value ID="31" TypeID="7"/>
+      </Values>
+    </car>
+  </FishMiniGame>
+  <FishRobot>
+    <!--
+		游戏里陪玩机器人的具体配置
+
+		<OnceTable TableID="0" MonthID="0">   TableID  桌子类型ID  MonthID 比赛ID 
+     			<Robot ID="1" />    ID  机器人类型ID  
+    		</OnceTable>
+
+
+		RobotID 机器人类型ID 
+		MonthRobotSum 比赛机器人的数量 表示当前机器人如果进入比赛桌子 需要多少个数量 普通桌子无效
+		InitGlobel 机器人的初始化金币 
+		AddGlobelSum 添加金币 当机器人金币小于 AddGlobelSum  添加AddGlobelSum数量的金币
+		InitCurrceySum  初始化钻石
+		AddCurrceySum 添加钻石数量
+		GlobelRateF="30"  金币浮动
+		CurrceyRateF="30" 钻石浮动
+
+		OpenFire 节点  控制机器人 开炮 和 停止开炮的控制
+			IsOpen  0表示机器人会一直开炮  1表示机器人会受下面属性控制
+			LastOpenFireMinSec="30" LastOpenFireMaxSec="60"  表示机器人程序开炮(30-60)秒  30到60之间随机
+			StopFireMinSec="10" StopFireMaxSec="30"  表示机器人停止开炮(10-30)秒 10到30之间随机
+
+		Launcher 节点 玩家切换炮的控制
+			IsOpen  0表示机器人不会切炮  1表示机器人会受下面属性控制
+			ChangeLauncherMinSec="180" ChangeLauncherMaxSec="240" 表示玩家切换炮台的CD为(180-240)秒 
+				<Once LauncherTypeID="0" RateF="1" />  LauncherTypeID 表示炮台的类型ID  RateF  表示炮台权重
+				当前机器人切炮 根据配置的可以切炮的种类 以及权重 来进行随机产生一个炮
+		Rate 倍率  控制玩家切换倍率 如果为比赛 机器人不会切倍率 
+			IsOpen  0表示机器人不会切倍率  1表示机器人会受下面属性控制
+			ChangeRateMinSec="180" ChangeRateMaxSec="240"  玩家切换倍率的CD为(180-240)秒
+			<Once RateTypeID="1" RateF="1" />  RateTypeID  倍率的索引ID   RateF 权重
+
+		Skill 控制玩家使用技能  
+			IsOpen  0表示机器人不会使用技能  1表示机器人会受下面属性控制
+			UseSkillMinSec="180" UseSkillMaxSec="240" 玩家使用技能的CD为(180-240)秒
+		Room  控制玩家进入 和 离开房间  如果当前桌子为比赛类型 节点无效 比赛机器人不会在中间离开房间
+			IsOpen  0表示机器人不会离开房间  1表示机器人会受下面属性控制
+			JoinTableMinSec="60" JoinTableMaxSec="120"  机器人在房间里待(60-120)秒后就离开房间
+			WriteMinSec="10" WriteMaxSec="20" 机器人离开房间(10-20)秒后 在重新回到刚才的房间
+      
+   Charm
+		IsOpen   是否开启机器人魅力 互动功能
+		SendCharmMinCDSec SendCharmMaxCDSec 机器人主动发送魅力物品的最大 和 最小CD时间
+		BeChangeCharmValue 魅力最大改变值 BeChangeCharmMaxSec 最大魅力改变时间 当在指定时间内 魅力的绝对变化到达最大值 触发反击
+		
+		<Send>  机器人主动发送魅力物品的配置
+			CharmIndexID 魅力物品的索引ID 啤酒为0
+			MinItemSum="1" MaxItemSum="2" 最大 和 最小数量
+			RateF 权重
+		<BeSend> 被动触发 赠送魅力物品
+			 CharmIndexID 被赠送的魅力物品的索引ID
+				<Send> 和 玩家自动发送的节点一样
+
+		<CharmChangeEvent> 反击事件
+			LeaveRoomRateF 玩家离开房间的概率 最大 100  比赛房间无效
+				<Send> 和 玩家自动发送的节点一样	
+      
+      
+				<OnceTable TableID="0" MonthID="0">
+			<Robot ID="1"/>
+		</OnceTable>
+				<OnceTable TableID="2" MonthID="0">
+			<Robot ID="1"/>
+		</OnceTable>
+		<OnceTable TableID="3" MonthID="0">
+			<Robot ID="1"/>
+		</OnceTable>
+	-->
+    <GameRobot>
+      <OnceTable TableID="1" MonthID="0">
+        <Robot ID="1"/>
+      </OnceTable>
+      <OnceTable TableID="4" MonthID="1">
+        <Robot ID="5"/>
+      </OnceTable>
+      <OnceTable TableID="4" MonthID="2">
+        <Robot ID="6"/>
+      </OnceTable>
+      <OnceTable TableID="4" MonthID="3">
+        <Robot ID="7"/>
+      </OnceTable>
+      <OnceTable TableID="4" MonthID="4">
+        <Robot ID="8"/>
+      </OnceTable>
+      <Robot RobotID="1" MonthRobotSum="10" AddGlobelSum="5000" InitGlobel="1000000" InitCurrceySum="5" AddCurrceySum="5" MinLevel="0" MaxLevel="30" GlobelRateF="80"
+
+  CurrceyRateF="80">
+        <OpenFire IsOpen="1" LastOpenFireMinSec="60" LastOpenFireMaxSec="120" StopFireMinSec="0" StopFireMaxSec="20"/>
+        <Launcher IsOpen="1" ChangeLauncherMinSec="120" ChangeLauncherMaxSec="600">
+          <Once LauncherTypeID="0" RateF="1"/>
+          <Once LauncherTypeID="1" RateF="3"/>
+          <Once LauncherTypeID="2" RateF="3"/>
+          <Once LauncherTypeID="3" RateF="3"/>
+          <Once LauncherTypeID="4" RateF="1"/>
+        </Launcher>
+        <Rate IsOpen="1" ChangeRateMinSec="180" ChangeRateMaxSec="300">
+          <Once RateTypeID="13" RateF="3"/>
+          <Once RateTypeID="14" RateF="3"/>
+          <Once RateTypeID="15" RateF="3"/>
+          <Once RateTypeID="16" RateF="3"/>
+          <Once RateTypeID="17" RateF="3"/>
+          <Once RateTypeID="18" RateF="3"/>
+          <Once RateTypeID="19" RateF="3"/>
+          <Once RateTypeID="20" RateF="1"/>
+          <Once RateTypeID="21" RateF="1"/>
+          <Once RateTypeID="22" RateF="1"/>
+          <Once RateTypeID="23" RateF="1"/>
+          <Once RateTypeID="24" RateF="1"/>
+          <Once RateTypeID="25" RateF="1"/>
+          <Once RateTypeID="26" RateF="1"/>
+          <Once RateTypeID="27" RateF="1"/>
+        </Rate>
+        <Skill IsOpen="0" UseSkillMinSec="180" UseSkillMaxSec="240"/>
+        <Room IsOpen="1" JoinTableMinSec="120" JoinTableMaxSec="300" WriteMinSec="10" WriteMaxSec="60"/>
+        <Charm IsOpen="1" SendCharmMinCDSec="30" SendCharmMaxCDSec="240" NonRateF="50" BeChangeCharmValue="10" BeChangeCharmMaxSec="20">
+          <Send CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1" />
+          <BeSend CharmIndexID="0" NonRateF="65">
+            <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <BeSend CharmIndexID="3" NonRateF="30">
+            <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="2" RateF="1000"/>
+            <Send  CharmIndexID="4" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <CharmChangeEvent LeaveRoomRateF="20" NonRateF="50">
+            <Add>
+              <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Add>
+            <Del>
+              <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Del>
+          </CharmChangeEvent>
+        </Charm>
+      </Robot>
+      <Robot RobotID="2" MonthRobotSum="10" AddGlobelSum="5000" InitGlobel="1000000" InitCurrceySum="5" AddCurrceySum="5" MinLevel="0" MaxLevel="30" GlobelRateF="80"
+
+  CurrceyRateF="80">
+        <OpenFire IsOpen="1" LastOpenFireMinSec="60" LastOpenFireMaxSec="120" StopFireMinSec="0" StopFireMaxSec="5"/>
+        <Launcher IsOpen="1" ChangeLauncherMinSec="300" ChangeLauncherMaxSec="600">
+          <Once LauncherTypeID="0" RateF="1"/>
+          <Once LauncherTypeID="1" RateF="3"/>
+          <Once LauncherTypeID="2" RateF="3"/>
+          <Once LauncherTypeID="3" RateF="3"/>
+          <Once LauncherTypeID="4" RateF="1"/>
+        </Launcher>
+        <Rate IsOpen="1" ChangeRateMinSec="180" ChangeRateMaxSec="300">
+          <Once RateTypeID="0" RateF="1"/>
+          <Once RateTypeID="1" RateF="1"/>
+          <Once RateTypeID="2" RateF="1"/>
+          <Once RateTypeID="3" RateF="1"/>
+          <Once RateTypeID="4" RateF="1"/>
+          <Once RateTypeID="5" RateF="1"/>
+          <Once RateTypeID="6" RateF="1"/>
+          <Once RateTypeID="7" RateF="1"/>
+          <Once RateTypeID="8" RateF="1"/>
+          <Once RateTypeID="9" RateF="2"/>
+          <Once RateTypeID="10" RateF="2"/>
+          <Once RateTypeID="11" RateF="2"/>
+          <Once RateTypeID="12" RateF="2"/>
+          <Once RateTypeID="13" RateF="2"/>
+          <Once RateTypeID="14" RateF="1"/>
+          <Once RateTypeID="15" RateF="1"/>
+          <Once RateTypeID="16" RateF="1"/>
+          <Once RateTypeID="17" RateF="1"/>
+        </Rate>
+        <Skill IsOpen="0" UseSkillMinSec="180" UseSkillMaxSec="240"/>
+        <Room IsOpen="1" JoinTableMinSec="120" JoinTableMaxSec="300" WriteMinSec="10" WriteMaxSec="20"/>
+        <Charm IsOpen="1" SendCharmMinCDSec="30" SendCharmMaxCDSec="240" NonRateF="50" BeChangeCharmValue="10" BeChangeCharmMaxSec="20">
+          <Send CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1" />
+          <BeSend CharmIndexID="0" NonRateF="65">
+            <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <BeSend CharmIndexID="3" NonRateF="30">
+            <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="2" RateF="1000"/>
+            <Send  CharmIndexID="4" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <CharmChangeEvent LeaveRoomRateF="20" NonRateF="50">
+            <Add>
+              <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Add>
+            <Del>
+              <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Del>
+          </CharmChangeEvent>
+        </Charm>
+      </Robot>
+      <Robot RobotID="5" MonthRobotSum="20" AddGlobelSum="1000000" InitGlobel="5000000" InitCurrceySum="1000" AddCurrceySum="100"  MinLevel="0" MaxLevel="30" GlobelRateF="30"
+
+  CurrceyRateF="30">
+        <OpenFire IsOpen="1" LastOpenFireMinSec="60" LastOpenFireMaxSec="120" StopFireMinSec="0" StopFireMaxSec="30"/>
+        <Launcher IsOpen="1" ChangeLauncherMinSec="180" ChangeLauncherMaxSec="240">
+          <Once LauncherTypeID="0" RateF="1"/>
+          <Once LauncherTypeID="1" RateF="1"/>
+          <Once LauncherTypeID="2" RateF="1"/>
+          <Once LauncherTypeID="3" RateF="1"/>
+          <Once LauncherTypeID="4" RateF="1"/>
+        </Launcher>
+        <Rate IsOpen="1" ChangeRateMinSec="180" ChangeRateMaxSec="240">
+          <Once RateTypeID="0" RateF="1"/>
+          <Once RateTypeID="1" RateF="1"/>
+          <Once RateTypeID="2" RateF="1"/>
+          <Once RateTypeID="3" RateF="1"/>
+          <Once RateTypeID="4" RateF="1"/>
+          <Once RateTypeID="5" RateF="1"/>
+          <Once RateTypeID="6" RateF="1"/>
+          <Once RateTypeID="7" RateF="2"/>
+          <Once RateTypeID="8" RateF="2"/>
+          <Once RateTypeID="9" RateF="3"/>
+        </Rate>
+        <Skill IsOpen="0" UseSkillMinSec="10" UseSkillMaxSec="20"/>
+        <Room IsOpen="1" JoinTableMinSec="60" JoinTableMaxSec="120" WriteMinSec="10" WriteMaxSec="20"/>
+        <Charm IsOpen="1" SendCharmMinCDSec="30" SendCharmMaxCDSec="240" NonRateF="50" BeChangeCharmValue="10" BeChangeCharmMaxSec="20">
+          <Send CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1" />
+          <BeSend CharmIndexID="0" NonRateF="65">
+            <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <BeSend CharmIndexID="3" NonRateF="30">
+            <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="2" RateF="1000"/>
+            <Send  CharmIndexID="4" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <CharmChangeEvent LeaveRoomRateF="20" NonRateF="50">
+            <Add>
+              <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Add>
+            <Del>
+              <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Del>
+          </CharmChangeEvent>
+        </Charm>
+      </Robot>
+      <Robot RobotID="6" MonthRobotSum="20" AddGlobelSum="1000000" InitGlobel="5000000" InitCurrceySum="1000" AddCurrceySum="100"  MinLevel="0" MaxLevel="30" GlobelRateF="30"
+
+ CurrceyRateF="30">
+        <OpenFire IsOpen="1" LastOpenFireMinSec="60" LastOpenFireMaxSec="120" StopFireMinSec="0" StopFireMaxSec="30"/>
+        <Launcher IsOpen="1" ChangeLauncherMinSec="180" ChangeLauncherMaxSec="240">
+          <Once LauncherTypeID="0" RateF="1"/>
+          <Once LauncherTypeID="1" RateF="1"/>
+          <Once LauncherTypeID="2" RateF="1"/>
+          <Once LauncherTypeID="3" RateF="1"/>
+          <Once LauncherTypeID="4" RateF="1"/>
+        </Launcher>
+        <Rate IsOpen="1" ChangeRateMinSec="180" ChangeRateMaxSec="240">
+          <Once RateTypeID="0" RateF="1"/>
+          <Once RateTypeID="1" RateF="1"/>
+          <Once RateTypeID="2" RateF="1"/>
+          <Once RateTypeID="3" RateF="1"/>
+          <Once RateTypeID="4" RateF="1"/>
+          <Once RateTypeID="5" RateF="1"/>
+          <Once RateTypeID="6" RateF="1"/>
+          <Once RateTypeID="7" RateF="2"/>
+          <Once RateTypeID="8" RateF="2"/>
+          <Once RateTypeID="9" RateF="3"/>
+        </Rate>
+        <Skill IsOpen="0" UseSkillMinSec="10" UseSkillMaxSec="20"/>
+        <Room IsOpen="1" JoinTableMinSec="60" JoinTableMaxSec="120" WriteMinSec="10" WriteMaxSec="20"/>
+        <Charm IsOpen="1" SendCharmMinCDSec="30" SendCharmMaxCDSec="240" NonRateF="50" BeChangeCharmValue="10" BeChangeCharmMaxSec="20">
+          <Send CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1" />
+          <BeSend CharmIndexID="0" NonRateF="65">
+            <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <BeSend CharmIndexID="3" NonRateF="30">
+            <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="2" RateF="1000"/>
+            <Send  CharmIndexID="4" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <CharmChangeEvent LeaveRoomRateF="20" NonRateF="50">
+            <Add>
+              <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Add>
+            <Del>
+              <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Del>
+          </CharmChangeEvent>
+        </Charm>
+      </Robot>
+      <Robot RobotID="7" MonthRobotSum="20" AddGlobelSum="1000000" InitGlobel="5000000" InitCurrceySum="1000" AddCurrceySum="100"  MinLevel="0" MaxLevel="30" GlobelRateF="30"
+
+  CurrceyRateF="30">
+        <OpenFire IsOpen="1" LastOpenFireMinSec="60" LastOpenFireMaxSec="120" StopFireMinSec="0" StopFireMaxSec="30"/>
+        <Launcher IsOpen="1" ChangeLauncherMinSec="180" ChangeLauncherMaxSec="240">
+          <Once LauncherTypeID="0" RateF="1"/>
+          <Once LauncherTypeID="1" RateF="1"/>
+          <Once LauncherTypeID="2" RateF="1"/>
+          <Once LauncherTypeID="3" RateF="1"/>
+          <Once LauncherTypeID="4" RateF="1"/>
+        </Launcher>
+        <Rate IsOpen="1" ChangeRateMinSec="180" ChangeRateMaxSec="240">
+          <Once RateTypeID="0" RateF="1"/>
+          <Once RateTypeID="1" RateF="1"/>
+          <Once RateTypeID="2" RateF="1"/>
+          <Once RateTypeID="3" RateF="1"/>
+          <Once RateTypeID="4" RateF="1"/>
+          <Once RateTypeID="5" RateF="1"/>
+          <Once RateTypeID="6" RateF="1"/>
+          <Once RateTypeID="7" RateF="2"/>
+          <Once RateTypeID="8" RateF="2"/>
+          <Once RateTypeID="9" RateF="3"/>
+        </Rate>
+        <Skill IsOpen="0" UseSkillMinSec="10" UseSkillMaxSec="20"/>
+        <Room IsOpen="1" JoinTableMinSec="60" JoinTableMaxSec="120" WriteMinSec="10" WriteMaxSec="20"/>
+        <Charm IsOpen="1" SendCharmMinCDSec="30" SendCharmMaxCDSec="240" NonRateF="50" BeChangeCharmValue="10" BeChangeCharmMaxSec="20">
+          <Send CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1" />
+          <BeSend CharmIndexID="0" NonRateF="65">
+            <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <BeSend CharmIndexID="3" NonRateF="30">
+            <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="2" RateF="1000"/>
+            <Send  CharmIndexID="4" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <CharmChangeEvent LeaveRoomRateF="20" NonRateF="50">
+            <Add>
+              <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Add>
+            <Del>
+              <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Del>
+          </CharmChangeEvent>
+        </Charm>
+      </Robot>
+      <Robot RobotID="8" MonthRobotSum="20" AddGlobelSum="1000000" InitGlobel="5000000" InitCurrceySum="1000" AddCurrceySum="100"  MinLevel="0" MaxLevel="30" GlobelRateF="30"
+
+  CurrceyRateF="30">
+        <OpenFire IsOpen="1" LastOpenFireMinSec="60" LastOpenFireMaxSec="120" StopFireMinSec="0" StopFireMaxSec="30"/>
+        <Launcher IsOpen="1" ChangeLauncherMinSec="180" ChangeLauncherMaxSec="240">
+          <Once LauncherTypeID="0" RateF="1"/>
+          <Once LauncherTypeID="1" RateF="1"/>
+          <Once LauncherTypeID="2" RateF="1"/>
+          <Once LauncherTypeID="3" RateF="1"/>
+          <Once LauncherTypeID="4" RateF="1"/>
+        </Launcher>
+        <Rate IsOpen="1" ChangeRateMinSec="180" ChangeRateMaxSec="240">
+          <Once RateTypeID="0" RateF="1"/>
+          <Once RateTypeID="1" RateF="1"/>
+          <Once RateTypeID="2" RateF="1"/>
+          <Once RateTypeID="3" RateF="1"/>
+          <Once RateTypeID="4" RateF="1"/>
+          <Once RateTypeID="5" RateF="1"/>
+          <Once RateTypeID="6" RateF="1"/>
+          <Once RateTypeID="7" RateF="2"/>
+          <Once RateTypeID="8" RateF="2"/>
+          <Once RateTypeID="9" RateF="3"/>
+        </Rate>
+        <Skill IsOpen="0" UseSkillMinSec="10" UseSkillMaxSec="20"/>
+        <Room IsOpen="1" JoinTableMinSec="60" JoinTableMaxSec="120" WriteMinSec="10" WriteMaxSec="20"/>
+        <Charm IsOpen="1" SendCharmMinCDSec="30" SendCharmMaxCDSec="240" NonRateF="50" BeChangeCharmValue="10" BeChangeCharmMaxSec="20">
+          <Send CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1" />
+          <BeSend CharmIndexID="0" NonRateF="65">
+            <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <BeSend CharmIndexID="3" NonRateF="30">
+            <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="2" RateF="1000"/>
+            <Send  CharmIndexID="4" MinItemSum="1" MaxItemSum="2" RateF="1"/>
+          </BeSend>
+          <CharmChangeEvent LeaveRoomRateF="20" NonRateF="50">
+            <Add>
+              <Send  CharmIndexID="0" MinItemSum="1" MaxItemSum="3" RateF="1"/>
+            </Add>
+            <Del>
+              <Send  CharmIndexID="3" MinItemSum="1" MaxItemSum="30" RateF="1"/>
+            </Del>
+          </CharmChangeEvent>
+        </Charm>
+      </Robot>
+    </GameRobot>
+  </FishRobot>
+  <FishShare>
+    <!--
+		配置的全部包名  都必须 先分享才可以兑换 话费 和实体物品
+
+		PackageName 包名
+	-->
+    <ShareOnce PackageName="" />
+    <ShareOnce PackageName="com.leduo.buyu.self" /> 
+	<ShareOnce PackageName="com.leduo.buyu3d" />
+	<ShareOnce PackageName="com.leduo.buyu" />
+	<ShareOnce PackageName="com.leduo.buyu.uc" />
+	<ShareOnce PackageName="com.leduo.buyu.three" />
+	<ShareOnce PackageName="com.leduo.buyu.baidu" />
+	<ShareOnce PackageName="com.leduo.buyu.huawei" />
+	<ShareOnce PackageName="com.leduo.buyu.leshi" />
+	<ShareOnce PackageName="com.leduo.buyu.nearme.gamecenter" />
+	<ShareOnce PackageName="com.leduo.buyu.egame" />
+  </FishShare>
+</FishConfig>

@@ -1,0 +1,165 @@
+<Config>
+    <ServerVersion version="0" maxbullet="20" maxfish="300" wonderful_base="300" />
+    <Combo sustain_time="2" buff_cycle="10" bufferchance="0.500" />
+    <Energy>
+        <item id="0" name="大招1" cditme="1.500" mincatch="5" maxcatch="9" revise="600" energyratio="10.000" radius="2" speed="0.500" time1="0.500" time2="0.800" time3="0.500" />
+        <item id="1" name="大招2" cditme="1.500" mincatch="5" maxcatch="9" revise="600" energyratio="10.000" radius="2" speed="0.500" time1="0.500" time2="0.800" time3="0.500" />
+        <item id="2" name="大招3" cditme="1.500" mincatch="5" maxcatch="9" revise="600" energyratio="10.000" radius="2" speed="0.500" time1="0.500" time2="0.800" time3="0.500" />
+        <item id="3" name="大招4" cditme="1.500" mincatch="5" maxcatch="9" revise="600" energyratio="10.000" radius="2" speed="0.500" time1="0.500" time2="0.800" time3="0.500" />
+        <item id="4" name="大招5" cditme="1.500" mincatch="5" maxcatch="9" revise="600" energyratio="10.000" radius="2" speed="0.500" time1="0.500" time2="0.800" time3="0.500" />
+    </Energy>
+    <Skill>
+        <item id="0" name="闪电" cditme="3.000" mincatch="60" maxcatch="100" revise="4500" goodsid="900" multiple="50" goodsconsume="2 50" speed="0.000" time1="0.000" time2="0.000" time3="0.000" />
+        <item id="1" name="冰冻" cditme="3.000" mincatch="60" maxcatch="100" revise="4500" goodsid="901" multiple="50" goodsconsume="2 50" speed="0.300" time1="0.300" time2="0.500" time3="0.300" />
+        <item id="2" name="暴风" cditme="3.000" mincatch="60" maxcatch="100" revise="4500" goodsid="902" multiple="50" goodsconsume="2 50" speed="0.000" time1="0.000" time2="0.000" time3="0.000" />
+        <item id="3" name="陨石" cditme="3.000" mincatch="60" maxcatch="100" revise="4500" goodsid="903" multiple="50" goodsconsume="2 50" speed="0.000" time1="0.000" time2="0.000" time3="0.000" />
+        <item id="4" name="锁定" cditme="20.000" mincatch="0" maxcatch="0" revise="0" goodsid="904" multiple="0" goodsconsume="2 1" speed="0.000" time1="0.000" time2="0.000" time3="0.000" />
+    </Skill>
+    <Rate>
+        <item id="0" value="1" unlock="0" unlockreward="0" />
+        <item id="1" value="2" unlock="2" unlockreward="6000" />
+        <item id="2" value="3" unlock="2" unlockreward="6001" />
+        <item id="3" value="4" unlock="2" unlockreward="6002" />
+        <item id="4" value="5" unlock="3" unlockreward="6003" />
+        <item id="5" value="6" unlock="3" unlockreward="6004" />
+        <item id="6" value="7" unlock="3" unlockreward="6005" />
+        <item id="7" value="8" unlock="5" unlockreward="6006" />
+        <item id="8" value="9" unlock="5" unlockreward="6007" />
+        <item id="9" value="10" unlock="5" unlockreward="6008" />
+        <item id="10" value="15" unlock="8" unlockreward="6009" />
+        <item id="11" value="20" unlock="8" unlockreward="6010" />
+        <item id="12" value="25" unlock="8" unlockreward="6011" />
+        <item id="13" value="30" unlock="10" unlockreward="6012" />
+        <item id="14" value="35" unlock="10" unlockreward="6013" />
+        <item id="15" value="40" unlock="10" unlockreward="6014" />
+        <item id="16" value="45" unlock="20" unlockreward="6015" />
+        <item id="17" value="50" unlock="20" unlockreward="6016" />
+        <item id="18" value="55" unlock="20" unlockreward="6017" />
+        <item id="19" value="60" unlock="20" unlockreward="6018" />
+        <item id="20" value="65" unlock="20" unlockreward="6019" />
+        <item id="21" value="70" unlock="20" unlockreward="6020" />
+        <item id="22" value="75" unlock="30" unlockreward="6021" />
+        <item id="23" value="80" unlock="30" unlockreward="6022" />
+        <item id="24" value="85" unlock="30" unlockreward="6023" />
+        <item id="25" value="90" unlock="30" unlockreward="6024" />
+        <item id="26" value="95" unlock="30" unlockreward="6025" />
+        <item id="27" value="100" unlock="30" unlockreward="6026" />
+        <item id="28" value="150" unlock="40" unlockreward="6027" />
+        <item id="29" value="200" unlock="40" unlockreward="6028" />
+        <item id="30" value="250" unlock="50" unlockreward="6029" />
+        <item id="31" value="300" unlock="50" unlockreward="6030" />
+        <item id="32" value="350" unlock="60" unlockreward="6031" />
+        <item id="33" value="400" unlock="60" unlockreward="6032" />
+        <item id="34" value="450" unlock="70" unlockreward="6033" />
+        <item id="35" value="500" unlock="70" unlockreward="6034" />
+        <item id="36" value="550" unlock="80" unlockreward="6035" />
+        <item id="37" value="600" unlock="80" unlockreward="6036" />
+        <item id="38" value="650" unlock="90" unlockreward="6037" />
+        <item id="39" value="700" unlock="90" unlockreward="6038" />
+        <item id="40" value="750" unlock="100" unlockreward="6039" />
+        <item id="41" value="800" unlock="100" unlockreward="6040" />
+        <item id="42" value="850" unlock="110" unlockreward="6041" />
+        <item id="43" value="900" unlock="110" unlockreward="6042" />
+        <item id="44" value="950" unlock="120" unlockreward="6043" />
+        <item id="45" value="1000" unlock="120" unlockreward="6044" />
+    </Rate>
+    <Cannon ratiofactor="0.800" maxratio="0.800" finalration="0.800" lockratio="0.050">
+        <item id="0" name="玄光" bulletspeed="50" launcherinterval="0.200" consume="10" radius="0.300" catchradius="2.000" maxcatch="2" itemid="1300" itemcount="0" skill="255" speed="0.000" time1="0.000" time2="0.000" time3="0.000" />
+        <item id="1" name="碧影" bulletspeed="50" launcherinterval="0.200" consume="10" radius="0.300" catchradius="2.000" maxcatch="2" itemid="1301" itemcount="1" skill="255" speed="0.000" time1="0.000" time2="0.000" time3="0.000" />
+        <item id="2" name="旋刃" bulletspeed="50" launcherinterval="0.200" consume="10" radius="0.300" catchradius="3.000" maxcatch="3" itemid="1302" itemcount="1" skill="2" speed="0.000" time1="0.000" time2="0.000" time3="0.000" />
+        <item id="3" name="凝霜" bulletspeed="50" launcherinterval="0.200" consume="10" radius="0.300" catchradius="3.000" maxcatch="3" itemid="1303" itemcount="1" skill="1" speed="0.200" time1="0.000" time2="1.000" time3="0.500" />
+        <item id="4" name="穿云" bulletspeed="60" launcherinterval="0.200" consume="10" radius="0.300" catchradius="1.000" maxcatch="4" itemid="1304" itemcount="1" skill="3" speed="0.000" time1="0.000" time2="0.000" time3="0.000" />
+    </Cannon>
+    <Fish revies_Activity="1.000">
+        <item id="8" value="10" maxcount="10" name="小黄鱼" declare="我速度快，打不到打不到……" />
+        <item id="7" value="10" maxcount="10" name="小草鱼" declare="成群的来，结队的走，摇一摇" />
+        <item id="15" value="20" maxcount="10" name="热带鱼" declare="本鱼纯属观赏，请勿触碰" />
+        <item id="21" value="20" maxcount="8" name="小眼泡鱼" declare="熬夜太多，眼袋下不去了！哎……" />
+        <item id="5" value="20" maxcount="8" name="大头鱼" declare="我的头真的不大，好吗？" />
+        <item id="2" value="30" maxcount="5" name="蓝吊" declare="我的花纹好看吗？" />
+        <item id="11" value="30" maxcount="7" name="小丑鱼" declare="我……不会说笑话！" />
+        <item id="14" value="30" maxcount="6" name="石头鱼" declare="想知道石头硬还是子弹硬？好吧，你赢了！" />
+        <item id="4" value="40" maxcount="5" name="刺猬鱼" declare="别靠近我！我怕会伤害你！" />
+        <item id="17" value="40" maxcount="6" name="鞭炮鱼" declare="噼里啪啦放炮了！" />
+        <item id="12" value="40" maxcount="0" name="燕尾鱼" declare="我是优雅的绅士，请不要弄脏我的礼服！" />
+        <item id="0" value="50" maxcount="6" name="灯笼鱼" declare="晚上，我是海洋明亮的星！" />
+        <item id="6" value="50" maxcount="5" name="公主鱼" declare="当心点，别弄脏了本公主的裙子！" />
+        <item id="13" value="50" maxcount="0" name="海龟" declare="大家别急，游慢点……" />
+        <item id="22" value="60" maxcount="5" name="蝙蝠鱼" declare="除了优雅，我还有剧毒，不要惹我！" />
+        <item id="23" value="80" maxcount="5" name="扁嘴鱼" declare="第9856遍重申，我跟鸭子并没有关系" />
+        <item id="16" value="100" maxcount="0" name="剑鱼" declare="你想打架吗？说好不要用武器！" />
+        <item id="10" value="150" maxcount="4" name="双髻鲨" declare="我的视力很好，别以为我看不见" />
+        <item id="9" value="200" maxcount="0" name="蓝鲨" declare="咱交个朋友吧，我很久不吃肉了" />
+        <item id="18" value="250" maxcount="3" name="黑鲨" declare="我保证你不愿意看见我的微笑！嘿嘿……" />
+        <item id="20" value="300" maxcount="0" name="虎鲸" declare="我想游的再快点！" />
+        <item id="1" value="500" maxcount="0" name="boss蓝鲨" declare="咱交个朋友吧，我很久不吃肉了" />
+        <item id="3" value="600" maxcount="0" name="boss黑鲨" declare="我保证你不愿意看见我的微笑！嘿嘿……" />
+        <item id="19" value="700" maxcount="0" name="boss虎鲸" declare="我想游的再快点！" />
+        <item id="25" value="50" maxcount="0" name="电鳗" declare="统统化为焦炭吧啊！" />
+        <item id="24" value="0" maxcount="0" name="背景鱼" declare="" />
+    </Fish>
+    <Rank>
+        <item id="0" experience="0" />
+        <item id="1" experience="6000" />
+        <item id="2" experience="14000" />
+        <item id="3" experience="24000" />
+        <item id="4" experience="35000" />
+        <item id="5" experience="47000" />
+        <item id="6" experience="59000" />
+        <item id="7" experience="72000" />
+        <item id="8" experience="85000" />
+        <item id="9" experience="98000" />
+        <item id="10" experience="146400" />
+        <item id="11" experience="176400" />
+        <item id="12" experience="209400" />
+        <item id="13" experience="245700" />
+        <item id="14" experience="285600" />
+        <item id="15" experience="411750" />
+        <item id="16" experience="471900" />
+        <item id="17" experience="537000" />
+        <item id="18" experience="608700" />
+        <item id="19" experience="687000" />
+        <item id="20" experience="772500" />
+        <item id="21" experience="866550" />
+        <item id="22" experience="970000" />
+        <item id="23" experience="1083750" />
+        <item id="24" experience="1209000" />
+        <item id="25" experience="1335000" />
+        <item id="26" experience="1473600" />
+        <item id="27" experience="1626000" />
+        <item id="28" experience="1792500" />
+        <item id="29" experience="1975650" />
+        <item id="30" experience="2250000" />
+        <item id="31" experience="3402400" />
+        <item id="32" experience="3845000" />
+        <item id="33" experience="4332000" />
+        <item id="34" experience="4867400" />
+        <item id="35" experience="5456600" />
+        <item id="36" experience="6104600" />
+        <item id="37" experience="6817400" />
+        <item id="38" experience="7601600" />
+        <item id="39" experience="8464100" />
+        <item id="40" experience="9413000" />
+        <item id="41" experience="13070700" />
+        <item id="42" experience="14505800" />
+        <item id="43" experience="16084300" />
+        <item id="44" experience="17820700" />
+        <item id="45" experience="19730800" />
+        <item id="46" experience="21831800" />
+        <item id="47" experience="24143000" />
+        <item id="48" experience="26685200" />
+        <item id="49" experience="29481700" />
+        <item id="50" experience="32557900" />
+        <item id="51" experience="43130000" />
+        <item id="52" experience="47596600" />
+        <item id="53" experience="52509800" />
+        <item id="54" experience="57914300" />
+        <item id="55" experience="63859300" />
+        <item id="56" experience="70398800" />
+        <item id="57" experience="77592300" />
+        <item id="58" experience="85505100" />
+        <item id="59" experience="94209200" />
+        <item id="60" experience="103783700" />
+    </Rank>
+    <FishDeadTime TianZai_DouDong="0.100" TianZai_Stay_Min="0.800" TianZai_Stay_Max="1.200" TianZai_Dead_Min="0.800" TianZai_Dead_Max="1.200" Bullet_BingDong_Dead_Min="0.200" Bullet_BingDong_Dead_Max="0.200" BingDong_Dead_Min="1.000" BingDong_Dead_Max="1.200" ShanDian_Dead_Min="0.500" ShanDian_Dead_Max="1.000" LongJuanFeng_Dead_Min="0.300" LongJuanFeng_Dead_Max="0.600" JiGuang_Stay_Time="0.200" JiGuang_Dead_Min="1.000" JiGuang_Dead_Max="1.000" ShandDian_Speed="0.000" JiGuang_Speed="0.000" JiGuang_BingDong_Speed="0.000" TianZai_Speed="0.000" BingDong_Speed="0.000" />
+</Config>

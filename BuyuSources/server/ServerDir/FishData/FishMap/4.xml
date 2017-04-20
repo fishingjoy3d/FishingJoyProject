@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<map BackgroundImage="0" Repeat="true" Name="比赛专用房间">
+  <packages>
+    <packge StartSeconds="0" EndSeconds="10" IntervalSeconds="10" Chance="30" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>137</fishgroup>
+    </packge>
+    <packge StartSeconds="15" EndSeconds="30" IntervalSeconds="10" Chance="30" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>161</fishgroup>
+    </packge>
+    <packge StartSeconds="40" EndSeconds="50" IntervalSeconds="10" Chance="30" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>162</fishgroup>
+    </packge>
+    <packge StartSeconds="51" EndSeconds="55" IntervalSeconds="10" Chance="10" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>202</fishgroup>
+    </packge>
+    <packge StartSeconds="60" EndSeconds="70" IntervalSeconds="10" Chance="30" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>163</fishgroup>
+    </packge>
+    <packge StartSeconds="80" EndSeconds="90" IntervalSeconds="10" Chance="30" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>164</fishgroup>
+    </packge>
+    <packge StartSeconds="110" EndSeconds="120" IntervalSeconds="10" Chance="20" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>165</fishgroup>
+    </packge>
+    <packge StartSeconds="121" EndSeconds="125" IntervalSeconds="10" Chance="10" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>201</fishgroup>
+    </packge>
+    <packge StartSeconds="180" EndSeconds="200" IntervalSeconds="10" Chance="20" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>168</fishgroup>
+    </packge>
+    <packge StartSeconds="201" EndSeconds="205" IntervalSeconds="10" Chance="10" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>200</fishgroup>
+    </packge>
+    <packge StartSeconds="210" EndSeconds="220" IntervalSeconds="10" Chance="20" MaxCount="1" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>166</fishgroup>
+      <fishgroup>167</fishgroup>
+    </packge>
+    <packge StartSeconds="230" EndSeconds="240" IntervalSeconds="10" Chance="20" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>169</fishgroup>
+    </packge>
+    <packge StartSeconds="260" EndSeconds="280" IntervalSeconds="10" Chance="20" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>170</fishgroup>
+    </packge>
+    <packge StartSeconds="281" EndSeconds="285" IntervalSeconds="10" Chance="10" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>202</fishgroup>
+    </packge>
+    <packge StartSeconds="351" EndSeconds="355" IntervalSeconds="10" Chance="10" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>201</fishgroup>
+    </packge>
+    <packge StartSeconds="360" EndSeconds="400" IntervalSeconds="10" Chance="20" MaxCount="1" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>171</fishgroup>
+      <fishgroup>172</fishgroup>
+    </packge>
+    <packge StartSeconds="421" EndSeconds="425" IntervalSeconds="10" Chance="10" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>200</fishgroup>
+    </packge>
+    <packge StartSeconds="440" EndSeconds="480" IntervalSeconds="10" Chance="20" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>173</fishgroup>
+    </packge>
+    <packge StartSeconds="491" EndSeconds="495" IntervalSeconds="10" Chance="10" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>202</fishgroup>
+    </packge>
+    <packge StartSeconds="500" EndSeconds="550" IntervalSeconds="10" Chance="20" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>174</fishgroup>
+    </packge>
+    <packge StartSeconds="561" EndSeconds="565" IntervalSeconds="10" Chance="10" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>201</fishgroup>
+    </packge>
+    <packge StartSeconds="570" EndSeconds="620" IntervalSeconds="10" Chance="20" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>175</fishgroup>
+    </packge>
+    <packge StartSeconds="631" EndSeconds="635" IntervalSeconds="10" Chance="10" MaxCount="6" PackageType="104">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>200</fishgroup>
+    </packge>
+    <packge StartSeconds="650" EndSeconds="700" IntervalSeconds="10" Chance="20" MaxCount="4" PackageType="1">
+      <!-- 红包的鱼群ID -->
+      <fishgroup>176</fishgroup>
+    </packge>
+  </packages>
+  <random_flows>
+    <!-- 随机发射的流程-->
+    <flow>0</flow>
+    <flow>1</flow>
+    <flow>2</flow>
+    <flow>3</flow>
+    <flow>4</flow>
+    <flow>14</flow>
+  </random_flows>
+  <fixed_flows>
+    <orders>
+      <!-- 固定流程发射顺序 第1、4次发射流程-->
+      <order>2</order>
+      <order>5</order>
+    </orders>
+    <flows>
+      <!--固定流程列表，从下面中随机发射-->
+      <flow>5</flow>
+      <flow>6</flow>
+      <flow>8</flow>
+      <flow>9</flow>
+      <flow>10</flow>
+	  <flow>11</flow>
+	  <flow>12</flow>
+	  <flow>13</flow>
+    </flows>
+  </fixed_flows>
+</map>

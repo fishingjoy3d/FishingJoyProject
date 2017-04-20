@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9FB614B2-2F9E-45F4-AB3F-207B9F15F209}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>OperateServer</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)\Output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\Output\Temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)\SourceCode\CommonFile\openssl\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\SourceCode\CommonFile\openssl\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)\Output\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)\Output\Temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(SolutionDir)\SourceCode\CommonFile\openssl\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\SourceCode\CommonFile\openssl\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;OPERATESERVER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\SourceCode\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/Zm110 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Output\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;libeay32.lib;ssleay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\SourceCode\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Output\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;libeay32.lib;ssleay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\CommonFile\DBLogManager.h" />
+    <ClInclude Include="..\..\CommonFile\FishConfig.h" />
+    <ClInclude Include="..\..\CommonFile\FishServerConfig.h" />
+    <ClInclude Include="..\..\CommonFile\json\autolink.h" />
+    <ClInclude Include="..\..\CommonFile\json\config.h" />
+    <ClInclude Include="..\..\CommonFile\json\features.h" />
+    <ClInclude Include="..\..\CommonFile\json\forwards.h" />
+    <ClInclude Include="..\..\CommonFile\json\json.h" />
+    <ClInclude Include="..\..\CommonFile\json\json_batchallocator.h" />
+    <ClInclude Include="..\..\CommonFile\json\reader.h" />
+    <ClInclude Include="..\..\CommonFile\json\value.h" />
+    <ClInclude Include="..\..\CommonFile\json\writer.h" />
+    <ClInclude Include="..\..\CommonFile\tinyxml\tinyxml2.h" />
+    <ClInclude Include="..\..\CommonFile\tinyxml\XmlReader.h" />
+    <ClInclude Include="BindEmailManager.h" />
+    <ClInclude Include="BindPhoneManager.h" />
+    <ClInclude Include="BuyEntityItemManager.h" />
+    <ClInclude Include="ChannelLogonManager.h" />
+    <ClInclude Include="FishServer.h" />
+    <ClInclude Include="HttpNewServer.h" />
+    <ClInclude Include="IApppay\CryptHelper.h" />
+    <ClInclude Include="IApppay\SignUtils.h" />
+    <ClInclude Include="IOSPayManager.h" />
+    <ClInclude Include="NormalRechargeManager.h" />
+    <ClInclude Include="OrderOnlyManager.h" />
+    <ClInclude Include="PhoneLogon.h" />
+    <ClInclude Include="PhonePayManager.h" />
+    <ClInclude Include="PhoneSMSManager.h" />
+    <ClInclude Include="QQLogon.h" />
+    <ClInclude Include="QQUserInfoManager.h" />
+    <ClInclude Include="RealNameVerificationManager.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="URLFaceImgManager.h" />
+    <ClInclude Include="UseRMBManager.h" />
+    <ClInclude Include="WeiXinLogon.h" />
+    <ClInclude Include="WeiXinUserInfoManager.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\CommonFile\DBLogManager.cpp" />
+    <ClCompile Include="..\..\CommonFile\FishConfig.cpp" />
+    <ClCompile Include="..\..\CommonFile\FishServerConfig.cpp" />
+    <ClCompile Include="..\..\CommonFile\json\json_reader.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\CommonFile\json\json_value.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\CommonFile\json\json_writer.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\..\CommonFile\tinyxml\tinyxml2.cpp" />
+    <ClCompile Include="..\..\CommonFile\tinyxml\XmlReader.cpp" />
+    <ClCompile Include="BindEmailManager.cpp" />
+    <ClCompile Include="BindPhoneManager.cpp" />
+    <ClCompile Include="BuyEntityItemManager.cpp" />
+    <ClCompile Include="ChannelLogonManager.cpp" />
+    <ClCompile Include="FishServer.cpp" />
+    <ClCompile Include="HttpNewServer.cpp" />
+    <ClCompile Include="IApppay\CryptHelper.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="IApppay\SignUtils.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="IOSPayManager.cpp" />
+    <ClCompile Include="NormalRechargeManager.cpp" />
+    <ClCompile Include="OperateServer.cpp" />
+    <ClCompile Include="OrderOnlyManager.cpp" />
+    <ClCompile Include="PhoneLogon.cpp" />
+    <ClCompile Include="PhonePayManager.cpp" />
+    <ClCompile Include="PhoneSMSManager.cpp" />
+    <ClCompile Include="QQLogon.cpp" />
+    <ClCompile Include="QQUserInfoManager.cpp" />
+    <ClCompile Include="RealNameVerificationManager.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="UseRMBManager.cpp" />
+    <ClCompile Include="WeiXinLogon.cpp" />
+    <ClCompile Include="WeiXinUserInfoManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\CommonFile\json\json_internalarray.inl" />
+    <None Include="..\..\CommonFile\json\json_internalmap.inl" />
+    <None Include="..\..\CommonFile\json\json_valueiterator.inl" />
+    <None Include="..\..\CommonFile\json\sconscript" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,12 @@
+<Notices>
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="0" StepNum="500" StepMin="50" MessageInfo="炮台装备新武器，会大大提升战斗力。" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="5" StepNum="500" StepMin="50" MessageInfo="商城内出售不同的品物，还有你的背包，快去看看吧！" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="10" StepNum="500" StepMin="50" MessageInfo="比赛获胜后获得大量的奖牌，奖牌可在商城兑换大量的话费和实物。" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="15" StepNum="500" StepMin="50" MessageInfo="战斗中使用技能可完成大面积击杀。" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="20" StepNum="500" StepMin="50" MessageInfo="炮台处能量槽充满能量后，准备发射吧，少年。" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="25" StepNum="500" StepMin="50" MessageInfo="全天24小时比赛免费报名，大量话费和实物等着你！" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="30" StepNum="500" StepMin="50" MessageInfo="暴击时击中目标会有极大的杀伤力。" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>	
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="35" StepNum="500" StepMin="50" MessageInfo="炮台处可调整倍率，以适合自己的战斗值。" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>	
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="40" StepNum="500" StepMin="50" MessageInfo="释放技能卡的数量和当前倍率成正比。" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>
+	<Notice BeginYear="2016" BeginMonth="1" BeginDay="25" BeginHour="17" BeginMin="45" StepNum="500" StepMin="50" MessageInfo="如需帮助，请点击在线客服头像进行咨询。" OnceStepNum="3" OnceStepSec="3" MessageInfoColor="4294967295"/>
+</Notices>
