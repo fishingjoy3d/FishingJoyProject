@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// 冰趣渠道
 /// </summary>
+#if UNITY_ANDROID
 public class SDKChannelDome : SDKChannel
 {
     const string APP_CODE = "";
@@ -79,3 +80,6 @@ public class SDKChannelDome : SDKChannel
     }
 
 }
+#else
+
+#endif
