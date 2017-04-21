@@ -871,6 +871,8 @@ public class FishDataInfo
 
     public const int MAX_RelationRequest_MsgLength = 32;
 
+    public const int LogonExternal_Length = 512;
+
     public static bool IsCanUsePhone(UInt64 PhoneNumber)
     {
         // 11位
@@ -3799,6 +3801,56 @@ public class LC_Cmd_RsgNewAccount: NetCmdBase
     [TypeInfo(0)]
     public Byte LogonType;
 }
+
+public class LogonInfo
+{
+    [TypeInfo(0, FishDataInfo.AccountNameLength + 1)]
+    public string AccountName;
+
+    [TypeInfo(1)]
+    public UInt32 PasswordCrc1;
+
+    [TypeInfo(2)]
+    public UInt32 PasswordCrc2;
+
+    [TypeInfo(3)]
+    public UInt32 PasswordCrc3;
+
+    [TypeInfo(4, FishDataInfo.MacAddressLength + 1)]
+    public string MacAddress;//Mac地址
+
+    [TypeInfo(5)]
+    public Byte PlatformID;//平台的ID
+
+    [TypeInfo(6)]
+    public int ChannelID;
+
+    [TypeInfo(7)]
+    public UInt32 VersionID;
+
+    [TypeInfo(8)]
+    public UInt32 PathCrc;
+
+    [TypeInfo(9, FishDataInfo.LogonExternal_Length + 1)]
+    public string External;
+
+    [TypeInfo(10)]
+    public UInt32 ClientIP;
+}
+
+public class CL_Cmd_OperatorLogon : NetCmdBase
+{
+    [TypeInfo(0)]
+    public LogonInfo logon;
+}
+public class LC_Cmd_OperatorLogon : NetCmdBase
+{
+    [TypeInfo(0)]
+    public int channel;
+    [TypeInfo(1)]
+    public bool result;
+}
+
 //ExChange
 
 public class CL_Cmd_RoleUseExChangeCode: NetCmdBase

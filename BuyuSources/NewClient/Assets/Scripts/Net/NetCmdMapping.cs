@@ -119,6 +119,11 @@ public enum LOGON_SubCmd
     LC_Sub_QQLogon          = 87,
 
     LC_Sub_RsgNewAccount    = 88,
+
+    CL_Sub_OperatorLogon = 89,
+    LO_Sub_OperatorLogon = 90, // 服务器用
+    OL_Sub_OperatorLogon = 91, // 服务器用
+    LC_Sub_OperatorLogon = 92,
 }
 public enum TABLE_SubCmd
 {
@@ -906,9 +911,12 @@ public enum NetCmdType
     CMD_CL_QQLogon                      = (int)(MainCmdType.CMD_MAIN_Logon << 8) | (int)(LOGON_SubCmd.CL_Sub_QQLogon),
     CMD_LC_QQLogon                      = (int)(MainCmdType.CMD_MAIN_Logon << 8) | (int)(LOGON_SubCmd.LC_Sub_QQLogon),
 
-    CMD_LC_RsgNewAccount                = (int)(MainCmdType.CMD_MAIN_Logon << 8) | (int)(LOGON_SubCmd.LC_Sub_RsgNewAccount),  
-    
-    
+    CMD_LC_RsgNewAccount                = (int)(MainCmdType.CMD_MAIN_Logon << 8) | (int)(LOGON_SubCmd.LC_Sub_RsgNewAccount),
+
+    CMD_CL_OperatorLogon                = (int)(MainCmdType.CMD_MAIN_Logon << 8) | (int)(LOGON_SubCmd.CL_Sub_OperatorLogon),
+    CMD_LC_OperatorLogon                 = (int)(MainCmdType.CMD_MAIN_Logon << 8) | (int)(LOGON_SubCmd.LC_Sub_OperatorLogon),
+
+
 
     CMD_LC_OtherUserInfo                = (int)(MainCmdType.CMD_MAIN_Table << 8) | (int)(TABLE_SubCmd.LC_Sub_OtherUserInfo),
     CMD_LC_UserLeave                    = (int)(MainCmdType.CMD_MAIN_Table << 8) | (int)(TABLE_SubCmd.LC_Sub_UserLeave),
