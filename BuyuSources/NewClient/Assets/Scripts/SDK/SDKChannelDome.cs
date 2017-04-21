@@ -10,6 +10,7 @@ public class SDKChannelDome : SDKChannel
 {
     const string APP_CODE = "D0000356";
     string secret_key = "";
+    string channel_name = "Dome";
 
     public override void GlobalInit()
     {
@@ -19,11 +20,11 @@ public class SDKChannelDome : SDKChannel
     }
     public override void SetUserCallback()
     {
-        m_AndroidContext.Call("setUserCallback", SDKMgr.Instance.CallbackObjName, "LoginCallback");
+        //m_AndroidContext.Call("setUserCallback", SDKMgr.Instance.CallbackObjName, "LoginCallback");
     }
     public override void Init()
     {
-        m_AndroidContext.Call("init", SDKMgr.Instance.CallbackObjName, "InitCallback");
+        //m_AndroidContext.Call("init", SDKMgr.Instance.CallbackObjName, "InitCallback");
     }
     public override void Login(string customparms)
     {
@@ -39,7 +40,7 @@ public class SDKChannelDome : SDKChannel
     }
     public override void Logout(string customparms)
     {
-        m_AndroidContext.Call("logout", customparms);
+        //m_AndroidContext.Call("logout", customparms);
     }
 
     //支付
@@ -69,24 +70,24 @@ public class SDKChannelDome : SDKChannel
     }
     public override void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
     {
-        m_AndroidContext.Call("setExtData", id, roleId, roleName, roleLevel, zoneId, zoneName, balance, vip, partyName);
+        //m_AndroidContext.Call("setExtData", id, roleId, roleName, roleLevel, zoneId, zoneName, balance, vip, partyName);
     }
     public override string GetChannelLabel()
     {
-        return m_AndroidContext.Call<string>("getChannelLabel");
+        return channel_name;
     }
     public override void Exit()
     {
-        m_AndroidContext.Call("exit", SDKMgr.Instance.CallbackObjName, "ExitCallback");
+        DomePayAndroid.Instance.ExitWithUI(SDKMgr.Instance.CallbackObjName, "ExitCallback");
     }
 
     public override void ShowAndroidToast(string info)
     {
-        m_AndroidContext.Call("showToast", info);
+        //m_AndroidContext.Call("showToast", info);
     }
     public override void ReleaseResource()
     {
-        m_AndroidContext.Call("releaseResource");
+        //m_AndroidContext.Call("releaseResource");
     }
 
     // 随机数函数

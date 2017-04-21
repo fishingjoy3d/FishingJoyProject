@@ -1585,8 +1585,10 @@ public class NetCmdMapping
         bRet &= InitCmdTypeInfo<CL_Cmd_QQLogon>(NetCmdType.CMD_CL_QQLogon);
         bRet &= InitCmdTypeInfo<LC_Cmd_QQLogon>(NetCmdType.CMD_LC_QQLogon);
         bRet &= InitCmdTypeInfo<LC_Cmd_RsgNewAccount>(NetCmdType.CMD_LC_RsgNewAccount);
-        
-        
+        bRet &= InitCmdTypeInfo<CL_Cmd_OperatorLogon>(NetCmdType.CMD_CL_OperatorLogon);
+        bRet &= InitCmdTypeInfo<LC_Cmd_OperatorLogon>(NetCmdType.CMD_LC_OperatorLogon);
+
+
         //玩家
         bRet &= InitCmdTypeInfo<LC_Cmd_OtherUserInfo>               (NetCmdType.CMD_LC_OtherUserInfo            );
         bRet &= InitCmdTypeInfo<LC_Cmd_OtherUserLeave>              (NetCmdType.CMD_LC_UserLeave                );

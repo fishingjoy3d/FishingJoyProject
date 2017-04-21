@@ -872,10 +872,10 @@ public class LogonLogic : ILogic, ICmdHandler
             //玩家登陆的结果 或者是注册的结果
             LC_Cmd_AccountOnlyID ncb = (LC_Cmd_AccountOnlyID)pack.cmd;
 
-            switch(ncb.LogonTypeID)
+            switch (ncb.LogonTypeID)
             {
                 case 1:
-                    { 
+                    {
                         //正常登陆
                         tagUserOperationEvent pUOM = new tagUserOperationEvent((ncb.dwUserID == 0 ? UserOperateMessage.UOM_Logon_NormalLogon_Failed_4 : UserOperateMessage.UOM_Logon_NormalLogon_Sucess));
                         MsgEventHandle.HandleMsg(pUOM);
@@ -889,7 +889,7 @@ public class LogonLogic : ILogic, ICmdHandler
                     break;
             }
 
-            if(ncb.dwUserID == 0)
+            if (ncb.dwUserID == 0)
             {
                 SetState(LogonState.LOGON_ERROR);
                 GlobalEffectMgr.Instance.CloseLoadingMessage();
@@ -903,8 +903,8 @@ public class LogonLogic : ILogic, ICmdHandler
             else
             {
                 //断开Socket连接 组织新的命令到GameServer去
-               // LogMgr.Log("已经与LogonServer断开连接了\r\n");
-               // ServerSetting.HallTimeout = Convert.ToInt32(ncb.HallTimeOut);
+                // LogMgr.Log("已经与LogonServer断开连接了\r\n");
+                // ServerSetting.HallTimeout = Convert.ToInt32(ncb.HallTimeOut);
                 NetServices.Instance.Disconnect();
                 //将IP转化为String 
                 m_UserID = ncb.dwUserID;
@@ -925,7 +925,7 @@ public class LogonLogic : ILogic, ICmdHandler
                 return true;
             }
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_CheckVersionError)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_CheckVersionError)
         {
             LC_Cmd_CheckVersionError ncb = (LC_Cmd_CheckVersionError)pack.cmd;
 
@@ -947,7 +947,7 @@ public class LogonLogic : ILogic, ICmdHandler
             //}
             return true;
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_AccountIsFreeze)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_AccountIsFreeze)
         {
             LC_Cmd_AccountIsFreeze ncb = (LC_Cmd_AccountIsFreeze)pack.cmd;
 
@@ -975,7 +975,7 @@ public class LogonLogic : ILogic, ICmdHandler
             GlobalEffectMgr.Instance.CloseLoadingMessage();
             SDKMgr.Instance.Logout();
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_GetNewAccount) //快速登陆
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_GetNewAccount) //快速登陆
         {
             //快速登陆的时候 先获取新的账号
             LC_Cmd_GetNewAccount ncbGet = (LC_Cmd_GetNewAccount)pack.cmd;
@@ -1002,7 +1002,7 @@ public class LogonLogic : ILogic, ICmdHandler
                 //{
                 //    tagUserOperationEvent pUOM2 = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_NormalLogon_Failed_1);
                 //    MsgEventHandle.HandleMsg(pUOM2);
-                    
+
                 //    SetState(LogonState.LOGON_ERROR);
                 //    return false;
                 //}
@@ -1024,12 +1024,12 @@ public class LogonLogic : ILogic, ICmdHandler
                 return false;
             }
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_AccountOnlyIDFailed)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_AccountOnlyIDFailed)
         {
             SetState(LogonState.LOGON_ERROR);
             GlobalEffectMgr.Instance.CloseLoadingMessage();
             NetServices.Instance.Disconnect();
-            GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("join_failed"), 3, false); 
+            GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("join_failed"), 3, false);
             // NativeInterface.ShowMsgAndExit("join_hall_error", 130);
         }
         else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_AccountOnlyIDSuccess)
@@ -1042,7 +1042,7 @@ public class LogonLogic : ILogic, ICmdHandler
             GlobalLogon.Instance.OnlyID = ncb.RandID;
 
             if (GlobalLogon.Instance.AccountData != null)
-            { 
+            {
                 //设置玩家身份标志
                 if (PlayerRole.Instance.RoleInfo.RoleMe.GetIsCanResetAccount())
                     GlobalLogon.Instance.AccountData.TAG = 1;
@@ -1054,12 +1054,12 @@ public class LogonLogic : ILogic, ICmdHandler
 
             NetServices.Instance.CmdHandler = null;
             //RuntimeData.MyAccount = GlobalLogon.Instance.AccountData;
-           // string str = string.Format(StringTable.GetString("sdkwelcome"), SDKMgr.Instance.SDK.GetChannelName(), SDKMgr.Instance.LoginData.ChannelUid);
+            // string str = string.Format(StringTable.GetString("sdkwelcome"), SDKMgr.Instance.SDK.GetChannelName(), SDKMgr.Instance.LoginData.ChannelUid);
 
-            if(SDKMgr.IS_SDK_CHANNEL)
+            if (SDKMgr.IS_SDK_CHANNEL)
             {
-                const int zoneID =1;
-               // SDKMgr.Instance.SDK.ShowAndroidToast(str);
+                const int zoneID = 1;
+                // SDKMgr.Instance.SDK.ShowAndroidToast(str);
                 //玩家登录
                 SDKMgr.Instance.SDK.SetExtraData(
                     SDK.ENTER_SERVER,
@@ -1084,21 +1084,21 @@ public class LogonLogic : ILogic, ICmdHandler
                     1,
                     "无帮派"
                     );
-                
+
             }
             //PlayerRole.Instance.IsNeedResetTable = false;
             ServerSetting.SetLogonServerState(true);
             LogicManager.Instance.Forward(null);
 
-            if(m_IsNewRsg && (m_LogonType == 1 || m_LogonType==2))
+            if (m_IsNewRsg && (m_LogonType == 1 || m_LogonType == 2))
             {
                 //是注册的账号
-                 UpdateAccountInfo(m_LogonType, m_Tonken, m_OpenID);
+                UpdateAccountInfo(m_LogonType, m_Tonken, m_OpenID);
             }
         }
         else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LOGON_RESULT)
         {
-            
+
             NetCmdLogonResult nlr = (NetCmdLogonResult)pack.cmd;
             if (nlr.Result == 0)
             {
@@ -1135,7 +1135,7 @@ public class LogonLogic : ILogic, ICmdHandler
                 SetState(LogonState.LOGON_ERROR);
                 GlobalEffectMgr.Instance.CloseLoadingMessage();
                 NetServices.Instance.Disconnect();
-                GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("join_failed"), 3, false); 
+                GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("join_failed"), 3, false);
             }
             else
             {
@@ -1168,7 +1168,7 @@ public class LogonLogic : ILogic, ICmdHandler
                 LogicManager.Instance.Forward(null);
             }
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_LogonQueueWrite)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_LogonQueueWrite)
         {
             //排队的消息  我们让客户端继续等待
             LC_Cmd_LogonQueueWrite ncb = (LC_Cmd_LogonQueueWrite)pack.cmd;
@@ -1177,12 +1177,12 @@ public class LogonLogic : ILogic, ICmdHandler
             tagQueueWriteEvent pEvent = new tagQueueWriteEvent(ncb.WriteIndex, ncb.WriteSec, true);
             MsgEventHandle.HandleMsg(pEvent);
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_ChannelLogon)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_ChannelLogon)
         {
             //通过平台登录 失败了
             LC_Cmd_ChannelLogon ncb = (LC_Cmd_ChannelLogon)pack.cmd;
             //提示玩家登陆失败了
-            if(ncb.Result == false)
+            if (ncb.Result == false)
             {
                 string str = StringTable.GetString("UOM_Logon_Channel_Failed_1");
                 str = string.Format(str, SDKMgr.Instance.SDK.GetChannelName());
@@ -1195,7 +1195,7 @@ public class LogonLogic : ILogic, ICmdHandler
             }
             return true;
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_PhoneLogon)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_PhoneLogon)
         {
             //手机登陆获取验证码
             LC_Cmd_PhoneLogon ncb = (LC_Cmd_PhoneLogon)pack.cmd;
@@ -1208,7 +1208,7 @@ public class LogonLogic : ILogic, ICmdHandler
             else
             {
                 //提示玩家 错误数据
-                switch(ncb.ErrorID)
+                switch (ncb.ErrorID)
                 {
                     case (Byte)PhoneLogonError.PLE_LogonExists:
                         {
@@ -1234,7 +1234,7 @@ public class LogonLogic : ILogic, ICmdHandler
                 NetServices.Instance.Disconnect();
             }
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_PhoneLogonCheck)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_PhoneLogonCheck)
         {
             LC_Cmd_PhoneLogonCheck ncb = (LC_Cmd_PhoneLogonCheck)pack.cmd;
             if (ncb.Result && ncb.dwUserID != 0)
@@ -1266,22 +1266,22 @@ public class LogonLogic : ILogic, ICmdHandler
                 NetServices.Instance.Disconnect();
             }
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_WeiXinLogon)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_WeiXinLogon)
         {
             LC_Cmd_WeiXinLogon ncb = (LC_Cmd_WeiXinLogon)pack.cmd;
-            if(ncb.Result)
+            if (ncb.Result)
             {
-                 tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_WeiXinLogon_Success);
-                 MsgEventHandle.HandleMsg(pUOM);
+                tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_WeiXinLogon_Success);
+                MsgEventHandle.HandleMsg(pUOM);
             }
             else
             {
-                 tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_WeiXinLogon_Faile_1);
-                 MsgEventHandle.HandleMsg(pUOM);
+                tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_WeiXinLogon_Faile_1);
+                MsgEventHandle.HandleMsg(pUOM);
 
-                 SetState(LogonState.LOGON_ERROR);
-                 GlobalEffectMgr.Instance.CloseLoadingMessage();
-                 NetServices.Instance.Disconnect();
+                SetState(LogonState.LOGON_ERROR);
+                GlobalEffectMgr.Instance.CloseLoadingMessage();
+                NetServices.Instance.Disconnect();
             }
         }
         else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_QQLogon)
@@ -1302,7 +1302,7 @@ public class LogonLogic : ILogic, ICmdHandler
                 NetServices.Instance.Disconnect();
             }
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_SaveAccountInfo)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_SaveAccountInfo)
         {
             LC_Cmd_SaveAccountInfo ncb = (LC_Cmd_SaveAccountInfo)pack.cmd;
             //将账号 和 3个 密码保持起来 供使用
@@ -1316,7 +1316,7 @@ public class LogonLogic : ILogic, ICmdHandler
             //GlobalLogon.Instance.SaveAccountData(GlobalLogon.Instance.AccountData);//立刻保存一次
             return true;
         }
-        else if(pack.cmd.GetCmdType() == NetCmdType.CMD_LC_RsgNewAccount)
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_RsgNewAccount)
         {
             //当前玩家登陆的账号未新注册的
             LC_Cmd_RsgNewAccount ncb = (LC_Cmd_RsgNewAccount)pack.cmd;
@@ -1332,6 +1332,23 @@ public class LogonLogic : ILogic, ICmdHandler
             }
 
             return true;
+        }
+        else if (pack.cmd.GetCmdType() == NetCmdType.CMD_LC_OperatorLogon)
+        {
+            //通过平台登录 失败了
+            LC_Cmd_OperatorLogon ncb = (LC_Cmd_OperatorLogon)pack.cmd;
+            //提示玩家登陆失败了
+            if (ncb.result == false)
+            {
+                string str = StringTable.GetString("UOM_Logon_Channel_Failed_1");
+                str = string.Format(str, SDKMgr.Instance.SDK.GetChannelName());
+                GlobalHallUIMgr.Instance.ShowSystemTipsUI(str, 3, false);
+                GlobalEffectMgr.Instance.CloseLoadingMessage();
+                SetState(LogonState.LOGON_ERROR);
+                NetServices.Instance.Disconnect();
+                SDKMgr.Instance.Logout();
+                return false;
+            }
         }
         else
             return false;
