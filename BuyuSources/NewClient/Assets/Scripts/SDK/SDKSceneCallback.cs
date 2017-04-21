@@ -95,4 +95,27 @@ class SDKSceneCallback:MonoBehaviour
         }
         SDKMgr.Instance.SDKCallback.ExitCallback(ret != SDK.CHANNEL_HAS_EXIT);
     }
+
+    public void LoginDomeCallBack(string str)
+    {
+        string[] results = str.Split('|');
+
+        string userId = results[0];
+        string resultCode = results[1];
+
+        SDKLoginResult lr = new SDKLoginResult();
+
+        if (results[1].Contains("0"))
+        {
+            //登陆失败
+            lr.Result = LoginState.LOGIN_FAILED;
+        }
+        else
+        {
+            lr.Result = LoginState.LOGIN_OK;
+
+            lr.UID = userId;
+        }
+        SDKMgr.Instance.SDKCallback.LoginCallback(lr);
+    }
 }

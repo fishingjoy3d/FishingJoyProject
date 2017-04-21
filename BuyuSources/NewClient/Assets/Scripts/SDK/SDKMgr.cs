@@ -9,7 +9,7 @@ public enum SdkType
 }
 public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
 {
-    public static bool IS_DISABLED_SDK      = false;
+    public static bool IS_DISABLED_SDK      = true;
     public static bool IS_APP_STORE_VER     = false;
     public static SdkType SDK_TYPE          = SdkType.SDK_SELF;
     public static bool IS_SDK_CHANNEL       = SDK_TYPE == SdkType.SDK_SELF;

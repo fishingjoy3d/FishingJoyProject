@@ -40,8 +40,13 @@ public class  GameShare
         m_gownd.transform.SetParent(SceneObjMgr.Instance.UIPanelTransform, false);
         m_texturbg = m_gownd.transform.GetChild(0).GetComponent<UITexture>();
         UIEventListener.Get(m_gownd.transform.GetChild(1).gameObject).onClick = EventClose;
-        UIEventListener.Get(m_gownd.transform.GetChild(2).gameObject).onClick = EventFriend;
-        UIEventListener.Get(m_gownd.transform.GetChild(3).gameObject).onClick = EventFriends;
+
+        GameObject goFriend = m_gownd.transform.GetChild(2).gameObject;
+        GameObject goFriends = m_gownd.transform.GetChild(3).gameObject;
+
+        UIEventListener.Get(goFriend).onClick = EventFriend;
+        UIEventListener.Get(goFriends).onClick = EventFriends;
+
         m_goWndExchage = m_gownd.transform.GetChild(4).gameObject;       
         m_sprItemExchage = m_goWndExchage.transform.GetChild(3).GetComponent<UISprite>();
         m_labelEcchageCount = m_goWndExchage.transform.GetChild(4).GetChild(0).GetComponent<UILabel>();
@@ -54,6 +59,9 @@ public class  GameShare
         //
         m_goWndExchage.SetActive(m_sharetype == ShareType.SHARE_EXCHANGE);
         m_goWndGold.SetActive(m_sharetype == ShareType.SHARE_GOLD);
+
+        goFriend.SetActive(ServerSetting.ShowShare);
+        goFriends.SetActive(ServerSetting.ShowShare);
 
         //设置静态信息
         {

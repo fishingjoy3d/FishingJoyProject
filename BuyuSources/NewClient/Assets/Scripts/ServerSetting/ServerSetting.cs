@@ -61,6 +61,7 @@ public class ServerSetting
     public static string    ShareWebUrl = "", ShareTxt = "", ShareImgUrl = "";
     public static bool      ShowMatch = false;//显示比赛按钮
     public static bool      ShowThirdLoginBtn = false;//显示第三方登录按钮
+    public static bool      ShowShare = false;//显示分享按钮
     public static void GlobalInit()
     {
         if (SDKMgr.PACKAGE_NAME == "com.leduo.buyu.uc")
