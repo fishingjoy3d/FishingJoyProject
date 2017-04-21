@@ -124,6 +124,7 @@
     <ClInclude Include="IApppay\SignUtils.h" />
     <ClInclude Include="IOSPayManager.h" />
     <ClInclude Include="NormalRechargeManager.h" />
+    <ClInclude Include="OperatorHelper.h" />
     <ClInclude Include="OrderOnlyManager.h" />
     <ClInclude Include="PhoneLogon.h" />
     <ClInclude Include="PhonePayManager.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="IOSPayManager.cpp" />
     <ClCompile Include="NormalRechargeManager.cpp" />
     <ClCompile Include="OperateServer.cpp" />
+    <ClCompile Include="OperatorHelper.cpp" />
     <ClCompile Include="OrderOnlyManager.cpp" />
     <ClCompile Include="PhoneLogon.cpp" />
     <ClCompile Include="PhonePayManager.cpp" />

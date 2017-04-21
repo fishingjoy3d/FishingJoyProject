@@ -120,7 +120,6 @@
     <ClCompile Include="LogonCache.cpp" />
     <ClCompile Include="LogonManager.cpp" />
     <ClCompile Include="LogonServer.cpp" />
-    <ClCompile Include="OperatorHelper.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -134,7 +133,6 @@
     <ClInclude Include="FishServer.h" />
     <ClInclude Include="LogonCache.h" />
     <ClInclude Include="LogonManager.h" />
-    <ClInclude Include="OperatorHelper.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

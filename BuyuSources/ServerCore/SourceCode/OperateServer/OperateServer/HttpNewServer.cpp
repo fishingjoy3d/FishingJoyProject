@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "HttpNewServer.h"
 #include "..\CommonFile\json/json.h"
+#include "FishServer.h"
 
 HttpNewServer::HttpNewServer()
 {
@@ -129,7 +130,10 @@ void HttpNewServer::DomeTestLogin(const char* data, HttpClientData* c)
 	std::string user_id = map_argu["userId"];
 	std::string app_code = map_argu["appCode"];
 	std::string login_No = map_argu["loginNo"];
-	 
+	UINT count = 0;
+	WCHAR* entry =  CharToWChar(user_id.c_str(), count);
+	g_FishServer.GetOperatorHelper().AcceptDomeServerLogon(entry);
+	delete[] entry;
 }
 void HttpNewServer::DomeLogin(const char* data, HttpClientData* c)
 {
@@ -138,4 +142,8 @@ void HttpNewServer::DomeLogin(const char* data, HttpClientData* c)
 	std::string user_id = map_argu["userId"];
 	std::string app_code = map_argu["appCode"];
 	std::string login_No = map_argu["loginNo"];
+	UINT count = 0;
+	WCHAR* entry = CharToWChar(user_id.c_str(), count);
+	g_FishServer.GetOperatorHelper().AcceptDomeServerLogon(entry);
+	delete[] entry;
 }

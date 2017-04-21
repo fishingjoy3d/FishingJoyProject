@@ -648,6 +648,8 @@ bool FishServer::HandleDataBaseMsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	switch (pCmd->GetCmdType())
 	{
 		//登陆   OK
+	case DBR_Operator_Logon:
+		return OnHandleOperatorLogon(Index, ClientID, pCmd);
 	case DBR_AccountLogon:
 		return OnHandleAccountLogon(Index, ClientID, pCmd);
 	case DBR_QueryLogon:
@@ -986,6 +988,8 @@ bool FishServer::HandleDataBaseMsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	}
 	return true;
 }
+
+
 bool FishServer::OnHandleAccountLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 {
 	//处理命令
@@ -1148,6 +1152,109 @@ bool FishServer::OnHandleQueryLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	OnAddDBResult(Index, ClientID, msg);
 	return true;
 }
+
+bool FishServer::OnHandleOperatorLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
+{
+	SqlTable pTable1;
+	DBR_Cmd_Operator_Logon* pMsg = (DBR_Cmd_Operator_Logon*)pCmd;
+	UINT Size = 0;
+	char* AccountName = WCharToChar(pMsg->logon.AccountName, Size);
+	char* DestAccountName = (char*)malloc((Size * 2 + 1) * sizeof(char));
+	if (!DestAccountName)
+	{
+		ASSERT(false);
+		return false;
+	}
+	ZeroMemory(DestAccountName, (Size * 2 + 1) * sizeof(char));
+	m_Sql[Index].GetMySqlEscapeString(AccountName, Size, DestAccountName);
+
+	Size = 0;
+	char* MacAddress = WCharToChar(pMsg->logon.MacAddress, Size);
+	char* DestMacAddress = (char*)malloc((Size * 2 + 1) * sizeof(char));
+	m_Sql[Index].GetMySqlEscapeString(MacAddress, Size, DestMacAddress);
+
+	//参数一个随机长度的 名称 8个长度  游客+ '长度为6的 数据'
+	string strNickName = "用户";
+	for (size_t i = 0; i < MAX_NICKNAME - 2; ++i)
+	{
+		BYTE ID = RandUInt() % 62;//0-61
+		char ch = 0;
+		if (ID >= 0 && ID < 10)
+		{
+			ch = ID + 48;
+			//48-57
+		}
+		else if (ID >= 10 && ID < 36)
+		{
+			ch = ID + 55;
+			//65-90
+		}
+		else
+		{
+			ch = ID + 61;
+			//97-122
+		}
+		strNickName = strNickName + ch;
+	}
+
+	tm NowTime;
+	time_t Now = time(null);
+	errno_t Err = localtime_s(&NowTime, &Now);
+	if (Err != 0)
+	{
+		free(DestAccountName);
+		free(AccountName);
+		free(DestMacAddress);
+		free(MacAddress);
+
+		ASSERT(false);
+		return false;
+	}
+
+	int256 RateValue;
+	int256Handle::Clear(RateValue);
+	DWORD InitRateValue = m_Config.GetSystemConfig().InitRateValue;
+	for (BYTE i = 0; i < 32; ++i)//玩家的默认倍率 只可以是前32个
+	{
+		if ((InitRateValue& (1 << i)) != 0)
+		{
+			int256Handle::SetBitStates(RateValue, i, true);
+		}
+		else if ((InitRateValue& (1 << i)) == 0)
+			break;
+	}
+
+	char pRateStates[MAXBLOB_LENGTH] = { 0 };
+	m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
+	char SqlStr[MAXSQL_LENGTH] = { 0 };
+	//IN `Account` varchar(32),Mac varchar(56),IN `PasswordCrc1` int unsigned,IN `PasswordCrc2` int unsigned,IN `PasswordCrc3` 
+	//int unsigned,IN `ChannelID` int unsigned, IN `NickName` varchar(8),IN `Gender` bit,IN `InitGlobelSum` int unsigned,IN `InitRateValue`  blob,IN `RsgIP` varchar(16),IN `LogTime` datetime
+		free(DestAccountName);
+		free(AccountName);
+		free(DestMacAddress);
+		free(MacAddress);
+		DBO_Cmd_Operator_Logon* msg = (DBO_Cmd_Operator_Logon*)CreateCmd(DBO_Operator_Logon, sizeof(DBO_Cmd_Operator_Logon));
+		msg->ClientID = pMsg->ClientID;
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishAccountRsg('%s','%s','%u','%u','%u','%s',%d,'%u','%s','%d.%d.%d.%d','%d-%d-%d %d:%d:%d');", DestAccountName, DestMacAddress,
+		pMsg->logon.PasswordCrc1, pMsg->logon.PasswordCrc2,
+		pMsg->logon.PasswordCrc3, pMsg->logon.ChannelID, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, pRateStates,
+		pMsg->logon.ClientIP & 0xff, (pMsg->logon.ClientIP >> 8) & 0xff, (pMsg->logon.ClientIP >> 16) & 0xff, (pMsg->logon.ClientIP >> 24) & 0xff,
+		NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec);
+	if (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1)
+	{
+		msg->dwUserID = pTable1.GetUint(0, 0);
+	}
+	else
+	{
+		msg->dwUserID = 0;
+		LogInfoToFile(DBErrorSqlFileName, SqlStr);
+		ASSERT(false);
+	}
+	OnAddDBResult(Index, ClientID, msg);
+}
+
+
+
 bool FishServer::OnHandleAccountRsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 {
 	//处理玩家账号注册

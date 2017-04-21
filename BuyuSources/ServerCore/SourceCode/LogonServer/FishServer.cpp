@@ -1420,6 +1420,34 @@ void FishServer::HandleClientMsg(ServerClientData* pClient, NetCmd* pCmd)
 			return;
 		}
 		break;
+	case CL_OperatorLogon:
+		{
+
+			CL_Cmd_OperatorLogon* pMsg = (CL_Cmd_OperatorLogon*)pCmd;
+			if (!m_FishConfig.CheckVersionAndPathCrc(pMsg->logon.VersionID, pMsg->logon.PathCrc))
+			{
+				ASSERT(false);
+				LC_Cmd_CheckVersionError msg;
+				SetMsgInfo(msg, GetMsgType(Main_Logon, LC_CheckVersionError), sizeof(LC_Cmd_CheckVersionError));
+				msg.PathCrc = m_FishConfig.GetSystemConfig().PathCrc;
+				msg.VersionID = m_FishConfig.GetSystemConfig().VersionID;
+				SendNewCmdToClient(pClient, &msg);
+
+				DelClient pDel;
+				pDel.LogTime = timeGetTime();
+				pDel.SocketID = pClient->OutsideExtraData;
+				m_DelSocketVec.push_back(pDel);
+
+				LogInfoToFile("LogonError.txt", TEXT("客户端版本错误 渠道登陆失败"));
+				return;
+			}
+			LO_Cmd_OperatorLogon msg;
+			SetMsgInfo(msg, GetMsgType(Main_Logon, LO_OperatorLogon), sizeof(msg));
+			msg.logon = pMsg->logon;
+			msg.client_id = pClient->OutsideExtraData;
+			SendNetCmdToOperate(&msg);
+		}
+		break;
 	case CL_QQLogon:
 		{
 			//玩家试图通过微信登陆
@@ -1520,6 +1548,8 @@ void FishServer::HandleClientMsg(ServerClientData* pClient, NetCmd* pCmd)
 			return;
 		}
 		break;
+
+
 	case CL_QueryLogon:
 		{
 			//g_FishServer.ShowInfoToWin("客户端进行快速登陆1");
@@ -2035,6 +2065,77 @@ void FishServer::HandleDataBaseMsg(NetCmd* pCmd)
 			msgGameServer.LogonID = m_LogonConfigID;
 			SendNetCmdToGameServer(pConfig->NetworkID, &msgGameServer);
 			return;
+		}
+		break;
+	case DBO_Operator_Logon:
+		{
+			DBO_Cmd_Operator_Logon* pMsg = (DBO_Cmd_Operator_Logon*)pCmd;
+			if (pMsg)
+			{
+				ASSERT(false);
+				return;
+			}
+			ServerClientData* pClient = GetClientServerData(pMsg->ClientID);
+			if (!pClient)//玩家已经离线了 无法处理了
+			{
+				ASSERT(false);
+				return;
+			}
+			if (pMsg->dwUserID == 0)
+			{
+				LC_Cmd_AccountOnlyID msgClient;
+				SetMsgInfo(msgClient, GetMsgType(Main_Logon, LC_AccountOnlyID), sizeof(LC_Cmd_AccountOnlyID));
+				msgClient.dwOnlyID = 0;
+				msgClient.dwUserID = pMsg->dwUserID;
+				msgClient.GameIp = 0;
+				msgClient.GamePort = 0;
+				msgClient.GateIp = 0;
+				msgClient.GatePort = 0;
+				msgClient.LogonType = 2;
+				SendNewCmdToClient(pClient, &msgClient);
+
+				m_LogonCacheManager.OnCheckTempAccountInfo(pClient->OutsideExtraData, pMsg->dwUserID, false);
+
+				DelClient pDel;
+				pDel.LogTime = timeGetTime();
+				pDel.SocketID = pClient->OutsideExtraData;
+				m_DelSocketVec.push_back(pDel);
+
+				LogInfoToFile("LogonError.txt", TEXT("渠道 客户端账号密码错误 数据库普通注册失败"));
+				return;
+			}
+			m_LogonCacheManager.OnCheckTempAccountInfo(pClient->OutsideExtraData, pMsg->dwUserID, true);
+
+			GameServerConfig* pConfig = g_FishServerConfig.GetGameServerConfig(m_LogonManager.GetGameServerConfigIDByUserID(pMsg->dwUserID));
+			if (!pConfig)
+			{
+				ASSERT(false);
+				return;
+			}
+			/*ServerClientData* pGameServer = GetServerServerData(pConfig->NetworkID);
+			if (!pGameServer)
+			{
+			ASSERT(false);
+			return;
+			}*/
+			if (!OnAddUserWriteGameServer(pMsg->dwUserID, pClient->OutsideExtraData))
+			{
+				ASSERT(false);
+				return;
+			}
+			DWORD OnlyID = RandUInt();
+			//1.发送命令到GameServer去
+			OnSendChannelInfoToGameServer(pMsg->dwUserID, pClient->OutsideExtraData, pConfig->NetworkID);
+			LG_Cmd_AccountOnlyID msgGameServer;
+			SetMsgInfo(msgGameServer, GetMsgType(Main_Logon, LG_AccountOnlyID), sizeof(LG_Cmd_AccountOnlyID));
+			msgGameServer.dwOnlyID = OnlyID;
+			msgGameServer.dwUserID = pMsg->dwUserID;
+			msgGameServer.ClientID = pClient->OutsideExtraData;
+			msgGameServer.GameServerID = pConfig->NetworkID;
+			msgGameServer.LogonTypeID = 2;
+			msgGameServer.LogonID = m_LogonConfigID;
+			SendNetCmdToGameServer(pConfig->NetworkID, &msgGameServer);
+			return;	
 		}
 		break;
 	case DBO_AccountRsg:
@@ -2633,6 +2734,90 @@ void FishServer::HandleOperateMsg(NetCmd* pCmd)
 				LogInfoToFile("LogonError.txt", TEXT("客户端微信登陆失败"));
 			}
 			return;
+		}
+		break;
+	case OL_OperatorLogon:
+		{
+			OL_Cmd_OperatorLogon* pMsg = (OL_Cmd_OperatorLogon*)pCmd;
+			ServerClientData * pClient = GetClientServerData(pMsg->client_id);
+			if (!pClient)
+			{
+				ASSERT(false);
+				return;
+			}
+			if (pMsg->result)
+			{
+
+				if (m_LogonCacheManager.IsExistsAccount(pMsg->logon.AccountName))
+				{
+					LC_Cmd_AccountOnlyID msgClient;
+					SetMsgInfo(msgClient, GetMsgType(Main_Logon, LC_AccountOnlyID), sizeof(LC_Cmd_AccountOnlyID));
+					msgClient.dwOnlyID = 0;
+					msgClient.dwUserID = 0;
+					msgClient.GameIp = 0;
+					msgClient.GamePort = 0;
+					msgClient.GateIp = 0;
+					msgClient.GatePort = 0;
+					msgClient.LogonType = 2;
+					SendNewCmdToClient(pClient, &msgClient);
+
+					DelClient pDel;
+					pDel.LogTime = timeGetTime();
+					pDel.SocketID = pClient->OutsideExtraData;
+					m_DelSocketVec.push_back(pDel);
+
+					LogInfoToFile("LogonError.txt", TEXT("客户端账号已经存在 渠道注册失败 玩家账号:%s 密码:%u,%u,%u"), pMsg->logon.AccountName, pMsg->logon.PasswordCrc1, 
+						pMsg->logon.PasswordCrc2, pMsg->logon.PasswordCrc3);
+				}
+				DBR_Cmd_Operator_Logon msg;
+				msg.ClientID = pMsg->client_id;
+				msg.logon = pMsg->logon;
+				SetMsgInfo(msg, DBR_Operator_Logon, sizeof(DBR_Cmd_Operator_Logon));
+				SendNetCmdToDB(&msg);
+
+				TempAccountCacheInfo pData;
+				pData.ClientID = pClient->OutsideExtraData;
+				TCHARCopy(pData.AccountInfo.AccountName, CountArray(pData.AccountInfo.AccountName), pMsg->logon.AccountName, _tcslen(pMsg->logon.AccountName));
+				TCHARCopy(pData.AccountInfo.MacAddress, CountArray(pData.AccountInfo.MacAddress), pMsg->logon.MacAddress, _tcslen(pMsg->logon.MacAddress));
+				pData.AccountInfo.PasswordCrc1 = pMsg->logon.PasswordCrc1;
+				pData.AccountInfo.PasswordCrc2 = pMsg->logon.PasswordCrc2;
+				pData.AccountInfo.PasswordCrc3 = pMsg->logon.PasswordCrc3;
+				m_LogonCacheManager.OnAddTempAccountInfo(pData);
+
+			}
+			else
+			{
+				LC_Cmd_OperatorLogon msg_logon_failed;
+				msg_logon_failed.channel = pMsg->logon.ChannelID;
+				msg_logon_failed.result = false;
+				SetMsgInfo(msg_logon_failed, GetMsgType(Main_Logon, LC_OperatorLogon), sizeof(LC_Cmd_OperatorLogon));
+				SendNewCmdToClient(pClient, &msg_logon_failed);
+				LogInfoToFile("LogonError.txt", TEXT("渠道登陆验证失败"));
+			}
+
+			
+
+			/*
+						DBR_Cmd_AccountRsg msg;
+			SetMsgInfo(msg,DBR_AccountRsg, sizeof(DBR_Cmd_AccountRsg));
+			msg.ClientID = pClient->OutsideExtraData;
+			TCHARCopy(msg.AccountName, CountArray(msg.AccountName), pMsg->AccountName, _tcslen(pMsg->AccountName));
+			TCHARCopy(msg.MacAddress, CountArray(msg.MacAddress), pMsg->MacAddress, _tcslen(pMsg->MacAddress));
+			msg.PasswordCrc1 = pMsg->PasswordCrc1;
+			msg.PasswordCrc2 = pMsg->PasswordCrc2;
+			msg.PasswordCrc3 = pMsg->PasswordCrc3;
+			msg.ClientIP = pClient->IP;
+			SendNetCmdToDB(&msg);
+
+			TempAccountCacheInfo pData;
+			pData.ClientID = pClient->OutsideExtraData;
+			TCHARCopy(pData.AccountInfo.AccountName, CountArray(pData.AccountInfo.AccountName), pMsg->AccountName, _tcslen(pMsg->AccountName));
+			TCHARCopy(pData.AccountInfo.MacAddress, CountArray(pData.AccountInfo.MacAddress), pMsg->MacAddress, _tcslen(pMsg->MacAddress));
+			pData.AccountInfo.PasswordCrc1 = pMsg->PasswordCrc1;
+			pData.AccountInfo.PasswordCrc2 = pMsg->PasswordCrc2;
+			pData.AccountInfo.PasswordCrc3 = pMsg->PasswordCrc3;
+			m_LogonCacheManager.OnAddTempAccountInfo(pData);
+			*/
 		}
 		break;
 	case OL_QQLogon:
