@@ -61,7 +61,11 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
         IS_SDK_CHANNEL = SDK_TYPE == SdkType.SDK_CHANNEL;
         if (IS_SDK_CHANNEL)
         {
+#if DOME
+            m_Interface = new SDKChannelDome();
+#else
             m_Interface = new SDKChannel();
+#endif
             m_SceneCallbackObj = new GameObject();
             m_SceneCallbackObj.name = "SDKCallbackObj";
             m_SceneCallback = m_SceneCallbackObj.AddComponent<SDKSceneCallback>();
