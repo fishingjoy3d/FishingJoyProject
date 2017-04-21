@@ -3489,6 +3489,7 @@ bool FishServer::OnHandleAddOperatorSystemMail(BYTE Index, BYTE ClientID, NetCmd
 		free(Context);
 		SqlTable pTable1;
 		GM_AddOperatorSystemMail* msg = (GM_AddOperatorSystemMail*)CreateCmd(DBO_ADD_OPERATOR_SYSTEM_MAIL, sizeof(GM_AddOperatorSystemMail));
+		msg->mail = pMsg->mail;
 		if (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1)
 		{
 			if (pTable1.GetUint(0, 0) == 0)
@@ -3507,6 +3508,7 @@ bool FishServer::OnHandleAddOperatorSystemMail(BYTE Index, BYTE ClientID, NetCmd
 		}
 		OnAddDBResult(Index, ClientID, msg);
 	}
+	return true;
 }
 
 bool FishServer::OnHandleAddUserMail(BYTE Index, BYTE ClientID, NetCmd* pCmd)

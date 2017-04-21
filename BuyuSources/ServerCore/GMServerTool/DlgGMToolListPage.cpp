@@ -14,7 +14,7 @@ IMPLEMENT_DYNAMIC(DlgGMToolListPage, CDialogEx)
 DlgGMToolListPage::DlgGMToolListPage(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_DIALOG_CMD_LIST, pParent)
 {
-
+	_CurCtrlPop = 0;
 }
 
 DlgGMToolListPage::~DlgGMToolListPage()
@@ -86,17 +86,17 @@ BOOL DlgGMToolListPage::OnInitDialog()
 	_ListCtrlType = ListCtrlType_CenterRole;
 	m_ListCtrlRoles.InsertColumn(0, TEXT("user_id"), LVCFMT_CENTER, 40, 50);
 	m_ListCtrlRoles.InsertColumn(1, TEXT("nick_name"), LVCFMT_CENTER, 140, 50);
-	m_ListCtrlRoles.InsertColumn(2, TEXT("level"), LVCFMT_CENTER, 40, 50);
+	m_ListCtrlRoles.InsertColumn(2, TEXT("level"), LVCFMT_CENTER, 80, 50);
 	m_ListCtrlRoles.InsertColumn(3, TEXT("gender"), LVCFMT_CENTER, 40, 50);
 	m_ListCtrlRoles.InsertColumn(4, TEXT("vip_level"), LVCFMT_CENTER, 40, 50);
 	m_ListCtrlRoles.InsertColumn(5, TEXT("particular_state"), LVCFMT_CENTER, 40, 50);
 
 	m_ListCtrlRoles.InsertColumn(6, TEXT("game_id"), LVCFMT_CENTER, 40, 50);
-	m_ListCtrlRoles.InsertColumn(7, TEXT("dwGlobeNum"), LVCFMT_CENTER, 40, 50);
+	m_ListCtrlRoles.InsertColumn(7, TEXT("金币"), LVCFMT_CENTER, 140, 50); //dwGlobeNum
 	m_ListCtrlRoles.InsertColumn(8, TEXT("dwMedalNum"), LVCFMT_CENTER, 40, 50);
-	m_ListCtrlRoles.InsertColumn(9, TEXT("dwCurrencyNum"), LVCFMT_CENTER, 40, 50);
-	m_ListCtrlRoles.InsertColumn(10, TEXT("dwProduction"), LVCFMT_CENTER, 40, 50);
-	m_ListCtrlRoles.InsertColumn(11, TEXT("dwGameTime"), LVCFMT_CENTER, 40, 50);
+	m_ListCtrlRoles.InsertColumn(9, TEXT("钻石"), LVCFMT_CENTER, 40, 50); //dwCurrencyNum
+	m_ListCtrlRoles.InsertColumn(10, TEXT("当天获得金币"), LVCFMT_CENTER, 140, 50); //dwProduction
+	m_ListCtrlRoles.InsertColumn(11, TEXT("当天游戏时间"), LVCFMT_CENTER, 140, 50); //dwGameTime
 	m_ListCtrlRoles.InsertColumn(12, TEXT("SendGiffSum"), LVCFMT_CENTER, 40, 50);
 	m_ListCtrlRoles.InsertColumn(13, TEXT("AcceptGiffSum"), LVCFMT_CENTER, 40, 50);
 
@@ -358,7 +358,7 @@ void DlgGMToolListPage::OnBnClickedBtnSendMsg()
 void DlgGMToolListPage::OnBnClickedBtnSendOperatorMail()
 {
 	DlgSystemMail dlg;
-	tagRoleInfo* info = (tagRoleInfo*)m_ListCtrlRoles.GetItemData(_CurCtrlPop);	
+	//tagRoleInfo* info = (tagRoleInfo*)m_ListCtrlRoles.GetItemData(_CurCtrlPop);	
 	dlg.SetDlgType(DlgSystemMailType_SomePlayers);
 	if (dlg.DoModal() == IDOK)
 	{

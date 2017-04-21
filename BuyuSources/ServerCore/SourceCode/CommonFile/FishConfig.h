@@ -78,6 +78,7 @@ public:
 	bool LoadGMToolConfig(const TCHAR* FilePath);
 	bool LoadRobotConfig(const TCHAR* FilePath);
 	HashMap<DWORD, tagNotice>& GetAllNoticeInfo(){ return m_NoticeMap; }
+	const HashMap<DWORD, tagItemConfig>& GetAllItemConfigs() { return m_ItemMap; }
 private:
 	//void OnCreateGlobelTaskInfo();
 	bool LoadFishCheck(WHXmlNode* pFishConfig);//加载签到的数据

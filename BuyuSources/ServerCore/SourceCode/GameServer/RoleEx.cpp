@@ -320,13 +320,19 @@ void CRoleEx::ChangeRoleSocketID(DWORD SocketID)
 
 void CRoleEx::CheckSystemOperatorMail()
 {
+	g_FishServer.GetSystemMailManager().TryGetSystemMail(this);
+	/*
 	time_t cur_time = time(NULL);
 	
 	std::vector<int> VC_EmptyIndexs;
 	bool modify = false;
-	const SystemMailManager::MAILS* SystemMails = g_FishServer.GetSystemMailManager().GetMails();
-	SystemMailManager::MAILS::const_iterator it = SystemMails->begin();
-	for (; it != SystemMails->end(); ++it)
+	//const SystemMailManager::MAILS& SystemMails = g_FishServer.GetSystemMailManager().
+	//if (SystemMails.size() == 0)
+	//{
+	//	return;
+	//}	
+	MAILS::const_iterator it = g_FishServer.GetSystemMailManager()._OperatorMails.begin();
+	for (; it != g_FishServer.GetSystemMailManager()._OperatorMails.end(); ++it)
 	{
 		VC_EmptyIndexs.clear();
 		const tagOperatorSystemMail& MailEntry = it->second;
@@ -388,6 +394,7 @@ void CRoleEx::CheckSystemOperatorMail()
 		SetMsgInfo(msg, DBR_SAVE_ROLE_SYSTEM_MAIL_RECORD, sizeof(DBR_Cmd_SaveSystemMailRecord));
 		g_FishServer.SendNetCmdToDB(&msg);		
 	}
+	*/
 	
 }
 
