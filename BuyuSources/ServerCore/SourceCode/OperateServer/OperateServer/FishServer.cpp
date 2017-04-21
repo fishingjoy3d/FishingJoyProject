@@ -205,6 +205,7 @@ bool FishServer::MainUpdate()
 		m_PhoneLogon.OnUpdate(dwTimer);
 		m_WeiXinLogon.Update();
 		m_QQLogon.Update();
+		m_OperatorHelper.Update();
 		
 		//1.´¦ÀíGameServer µÄÃüÁî
 		if (!m_ClintList.empty())
@@ -1067,6 +1068,12 @@ bool FishServer::HandleGameServerMsg(ServerClientData* pClient, NetCmd* pCmd)
 	{
 		switch (pCmd->SubCmdType)
 		{
+		case LO_OperatorLogon:
+			{
+				LO_Cmd_OperatorLogon* pMsg = (LO_Cmd_OperatorLogon*)pCmd;
+				m_OperatorHelper.AcceptDomeClientLogon(pMsg->logon, pMsg->client_id, pClient);
+			}
+			break;
 		case LO_ChannelLogon:
 			{
 				LO_Cmd_ChannelLogon* pMsg = (LO_Cmd_ChannelLogon*)pCmd;

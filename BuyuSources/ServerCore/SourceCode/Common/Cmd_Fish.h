@@ -2683,8 +2683,36 @@ enum FishDBCmd
 	DBR_LOAD_OPERATOR_SYSTEM_MAIL = DBR_OPERATOR_SYSTEM_MAIL_INIT + 4,
 	DBO_LOAD_OPERATOR_SYSTEM_MAIL = DBR_OPERATOR_SYSTEM_MAIL_INIT + 5,
 
-
+	DBR_Operator_Logon_Init,
+	DBR_Operator_Logon = DBR_Operator_Logon_Init +1,
+	DBO_Operator_Logon = DBR_Operator_Logon_Init + 1,
 };
+struct tagLogon
+{
+	TCHAR	AccountName[ACCOUNT_LENGTH + 1];
+	DWORD	PasswordCrc1;
+	DWORD	PasswordCrc2;
+	DWORD	PasswordCrc3;
+	TCHAR	MacAddress[MAC_ADDRESS_LENGTH + 1];//Mac地址
+	BYTE	PlatformID;//平台的ID
+	int		ChannelID;
+	DWORD   VersionID;
+	DWORD	PathCrc;
+	TCHAR	External[LOGON_EXTERNAL_LENGTH + 1];//Mac地址
+	DWORD	ClientIP;
+};
+struct DBR_Cmd_Operator_Logon : public NetCmd
+{	
+	DWORD ClientID;
+	tagLogon logon;
+};
+
+struct DBO_Cmd_Operator_Logon : public NetCmd
+{
+	DWORD ClientID;	
+	DWORD dwUserID;
+};
+
 
 struct DBR_Cmd_AccountLogon : public NetCmd
 {
@@ -4329,66 +4357,69 @@ enum LogonCmd
 
 	LC_AccountLogonToScreen = 14,//玩家直接登陆到场景
 
-	LC_ServerChangeSocket	= 15,//玩家在游戏中被顶掉了
+	LC_ServerChangeSocket = 15,//玩家在游戏中被顶掉了
 
-	CL_ResetPassword		=16,
-	LC_ResetPassword		=17,
+	CL_ResetPassword = 16,
+	LC_ResetPassword = 17,
 
-	CL_AccountResetAccount	=18,
-	LC_AccountResetAccount  = 19,
+	CL_AccountResetAccount = 18,
+	LC_AccountResetAccount = 19,
 
-	LC_LogonQueueWrite		= 20,
+	LC_LogonQueueWrite = 20,
 
-	GL_ResetPassword		= 21,
-	GL_ResetAccount			= 22,
+	GL_ResetPassword = 21,
+	GL_ResetAccount = 22,
 
 
-	CL_GetNewAccount		=23,
-	LC_GetNewAccount		=24,
+	CL_GetNewAccount = 23,
+	LC_GetNewAccount = 24,
 
-	LC_CheckVersionError    =25,
-	LC_AccountIsFreeze	    = 26,
+	LC_CheckVersionError = 25,
+	LC_AccountIsFreeze = 26,
 
 	//渠道的登陆
-	CL_ChannelLogon			= 30,//客户端发起登陆
-	LO_ChannelLogon			= 31,
-	OL_ChannelLogon			= 32,
-	LC_ChannelLogon			= 33,
+	CL_ChannelLogon = 30,//客户端发起登陆
+	LO_ChannelLogon = 31,
+	OL_ChannelLogon = 32,
+	LC_ChannelLogon = 33,
 
 	//快速登陆
-	CL_QueryLogon			= 40,
-	LG_ChannelInfo			= 41,
+	CL_QueryLogon = 40,
+	LG_ChannelInfo = 41,
 
 	//手机号码登陆
-	CL_PhoneLogon			= 50,
-	LO_PhoneLogon			= 51,
-	OL_PhoneLogon			= 52,
-	LC_PhoneLogon			= 53,
-	CL_PhoneLogonCheck      = 54,
-	LO_PhoneLogonCheck		= 55,
-	OL_PhoneLogonCheck		= 56,
-	LC_PhoneLogonCheck		= 57,
-	LC_SaveAccountInfo      = 58,
+	CL_PhoneLogon = 50,
+	LO_PhoneLogon = 51,
+	OL_PhoneLogon = 52,
+	LC_PhoneLogon = 53,
+	CL_PhoneLogonCheck = 54,
+	LO_PhoneLogonCheck = 55,
+	OL_PhoneLogonCheck = 56,
+	LC_PhoneLogonCheck = 57,
+	LC_SaveAccountInfo = 58,
 
 	//手机二级密码登陆
-	CL_PhoneSecPwd			= 70,
+	CL_PhoneSecPwd = 70,
 
 	//WeiXin
-	CL_WeiXinLogon			= 80,
-	LO_WeiXinLogon			= 81,
-	OL_WeiXinLogon			= 82,
-	LC_WeiXinLogon			= 83,
+	CL_WeiXinLogon = 80,
+	LO_WeiXinLogon = 81,
+	OL_WeiXinLogon = 82,
+	LC_WeiXinLogon = 83,
 
 	//QQ
-	CL_QQLogon				= 84,
-	LO_QQLogon				= 85,
-	OL_QQLogon				= 86,
-	LC_QQLogon				= 87,
+	CL_QQLogon = 84,
+	LO_QQLogon = 85,
+	OL_QQLogon = 86,
+	LC_QQLogon = 87,
 
 	//
-	LC_RsgNewAccount		= 88,
+	LC_RsgNewAccount = 88,
 
-	CL_ChannelLogon			= 89,
+	CL_OperatorLogon = 89,
+	LC_OperatorLogon = 90,
+	LO_OperatorLogon = 91,
+	OL_OperatorLogon = 92,
 };
 
 enum ChannelType
@@ -4398,22 +4429,27 @@ enum ChannelType
 
 };
 
-struct tagLogon
+struct LC_Cmd_OperatorLogon : public NetCmd
 {
-	TCHAR	AccountName[ACCOUNT_LENGTH + 1];
-	DWORD	PasswordCrc1;
-	DWORD	PasswordCrc2;
-	DWORD	PasswordCrc3;
-	TCHAR	MacAddress[MAC_ADDRESS_LENGTH + 1];//Mac地址
-	BYTE	PlateFormID;//平台的ID
-	ChannelType   ChannelID;
-	DWORD   VersionID;
-	DWORD	PathCrc;
-	TCHAR	External[LOGON_EXTERNAL_LENGTH + 1];//Mac地址
+	int channel;
+	bool result;
 };
-struct CL_Cmd_ChannelLogon : public NetCmd
+struct CL_Cmd_OperatorLogon : public NetCmd
 {
 	tagLogon logon;
+};
+
+struct LO_Cmd_OperatorLogon : public NetCmd
+{
+	tagLogon logon;
+	BYTE     client_id;
+};
+
+struct OL_Cmd_OperatorLogon : public NetCmd
+{
+	tagLogon logon;
+	BYTE     client_id;
+	bool	 result;
 };
 
 struct CL_Cmd_QueryLogon : public NetCmd

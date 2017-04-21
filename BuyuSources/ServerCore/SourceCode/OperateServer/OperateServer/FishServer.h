@@ -16,6 +16,7 @@
 #include "WeiXinUserInfoManager.h"
 #include "QQUserInfoManager.h"
 #include "HttpNewServer.h"
+#include "OperatorHelper.h"
 enum HttpType
 {
 	HT_Recharge = 1,//请求注册
@@ -63,6 +64,7 @@ public:
 	NormalRechargeManager& GetNormalRechargeManager(){ return m_NormalRechargeManager; }
 	IOSPayManager& GetIOSPayManager(){ return m_IOSPayManager; }
 	OrderOnlyManager& GetOrderOnlyManager(){ return m_OrderOnlyManager; }
+	OperatorHelper& GetOperatorHelper() { return m_OperatorHelper; }
 
 	void			OnFinish();
 
@@ -142,7 +144,7 @@ private:
 	BuyEntityManager					m_BuyEntityManager;//实体物品购买
 	BindEmailManager					m_BindEmailManager;
 	UseRMBManager						m_UseRMBManager;
-
+	OperatorHelper						m_OperatorHelper;
 	SafeList<AfxNetworkClientOnce*>      m_AfxAddClient;
 
 	ChannelLogonManager					m_ChannelLogon;

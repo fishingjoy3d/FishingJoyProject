@@ -64,7 +64,8 @@ private:
 	//数据库具体的操作
 	//具体数据库操作的函数
 	//1.登陆相关
-	bool OnHandleAccountLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd);//账号登陆
+	bool OnHandleOperatorLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+	bool OnHandleAccountLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd);//账号登陆	
 	bool OnHandleQueryLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnHandleAccountRsg(BYTE Index, BYTE ClientID, NetCmd* pCmd);//账号注册
 	bool OnHandlePhoneSecPwdLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd);
