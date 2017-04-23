@@ -744,6 +744,26 @@ public class LogonLogic : ILogic, ICmdHandler
         cmdLogon.PathCrc = ServerSetting.RES_VERSION;
         
         NetServices.Instance.Send<CL_Cmd_ChannelLogon>(cmdLogon);
+
+
+        CL_Cmd_OperatorLogon cmd = new CL_Cmd_OperatorLogon();
+        cmd.SetCmdType(NetCmdType.CMD_CL_OperatorLogon);
+
+        cmd.logon.AccountName = logonData.UID;
+
+        cmd.logon.ChannelID = 0;
+        cmd.logon.PasswordCrc1 = 1;
+        cmd.logon.PasswordCrc2 = 2;
+        cmd.logon.PasswordCrc3 = 3;
+
+        cmd.logon.ClientIP = 12;
+
+        cmd.logon.MacAddress = Utility.GetMacAddress();
+        cmd.logon.VersionID = ServerSetting.ClientVer;
+        cmd.logon.PlatformID = (Byte)RuntimeInfo.GetPlatform();
+        cmd.logon.PathCrc = ServerSetting.RES_VERSION;
+
+        NetServices.Instance.Send<CL_Cmd_OperatorLogon>(cmd);
     }
     void StartConnect()
     {
