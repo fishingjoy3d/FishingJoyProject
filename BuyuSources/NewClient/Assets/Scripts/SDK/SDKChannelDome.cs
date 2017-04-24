@@ -66,8 +66,7 @@ public class SDKChannelDome : SDKChannel
 
         string info = GetPayInfo(APP_CODE, productId, orderId, url, sec);
 
-        DomePayAndroid.Instance.pay(info, "PAYManager", "GetPayInfo");
-
+        DomePayAndroid.Instance.pay(info, SDKMgr.Instance.CallbackObjName, "PayDomeCallBack");
     }
     public override void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
     {

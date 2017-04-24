@@ -118,4 +118,21 @@ class SDKSceneCallback:MonoBehaviour
         }
         SDKMgr.Instance.SDKCallback.LoginCallback(lr);
     }
+
+    public void PayDomeCallBack(string str)
+    {
+        string[] results = str.Split('|');
+        string errorCode = results[1];
+        uint ret;
+        if (errorCode == "10")
+        {
+            ret = SDK.RESULT_OK;
+        }
+        else
+        {
+            // 支付失败
+            ret = SDK.RESULT_FAILED;
+        }
+        SDKMgr.Instance.SDKCallback.PayCallback(ret == SDK.RESULT_OK);
+    }
 }
