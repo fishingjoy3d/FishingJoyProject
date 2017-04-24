@@ -61,6 +61,7 @@ public class VersionManager
             else
                 serverNode = ele.SelectSingleNode("Server/Publish");
         }
+        ResManager.ENABLE_RESOURCES = true;
         ServerSetting.VERSION_DIR = serverNode.Attributes["verdir"].Value;
         string resftp = serverNode.Attributes["resftp"].Value;
         string runftp = serverNode.Attributes["runftp"].Value;

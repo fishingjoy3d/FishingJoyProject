@@ -21,7 +21,7 @@ public class NativeInterface
     }
     public static void Block_DownNewClientVersion(string url)
     {
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
         string msg = StringTable.GetString("need_ver_update");
         SDKMgr.Instance.AndroidObj.CallStatic("_DownloadNewClient", msg, RuntimeInfo.GetTitle(), url);
 #elif UNITY_IOS
@@ -38,13 +38,13 @@ public class NativeInterface
         string msg = StringTable.GetString(msgid);
         if(code != 0)
             msg += " ErrCode:" + code.ToString();
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
         SDKMgr.Instance.AndroidObj.CallStatic("_ShowMsgAndQuit", msg, RuntimeInfo.GetTitle(), bclose ? "close" : "none");
 
 #elif UNITY_IOS
         _ShowMsgAndQuit(msg, RuntimeInfo.GetTitle(), bclose ? "close" : "none");
 
-#elif UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+#elif UNITY_STANDALONE_WIN// || UNITY_EDITOR_WIN
         MessageBox(DllTest.WinPtr, msg, RuntimeInfo.GetTitle(), 0);
         if (bclose)
             SceneMain.Instance.Shutdown();
@@ -105,8 +105,8 @@ public class NativeInterface
     }
     public static void BeginThirdLogin(bool isQQPlatform)
     {
-#if UNITY_ANDROID
-        SDKMgr.Instance.AndroidObj.CallStatic("_BeginThirdLogin", isQQPlatform ? "qq":"weixin");
+#if UNITY_ANDROID && !UNITY_EDITOR
+        //SDKMgr.Instance.AndroidObj.CallStatic("_BeginThirdLogin", isQQPlatform ? "qq":"weixin");
 #elif UNITY_IOS
         _BeginThirdLogin(isQQPlatform ? "qq":"weixin");
 #else
@@ -117,8 +117,8 @@ public class NativeInterface
     public static void OpenWeb(string url)
     {
         Application.OpenURL(url);
-#if UNITY_ANDROID
-        SDKMgr.Instance.AndroidObj.CallStatic("_OpenWeb", url);
+#if UNITY_ANDROID && !UNITY_EDITOR
+        //SDKMgr.Instance.AndroidObj.CallStatic("_OpenWeb", url);
 #elif UNITY_IOS
         _OpenWeb(url);
 #else
@@ -129,8 +129,9 @@ public class NativeInterface
     {
         if (SDKMgr.IS_DISABLED_SDK)
             return "Test";
-#if UNITY_ANDROID
-        return SDKMgr.Instance.AndroidObj.CallStatic<string>("_GetPackageName");
+#if UNITY_ANDROID && !UNITY_EDITOR
+        //return SDKMgr.Instance.AndroidObj.CallStatic<string>("_GetPackageName");
+        return "com.dome.fish";
 #elif UNITY_IOS
         return _GetChannelCode();
 #else
@@ -139,8 +140,8 @@ public class NativeInterface
     }
     public static void OpenCamera()
     {
-#if UNITY_ANDROID
-        SDKMgr.Instance.AndroidObj.CallStatic("_OpenCamera", Application.persistentDataPath + "/images");
+#if UNITY_ANDROID && !UNITY_EDITOR
+        //SDKMgr.Instance.AndroidObj.CallStatic("_OpenCamera", Application.persistentDataPath + "/images");
 #elif UNITY_IOS
         _OpenCamera();
 #endif
@@ -148,8 +149,8 @@ public class NativeInterface
 
     public static void OpenPhoto()
     {
-#if UNITY_ANDROID
-        SDKMgr.Instance.AndroidObj.CallStatic("_OpenPhoto", Application.persistentDataPath + "/images");
+#if UNITY_ANDROID && !UNITY_EDITOR
+        //SDKMgr.Instance.AndroidObj.CallStatic("_OpenPhoto", Application.persistentDataPath + "/images");
 #elif UNITY_IOS
         _OpenPhoto();
 #else
@@ -158,8 +159,8 @@ public class NativeInterface
     }
     public static void InitShare(string wxid, string wxpwd, string sinaid, string sinapwd, string qqid, string qqpwd)
     {
-#if UNITY_ANDROID
-        SDKMgr.Instance.AndroidObj.CallStatic("_InitShare", wxid, wxpwd, sinaid, sinapwd, qqid, qqpwd);
+#if UNITY_ANDROID && !UNITY_EDITOR
+        //SDKMgr.Instance.AndroidObj.CallStatic("_InitShare", wxid, wxpwd, sinaid, sinapwd, qqid, qqpwd);
 #elif UNITY_IOS
         _InitShare(wxid, wxpwd, sinaid, sinapwd, qqid, qqpwd);
 #endif
@@ -167,8 +168,8 @@ public class NativeInterface
     public static void BeginShare(bool toFriend, string txt, string path)
     {
         string istofriend = toFriend ? "yes" : "no";
-#if UNITY_ANDROID
-        SDKMgr.Instance.AndroidObj.CallStatic("_BeginShare", istofriend, ServerSetting.ShareWebUrl,txt, path);
+#if UNITY_ANDROID && !UNITY_EDITOR
+        //SDKMgr.Instance.AndroidObj.CallStatic("_BeginShare", istofriend, ServerSetting.ShareWebUrl,txt, path);
 #elif UNITY_IOS
         _BeginShare(istofriend, ServerSetting.ShareWebUrl,txt, path);
 #else
@@ -180,9 +181,9 @@ public class NativeInterface
     {
         if (SDKMgr.IS_DISABLED_SDK)
             return "Test";
-        string str;
-#if UNITY_ANDROID
-        str = SDKMgr.Instance.AndroidObj.CallStatic<string>("_GetMac");
+        string str = SystemInfo.deviceUniqueIdentifier;
+#if UNITY_ANDROID && !UNITY_EDITOR
+        //str = SDKMgr.Instance.AndroidObj.CallStatic<string>("_GetMac");
 #elif UNITY_IOS
         str = _GetMac();
 #else

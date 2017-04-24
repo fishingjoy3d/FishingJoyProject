@@ -7,14 +7,23 @@ public enum SdkType
     SDK_CHANNEL,    //渠道
     SDK_DERIVED,    //派生
 }
+
+public enum ChannelType
+{
+    Self_ChannelType = 0,
+    Dome_ChannelType = 1, //冰穹渠道
+}
+
 public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
 {
-    public static bool IS_DISABLED_SDK      = true;
+    public static bool IS_DISABLED_SDK      = false;
     public static bool IS_APP_STORE_VER     = false;
-    public static SdkType SDK_TYPE          = SdkType.SDK_SELF;
+    public static SdkType SDK_TYPE          = SdkType.SDK_CHANNEL;
+    public static ChannelType CHANNEL_TYPE  = ChannelType.Self_ChannelType;
     public static bool IS_SDK_CHANNEL       = SDK_TYPE == SdkType.SDK_SELF;
     public static string PACKAGE_NAME       = "";
     public static uint PACKAGE_NAME_CRC     = 0;
+
     GameObject          m_SceneCallbackObj  = null;
     SDKSceneCallback    m_SceneCallback     = null;
 
@@ -22,7 +31,7 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
 #if UNITY_ANDROID
     AndroidJavaObject   m_AndroidObj        = null;
 #endif
-    bool                m_bSDKInitOK        = false;
+    bool m_bSDKInitOK        = false;
     SDKLoginResult      m_LoginData         = new SDKLoginResult();
     public static void SetPackageName(string name)
     {
@@ -40,8 +49,7 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
     {
         if (IS_DISABLED_SDK)
             return;
-#if UNITY_ANDROID
-        
+#if UNITY_ANDROID && !UNITY_EDITOR
         m_AndroidObj = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
 #endif
     }
@@ -63,6 +71,7 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
         {
 #if DOME
             m_Interface = new SDKChannelDome();
+            CHANNEL_TYPE = ChannelType.Dome_ChannelType;
 #else
             m_Interface = new SDKChannel();
 #endif

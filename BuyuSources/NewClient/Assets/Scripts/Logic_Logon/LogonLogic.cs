@@ -447,39 +447,7 @@ public class LogonLogic : ILogic, ICmdHandler
                 }
                 else
                 {
-                    //玩家进行快速登陆 当前操作一定是注册一个账号 快速的账号注册
-                    CL_Cmd_GetNewAccount ncb = new CL_Cmd_GetNewAccount();
-                    ncb.SetCmdType(NetCmdType.CMD_CL_GetNewAccount);
-                    string Password = RankString(FishDataInfo.PasswordMinLength, FishDataInfo.PasswordLength, StringCheckType.SCT_Password);
-                    if (Password == null)
-                    {
-                        tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_FastRegister_Failed_1);
-                        MsgEventHandle.HandleMsg(pUOM);
-
-                        SetState(LogonState.LOGON_ERROR);
-                        GlobalEffectMgr.Instance.CloseLoadingMessage();
-                        return;
-                    }
-                    UInt32 Crc1, Crc2, Crc3;
-                    if(!NativeInterface.ComputeCrc("Fast", Password, out Crc1, out Crc2, out Crc3))
-                    {
-                        tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_FastRegister_Failed_2);
-                        MsgEventHandle.HandleMsg(pUOM);
-
-                        SetState(LogonState.LOGON_ERROR);
-                        GlobalEffectMgr.Instance.CloseLoadingMessage();
-                        return;
-                    }
-                    ncb.PasswordCrc1 = Crc1;
-                    ncb.PasswordCrc2 = Crc2;
-                    ncb.PasswordCrc3 = Crc3;
-                    ncb.MacAddress = Utility.GetMacAddress();
-                    ncb.VersionID = ServerSetting.ClientVer;
-                    ncb.PlateFormID = (Byte)RuntimeInfo.GetPlatform();
-                    ncb.PathCrc = ServerSetting.RES_VERSION;
-
-                    //4.组织起来发送到服务器去
-                    NetServices.Instance.Send<CL_Cmd_GetNewAccount>(ncb);
+                    SendGetNewAccount();
                 }
                 break;
             case LogonState.LOGON_NORMAL_LOGINNING:
@@ -491,28 +459,7 @@ public class LogonLogic : ILogic, ICmdHandler
                 }
                 else
                 {
-                    CL_Cmd_AccountLogon ncb = new CL_Cmd_AccountLogon();
-                    ncb.SetCmdType(NetCmdType.CMD_CL_AccountLogon);
-                    ncb.AccountName = GlobalLogon.Instance.AccountData.TempAccountInfo.UID;
-                    if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(FishDataInfo.AccountNameMinLength, FishDataInfo.AccountNameLength, ncb.AccountName, StringCheckType.SCT_AccountName))
-                    {
-                        tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_NormalLogon_Failed_1);
-                        MsgEventHandle.HandleMsg(pUOM);
-                        SetState(LogonState.LOGON_ERROR);
-                        GlobalEffectMgr.Instance.CloseLoadingMessage();
-                        return;
-                    }
-                    ncb.PasswordCrc1 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC1;
-                    ncb.PasswordCrc2 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC2;
-                    ncb.PasswordCrc3 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC3;
-
-                    ncb.VersionID = ServerSetting.ClientVer;
-                    ncb.PlateFormID = (Byte)RuntimeInfo.GetPlatform();
-                    ncb.PathCrc = ServerSetting.RES_VERSION;
-                    ncb.MacAddress = Utility.GetMacAddress();
-
-                    //发送命令
-                    NetServices.Instance.Send<CL_Cmd_AccountLogon>(ncb);
+                    SendAccountLogon();
                     return;
                 }
                 break;
@@ -536,56 +483,8 @@ public class LogonLogic : ILogic, ICmdHandler
                     return;
                 }                
             case LogonState.LOGON_PHONE_LOGINNING:
-                { 
-                    //最新修改 手机登陆修改为 修改玩家密码 或者 二级密码 进行登陆
-                    //手机+ 验证码 进行 取回密码 可以修改一级密码 或者 是二级密码
-
-                    //玩家进行手机登陆 
-                    UInt64 PhoneNumber = GlobalLogon.Instance.PhoneLogonData.PhoneNumber;
-                    UInt32 Password = GlobalLogon.Instance.PhoneLogonData.Password;
-                    string NewPassword = GlobalLogon.Instance.PhoneLogonData.NewPassword;
-                    if(!FishDataInfo.IsCanUsePhone(PhoneNumber))
-                    {
-                        //提示玩家手机号码不正确 无法登陆
-                        tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_PhoneLog_Failed_1);
-                        MsgEventHandle.HandleMsg(pUOM);
-
-                        SetState(LogonState.LOGON_ERROR);
-                        GlobalEffectMgr.Instance.CloseLoadingMessage();
-                        return;
-                    }
-                    if(!FishConfig.Instance.m_ErrorString.CheckStringIsError(FishDataInfo.PasswordMinLength,FishDataInfo.PasswordLength,NewPassword,StringCheckType.SCT_Password))
-                    {
-                        //检测密码是否正确
-                        tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_PhoneLog_Failed_2);
-                        MsgEventHandle.HandleMsg(pUOM);
-
-                        SetState(LogonState.LOGON_ERROR);
-                        GlobalEffectMgr.Instance.CloseLoadingMessage();
-                        return;
-                    }
-
-                    UInt32 Crc1, Crc2, Crc3;
-                    if (!NativeInterface.ComputeCrc("PhoneLogon", NewPassword, out Crc1, out Crc2, out Crc3))
-                    {
-                        tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_PhoneLog_Failed_3);
-                        MsgEventHandle.HandleMsg(pUOM);
-
-                        SetState(LogonState.LOGON_ERROR);
-                        GlobalEffectMgr.Instance.CloseLoadingMessage();
-                        return;
-                    }
-
-                    CL_Cmd_PhoneLogonCheck ncb = new CL_Cmd_PhoneLogonCheck();
-                    ncb.SetCmdType(NetCmdType.CMD_CL_PhoneLogonCheck);
-                    ncb.PhoneNumber = PhoneNumber;
-                    ncb.Password = Password;
-                    ncb.MacAddress = Utility.GetMacAddress();
-                    ncb.PasswordCrc1 = Crc1;
-                    ncb.PasswordCrc2 = Crc2;
-                    ncb.PasswordCrc3 = Crc3;
-                    ncb.IsFirOrSecPass = GlobalLogon.Instance.PhoneLogonData.IsFirOrSec;
-                    NetServices.Instance.Send<CL_Cmd_PhoneLogonCheck>(ncb);
+                {
+                    SendPhoneLogon();
                     return;
                 }               
             case LogonState.LOGON_REGISTER_LOGINNING:
@@ -597,60 +496,12 @@ public class LogonLogic : ILogic, ICmdHandler
                 }
                 else
                 {
-                    //玩家进行注册命令
-                    CL_Cmd_AccountRsg ncb = new CL_Cmd_AccountRsg();
-                    ncb.SetCmdType(NetCmdType.CMD_CL_AccountRsg);
-                    ncb.AccountName = GlobalLogon.Instance.AccountData.TempAccountInfo.UID;
-                    if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(FishDataInfo.AccountNameMinLength, FishDataInfo.AccountNameLength, ncb.AccountName, StringCheckType.SCT_AccountName))
-                    {
-                        tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_Register_Failed_1);
-                        MsgEventHandle.HandleMsg(pUOM);
-                        GlobalEffectMgr.Instance.CloseLoadingMessage();
-                        SetState(LogonState.LOGON_ERROR);
-                        return;
-                    }
-                    ncb.PasswordCrc1 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC1;
-                    ncb.PasswordCrc2 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC2;
-                    ncb.PasswordCrc3 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC3;
-                    ncb.MacAddress = Utility.GetMacAddress();
-
-                    ncb.VersionID = ServerSetting.ClientVer;
-                    ncb.PlateFormID = (Byte)RuntimeInfo.GetPlatform();
-                    ncb.PathCrc = ServerSetting.RES_VERSION;
-
-                    //发送命令
-                    NetServices.Instance.Send<CL_Cmd_AccountRsg>(ncb);
+                    SendAccountRsg();
                 }
                 break;
             case LogonState.LOGON_PHONE_SECPWD:
-                { 
-                    //玩家使用手机号码 和 二级密码登陆
-                    UInt64 PhoneNumber = GlobalLogon.Instance.AccountData.TempPhoneInfo.PhoneNumber;
-                    if (PhoneNumber == 0 || !FishDataInfo.IsCanUsePhone(PhoneNumber))
-                    {
-                        //提示玩家手机号码不正确 无法登陆
-                        tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_SecPass_Failed_1);
-                        MsgEventHandle.HandleMsg(pUOM);
-
-                        SetState(LogonState.LOGON_ERROR);
-                        GlobalEffectMgr.Instance.CloseLoadingMessage();
-                        return;
-                    }
-                    //使用二级密码登陆+
-                    CL_Cmd_PhoneSecPwd ncb = new CL_Cmd_PhoneSecPwd();
-                    ncb.SetCmdType(NetCmdType.CMD_CL_PhoneSecPwd);
-                    ncb.PhoneNumber = PhoneNumber;
-
-                    ncb.PasswordCrc1 = GlobalLogon.Instance.AccountData.TempPhoneInfo.phoneCRC1;
-                    ncb.PasswordCrc2 = GlobalLogon.Instance.AccountData.TempPhoneInfo.phoneCRC2;
-                    ncb.PasswordCrc3 = GlobalLogon.Instance.AccountData.TempPhoneInfo.phoneCRC3;
-                    ncb.MacAddress = Utility.GetMacAddress();
-
-                    ncb.VersionID = ServerSetting.ClientVer;
-                    ncb.PlateFormID = (Byte)RuntimeInfo.GetPlatform();
-                    ncb.PathCrc = ServerSetting.RES_VERSION;
-
-                    NetServices.Instance.Send<CL_Cmd_PhoneSecPwd>(ncb);
+                {
+                    SendPhoneSecPwd();
                 }
                 break;
             case LogonState.LOGON_WEIXIN_LOGINNING:
@@ -692,7 +543,14 @@ public class LogonLogic : ILogic, ICmdHandler
         if (m_State == LogonState.LOGON_SDK_LOGINNING)
         {
             //登录成功设置IP状态
-            SendSDKLogonData();
+            if(ServerSetting.SendOperatorLogon)
+            {
+                SendOperatorLogon();
+            }
+            else
+            {
+                SendSDKLogonData();
+            }
         }
         else if (m_State == LogonState.LOGON_CONNECT_HALL)
         {
@@ -703,7 +561,6 @@ public class LogonLogic : ILogic, ICmdHandler
             //登录成功设置IP状态
             SendLogonData();
         }
-        
     }
     void SendSDKLogonData()
     {
@@ -744,26 +601,6 @@ public class LogonLogic : ILogic, ICmdHandler
         cmdLogon.PathCrc = ServerSetting.RES_VERSION;
         
         NetServices.Instance.Send<CL_Cmd_ChannelLogon>(cmdLogon);
-
-
-        CL_Cmd_OperatorLogon cmd = new CL_Cmd_OperatorLogon();
-        cmd.SetCmdType(NetCmdType.CMD_CL_OperatorLogon);
-
-        cmd.logon.AccountName = logonData.UID;
-
-        cmd.logon.ChannelID = 0;
-        cmd.logon.PasswordCrc1 = 1;
-        cmd.logon.PasswordCrc2 = 2;
-        cmd.logon.PasswordCrc3 = 3;
-
-        cmd.logon.ClientIP = 12;
-
-        cmd.logon.MacAddress = Utility.GetMacAddress();
-        cmd.logon.VersionID = ServerSetting.ClientVer;
-        cmd.logon.PlatformID = (Byte)RuntimeInfo.GetPlatform();
-        cmd.logon.PathCrc = ServerSetting.RES_VERSION;
-
-        NetServices.Instance.Send<CL_Cmd_OperatorLogon>(cmd);
     }
     void StartConnect()
     {
@@ -1513,5 +1350,224 @@ public class LogonLogic : ILogic, ICmdHandler
             idx += bytedata[i].strData.Length;
         }
         NetServices.Instance.Send<CL_Cmd_QQLogon>(cmd);
+    }
+
+    void SendGetNewAccount()
+    {
+        //玩家进行快速登陆 当前操作一定是注册一个账号 快速的账号注册
+        CL_Cmd_GetNewAccount ncb = new CL_Cmd_GetNewAccount();
+        ncb.SetCmdType(NetCmdType.CMD_CL_GetNewAccount);
+        string Password = RankString(FishDataInfo.PasswordMinLength, FishDataInfo.PasswordLength, StringCheckType.SCT_Password);
+        if (Password == null)
+        {
+            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_FastRegister_Failed_1);
+            MsgEventHandle.HandleMsg(pUOM);
+
+            SetState(LogonState.LOGON_ERROR);
+            GlobalEffectMgr.Instance.CloseLoadingMessage();
+            return;
+        }
+        UInt32 Crc1, Crc2, Crc3;
+        if (!NativeInterface.ComputeCrc("Fast", Password, out Crc1, out Crc2, out Crc3))
+        {
+            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_FastRegister_Failed_2);
+            MsgEventHandle.HandleMsg(pUOM);
+
+            SetState(LogonState.LOGON_ERROR);
+            GlobalEffectMgr.Instance.CloseLoadingMessage();
+            return;
+        }
+        ncb.PasswordCrc1 = Crc1;
+        ncb.PasswordCrc2 = Crc2;
+        ncb.PasswordCrc3 = Crc3;
+        ncb.MacAddress = Utility.GetMacAddress();
+        ncb.VersionID = ServerSetting.ClientVer;
+        ncb.PlateFormID = (Byte)RuntimeInfo.GetPlatform();
+        ncb.PathCrc = ServerSetting.RES_VERSION;
+
+        //4.组织起来发送到服务器去
+        NetServices.Instance.Send<CL_Cmd_GetNewAccount>(ncb);
+    }
+
+    void SendAccountRsg()
+    {
+        //玩家进行注册命令
+        CL_Cmd_AccountRsg ncb = new CL_Cmd_AccountRsg();
+        ncb.SetCmdType(NetCmdType.CMD_CL_AccountRsg);
+        ncb.AccountName = GlobalLogon.Instance.AccountData.TempAccountInfo.UID;
+        if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(FishDataInfo.AccountNameMinLength, FishDataInfo.AccountNameLength, ncb.AccountName, StringCheckType.SCT_AccountName))
+        {
+            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_Register_Failed_1);
+            MsgEventHandle.HandleMsg(pUOM);
+            GlobalEffectMgr.Instance.CloseLoadingMessage();
+            SetState(LogonState.LOGON_ERROR);
+            return;
+        }
+        ncb.PasswordCrc1 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC1;
+        ncb.PasswordCrc2 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC2;
+        ncb.PasswordCrc3 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC3;
+        ncb.MacAddress = Utility.GetMacAddress();
+
+        ncb.VersionID = ServerSetting.ClientVer;
+        ncb.PlateFormID = (Byte)RuntimeInfo.GetPlatform();
+        ncb.PathCrc = ServerSetting.RES_VERSION;
+
+        //发送命令
+        NetServices.Instance.Send<CL_Cmd_AccountRsg>(ncb);
+    }
+
+    void SendAccountLogon()
+    {
+        CL_Cmd_AccountLogon ncb = new CL_Cmd_AccountLogon();
+        ncb.SetCmdType(NetCmdType.CMD_CL_AccountLogon);
+        ncb.AccountName = GlobalLogon.Instance.AccountData.TempAccountInfo.UID;
+        if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(FishDataInfo.AccountNameMinLength, FishDataInfo.AccountNameLength, ncb.AccountName, StringCheckType.SCT_AccountName))
+        {
+            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_NormalLogon_Failed_1);
+            MsgEventHandle.HandleMsg(pUOM);
+            SetState(LogonState.LOGON_ERROR);
+            GlobalEffectMgr.Instance.CloseLoadingMessage();
+            return;
+        }
+        ncb.PasswordCrc1 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC1;
+        ncb.PasswordCrc2 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC2;
+        ncb.PasswordCrc3 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC3;
+
+        ncb.VersionID = ServerSetting.ClientVer;
+        ncb.PlateFormID = (Byte)RuntimeInfo.GetPlatform();
+        ncb.PathCrc = ServerSetting.RES_VERSION;
+        ncb.MacAddress = Utility.GetMacAddress();
+
+        //发送命令
+        NetServices.Instance.Send<CL_Cmd_AccountLogon>(ncb);
+    }
+
+    void SendPhoneLogon()
+    {
+        //最新修改 手机登陆修改为 修改玩家密码 或者 二级密码 进行登陆
+        //手机+ 验证码 进行 取回密码 可以修改一级密码 或者 是二级密码
+
+        //玩家进行手机登陆 
+        UInt64 PhoneNumber = GlobalLogon.Instance.PhoneLogonData.PhoneNumber;
+        UInt32 Password = GlobalLogon.Instance.PhoneLogonData.Password;
+        string NewPassword = GlobalLogon.Instance.PhoneLogonData.NewPassword;
+        if (!FishDataInfo.IsCanUsePhone(PhoneNumber))
+        {
+            //提示玩家手机号码不正确 无法登陆
+            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_PhoneLog_Failed_1);
+            MsgEventHandle.HandleMsg(pUOM);
+
+            SetState(LogonState.LOGON_ERROR);
+            GlobalEffectMgr.Instance.CloseLoadingMessage();
+            return;
+        }
+        if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(FishDataInfo.PasswordMinLength, FishDataInfo.PasswordLength, NewPassword, StringCheckType.SCT_Password))
+        {
+            //检测密码是否正确
+            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_PhoneLog_Failed_2);
+            MsgEventHandle.HandleMsg(pUOM);
+
+            SetState(LogonState.LOGON_ERROR);
+            GlobalEffectMgr.Instance.CloseLoadingMessage();
+            return;
+        }
+
+        UInt32 Crc1, Crc2, Crc3;
+        if (!NativeInterface.ComputeCrc("PhoneLogon", NewPassword, out Crc1, out Crc2, out Crc3))
+        {
+            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_PhoneLog_Failed_3);
+            MsgEventHandle.HandleMsg(pUOM);
+
+            SetState(LogonState.LOGON_ERROR);
+            GlobalEffectMgr.Instance.CloseLoadingMessage();
+            return;
+        }
+
+        CL_Cmd_PhoneLogonCheck ncb = new CL_Cmd_PhoneLogonCheck();
+        ncb.SetCmdType(NetCmdType.CMD_CL_PhoneLogonCheck);
+        ncb.PhoneNumber = PhoneNumber;
+        ncb.Password = Password;
+        ncb.MacAddress = Utility.GetMacAddress();
+        ncb.PasswordCrc1 = Crc1;
+        ncb.PasswordCrc2 = Crc2;
+        ncb.PasswordCrc3 = Crc3;
+        ncb.IsFirOrSecPass = GlobalLogon.Instance.PhoneLogonData.IsFirOrSec;
+        NetServices.Instance.Send<CL_Cmd_PhoneLogonCheck>(ncb);
+    }
+
+    void SendPhoneSecPwd()
+    {
+        //玩家使用手机号码 和 二级密码登陆
+        UInt64 PhoneNumber = GlobalLogon.Instance.AccountData.TempPhoneInfo.PhoneNumber;
+        if (PhoneNumber == 0 || !FishDataInfo.IsCanUsePhone(PhoneNumber))
+        {
+            //提示玩家手机号码不正确 无法登陆
+            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_SecPass_Failed_1);
+            MsgEventHandle.HandleMsg(pUOM);
+
+            SetState(LogonState.LOGON_ERROR);
+            GlobalEffectMgr.Instance.CloseLoadingMessage();
+            return;
+        }
+        //使用二级密码登陆+
+        CL_Cmd_PhoneSecPwd ncb = new CL_Cmd_PhoneSecPwd();
+        ncb.SetCmdType(NetCmdType.CMD_CL_PhoneSecPwd);
+        ncb.PhoneNumber = PhoneNumber;
+
+        ncb.PasswordCrc1 = GlobalLogon.Instance.AccountData.TempPhoneInfo.phoneCRC1;
+        ncb.PasswordCrc2 = GlobalLogon.Instance.AccountData.TempPhoneInfo.phoneCRC2;
+        ncb.PasswordCrc3 = GlobalLogon.Instance.AccountData.TempPhoneInfo.phoneCRC3;
+        ncb.MacAddress = Utility.GetMacAddress();
+
+        ncb.VersionID = ServerSetting.ClientVer;
+        ncb.PlateFormID = (Byte)RuntimeInfo.GetPlatform();
+        ncb.PathCrc = ServerSetting.RES_VERSION;
+
+        NetServices.Instance.Send<CL_Cmd_PhoneSecPwd>(ncb);
+    }
+
+    // 统一的登录接口
+    void SendOperatorLogon()
+    {
+        CL_Cmd_OperatorLogon cmd = new CL_Cmd_OperatorLogon();
+        cmd.SetCmdType(NetCmdType.CMD_CL_OperatorLogon);
+        string userID = "";
+        string password = "";
+        uint CRC1 = 0;
+        uint CRC2 = 0;
+        uint CRC3 = 0;
+#if DOME
+        userID = SDKMgr.Instance.LoginData.UID;
+#else
+        userID = GlobalLogon.Instance.AccountData.TempAccountInfo.UID;
+        if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(FishDataInfo.AccountNameMinLength, FishDataInfo.AccountNameLength, userID, StringCheckType.SCT_AccountName))
+        {
+            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_NormalLogon_Failed_1);
+            MsgEventHandle.HandleMsg(pUOM);
+            SetState(LogonState.LOGON_ERROR);
+            GlobalEffectMgr.Instance.CloseLoadingMessage();
+            return;
+        }
+
+        CRC1 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC1;
+        CRC2 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC2;
+        CRC3 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC3;
+#endif
+        cmd.logon.AccountName = userID;
+
+        cmd.logon.ClientIP = 0;
+        cmd.logon.External = "";
+
+        cmd.logon.PasswordCrc1 = CRC1;
+        cmd.logon.PasswordCrc2 = CRC2;
+        cmd.logon.PasswordCrc3 = CRC3;
+
+        cmd.logon.ChannelID = (int)SDKMgr.CHANNEL_TYPE;
+        cmd.logon.MacAddress = Utility.GetMacAddress();
+        cmd.logon.VersionID = ServerSetting.ClientVer;
+        cmd.logon.PlatformID = (Byte)RuntimeInfo.GetPlatform();
+        cmd.logon.PathCrc = ServerSetting.RES_VERSION;
+
+        NetServices.Instance.Send<CL_Cmd_OperatorLogon>(cmd);
     }
 }

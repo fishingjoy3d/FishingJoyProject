@@ -25,6 +25,7 @@ public class SDKChannelDome : SDKChannel
     public override void Init()
     {
         //m_AndroidContext.Call("init", SDKMgr.Instance.CallbackObjName, "InitCallback");
+        SDKMgr.Instance.SDKCallback.InitCallback(true);
     }
     public override void Login(string customparms)
     {
