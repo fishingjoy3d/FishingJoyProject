@@ -2,15 +2,15 @@
 <Setting>
   <Params>
     <!-- 版本号 -->
-    <Version>0_0_9_1</Version>
+    <Version>0_1_0_1</Version>
     <!-- 资源版本号 -->
     <Resource>0_0_3_5</Resource>
     <!-- SDK类型 0：自有散包、1：渠道包、2：派生包 -->
-    <Sdk>0</Sdk>
+    <Sdk>1</Sdk>
     <!-- 是否是测试版本 0：不是、1：是 -->
     <Test>0</Test>
     <!-- 是否强制为Editor版本 0：不是、1：是 ,使用Editor服务器配置节点-->
-    <Editor>1</Editor> 
+    <Editor>0</Editor> 
     <!-- 显示Ping-->
     <Ping>1</Ping>
   </Params>
@@ -18,14 +18,14 @@
     <Publish  resftp="ftp://121.43.187.210/fishpublish" ftpport="45045" runftp="ftp://121.43.187.210/FishPublish" verdir="test/test_version">
       <IP port="40056">121.43.187.210</IP>
     </Publish>
-    <Publish_1  resftp="ftp://121.40.17.214/fishpublish" ftpport="45045" runftp="ftp://121.40.17.214/FishPublish" verdir="version"/>
+    <!--<Publish  resftp="ftp://121.40.17.214/fishpublish" ftpport="45045" runftp="ftp://121.40.17.214/FishPublish" verdir="version"/>-->
     <Test     resftp="ftp://121.40.17.214/fishpublish" ftpport="45045" runftp="ftp://121.40.17.214/FishPublish" verdir="test/test_version" />
-    <!--<Editor   resftp="ftp://121.43.187.210/fishpublish"  ftpport="45045" runftp="ftp://121.43.187.210/FishPublish"  verdir="test/test_version">
+    <Editor   resftp="ftp://121.43.187.210/fishpublish"  ftpport="45045" runftp="ftp://121.43.187.210/FishPublish"  verdir="test/test_version">
       <IP port="40056">121.43.187.210</IP>
-    </Editor>-->
-    <Editor  resftp="ftp://192.168.0.106/fishpublish"  ftpport="45045" runftp="ftp://192.168.0.106/FishPublish"  verdir="test/test_version">
-      <IP port="40056">192.168.0.106</IP>
     </Editor>
+    <!--<Editor  resftp="ftp://192.168.0.106/fishpublish"  ftpport="45045" runftp="ftp://192.168.0.106/FishPublish"  verdir="test/test_version">
+      <IP port="40056">192.168.0.106</IP>
+    </Editor>-->
   </Server>
   <Services>http://www.baidu.com</Services>
   <!--<Reporter port="45065">192.168.0.106</Reporter>-->
