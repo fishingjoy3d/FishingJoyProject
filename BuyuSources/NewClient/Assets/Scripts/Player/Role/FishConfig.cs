@@ -1035,51 +1035,63 @@ public enum RechargeType
 };
 public class tagFishRechargeInfo
 {
+    [TypeInfo(0)]
     public UInt32 ID;
+    [TypeInfo(1)]
     public UInt32 dDisCountPrice;//单位元
+    [TypeInfo(2)]
     public UInt32 dPreDisCountPrice;//折扣前的价格
+    [TypeInfo(5)]
     public UInt32 AddMoney;//添加乐币的数
+    [TypeInfo(3)]
     public UInt16 RewardID;
+    [TypeInfo(4)]
     public RechargeType RechargeType;
     //public bool IsCurreyOrGlobel;//添加的是乐币还是 金币
+    [TypeInfo(6, FishDataInfo.MAX_OperatorTitleLength)]
     public string Name;//商品名称
+    [TypeInfo(8, FishDataInfo.MAX_IconLength)]
     public string Icon;//商品图标
+    [TypeInfo(9, FishDataInfo.MAX_DisCountPicNameLength)]
     public string sDisCountPicName;//折扣图标
-   // public bool IsFirstPay;
+    [TypeInfo(7, FishDataInfo.MAX_ProductID_Length)]
+    public string ProductID;
+    // public bool IsFirstPay;
 
     public bool IsAddGlobel()
-	{
+    {
         if (RechargeType == RechargeType.RT_FirstGlobel || RechargeType == RechargeType.RT_Globel)
-			return true;
-		else
-			return false;
-	}
+            return true;
+        else
+            return false;
+    }
     public bool IsAddCurrcey()
-	{
+    {
         if (RechargeType == RechargeType.RT_FirstCurrcey || RechargeType == RechargeType.RT_Currcey)
-			return true;
-		else
-			return false;
-	}
+            return true;
+        else
+            return false;
+    }
     public bool IsAddReward()
-	{
+    {
         if (RechargeType == RechargeType.RT_Reward)
-			return true;
-		else
-			return false;
-	}
+            return true;
+        else
+            return false;
+    }
     public bool IsFirstAdd()
-	{
+    {
         if (RechargeType == RechargeType.RT_FirstCurrcey || RechargeType == RechargeType.RT_FirstGlobel)
-			return true;
-		else
-			return false;
-	}
+            return true;
+        else
+            return false;
+    }
 };
 //花费RMB 可以购买特殊的东西
 class tagFishRechargesMap
 {
     public Dictionary<UInt32, tagFishRechargeInfo> m_FishRechargeMap = new Dictionary<UInt32, tagFishRechargeInfo>();
+    public bool m_IsServerShopList; //服务器商品列表
 };
 
 class FishLauncherToShop//炮台转化到商店的功能

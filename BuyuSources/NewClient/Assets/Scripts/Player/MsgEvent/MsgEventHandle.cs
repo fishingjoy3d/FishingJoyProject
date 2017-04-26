@@ -9,7 +9,7 @@ class MsgEventHandle
         if (pBase == null)
             return;
 
-        switch(pBase.GetMsgEventType)
+        switch (pBase.GetMsgEventType)
         {
             case MsgEventType.MET_UserOperation:
                 {
@@ -47,7 +47,7 @@ class MsgEventHandle
                     if (SceneRuntime.Instance != null && SceneRuntime.SceneLogic != null)
                     {
                         SceneRuntime.SceneLogic.LogicUI.GetSkillBar.UpdateData();
-                       // SceneRuntime.SceneLogic.NewGide.ShowLaunchCountDown(true);
+                        // SceneRuntime.SceneLogic.NewGide.ShowLaunchCountDown(true);
                     }
                     if (HallRunTimeInfo.Instance_UI != null && HallRunTimeInfo.Instance_UI.m_loginUi != null)
                     {
@@ -57,23 +57,23 @@ class MsgEventHandle
                 }
                 break;
             case MsgEventType.MET_Item_Use:
-                { 
-                
+                {
+
                 }
                 break;
             case MsgEventType.MET_Item_Accept:
                 {
                     tagItemAcceptEvent pEvent = (tagItemAcceptEvent)pBase;
-                    if(pEvent.Result)
+                    if (pEvent.Result)
                     {
                         ShopRuntime.ShopLogicMgr.TreasurebowlWnd.ShowRectipt(pEvent.DestUserID, pEvent.ItemID, pEvent.ItemSum);
-                    }                    
+                    }
                 }
                 break;
             case MsgEventType.MET_MailTitle_Change:
                 {
-                      if (FriendRuntime.Instance != null)
-                          FriendRuntime.EmailUI.UpdateEmailListDate();
+                    if (FriendRuntime.Instance != null)
+                        FriendRuntime.EmailUI.UpdateEmailListDate();
                 }
                 break;
             case MsgEventType.MET_MailTitle_Add:
@@ -119,12 +119,12 @@ class MsgEventHandle
                 break;
             case MsgEventType.MET_MailContext_Del:
                 {
-                
+
                 }
                 break;
             case MsgEventType.MET_MailContext_AllChange:
-                { 
-                
+                {
+
                 }
                 break;
             case MsgEventType.MET_Friend_Load:
@@ -143,12 +143,12 @@ class MsgEventHandle
             case MsgEventType.MET_Friend_Change:
                 {
                     tagFriendChangeEvent pEvent = (tagFriendChangeEvent)pBase;
-                    if (HallRunTimeInfo.Instance_UI != null) 
+                    if (HallRunTimeInfo.Instance_UI != null)
                         HallRunTimeInfo.Instance_UI.m_loginUi.UpdateInfomationRankContent();
                     if (FriendRuntime.Instance != null)
                         FriendRuntime.FriendUI.UpdateListDate();
                     GlobalHallUIMgr.Instance.UpdateCardsInfoDate(pEvent.UserID);
-                  //  GlobalHallUIMgr.Instance.UpateCardsFriendBtnStatus();
+                    //  GlobalHallUIMgr.Instance.UpateCardsFriendBtnStatus();
                 }
                 break;
             case MsgEventType.MET_Friend_Add:
@@ -222,7 +222,7 @@ class MsgEventHandle
                     {
                         FriendRuntime.PresentUI.UpdateAcceptGiffSum();
                     }
-                    if (HallRunTimeInfo.Instance_UI != null )
+                    if (HallRunTimeInfo.Instance_UI != null)
                     {
                         HallRunTimeInfo.Instance_UI.m_loginUi.UpdateUserGold();
                         HallRunTimeInfo.Instance_UI.m_loginUi.UpdateFinishAchievementData();
@@ -264,14 +264,14 @@ class MsgEventHandle
                         str = string.Format(str, PlayerRole.Instance.RoleVip.AddAlmsSum() - PlayerRole.Instance.RoleInfo.RoleMe.BeneFitCount);
                         GlobalEffectMgr.Instance.ShowMessageBox(str, MssageType.BeneFit_Msg_6);
 
-                    }                         
+                    }
                 }
                 break;
             case MsgEventType.MET_Role_MonthCardChange:
-                { 
+                {
                     //玩家月卡发生变化了
                     GlobalHallUIMgr.Instance.UpdateMonthCardData();
-                    if(HallRunTimeInfo.Instance_UI != null)
+                    if (HallRunTimeInfo.Instance_UI != null)
                     {
                         HallRunTimeInfo.Instance_UI.m_loginUi.BtnWind.HideMonthCardEft();
                     }
@@ -293,7 +293,7 @@ class MsgEventHandle
             case MsgEventType.MET_MonthCard_GetReward:
                 {
                     GlobalHallUIMgr.Instance.UpdateMonthCardData();
-                    if(HallRunTimeInfo.Instance_UI != null)
+                    if (HallRunTimeInfo.Instance_UI != null)
                     {
                         HallRunTimeInfo.Instance_UI.m_loginUi.BtnWind.HideMonthCardEft();
                     }
@@ -324,7 +324,7 @@ class MsgEventHandle
                 }
                 break;
             case MsgEventType.MET_Role_LevelChange:
-                { 
+                {
                     //玩家自己等级变化的时候
                     tagRoleLevelChangeEvent pLevel = (tagRoleLevelChangeEvent)pBase;
                     if (pLevel.NowLevel == 3)
@@ -332,7 +332,7 @@ class MsgEventHandle
                         //检查是否需要引导
                         if (SceneRuntime.Instance != null)
                         {
-                             SceneRuntime.LogicUI.ShowSceneMatchGuide();
+                            SceneRuntime.LogicUI.ShowSceneMatchGuide();
                         }
                     }
                     else
@@ -359,10 +359,10 @@ class MsgEventHandle
                 break;
             case MsgEventType.MET_Query_Change:
                 {
-                        if (FriendRuntime.Instance != null)
-                        {
-                            FriendRuntime.SearchUI.UpateQueryListDate();
-                        }
+                    if (FriendRuntime.Instance != null)
+                    {
+                        FriendRuntime.SearchUI.UpateQueryListDate();
+                    }
                 }
                 break;
             case MsgEventType.MET_Query_Role:
@@ -375,7 +375,7 @@ class MsgEventHandle
                 {
                     if (HallRunTimeInfo.Instance_UI != null)
                     {
-                        HallRunTimeInfo.Instance_UI.m_loginUi.UpdateActivitySignData(); 
+                        HallRunTimeInfo.Instance_UI.m_loginUi.UpdateActivitySignData();
                     }
                 }
                 break;
@@ -391,7 +391,7 @@ class MsgEventHandle
                     {
                         GlobalHallUIMgr.Instance.ShowTipBox_0(TipBox_0.TipBox_0_ZiTi.Sign, 2, pSignIn.DayReawrdID, pSignIn.MonthRewardID);
                     }
-                    
+
                 }
                 break;
             case MsgEventType.MET_Check_CheckOtherDay:
@@ -483,7 +483,7 @@ class MsgEventHandle
                 break;
             case MsgEventType.MET_Table_Add:
                 {
-                    
+
                 }
                 break;
             case MsgEventType.MET_Table_Del:
@@ -504,8 +504,8 @@ class MsgEventHandle
                 }
                 break;
             case MsgEventType.MET_Table_LevelChange:
-                { 
-                
+                {
+
                 }
                 break;
             case MsgEventType.MET_Month_Add:
@@ -549,12 +549,12 @@ class MsgEventHandle
                 }
                 break;
             case MsgEventType.MET_Match_ContinueGold:
-                    {
-                        GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Match_ContinueGold_Success"), 1, false);
-                    }
+                {
+                    GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Match_ContinueGold_Success"), 1, false);
+                }
                 break;
             case MsgEventType.MET_Match_ListChange:
-                { 
+                {
                     if (SceneRuntime.Instance != null)
                     {
                         SceneRuntime.LogicUI.UpdateCurMatchRank();
@@ -570,13 +570,13 @@ class MsgEventHandle
                 }
                 break;
             case MsgEventType.MET_Month_SignOnceUpChange:
-                { 
+                {
                     if (HallRunTimeInfo.Instance_UI != null)
                     {
                         tagMonthSignUpOnceChangeEvent pSignUp = (tagMonthSignUpOnceChangeEvent)pBase;
                         HallRunTimeInfo.Instance_UI.m_loginUi.UpdateMatchSingleData(pSignUp.MonthID);
                     }
-                            
+
                 }
                 break;
             case MsgEventType.MET_Month_SignUpSumChange:
@@ -624,29 +624,29 @@ class MsgEventHandle
                 }
                 break;
             case MsgEventType.MET_Entity_BindPhone:
-                { 
+                {
                     //绑定手机的提示
                     tagEntityBindPhoneEvent pBind = (tagEntityBindPhoneEvent)pBase;
                     GlobalHallUIMgr.Instance.UpdateAccountMindState(pBind.Result, pBind.IsFirst, pBind.EventType);
-                     if (HallRunTimeInfo.Instance_UI != null && HallRunTimeInfo.Instance_UI.m_loginUi != null)
-                     {
-                         HallRunTimeInfo.Instance_UI.m_loginUi.InfomationWind.AccountmgrBtnPos();
-                     }
+                    if (HallRunTimeInfo.Instance_UI != null && HallRunTimeInfo.Instance_UI.m_loginUi != null)
+                    {
+                        HallRunTimeInfo.Instance_UI.m_loginUi.InfomationWind.AccountmgrBtnPos();
+                    }
                 }
                 break;
             case MsgEventType.MET_Title_Change:
                 {
-                     if (HallRunTimeInfo.Instance_UI != null)
-                     {
-                         HallRunTimeInfo.Instance_UI.m_loginUi.UpdateUserTitle();
-                     }
+                    if (HallRunTimeInfo.Instance_UI != null)
+                    {
+                        HallRunTimeInfo.Instance_UI.m_loginUi.UpdateUserTitle();
+                    }
                 }
                 break;
             case MsgEventType.MET_Rank_Change:
                 {
                     if (HallRunTimeInfo.Instance_UI != null)
                     {
-                        HallRunTimeInfo.Instance_UI.m_loginUi.UpdateInfomationMyRankContent(); 
+                        HallRunTimeInfo.Instance_UI.m_loginUi.UpdateInfomationMyRankContent();
                     }
                 }
                 break;
@@ -657,8 +657,8 @@ class MsgEventHandle
                     ushort rewadID = FishConfig.Instance.m_RankInfo.m_RankMap[pRankReward.RankID].RewardMap[idex].RewardID;
                     GlobalHallUIMgr.Instance.ShowTipBox_0(TipBox_0.TipBox_0_ZiTi.Rank, 1, rewadID);
                     if (HallRunTimeInfo.Instance_UI != null)
-                    { 
-                        HallRunTimeInfo.Instance_UI.m_loginUi.UpdateInfomationMyRankContent(); 
+                    {
+                        HallRunTimeInfo.Instance_UI.m_loginUi.UpdateInfomationMyRankContent();
                     }
                 }
                 break;
@@ -670,20 +670,20 @@ class MsgEventHandle
                 break;
             case MsgEventType.MET_Chest_Action:
                 {
-                      if(SceneRuntime.SceneLogic!=null)
-                      {
-                          tagChestActionEvent pChest = (tagChestActionEvent)pBase;
-                          SceneRuntime.SceneLogic.ChestMgr.ShowChestWindow(pChest);                         
-                      }
-                  
+                    if (SceneRuntime.SceneLogic != null)
+                    {
+                        tagChestActionEvent pChest = (tagChestActionEvent)pBase;
+                        SceneRuntime.SceneLogic.ChestMgr.ShowChestWindow(pChest);
+                    }
+
                 }
                 break;
             case MsgEventType.MET_Chest_End:
                 {
                     if (SceneRuntime.SceneLogic != null)
-                      {
-                          SceneRuntime.SceneLogic.ChestMgr.HideChestWindow();                          
-                      }
+                    {
+                        SceneRuntime.SceneLogic.ChestMgr.HideChestWindow();
+                    }
                 }
                 break;
             case MsgEventType.MET_Chest_Reward:
@@ -691,17 +691,17 @@ class MsgEventHandle
                     if (SceneRuntime.SceneLogic != null)
                     {
                         tagChestRewardEvent pChest = (tagChestRewardEvent)pBase;
-                        SceneRuntime.SceneLogic.ChestMgr.OnOpenBox(false,pChest.ChestOnceStates.Index, pChest.ChestOnceStates.RewardID, pChest.ChestOnceStates.RewardOnlyID,true);
+                        SceneRuntime.SceneLogic.ChestMgr.OnOpenBox(false, pChest.ChestOnceStates.Index, pChest.ChestOnceStates.RewardID, pChest.ChestOnceStates.RewardOnlyID, true);
                     }
                 }
                 break;
             case MsgEventType.MET_Chest_Reset:
                 {
-                     if (SceneRuntime.SceneLogic != null)
-                     {
-                         if(SceneRuntime.SceneLogic.ChestMgr != null)
+                    if (SceneRuntime.SceneLogic != null)
+                    {
+                        if (SceneRuntime.SceneLogic.ChestMgr != null)
                             SceneRuntime.SceneLogic.ChestMgr.OnReset();
-                     }
+                    }
 
                 }
                 break;
@@ -763,6 +763,11 @@ class MsgEventHandle
                             GlobalHallUIMgr.Instance.ShowSystemTipsUI("很可惜您的购买失败", 0.5f, false);
                         ShopRuntime.ShopUI.UpdateKnapsackDate();
                     }
+                }
+                break;
+            case MsgEventType.MET_Shop_GetShopList:
+                {
+                    GlobalHallUIMgr.Instance.ShowPayWnd(GlobalHallUIMgr.Instance.m_PayType);
                 }
                 break;
             case MsgEventType.MET_OnlineReward_Change:

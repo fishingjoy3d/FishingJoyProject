@@ -78,7 +78,7 @@ public class SceneMain : MonoBehaviour {
             StringTable.GlobalInit();
             SceneObjMgr.Instance.GlobalInit();
             ResManager.Instance.GlobalInit();   //Res需要在SDKMgr的前面。  
-            ReportException.Instance.GlobalInit();
+            //ReportException.Instance.GlobalInit();
             SDKMgr.Instance.GlobalInit();
             ServerSetting.GlobalInit();
 

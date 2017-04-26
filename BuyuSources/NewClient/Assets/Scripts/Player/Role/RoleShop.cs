@@ -126,6 +126,8 @@ class RoleShop //商店开启的前置条件 就是客户端已经有了玩家�
         {
             case NetCmdType.CMD_LC_ShopItemResult:
                 return HandleShopItemResult(obj);
+            case NetCmdType.CMD_GC_GetShopList:
+                return HandleGetShopList(obj);
         }
         return true;
     }
@@ -141,4 +143,23 @@ class RoleShop //商店开启的前置条件 就是客户端已经有了玩家�
 
         return true;
     }
+
+    bool HandleGetShopList(NetCmdBase obj)
+    {
+        GC_Cmd_GetShopList ncb = (GC_Cmd_GetShopList)obj;
+        if (ncb != null && ncb.config != null)
+        {
+            FishConfig.Instance.m_FishRecharge.m_FishRechargeMap.Clear();
+            for (int i = 0; i < ncb.config.Length; i++)
+            {
+                tagFishRechargeInfo pInfo = ncb.config[i];
+                FishConfig.Instance.m_FishRecharge.m_FishRechargeMap.Add(pInfo.ID, pInfo);
+            }
+        }
+        FishConfig.Instance.m_FishRecharge.m_IsServerShopList = true;
+        tagGetShopListEvent pEvent = new tagGetShopListEvent();
+        MsgEventHandle.HandleMsg(pEvent);
+        return true;
+    }
+
 }

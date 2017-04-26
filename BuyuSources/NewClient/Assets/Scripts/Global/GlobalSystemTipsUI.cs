@@ -253,6 +253,7 @@ public class PayBuyConfirmUI : BaseWnd
     byte m_ItemID;
     int m_Amount;
     int m_Count;
+    string m_ProductID;
 
     public void Init()
     {
@@ -266,7 +267,7 @@ public class PayBuyConfirmUI : BaseWnd
         UIEventListener.Get(m_BaseTrans.GetChild(0).gameObject).onClick = OnClickOnOK;
         UIEventListener.Get(m_BaseTrans.GetChild(1).gameObject).onClick = OnClickClose;
     }
-    public void ShowPayBuyConfirm(byte ID, uint amount, uint count, PayType type)
+    public void ShowPayBuyConfirm(byte ID, uint amount, uint count, PayType type, string productID)
     {
         if (m_BaseWndObject == null)
         {
@@ -277,13 +278,14 @@ public class PayBuyConfirmUI : BaseWnd
         m_PayType = type;
         m_Amount = (int)amount;
         m_Count = (int)count;
+        m_ProductID = productID;
         if (m_PayType == PayType.Gold)
             m_DescLabel.text = StringTable.GetString("Shop_OnOKBuy");
         else
             m_DescLabel.text = StringTable.GetString("Shop_OnOKBuy");
 
 
-        
+
     }
     void OnClickOnOK(GameObject go)
     {
@@ -296,11 +298,11 @@ public class PayBuyConfirmUI : BaseWnd
             const int change = 100;
             if (m_PayType == PayType.Diamond)
             {
-                SDKMgr.Instance.SDK.Pay(m_Amount * change, "钻石", m_Count, m_ItemID.ToString(), user_item_id.ToString(), m_ItemID);
+                SDKMgr.Instance.SDK.Pay(m_Amount * change, "钻石", m_Count,m_ProductID, user_item_id.ToString(), m_ItemID);
             }
             else if (m_PayType == PayType.Gold)
             {
-                SDKMgr.Instance.SDK.Pay(m_Amount * change, "金币", m_Count, m_ItemID.ToString(), user_item_id.ToString(), m_ItemID);
+                SDKMgr.Instance.SDK.Pay(m_Amount * change, "金币", m_Count, m_ProductID, user_item_id.ToString(), m_ItemID);
             }
         }
         else

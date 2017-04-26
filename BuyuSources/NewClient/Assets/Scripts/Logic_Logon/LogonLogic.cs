@@ -459,7 +459,14 @@ public class LogonLogic : ILogic, ICmdHandler
                 }
                 else
                 {
-                    SendAccountLogon();
+                    if (ServerSetting.SendOperatorLogon)
+                    {
+                        SendOperatorLogon();
+                    }
+                    else
+                    {
+                        SendAccountLogon();
+                    }
                     return;
                 }
                 break;
@@ -543,7 +550,7 @@ public class LogonLogic : ILogic, ICmdHandler
         if (m_State == LogonState.LOGON_SDK_LOGINNING)
         {
             //登录成功设置IP状态
-            if(ServerSetting.SendOperatorLogon)
+            if (ServerSetting.SendOperatorLogon)
             {
                 SendOperatorLogon();
             }
@@ -558,6 +565,7 @@ public class LogonLogic : ILogic, ICmdHandler
         }
         else
         {
+
             //登录成功设置IP状态
             SendLogonData();
         }
@@ -1530,6 +1538,7 @@ public class LogonLogic : ILogic, ICmdHandler
     void SendOperatorLogon()
     {
         CL_Cmd_OperatorLogon cmd = new CL_Cmd_OperatorLogon();
+        cmd.logon = new LogonInfo();
         cmd.SetCmdType(NetCmdType.CMD_CL_OperatorLogon);
         string userID = "";
         string password = "";

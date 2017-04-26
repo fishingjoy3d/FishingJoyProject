@@ -845,6 +845,8 @@ public class GlobalHallUIMgr : Singleton<GlobalHallUIMgr>
     {
         m_ShopLogicMgr.ShutDown();
     }
+
+    public PayType m_PayType { get; set; }
     //显示充值界面
     public void ShowPayWnd(PayType type)
     {
@@ -853,7 +855,17 @@ public class GlobalHallUIMgr : Singleton<GlobalHallUIMgr>
         //    HallRunTimeInfo.Login_UI.ShowMainWindCenterInf(false);
         //    HallRunTimeInfo.Login_UI.SetHallWindBtnCanTouch(false, HallLogicUIStatue.Hall_State.Hall_Btns);
         //}
-        m_PayLogicUI.ShowPayWndUI(type);
+        m_PayType = type;
+        if (FishConfig.Instance.m_FishRecharge.m_IsServerShopList)
+        {
+            m_PayLogicUI.ShowPayWndUI(type);
+        }
+        else
+        {
+            CG_Cmd_GetShopList ncb = new CG_Cmd_GetShopList();
+            ncb.SetCmdType(NetCmdType.CMD_CG_GetShopList);
+            NetServices.Instance.Send<CG_Cmd_GetShopList>(ncb);
+        }
         //ShowMask(true);
     }
     public void ShutDownPayWnd()
@@ -924,9 +936,9 @@ public class GlobalHallUIMgr : Singleton<GlobalHallUIMgr>
         m_MatchMsgBox.ShowMatchMsgBox(strDec, MatchID, type);
     }
     //商店充值确认框
-    public void ShowmPayBuyConfirm(byte ID, uint amount, uint count, PayType type)
+    public void ShowmPayBuyConfirm(byte ID, uint amount, uint count, PayType type, string productID)
     {
-        m_PayBuyConfirmUI.ShowPayBuyConfirm(ID, amount, count, type);
+        m_PayBuyConfirmUI.ShowPayBuyConfirm(ID, amount, count, type, productID);
     }
     public void ShutDownPayBuyConfirm()
     {

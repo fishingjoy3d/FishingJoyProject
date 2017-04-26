@@ -176,6 +176,7 @@ public class PayItemInfo : BaseWnd
     PayType             m_Paytype;
     uint                m_ItemNum;
     uint                m_ItemID;
+    string              m_ProductID;
 
     public void Init(GameObject go)
     {
@@ -199,6 +200,7 @@ public class PayItemInfo : BaseWnd
     {
         m_Paytype = type;
         m_ItemID = ItemID;
+        m_ProductID = payInfo.ProductID;
         m_ItemIcon.spriteName = payInfo.Icon;
         m_ItemName.text = payInfo.Name;
         if (type == PayType.Gold)
@@ -241,9 +243,9 @@ public class PayItemInfo : BaseWnd
         uint amount = uint.Parse(m_ItemCurPrice.text);
         uint count = uint.Parse(m_DesItemSum.text);
         if (m_Paytype == PayType.Gold)
-            GlobalHallUIMgr.Instance.ShowmPayBuyConfirm((byte)m_ItemID, amount, count, PayType.Gold);
+            GlobalHallUIMgr.Instance.ShowmPayBuyConfirm((byte)m_ItemID, amount, count, PayType.Gold, m_ProductID);
         else
-            GlobalHallUIMgr.Instance.ShowmPayBuyConfirm((byte)m_ItemID, amount, count, PayType.Diamond);
-       
+            GlobalHallUIMgr.Instance.ShowmPayBuyConfirm((byte)m_ItemID, amount, count, PayType.Diamond, m_ProductID);
+
     }
 }

@@ -483,6 +483,10 @@ public enum Shop_SubCmd
 {
     CL_Sub_ShopItem = 1,
     LC_Sub_ShopItemResult = 2,
+
+    CG_GetShopList = 10,
+    GC_GetShopList = 11,
+
 }
 public enum Entity_SubCmd
 {
@@ -586,6 +590,9 @@ public enum Recharge_SubCmd
     LC_Sub_Recharge = 2,
     LC_Sub_GetOrderID = 3,
     CL_Sub_IOSRecharge = 4,//IOS平台充值
+
+    CG_Sub_CreateOrder = 10,
+    GC_Sub_CreateOrder = 11,
 }
 public enum Operate_SubCmd
 {
@@ -1167,6 +1174,10 @@ public enum NetCmdType
     //商店
     CMD_CL_ShopItem                     = (int)(MainCmdType.CMD_MAIN_Shop << 8) | (int)(Shop_SubCmd.CL_Sub_ShopItem),
     CMD_LC_ShopItemResult               = (int)(MainCmdType.CMD_MAIN_Shop << 8) | (int)(Shop_SubCmd.LC_Sub_ShopItemResult),
+    CMD_CG_GetShopList                  = (int)(MainCmdType.CMD_MAIN_Shop << 8) | (int)(Shop_SubCmd.CG_GetShopList),
+    CMD_GC_GetShopList                  = (int)(MainCmdType.CMD_MAIN_Shop << 8) | (int)(Shop_SubCmd.GC_GetShopList),
+
+
     //实体
     CMD_CL_LoadUserEntity               = (int)(MainCmdType.CMD_MAIN_Entity << 8) | (int)(Entity_SubCmd.CL_Sub_LoadUserEntity),
     CMD_LC_LoadUserEntity               = (int)(MainCmdType.CMD_MAIN_Entity << 8) | (int)(Entity_SubCmd.LC_Sub_LoadUserEntity),
@@ -1235,6 +1246,8 @@ public enum NetCmdType
     CMD_LC_Recharge                     = (int)(MainCmdType.CMD_Main_Recharge << 8) | (int)(Recharge_SubCmd.LC_Sub_Recharge),
     CMD_LC_GetOrderID                   = (int)(MainCmdType.CMD_Main_Recharge << 8) | (int)(Recharge_SubCmd.LC_Sub_GetOrderID),
     CMD_CL_IOSRecharge                  = (int)(MainCmdType.CMD_Main_Recharge << 8) | (int)(Recharge_SubCmd.CL_Sub_IOSRecharge),
+    CMD_CG_CreateOrder                  = (int)(MainCmdType.CMD_Main_Recharge << 8) | (int)(Recharge_SubCmd.CG_Sub_CreateOrder),
+    CMD_GC_CreateOrder                  = (int)(MainCmdType.CMD_Main_Recharge << 8) | (int)(Recharge_SubCmd.GC_Sub_CreateOrder),
 
     //Announcement
     CMD_CL_GetAllAnnouncement                           = (int)(MainCmdType.CMD_Main_Announcement << 8) | (int)(Announcement_SubCmd.CL_Sub_GetAllAnnouncement      ),
@@ -1832,6 +1845,9 @@ public class NetCmdMapping
         //商店
         bRet &= InitCmdTypeInfo<CL_Cmd_ShopItem>(NetCmdType.CMD_CL_ShopItem);
         bRet &= InitCmdTypeInfo<LC_Cmd_ShopItemResult>(NetCmdType.CMD_LC_ShopItemResult);
+        bRet &= InitCmdTypeInfo<CG_Cmd_GetShopList>(NetCmdType.CMD_CG_GetShopList);
+        //bRet &= InitCmdTypeInfo<GC_Cmd_GetShopList>(NetCmdType.CMD_GC_GetShopList);
+
         //Entity
         bRet &= InitCmdTypeInfo<CL_Cmd_LoadUserEntity>(NetCmdType.CMD_CL_LoadUserEntity);
         bRet &= InitCmdTypeInfo<LC_Cmd_LoadUserEntity>(NetCmdType.CMD_LC_LoadUserEntity);
@@ -1901,6 +1917,9 @@ public class NetCmdMapping
         bRet &= InitCmdTypeInfo<LC_Cmd_Recharge>(NetCmdType.CMD_LC_Recharge);
         bRet &= InitCmdTypeInfo<LC_Cmd_GetOrderID>(NetCmdType.CMD_LC_GetOrderID);
         bRet &= InitCmdTypeInfo<CL_Cmd_IOSRecharge>(NetCmdType.CMD_CL_IOSRecharge);
+        bRet &= InitCmdTypeInfo<CG_Cmd_CreateOrder>(NetCmdType.CMD_CG_CreateOrder);
+        bRet &= InitCmdTypeInfo<GC_Cmd_CreateOrder>(NetCmdType.CMD_GC_CreateOrder);
+
         //Announcement
         bRet &= InitCmdTypeInfo<CL_Cmd_GetAllAnnouncement>(NetCmdType.CMD_CL_GetAllAnnouncement);
         bRet &= InitCmdTypeInfo<LC_Cmd_GetAllAnnouncement>(NetCmdType.CMD_LC_GetAllAnnouncement);

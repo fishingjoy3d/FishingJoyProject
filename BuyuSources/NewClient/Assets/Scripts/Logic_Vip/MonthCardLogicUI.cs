@@ -38,8 +38,10 @@ public class MonthCardLogicUI : BaseWnd
                 user_item_id = (user_item_id << 32) | ItemID;
                 if (FishConfig.Instance.m_FishRecharge.m_FishRechargeMap.ContainsKey(ItemID))
                 {
-                    int price = (int)FishConfig.Instance.m_FishRecharge.m_FishRechargeMap[13].dDisCountPrice * 100;
-                    SDKMgr.Instance.SDK.Pay(price, "月卡", 1, ItemID.ToString(), user_item_id.ToString(), (int)ItemID);
+                    tagFishRechargeInfo info = FishConfig.Instance.m_FishRecharge.m_FishRechargeMap[ItemID];
+                    int price = (int)info.dDisCountPrice * 100;
+
+                    SDKMgr.Instance.SDK.Pay(price, "月卡", 1, info.ProductID, user_item_id.ToString(), (int)ItemID);
                 }
             }
             else

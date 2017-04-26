@@ -495,6 +495,8 @@ public enum UserOperateMessage
     UOM_Shop_BuyItem_Failed_8,//不可以一次购买多个当前物品
     UOM_Shop_BuyItem_Failed_9,//实体物品和手机号码兑换次数超出当天限制
     UOM_Shop_BuyItem_Failed_10,//购买前必须先分享
+    UOM_Shop_GetShopList_Success,
+    UOM_Shop_GetShopList_Failed,
 
     //桌子
     UOM_Table_JoinTable_Sucess,
@@ -872,6 +874,12 @@ public class FishDataInfo
     public const int MAX_RelationRequest_MsgLength = 32;
 
     public const int LogonExternal_Length = 512;
+
+    public const int MAX_Shop_Item_Count = 20;
+    public const int MAX_ProductID_Length = 512;
+    public const int MAX_OperatorTitleLength = 24;
+    public const int MAX_IconLength = 512;
+    public const int MAX_DisCountPicNameLength = 128;
 
     public static bool IsCanUsePhone(UInt64 PhoneNumber)
     {
@@ -3021,6 +3029,20 @@ public class LC_Cmd_ShopItemResult : NetCmdBase
     [TypeInfo(0)]
     public bool Result;
 };
+public class CG_Cmd_GetShopList : NetCmdBase
+{
+
+};
+public class GC_Cmd_GetShopList : NetCmdBase
+{
+    //[TypeInfo(0, FishDataInfo.MAX_Shop_Item_Count)]
+    [TypeInfo(0, true)]
+    public tagFishRechargeInfo[] config;
+    [TypeInfo(1)]
+    int sum;
+    [TypeInfo(2)]
+    bool end;
+};
 
 //Entity---------------------------------------------------------------
 public class tagRoleAddressInfo
@@ -3483,6 +3505,19 @@ public class CL_Cmd_IOSRecharge : NetCmdBase
     [TypeInfo(0)]
     public IOSRechargeInfo OrderInfo;
 }
+public class CG_Cmd_CreateOrder : NetCmdBase
+{
+    [TypeInfo(0)]
+    public int ID;
+}
+public class GC_Cmd_CreateOrder : NetCmdBase
+{
+    [TypeInfo(0)]
+    public int OrderID;
+    [TypeInfo(1)]
+    public int ShopID;
+}
+
 //Announcement
 public class AnnouncementOnce
 {

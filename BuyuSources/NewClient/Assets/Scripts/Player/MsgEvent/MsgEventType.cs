@@ -127,6 +127,7 @@ public enum MsgEventType
 
     //商店
     MET_Shop_ShopResult ,//玩家购买物品的结果
+    MET_Shop_GetShopList, //获取商品列表
 
     //在线奖励
     MET_OnlineReward_Change,
@@ -1062,6 +1063,15 @@ class tagShopResultEvent : tagMsgEventBase
         Result = bResult;
     }
 }
+class tagGetShopListEvent : tagMsgEventBase
+{
+    public tagGetShopListEvent()
+        : base(MsgEventType.MET_Shop_GetShopList)
+    {
+
+    }
+}
+
 //在线奖励
 class tagOnlineRewardChangeEvent : tagMsgEventBase
 {

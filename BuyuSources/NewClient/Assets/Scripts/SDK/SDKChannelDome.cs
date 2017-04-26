@@ -9,7 +9,6 @@ using UnityEngine;
 public class SDKChannelDome : SDKChannel
 {
     const string APP_CODE = "D0000356";
-    string secret_key = "";
     string channel_name = "Dome";
 
     public override void GlobalInit()
@@ -62,9 +61,9 @@ public class SDKChannelDome : SDKChannel
         string orderId = customParams;
         string url = ServerSetting.CALLBACK_URL;
         string productId = chargePointName;
-        string sec = secret_key;
+        string secret_key = "";
 
-        string info = GetPayInfo(APP_CODE, productId, orderId, url, sec);
+        string info = GetPayInfo(APP_CODE, productId, orderId, url, secret_key);
 
         DomePayAndroid.Instance.pay(info, SDKMgr.Instance.CallbackObjName, "PayDomeCallBack");
     }
