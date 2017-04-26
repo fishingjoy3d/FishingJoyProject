@@ -8,6 +8,7 @@ public class GlobalLoading:Singleton<GlobalLoading>
     GameObject m_ProgressEffect;
     UISlider m_ProgressSlider;
     UILabel m_ProgressLabel;
+    UILabel m_HealthAdviceLabel;
     float m_ProgressValue;
     bool m_bShow;
     public void GlobalInit()
@@ -25,7 +26,9 @@ public class GlobalLoading:Singleton<GlobalLoading>
         GlobalEffectMgr.SetEffectOnUI(m_EffectObj);
         m_ProgressSlider = m_Progressbar.transform.GetComponent<UISlider>();
         m_ProgressLabel = m_Progressbar.transform.GetChild(1).GetComponent<UILabel>();
+        m_HealthAdviceLabel = m_Progressbar.transform.GetChild(3).GetComponent<UILabel>();
         m_ProgressLabel.text = StringTable.GetString("res_loading");
+        m_HealthAdviceLabel.text = StringTable.GetString("health_advice1") + "\n" + StringTable.GetString("health_advice2");
         m_Progressbar.SetActive(false);
         m_EffectObj.SetActive(false);
     }
@@ -44,7 +47,7 @@ public class GlobalLoading:Singleton<GlobalLoading>
     }
     public void Update(float delta)
     {
-        if (m_Progressbar == null || m_bShow == false) 
+        if (m_Progressbar == null || m_bShow == false)
             return;
 
         float progress;

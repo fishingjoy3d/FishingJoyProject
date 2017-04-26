@@ -8,6 +8,8 @@
   <res_downloading>正在下载{0}，请稍候...</res_downloading>
   <res_load_err>资源加载失败，请检查版本更新.</res_load_err>
   <res_loading>正在加载(不消耗网络流量)...</res_loading>
+  <health_advice1>抵制不良游戏 拒绝盗版游戏 注意自我保护 谨防受骗上当</health_advice1>
+  <health_advice2>适度游戏益脑 沉迷游戏伤身 合理安排时间 享受健康生活</health_advice2>
   <update_restart>已更新到最新版本，请重新启动游戏!</update_restart>
   <logon_wait>正在登陆，请稍候...</logon_wait>
   <join_hall_wait>正在进入游戏大厅，请稍候...</join_hall_wait>

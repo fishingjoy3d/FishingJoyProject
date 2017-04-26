@@ -16,9 +16,9 @@ public enum ChannelType
 
 public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
 {
-    public static bool IS_DISABLED_SDK      = true;
+    public static bool IS_DISABLED_SDK      = false;
     public static bool IS_APP_STORE_VER     = false;
-    public static SdkType SDK_TYPE          = SdkType.SDK_SELF;
+    public static SdkType SDK_TYPE          = SdkType.SDK_CHANNEL;
     public static ChannelType CHANNEL_TYPE  = ChannelType.Self_ChannelType;
     public static bool IS_SDK_CHANNEL       = SDK_TYPE == SdkType.SDK_SELF;
     public static string PACKAGE_NAME       = "";
