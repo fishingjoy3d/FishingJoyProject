@@ -908,9 +908,9 @@ class MsgEventHandle
 
                             int price = (int)pInfo.dDisCountPrice;
                             byte type = 1;
-                            if ((byte)pInfo.RechargeType == 1 || (byte)pInfo.RechargeType == 3)
+                            if ((byte)pInfo.sRechargeType == 1 || (byte)pInfo.sRechargeType == 3)
                                 type = 2;
-                            else if ((byte) pInfo.RechargeType == 2 || (byte)pInfo.RechargeType == 4)
+                            else if ((byte) pInfo.sRechargeType == 2 || (byte)pInfo.sRechargeType == 4)
                                 type = 1;
                             else
                                 type = 3;

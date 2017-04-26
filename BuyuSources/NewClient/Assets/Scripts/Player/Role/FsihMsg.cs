@@ -881,6 +881,9 @@ public class FishDataInfo
     public const int MAX_IconLength = 512;
     public const int MAX_DisCountPicNameLength = 128;
 
+    public const int MAX_SIGN_CODE = 1024;
+    public const int MAX_UrlLength = 512;
+
     public static bool IsCanUsePhone(UInt64 PhoneNumber)
     {
         // 11位
@@ -3516,6 +3519,12 @@ public class GC_Cmd_CreateOrder : NetCmdBase
     public int OrderID;
     [TypeInfo(1)]
     public int ShopID;
+    [TypeInfo(2, FishDataInfo.MAX_ProductID_Length)]
+    public string good_id;
+    [TypeInfo(3, FishDataInfo.MAX_SIGN_CODE)]
+    public string sign_code;
+    [TypeInfo(4, FishDataInfo.MAX_UrlLength)]
+    public string notify_url;
 }
 
 //Announcement

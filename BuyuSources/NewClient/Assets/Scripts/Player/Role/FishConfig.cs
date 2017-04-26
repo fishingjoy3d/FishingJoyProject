@@ -1046,7 +1046,7 @@ public class tagFishRechargeInfo
     [TypeInfo(3)]
     public UInt16 RewardID;
     [TypeInfo(4)]
-    public RechargeType RechargeType;
+    public Byte sRechargeType;
     //public bool IsCurreyOrGlobel;//添加的是乐币还是 金币
     [TypeInfo(6, FishDataInfo.MAX_OperatorTitleLength)]
     public string Name;//商品名称
@@ -1060,28 +1060,28 @@ public class tagFishRechargeInfo
 
     public bool IsAddGlobel()
     {
-        if (RechargeType == RechargeType.RT_FirstGlobel || RechargeType == RechargeType.RT_Globel)
+        if (sRechargeType == (byte)RechargeType.RT_FirstGlobel || sRechargeType == (byte)RechargeType.RT_Globel)
             return true;
         else
             return false;
     }
     public bool IsAddCurrcey()
     {
-        if (RechargeType == RechargeType.RT_FirstCurrcey || RechargeType == RechargeType.RT_Currcey)
+        if (sRechargeType == (byte)RechargeType.RT_FirstCurrcey || sRechargeType == (byte)RechargeType.RT_Currcey)
             return true;
         else
             return false;
     }
     public bool IsAddReward()
     {
-        if (RechargeType == RechargeType.RT_Reward)
+        if (sRechargeType == (byte)RechargeType.RT_Reward)
             return true;
         else
             return false;
     }
     public bool IsFirstAdd()
     {
-        if (RechargeType == RechargeType.RT_FirstCurrcey || RechargeType == RechargeType.RT_FirstGlobel)
+        if (sRechargeType == (byte)RechargeType.RT_FirstCurrcey || sRechargeType == (byte)RechargeType.RT_FirstGlobel)
             return true;
         else
             return false;
@@ -2497,7 +2497,7 @@ class FishConfig : Singleton<FishConfig>
             pInfo.dDisCountPrice = Convert.ToUInt32(var.Attributes["DisCountPrice"].Value);
             pInfo.dPreDisCountPrice = Convert.ToUInt32(var.Attributes["PreDisCountPrice"].Value);
             pInfo.AddMoney = Convert.ToUInt32(var.Attributes["AddMoney"].Value);
-            pInfo.RechargeType = (RechargeType)Convert.ToByte(var.Attributes["RechargeType"].Value);
+            pInfo.sRechargeType = Convert.ToByte(var.Attributes["RechargeType"].Value);
             pInfo.RewardID = Convert.ToUInt16(var.Attributes["AddRewardID"].Value);
             //pInfo.IsCurreyOrGlobel = (Convert.ToByte(var.Attributes["IsCurreyOrGlobel"].Value)==1?true:false);
             pInfo.Icon = Convert.ToString(var.Attributes["Icon"].Value);

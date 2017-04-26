@@ -1846,7 +1846,7 @@ public class NetCmdMapping
         bRet &= InitCmdTypeInfo<CL_Cmd_ShopItem>(NetCmdType.CMD_CL_ShopItem);
         bRet &= InitCmdTypeInfo<LC_Cmd_ShopItemResult>(NetCmdType.CMD_LC_ShopItemResult);
         bRet &= InitCmdTypeInfo<CG_Cmd_GetShopList>(NetCmdType.CMD_CG_GetShopList);
-        //bRet &= InitCmdTypeInfo<GC_Cmd_GetShopList>(NetCmdType.CMD_GC_GetShopList);
+        bRet &= InitCmdTypeInfo<GC_Cmd_GetShopList>(NetCmdType.CMD_GC_GetShopList);
 
         //Entity
         bRet &= InitCmdTypeInfo<CL_Cmd_LoadUserEntity>(NetCmdType.CMD_CL_LoadUserEntity);

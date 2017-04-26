@@ -1545,23 +1545,30 @@ public class LogonLogic : ILogic, ICmdHandler
         uint CRC1 = 0;
         uint CRC2 = 0;
         uint CRC3 = 0;
-#if DOME
-        userID = SDKMgr.Instance.LoginData.UID;
-#else
-        userID = GlobalLogon.Instance.AccountData.TempAccountInfo.UID;
-        if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(FishDataInfo.AccountNameMinLength, FishDataInfo.AccountNameLength, userID, StringCheckType.SCT_AccountName))
+
+        if(SDKMgr.IS_SDK_CHANNEL)
         {
-            tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_NormalLogon_Failed_1);
-            MsgEventHandle.HandleMsg(pUOM);
-            SetState(LogonState.LOGON_ERROR);
-            GlobalEffectMgr.Instance.CloseLoadingMessage();
-            return;
+#if DOME
+            userID = SDKMgr.Instance.LoginData.UID;
+#endif
+        }
+        else
+        {
+            userID = GlobalLogon.Instance.AccountData.TempAccountInfo.UID;
+            if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(FishDataInfo.AccountNameMinLength, FishDataInfo.AccountNameLength, userID, StringCheckType.SCT_AccountName))
+            {
+                tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_Logon_NormalLogon_Failed_1);
+                MsgEventHandle.HandleMsg(pUOM);
+                SetState(LogonState.LOGON_ERROR);
+                GlobalEffectMgr.Instance.CloseLoadingMessage();
+                return;
+            }
+
+            CRC1 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC1;
+            CRC2 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC2;
+            CRC3 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC3;
         }
 
-        CRC1 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC1;
-        CRC2 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC2;
-        CRC3 = GlobalLogon.Instance.AccountData.TempAccountInfo.CRC3;
-#endif
         cmd.logon.AccountName = userID;
 
         cmd.logon.ClientIP = 0;
