@@ -179,6 +179,7 @@ public:
 	void SetRoleIsNeedSave(){ m_IsNeedSave = true; }//修改玩家 是需要保存的
 
 	DWORD GetChannelID(){ return m_ChannelID; }
+	DWORD GetOperatorChannelID();
 
 	void SendClientOpenShareUI();
 private:

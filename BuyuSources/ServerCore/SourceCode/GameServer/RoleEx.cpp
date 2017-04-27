@@ -42,6 +42,11 @@ CRoleEx::~CRoleEx()
 	m_IsExit = false;
 	m_IsOnline = false;
 }
+
+DWORD CRoleEx::GetOperatorChannelID()
+{
+	return m_RoleInfo.ChannelID;
+}
 bool CRoleEx::OnInit(tagRoleInfo* pUserInfo, tagRoleServerInfo* pRoleServerInfo, RoleManager* pManager, DWORD dwSocketID, time_t pTime, bool LogobByGameServer, bool IsRobot)//玩家登陆成功的时候 dwSocketID 对应的Gate的ID
 {
 	if (!pUserInfo || !pRoleServerInfo)

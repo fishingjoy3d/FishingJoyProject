@@ -120,8 +120,6 @@
     <ClInclude Include="ChannelLogonManager.h" />
     <ClInclude Include="FishServer.h" />
     <ClInclude Include="HttpNewServer.h" />
-    <ClInclude Include="IApppay\CryptHelper.h" />
-    <ClInclude Include="IApppay\SignUtils.h" />
     <ClInclude Include="IOSPayManager.h" />
     <ClInclude Include="NormalRechargeManager.h" />
     <ClInclude Include="OperatorHelper.h" />
@@ -159,12 +157,6 @@
     <ClCompile Include="ChannelLogonManager.cpp" />
     <ClCompile Include="FishServer.cpp" />
     <ClCompile Include="HttpNewServer.cpp" />
-    <ClCompile Include="IApppay\CryptHelper.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="IApppay\SignUtils.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="IOSPayManager.cpp" />
     <ClCompile Include="NormalRechargeManager.cpp" />
     <ClCompile Include="OperateServer.cpp" />

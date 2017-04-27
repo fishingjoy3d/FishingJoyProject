@@ -187,6 +187,8 @@ private:
 	bool OnHandleChangeRoleNickName(NetCmd* pCmd);
 	bool OnHandleChangeRoleSecPassword(NetCmd* pCmd);
 	bool OnHandleGameIDConvertUserID(NetCmd* pCmd);
+	//DEAL
+	bool OnHandleCreateDeal(NetCmd* pCmd);
 	//≤È—Ø
 	bool OnHandleTCPNetworkQuery(ServerClientData* pClient, NetCmd* pCmd);
 	bool OnHandleDataBaseLoadQueryUserInfo(NetCmd* pCmd);

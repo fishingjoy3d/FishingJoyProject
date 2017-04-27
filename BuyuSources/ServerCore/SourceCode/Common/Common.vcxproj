@@ -76,7 +76,7 @@
       <WarningLevel>Level3</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\ThirdParty\MySQL\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\CommonFile\openssl\include;$(ProjectDir)\..\ThirdParty\MySQL\Include</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zm110 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Lib>
@@ -111,6 +111,8 @@
     <ClCompile Include="GateWay.cpp" />
     <ClCompile Include="HttpClient.cpp" />
     <ClCompile Include="HttpServer.cpp" />
+    <ClCompile Include="IApppay\CryptHelper.cpp" />
+    <ClCompile Include="IApppay\SignUtils.cpp" />
     <ClCompile Include="NewServer.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="SQL.cpp" />
@@ -143,6 +145,8 @@
     <ClInclude Include="GateWay.h" />
     <ClInclude Include="HttpClient.h" />
     <ClInclude Include="HttpServer.h" />
+    <ClInclude Include="IApppay\CryptHelper.h" />
+    <ClInclude Include="IApppay\SignUtils.h" />
     <ClInclude Include="MyArray.h" />
     <ClInclude Include="NetCmd_DBServer.h" />
     <ClInclude Include="LogHandler.h" />

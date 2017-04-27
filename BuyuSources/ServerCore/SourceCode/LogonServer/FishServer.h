@@ -104,7 +104,7 @@ private:
 	void OnUpdateWriteGameServerUserMap(DWORD dwTimer);
 
 	void OnReloadConfig();
-
+	void OperatorLogon(tagLogon logon, ServerClientData* pClient);
 	void UpdateInfoToControl(DWORD dwTimer);
 private:
 	Dump						m_pDump;

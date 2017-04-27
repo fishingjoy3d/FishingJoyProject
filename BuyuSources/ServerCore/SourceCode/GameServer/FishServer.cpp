@@ -4,7 +4,8 @@
 #include "..\CommonFile\FishServerConfig.h"
 #include "..\CommonFile\ip.h"
 #include "..\CommonFile\DBLogManager.h"
-#include<list>
+#include "IApppay\SignUtils.h"
+#include "IApppay\CryptHelper.h"
 FishServer g_FishServer;
 void SendLogDB(NetCmd* pCmd)
 {
@@ -1391,6 +1392,7 @@ bool FishServer::HandleClientMsg(ServerClientData* pClient, NetCmd* pCmd)
 			//	return true;
 			//}
 		}
+		return true;
 	case Main_Item:
 		return OnHandleTCPNetworkItem(pClient, pCmd);
 	case Main_Relation:
@@ -1468,30 +1470,30 @@ bool FishServer::HandleDataBaseMsg(NetCmd* pCmd)
 	{
 	case DBO_GetAccountInfoByUserID:
 		return OnHandDBLogonMsg(pCmd);
-	/*case DBO_GetRoleAchievementIndex:
-		return OnHandleRoleAchievementIndex(pCmd);*/
+		/*case DBO_GetRoleAchievementIndex:
+			return OnHandleRoleAchievementIndex(pCmd);*/
 	case DBO_ChangeAccountPassword:
 		return OnHandleResetPasswordResult(pCmd);
-	/*case DBO_SetOnline:
-		return OnHandleRoleOnline(pCmd);*/
+		/*case DBO_SetOnline:
+			return OnHandleRoleOnline(pCmd);*/
 	case DBO_LoadUserItem:
 		return OnHandleDateBaseLoadItem(pCmd);
-	/*case DBO_LoadUserItemFinish:
-		return OnHandleDataBaseLoadItemFinish(pCmd);*/
+		/*case DBO_LoadUserItemFinish:
+			return OnHandleDataBaseLoadItemFinish(pCmd);*/
 	case DBO_AddUserItem:
 		return OnHandleDataBaseAddItemResult(pCmd);
 	case DBO_LoadUserRelation:
 		return OnHandleDateBaseLoadRelation(pCmd);
 	case DBO_LoadBeUserRelation:
 		return OnHandleDataBaseLoadBeRelation(pCmd);
-	/*case DBO_LoadBeUserRelationFinish:
-		return OnHandleDataBaseLoadBeRelationFinish(pCmd);*/
+		/*case DBO_LoadBeUserRelationFinish:
+			return OnHandleDataBaseLoadBeRelationFinish(pCmd);*/
 	case DBO_AddUserRelation:
 		return OnHandleDataBaseAddRelation(pCmd);
 	case DBO_LoadUserMail:
 		return OnHandleDataBaseLoadUserMail(pCmd);
-	/*case DBO_LoadUserMailFinish:
-		return OnHandleDataBaseLoadUserMailFinish(pCmd);*/
+		/*case DBO_LoadUserMailFinish:
+			return OnHandleDataBaseLoadUserMailFinish(pCmd);*/
 	case DBO_AddUserMail:
 		return OnHandleDataBaseSendUserMail(pCmd);
 	case DBO_Query_RoleInfo:
@@ -1500,8 +1502,8 @@ bool FishServer::HandleDataBaseMsg(NetCmd* pCmd)
 		return OnHandleDataBaseLoadQueryUserInfoByUserID(pCmd);
 	case DBO_Query_RoleInfoByGameID:
 		return OnHandleDataBaseLoadQueryUserInfoByGameID(pCmd);
-	/*case DBO_LoadRoleCheckInfo:
-		return OnHandleDataBaseLoadUserCheckInfo(pCmd);*/
+		/*case DBO_LoadRoleCheckInfo:
+			return OnHandleDataBaseLoadUserCheckInfo(pCmd);*/
 	case DBO_LoadRoleTask:
 		return OnHandleDataBaseLoadUserTaskInfo(pCmd);
 	case DBO_LoadRoleAchievement:
@@ -1542,7 +1544,11 @@ bool FishServer::HandleDataBaseMsg(NetCmd* pCmd)
 		return OnHandleChangeRoleSecPassword(pCmd);
 	case DBO_GameIDConvertToUserID:
 		return OnHandleGameIDConvertUserID(pCmd);
+	case DBO_Deal_Create:
+		return OnHandleCreateDeal(pCmd);
+
 	}
+	
 	return true;
 }
 //bool FishServer::HandleLogonMsg(BYTE LogonID,NetCmd* pCmd)
@@ -1976,6 +1982,19 @@ bool FishServer::HandleCenterMsg(NetCmd* pCmd)
 		{
 			switch (pCmd->SubCmdType)
 			{
+			case CG_Deal_Successful:
+				{
+					CG_Cmd_Deal_Successful* pMsg = (CG_Cmd_Deal_Successful*)pCmd;
+					CRoleEx* pRole = GetRoleManager()->QueryUser(pMsg->dwUserid);
+					if (!pRole)
+					{
+						ASSERT(false);
+						return false;
+					}
+					CG_Cmd_Deal_NotifyClient msg;
+					SetMsgInfo(msg, GetMsgType(Main_Operate, CG_Deal_NotifyClient), sizeof(CG_Cmd_Deal_NotifyClient));
+					pRole->SendDataToClient(&msg);					
+				}
 			case CG_BindEmail:
 				{
 					CG_Cmd_BindEmail* pMsg = (CG_Cmd_BindEmail*)pCmd;
@@ -2003,6 +2022,7 @@ bool FishServer::HandleCenterMsg(NetCmd* pCmd)
 					OnHandleUseRMB(pMsg);
 					return true;
 				}
+
 			case CG_AddNormalOrderID:
 				{
 					CG_Cmd_AddNormalOrderID* pMsg = (CG_Cmd_AddNormalOrderID*)pCmd;
@@ -4278,6 +4298,70 @@ bool FishServer::OnHandleChangeRoleSecPassword(NetCmd* pCmd)
 	pRole->SendDataToClient(&msg);
 	return true;
 }
+
+bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
+{
+	DBO_Cmd_Deal_Create* pMsg = (DBO_Cmd_Deal_Create*)pCmd;
+	if (!pMsg)
+	{
+		ASSERT(false);
+		return false;
+	}
+	CRoleEx* pRole = GetRoleManager()->QueryUser(pMsg->user_id);
+	if (!pRole)
+	{
+		ASSERT(false);
+		return false;
+	}
+	UINT count;
+	GC_Cmd_CreateOrder msg;
+	msg.OrderID = pMsg->order_id;
+	msg.ShopIndex = pMsg->shop_id;
+	const tagChannelConfig* channel_config = g_FishServer.GetFishConfig().GetChannelConfig(pRole->GetOperatorChannelID());
+	if (channel_config == null)
+	{
+		LogInfoToFile("DomePay.txt", "生成签名钥匙失败");
+	}
+	else
+	{
+		char* notify_data = WCharToChar(channel_config->notify_pay_url, count);
+		std::string notifyUrl = notify_data;
+		free(notify_data);
+		char szTemp[512];
+		std::string priKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAIwOcaDOCOFqd+9M5Sus5/DH7DRwcQKanC11f1KJxLqEAdEpS5Swu7hvtPJR4a97kYD4oNpbszQUHmWTsyGnqMo/ucTORSogrej/tEBAAltIpyC+Rp6qsGuwdhhBZ+yz8NS0fuHMCsRKZ55XD37riz4HQHPAspz4NNdJYI/NPC11AgMBAAECgYAM4u9Vil+Kzg8G955GbHxSzTJQiN/9C1i/XgY/A+oT9z1rj08i+Tfsemq9uQb47Hew1C+Ip9NPQWKimfpraE/BWOBSX4/BJIDLfOdoMgTns7/3ICIuhj5fTR8XMX4qfpnZTu9/opHCRXFPV42bop1BxZTjYnTwO9LdWdOsmCirwQJBAN2vp8OihiF7uzjynX10baIeuV8GGixdlM2BpJIevDUob+wwkzsIRo//ICIzMdAOXxKbzm6Aj3hJ4pimf4A6r3kCQQChvDLz9ZENH6tIzHUaeSMzPaWbJGKDCli7y5jvVZYu9DXhJmAjwgJ5eIHn5JJiLc3wMyqn2tJ0qcfpbIcLdAkBiXqSp+f9c8kOkxHvABJ71dn65PML2dtwlyOZW9I59ZCEuBGwAoO52zTXcFy1+bjIf1sVmYWPIc7i6Ff+zzda5AkACorqB10Kh4B4+dXaDE+5K63pDaPhiAk0n4k1/uPlVko0+Og3fB05bBGe5i7QG/ZAZlfvf+GTtmca0PYBDB+3RAkEAhGnxthd0zdcXULmqMbk6s18OlrHzhQrCKhf3nlus+YV6oopZHUvjnJHxzdDzS69OsLMzWSsaez3lbYERIZ+qbQ==";
+		sprintf(szTemp, "appCode=D0000356&orderNo=%u&payCode=%s&payNotifyUrl=%s", msg.OrderID, pMsg->good_id, "", notifyUrl.c_str());
+		///const std::string &data, std::string &sign, EVP_PKEY* priKey
+		std::string sign;
+		std::string data = szTemp;
+
+		EVP_PKEY* vkey = CryptHelper::getKeyByPKCS1(priKey, 1);
+		if (!vkey)
+		{
+			LogInfoToFile("DomePay.txt", "生成签名钥匙失败");
+			ASSERT(false);
+			//g_FishServer.SendNetCmdToCenterServer(&msg);
+			return true;
+		}
+		LogInfoToFile("DomePay.txt", "准备签名[%s]", szTemp);
+		//std::string priKey;
+		CryptHelper::md5WithRsa(data, sign, vkey);
+		LogInfoToFile("DomePay.txt", "签名结果[%s]", data.c_str());
+		TCHARCopy(msg.good_id, CountArray(msg.good_id), pMsg->good_id, _tcslen(pMsg->good_id));
+
+		WCHAR* sign_w = CharToWChar(sign.c_str(), count);
+		//TCHARCopy(msg.good_id, CountArray(msg.good_id), pMsg->good_id, _tcslen(pMsg->good_id));
+
+		TCHARCopy(msg.sign_code, CountArray(msg.sign_code), sign_w, _tcslen(sign_w));
+		SetMsgInfo(msg, GetMsgType(Main_Recharge, GC_CreateOrder), sizeof(GC_Cmd_CreateOrder));
+		free(sign_w);
+		WCHAR* url = CharToWChar(notifyUrl.c_str(), count);
+		TCHARCopy(msg.notify_url, CountArray(msg.notify_url), url, _tcslen(url));
+		free(url);
+		pRole->SendDataToClient(&msg);
+	}
+
+	return true;
+}
 bool FishServer::OnHandleGameIDConvertUserID(NetCmd* pCmd)
 {
 	DBO_Cmd_GameIDConvertToUserID* pMsg = (DBO_Cmd_GameIDConvertToUserID*)pCmd;
@@ -5908,6 +5992,36 @@ bool FishServer::OnHandleTCPNetworkShop(ServerClientData* pClient, NetCmd* pCmd)
 			m_ShopManager.OnShellShopItem(pRoleEx, pMsg->ShopID, pMsg->ShopItemIndex, pMsg->ItemSum);
 			return true;
 		}
+	case CG_RequiredOperatorShopList:
+		{
+			//CRoleEx* pRole = m_RoleManager.QuertUserBySocketID(pClient->OutsideExtraData);
+			//if (pRole != NULL)
+			//{
+			//	ASSERT(false);
+			//	return false;
+			//}
+			GC_Cmd_RequiredOperatorShopList msg;
+			msg.sum = 0;
+			msg.States |= MsgBegin;
+			
+			SetMsgInfo(msg, GetMsgType(Main_Shop, GC_RequiredOperatorShopList), sizeof(msg));
+			const tagFishRechargesMap map = m_FishConfig.GetFishRechargesConfig();
+			HashMap<DWORD, tagFishRechargeInfo>::const_iterator it = map.m_FishRechargeMap.begin();
+			for (; it != map.m_FishRechargeMap.end(); ++ it)
+			{
+				if (msg.sum >= MAX_REQUIRED_OPERATOR_SHOP_ITEM_COUT)
+				{
+					pRoleEx->SendDataToClient(&msg);
+					msg.sum = 0;
+					msg.States = 0;
+				}
+				msg.config[msg.sum] = it->second;
+				msg.sum++;
+			}
+			msg.States |= MsgEnd;
+			pRoleEx->SendDataToClient(&msg);
+		}
+		break;
 	}
 	return true;
 }
@@ -6800,6 +6914,45 @@ bool FishServer::OnHandleTCPNetworkRecharge(ServerClientData* pClient, NetCmd* p
 	}
 	switch (pCmd->SubCmdType)
 	{
+	case CG_CreateOrder:
+		{
+
+
+			CG_Cmd_CreateOrder* pMsg = (CG_Cmd_CreateOrder*)pCmd;
+			tagFishRechargesMap config = m_FishConfig.GetFishRechargesConfig();
+			HashMap<DWORD, tagFishRechargeInfo>::iterator it = config.m_FishRechargeMap.begin();
+			tagFishRechargeInfo entry;
+			bool find = false;
+			for (; it != config.m_FishRechargeMap.end(); ++ it)
+			{
+				
+				entry = it->second;
+				if (entry.ID == pMsg->ShopIndex)
+				{
+					find = true;
+					break;
+				}
+			}
+			if (find)
+			{
+				DBR_Cmd_Deal_Create msg;
+				msg.shop_id = entry.ID;
+				msg.channel_id = pRole->GetChannelID();
+				msg.user_id = pRole->GetUserID();
+				SetMsgInfo(msg, DBR_Deal_Create, sizeof(msg));
+				TCHARCopy(msg.good_id, CountArray(msg.good_id), entry.PayNO, _tcslen(entry.PayNO));
+				LogInfoToFile("DomePay.txt", "向数据库申请创建订单[%d]", pMsg->ShopIndex);
+				SendNetCmdToDB(&msg);
+				//msg.good_id
+			}
+			else
+			{
+				LogInfoToFile("DomePay.txt", "创建订单失败没有找到商品 %d", pMsg->ShopIndex);
+			}
+
+
+		}
+		break;
 	case CL_Recharge:
 		{
 			//接收客户端发送来的命令 

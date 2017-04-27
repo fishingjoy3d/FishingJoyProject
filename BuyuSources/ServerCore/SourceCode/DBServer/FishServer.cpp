@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "FishServer.h"
 #include "..\CommonFile\FishServerConfig.h"
-
+#include "..\Common\IApppay\CryptHelper.h"
 const static char DBErrorSqlFileName[] = "LogSqlError.txt";
 
 FishServer g_FishServer;
@@ -632,6 +632,7 @@ bool FishServer::HandleControlMsg(NetCmd* pCmd)
 			return true;
 		}
 		break;
+	
 	}
 	return true;
 }
@@ -961,6 +962,8 @@ bool FishServer::HandleDataBaseMsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		return OnQueryRechargeOrderInfo(Index, ClientID, pCmd);
 	case DBR_DelRechargeOrderInfo:
 		return OnDleRechargeOrderInfo(Index, ClientID, pCmd);
+	case DBR_Deal_Create:
+		return OnCreateDealOrderID(Index, ClientID, pCmd);
 	//Control
 	case DBR_ResetUserPassword:
 		return OnResetUserPassword(Index, ClientID, pCmd);
@@ -982,6 +985,8 @@ bool FishServer::HandleDataBaseMsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	case DBR_AddRelationRequest:
 		return OnHandleAddRelationRequest(Index, ClientID, pCmd);
 	case DBR_DelRelationRequest:
+		return OnHandleDelRelationRequest(Index, ClientID, pCmd);
+	case DBR_Deal_Third_Platform_Verify:
 		return OnHandleDelRelationRequest(Index, ClientID, pCmd);
 	default:
 		return false;
@@ -1046,6 +1051,39 @@ bool FishServer::OnHandleAccountLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	OnAddDBResult(Index, ClientID, msg);
 	return true;
 }
+
+
+std::string FishServer::GetRateValueString(int256& RateValue)
+{
+	std::string str_entry;
+	char sz_temp[16];
+	for (size_t i = 0; i < 32; i++)
+	{
+		if (i != 0)
+		{
+			str_entry += ",";
+		}
+		sprintf(sz_temp, "%d", RateValue.Value[i]);
+		str_entry += sz_temp;
+	}
+	return str_entry;
+	
+}
+int256 FishServer::GetRateValueFromString(const char* s)
+{
+	int256 entry;
+	std::string strIn = s;
+	std::vector<std::string> vcInStr;	
+	SplitStringA(strIn, ",", vcInStr);
+	std::vector<std::string>::iterator it = vcInStr.begin();
+	for (int i = 0; it != vcInStr.end()&& i < 32; ++ it, ++ i)
+	{
+		std::string str_entry;
+		entry.Value[i] = atoi(str_entry.c_str());
+	}
+	return entry;
+}
+
 bool FishServer::OnHandleQueryLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 {
 	ShowInfoToWin("接收到快速登陆");
@@ -1114,11 +1152,14 @@ bool FishServer::OnHandleQueryLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 			break;
 	}
 
-	char pRateStates[MAXBLOB_LENGTH] = { 0 };
-	m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
+	//char pRateStates[MAXBLOB_LENGTH] = { 0 };
 
+	
+	//m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
+	std::string RateValue_temp = GetRateValueString(RateValue);
+	//CryptHelper::base64Encode((uint8_t *)pRateStates, RateValue, )
 
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishQueryLogon('%s','%s','%u','%u','%u','%s',%d,'%u','%s','%d.%d.%d.%d','%d-%d-%d %d:%d:%d');", DestAccountName, DestMacAddress, pMsg->PasswordCrc1, pMsg->PasswordCrc2, pMsg->PasswordCrc3, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, pRateStates, pMsg->ClientIP & 0xff, (pMsg->ClientIP >> 8) & 0xff, (pMsg->ClientIP >> 16) & 0xff, (pMsg->ClientIP >> 24) & 0xff, NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishQueryLogon('%s','%s','%u','%u','%u','%s',%d,'%u','%s','%d.%d.%d.%d','%d-%d-%d %d:%d:%d');", DestAccountName, DestMacAddress, pMsg->PasswordCrc1, pMsg->PasswordCrc2, pMsg->PasswordCrc3, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, RateValue_temp.c_str(), pMsg->ClientIP & 0xff, (pMsg->ClientIP >> 8) & 0xff, (pMsg->ClientIP >> 16) & 0xff, (pMsg->ClientIP >> 24) & 0xff, NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec);
 	free(DestAccountName);
 	free(AccountName);
 	free(DestMacAddress);
@@ -1223,23 +1264,25 @@ bool FishServer::OnHandleOperatorLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		else if ((InitRateValue& (1 << i)) == 0)
 			break;
 	}
-
-	char pRateStates[MAXBLOB_LENGTH] = { 0 };
-	m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
+	std::string RateValue_temp = GetRateValueString(RateValue);
+	//char pRateStates[MAXBLOB_LENGTH] = { 0 };
+	//m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
 	char SqlStr[MAXSQL_LENGTH] = { 0 };
 	//IN `Account` varchar(32),Mac varchar(56),IN `PasswordCrc1` int unsigned,IN `PasswordCrc2` int unsigned,IN `PasswordCrc3` 
 	//int unsigned,IN `ChannelID` int unsigned, IN `NickName` varchar(8),IN `Gender` bit,IN `InitGlobelSum` int unsigned,IN `InitRateValue`  blob,IN `RsgIP` varchar(16),IN `LogTime` datetime
-		free(DestAccountName);
+
+		DBO_Cmd_Operator_Logon* msg = (DBO_Cmd_Operator_Logon*)CreateCmd(DBO_Operator_Logon, sizeof(DBO_Cmd_Operator_Logon));
+		msg->ClientID = pMsg->ClientID;
+		//IN `Account` varchar(32),Mac varchar(56),IN `PasswordCrc1` int unsigned,IN `PasswordCrc2` int unsigned,IN `PasswordCrc3` int unsigned,IN `ChannelID` int unsigned, IN `NickName` varchar(8),IN `Gender` bit,IN `InitGlobelSum` int unsigned,IN `InitRateValue`  blob,IN `RsgIP` varchar(16),IN `LogTime` datetime
+		sprintf_s(SqlStr, sizeof(SqlStr), "call ChannelLogon('%s','%s','%u','%u','%u','%u','%s',%d,'%u','%s','%d.%d.%d.%d','%d-%d-%d %d:%d:%d');", DestAccountName, DestMacAddress,
+		pMsg->logon.PasswordCrc1, pMsg->logon.PasswordCrc2,
+		pMsg->logon.PasswordCrc3, pMsg->logon.ChannelID, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, RateValue_temp.c_str(),
+		pMsg->logon.ClientIP & 0xff, (pMsg->logon.ClientIP >> 8) & 0xff, (pMsg->logon.ClientIP >> 16) & 0xff, (pMsg->logon.ClientIP >> 24) & 0xff,
+		NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec);
+				free(DestAccountName);
 		free(AccountName);
 		free(DestMacAddress);
 		free(MacAddress);
-		DBO_Cmd_Operator_Logon* msg = (DBO_Cmd_Operator_Logon*)CreateCmd(DBO_Operator_Logon, sizeof(DBO_Cmd_Operator_Logon));
-		msg->ClientID = pMsg->ClientID;
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishAccountRsg('%s','%s','%u','%u','%u','%s',%d,'%u','%s','%d.%d.%d.%d','%d-%d-%d %d:%d:%d');", DestAccountName, DestMacAddress,
-		pMsg->logon.PasswordCrc1, pMsg->logon.PasswordCrc2,
-		pMsg->logon.PasswordCrc3, pMsg->logon.ChannelID, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, pRateStates,
-		pMsg->logon.ClientIP & 0xff, (pMsg->logon.ClientIP >> 8) & 0xff, (pMsg->logon.ClientIP >> 16) & 0xff, (pMsg->logon.ClientIP >> 24) & 0xff,
-		NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec);
 	if (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1)
 	{
 		msg->dwUserID = pTable1.GetUint(0, 0);
@@ -1251,6 +1294,7 @@ bool FishServer::OnHandleOperatorLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		ASSERT(false);
 	}
 	OnAddDBResult(Index, ClientID, msg);
+	return true;
 }
 
 
@@ -1324,11 +1368,11 @@ bool FishServer::OnHandleAccountRsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		else if ((InitRateValue& (1 << i)) == 0)
 			break;
 	}
+	std::string RateValue_temp = GetRateValueString(RateValue);
+	//char pRateStates[MAXBLOB_LENGTH] = { 0 };
+	//m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
 
-	char pRateStates[MAXBLOB_LENGTH] = { 0 };
-	m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
-
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishAccountRsg('%s','%s','%u','%u','%u','%s',%d,'%u','%s','%d.%d.%d.%d','%d-%d-%d %d:%d:%d');", DestAccountName, DestMacAddress, pMsg->PasswordCrc1, pMsg->PasswordCrc2, pMsg->PasswordCrc3, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, pRateStates, pMsg->ClientIP & 0xff, (pMsg->ClientIP >> 8) & 0xff, (pMsg->ClientIP >> 16) & 0xff, (pMsg->ClientIP >> 24) & 0xff, NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishAccountRsg('%s','%s','%u','%u','%u','%s',%d,'%u','%s','%d.%d.%d.%d','%d-%d-%d %d:%d:%d');", DestAccountName, DestMacAddress, pMsg->PasswordCrc1, pMsg->PasswordCrc2, pMsg->PasswordCrc3, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, RateValue_temp.c_str(), pMsg->ClientIP & 0xff, (pMsg->ClientIP >> 8) & 0xff, (pMsg->ClientIP >> 16) & 0xff, (pMsg->ClientIP >> 24) & 0xff, NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec);
 	free(DestAccountName);
 	free(AccountName);
 	free(DestMacAddress);
@@ -1852,10 +1896,11 @@ bool FishServer::OnHandleGetNewAccount(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 			break;
 	}
 
-	char pRateStates[MAXBLOB_LENGTH] = { 0 };
-	m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
+	std::string RateValue_temp = GetRateValueString(RateValue);
+	//char pRateStates[MAXBLOB_LENGTH] = { 0 };
+	//m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
 
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishGetNewAccount('%s','%s','%u','%u','%u','%s',%d ,'%u','%d.%d.%d.%d','%d-%d-%d %d:%d:%d','%s');", strAccountName.c_str(), DestMacAddress, pMsg->PasswordCrc1, pMsg->PasswordCrc2, pMsg->PasswordCrc3, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, pMsg->ClientIP & 0xff, (pMsg->ClientIP >> 8) & 0xff, (pMsg->ClientIP >> 16) & 0xff, (pMsg->ClientIP >> 24) & 0xff, NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec, pRateStates);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishGetNewAccount('%s','%s','%u','%u','%u','%s',%d ,'%u','%d.%d.%d.%d','%d-%d-%d %d:%d:%d','%s');", strAccountName.c_str(), DestMacAddress, pMsg->PasswordCrc1, pMsg->PasswordCrc2, pMsg->PasswordCrc3, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, pMsg->ClientIP & 0xff, (pMsg->ClientIP >> 8) & 0xff, (pMsg->ClientIP >> 16) & 0xff, (pMsg->ClientIP >> 24) & 0xff, NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec, RateValue_temp.c_str());
 
 	free(DestMacAddress);
 	free(MacAddress);
@@ -2031,7 +2076,12 @@ bool FishServer::OnHandleGetRoleInfoByUserID(BYTE Index, BYTE ClientID, NetCmd* 
 		msg->RoleInfo.MonthCardID = pTable1.GetByte(0, 39);
 		msg->RoleInfo.MonthCardEndTime = pTable1.GetDateTime(0, 40);
 		msg->RoleInfo.GetMonthCardRewardTime = pTable1.GetDateTime(0, 41);
-		memcpy_s(&msg->RoleInfo.RateValue, sizeof(msg->RoleInfo.RateValue), pTable1.GetField((UINT)0, (UINT)42), sizeof(msg->RoleInfo.RateValue));//修改玩家的炮台状态
+		const WCHAR* RateValue_temp = pTable1.GetStr(0, 42);
+		UINT count;
+		char* RateValue_temp_1 =  WCharToChar(RateValue_temp, count);
+		msg->RoleInfo.RateValue = GetRateValueFromString(RateValue_temp_1);
+		free(RateValue_temp_1);
+		//memcpy_s(&msg->RoleInfo.RateValue, sizeof(msg->RoleInfo.RateValue), pTable1.GetField((UINT)0, (UINT)42), sizeof(msg->RoleInfo.RateValue));//修改玩家的炮台状态
 		msg->RoleInfo.VipLevel = pTable1.GetByte(0, 43);
 		msg->RoleInfo.CashSum = pTable1.GetByte(0, 44);//今天兑换次数
 		msg->RoleInfo.TotalUseMedal = pTable1.GetUint(0, 45);
@@ -2064,7 +2114,7 @@ bool FishServer::OnHandleGetRoleInfoByUserID(BYTE Index, BYTE ClientID, NetCmd* 
 		
 		UINT Count = 0;
 		char* record_temp = WCharToChar(pTable1.GetStr(0, 54), Count);
-		
+		msg->RoleInfo.ChannelID = pTable1.GetUint(0, 55);
 		std::string system_record_str = record_temp;
 		free(record_temp);
 		std::vector<std::string> Out;
@@ -2667,9 +2717,10 @@ bool FishServer::OnHandleSaveRoleRateValue(BYTE Index, BYTE ClientID, NetCmd* pC
 	char SqlStr[MAXSQL_LENGTH] = { 0 };
 
 	char pRateStates[MAXBLOB_LENGTH] = { 0 };
-	m_Sql[Index].GetMySqlEscapeString((char*)&pMsg->RateValue, sizeof(pMsg->RateValue), pRateStates);
+	std::string RateValue_temp = GetRateValueString(pMsg->RateValue);
+	//m_Sql[Index].GetMySqlEscapeString((char*)&pMsg->RateValue, sizeof(pMsg->RateValue), pRateStates);
 
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishSaveRoleRateValue('%u','%s','%u');", pMsg->UserID, pRateStates,pMsg->MaxRateValue);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishSaveRoleRateValue('%u','%s','%u');", pMsg->UserID, RateValue_temp.c_str() ,pMsg->MaxRateValue);
 	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
 	if (!Result)
 	{
@@ -6154,6 +6205,38 @@ bool FishServer::OnQueryRechargeOrderInfo(BYTE Index, BYTE ClientID, NetCmd* pCm
 	OnAddDBResult(Index, ClientID, msg);
 	return true;
 }
+
+bool FishServer::OnCreateDealOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd)
+{
+	DBR_Cmd_Deal_Create* pMsg = (DBR_Cmd_Deal_Create*)pCmd;
+	if (!pMsg)
+	{
+		ASSERT(false);
+		return false;
+	}
+	SqlTable pTable1;
+	char SqlStr[MAXSQL_LENGTH] = { 0 };
+	//IN `good_id` varchar(255), IN `shop_id` int unsigned, IN `user_id` int unsigned, IN `channel` int unsigned
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishCreateDeal('%s', '%u', '%u', '%u');", pMsg->good_id, pMsg->shop_id, pMsg->user_id, pMsg->channel_id);
+	int order_id = 0;
+	if (m_Sql[Index].Select(SqlStr, 1, pTable1, true))
+	{
+		DWORD Rows = pTable1.Rows();
+		if (Rows > 0)
+		{
+			order_id = pTable1.GetUint(0, 0);
+		}		
+	}
+
+	DBO_Cmd_Deal_Create* msg = (DBO_Cmd_Deal_Create*)CreateCmd(DBO_Deal_Create, sizeof(DBO_Cmd_Deal_Create));
+	msg->order_id = order_id;
+	msg->shop_id = pMsg->shop_id;
+	msg->user_id = pMsg->user_id;
+	TCHARCopy(msg->good_id, CountArray(msg->good_id), pMsg->good_id, _tcslen(pMsg->good_id));	
+	OnAddDBResult(Index, ClientID, msg);
+	return true;
+}
+
 bool FishServer::OnDleRechargeOrderInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 {
 	DBR_Cmd_DelRechargeOrderInfo* pMsg = (DBR_Cmd_DelRechargeOrderInfo*)pCmd;
@@ -6887,6 +6970,40 @@ bool FishServer::OnHandleAddRelationRequest(BYTE Index, BYTE ClientID, NetCmd* p
 	}
 	return true;
 }
+
+
+bool FishServer::OnThirdPlatformVerify(BYTE Index, BYTE ClientID, NetCmd* pCmd)
+{
+	DBR_Cmd_Deal_Third_Platform_Verify* pMsg = (DBR_Cmd_Deal_Third_Platform_Verify*)pCmd;
+	if (!pMsg)
+	{
+		ASSERT(false);
+		return false;
+	}
+
+	DBO_Cmd_Deal_Third_Platform_Verify * msg = (DBO_Cmd_Deal_Third_Platform_Verify*)CreateCmd(DBO_Deal_Third_Platform_Verify, sizeof(DBO_Cmd_Deal_Third_Platform_Verify));
+	
+	msg->info.order_id = pMsg->Order_id;
+	msg->result = false;
+	SqlTable pTable1;
+	char SqlStr[MAXSQL_LENGTH] = { 0 };
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishVerifyDeal('%u');", pMsg->Order_id);
+	if (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1)
+	{
+
+		//user_id`, `order_id`, `channel`, `good_id`, `shop_id
+		msg->info.user_id = pTable1.GetUint(0, 0);
+		msg->info.order_id = pTable1.GetUint(0, 1);
+		msg->info.channel_id = pTable1.GetUint(0, 2);
+		const TCHAR* good_id = pTable1.GetStr(0, 3);
+		TCHARCopy(msg->info.good_id, CountArray(msg->info.good_id), good_id, _tcslen(good_id));
+		msg->info.shop_id = pTable1.GetUint(0, 4);
+	}
+	OnAddDBResult(Index, ClientID, msg);
+	return true;
+	//
+}
+
 bool FishServer::OnHandleDelRelationRequest(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 {
 	//FishDelRelationRequest

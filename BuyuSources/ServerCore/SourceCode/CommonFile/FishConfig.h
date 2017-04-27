@@ -19,6 +19,16 @@ struct tgGMToolConfig
 	std::string Account_;
 };
 
+
+struct tagChannelConfig
+{
+	int channel_id;
+	WCHAR notify_pay_url[512];
+	WCHAR channel_name[512];
+};
+
+
+
 class FishConfig
 {
 public:
@@ -67,8 +77,9 @@ public:
 	tagFishDropConfig& GetFishDropConfig(){ return m_FishDropConfig; }
 	tagMiNiGameConfig& GetFishMiNiGameConfig(){ return m_MiniGameConfig; }
 	tagGameRobotInfo& GetFishGameRobotConfig(){ return m_GameRobotConfig; }
-	
+	tagOperatorShopCongfigMap& GetOperatorShopConfig() { return m_OperatorShopConfig; }
 	tgGMToolConfig& GetGMToolConfig() { return m_GMTool; }
+	const tagChannelConfig* GetChannelConfig(int channel_id);
 	DWORD GetWriteSec();
 	bool CheckVersionAndPathCrc(DWORD VersionID, DWORD PathCrc);
 
@@ -80,6 +91,7 @@ public:
 	HashMap<DWORD, tagNotice>& GetAllNoticeInfo(){ return m_NoticeMap; }
 	const HashMap<DWORD, tagItemConfig>& GetAllItemConfigs() { return m_ItemMap; }
 private:
+	//bool LoadFishOperatorShopConfig()
 	//void OnCreateGlobelTaskInfo();
 	bool LoadFishCheck(WHXmlNode* pFishConfig);//加载签到的数据
 	bool LoadFishTask(WHXmlNode* pFishConfig);
@@ -115,6 +127,7 @@ private:
 	bool LoadFishDropConfig(WHXmlNode* pFishConfig);
 	bool LoadFishMiniGameConfig(WHXmlNode* pFishConfig);
 	bool LoadFishGameRobotConfig(WHXmlNode* pFishConfig);
+	bool LoadFishChannelConfig();
 private:
 	RoleCheckConfig				m_CheckConfig;
 	tagTaskMap					m_TaskConfig;//任务配置文件
@@ -155,4 +168,6 @@ private:
 	tagGameRobotInfo			m_GameRobotConfig;
 	tgGMToolConfig				m_GMTool;
 	HashMap<DWORD,tagNotice>	m_NoticeMap;//公告的结构
+	tagOperatorShopCongfigMap   m_OperatorShopConfig;
+	HashMap<DWORD, tagChannelConfig>	m_ChannelConfig;
 };

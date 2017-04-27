@@ -13,21 +13,6 @@ protected:
 };
 
 
-typedef std::map<ChannelType, BaseOperator*> OPERATORHELPERS;
-class OperatorHelper
-{
-public:
-	OperatorHelper();
-	virtual ~OperatorHelper();
-	DomeOperator* GetDomeOperator();
-	void AcceptDomeServerLogon(TCHAR* user);
-	void AcceptDomeClientLogon(tagLogon& logon, BYTE LogonClientID, ServerClientData* pClient);
-	void Update();
-protected:
-	OPERATORHELPERS _operators;
-	
-
-};
 
 class DomeOperator : public BaseOperator
 {
@@ -45,5 +30,20 @@ protected:
 	USERS _server_wait_users;
 	int _wait_sec;
 	
+
+};
+typedef std::map<ChannelType, BaseOperator*> OPERATORHELPERS;
+class OperatorHelper
+{
+public:
+	OperatorHelper();
+	virtual ~OperatorHelper();
+	DomeOperator* GetDomeOperator();
+	void AcceptDomeServerLogon(TCHAR* user);
+	void AcceptDomeClientLogon(tagLogon& logon, BYTE LogonClientID, ServerClientData* pClient);
+	void Update();
+protected:
+	OPERATORHELPERS _operators;
+
 
 };
