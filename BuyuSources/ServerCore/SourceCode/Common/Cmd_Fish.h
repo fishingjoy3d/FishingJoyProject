@@ -102,6 +102,17 @@
 
 #define MAX_RelationRequestLength 32
 
+#define MAX_REQUIRED_OPERATOR_SHOP_ITEM_COUT 3
+#define MAX_PayNOLength 64
+#define MAX_IconLength 64
+#define MAX_DisCountPicNameLength 64
+#define MAX_OperatorTitleLength 24
+
+
+#define MAX_SIGN_CODE 1024
+#define MAX_UrlLength 512
+
+
 const int MAC_LENGTH = 18;
 
 struct AfxNetworkClientOnce
@@ -531,6 +542,7 @@ struct tagRoleInfo
 	//兑换次数
 	DWORD			TotalCashSum;//总兑换次数
 	tagSystemMailRecord SystemMailRecord[MAX_SYSTEM_RECORD_COUT];
+	DWORD			ChannelID;
 };
 //玩家现实地址
 struct tagRoleAddressInfo
@@ -1385,6 +1397,8 @@ struct tagShopConfig
 	HashMap<BYTE, tagShopItemConfig>  ShopItemMap;
 	std::vector<tagShopItemConfig> ShopItemVec;
 };
+
+
 struct tagShopConfigMap
 {
 	HashMap<BYTE, tagShopConfig>		ShopMap;
@@ -1687,6 +1701,12 @@ struct tagFishRechargeInfo
 	WORD		RewardID;
 	BYTE		RechargeType;//充值类型
 	DWORD		AddMoney;//添加货币类型
+	WCHAR       Name[MAX_OperatorTitleLength];
+	WCHAR       PayNO[MAX_PayNOLength];
+
+	WCHAR		Icon[MAX_IconLength];
+	WCHAR		DisCountPicName[MAX_DisCountPicNameLength];
+	
 	/*bool		IsCurreyOrGlobel;
 	bool		IsFirstPay;*/
 
@@ -1755,6 +1775,26 @@ struct tagExChange
 	DWORD			ChannelID;
 	WORD			RewardID;
 };
+
+struct tagOperatorShopConfig
+{
+	BYTE			ID;
+	WCHAR           PayNO[MAX_PayNOLength];
+	WCHAR           Title[MAX_OperatorTitleLength];
+	WCHAR			IconResource[MAX_IconLength];
+	int				ItemID;
+	int				ItemSum;
+	int				Price;
+	int				Grid;
+	int				Channel;
+};
+
+struct tagOperatorShopCongfigMap
+{
+	HashMap<int, HashMap<int, tagOperatorShopConfig>> ChannelOperatorShopMap;
+};
+
+
 struct tagExChangeMap
 {
 	HashMap<BYTE, tagExChange> m_ExChangeMap;
@@ -2685,8 +2725,54 @@ enum FishDBCmd
 
 	DBR_Operator_Logon_Init,
 	DBR_Operator_Logon = DBR_Operator_Logon_Init +1,
-	DBO_Operator_Logon = DBR_Operator_Logon_Init + 1,
+	DBO_Operator_Logon = DBR_Operator_Logon_Init + 2,
+
+		DBR_Deal_Init,
+		DBR_Deal_Create,
+		DBO_Deal_Create,
+		DBR_Deal_Third_Platform_Verify,
+		DBO_Deal_Third_Platform_Verify
 };
+
+
+struct DBR_Cmd_Deal_Third_Platform_Verify : public NetCmd
+{
+	DWORD Order_id;
+	//WCHAR good_id[MAX_PayNOLength];
+};
+
+struct tagDeal
+{
+	DWORD user_id;
+	DWORD order_id;
+	DWORD channel_id;
+	DWORD shop_id;
+	WCHAR good_id[MAX_PayNOLength];
+};
+struct DBO_Cmd_Deal_Third_Platform_Verify : public NetCmd
+{
+	tagDeal info;
+	bool result;
+};
+
+struct DBR_Cmd_Deal_Create : public NetCmd
+{
+	WCHAR       good_id[MAX_PayNOLength];
+	DWORD		shop_id;
+	DWORD		user_id;
+	DWORD		channel_id;
+};
+
+
+struct DBO_Cmd_Deal_Create : public NetCmd
+{
+	DWORD	   order_id;
+	DWORD	   shop_id;
+	DWORD	   user_id;
+	WCHAR       good_id[MAX_PayNOLength];
+};
+
+
 struct tagLogon
 {
 	TCHAR	AccountName[ACCOUNT_LENGTH + 1];
@@ -6823,6 +6909,9 @@ enum ShopSub
 {
 	CL_ShopItem = 1,
 	LC_ShopItemResult = 2,
+
+	CG_RequiredOperatorShopList = 10,
+	GC_RequiredOperatorShopList = 11,
 };
 struct CL_Cmd_ShopItem : public NetCmd
 {
@@ -7407,6 +7496,9 @@ enum RechargeSub
 
 	CL_IOSRecharge = 4,//IOS平台充值
 	GO_IOSRecharge = 5,//IOS平台充值
+
+	CG_CreateOrder = 10,
+	GC_CreateOrder = 11
 };
 struct CL_Cmd_Recharge : public NetCmd
 {
@@ -7499,54 +7591,88 @@ struct LC_Cmd_SendNewAnnouncementOnce : public NetCmd
 enum OperateSub
 {
 	//1.实名验证  名称 和 身份证号码
-	CL_RealNameVerification		=1,//将  名称  身份证号码 发送给 GameServer
-	GO_RealNameVerification		=2,//将玩家ID 名称 身份证号码 发送给运营服务器
-	OG_RealNameVerification		=3,//运营服务器将验证的结果返回给GameServer GameServer进行处理 存储数据库 
-	LC_RealNameVerification		=4,//将验证的结果进行显示 携带ErrorID 
+	CL_RealNameVerification = 1,//将  名称  身份证号码 发送给 GameServer
+	GO_RealNameVerification = 2,//将玩家ID 名称 身份证号码 发送给运营服务器
+	OG_RealNameVerification = 3,//运营服务器将验证的结果返回给GameServer GameServer进行处理 存储数据库 
+	LC_RealNameVerification = 4,//将验证的结果进行显示 携带ErrorID 
 
 	//2.绑定手机
-	CL_GetPhoneVerificationNum	=11,//发送给GameServer 携带手机号码 
-	GO_GetPhoneVerificationNum	=12,//将玩家ID 手机号码 发送给运营服务器
-	OG_GetPhoneVerificationNum	=13,//运营服务器将返回的结果 返回给GameServer
-	LC_GetPhoneVerificationNum  =14,//通知客户端 发送手机验证码的结果 ErrorID 
-	CL_BindPhone				=15,//将验证码 和 手机号码 发送到GameServer
-	GO_BindPhone				=16,//将玩家ID 验证码 和 手机号码 发送到运营服务器
-	OG_BindPhone				=17,//运营服务器将绑定操作的结果 返回GameServer
-	LC_BindPhone				=18,//将绑定手机操作的结果返回客户端
+	CL_GetPhoneVerificationNum = 11,//发送给GameServer 携带手机号码 
+	GO_GetPhoneVerificationNum = 12,//将玩家ID 手机号码 发送给运营服务器
+	OG_GetPhoneVerificationNum = 13,//运营服务器将返回的结果 返回给GameServer
+	LC_GetPhoneVerificationNum = 14,//通知客户端 发送手机验证码的结果 ErrorID 
+	CL_BindPhone = 15,//将验证码 和 手机号码 发送到GameServer
+	GO_BindPhone = 16,//将玩家ID 验证码 和 手机号码 发送到运营服务器
+	OG_BindPhone = 17,//运营服务器将绑定操作的结果 返回GameServer
+	LC_BindPhone = 18,//将绑定手机操作的结果返回客户端
 
 	//3.BuyEntityItem
-	GO_BuyEntityItem			=21,//向运营服务器 发送命令 玩家购买指定的实体物品
-	OG_BuyEntityItem			=22,//运营服务器将购买结果返回GameServer
-	LC_BuyEntityItem			=23,//将购买实体物品的结果返回给客户端 ErrorID
+	GO_BuyEntityItem = 21,//向运营服务器 发送命令 玩家购买指定的实体物品
+	OG_BuyEntityItem = 22,//运营服务器将购买结果返回GameServer
+	LC_BuyEntityItem = 23,//将购买实体物品的结果返回给客户端 ErrorID
 
 	//4.绑定邮箱
-	CL_BindEmail				= 31,//发送服务器端 绑定邮件
-	GO_BindEmail				= 32,//发送到运营服务器 绑定邮箱
-	OC_BindEmail				= 33,//运营服务器返回 绑定邮箱的结果
-	CG_BindEmail				= 34,//
-	LC_BindEmail				= 35,//告诉客户端 绑定邮箱的结果
+	CL_BindEmail = 31,//发送服务器端 绑定邮件
+	GO_BindEmail = 32,//发送到运营服务器 绑定邮箱
+	OC_BindEmail = 33,//运营服务器返回 绑定邮箱的结果
+	CG_BindEmail = 34,//
+	LC_BindEmail = 35,//告诉客户端 绑定邮箱的结果
 
 	//5.扣除rmb
 	//GO_UseRMB					= 36,
-	OC_UseRMB					= 36,
-	CG_UseRMB					= 37,
+	OC_UseRMB = 36,
+	CG_UseRMB = 37,
 
 	//6.花费充值
 	/*CL_PrepaidRecharge		    =40,
 	GO_PrepaidRecharge			=41,
 	OG_PrepaidRecharge			=42,
 	LC_PrepaidRecharge			=43,*/
-	GO_PhonePay					= 40,
-	OC_PhonePay					= 41,
-	CG_PhonePay					= 42,
-	LC_PhonePay					= 43,
+	GO_PhonePay = 40,
+	OC_PhonePay = 41,
+	CG_PhonePay = 42,
+	LC_PhonePay = 43,
 
 	//7.普通充值
-	GO_AddNormalOrderID			= 50,
-	OC_AddNormalOrderID			= 51,
-	CG_AddNormalOrderID			= 52,
-	LC_AddNormalOrderID			= 53,
+	GO_AddNormalOrderID = 50,
+	OC_AddNormalOrderID = 51,
+	CG_AddNormalOrderID = 52,
+	LC_AddNormalOrderID = 53,
+
+	OC_Deal_Third_Platform_Verify = 60,
+	CG_Deal_Successful = 61,
+	CG_Deal_NotifyClient = 62
 };
+
+struct CG_Cmd_Deal_NotifyClient : public NetCmd
+{
+
+};
+
+struct CG_Cmd_Deal_Successful : public NetCmd
+{
+	DWORD dwUserid;
+};
+
+struct OC_Cmd_Third_Platform_Verify : public NetCmd
+{
+	tagDeal info;
+};
+
+struct CG_Cmd_RequiredOperatorShopList : public NetCmd
+{
+
+};
+
+
+struct GC_Cmd_RequiredOperatorShopList : public NetCmd
+{
+	tagFishRechargeInfo config[MAX_REQUIRED_OPERATOR_SHOP_ITEM_COUT];
+	int sum;
+	BYTE States;
+};
+
+
 //实名验证
 struct CL_Cmd_RealNameVerification : public NetCmd
 {
@@ -7636,6 +7762,22 @@ struct LC_Cmd_BindPhone : public NetCmd
 	//TCHAR			PhoneNumber[MAX_PHONE_LENGTH+1];
 	unsigned __int64  PhoneNumber;
 };
+
+struct CG_Cmd_CreateOrder : public NetCmd
+{
+	int ShopIndex;
+	int Price;
+};
+
+struct GC_Cmd_CreateOrder : public NetCmd
+{
+	int OrderID;
+	int ShopIndex;
+	WCHAR good_id[MAX_PayNOLength];
+	WCHAR sign_code[MAX_SIGN_CODE];
+	WCHAR notify_url[MAX_UrlLength];
+};
+
 //3.实体物品购买 有充值类型的 或者是 邮递类型的 外部控制 
 struct GO_Cmd_BuyEntityItem : public NetCmd
 {

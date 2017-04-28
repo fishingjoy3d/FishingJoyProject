@@ -147,13 +147,13 @@
                ClientMaxRecvCmdCount="64"
                ClientMaxSendCmdCount="64"
                ClientSceneHearbeatTick="100"
-               ClientRecvBuffSize="1024"
-               ClientSendBuffSize="1024"
+               ClientRecvBuffSize="10240"
+               ClientSendBuffSize="10240"
                ClientRecvThreadSum="4"
                ClientSendThreadSum="4"
                ClientSleepTime="1"
                ClientAcceptSleepTime="1"
-               ClientBuffSize="1024"
+               ClientBuffSize="10240"
                
                ServerNetworkID="16"
                ServerTimeOut="100000"
@@ -186,13 +186,13 @@
                ClientMaxRecvCmdCount="64"
                ClientMaxSendCmdCount="64"
                ClientSceneHearbeatTick="100"
-               ClientRecvBuffSize="1024"
-               ClientSendBuffSize="1024"
+               ClientRecvBuffSize="10240"
+               ClientSendBuffSize="10240"
                ClientRecvThreadSum="4"
                ClientSendThreadSum="4"
                ClientSleepTime="1"
                ClientAcceptSleepTime="1"
-               ClientBuffSize="1024"
+               ClientBuffSize="10240"
                
                ServerNetworkID="19"
                ServerTimeOut="100000"
@@ -224,13 +224,13 @@
                ClientMaxRecvCmdCount="64"
                ClientMaxSendCmdCount="64"
                ClientSceneHearbeatTick="100"
-               ClientRecvBuffSize="1024"
-               ClientSendBuffSize="1024"
+               ClientRecvBuffSize="10240"
+               ClientSendBuffSize="10240"
                ClientRecvThreadSum="4"
                ClientSendThreadSum="4"
                ClientSleepTime="1"
                ClientAcceptSleepTime="1"
-               ClientBuffSize="1024"
+               ClientBuffSize="10240"
                
                ServerNetworkID="22"
                ServerTimeOut="100000"
@@ -262,13 +262,13 @@
                ClientMaxRecvCmdCount="64"
                ClientMaxSendCmdCount="64"
                ClientSceneHearbeatTick="100"
-               ClientRecvBuffSize="1024"
-               ClientSendBuffSize="1024"
+               ClientRecvBuffSize="10240"
+               ClientSendBuffSize="10240"
                ClientRecvThreadSum="4"
                ClientSendThreadSum="4"
                ClientSleepTime="1"
                ClientAcceptSleepTime="1"
-               ClientBuffSize="1024"
+               ClientBuffSize="10240"
                
                ServerNetworkID="25"
                ServerTimeOut="100000"
@@ -290,7 +290,7 @@
                DBNetworkID="6"
                LogDBID="10"/>
 
-  <GameServer NetworkID="100" IP="127.0.0.1" Port="12051"
+  <GameServer NetworkID="100" IP="192.168.0.106" Port="12051"
               ListenCount="16"
               MaxSendCountPerFrame="1"
               MaxAcceptNumPerFrame="16"
@@ -309,7 +309,7 @@
               LogDBNetworkID="10"
               BeginRobotUserID="0" EndRobotUserID="0" SaveDBNetworkID="8"/>
 
-  <GameServer NetworkID="101" IP="127.0.0.1" Port="12052"
+  <GameServer NetworkID="101" IP="192.168.0.106" Port="12052"
               ListenCount="16"
               MaxSendCountPerFrame="1"
               MaxAcceptNumPerFrame="16"
@@ -328,7 +328,7 @@
 	      LogDBNetworkID="10"
               BeginRobotUserID="0" EndRobotUserID="0" SaveDBNetworkID="7"/>
 
-  <GameServer NetworkID="102" IP="127.0.0.1" Port="12053"
+  <GameServer NetworkID="102" IP="192.168.0.106" Port="12053"
               ListenCount="16"
               MaxSendCountPerFrame="1"
               MaxAcceptNumPerFrame="16"
@@ -346,7 +346,7 @@
               DBNetworkID ="6"
 	      LogDBNetworkID="10"
               BeginRobotUserID="0" EndRobotUserID="0" SaveDBNetworkID="7"/>
-  <GameServer NetworkID="103" IP="127.0.0.1" Port="12054"
+  <GameServer NetworkID="103" IP="192.168.0.106" Port="12054"
               ListenCount="16"
               MaxSendCountPerFrame="1"
               MaxAcceptNumPerFrame="16"
@@ -432,7 +432,7 @@ ApppayPrvKey="MIICXQIBAAKBgQCL061Vgr3PSSy2vFulL4r1ReVOhoB8kqhfPcREGuyZ5F52dV/Mjv
             ControlClientSleepTime = "1"
             ControlClientAcceptSleepTime = "1"
             ControlClientTimeOut = "100000"
-            ControlClientBuffSize = "1024" LogDBID="10"/>
+            ControlClientBuffSize = "10240" LogDBID="10"/>
 
 <MiniGameServer NetworkID="221" IP="127.0.0.1" Port="12154"
               ListenCount="16"

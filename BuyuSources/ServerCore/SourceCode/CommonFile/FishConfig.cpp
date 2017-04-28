@@ -8,8 +8,57 @@ FishConfig::~FishConfig()
 {
 	OnDestroy();
 }
+
+
+bool FishConfig::LoadFishChannelConfig()
+{
+	WHXml pXml;
+	if (!pXml.LoadXMLFilePath(TEXT("OperatorConfig.xml")))
+	{
+		ASSERT(false);
+		return false;
+	}
+	WHXmlNode* pFishConfig = pXml.GetChildNodeByName(TEXT("OperatorConfig"));
+	WHXmlNode* pFishItem = pFishConfig->GetChildNodeByName(TEXT("Operator"));
+	while (pFishItem)
+	{
+		tagChannelConfig entry;
+		if (!pFishItem->GetAttribute(TEXT("channel_name"), entry.channel_name, CountArray(entry.channel_name) / 2))
+		{
+			return false;
+		}
+
+		if (!pFishItem->GetAttribute(TEXT("pay_notify_url"), entry.notify_pay_url, CountArray(entry.notify_pay_url) / 2))
+		{
+			return false;
+		}
+		if (!pFishItem->GetAttribute(TEXT("channel"), entry.channel_id))
+		{
+			return false;
+		}
+
+		m_ChannelConfig[entry.channel_id] = entry;
+		pFishItem = pFishItem->GetNextSignelNode();
+	}
+	return true;
+}
+
+const tagChannelConfig* FishConfig::GetChannelConfig(int channel_id)
+{
+	tagChannelConfig* entry = NULL;
+	HashMap<DWORD, tagChannelConfig>::iterator it = m_ChannelConfig.find(channel_id);
+	if (it != m_ChannelConfig.end())
+	{
+		entry = &it->second;
+	}
+	return entry;
+}
 bool FishConfig::LoadConfigFilePath()
 {
+	if (!LoadFishChannelConfig())
+	{
+		return false;			 
+	}
 	//1.¼ÓÔØÅäÖÃÎÄ¼þ
 	WHXml pXml;
 	if (!pXml.LoadXMLFilePath(TEXT("FishConfig.xml")))
@@ -1611,6 +1660,17 @@ bool FishConfig::LoadFishRechargeConfig(WHXmlNode* pFishConfig)
 		//BYTE IsCurrcey = 1;
 		if (!pFishRecharge->GetAttribute(TEXT("RechargeType"), pInfo.RechargeType))
 			return false;
+
+		if (!pFishRecharge->GetAttribute(TEXT("Name"), pInfo.Name, CountArray(pInfo.Name)))
+			return false;
+
+		if (!pFishRecharge->GetAttribute(TEXT("PayNO"), pInfo.PayNO, CountArray(pInfo.PayNO)))
+			return false;
+		if (!pFishRecharge->GetAttribute(TEXT("Icon"), pInfo.Icon, CountArray(pInfo.Icon)))
+			return false;
+		if (!pFishRecharge->GetAttribute(TEXT("DisCountPicName"), pInfo.DisCountPicName, CountArray(pInfo.DisCountPicName)))
+			return false;
+
 		/*pInfo.IsCurreyOrGlobel = (IsCurrcey == 1 ? true : false);
 		BYTE IsFistPay;
 		if (!pFishRecharge->GetAttribute(TEXT("IsFirstPay"), IsFistPay))
@@ -1722,6 +1782,9 @@ bool FishConfig::LoadFishRoleProtectConfig(WHXmlNode* pFishConfig)
 	}
 	return true;
 }
+
+
+
 bool FishConfig::LoadFishLotteryConfig(WHXmlNode* pFishConfig)
 {
 	WHXmlNode* pFishLottery = pFishConfig->GetChildNodeByName(TEXT("FishLottery"));

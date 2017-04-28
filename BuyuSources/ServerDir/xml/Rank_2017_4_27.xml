@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<FishRanks>
+    <FishRook TypeID="2">
+        <Info Index="1" UserID="20333" FaceID="0" Gender="1" TitleID="0" Param="5000" Name="用户d1DHlF"/>
+        <Info Index="2" UserID="20334" FaceID="0" Gender="1" TitleID="0" Param="5000" Name="用户APVdP1"/>
+        <Info Index="3" UserID="20335" FaceID="0" Gender="1" TitleID="0" Param="5000" Name="用户NSo6p9"/>
+        <Info Index="4" UserID="20336" FaceID="0" Gender="1" TitleID="0" Param="5000" Name="用户8tfcqZ"/>
+    </FishRook>
+</FishRanks>

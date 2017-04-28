@@ -1394,6 +1394,17 @@ bool FishServer::HandleDBMsg(NetCmd* pCmd)
 			return true;
 		}
 		break;
+	case DBO_Deal_Third_Platform_Verify:
+		{
+			DBO_Cmd_Deal_Third_Platform_Verify* pMsg = (DBO_Cmd_Deal_Third_Platform_Verify*)pCmd;
+			if (pMsg->result)
+			{
+				OC_Cmd_Third_Platform_Verify msg;
+				SetMsgInfo(msg, GetMsgType(Main_Operate, OC_Deal_Third_Platform_Verify), sizeof(msg));
+				SendNetCmdToCenterServer(&msg);
+			}			
+		}
+		break;
 	/*case DBO_CheckEntityID:
 		{
 			DBO_Cmd_CheckEntityID* pMsg = (DBO_Cmd_CheckEntityID*)pCmd;

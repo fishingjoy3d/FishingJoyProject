@@ -2,6 +2,7 @@
 #pragma once
 #include "..\CommonFile\FishConfig.h"
 typedef HashMap<UINT, SqlTable*> TableHashMap;
+int SplitStringA(const std::string& strIn, const std::string& strDelimiter, std::vector<std::string>& ret);
 struct RcveMsg
 {
 	NetCmd* pCmd;
@@ -231,6 +232,7 @@ private:
 	bool OnHandleQueryExChange(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnDelExChange(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	//Recharge
+	bool OnThirdPlatformVerify(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnAddRecharge(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnLoadRechargeOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnAddRechargeOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd);
@@ -241,6 +243,8 @@ private:
 	bool OnGetRechargeOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnQueryRechargeOrderInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnDleRechargeOrderInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+
+	bool OnCreateDealOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	//Control
 	bool OnResetUserPassword(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnHandleFreezeUser(BYTE Index, BYTE ClientID, NetCmd* pCmd);
@@ -254,8 +258,9 @@ private:
 	bool OnHandleLoadRelationRequest(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnHandleAddRelationRequest(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnHandleDelRelationRequest(BYTE Index, BYTE ClientID, NetCmd* pCmd);
-
 	void UpdateInfoToControl(DWORD dwTimer);
+	std::string GetRateValueString(int256& RateValue);
+	int256 GetRateValueFromString(const char* s);
 private:
 	//dump
 	Dump										m_pDump;

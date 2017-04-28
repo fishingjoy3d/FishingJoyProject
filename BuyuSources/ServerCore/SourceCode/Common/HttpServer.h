@@ -11,6 +11,8 @@ struct WebAddrData
 	bool	bKeyToLower;					//将KEY转换到小写
 	HashMap<UINT, BYTE> ValidationFields;	//要验证的字段列表
 };
+
+
 inline void StringToLower(string &str)
 {
 	for (UINT j = 0; j < str.size(); ++j)
@@ -169,3 +171,5 @@ protected:
 	HttpRecvList		m_RecvList;
 
 };
+
+void SendResponse(HttpClientData *pc, const char *pcTime, const char *pcText);

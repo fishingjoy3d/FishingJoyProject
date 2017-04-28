@@ -1,0 +1,3 @@
+﻿<OperatorConfig>
+  <Operator channel_name="dome" channel="1" pay_notify_url="http://127.0.0.1:1680/DomeLogin//"/>    
+</OperatorConfig>

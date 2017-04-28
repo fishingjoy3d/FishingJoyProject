@@ -85,6 +85,8 @@ DomeOperator::~DomeOperator()
 
 void DomeOperator::AcceptOperatorServerLogon(TCHAR* user)
 {
+
+	LogInfoToFile("Log", "http AcceptOperatorServerLogon 接收到数据 %s", user);
 	USERS::iterator it = _server_wait_users.find(user);
 	if (it != _server_wait_users.end())
 	{
@@ -110,6 +112,7 @@ void DomeOperator::AcceptClientLogon(tagLogon& logon, BYTE	LogonClientID, Server
 		msg.result = true;
 		_server_wait_users.erase(it);
 	}
+	//msg.result = true;
 	SetMsgInfo(msg, GetMsgType(Main_Logon, OL_OperatorLogon), sizeof(msg));
 	g_FishServer.SendNetCmdToClient(pClient, &msg);
 

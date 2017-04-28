@@ -46,6 +46,7 @@ private:
 	bool ConnectControlServer();
 	bool ConnectDB();
 	bool ConnectLogDB();
+	
 
 	void OnTcpServerLeave(BYTE ServerID, ServerClientData* pClient);
 	void OnTcpServerJoin(BYTE ServerID, ServerClientData* pClient);
