@@ -10,6 +10,7 @@ public class SDKChannelDome : SDKChannel
 {
     const string APP_CODE = "D0000356";
     string channel_name = "Dome";
+    const string PRIVATE_KEY = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAIwOcaDOCOFqd+9M5Sus5/DH7DRwcQKanC11f1KJxLqEAdEpS5Swu7hvtPJR4a97kYD4oNpbszQUHmWTsyGnqMo/ucTORSogrej/tEBAAltIpyC+Rp6qsGuwdhhBZ+yz8NS0fuHMCsRKZ55XD37riz4HQHPAspz4NNdJYI/NPC11AgMBAAECgYAM4u9Vil+Kzg8G955GbHxSzTJQiN/9C1i/XgY/A+oT9z1rj08i+Tfsemq9uQb47Hew1C+Ip9NPQWKimfpraE/BWOBSX4/BJIDLfOdoMgTns7/3ICIuhj5fTR8XMX4qfpnZTu9/opHCRXFPV42bop1BxZTjYnTwO9LdWdOsmCirwQJBAN2vp8OihiF7uzjynX10baIeuV8GGixdlM2BpJIevDUob+wwkzsIRo//ICIzMdAOXxKbzm6Aj3hJ4pimf4A6r3kCQQChvDLz9ZENH6tIzHUaeSMzPaWbJGKDCli7y5jvVZYu9DXhJmAjwgJ5eIHn5JJiLc3wMyqn2tJ0qcfp/ylbIcLdAkBiXqSp+f9c8kOkxHvABJ71dn65PML2dtwlyOZW9I59ZCEuBGwAoO52zTXcFy1+bjIf1sVmYWPIc7i6Ff+zzda5AkACorqB10Kh4B4+dXaDE+5K63pDaPhiAk0n4k1/uPlVko0+Og3fB05bBGe5i7QG/ZAZlfvf+GTtmca0PYBDB+3RAkEAhGnxthd0zdcXULmqMbk6s18OlrHzhQrCKhf3nlus+YV6oopZHUvjnJHxzdDzS69OsLMzWSsaez3lbYERIZ+qbQ==";
 
     public override void GlobalInit()
     {
@@ -48,7 +49,7 @@ public class SDKChannelDome : SDKChannel
         //m_AndroidContext.Call("pay", SDKMgr.Instance.CallbackObjName, "PayCallback", amount, itemName, count, chargePointName, customParams, ServerSetting.CALLBACK_URL);
 
         string info = GetPayInfo(APP_CODE, chargePointName, orderID, url);
-        info += GetSignCode(info, secret_key);
+        info += GetSignCode(info, PRIVATE_KEY);
         DomePayAndroid.Instance.pay(info, SDKMgr.Instance.CallbackObjName, "PayDomeCallBack");
     }
     public override void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)

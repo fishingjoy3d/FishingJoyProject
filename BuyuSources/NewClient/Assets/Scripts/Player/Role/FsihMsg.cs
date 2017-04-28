@@ -3521,9 +3521,11 @@ public class GC_Cmd_CreateOrder : NetCmdBase
     public int ItemID;
     [TypeInfo(2, FishDataInfo.MAX_ProductID_Length)]
     public string ProductID;
-    [TypeInfo(3, FishDataInfo.MAX_SIGN_CODE)]
-    public string sign_code;
-    [TypeInfo(4, FishDataInfo.MAX_UrlLength)]
+    //[TypeInfo(3, FishDataInfo.MAX_SIGN_CODE)]
+    //public string sign_code;
+    //[TypeInfo(4, FishDataInfo.MAX_UrlLength)]
+    //public string notify_url;
+    [TypeInfo(3, FishDataInfo.MAX_UrlLength)]
     public string notify_url;
 }
 

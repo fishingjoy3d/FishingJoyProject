@@ -142,7 +142,7 @@ class RoleRecharge
     bool HandleCreateOrder(NetCmdBase obj)
     {
         GC_Cmd_CreateOrder ncb = (GC_Cmd_CreateOrder)obj;
-        SDKMgr.Instance.SDK.Pay(ncb.ItemID, ncb.ProductID, ncb.OrderID.ToString(), ncb.notify_url, ncb.sign_code);
+        SDKMgr.Instance.SDK.Pay(ncb.ItemID, ncb.ProductID, ncb.OrderID.ToString(), ncb.notify_url, ncb.ProductID);
         return true;
     }
 }
