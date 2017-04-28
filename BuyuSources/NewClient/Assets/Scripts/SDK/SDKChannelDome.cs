@@ -43,12 +43,12 @@ public class SDKChannelDome : SDKChannel
         //m_AndroidContext.Call("logout", customparms);
     }
 
-    public override void Pay(int itemID, string chargePointName, string orderID, string url, string signCode)
+    public override void Pay(int itemID, string chargePointName, string orderID, string url, string secret_key)
     {
         //m_AndroidContext.Call("pay", SDKMgr.Instance.CallbackObjName, "PayCallback", amount, itemName, count, chargePointName, customParams, ServerSetting.CALLBACK_URL);
 
-        string info = GetPayInfo(APP_CODE, chargePointName, orderID, url, signCode);
-
+        string info = GetPayInfo(APP_CODE, chargePointName, orderID, url);
+        info += GetSignCode(info, secret_key);
         DomePayAndroid.Instance.pay(info, SDKMgr.Instance.CallbackObjName, "PayDomeCallBack");
     }
     public override void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
@@ -86,7 +86,7 @@ public class SDKChannelDome : SDKChannel
         return newRandom.ToString();
     }
 
-    static public string GetPayInfo(string appCode, string payCode, string orderNo, string notifyUrl, string sec)
+    static public string GetPayInfo(string appCode, string payCode, string orderNo, string notifyUrl)
     {
         System.Text.StringBuilder sBuilder = new System.Text.StringBuilder();
         sBuilder.Append("appCode=");
@@ -98,13 +98,16 @@ public class SDKChannelDome : SDKChannel
         sBuilder.Append("&payNotifyUrl=");
         sBuilder.Append(notifyUrl);
 
-        //sBuilder.Append(notifyUrl);
-        sBuilder.Append("&signCode=");
-        sBuilder.Append(sec);
-
         return sBuilder.ToString();
     }
 
+    static public string GetSignCode(string payInfo, string secret_key)
+    {
+        AndroidJavaClass rsaClass = new AndroidJavaClass("com.sdk.util.RSACoder");
+        string sign_code = "";
+        sign_code = rsaClass.CallStatic<string>("sign", payInfo, secret_key);
+        return sign_code;
+    }
 }
 #else
 
