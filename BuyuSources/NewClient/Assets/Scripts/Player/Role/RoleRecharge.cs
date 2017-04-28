@@ -103,6 +103,8 @@ class RoleRecharge
                 return HandleRechargeResult(obj);
             case NetCmdType.CMD_LC_GetOrderID:
                 return HandleRechargeOrderID(obj);
+            case NetCmdType.CMD_GC_CreateOrder:
+                return HandleCreateOrder(obj);
         }
         return true;
     }
@@ -134,6 +136,13 @@ class RoleRecharge
         tagRechargeGetOrderIDEvent pEvent = new tagRechargeGetOrderIDEvent(ncb.OrderID,ncb.ShopID, ncb.Result);
         MsgEventHandle.HandleMsg(pEvent);
 
+        return true;
+    }
+
+    bool HandleCreateOrder(NetCmdBase obj)
+    {
+        GC_Cmd_CreateOrder ncb = (GC_Cmd_CreateOrder)obj;
+        SDKMgr.Instance.SDK.Pay(ncb.ItemID, ncb.ProductID, ncb.OrderID.ToString(), ncb.notify_url, ncb.sign_code);
         return true;
     }
 }

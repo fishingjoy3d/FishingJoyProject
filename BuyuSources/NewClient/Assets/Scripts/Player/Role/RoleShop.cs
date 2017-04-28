@@ -147,18 +147,31 @@ class RoleShop //商店开启的前置条件 就是客户端已经有了玩家�
     bool HandleGetShopList(NetCmdBase obj)
     {
         GC_Cmd_GetShopList ncb = (GC_Cmd_GetShopList)obj;
+
         if (ncb != null && ncb.config != null)
         {
-            FishConfig.Instance.m_FishRecharge.m_FishRechargeMap.Clear();
-            for (int i = 0; i < ncb.config.Length; i++)
+            if ((ncb.states & FishDataInfo.MsgBegin) != 0)
             {
-                tagFishRechargeInfo pInfo = ncb.config[i];
-                FishConfig.Instance.m_FishRecharge.m_FishRechargeMap.Add(pInfo.ID, pInfo);
+                FishConfig.Instance.m_FishRecharge.m_FishRechargeMap.Clear();
+            }
+
+            for (int i = 0; i < ncb.sum; ++i)
+            {
+                string itemName = "";
+                tagFishRechargeInfo config = ncb.config[i];
+                
+                byte[] data = Encoding.ASCII.GetBytes(config.Name);
+                itemName= UTF8Encoding.UTF8.GetString(data);
+                UnityEngine.Debug.Log("config "+ config.Name +"  "+ itemName);
+                FishConfig.Instance.m_FishRecharge.m_FishRechargeMap.Add(config.ID, config);
+            }
+            if ((ncb.states & FishDataInfo.MsgEnd) != 0)
+            {
+                FishConfig.Instance.m_FishRecharge.m_IsServerShopList = true;
+                tagGetShopListEvent pEvent = new tagGetShopListEvent();
+                MsgEventHandle.HandleMsg(pEvent);
             }
         }
-        FishConfig.Instance.m_FishRecharge.m_IsServerShopList = true;
-        tagGetShopListEvent pEvent = new tagGetShopListEvent();
-        MsgEventHandle.HandleMsg(pEvent);
         return true;
     }
 

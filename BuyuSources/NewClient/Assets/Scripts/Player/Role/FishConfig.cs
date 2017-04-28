@@ -1091,7 +1091,7 @@ public class tagFishRechargeInfo
 class tagFishRechargesMap
 {
     public Dictionary<UInt32, tagFishRechargeInfo> m_FishRechargeMap = new Dictionary<UInt32, tagFishRechargeInfo>();
-    public bool m_IsServerShopList; //服务器商品列表
+    public bool m_IsServerShopList = true; //服务器商品列表
 };
 
 class FishLauncherToShop//炮台转化到商店的功能

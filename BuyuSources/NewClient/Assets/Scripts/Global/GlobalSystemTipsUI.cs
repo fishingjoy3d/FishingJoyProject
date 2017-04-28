@@ -291,24 +291,29 @@ public class PayBuyConfirmUI : BaseWnd
     {
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_BtnMusic);
 
-        if (SDKMgr.IS_SDK_CHANNEL || SDKMgr.IS_APP_STORE_VER)
+        //if (SDKMgr.IS_SDK_CHANNEL || SDKMgr.IS_APP_STORE_VER)
         {
-            System.UInt64 user_item_id = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
-            user_item_id = (user_item_id << 32) | m_ItemID;
-            const int change = 100;
-            if (m_PayType == PayType.Diamond)
-            {
-                SDKMgr.Instance.SDK.Pay(m_Amount * change, "钻石", m_Count,m_ProductID, user_item_id.ToString(), m_ItemID);
-            }
-            else if (m_PayType == PayType.Gold)
-            {
-                SDKMgr.Instance.SDK.Pay(m_Amount * change, "金币", m_Count, m_ProductID, user_item_id.ToString(), m_ItemID);
-            }
+            //System.UInt64 user_item_id = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
+            //user_item_id = (user_item_id << 32) | m_ItemID;
+            //const int change = 100;
+            //if (m_PayType == PayType.Diamond)
+            //{
+            //    SDKMgr.Instance.SDK.Pay(m_Amount * change, "钻石", m_Count,m_ProductID, user_item_id.ToString(), m_ItemID);
+            //}
+            //else if (m_PayType == PayType.Gold)
+            //{
+            //    SDKMgr.Instance.SDK.Pay(m_Amount * change, "金币", m_Count, m_ProductID, user_item_id.ToString(), m_ItemID);
+            //}
+
+            CG_Cmd_CreateOrder ncb = new CG_Cmd_CreateOrder();
+            ncb.SetCmdType(NetCmdType.CMD_CG_CreateOrder);
+            ncb.ID = m_ItemID;
+            NetServices.Instance.Send<CG_Cmd_CreateOrder>(ncb);
         }
-        else
-        {
-            PlayerRole.Instance.RoleRecharge.SendRecharge(m_ItemID, SDKMgr.Instance.IsServerOrder);
-        }
+        //else
+        //{
+        //    PlayerRole.Instance.RoleRecharge.SendRecharge(m_ItemID, SDKMgr.Instance.IsServerOrder);
+        //}
 
         ShutDown();
         GlobalHallUIMgr.Instance.ShutDownPayWnd();

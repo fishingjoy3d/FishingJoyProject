@@ -35,6 +35,12 @@ public class SDKChannel:ISDKInterface
     {
         m_AndroidContext.Call("pay", SDKMgr.Instance.CallbackObjName, "PayCallback", amount, itemName, count, chargePointName, customParams, ServerSetting.CALLBACK_URL);
     }
+
+    public virtual void Pay(int itemID, string chargePointName, string orderID, string url, string signCode)
+    {
+        m_AndroidContext.Call("pay", SDKMgr.Instance.CallbackObjName, "PayCallback", itemID, chargePointName, orderID, chargePointName, url, signCode);
+    }
+
     public virtual void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
     {
         m_AndroidContext.Call("setExtData", id, roleId, roleName, roleLevel, zoneId, zoneName, balance, vip, partyName);

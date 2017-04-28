@@ -43,27 +43,11 @@ public class SDKChannelDome : SDKChannel
         //m_AndroidContext.Call("logout", customparms);
     }
 
-    //支付
-    /*
-    注意：支付收到成功的回调后，请到游戏服务器查询订单状态再进行道具发放，请勿直接做支付成功的UI提示。支付收到失败的回调后，可以进行明确的充值失败提示。
-     
-    amount 定额支付总金额，单位为人民币分
-    itemName 游戏币名称，如金币、钻石等
-    count 购买商品数量，如100钻石，传入100；10魔法石，传入10
-    chargePointName 计费点名称，没有时可传空
-    customParams 游戏开发者自定义字段，会与支付结果一起通知到游戏服务器，游戏服务器可通过该字段判断交易的详细内容（金额、角色等）
-    callBackUrl 支付结果通知地址，支付完成后我方后台会向该地址发送支付通知
-     */
-    public override void Pay(int amount, string itemName, int count, string chargePointName, string customParams, int itemID)
+    public override void Pay(int itemID, string chargePointName, string orderID, string url, string signCode)
     {
         //m_AndroidContext.Call("pay", SDKMgr.Instance.CallbackObjName, "PayCallback", amount, itemName, count, chargePointName, customParams, ServerSetting.CALLBACK_URL);
 
-        string orderId = customParams;
-        string url = ServerSetting.CALLBACK_URL;
-        string productId = chargePointName;
-        string secret_key = "";
-
-        string info = GetPayInfo(APP_CODE, productId, orderId, url, secret_key);
+        string info = GetPayInfo(APP_CODE, chargePointName, orderID, url, signCode);
 
         DomePayAndroid.Instance.pay(info, SDKMgr.Instance.CallbackObjName, "PayDomeCallBack");
     }

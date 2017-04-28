@@ -875,11 +875,11 @@ public class FishDataInfo
 
     public const int LogonExternal_Length = 512;
 
-    public const int MAX_Shop_Item_Count = 20;
-    public const int MAX_ProductID_Length = 512;
+    public const int MAX_Shop_Item_Count = 3;
+    public const int MAX_ProductID_Length = 64;
     public const int MAX_OperatorTitleLength = 24;
-    public const int MAX_IconLength = 512;
-    public const int MAX_DisCountPicNameLength = 128;
+    public const int MAX_IconLength = 64;
+    public const int MAX_DisCountPicNameLength = 64;
 
     public const int MAX_SIGN_CODE = 1024;
     public const int MAX_UrlLength = 512;
@@ -3038,13 +3038,13 @@ public class CG_Cmd_GetShopList : NetCmdBase
 };
 public class GC_Cmd_GetShopList : NetCmdBase
 {
-    //[TypeInfo(0, FishDataInfo.MAX_Shop_Item_Count)]
-    [TypeInfo(0, true)]
+    [TypeInfo(0, FishDataInfo.MAX_Shop_Item_Count)]
+    //[TypeInfo(0, true)]
     public tagFishRechargeInfo[] config;
     [TypeInfo(1)]
-    int sum;
+    public int sum;
     [TypeInfo(2)]
-    bool end;
+    public Byte states;
 };
 
 //Entity---------------------------------------------------------------
@@ -3518,9 +3518,9 @@ public class GC_Cmd_CreateOrder : NetCmdBase
     [TypeInfo(0)]
     public int OrderID;
     [TypeInfo(1)]
-    public int ShopID;
+    public int ItemID;
     [TypeInfo(2, FishDataInfo.MAX_ProductID_Length)]
-    public string good_id;
+    public string ProductID;
     [TypeInfo(3, FishDataInfo.MAX_SIGN_CODE)]
     public string sign_code;
     [TypeInfo(4, FishDataInfo.MAX_UrlLength)]

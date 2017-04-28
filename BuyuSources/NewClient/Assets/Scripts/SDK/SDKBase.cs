@@ -47,6 +47,12 @@ public class SDKBase:ISDKInterface
         PlayerRole.Instance.RoleRecharge.SendRecharge(uint.Parse(chargePointName));
 #endif
     }
+
+    public void Pay(int itemID, string chargePointName, string orderID, string url, string signCode)
+    {
+
+    }
+
     public void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
     {
 
@@ -93,6 +99,10 @@ public class SDKBaseNoSDK : ISDKInterface
     }
     public void Pay(int amount, string itemName, int count, string chargePointName, string customParams, int itemID)
     {
+    }
+    public void Pay(int itemID, string chargePointName, string orderID, string url, string signCode)
+    {
+
     }
     public void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
     {

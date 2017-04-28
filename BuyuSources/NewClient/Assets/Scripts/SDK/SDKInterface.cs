@@ -78,6 +78,8 @@ public interface ISDKInterface
     callBackUrl 支付结果通知地址，支付完成后我方后台会向该地址发送支付通知
      */
     void Pay(int amount, string itemName, int count, string chargePointName, string customParams, int itemID);
+
+    void Pay(int itemID, string chargePointName, string orderID, string url, string signCode);
     //退出游戏
     /*
     在游戏退出前调用退出接口，会有如下不同处理：

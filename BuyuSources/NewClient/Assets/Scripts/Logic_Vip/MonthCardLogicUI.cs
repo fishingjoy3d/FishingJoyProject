@@ -34,15 +34,20 @@ public class MonthCardLogicUI : BaseWnd
             uint ItemID = 13;
             if (SDKMgr.IS_SDK_CHANNEL || SDKMgr.IS_APP_STORE_VER)
             {
-                System.UInt64 user_item_id = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
-                user_item_id = (user_item_id << 32) | ItemID;
-                if (FishConfig.Instance.m_FishRecharge.m_FishRechargeMap.ContainsKey(ItemID))
-                {
-                    tagFishRechargeInfo info = FishConfig.Instance.m_FishRecharge.m_FishRechargeMap[ItemID];
-                    int price = (int)info.dDisCountPrice * 100;
+                //System.UInt64 user_item_id = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
+                //user_item_id = (user_item_id << 32) | ItemID;
+                //if (FishConfig.Instance.m_FishRecharge.m_FishRechargeMap.ContainsKey(ItemID))
+                //{
+                //    tagFishRechargeInfo info = FishConfig.Instance.m_FishRecharge.m_FishRechargeMap[ItemID];
+                //    int price = (int)info.dDisCountPrice * 100;
 
-                    SDKMgr.Instance.SDK.Pay(price, "月卡", 1, info.ProductID, user_item_id.ToString(), (int)ItemID);
-                }
+                //    SDKMgr.Instance.SDK.Pay(price, "月卡", 1, info.ProductID, user_item_id.ToString(), (int)ItemID);
+                //}
+
+                CG_Cmd_CreateOrder ncb = new CG_Cmd_CreateOrder();
+                ncb.SetCmdType(NetCmdType.CMD_CG_CreateOrder);
+                ncb.ID = 13;
+                NetServices.Instance.Send<CG_Cmd_CreateOrder>(ncb);
             }
             else
             {
