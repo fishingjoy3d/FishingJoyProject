@@ -96,6 +96,7 @@ class SDKSceneCallback:MonoBehaviour
         SDKMgr.Instance.SDKCallback.ExitCallback(ret != SDK.CHANNEL_HAS_EXIT);
     }
 
+#if UNITY_ANDROID
     public void LoginDomeCallBack(string str)
     {
         if (SDKChannelDome.isDebugDome)
@@ -143,4 +144,5 @@ class SDKSceneCallback:MonoBehaviour
         }
         SDKMgr.Instance.SDKCallback.PayCallback(ret == SDK.RESULT_OK);
     }
+#endif
 }

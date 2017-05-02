@@ -114,6 +114,10 @@ public class SDKChannel:ISDKInterface
     {
         _pay(SDKMgr.Instance.CallbackObjName, "PayCallback", amount, itemName, count, chargePointName, customParams, ServerSetting.CALLBACK_URL);
     }
+    public void Pay(int itemID, string chargePointName, string orderID, string url, string secret_key)
+    {
+        //_pay(SDKMgr.Instance.CallbackObjName, "PayCallback", amount, itemName, count, chargePointName, customParams, ServerSetting.CALLBACK_URL);
+    }
     public void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
     {
         _setExtData(id, roleId, roleName, roleLevel, zoneId, zoneName, balance, vip, partyName);
