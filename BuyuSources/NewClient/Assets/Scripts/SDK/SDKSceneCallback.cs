@@ -98,6 +98,11 @@ class SDKSceneCallback:MonoBehaviour
 
     public void LoginDomeCallBack(string str)
     {
+        if (SDKChannelDome.isDebugDome)
+        {
+            AN_PoupsProxy.ShowToast("Login Result " + str);
+        }
+
         string[] results = str.Split('|');
 
         string userId = results[0];
@@ -105,26 +110,29 @@ class SDKSceneCallback:MonoBehaviour
 
         SDKLoginResult lr = new SDKLoginResult();
 
-        if (results[1].Contains("0"))
+        if (results[1]== "1")
         {
-            //登陆失败
-            lr.Result = LoginState.LOGIN_FAILED;
+            lr.Result = LoginState.LOGIN_OK;
+            lr.UID = userId;
         }
         else
         {
-            lr.Result = LoginState.LOGIN_OK;
-
-            lr.UID = userId;
+            //登陆失败
+            lr.Result = LoginState.LOGIN_FAILED;
         }
         SDKMgr.Instance.SDKCallback.LoginCallback(lr);
     }
 
     public void PayDomeCallBack(string str)
     {
+        if (SDKChannelDome.isDebugDome)
+        {
+            AN_PoupsProxy.ShowToast("Pay Result " + str);
+        }
         string[] results = str.Split('|');
-        string errorCode = results[1];
+        string resultCode = results[1];
         uint ret;
-        if (errorCode == "10")
+        if (resultCode == "1")
         {
             ret = SDK.RESULT_OK;
         }

@@ -21,7 +21,6 @@ public class AN_PoupsProxy{
             {
                 androidNativeClass = new AndroidJavaClass(CLASS_NAME);
             }
-            AndroidJavaClass jc = new AndroidJavaClass(CLASS_NAME);
             androidNativeClass.CallStatic(methodName, args);
         }
         catch (System.Exception ex)
