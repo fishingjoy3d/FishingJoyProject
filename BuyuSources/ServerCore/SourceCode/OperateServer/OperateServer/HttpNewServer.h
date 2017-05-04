@@ -14,8 +14,9 @@ public:
 	HttpNewServer();
 	virtual ~HttpNewServer();
 protected:
-	void NormalCall(HttpClientData *pc, const char* Time);
+	void NormalCall(HttpClientData *pc, const char* Time, bool post);
 	void Call(const char* data, HttpClientData* c);
+	void Call(const char* fun, const char* data, HttpClientData* c);
 protected:
 	void DomeTestLogin(const char* data, HttpClientData* c);
 	void DomeLogin(const char* data, HttpClientData* c);

@@ -5,12 +5,14 @@
 
 HttpNewServer::HttpNewServer()
 {
+
+	
 	//DomeLogin?loginNo=38862603772888081806&userId=bq_000080143&appCode=D0000356
 	_HttpCallBacks["DomeLogin"] = &HttpNewServer::DomeLogin;
 	_HttpCallBacks["DomeTestLogin"] = &HttpNewServer::DomeTestLogin;
 	_HttpCallBacks["DomePay"] = &HttpNewServer::DomePay;
 	_HttpCallBacks["DomeTestPay"] = &HttpNewServer::DomeTestPay;
-
+	//Call("DomePay", "responseCode=1000&errorCode=&errorMsg=&data=%7B%22orderNo%22%3A%2256%22%2C%22sdkflowId%22%3A%22201705031539515146290%22%7D&signCode=qxD9lzq8tJn%2BN%2FJ6TnAbfAbT1e5gbySFoOt1RVhgmx6IbUu8uDsVwwR7zDPozMmgVjBMaBTg9AEffRWy7GpFe19tuPsT1SGQrIlqUs7nrOCeoHRBKvdeinj21RNHGnxvcEew138MG4QtkbWcdBqqapmPdXbiMITvEufQlYT9jlM%3D", NULL);
 	//std::string source = "loginNo = 81646809760111260474 & userId = bq_000080143&appCode = D0000356";
 	//std::map<std::string, std::string> map_entry;
 	//DomeArguHelp(source.c_str(), map_entry);
@@ -42,6 +44,24 @@ void split(std::string& s, std::string& delim, std::vector< std::string >* ret)
 	}
 }
 
+
+void HttpNewServer::Call(const char* fun, const char* data, HttpClientData* c)
+{
+	MAP_CALL_BACKS::iterator it = _HttpCallBacks.find(fun);
+	if (it != _HttpCallBacks.end())
+	{
+		Fun call = it->second;
+		(this->*call)(data, c);
+	}
+	else
+	{
+		char strTime[128] = { 0 };
+
+		GetGMTTimeStr(strTime, sizeof(strTime));
+		SendResponse(c, strTime, "Failed");
+	}
+}
+
 void HttpNewServer::Call(const char* data, HttpClientData* c)
 {
 
@@ -59,43 +79,39 @@ void HttpNewServer::Call(const char* data, HttpClientData* c)
 	{
 		argument = entry.substr(count + 1, entry.size());
 	}
-	MAP_CALL_BACKS::iterator it = _HttpCallBacks.find(call_fuc);
-	if (it != _HttpCallBacks.end())
-	{
-		Fun call = it->second;		
-		(this->*call)(argument.c_str(), c);
-	}
-	else
-	{
-		char strTime[128] = { 0 };
-
-		GetGMTTimeStr(strTime, sizeof(strTime));
-		SendResponse(c, strTime, "Failed");
-	}
-
+	Call(call_fuc.c_str(), argument.c_str(), c);
 }
 
-void HttpNewServer::NormalCall(HttpClientData *pc, const char* Time)
+void HttpNewServer::NormalCall(HttpClientData *pc, const char* Time, bool post)
 {
-	std::string  resource = pc->Buff;
-	std::vector<std::string> strArray;
-	std::string delim = "HTTP";
-	std::string delim1 = " ";
-	
-	int index = resource.find("GET ");
-	int index_end = resource.find(" HTTP");
-	if (index != std::string::npos && index_end != std::string::npos)
+
+	if (post)
 	{
-		std::string entry = resource.substr(index + 5, index_end - (index + 4));
-		Call(entry.c_str(), pc);
+		Call(pc->RequestUrl, pc->Buff, pc);
+		
 	}
 	else
 	{
-		char strTime[128] = { 0 };
-		
-		GetGMTTimeStr(strTime, sizeof(strTime));
-		LogInfoToFile("LogError.txt", "http NormalCall 接收到数据 %s 解析失败", resource.c_str());
-		SendResponse(pc, strTime, "Failed");
+		std::string  resource = pc->Buff;
+		std::vector<std::string> strArray;
+		std::string delim = "HTTP";
+		std::string delim1 = " ";
+
+		int index = resource.find("GET ");
+		int index_end = resource.find(" HTTP");
+		if (index != std::string::npos && index_end != std::string::npos)
+		{
+			std::string entry = resource.substr(index + 5, index_end - (index + 4));
+			Call(entry.c_str(), pc);
+		}
+		else
+		{
+			char strTime[128] = { 0 };
+
+			GetGMTTimeStr(strTime, sizeof(strTime));
+			LogInfoToFile("LogError.txt", "http NormalCall 接收到数据 %s 解析失败", resource.c_str());
+			SendResponse(pc, strTime, "Failed");
+		}
 	}
 
 }
@@ -165,8 +181,8 @@ void HttpNewServer::DomePay(const char* data, HttpClientData* c)
 		ASSERT(false);
 		return;
 	}
-	std::string delim = "[";
-	std::string delim1 = " = >";
+	std::string delim = "&";
+	std::string delim1 = "=";
 	std::vector<std::string> strArray;
 	std::vector<std::string> strArray1;
 	split(UrlStr, delim, &strArray);
@@ -175,22 +191,23 @@ void HttpNewServer::DomePay(const char* data, HttpClientData* c)
 	std::map<std::string, std::string> map_argu;
 	for (; it != strArray.end(); ++ it)
 	{
-		split(*it, delim, &strArray1);
-		std::string name = "[" + strArray[1];
+		strArray1.clear();
+		split(*it, delim1, &strArray1);
+		std::string name = strArray1[0];
 		if (strArray1.size() > 0)
 		{
 			map_argu[name] = "";
 		}
 		if (strArray1.size() == 2)
 		{
-			map_argu[name] = strArray[2];
+			map_argu[name] = strArray1[1];
 		}
 	}
 
 	bool successful = false;
-	if (map_argu["[data]"] != "")
+	if (map_argu["data"] != "")
 	{
-		std::string strJosnInfo = map_argu["[data]"];
+		std::string strJosnInfo = map_argu["data"];
 		LogInfoToFile("DomePay.txt", "普通充值异步回调 data数据[%s]", strJosnInfo.c_str());
 		Json::Reader jsonReader;
 		Json::Value jsonRoot;
@@ -202,8 +219,8 @@ void HttpNewServer::DomePay(const char* data, HttpClientData* c)
 		}
 		if (!jsonRoot["orderNo"].isNull() && !jsonRoot["sdkflowId"].isNull())
 		{
-			int order_id = jsonRoot["orderNo"].asUInt();
-			int sdk_flow_id = jsonRoot["sdkflowId"].asUInt();
+			int order_id = atoi(jsonRoot["orderNo"].asString().c_str());
+			int sdk_flow_id = atoi(jsonRoot["sdkflowId"].asString().c_str());// jsonRoot["sdkflowId"].asUInt();
 			DBR_Cmd_Deal_Third_Platform_Verify msg;
 			msg.Order_id = order_id;
 			SetMsgInfo(msg, DBR_Deal_Third_Platform_Verify, sizeof(msg));
@@ -211,18 +228,23 @@ void HttpNewServer::DomePay(const char* data, HttpClientData* c)
 			successful = true;
 		}
 	}
+	char strTime[128] = { 0 };
+
+	char sz_send[1024];
+	std::string ret = "";
 	if (successful)
 	{
-		char strTime[128] = { 0 };
-		GetGMTTimeStr(strTime, sizeof(strTime));
-		SendResponse(c, strTime, "isSuccess=true");
+		ret = "{\"isSuccess\":\"true\"}";
 	}
 	else
 	{
-		char strTime[128] = { 0 };
-		GetGMTTimeStr(strTime, sizeof(strTime));
-		SendResponse(c, strTime, "isSuccess=false");
+		ret = "{\"isSuccess\":\"false\"}";
+
 	}
+	GetGMTTimeStr(strTime, sizeof(strTime));
+
+	int nret = sprintf_s(sz_send, sizeof(sz_send), "HTTP/1.1 200 OK\r\nServer: vata/0.0.1\r\n\r\n%s", ret.c_str());
+	int count = send(c->Socket, sz_send, nret, 0);
 
 
 }
@@ -261,6 +283,6 @@ void HttpNewServer::DomeLogin(const char* data, HttpClientData* c)
 	g_FishServer.GetOperatorHelper().AcceptDomeServerLogon(entry);
 	char strTime[128] = { 0 };
 	GetGMTTimeStr(strTime, sizeof(strTime));
-	SendResponse(c, strTime, "isSuccess=true");
+	//SendResponse(c, strTime, "isSuccess=true");
 	delete[] entry;
 }

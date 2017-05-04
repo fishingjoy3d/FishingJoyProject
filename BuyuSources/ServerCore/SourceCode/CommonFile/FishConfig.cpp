@@ -28,8 +28,13 @@ bool FishConfig::LoadFishChannelConfig()
 			return false;
 		}
 
-		if (!pFishItem->GetAttribute(TEXT("pay_notify_url"), entry.notify_pay_url, CountArray(entry.notify_pay_url) / 2))
+		
+		if (!pFishItem->GetAttribute(TEXT("pay_notify_url"), entry.notify_pay_url, CountArray(entry.notify_pay_url)))
 		{
+			UINT count = 0;
+			WCharToChar(entry.notify_pay_url, count);
+			//UrlEncode()
+
 			return false;
 		}
 		if (!pFishItem->GetAttribute(TEXT("channel"), entry.channel_id))

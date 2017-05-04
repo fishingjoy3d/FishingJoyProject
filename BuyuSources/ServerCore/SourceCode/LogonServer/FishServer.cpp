@@ -2661,27 +2661,27 @@ void FishServer::CloseClientSocket(DWORD SocketID)
 
 void FishServer::OperatorLogon(tagLogon logon, ServerClientData* pClient)
 {
-	if (m_LogonCacheManager.IsExistsAccount(logon.AccountName))
-	{
-		LC_Cmd_AccountOnlyID msgClient;
-		SetMsgInfo(msgClient, GetMsgType(Main_Logon, LC_AccountOnlyID), sizeof(LC_Cmd_AccountOnlyID));
-		msgClient.dwOnlyID = 0;
-		msgClient.dwUserID = 0;
-		msgClient.GameIp = 0;
-		msgClient.GamePort = 0;
-		msgClient.GateIp = 0;
-		msgClient.GatePort = 0;
-		msgClient.LogonType = 2;
-		SendNewCmdToClient(pClient, &msgClient);
+	//if (m_LogonCacheManager.IsExistsAccount(logon.AccountName))
+	//{
+	//	LC_Cmd_AccountOnlyID msgClient;
+	//	SetMsgInfo(msgClient, GetMsgType(Main_Logon, LC_AccountOnlyID), sizeof(LC_Cmd_AccountOnlyID));
+	//	msgClient.dwOnlyID = 0;
+	//	msgClient.dwUserID = 0;
+	//	msgClient.GameIp = 0;
+	//	msgClient.GamePort = 0;
+	//	msgClient.GateIp = 0;
+	//	msgClient.GatePort = 0;
+	//	msgClient.LogonType = 2;
+	//	SendNewCmdToClient(pClient, &msgClient);
 
-		DelClient pDel;
-		pDel.LogTime = timeGetTime();
-		pDel.SocketID = pClient->OutsideExtraData;
-		m_DelSocketVec.push_back(pDel);
+	//	DelClient pDel;
+	//	pDel.LogTime = timeGetTime();
+	//	pDel.SocketID = pClient->OutsideExtraData;
+	//	m_DelSocketVec.push_back(pDel);
 
-		LogInfoToFile("LogonError.txt", TEXT("¿Í»§¶ËÕËºÅÒÑ¾­´æÔÚ ÇþµÀ×¢²áÊ§°Ü Íæ¼ÒÕËºÅ:%s ÃÜÂë:%u,%u,%u"), logon.AccountName, logon.PasswordCrc1,
-			logon.PasswordCrc2, logon.PasswordCrc3);
-	}
+	//	LogInfoToFile("LogonError.txt", TEXT("¿Í»§¶ËÕËºÅÒÑ¾­´æÔÚ ÇþµÀ×¢²áÊ§°Ü Íæ¼ÒÕËºÅ:%s ÃÜÂë:%u,%u,%u"), logon.AccountName, logon.PasswordCrc1,
+	//		logon.PasswordCrc2, logon.PasswordCrc3);
+	//}
 	DBR_Cmd_Operator_Logon msg;
 	msg.ClientID = pClient->OutsideExtraData;
 	msg.logon = logon;

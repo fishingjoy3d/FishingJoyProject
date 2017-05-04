@@ -987,7 +987,7 @@ bool FishServer::HandleDataBaseMsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	case DBR_DelRelationRequest:
 		return OnHandleDelRelationRequest(Index, ClientID, pCmd);
 	case DBR_Deal_Third_Platform_Verify:
-		return OnHandleDelRelationRequest(Index, ClientID, pCmd);
+		return OnThirdPlatformVerify(Index, ClientID, pCmd);
 	default:
 		return false;
 	}
@@ -6992,6 +6992,7 @@ bool FishServer::OnThirdPlatformVerify(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	{
 
 		//user_id`, `order_id`, `channel`, `good_id`, `shop_id
+		msg->result = true;
 		msg->info.user_id = pTable1.GetUint(0, 0);
 		msg->info.order_id = pTable1.GetUint(0, 1);
 		msg->info.channel_id = pTable1.GetUint(0, 2);

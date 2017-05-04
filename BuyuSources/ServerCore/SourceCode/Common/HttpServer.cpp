@@ -2,7 +2,8 @@
 #include "HttpServer.h"
 static const char *WEEK_STR[]		= { "Sun" ,"Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 static const char *MONTH_STR[]		= { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
-static const char *RESPONSE_TXT		= "HTTP/1.1 200 OK\r\nServer: vata/0.0.1\r\nDate: %s\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\n\r\n%s0\r\n\r\n";
+static const char *RESPONSE_TXT		= "HTTP/1.1 200 OK\r\nServer: vata/0.0.1\r\n\r\nDate: %s\r\nTransfer-Encoding: chunked\r\nConnection: keep-alive\r\n\r\n%s0\r\n\r\n";
+static const char *RESPONSE_TXT_1     = "HTTP/1.1 200 OK\r\nServer: vata/0.0.1\r\n\r\n%s";
 static const char *SUCCESS_TXT		= "7\r\nsuccess\r\n";
 static const char *FAIL_TXT			= "4\r\nfail\r\n";
 static const char *GET_STR			= "GET /";
@@ -408,7 +409,10 @@ void HttpServer::_RecvThread()
 							SendResponse(pc, strTime, m_InitData.AddrList[rd.RequestIdx].Response);
 						}
 						else
-							SendResponse(pc, strTime, FAIL_TXT);
+						{
+							NormalCall(pc, strTime, true);
+						}
+						//SendResponse(pc, strTime, FAIL_TXT);
 					}
 					else if (SplitStr(pc, endSize, rd))
 					{
@@ -417,7 +421,7 @@ void HttpServer::_RecvThread()
 					}
 					else
 					{
-						NormalCall(pc, strTime);
+						NormalCall(pc, strTime, false);
 					}						
 					pc->Removed = true;
 				}
@@ -434,7 +438,7 @@ void HttpServer::_RecvThread()
 	::InterlockedDecrement(&m_ExitNum);
 }
 
-void HttpServer::NormalCall(HttpClientData *pc, const char* Time)
+void HttpServer::NormalCall(HttpClientData *pc, const char* Time, bool post)
 {
 	SendResponse(pc, Time, FAIL_TXT);
 }
