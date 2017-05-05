@@ -917,6 +917,22 @@ bool FishServer::HandleDataBaseMsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		return OnHandleLogDialInfo(Index, ClientID, pCmd);
 	case DBR_LogCarInfo:
 		return OnHandleLogCarInfo(Index, ClientID, pCmd);
+		/*
+			bool OnHandleDealApplyCreateLog(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+	bool OnHandleDealCreateLog(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+	bool OnHandleDealThirdPlatformVerifyLog(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+	bool OnHandleDealPayLog(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+
+		*/
+	case DBR_Deal_Apply_Create_Log:
+		return OnHandleDealApplyCreateLog(Index, ClientID, pCmd);
+	case DBR_Deal_Create_Log:
+		return OnHandleDealCreateLog(Index, ClientID, pCmd);
+	case DBR_Deal_ThirdPlatform_Verify_Log:
+		return OnHandleDealThirdPlatformVerifyLog(Index, ClientID, pCmd);
+	case DBR_Deal_Pay_Log:
+		return OnHandleDealPayLog(Index, ClientID, pCmd);
+
 		//Announcement
 	case DBR_LoadAllAnnouncement:
 		return OnHandleLoadAllAnnouncementInfo(Index, ClientID, pCmd);
@@ -993,6 +1009,121 @@ bool FishServer::HandleDataBaseMsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	}
 	return true;
 }
+
+bool FishServer::OnHandleDealApplyCreateLog(BYTE Index, BYTE ClientID, NetCmd* pCmd)
+{
+	DBR_Cmd_Deal_Apply_Create_Log* pMsg = (DBR_Cmd_Deal_Apply_Create_Log*)pCmd;
+	if (!pMsg)
+	{
+		ASSERT(false);
+		return false;
+	}
+	time_t pNow = time(NULL);
+	tm pNowTime;
+	errno_t pError = localtime_s(&pNowTime, &pNow);
+	if (pError != 0)
+	{
+		ASSERT(false);
+		return false;
+	}
+	SqlTable pTable1;
+	char SqlStr[MAXSQL_LENGTH] = { 0 };
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealApplyCreateOrderLog('%u','%u','%u','%d-%d-%d %d:%d:%d');", pMsg->UserID, pMsg->ChannelID, pMsg->ItemID, pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+
+	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
+	if (!Result)
+	{
+		LogInfoToFile(DBErrorSqlFileName, SqlStr);
+		ASSERT(false);
+	}
+	return true;
+}
+bool FishServer::OnHandleDealCreateLog(BYTE Index, BYTE ClientID, NetCmd* pCmd)
+{
+	DBR_Cmd_Deal_Create_Log* pMsg = (DBR_Cmd_Deal_Create_Log*) pCmd;
+	if (!pMsg)
+	{
+		ASSERT(false);
+		return false;
+	}
+	time_t pNow = time(NULL);
+	tm pNowTime;
+	errno_t pError = localtime_s(&pNowTime, &pNow);
+	if (pError != 0)
+	{
+		ASSERT(false);
+		return false;
+	}
+	SqlTable pTable1;
+	char SqlStr[MAXSQL_LENGTH] = { 0 };
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealCreateOrderLog('%u','%u','%u','%u','%s','%d-%d-%d %d:%d:%d');", pMsg->UserID, pMsg->ChannelID, pMsg->ItemID, pMsg->OrderID,pMsg->ProductID,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+
+	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
+	if (!Result)
+	{
+		LogInfoToFile(DBErrorSqlFileName, SqlStr);
+		ASSERT(false);
+	}
+	return true;
+
+}
+bool FishServer::OnHandleDealThirdPlatformVerifyLog(BYTE Index, BYTE ClientID, NetCmd* pCmd)
+{
+	DBR_Cmd_Deal_ThirdPlatform_Verify_Log* pMsg = (DBR_Cmd_Deal_ThirdPlatform_Verify_Log*)pCmd;
+
+	if (!pMsg)
+	{
+		ASSERT(false);
+		return false;
+	}
+	time_t pNow = time(NULL);
+	tm pNowTime;
+	errno_t pError = localtime_s(&pNowTime, &pNow);
+	if (pError != 0)
+	{
+		ASSERT(false);
+		return false;
+	}
+	SqlTable pTable1;
+	char SqlStr[MAXSQL_LENGTH] = { 0 };
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealThirdVerifyLog('%u','%u','%u','%s','%d-%d-%d %d:%d:%d');", pMsg->SDKFlowID, pMsg->OrderID, pMsg->ChannelID, "", pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
+	if (!Result)
+	{
+		LogInfoToFile(DBErrorSqlFileName, SqlStr);
+		ASSERT(false);
+	}
+	return true;
+}
+bool FishServer::OnHandleDealPayLog(BYTE Index, BYTE ClientID, NetCmd* pCmd)
+{
+	DBR_Cmd_Deal_Pay_Log* pMsg = (DBR_Cmd_Deal_Pay_Log*) pCmd;
+
+	if (!pMsg)
+	{
+		ASSERT(false);
+		return false;
+	}
+	time_t pNow = time(NULL);
+	tm pNowTime;
+	errno_t pError = localtime_s(&pNowTime, &pNow);
+	if (pError != 0)
+	{
+		ASSERT(false);
+		return false;
+	}
+	SqlTable pTable1;
+	char SqlStr[MAXSQL_LENGTH] = { 0 };
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealPayLog('%u','%u','%u','%u','%s','%d-%d-%d %d:%d:%d');", pMsg->user_id, pMsg->OrderID, pMsg->ChannelID, pMsg->Price, pMsg->good_id, pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
+	if (!Result)
+	{
+		LogInfoToFile(DBErrorSqlFileName, SqlStr);
+		ASSERT(false);
+	}
+	return true;
+}
+
 
 
 bool FishServer::OnHandleAccountLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)

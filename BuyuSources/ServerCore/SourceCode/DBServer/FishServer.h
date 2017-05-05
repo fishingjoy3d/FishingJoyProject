@@ -219,6 +219,14 @@ private:
 	bool OnHandleLogMonthInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnHandleLogDialInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnHandleLogCarInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+	bool OnHandleDealApplyCreateLog(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+	bool OnHandleDealCreateLog(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+	bool OnHandleDealThirdPlatformVerifyLog(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+	bool OnHandleDealPayLog(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+
+
+
+
 	//Announcement
 	bool OnHandleLoadAllAnnouncementInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnHandleAddAnnouncementInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd);
