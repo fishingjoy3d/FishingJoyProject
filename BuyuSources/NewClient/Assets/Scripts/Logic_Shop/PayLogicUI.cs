@@ -77,7 +77,9 @@ public class PayLogicUI : BaseWnd
             {
                 if (!map.Value.IsAddCurrcey())
                     continue;
-                if (map.Value.IsFirstAdd() && !PlayerRole.Instance.RoleInfo.RoleMe.GetIsFirstPayCurrcey())
+                //if (map.Value.IsFirstAdd() && !PlayerRole.Instance.RoleInfo.RoleMe.GetIsFirstPayCurrcey())
+                //    continue;
+                if (map.Value.IsFirstAdd())
                     continue;
                 PayItemInfo item = new PayItemInfo();
                 item.Init(m_Scroll.m_BaseChild);
@@ -92,7 +94,9 @@ public class PayLogicUI : BaseWnd
             {
                 if (!map.Value.IsAddGlobel())
                     continue;
-                if (map.Value.IsFirstAdd() && !PlayerRole.Instance.RoleInfo.RoleMe.GetIsFirstPayGlobel())
+                //if (map.Value.IsFirstAdd() && !PlayerRole.Instance.RoleInfo.RoleMe.GetIsFirstPayGlobel())
+                //    continue;
+                if (map.Value.IsFirstAdd())
                     continue;
                 PayItemInfo item = new PayItemInfo();
                 item.Init(m_Scroll.m_BaseChild);
