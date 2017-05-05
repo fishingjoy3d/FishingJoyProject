@@ -4315,8 +4315,10 @@ bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
 	}
 	UINT count;
 	GC_Cmd_CreateOrder msg;
+	SetMsgInfo(msg, GetMsgType(Main_Recharge, GC_CreateOrder), sizeof(msg));
 	msg.OrderID = pMsg->order_id;
-	msg.ShopIndex = pMsg->shop_id;
+	msg.ItemID = pMsg->shop_id;
+
 	const tagChannelConfig* channel_config = g_FishServer.GetFishConfig().GetChannelConfig(pRole->GetOperatorChannelID());
 	if (channel_config == null)
 	{
@@ -4326,34 +4328,8 @@ bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
 	{
 		char* notify_data = WCharToChar(channel_config->notify_pay_url, count);
 		std::string notifyUrl = notify_data;
-		free(notify_data);
-		char szTemp[512];
-		std::string priKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAIwOcaDOCOFqd+9M5Sus5/DH7DRwcQKanC11f1KJxLqEAdEpS5Swu7hvtPJR4a97kYD4oNpbszQUHmWTsyGnqMo/ucTORSogrej/tEBAAltIpyC+Rp6qsGuwdhhBZ+yz8NS0fuHMCsRKZ55XD37riz4HQHPAspz4NNdJYI/NPC11AgMBAAECgYAM4u9Vil+Kzg8G955GbHxSzTJQiN/9C1i/XgY/A+oT9z1rj08i+Tfsemq9uQb47Hew1C+Ip9NPQWKimfpraE/BWOBSX4/BJIDLfOdoMgTns7/3ICIuhj5fTR8XMX4qfpnZTu9/opHCRXFPV42bop1BxZTjYnTwO9LdWdOsmCirwQJBAN2vp8OihiF7uzjynX10baIeuV8GGixdlM2BpJIevDUob+wwkzsIRo//ICIzMdAOXxKbzm6Aj3hJ4pimf4A6r3kCQQChvDLz9ZENH6tIzHUaeSMzPaWbJGKDCli7y5jvVZYu9DXhJmAjwgJ5eIHn5JJiLc3wMyqn2tJ0qcfpbIcLdAkBiXqSp+f9c8kOkxHvABJ71dn65PML2dtwlyOZW9I59ZCEuBGwAoO52zTXcFy1+bjIf1sVmYWPIc7i6Ff+zzda5AkACorqB10Kh4B4+dXaDE+5K63pDaPhiAk0n4k1/uPlVko0+Og3fB05bBGe5i7QG/ZAZlfvf+GTtmca0PYBDB+3RAkEAhGnxthd0zdcXULmqMbk6s18OlrHzhQrCKhf3nlus+YV6oopZHUvjnJHxzdDzS69OsLMzWSsaez3lbYERIZ+qbQ==";
-		sprintf(szTemp, "appCode=D0000356&orderNo=%u&payCode=%s&payNotifyUrl=%s", msg.OrderID, pMsg->good_id, "", notifyUrl.c_str());
-		///const std::string &data, std::string &sign, EVP_PKEY* priKey
-		std::string sign;
-		std::string data = szTemp;
-
-		EVP_PKEY* vkey = CryptHelper::getKeyByPKCS1(priKey, 1);
-		if (!vkey)
-		{
-			LogInfoToFile("DomePay.txt", "生成签名钥匙失败");
-			ASSERT(false);
-			//g_FishServer.SendNetCmdToCenterServer(&msg);
-			return true;
-		}
-		LogInfoToFile("DomePay.txt", "准备签名[%s]", szTemp);
-		//std::string priKey;
-		CryptHelper::md5WithRsa(data, sign, vkey);
-		LogInfoToFile("DomePay.txt", "签名结果[%s]", data.c_str());
-		TCHARCopy(msg.good_id, CountArray(msg.good_id), pMsg->good_id, _tcslen(pMsg->good_id));
-
-		WCHAR* sign_w = CharToWChar(sign.c_str(), count);
-		//TCHARCopy(msg.good_id, CountArray(msg.good_id), pMsg->good_id, _tcslen(pMsg->good_id));
-
-		TCHARCopy(msg.sign_code, CountArray(msg.sign_code), sign_w, _tcslen(sign_w));
-		SetMsgInfo(msg, GetMsgType(Main_Recharge, GC_CreateOrder), sizeof(GC_Cmd_CreateOrder));
-		free(sign_w);
+		//LogInfoToFile("DomePay.txt", "签名结果[%s]", data.c_str());
+		TCHARCopy(msg.ProductID, CountArray(msg.ProductID), pMsg->good_id, _tcslen(pMsg->good_id));
 		WCHAR* url = CharToWChar(notifyUrl.c_str(), count);
 		TCHARCopy(msg.notify_url, CountArray(msg.notify_url), url, _tcslen(url));
 		free(url);

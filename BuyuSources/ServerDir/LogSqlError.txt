@@ -14,3 +14,18 @@ call FishLoadRobotInfo('0','0','2017-4-27 19:2:18'); 2017-04-27 19:02:18
 call FishLogonCache(); 2017-04-27 19:02:20
 call FishLoadRobotInfo('0','0','2017-4-27 19:2:23'); 2017-04-27 19:02:23
 call FishSaveRoleRateValue('20333','1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,128','0'); 2017-04-27 19:04:13
+call FishAchievementPointList('2000'); 2017-05-03 12:01:03
+call FishAchievementPointList('2000'); 2017-05-03 13:00:44
+call FishAchievementPointList('2000'); 2017-05-03 14:00:44
+call FishLogonCache(); 2017-05-03 14:48:40
+call FishLogonCache(); 2017-05-03 14:50:05
+call FishLogonCache(); 2017-05-03 14:54:21
+call FishSaveRoleTaskStates('20337','\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'); 2017-05-03 14:55:34
+call FishSaveRoleRateValue('20337','1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,128','0'); 2017-05-03 14:55:34
+call FishClearRoleTask('20337'); 2017-05-03 14:55:34
+call FishLogonCache(); 2017-05-03 15:06:33
+call FishLogonCache(); 2017-05-03 15:06:52
+call FishSaveRoleTaskStates('20337','\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0'); 2017-05-03 15:09:48
+call FishClearRoleTask('20337'); 2017-05-03 15:09:48
+call FishLogonCache(); 2017-05-03 15:28:26
+call FishSaveRoleRateValue('20337','1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,128','0'); 2017-05-03 15:29:02

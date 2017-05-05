@@ -7772,9 +7772,9 @@ struct CG_Cmd_CreateOrder : public NetCmd
 struct GC_Cmd_CreateOrder : public NetCmd
 {
 	int OrderID;
-	int ShopIndex;
-	WCHAR good_id[MAX_PayNOLength];
-	WCHAR sign_code[MAX_SIGN_CODE];
+	int ItemID;
+	WCHAR ProductID[MAX_PayNOLength];
+//	WCHAR sign_code[MAX_SIGN_CODE];
 	WCHAR notify_url[MAX_UrlLength];
 };
 

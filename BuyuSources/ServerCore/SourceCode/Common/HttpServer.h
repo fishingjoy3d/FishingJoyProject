@@ -155,7 +155,7 @@ public:
 	{
 		return m_RecvList;
 	}
-	virtual void NormalCall(HttpClientData *pc, const char* Time);
+	virtual void NormalCall(HttpClientData *pc, const char* Time, bool post);
 
 protected:
 	bool	SplitStr(HttpClientData *pc, UINT endSize, HttpRecvData &strmap);

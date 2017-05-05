@@ -1399,7 +1399,9 @@ bool FishServer::HandleDBMsg(NetCmd* pCmd)
 			DBO_Cmd_Deal_Third_Platform_Verify* pMsg = (DBO_Cmd_Deal_Third_Platform_Verify*)pCmd;
 			if (pMsg->result)
 			{
+				
 				OC_Cmd_Third_Platform_Verify msg;
+				msg.info = pMsg->info;
 				SetMsgInfo(msg, GetMsgType(Main_Operate, OC_Deal_Third_Platform_Verify), sizeof(msg));
 				SendNetCmdToCenterServer(&msg);
 			}			

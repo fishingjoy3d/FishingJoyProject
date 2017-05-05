@@ -18,7 +18,7 @@ void LogonCache::OnLoadAllAccountData()
 	DBR_Cmd_LoadAllAccountInfo msg;
 	SetMsgInfo(msg, DBR_LoadAllAccountInfo, sizeof(DBR_Cmd_LoadAllAccountInfo));
 	g_FishServer.SendNetCmdToDB(&msg);
-	m_AccountMap.clear();
+//	m_AccountMap.clear();
 }
 void LogonCache::OnLoadAllAccountDataResult(DBO_Cmd_LoadAllAccountInfo* msg)
 {

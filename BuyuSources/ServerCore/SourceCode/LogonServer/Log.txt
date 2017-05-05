@@ -1,0 +1,6 @@
+╤оят[2017 5 3 11:20:29]: ..\CommonFile\FishServerConfig.cpp FishServerConfig::LoadServerConfigFile 19
+╤оят[2017 5 3 11:20:29]: LogonServer.cpp wmain 52
+╤оят[2017 5 3 11:21:25]: ..\CommonFile\FishServerConfig.cpp FishServerConfig::LoadServerConfigFile 19
+╤оят[2017 5 3 11:21:28]: LogonServer.cpp wmain 52
+╤оят[2017 5 3 11:21:46]: ..\CommonFile\FishServerConfig.cpp FishServerConfig::LoadServerConfigFile 19
+╤оят[2017 5 3 11:21:46]: LogonServer.cpp wmain 52
