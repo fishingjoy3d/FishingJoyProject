@@ -7680,7 +7680,7 @@ enum OperateSub
 	LC_AddNormalOrderID = 53,
 
 	OC_Deal_Third_Platform_Verify = 60,
-	CG_Deal_Successful = 61,
+	CG_Deal_NotifyPay = 61,
 	CG_Deal_NotifyClient = 62
 };
 
@@ -7689,10 +7689,11 @@ struct CG_Cmd_Deal_NotifyClient : public NetCmd
 
 };
 
-struct CG_Cmd_Deal_Successful : public NetCmd
+struct CG_Cmd_Deal_NotifyPay : public NetCmd
 {
 	DWORD dwUserid;
-	DWORD dwAddRechargeSum;
+	DWORD dwShopItem;
+	//DWORD dwAddRechargeSum;
 };
 
 struct OC_Cmd_Third_Platform_Verify : public NetCmd
