@@ -2731,8 +2731,48 @@ enum FishDBCmd
 		DBR_Deal_Create,
 		DBO_Deal_Create,
 		DBR_Deal_Third_Platform_Verify,
-		DBO_Deal_Third_Platform_Verify
+		DBO_Deal_Third_Platform_Verify,
+		DBR_Deal_Apply_Create_Log,
+		DBR_Deal_Create_Log,
+		DBR_Deal_ThirdPlatform_Verify_Log,
+		DBR_Deal_Pay_Log
 };
+
+
+struct DBR_Cmd_Deal_Apply_Create_Log : public NetCmd
+{
+	int ItemID;
+	int ChannelID;
+	DWORD UserID;
+};
+
+struct DBR_Cmd_Deal_Create_Log : public NetCmd
+{
+	int ItemID;
+	DWORD UserID;
+	DWORD OrderID;
+	DWORD ChannelID;
+	WCHAR ProductID[MAX_PayNOLength];
+};
+
+struct DBR_Cmd_Deal_ThirdPlatform_Verify_Log : public NetCmd
+{
+	DWORD SDKFlowID;
+	DWORD OrderID;
+	int ChannelID;
+	char ExternalData[256];
+};
+
+struct DBR_Cmd_Deal_Pay_Log : public NetCmd
+{
+	DWORD user_id;
+	DWORD OrderID;
+	int ChannelID;
+	int Price;
+	WCHAR good_id[MAX_PayNOLength];
+	int ShopItem;
+};
+
 
 
 struct DBR_Cmd_Deal_Third_Platform_Verify : public NetCmd
@@ -7652,6 +7692,7 @@ struct CG_Cmd_Deal_NotifyClient : public NetCmd
 struct CG_Cmd_Deal_Successful : public NetCmd
 {
 	DWORD dwUserid;
+	DWORD dwAddRechargeSum;
 };
 
 struct OC_Cmd_Third_Platform_Verify : public NetCmd

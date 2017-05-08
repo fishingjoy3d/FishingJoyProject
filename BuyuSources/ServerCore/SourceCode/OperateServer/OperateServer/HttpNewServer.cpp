@@ -226,6 +226,14 @@ void HttpNewServer::DomePay(const char* data, HttpClientData* c)
 			SetMsgInfo(msg, DBR_Deal_Third_Platform_Verify, sizeof(msg));
 			g_FishServer.SendNetCmdToDB(&msg);
 			successful = true;
+
+			DBR_Cmd_Deal_ThirdPlatform_Verify_Log msg_log;
+			msg_log.OrderID = order_id;
+			msg_log.ChannelID = Dome_ChannelType;
+			msg_log.SDKFlowID = sdk_flow_id;
+			SetMsgInfo(msg_log, DBR_Deal_ThirdPlatform_Verify_Log, sizeof(msg_log));
+			g_FishServer.SendNetCmdToLogDB(&msg_log);
+
 		}
 	}
 	char strTime[128] = { 0 };

@@ -2038,15 +2038,8 @@ bool FishServer::HandleGameServerMsg(ServerClientData* pClient, NetCmd* pCmd)
 		case OC_Deal_Third_Platform_Verify:
 			{
 				OC_Cmd_Third_Platform_Verify* pMsg = (OC_Cmd_Third_Platform_Verify*)pCmd;
-				ThirdPlatformBuy(pMsg->info.shop_id, pMsg->info.user_id);
-				CenterRole* pRole = m_RoleManager.QueryCenterUser(pMsg->info.user_id);
-				if (pRole)
-				{
-					CG_Cmd_Deal_Successful msg;
-					msg.dwUserid = pMsg->info.user_id;
-					SetMsgInfo(msg, GetMsgType(Main_Operate, CG_Deal_Successful), sizeof(CG_Cmd_Deal_Successful));
-					pRole->SendDataToGameServer(&msg);
-				}
+				ThirdPlatformBuy(pMsg->info.shop_id, pMsg->info.user_id, pMsg->info.channel_id , pMsg->info.order_id);
+
 			}
 			break;
 		case OC_UseRMB:
@@ -2571,80 +2564,112 @@ void FishServer::SendMessageByType(TCHAR* pMessage, WORD MessageSize,BYTE Messag
 
 
 
-void FishServer::ThirdPlatformBuy(int shopID, DWORD user_id)
+void FishServer::ThirdPlatformBuy(int shopID, DWORD user_id, int channel_id, int order_id)
 {
 	HashMap<DWORD, tagFishRechargeInfo>::iterator it = m_FishConfig.GetFishRechargesConfig().m_FishRechargeMap.find(shopID);
-	tagFishRechargeInfo entry = it->second;
+	if (it != m_FishConfig.GetFishRechargesConfig().m_FishRechargeMap.end())
+	{
+		tagFishRechargeInfo entry = it->second;
+
+		DBR_Cmd_Deal_Pay_Log msg_log;
+		msg_log.user_id = user_id;
+		msg_log.ChannelID = channel_id;
+		msg_log.OrderID = order_id;
+		msg_log.Price = entry.dDisCountPrice;
+		TCHARCopy(msg_log.good_id, CountArray(msg_log.good_id), entry.PayNO, _tcslen(entry.PayNO));
+		msg_log.ShopItem = shopID;
+		SetMsgInfo(msg_log, DBR_Deal_Pay_Log, sizeof(msg_log));
+		g_FishServer.SendNetCmdToLogDB(&msg_log);
+		if (entry.IsAddCurrcey())
+		{
+			/*msg->AddCurrceySum = Iter->second.AddMoney;
+			msg->AddGlobelSum = 0;*/
+
+			tagRoleMail	MailInfo;
+			MailInfo.bIsRead = false;
+			//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
+			TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您")));
+			MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailCurrceyRewardID;
+			MailInfo.RewardSum = entry.AddMoney;
+			MailInfo.MailID = 0;
+			MailInfo.SendTimeLog = time(NULL);
+			MailInfo.SrcFaceID = 0;
+			TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
+			MailInfo.SrcUserID = 0;//系统发送
+			MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
+			DBR_Cmd_AddUserMail msg;
+			SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
+			msg.dwDestUserID = user_id;
+			msg.MailInfo = MailInfo;
+			g_FishServer.SendNetCmdToDB(&msg);
+		}
+		else if (entry.IsAddGlobel())
+		{
+			/*msg->AddCurrceySum = 0;
+			msg->AddGlobelSum = Iter->second.AddMoney;*/
+
+			tagRoleMail	MailInfo;
+			MailInfo.bIsRead = false;
+			//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
+			TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您")));
+			MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailGlobelRewardID;
+			MailInfo.RewardSum = entry.AddMoney;
+			MailInfo.MailID = 0;
+			MailInfo.SendTimeLog = time(NULL);
+			MailInfo.SrcFaceID = 0;
+			TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
+			MailInfo.SrcUserID = 0;//系统发送
+			MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
+			DBR_Cmd_AddUserMail msg;
+			SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
+			msg.dwDestUserID = user_id;
+			msg.MailInfo = MailInfo;
+			g_FishServer.SendNetCmdToDB(&msg);
+		}
+		else if (entry.IsAddReward())
+		{
+			//如果为奖励ID的话 我们按邮件发送
+			//发送邮件奖励 系统邮件直接携带RewardID 进行处理
+			tagRoleMail	MailInfo;
+			MailInfo.bIsRead = false;
+			//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
+			TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您")));
+			MailInfo.RewardID = entry.RewardID;
+			MailInfo.RewardSum = 1;
+			MailInfo.MailID = 0;
+			MailInfo.SendTimeLog = time(NULL);
+			MailInfo.SrcFaceID = 0;
+			TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
+			MailInfo.SrcUserID = 0;//系统发送
+			MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
+			DBR_Cmd_AddUserMail msg;
+			SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
+			msg.dwDestUserID = user_id;
+			msg.MailInfo = MailInfo;
+			g_FishServer.SendNetCmdToDB(&msg);
+		}
+		CenterRole* pRole = m_RoleManager.QueryCenterUser(user_id);
+		if (pRole)
+		{
+			CG_Cmd_Deal_Successful msg;
+			msg.dwUserid = user_id;
+			SetMsgInfo(msg, GetMsgType(Main_Operate, CG_Deal_Successful), sizeof(CG_Cmd_Deal_Successful));
+			msg.dwAddRechargeSum = entry.dDisCountPrice;
+			pRole->SendDataToGameServer(&msg);
+		}
+		else
+		{
+			DBR_Cmd_AddRoleTotalRecharge msg;
+			SetMsgInfo(msg, DBR_AddRoleTotalRecharge, sizeof(DBR_Cmd_AddRoleTotalRecharge));
+			msg.dwUserID = user_id;
+			msg.Sum = entry.dDisCountPrice;
+			g_FishServer.SendNetCmdToDB(&msg);
+		}
+
+
+	}
 	
-	if (entry.IsAddCurrcey())
-	{
-		/*msg->AddCurrceySum = Iter->second.AddMoney;
-		msg->AddGlobelSum = 0;*/
-
-		tagRoleMail	MailInfo;
-		MailInfo.bIsRead = false;
-		//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
-		TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您")));
-		MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailCurrceyRewardID;
-		MailInfo.RewardSum = entry.AddMoney;
-		MailInfo.MailID = 0;
-		MailInfo.SendTimeLog = time(NULL);
-		MailInfo.SrcFaceID = 0;
-		TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
-		MailInfo.SrcUserID = 0;//系统发送
-		MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
-		DBR_Cmd_AddUserMail msg;
-		SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
-		msg.dwDestUserID = user_id;
-		msg.MailInfo = MailInfo;
-		g_FishServer.SendNetCmdToDB(&msg);
-	}
-	else if (entry.IsAddGlobel())
-	{
-		/*msg->AddCurrceySum = 0;
-		msg->AddGlobelSum = Iter->second.AddMoney;*/
-
-		tagRoleMail	MailInfo;
-		MailInfo.bIsRead = false;
-		//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
-		TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您")));
-		MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailGlobelRewardID;
-		MailInfo.RewardSum = entry.AddMoney;
-		MailInfo.MailID = 0;
-		MailInfo.SendTimeLog = time(NULL);
-		MailInfo.SrcFaceID = 0;
-		TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
-		MailInfo.SrcUserID = 0;//系统发送
-		MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
-		DBR_Cmd_AddUserMail msg;
-		SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
-		msg.dwDestUserID = user_id;
-		msg.MailInfo = MailInfo;
-		g_FishServer.SendNetCmdToDB(&msg);
-	}
-	else if (entry.IsAddReward())
-	{
-		//如果为奖励ID的话 我们按邮件发送
-		//发送邮件奖励 系统邮件直接携带RewardID 进行处理
-		tagRoleMail	MailInfo;
-		MailInfo.bIsRead = false;
-		//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
-		TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您")));
-		MailInfo.RewardID = entry.RewardID;
-		MailInfo.RewardSum = 1;
-		MailInfo.MailID = 0;
-		MailInfo.SendTimeLog = time(NULL);
-		MailInfo.SrcFaceID = 0;
-		TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
-		MailInfo.SrcUserID = 0;//系统发送
-		MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
-		DBR_Cmd_AddUserMail msg;
-		SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
-		msg.dwDestUserID = user_id;
-		msg.MailInfo = MailInfo;
-		g_FishServer.SendNetCmdToDB(&msg);
-	}
-
+	
 
 }
 bool FishServer::HandleDataBaseMsg(NetCmd* pCmd)

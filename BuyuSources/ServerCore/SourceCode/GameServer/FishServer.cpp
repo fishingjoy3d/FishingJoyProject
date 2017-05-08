@@ -1986,14 +1986,24 @@ bool FishServer::HandleCenterMsg(NetCmd* pCmd)
 				{
 					CG_Cmd_Deal_Successful* pMsg = (CG_Cmd_Deal_Successful*)pCmd;
 					CRoleEx* pRole = GetRoleManager()->QueryUser(pMsg->dwUserid);
+					int AddRechargeSum = pMsg->dwAddRechargeSum;
 					if (!pRole)
 					{
-						ASSERT(false);
-						return false;
+						DBR_Cmd_AddRoleTotalRecharge msg;
+						SetMsgInfo(msg, DBR_AddRoleTotalRecharge, sizeof(DBR_Cmd_AddRoleTotalRecharge));
+						msg.dwUserID = pMsg->dwUserid;
+						msg.Sum = AddRechargeSum;
+						g_FishServer.SendNetCmdToDB(&msg);
 					}
-					CG_Cmd_Deal_NotifyClient msg;
-					SetMsgInfo(msg, GetMsgType(Main_Operate, CG_Deal_NotifyClient), sizeof(CG_Cmd_Deal_NotifyClient));
-					pRole->SendDataToClient(&msg);					
+					else
+					{						
+						pRole->ChangeRoleTotalRechargeSum(AddRechargeSum);//添加玩家总充值数
+						pRole->OnHandleEvent(true, true, true, ET_Recharge, 0, pRole->GetRoleInfo().TotalRechargeSum/*Iter->second.dDisCountPrice*/);//充值记录
+						CG_Cmd_Deal_NotifyClient msg;
+						SetMsgInfo(msg, GetMsgType(Main_Operate, CG_Deal_NotifyClient), sizeof(CG_Cmd_Deal_NotifyClient));
+						pRole->SendDataToClient(&msg);
+					}
+					return true;
 				}
 			case CG_BindEmail:
 				{
@@ -4322,7 +4332,7 @@ bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
 	const tagChannelConfig* channel_config = g_FishServer.GetFishConfig().GetChannelConfig(pRole->GetOperatorChannelID());
 	if (channel_config == null)
 	{
-		LogInfoToFile("DomePay.txt", "生成签名钥匙失败");
+		LogInfoToFile("DomePay.txt", "玩家【%d】支付生成订单失败,没有渠【%d】道信息",pMsg->user_id, pRole->GetOperatorChannelID());
 	}
 	else
 	{
@@ -4334,8 +4344,15 @@ bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
 		TCHARCopy(msg.notify_url, CountArray(msg.notify_url), url, _tcslen(url));
 		free(url);
 		pRole->SendDataToClient(&msg);
+		DBR_Cmd_Deal_Create_Log msg_log;
+		msg_log.ItemID = msg.ItemID;
+		msg_log.OrderID = msg.OrderID;
+		msg_log.UserID = pMsg->user_id;
+		msg_log.ChannelID = pRole->GetOperatorChannelID();
+		TCHARCopy(msg_log.ProductID, CountArray(msg_log.ProductID), pMsg->good_id, _tcslen(pMsg->good_id));
+		SetMsgInfo(msg_log, DBR_Deal_Create_Log, sizeof(msg_log));
+		SendLogDB(&msg_log);		
 	}
-
 	return true;
 }
 bool FishServer::OnHandleGameIDConvertUserID(NetCmd* pCmd)
@@ -6917,16 +6934,21 @@ bool FishServer::OnHandleTCPNetworkRecharge(ServerClientData* pClient, NetCmd* p
 				msg.user_id = pRole->GetUserID();
 				SetMsgInfo(msg, DBR_Deal_Create, sizeof(msg));
 				TCHARCopy(msg.good_id, CountArray(msg.good_id), entry.PayNO, _tcslen(entry.PayNO));
-				LogInfoToFile("DomePay.txt", "向数据库申请创建订单[%d]", pMsg->ShopIndex);
+				LogInfoToFile("DomePay.txt", "玩家[%d]向数据库申请创建订单[%d]", msg.user_id, pMsg->ShopIndex);
 				SendNetCmdToDB(&msg);
+
+				DBR_Cmd_Deal_Apply_Create_Log msg_log;
+				msg_log.ItemID = msg.shop_id;
+				msg_log.UserID = msg.user_id;
+				msg_log.ChannelID = msg.channel_id;
+				SetMsgInfo(msg_log, DBR_Deal_Apply_Create_Log, sizeof(msg_log));
+				SendNetCmdToLogDB(&msg_log);
 				//msg.good_id
 			}
 			else
 			{
-				LogInfoToFile("DomePay.txt", "创建订单失败没有找到商品 %d", pMsg->ShopIndex);
+				LogInfoToFile("DomePay.txt", "玩家跑[%d]创建订单失败没有找到商品 %d", pRole->GetUserID(), pMsg->ShopIndex);
 			}
-
-
 		}
 		break;
 	case CL_Recharge:
