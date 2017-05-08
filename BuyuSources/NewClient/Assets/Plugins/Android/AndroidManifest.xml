@@ -24,14 +24,14 @@
       android:name="com.alipay.sdk.app.H5PayActivity"
       android:configChanges="orientation|keyboardHidden|navigation"
       android:exported="false"
-      android:screenOrientation="behind"
+      android:screenOrientation="landscape"
       android:windowSoftInputMode="adjustResize|stateHidden" >
     </activity>
     <activity
       android:name="com.alipay.sdk.auth.AuthActivity"
       android:configChanges="orientation|keyboardHidden|navigation"
       android:exported="false"
-      android:screenOrientation="behind" >
+      android:screenOrientation="landscape" >
     </activity>
     <!-- End QianBao Activity-->
 

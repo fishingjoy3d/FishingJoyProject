@@ -159,7 +159,7 @@ public class LogicManager:Singleton<LogicManager>
     {
         if (m_Params != null)
             return;
-        m_Params = true;
+        //m_Params = true;
         try
         {
             WndManager.Instance.Clear();

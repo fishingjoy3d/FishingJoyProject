@@ -44,6 +44,7 @@ public class SDKChannelDome : SDKChannel
     public override void Logout(string customparms)
     {
         //m_AndroidContext.Call("logout", customparms);
+        SDKMgr.Instance.GlobalInit();
     }
 
     public override void Pay(int itemID, string chargePointName, string orderID, string url, string secret_key)
@@ -57,7 +58,7 @@ public class SDKChannelDome : SDKChannel
         }
 
         string info = GetPayInfo(APP_CODE, chargePointName, orderID, url_encoder);
-        info += GetSignCode(info, PRIVATE_KEY);
+        info += "&signCode=" + GetSignCode(info, PRIVATE_KEY);
         DomePayAndroid.Instance.pay(info, SDKMgr.Instance.CallbackObjName, "PayDomeCallBack");
     }
     public override void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
