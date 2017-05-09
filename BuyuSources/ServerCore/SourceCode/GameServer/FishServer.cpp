@@ -1982,9 +1982,11 @@ bool FishServer::HandleCenterMsg(NetCmd* pCmd)
 		{
 			switch (pCmd->SubCmdType)
 			{
-			case CG_Deal_Successful:
+			case CG_Deal_NotifyPay:
 				{
-					CG_Cmd_Deal_Successful* pMsg = (CG_Cmd_Deal_Successful*)pCmd;
+					CG_Cmd_Deal_NotifyPay* pMsg = (CG_Cmd_Deal_NotifyPay*)pCmd;
+					ThirdPlatformPay(pMsg->dwShopItem, pMsg->dwUserid);
+					/*
 					CRoleEx* pRole = GetRoleManager()->QueryUser(pMsg->dwUserid);
 					int AddRechargeSum = pMsg->dwAddRechargeSum;
 					if (!pRole)
@@ -1998,11 +2000,12 @@ bool FishServer::HandleCenterMsg(NetCmd* pCmd)
 					else
 					{						
 						pRole->ChangeRoleTotalRechargeSum(AddRechargeSum);//添加玩家总充值数
-						pRole->OnHandleEvent(true, true, true, ET_Recharge, 0, pRole->GetRoleInfo().TotalRechargeSum/*Iter->second.dDisCountPrice*/);//充值记录
+						pRole->OnHandleEvent(true, true, true, ET_Recharge, 0, pRole->GetRoleInfo().TotalRechargeSum/*Iter->second.dDisCountPrice);//充值记录
 						CG_Cmd_Deal_NotifyClient msg;
 						SetMsgInfo(msg, GetMsgType(Main_Operate, CG_Deal_NotifyClient), sizeof(CG_Cmd_Deal_NotifyClient));
 						pRole->SendDataToClient(&msg);
 					}
+				*/
 					return true;
 				}
 			case CG_BindEmail:
@@ -2355,6 +2358,136 @@ void FishServer::OnHandlePhonePay(CG_Cmd_PhonePay* pMsg)
 		return;
 	}
 }
+
+
+void FishServer::ThirdPlatformPay(int ShopItem, DWORD dwUserID)
+{
+	HashMap<DWORD, tagFishRechargeInfo>::iterator Iter = m_FishConfig.GetFishRechargesConfig().m_FishRechargeMap.find(ShopItem);
+	if (Iter != m_FishConfig.GetFishRechargesConfig().m_FishRechargeMap.end())
+	{
+		tagFishRechargeInfo entry_info = Iter->second;
+		CRoleEx* pRole = m_RoleManager.QueryUser(dwUserID);
+		if (!pRole)
+		{
+
+
+			if (entry_info.IsAddCurrcey())
+			{
+				/*msg->AddCurrceySum = Iter->second.AddMoney;
+				msg->AddGlobelSum = 0;*/
+
+				tagRoleMail	MailInfo;
+				MailInfo.bIsRead = false;
+				//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
+				TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 因为您不在线 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 因为您不在线 所有充值奖励通过邮件发送给您")));
+				MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailCurrceyRewardID;
+				MailInfo.RewardSum = Iter->second.AddMoney;
+				MailInfo.MailID = 0;
+				MailInfo.SendTimeLog = time(NULL);
+				MailInfo.SrcFaceID = 0;
+				TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
+				MailInfo.SrcUserID = 0;//系统发送
+				MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
+				DBR_Cmd_AddUserMail msg;
+				SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
+				msg.dwDestUserID = dwUserID;
+				msg.MailInfo = MailInfo;
+				g_FishServer.SendNetCmdToDB(&msg);
+			}
+			else if (entry_info.IsAddGlobel())
+			{
+				/*msg->AddCurrceySum = 0;
+				msg->AddGlobelSum = Iter->second.AddMoney;*/
+
+				tagRoleMail	MailInfo;
+				MailInfo.bIsRead = false;
+				//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
+				TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 因为您不在线 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 因为您不在线 所有充值奖励通过邮件发送给您")));
+				MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailGlobelRewardID;
+				MailInfo.RewardSum = Iter->second.AddMoney;
+				MailInfo.MailID = 0;
+				MailInfo.SendTimeLog = time(NULL);
+				MailInfo.SrcFaceID = 0;
+				TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
+				MailInfo.SrcUserID = 0;//系统发送
+				MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
+				DBR_Cmd_AddUserMail msg;
+				SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
+				msg.dwDestUserID = dwUserID;
+				msg.MailInfo = MailInfo;
+				g_FishServer.SendNetCmdToDB(&msg);
+			}
+			else if (entry_info.IsAddReward())
+			{
+				//如果为奖励ID的话 我们按邮件发送
+				//发送邮件奖励 系统邮件直接携带RewardID 进行处理
+				tagRoleMail	MailInfo;
+				MailInfo.bIsRead = false;
+				//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
+				TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 因为您不在线 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 因为您不在线 所有充值奖励通过邮件发送给您")));
+				MailInfo.RewardID = Iter->second.RewardID;
+				MailInfo.RewardSum = 1;
+				MailInfo.MailID = 0;
+				MailInfo.SendTimeLog = time(NULL);
+				MailInfo.SrcFaceID = 0;
+				TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
+				MailInfo.SrcUserID = 0;//系统发送
+				MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
+				DBR_Cmd_AddUserMail msg;
+				SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
+				msg.dwDestUserID = dwUserID;
+				msg.MailInfo = MailInfo;
+				g_FishServer.SendNetCmdToDB(&msg);
+			}
+			DBR_Cmd_AddRoleTotalRecharge msg;
+			SetMsgInfo(msg, DBR_AddRoleTotalRecharge, sizeof(DBR_Cmd_AddRoleTotalRecharge));
+			msg.dwUserID = dwUserID;
+			msg.Sum = entry_info.dDisCountPrice;
+			g_FishServer.SendNetCmdToDB(&msg);
+		}
+		else
+		{
+
+			//直接操作玩家
+			DWORD AddMoney = entry_info.AddMoney;
+			if (entry_info.IsAddCurrcey())
+			{
+				DWORD  OldCurrcey = pRole->GetRoleInfo().dwCurrencyNum;
+				DWORD  OldGlobel = pRole->GetRoleInfo().dwGlobeNum;
+				pRole->ChangeRoleCurrency(AddMoney, TEXT("充值获得钻石"));
+				if (Iter->second.IsFirstAdd())
+					pRole->ChangeRoleIsFirstPayCurrcey();
+			}
+			else if (entry_info.IsAddGlobel())
+			{
+				DWORD  OldCurrcey = pRole->GetRoleInfo().dwCurrencyNum;
+				DWORD  OldGlobel = pRole->GetRoleInfo().dwGlobeNum;
+				pRole->ChangeRoleGlobe(AddMoney, true, true, true);
+				if (Iter->second.IsFirstAdd())
+					pRole->ChangeRoleIsFirstPayGlobel();
+			}
+			else if (entry_info.IsAddReward())
+			{
+				pRole->OnAddRoleRewardByRewardID(Iter->second.RewardID, TEXT("充值获得奖励"));
+			}
+			pRole->ChangeRoleTotalRechargeSum(Iter->second.dDisCountPrice);//添加玩家总充值数
+			pRole->OnHandleEvent(true, true, true, ET_Recharge, 0, pRole->GetRoleInfo().TotalRechargeSum /*Iter->second.dDisCountPrice*/);//充值记录
+			LC_Cmd_Recharge msg;
+			SetMsgInfo(msg, GetMsgType(Main_Recharge, LC_Recharge), sizeof(LC_Cmd_Recharge));
+			msg.Result = true;
+			msg.ID = ShopItem;
+			pRole->SendDataToClient(&msg);
+			return;
+		}
+	}
+	else
+	{
+		LogInfoToFile("DomePay.txt", "支付失败，找不到配置信息[%d]", ShopItem);
+	}
+
+
+}
+
 void FishServer::OnHandleUseRMB(CG_Cmd_UseRMB* pMsg)
 {
 	vector<TCHAR*> pVec;
