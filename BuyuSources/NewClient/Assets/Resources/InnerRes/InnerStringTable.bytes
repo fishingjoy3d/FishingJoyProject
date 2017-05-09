@@ -292,7 +292,7 @@
   <VIP_Privilege_Describe0>免费获得[fff000]{0}[-]</VIP_Privilege_Describe0>
   <VIP_Privilege_Describe1>开启炮弹锁定技能</VIP_Privilege_Describe1>
   <VIP_Privilege_Describe2>开启{0}技能</VIP_Privilege_Describe2>
-  <VIP_Privilege_Describe3>子弹反次数+{0}</VIP_Privilege_Describe3>
+  <VIP_Privilege_Describe3>子弹穿透次数+{0}</VIP_Privilege_Describe3>
   <VIP_Privilege_Describe4>救济金领取次数+{0}</VIP_Privilege_Describe4>
   <VIP_Privilege_Describe5>救济金数额*{0}</VIP_Privilege_Describe5>
   <VIP_Privilege_Describe6>比赛积分额外+{0}%</VIP_Privilege_Describe6>
