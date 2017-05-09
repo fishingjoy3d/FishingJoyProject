@@ -236,6 +236,7 @@ public class LogonInitWnd
     {
         if (SDKMgr.IS_SDK_CHANNEL)
         {
+            LogicManager.Instance.LogOff();
             if (LogonRuntime.LogonLogic.IsWaitLogon)
             {
                 //点击登录
