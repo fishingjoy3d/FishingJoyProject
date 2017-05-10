@@ -39,7 +39,7 @@ public class SceneMatchRank : BaseWnd
         }
         UpdateCurMatchRank();
         if (FishConfig.Instance.m_MatchInfo.m_MonthStr.ContainsKey(PlayerRole.Instance.RoleInfo.RoleMe.GetMonthID()))
-            m_TitleLabel.text = FishConfig.Instance.m_MatchInfo.m_MonthStr[PlayerRole.Instance.RoleInfo.RoleMe.GetMonthID()].MonthName +"元话费赛";
+            m_TitleLabel.text = FishConfig.Instance.m_MatchInfo.m_MonthStr[PlayerRole.Instance.RoleInfo.RoleMe.GetMonthID()].MonthName + StringTable.GetString("Month_Name");
         m_TipsLabel.text = StringTable.GetString("Match_Scene_Rank_Tips");
     }
     public void UpdateCurMatchRank()

@@ -82,7 +82,8 @@
   <Giff_Send_Field>赠送失败 </Giff_Send_Field>
   <Giff_Recv_Sucess>接受赠礼成功</Giff_Recv_Sucess>
    <Giff_Recv_Field>接收赠礼失败 </Giff_Recv_Field>
-  
+
+   <Month_Name>万金币赛</Month_Name>
    <Month_Sigup_Field>比赛报名失败</Month_Sigup_Field>
    <Month_Sigup_Sucess>比赛报名成功</Month_Sigup_Sucess>
    <Month_Join_Field>比赛参加失败</Month_Join_Field>
