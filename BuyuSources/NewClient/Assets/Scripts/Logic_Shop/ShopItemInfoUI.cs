@@ -63,7 +63,17 @@ public class ShopItemInfoUI : BaseWnd
             m_ItemDesc.text = str;
         }
         if (m_ItemSum != null)
-            m_ItemSum.text = "x "+ItemInfo.ItemInfo.ItemSum.ToString();
+        {
+            uint num = ItemInfo.ItemInfo.ItemSum;
+            if (num > 10000)
+            {
+                m_ItemSum.text = "x " + ((num - num % 1000) / 10000f).ToString() + "万";
+            }
+            else
+            {
+                m_ItemSum.text = "x " + ItemInfo.ItemInfo.ItemSum.ToString();
+            }
+        }
         SetGoodsPriceType(ItemInfo);
     }
     //适用背包界面中炮的显示

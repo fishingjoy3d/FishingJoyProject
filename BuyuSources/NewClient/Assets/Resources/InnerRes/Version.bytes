@@ -20,12 +20,12 @@
     </Publish>
     <!--<Publish  resftp="ftp://121.40.17.214/fishpublish" ftpport="45045" runftp="ftp://121.40.17.214/FishPublish" verdir="version"/>-->
     <Test     resftp="ftp://121.40.17.214/fishpublish" ftpport="45045" runftp="ftp://121.40.17.214/FishPublish" verdir="test/test_version" />
-    <!--<Editor   resftp="ftp://121.43.187.210/fishpublish"  ftpport="45045" runftp="ftp://121.43.187.210/FishPublish"  verdir="test/test_version">
+    <Editor   resftp="ftp://121.43.187.210/fishpublish"  ftpport="45045" runftp="ftp://121.43.187.210/FishPublish"  verdir="test/test_version">
       <IP port="40056">121.43.187.210</IP>
-    </Editor>-->
-    <Editor  resftp="ftp://192.168.0.106/fishpublish"  ftpport="45045" runftp="ftp://192.168.0.106/FishPublish"  verdir="test/test_version">
-      <IP port="40056">192.168.0.106</IP>
     </Editor>
+    <!--<Editor  resftp="ftp://192.168.0.106/fishpublish"  ftpport="45045" runftp="ftp://192.168.0.106/FishPublish"  verdir="test/test_version">
+      <IP port="40056">192.168.0.106</IP>
+    </Editor>-->
   </Server>
   <Services>http://www.baidu.com</Services>
   <!--<Reporter port="45065">192.168.0.106</Reporter>-->
