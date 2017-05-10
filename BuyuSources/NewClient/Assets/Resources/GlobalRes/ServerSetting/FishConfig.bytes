@@ -1258,7 +1258,7 @@ JoinLevel="2">
 -->
     <Month ID="1" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比赛时长：10分钟/n报名条件：免费/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分，比赛
 
-币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换话费等实体物品。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
+币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换游戏中金币。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
 
 SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="0" TypeID="1">
       <Converts>
@@ -1292,7 +1292,7 @@ SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRat
     </Month>
     <Month ID="2" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比赛时长：10分钟/n报名条件：免费/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分，比赛
 
-币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换话费等实体物品。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
+币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换游戏中金币。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
 
 SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="0" TypeID="1">
       <Converts>
@@ -1326,7 +1326,7 @@ SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRat
     </Month>
     <Month ID="3" MonthName="10" MonthIcon="Match_Kind_2" MonthDec="比赛时长：10分钟/n报名条件：10000金币/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分
 
-，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换话费等实体物品。" SignGlobel="10000" SignMedal="0"
+，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换游戏中金币。" SignGlobel="10000" SignMedal="0"
 
 SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="17" TypeID="2">
       <Converts>
@@ -1362,7 +1362,7 @@ SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeI
     </Month>
     <Month ID="4" MonthName="50" MonthIcon="Match_Kind_3" MonthDec="比赛时长：20分钟/n报名条件：50000金币/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分
 
-，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换话费等实体物品。" SignGlobel="50000" SignMedal="0"
+，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换游戏中金币。" SignGlobel="50000" SignMedal="0"
 
 SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="27" TypeID="3">
       <Converts>
@@ -3378,18 +3378,18 @@ MapName="4">
 };
 	-->
     <FishRecharge ID="1" Name="首充专享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30000" DisCountPicName="Pay_300" RechargeType="2" AddRewardID="0" />
-    <FishRecharge ID="2" Name="少量金币" Icon="101" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60000" DisCountPicName="Pay_100" RechargeType="4" AddRewardID="0" />
-    <FishRecharge ID="3" Name="小堆金币" Icon="102" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360000" DisCountPicName="Pay_112" RechargeType="4" AddRewardID="0" />
-    <FishRecharge ID="4" Name="小袋金币" Icon="103" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800000" DisCountPicName="Pay_117" RechargeType="4" AddRewardID="0" />
-    <FishRecharge ID="5" Name="大袋金币" Icon="104" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600000" DisCountPicName="Pay_125" RechargeType="4" AddRewardID="0" />
-    <FishRecharge ID="6" Name="满箱金币" Icon="105" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300000" DisCountPicName="Pay_131" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="2" Name="少量金币" Icon="101" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60000" DisCountPicName="Gold_0" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="3" Name="小堆金币" Icon="102" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360000" DisCountPicName="Gold_6" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="4" Name="小袋金币" Icon="103" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800000" DisCountPicName="Gold_12" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="5" Name="大袋金币" Icon="104" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600000" DisCountPicName="Gold_32" RechargeType="4" AddRewardID="0" />
+    <FishRecharge ID="6" Name="满箱金币" Icon="105" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300000" DisCountPicName="Gold_102" RechargeType="4" AddRewardID="0" />
     <FishRecharge ID="7" Name="首充专享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30" DisCountPicName="Pay_300" RechargeType="1" AddRewardID="0" />
-    <FishRecharge ID="8" Name="少量钻石" Icon="501" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60" DisCountPicName="Pay_100" RechargeType="3" AddRewardID="0" />
-    <FishRecharge ID="9" Name="小堆钻石" Icon="502" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360" DisCountPicName="Pay_112" RechargeType="3" AddRewardID="0" />
-    <FishRecharge ID="10" Name="小袋钻石" Icon="503" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800" DisCountPicName="Pay_117" RechargeType="3" AddRewardID="0" />
-    <FishRecharge ID="11" Name="大袋钻石" Icon="504" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600" DisCountPicName="Pay_125" RechargeType="3" AddRewardID="0" />
-    <FishRecharge ID="12" Name="满箱钻石" Icon="505" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300" DisCountPicName="Pay_131" RechargeType="3" AddRewardID="0" />
-    <FishRecharge ID="13" Name="购买月卡" Icon="505" DisCountPrice="28" PreDisCountPrice="28" AddMoney="0" DisCountPicName="Pay_131" RechargeType="5" AddRewardID="13" />
+    <FishRecharge ID="8" Name="少量钻石" Icon="501" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60" DisCountPicName="Jewel_0" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="9" Name="小堆钻石" Icon="502" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360" DisCountPicName="Jewel_6" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="10" Name="小袋钻石" Icon="503" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800" DisCountPicName="Jewel_12" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="11" Name="大袋钻石" Icon="504" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600" DisCountPicName="Jewel_32" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="12" Name="满箱钻石" Icon="505" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300" DisCountPicName="Jewel_102" RechargeType="3" AddRewardID="0" />
+    <FishRecharge ID="13" Name="购买月卡" Icon="505" DisCountPrice="28" PreDisCountPrice="28" AddMoney="0" DisCountPicName="Jewel_0" RechargeType="5" AddRewardID="13" />
   </FishRecharges>
   <FishScript>
     <!--
