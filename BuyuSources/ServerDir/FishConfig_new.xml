@@ -2097,52 +2097,52 @@ SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeI
     比赛奖励ID从800开始
 -->
     <Reward RewardID="800">
-      <Item ItemID="101" ItemSum="10000" LastMin="0" />
+      <Item ItemID="200" ItemSum="10" LastMin="0" />
     </Reward>
     <Reward RewardID="801">
-      <Item ItemID="101" ItemSum="5000" LastMin="0" />
+      <Item ItemID="200" ItemSum="5" LastMin="0" />
     </Reward>
     <Reward RewardID="802">
-      <Item ItemID="101" ItemSum="3000" LastMin="0" />
+      <Item ItemID="200" ItemSum="3" LastMin="0" />
     </Reward>
     <Reward RewardID="803">
-      <Item ItemID="101" ItemSum="1000" LastMin="0" />
+      <Item ItemID="200" ItemSum="1" LastMin="0" />
     </Reward>
     <Reward RewardID="804">
-      <Item ItemID="101" ItemSum="100000" LastMin="0" />
+      <Item ItemID="200" ItemSum="80" LastMin="0" />
     </Reward>
     <Reward RewardID="805">
-      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="200" ItemSum="40" LastMin="0" />
     </Reward>
     <Reward RewardID="806">
-      <Item ItemID="101" ItemSum="30000" LastMin="0" />
+      <Item ItemID="200" ItemSum="20" LastMin="0" />
     </Reward>
     <Reward RewardID="807">
-      <Item ItemID="101" ItemSum="10000" LastMin="0" />
+      <Item ItemID="200" ItemSum="4" LastMin="0" />
     </Reward>
     <Reward RewardID="808">
-      <Item ItemID="101" ItemSum="500000" LastMin="0" />
+      <Item ItemID="200" ItemSum="400" LastMin="0" />
     </Reward>
     <Reward RewardID="809">
-      <Item ItemID="101" ItemSum="250000" LastMin="0" />
+      <Item ItemID="200" ItemSum="200" LastMin="0" />
     </Reward>
     <Reward RewardID="810">
-      <Item ItemID="101" ItemSum="150000" LastMin="0" />
+      <Item ItemID="200" ItemSum="100" LastMin="0" />
     </Reward>
     <Reward RewardID="811">
-      <Item ItemID="101" ItemSum="50000" LastMin="0" />
+      <Item ItemID="200" ItemSum="5" LastMin="0" />
     </Reward>
     <Reward RewardID="812">
-      <Item ItemID="200" ItemSum="1000000" LastMin="0" />
+      <Item ItemID="200" ItemSum="1600" LastMin="0" />
     </Reward>
     <Reward RewardID="813">
-      <Item ItemID="200" ItemSum="500000" LastMin="0" />
+      <Item ItemID="200" ItemSum="800" LastMin="0" />
     </Reward>
     <Reward RewardID="814">
-      <Item ItemID="200" ItemSum="300000" LastMin="0" />
+      <Item ItemID="200" ItemSum="400" LastMin="0" />
     </Reward>
     <Reward RewardID="815">
-      <Item ItemID="200" ItemSum="100000" LastMin="0" />
+      <Item ItemID="200" ItemSum="70" LastMin="0" />
     </Reward>
     <Reward RewardID="816">
       <Item ItemID="200" ItemSum="4000" LastMin="0" />
@@ -3026,6 +3026,9 @@ PriceCurrey="50" IsEntityItem="0" />
 PriceCurrey="0" IsEntityItem="0" ShopType="4" />
 
       <Item ID="20" ItemID="1800" ItemSum="1" ItemName="喇叭" ItemIcon="1800" ItemDec="" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="50" IsEntityItem="0"/>
+	  <Item ID="21" ItemID="103" ItemSum="500000" ItemName="50万金币" ItemIcon="103" ItemDec="50万金币" LastMin="0" PriceGlobel="0" PriceMabel="1000" PriceCurrey="0" IsEntityItem="0" />
+      <Item ID="22" ItemID="103" ItemSum="1000000" ItemName="100万金币" ItemIcon="103" ItemDec="100万金币" LastMin="0" PriceGlobel="0" PriceMabel="2000" PriceCurrey="0" IsEntityItem="0" />
+      <Item ID="23" ItemID="103" ItemSum="2000000" ItemName="200万金币" ItemIcon="103" ItemDec="200万金币" LastMin="0" PriceGlobel="0" PriceMabel="4000" PriceCurrey="0" IsEntityItem="0" />
     </Shop>
     <Shop ID="2">
       <Item ID="1" ItemID="1302" ItemSum="1" ItemName="风刃炮" ItemIcon="1302" ItemDec="速度如风，子弹成刃，给予致命打击" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="10"
@@ -3377,19 +3380,19 @@ MapName="4">
     RT_Reward = 5,//充值奖励ID
 };
 	-->
-    <FishRecharge ID="1" Name="首充专享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30000" DisCountPicName="Pay_300" RechargeType="2" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="2" Name="少量金币" Icon="101" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60000" DisCountPicName="Pay_100" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="3" Name="小堆金币" Icon="102" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360000" DisCountPicName="Pay_112" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="4" Name="小袋金币" Icon="103" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800000" DisCountPicName="Pay_117" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="5" Name="大袋金币" Icon="104" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600000" DisCountPicName="Pay_125" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="6" Name="满箱金币" Icon="105" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300000" DisCountPicName="Pay_131" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="7" Name="首充专享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30" DisCountPicName="Pay_300" RechargeType="1" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="8" Name="少量钻石" Icon="501" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60" DisCountPicName="Pay_100" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="9" Name="小堆钻石" Icon="502" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360" DisCountPicName="Pay_112" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="10" Name="小袋钻石" Icon="503" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800" DisCountPicName="Pay_117" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="11" Name="大袋钻石" Icon="504" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600" DisCountPicName="Pay_125" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="12" Name="满箱钻石" Icon="505" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300" DisCountPicName="Pay_131" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="13" Name="购买月卡" Icon="505" DisCountPrice="28" PreDisCountPrice="28" AddMoney="0" DisCountPicName="Pay_131" RechargeType="5" AddRewardID="13" PayNO="PayNO"/>
+    <FishRecharge ID="1" Name="首充专享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30000" DisCountPicName="Pay_300" RechargeType="2" AddRewardID="0" PayNO="C0002494"/>
+    <FishRecharge ID="2" Name="少量金币" Icon="101" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60000" DisCountPicName="Pay_100" RechargeType="4" AddRewardID="0" PayNO="C0002495"/>
+    <FishRecharge ID="3" Name="小堆金币" Icon="102" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360000" DisCountPicName="Pay_112" RechargeType="4" AddRewardID="0" PayNO="C0002496"/>
+    <FishRecharge ID="4" Name="小袋金币" Icon="103" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800000" DisCountPicName="Pay_117" RechargeType="4" AddRewardID="0" PayNO="C0002497"/>
+    <FishRecharge ID="5" Name="大袋金币" Icon="104" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600000" DisCountPicName="Pay_125" RechargeType="4" AddRewardID="0" PayNO="C0002498"/>
+    <FishRecharge ID="6" Name="满箱金币" Icon="105" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300000" DisCountPicName="Pay_131" RechargeType="4" AddRewardID="0" PayNO="C0002499"/>
+    <FishRecharge ID="7" Name="首充专享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30" DisCountPicName="Pay_300" RechargeType="1" AddRewardID="0" PayNO="C0002500"/>
+    <FishRecharge ID="8" Name="少量钻石" Icon="501" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60" DisCountPicName="Pay_100" RechargeType="3" AddRewardID="0" PayNO="C0002501"/>
+    <FishRecharge ID="9" Name="小堆钻石" Icon="502" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360" DisCountPicName="Pay_112" RechargeType="3" AddRewardID="0" PayNO="C0002502"/>
+    <FishRecharge ID="10" Name="小袋钻石" Icon="503" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800" DisCountPicName="Pay_117" RechargeType="3" AddRewardID="0" PayNO="C0002503"/>
+    <FishRecharge ID="11" Name="大袋钻石" Icon="504" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600" DisCountPicName="Pay_125" RechargeType="3" AddRewardID="0" PayNO="C0002504"/>
+    <FishRecharge ID="12" Name="满箱钻石" Icon="505" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300" DisCountPicName="Pay_131" RechargeType="3" AddRewardID="0" PayNO="C0002505"/>
+    <FishRecharge ID="13" Name="购买月卡" Icon="505" DisCountPrice="28" PreDisCountPrice="28" AddMoney="0" DisCountPicName="Pay_131" RechargeType="5" AddRewardID="13" PayNO="C0002506"/>
   </FishRecharges>
   <FishScript>
     <!--
