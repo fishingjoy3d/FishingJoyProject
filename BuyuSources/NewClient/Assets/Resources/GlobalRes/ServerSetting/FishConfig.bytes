@@ -1258,7 +1258,7 @@ JoinLevel="2">
 -->
     <Month ID="1" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比赛时长：10分钟/n报名条件：免费/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分，比赛
 
-币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换游戏中金币。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
+币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换游戏中金币、技能等。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
 
 SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="0" TypeID="1">
       <Converts>
@@ -1292,7 +1292,7 @@ SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRat
     </Month>
     <Month ID="2" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比赛时长：10分钟/n报名条件：免费/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分，比赛
 
-币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换游戏中金币。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
+币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，第1名将获得奖牌，奖牌可用于兑换游戏中金币、技能等。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
 
 SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="0" TypeID="1">
       <Converts>
@@ -1326,7 +1326,7 @@ SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRat
     </Month>
     <Month ID="3" MonthName="10" MonthIcon="Match_Kind_2" MonthDec="比赛时长：10分钟/n报名条件：10000金币/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分
 
-，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换游戏中金币。" SignGlobel="10000" SignMedal="0"
+，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换游戏中金币、技能等。" SignGlobel="10000" SignMedal="0"
 
 SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="17" TypeID="2">
       <Converts>
@@ -1362,7 +1362,7 @@ SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeI
     </Month>
     <Month ID="4" MonthName="50" MonthIcon="Match_Kind_3" MonthDec="比赛时长：20分钟/n报名条件：50000金币/n续币次数上限：3/n/n参赛后获得系统赠与的10000比赛币，每捕获一条鱼获得相应的积分
 
-，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换游戏中金币。" SignGlobel="50000" SignMedal="0"
+，比赛币消耗殆尽后可续币补充。/n比赛结束时根据积分排定名次并通过邮件发送奖励，前20名都将获得对应名次的奖牌，奖牌可用于兑换游戏中金币、技能等。" SignGlobel="50000" SignMedal="0"
 
 SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="27" TypeID="3">
       <Converts>
@@ -2967,6 +2967,12 @@ SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeI
 	<Time BeginYear="2014" BeginMonth="1" BeginDay="1" BeginHour="1" BeginMin="1" LastHour="10000" />
 -->
     <Shop ID="1">
+      <Item ID="21" ItemID="103" ItemSum="500000" ItemName="50万金币" ItemIcon="103" ItemDec="50万金币" LastMin="0" PriceGlobel="0" PriceMabel="1000" PriceCurrey="0" IsEntityItem="0" />
+      
+      <Item ID="22" ItemID="103" ItemSum="1000000" ItemName="100万金币" ItemIcon="103" ItemDec="100万金币" LastMin="0" PriceGlobel="0" PriceMabel="2000" PriceCurrey="0" IsEntityItem="0" />
+      
+      <Item ID="23" ItemID="103" ItemSum="2000000" ItemName="200万金币" ItemIcon="103" ItemDec="200万金币" LastMin="0" PriceGlobel="0" PriceMabel="4000" PriceCurrey="0" IsEntityItem="0" />
+      
       <Item ID="1" ItemID="900" ItemSum="1" ItemName="闪电卡" ItemIcon="900" ItemDec="使用闪电技能需消耗50张闪电卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="2"
 
 IsEntityItem="0" />
@@ -3015,7 +3021,7 @@ IsEntityItem="0" />
       <Item ID="16" ItemID="800" ItemSum="1" ItemName="晋级赛信物" ItemIcon="800" ItemDec="报名万元大奖晋级赛的必需品，初赛前20名可获得" LastMin="0" PriceGlobel="0" PriceMabel="0"
 
 PriceCurrey="10" IsEntityItem="0" />
-      <Item ID="17" ItemID="801" ItemSum="1" ItemName="决赛信物" ItemIcon="801" ItemDec="报名万元大奖决赛的必需品，晋级赛前20名可获得" LastMin="0" PriceGlobel="0" PriceMabel="0"
+      <Item ID="27" ItemID="801" ItemSum="1" ItemName="决赛信物" ItemIcon="801" ItemDec="报名万元大奖决赛的必需品，晋级赛前20名可获得" LastMin="0" PriceGlobel="0" PriceMabel="0"
 
 PriceCurrey="50" IsEntityItem="0" />
       <Item ID="18" ItemID="807" ItemSum="1" ItemName="改名卡" ItemIcon="807" ItemDec="修改昵称所需要的道具" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="200" IsEntityItem="0"
