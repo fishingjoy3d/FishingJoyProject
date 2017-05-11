@@ -1209,7 +1209,7 @@ int256 FishServer::GetRateValueFromString(const char* s)
 	std::vector<std::string>::iterator it = vcInStr.begin();
 	for (int i = 0; it != vcInStr.end()&& i < 32; ++ it, ++ i)
 	{
-		std::string str_entry;
+		std::string str_entry = *it;
 		entry.Value[i] = atoi(str_entry.c_str());
 	}
 	return entry;
@@ -2207,11 +2207,10 @@ bool FishServer::OnHandleGetRoleInfoByUserID(BYTE Index, BYTE ClientID, NetCmd* 
 		msg->RoleInfo.MonthCardID = pTable1.GetByte(0, 39);
 		msg->RoleInfo.MonthCardEndTime = pTable1.GetDateTime(0, 40);
 		msg->RoleInfo.GetMonthCardRewardTime = pTable1.GetDateTime(0, 41);
-		const WCHAR* RateValue_temp = pTable1.GetStr(0, 42);
-		UINT count;
-		char* RateValue_temp_1 =  WCharToChar(RateValue_temp, count);
-		msg->RoleInfo.RateValue = GetRateValueFromString(RateValue_temp_1);
-		free(RateValue_temp_1);
+		const CHAR* RateValue_temp = (const CHAR*)pTable1.GetField((UINT)0, (UINT)42);
+		//UINT count;
+		//char* RateValue_temp_1 =  WCharToChar(RateValue_temp, count);
+		msg->RoleInfo.RateValue = GetRateValueFromString(RateValue_temp);
 		//memcpy_s(&msg->RoleInfo.RateValue, sizeof(msg->RoleInfo.RateValue), pTable1.GetField((UINT)0, (UINT)42), sizeof(msg->RoleInfo.RateValue));//修改玩家的炮台状态
 		msg->RoleInfo.VipLevel = pTable1.GetByte(0, 43);
 		msg->RoleInfo.CashSum = pTable1.GetByte(0, 44);//今天兑换次数

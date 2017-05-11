@@ -672,7 +672,8 @@ void FishMonth::OnLoadAllGameUserMonthInfo()
 			tagRoleMail	MailInfo;
 			MailInfo.bIsRead = false;
 			//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 
-			_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您获得{MonthName:MonthID=%d}元话费赛 的第%d名 得到以下奖励"), m_MonthID, i + 1);
+			//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您获得{MonthName:MonthID=%d}元话费赛 的第%d名 得到以下奖励"), m_MonthID, i + 1);
+			_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您获得{MonthName:MonthID=%d}万金币赛的第%d名 得到以下奖励"), m_MonthID, i + 1);
 			MailInfo.RewardID = IterReward->second.RewardID;
 			MailInfo.RewardSum = 1;
 			MailInfo.MailID = 0;
