@@ -205,37 +205,45 @@ void HttpNewServer::DomePay(const char* data, HttpClientData* c)
 	}
 
 	bool successful = false;
-	if (map_argu["data"] != "")
+	
+	if (map_argu["errorCode"] != "")
 	{
-		std::string strJosnInfo = map_argu["data"];
-		LogInfoToFile("DomePay.txt", "普通充值异步回调 data数据[%s]", strJosnInfo.c_str());
-		Json::Reader jsonReader;
-		Json::Value jsonRoot;
-
-		if (!jsonReader.parse(strJosnInfo, jsonRoot))
-		{			
-			ASSERT(false);
-			return;
-		}
-		if (!jsonRoot["orderNo"].isNull() && !jsonRoot["sdkflowId"].isNull())
+		LogInfoToFile("DomePay.txt", "普通充值异步回调 支付失败 data数据[%s]  error code[%s]", data,   map_argu["errorCode"].c_str());
+	}
+	else
+	{
+		if (map_argu["data"] != "")
 		{
-			int order_id = atoi(jsonRoot["orderNo"].asString().c_str());
-			int sdk_flow_id = atoi(jsonRoot["sdkflowId"].asString().c_str());// jsonRoot["sdkflowId"].asUInt();
-			DBR_Cmd_Deal_Third_Platform_Verify msg;
-			msg.Order_id = order_id;
-			SetMsgInfo(msg, DBR_Deal_Third_Platform_Verify, sizeof(msg));
-			g_FishServer.SendNetCmdToDB(&msg);
-			successful = true;
+			std::string strJosnInfo = map_argu["data"];
+			LogInfoToFile("DomePay.txt", "普通充值异步回调 data数据[%s] ", strJosnInfo.c_str());
+			Json::Reader jsonReader;
+			Json::Value jsonRoot;
 
-			DBR_Cmd_Deal_ThirdPlatform_Verify_Log msg_log;
-			msg_log.OrderID = order_id;
-			msg_log.ChannelID = Dome_ChannelType;
-			msg_log.SDKFlowID = sdk_flow_id;
-			SetMsgInfo(msg_log, DBR_Deal_ThirdPlatform_Verify_Log, sizeof(msg_log));
-			g_FishServer.SendNetCmdToLogDB(&msg_log);
-
+			if (!jsonReader.parse(strJosnInfo, jsonRoot))
+			{
+				ASSERT(false);
+				return;
+			}
+			if (!jsonRoot["orderNo"].isNull() && !jsonRoot["sdkflowId"].isNull())
+			{
+				int order_id = atoi(jsonRoot["orderNo"].asString().c_str());
+				int sdk_flow_id = atoi(jsonRoot["sdkflowId"].asString().c_str());// jsonRoot["sdkflowId"].asUInt();
+				DBR_Cmd_Deal_Third_Platform_Verify msg;
+				msg.Order_id = order_id;
+				SetMsgInfo(msg, DBR_Deal_Third_Platform_Verify, sizeof(msg));
+				g_FishServer.SendNetCmdToDB(&msg);
+				successful = true;
+				DBR_Cmd_Deal_ThirdPlatform_Verify_Log msg_log;
+				msg_log.OrderID = order_id;
+				msg_log.ChannelID = Dome_ChannelType;
+				msg_log.SDKFlowID = sdk_flow_id;
+				SetMsgInfo(msg_log, DBR_Deal_ThirdPlatform_Verify_Log, sizeof(msg_log));
+				g_FishServer.SendNetCmdToLogDB(&msg_log);
+			}
 		}
 	}
+
+
 	char strTime[128] = { 0 };
 
 	char sz_send[1024];
