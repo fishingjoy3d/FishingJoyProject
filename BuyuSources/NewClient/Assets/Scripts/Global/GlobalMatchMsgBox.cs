@@ -144,21 +144,21 @@ public class GlobalMatchMsgBox : BaseWnd
             tagMonthConvert pContinue = FishConfig.Instance.m_MatchInfo.m_MonthMap[matchID].m_ConvertMap[(byte)(continueSum + 1)];
             if (pContinue.LostCurrey > 0)
             {
-                strDec = string.Format(StringTable.GetString("Match_BuyGold_Warning"), 
-                    FishConfig.Instance.m_MatchInfo.m_MonthMap[matchID].MaxConvertSum - continueSum, 
-                    pContinue.LostCurrey, "钻石", pContinue.AddMonthGlobel);
+                strDec = string.Format(StringTable.GetString("Match_BuyGold_Warning"),
+                    FishConfig.Instance.m_MatchInfo.m_MonthMap[matchID].MaxConvertSum - continueSum,
+                    pContinue.LostCurrey, StringTable.GetString("Global_Jewel"), pContinue.AddMonthGlobel);
             }
             else if (pContinue.LostGlobel > 0)
             {
-                strDec = string.Format(StringTable.GetString("Match_BuyGold_Warning"), 
+                strDec = string.Format(StringTable.GetString("Match_BuyGold_Warning"),
                     FishConfig.Instance.m_MatchInfo.m_MonthMap[matchID].MaxConvertSum - continueSum,
-                    pContinue.LostGlobel, "金币", pContinue.AddMonthGlobel);
+                    pContinue.LostGlobel, StringTable.GetString("Global_Gold"), pContinue.AddMonthGlobel);
             }
             else
             {
                 strDec = string.Format(StringTable.GetString("Match_BuyGold_Warning"), 
                     FishConfig.Instance.m_MatchInfo.m_MonthMap[matchID].MaxConvertSum - continueSum,
-                    pContinue.LostMedal, "奖币", pContinue.AddMonthGlobel);
+                    pContinue.LostMedal, StringTable.GetString("Global_Medal"), pContinue.AddMonthGlobel);
             }
             m_MsgBtn[1].m_BtnObj.SetActive(true);
             m_MsgBtn[3].m_BtnObj.SetActive(true);
@@ -179,13 +179,13 @@ public class GlobalMatchMsgBox : BaseWnd
         }
         else if (PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel() < FishConfig.Instance.m_MatchInfo.m_MonthMap[matchID].m_ConvertMap[addGoldNum].LostGlobel)
         {
-            strDec = string.Format(StringTable.GetString("Match_BuyGold_Warning3"), "金币");
+            strDec = string.Format(StringTable.GetString("Match_BuyGold_Warning3"), StringTable.GetString("Global_Gold"));
             m_PayType = PayType.Gold;
             m_WarningTipsLabel.gameObject.SetActive(true);
         } 
         else if (PlayerRole.Instance.RoleInfo.RoleMe.GetCurrency() < FishConfig.Instance.m_MatchInfo.m_MonthMap[matchID].m_ConvertMap[addGoldNum].LostCurrey)
         {
-            strDec = string.Format(StringTable.GetString("Match_BuyGold_Warning3"), "钻石");
+            strDec = string.Format(StringTable.GetString("Match_BuyGold_Warning3"), StringTable.GetString("Global_Jewel"));
             m_PayType = PayType.Diamond;
             m_WarningTipsLabel.gameObject.SetActive(true);
         }

@@ -125,7 +125,7 @@ public class HallLoginUI_Rank : HallLoginUI_BaseWind
         if (PlayerRole.Instance.RankManager.GetWeekRankInfo().ContainsKey((byte)m_RankType) == true)
         {
             tagRankWeekRankClient pWeekRankReward = PlayerRole.Instance.RankManager.GetWeekRankInfo()[(byte)m_RankType];
-            m_MyRankItem.m_HistoryRank.text = "上周排名：" + pWeekRankReward.RankIndex.ToString();
+            m_MyRankItem.m_HistoryRank.text = StringTable.GetString("Rank_History") + pWeekRankReward.RankIndex.ToString();
             if (PlayerRole.Instance.RankManager.GetWeekRankInfo()[(byte)m_RankType].IsReward)
             {
                 m_MyRankItem.m_GetRewards.isEnabled = false;
@@ -157,7 +157,7 @@ public class HallLoginUI_Rank : HallLoginUI_BaseWind
         }
         else
         {
-            m_MyRankItem.m_HistoryRank.text = "上周未上榜";
+            m_MyRankItem.m_HistoryRank.text = StringTable.GetString("Rank_History_Not_On_The_List");
             m_MyRankItem.m_GetRewards.isEnabled = false;
             m_MyRankItem.m_GetRewards.normalSprite = "Information_Rank_GetAward2";
             m_MyRankItem.m_GetRewards.disabledSprite = "Information_Rank_GetAward2";
@@ -213,12 +213,12 @@ public class HallLoginUI_Rank : HallLoginUI_BaseWind
             if (m_RankList[i].RankInfo.dwUserID == PlayerRole.Instance.RoleInfo.RoleMe.GetUserID())
             {
                 m_MyRankItem.m_RankingLabel[0].gameObject.SetActive(true);
-                m_MyRankItem.m_RankingLabel[0].text = "当前排名:" + m_RankList[i].RankInfo.bIndex.ToString();
+                m_MyRankItem.m_RankingLabel[0].text = StringTable.GetString("Rank_Now") + m_RankList[i].RankInfo.bIndex.ToString();
                 return;
             }
         }
         m_MyRankItem.m_RankingLabel[1].gameObject.SetActive(true);
-        m_MyRankItem.m_RankingLabel[1].text = "当前未上榜";
+        m_MyRankItem.m_RankingLabel[1].text = StringTable.GetString("Rank_Not_On_The_List");
         return;
     }
     void OnCheckRankLeftBtns(GameObject go)//点击排行榜左侧切换按钮

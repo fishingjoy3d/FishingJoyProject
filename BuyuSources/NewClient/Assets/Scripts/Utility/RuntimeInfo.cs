@@ -26,7 +26,7 @@ public class RuntimeInfo
     }
     public static string GetTitle()
     {
-        return "乐多捕鱼3D";
+        return StringTable.GetString("Runtime_Title");
     }
     public static string GetLocalDirectory()
     {

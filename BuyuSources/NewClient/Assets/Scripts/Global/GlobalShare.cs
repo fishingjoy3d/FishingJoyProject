@@ -107,25 +107,14 @@ public class  GameShare
         m_sharetype = ShareType.SHARE_EXCHANGE;
         InIt();
         m_sprItemExchage.spriteName = nItemid.ToString();
-        m_labelEcchageCount.text = nCount.ToString()+"次";       
-    }
-      string NumtoString(uint ngold)
-    {
-        if (ngold<10000)
-        {
-            return ngold.ToString();
-        }
-        else
-        {
-            return ((ngold - ngold % 1000)/10000f).ToString() + "万";
-        }         
+        m_labelEcchageCount.text = nCount.ToString() + StringTable.GetString("Global_Times");
     }
     public void ShowGold(uint nGold, uint nTime)
     {
         m_sharetype = ShareType.SHARE_GOLD;
         InIt();
-        m_labelWin.text = NumtoString(nGold); 
-        m_labelgametime.text = nTime.ToString()+"分钟";
+        m_labelWin.text = Utility.NumToString(nGold);
+        m_labelgametime.text = nTime.ToString() + StringTable.GetString("Global_Minute");
 
         uint nMaxWin = 0;
         byte[] data = RuntimeInfo.GetLocalFile(RuntimeInfo.GameShareMaxWin());
@@ -142,7 +131,7 @@ public class  GameShare
             RuntimeInfo.SaveLocalFile(RuntimeInfo.GameShareMaxWin(), ms.ToArray());
         }
 
-        m_labelmaxwin.text = NumtoString(nMaxWin);
+        m_labelmaxwin.text = Utility.NumToString(nMaxWin);
     }
     public void ShutDown()
    {

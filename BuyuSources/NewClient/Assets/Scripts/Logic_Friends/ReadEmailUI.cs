@@ -111,10 +111,7 @@ public class ReadEmailUI : BaseWnd
                 continue;
             m_PresentObj[i].AttachmentObj.SetActive(true);
             uint itemSum = pReward.RewardItemVec[i].ItemSum*pSystemMail.RewardSum;
-            if ( itemSum >= 10000)
-                m_PresentObj[i].AttachmentNum.text = string.Format("{0}k", (itemSum / 1000) );
-            else
-                m_PresentObj[i].AttachmentNum.text = string.Format("{0}", itemSum);
+            m_PresentObj[i].AttachmentNum.text = Utility.NumToThousand(itemSum);
             m_PresentObj[i].AttachmentSprite.spriteName = FishConfig.Instance.m_ItemInfo.m_ItemMap[ItemID].ItemIcon;
             m_PresentObj[i].AttachmentName.text = FishConfig.Instance.m_ItemInfo.m_ItemMap[ItemID].ItemName;
             m_BtnObj[0].SetActive(true);

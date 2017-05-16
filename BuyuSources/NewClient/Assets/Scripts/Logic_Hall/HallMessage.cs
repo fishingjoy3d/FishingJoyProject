@@ -165,12 +165,12 @@ public class HallMessage : HallLoginUI_BaseWind
                 {
                     m_ChildMsgObj[0].SetActive(true);
                     string strDec = "";
-                    if (strMsg == "金币")
+                    if (strMsg == StringTable.GetString("Global_Gold"))
                     {
                         strDec = string.Format(StringTable.GetString("Ec_RoleCharm_GlodNotEnough"), strMsg);
                         m_Paytype = PayType.Gold;
                     }
-                    else if (strMsg == "钻石")
+                    else if (strMsg == StringTable.GetString("Global_Jewel"))
                     {
                         strDec = string.Format(StringTable.GetString("Ec_RoleCharm_GlodNotEnough"), strMsg);
                         m_Paytype = PayType.Diamond;

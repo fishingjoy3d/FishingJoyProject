@@ -603,7 +603,7 @@ class ActivityLevel : BaseWnd
                     {
                         m_LevelNodeItem[Indx].m_LightObj.SetActive(true);
                         m_LevelNodeItem[Indx].m_LevelBg.spriteName = "Level_Bg1";
-                        m_LevelNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString() + "  级";
+                        m_LevelNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString() + "  " + StringTable.GetString("Global_Level");
                         m_LevelNodeItem[Indx].m_LevelNodeBtn.isEnabled = false;
                         string str = "Activity_Level" + map.Value.FinishValue.ToString() + "_Btn0";
                         ChangeButtonBg(m_LevelNodeItem[Indx].m_LevelNodeBtn, str);
@@ -621,14 +621,14 @@ class ActivityLevel : BaseWnd
                             m_LevelNodeItem[Indx].m_NodeID = map.Value.ID;
                             m_LevelNodeItem[Indx].m_bGetReward = true;
                             m_LevelNodeItem[Indx].m_RewardID = map.Value.RewardID;
-                            m_LevelNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString() + "  级";
+                            m_LevelNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString() + "  " + StringTable.GetString("Global_Level");
                             m_LevelNodeItem[Indx].m_RewardAnim.SetBool("Reward", true);
                         }
                         else
                         {
                             m_LevelNodeItem[Indx].m_bGetReward = false;
                             m_LevelNodeItem[Indx].m_RewardID = map.Value.RewardID;
-                            m_LevelNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString() + "  级";
+                            m_LevelNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString() + "  " + StringTable.GetString("Global_Level");
                         }
                     }
                     ++Indx;
@@ -696,7 +696,7 @@ class ActivityLevel : BaseWnd
             m_LevelNodeItem[Indx].m_LevelNodeBtn.isEnabled = false;
             m_LevelNodeItem[Indx].m_LevelBg.spriteName = "Level_Bg1";
             m_LevelNodeItem[Indx].m_LightObj.SetActive(true);
-            m_LevelNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString()+"  级";
+            m_LevelNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString() + "  " + StringTable.GetString("Global_Level");
             switch (Indx)
             {
                 case 0:

@@ -90,12 +90,12 @@ public class FriendItemUI  : BaseWnd
 
         m_NickName.text = m_FriendItemInfo.GetNickName();
         m_Level.text = m_FriendItemInfo.GetLevel().ToString();
-        
+
         if (m_FriendItemInfo.GetLeaveOnlineDay() == 255)
-            m_OnLineLast.text = "在线";
+            m_OnLineLast.text = StringTable.GetString("Relation_Online");
         else
         {
-            m_OnLineLast.text = "离线";
+            m_OnLineLast.text = StringTable.GetString("Relation_Offline");
         }
 
         if (m_FriendItemInfo.GetLeaveOnlineDay() != 255)

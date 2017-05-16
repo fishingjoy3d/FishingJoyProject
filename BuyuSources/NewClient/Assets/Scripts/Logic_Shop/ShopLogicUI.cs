@@ -358,7 +358,7 @@ public class MaterailShopWnd : BaseWnd
                 continue;
             //m_NoticeLabel.Add("[ffcc00]Enter[-]" + i.ToString());
             string strName = FishConfig.Instance.m_ShopInfo.ShopMap[pNoticeList[i].ShopID].ShopItemStrMap[pNoticeList[i].ShopOnlyID].ItemName;
-            string StrText = "[000000FF]" + "玩家  " + "[-]" + pNoticeList[i].NickName + "\n" + "[000000FF]" + "换取了  " + "[-]" + "[FF0000FF]" + strName + "[-]";
+            string StrText = string.Format(StringTable.GetString("GlobalShop_Exchange_Notice"), pNoticeList[i].NickName, strName);
             m_NoticeLabel.Add(StrText);
         }
     }

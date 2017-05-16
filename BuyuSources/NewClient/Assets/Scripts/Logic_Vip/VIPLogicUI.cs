@@ -230,8 +230,8 @@ public class VIPLaunchItem : BaseWnd
         {
             m_LaunchIcon.spriteName = "1305";
             m_LaunchName.spriteName = "Launch_Name5";
-            m_DescLabel.text = "敬请期待";
-            m_PayLabel.text = "累计充值?元";
+            m_DescLabel.text = StringTable.GetString("VIP_Desc_1");
+            m_PayLabel.text = StringTable.GetString("VIP_Desc_2");
             return ;
         }
         //获取炮台类型

@@ -46,6 +46,9 @@
 	<Exit_Tips>您确定要退出游戏吗？</Exit_Tips>
 	<Exit_Tips1>您确定退出场景吗？</Exit_Tips1>
 
+  <Runtime_Title>乐鱼天地3D</Runtime_Title>
+  <Open_Photo_Tittle>选择头像</Open_Photo_Tittle>
+
   <Mail_Add_Field>添加邮件失败</Mail_Add_Field>
   <Mail_Add_Sucess>添加邮件成功</Mail_Add_Sucess>
   <Mail_Del_Field>删除邮件失败</Mail_Del_Field>
@@ -54,7 +57,11 @@
   <Mail_GetItem_Field>领取系统邮件物品失败</Mail_GetItem_Field>
   <Mail_GetItem_Sucess>领取系统邮件物品成功</Mail_GetItem_Sucess>
   <Mail_Send_Field>邮件内容不能为空</Mail_Send_Field>
-  
+  <Mail_System>系统邮件</Mail_System>
+  <Mail_Valid_Time>剩余时间：{0}天</Mail_Valid_Time>
+  <Mail_Valid_Time_2>一个星期以前</Mail_Valid_Time_2>
+  <Mail_Num>邮件数量：{0}/{1}</Mail_Num>
+
   <Relation_Add_Field>添加好友失败</Relation_Add_Field>
   <Relation_Add_Sucess>添加好友成功</Relation_Add_Sucess>
   <Relation_Del_Field>删除好友失败</Relation_Del_Field>
@@ -63,16 +70,46 @@
   <Relation_Change_Sucess>改变关系成功</Relation_Change_Sucess>
 	<Get_Relation_Field>获取好友信息失败</Get_Relation_Field>
 	<Find_Relation_Field>找不到指定好友</Find_Relation_Field>
-  
+  <Relation_Message>留言：</Relation_Message>
+  <Relation_Online>在线</Relation_Online>
+  <Relation_Offline>离线</Relation_Offline>
+  <Relation_Num>当前好友数：{0}</Relation_Num>
+  <Relation_Present>[f8ea28]{0}[-]  赠送了您</Relation_Present>
+  <Relation_Accept_Present>已领取：{0}/{1}</Relation_Accept_Present>
+  <Relation_Accept_Present_2>今日已领取：{0}/{1}</Relation_Accept_Present_2>
+  <Relation_Add_Fail_2>他已经是你好友了</Relation_Add_Fail_2>
+
   <GlobelShop_Shop_Sucess>金币商店购买成功</GlobelShop_Shop_Sucess>
   <GlobelShop_Shop_Field>金币商店购买失败</GlobelShop_Shop_Field>
   <GlobelShop_Shop_phone>话费兑换进行中，请注意查收</GlobelShop_Shop_phone>
   <GlobelShop_Shop_Field1>您的奖牌不足，购买失败</GlobelShop_Shop_Field1>
 	<Shop_Exchange_Sum>今天剩余兑换次数: {0}</Shop_Exchange_Sum>
+  <GlobalShop_Exchange_Notice>[000000FF]玩家  [-]{0}\n[000000FF]换取了  [-][FF0000FF]{1}[-]</GlobalShop_Exchange_Notice>
+  <GlobelShop_Sucess_2>恭喜您购买成功</GlobelShop_Sucess_2>
+  <GlobelShop_Fail_2>很可惜您的购买失败</GlobelShop_Fail_2>
+
+  <Global_Times>次</Global_Times>
+  <Global_Hour>小时</Global_Hour>
+  <Global_Minute>分钟</Global_Minute>
+  <Global_10_Thousand>万</Global_10_Thousand>
+  <Global_Year>年</Global_Year>
+  <Global_Month>月</Global_Month>
+  <Global_Day>日</Global_Day>
+  <Global_Day_2>天</Global_Day_2>
+  <Global_Level>级</Global_Level>
+  <Global_Jewel>钻石</Global_Jewel>
+  <Global_Gold>金币</Global_Gold>
+  <Global_Medal>奖牌</Global_Medal>
+
+  <Achievement_Point>成就点：</Achievement_Point>
+  <Achievement_Point_2>成就点数：</Achievement_Point_2>
+  <Achievement_Rank>成就排名：</Achievement_Rank>
+  <Achievement_Rank_Down>成就排名：{0}名以后</Achievement_Rank_Down>
 
   <Charm_Sucess>使用魅力道具成功</Charm_Sucess>
   <Charm_Field>使用魅力道具失败</Charm_Field>
   <Charm_Tips>向Ta使用道具</Charm_Tips>
+  <Charm_My_Recv >我收到的魅力道具</Charm_My_Recv>
 
   <Entity_Sucess>资料修改成功</Entity_Sucess>
   <Entity_Field>资料修改失败</Entity_Field>
@@ -105,8 +142,21 @@
 	<Match_Scene_Guide>哇~您已经3级了可以参加比赛了耶~海量精品奖励~速速来领取！</Match_Scene_Guide>
   <ProtectNewBody>啊哦，主人，您的金币花完了...Orz！现在送您@金币，请再接再厉！</ProtectNewBody>
 	<Match_Scene_Rank_Tips>Tips:排名数据每30秒更新，奖励由邮件发放</Match_Scene_Rank_Tips>
+  <Match_Time_Tips>比赛开始结束时间为{0}-{1}</Match_Time_Tips>
 
-			<Online_Sucess>领取在线奖励成功</Online_Sucess>
+  <Match_Score>积分{0}（vip加成：{1}）</Match_Score>
+  <Match_Score_2>分数: {0}</Match_Score_2>
+  <Match_Free>免费</Match_Free>
+  <Match_Today>今天</Match_Today>
+  <Match_Monday>星期一</Match_Monday>
+  <Match_Tuesday>星期二</Match_Tuesday>
+  <Match_Wednesday>星期三</Match_Wednesday>
+  <Match_Thursday>星期四</Match_Thursday>
+  <Match_Friday>星期五</Match_Friday>
+  <Match_Saturday>星期六</Match_Saturday>
+  <Match_Sunday>星期日</Match_Sunday>
+
+   <Online_Sucess>领取在线奖励成功</Online_Sucess>
    <Online_Field>领取在线奖励失败</Online_Field>
    <Activity_Reward_Success>活动奖励领取成功</Activity_Reward_Success>
    <Activity_Reward_Field>活动奖励领取失败</Activity_Reward_Field>
@@ -114,6 +164,32 @@
 	<Shop_Sucess>购买物品成功</Shop_Sucess>
   <Shop_Field>购买物品失败</Shop_Field>
   <Shop_OnOKBuy>请您确认是否购买？</Shop_OnOKBuy>
+
+  <NiuNiu_Host>解闷大师</NiuNiu_Host>
+  <NiuNiu_Not_In_Line>未排队</NiuNiu_Not_In_Line>
+  <NiuNiu_AddBankerList>正在上庄</NiuNiu_AddBankerList>
+
+  <Rank_History>上周排名：</Rank_History>
+  <Rank_History_Not_On_The_List>上周未上榜</Rank_History_Not_On_The_List>
+  <Rank_Now>当前排名:</Rank_Now>
+  <Rank_Not_On_The_List>当前未上榜</Rank_Not_On_The_List>
+
+  <Lottery_Level_1>青铜</Lottery_Level_1>
+  <Lottery_Level_2>白银</Lottery_Level_2>
+  <Lottery_Level_3>黄金</Lottery_Level_3>
+  <Lottery_Level_4>白金</Lottery_Level_4>
+  <Lottery_Level_5>至尊</Lottery_Level_5>
+
+  <Dial_Red>红</Dial_Red>
+  <Dial_Yellow>黄</Dial_Yellow>
+  <Dial_Green>绿</Dial_Green>
+  <Dial_Panda>熊猫</Dial_Panda>
+  <Dial_Monkey>猴子</Dial_Monkey>
+  <Dial_Rabbit>兔子</Dial_Rabbit>
+  <Dial_Lion>狮子</Dial_Lion>
+
+  <Role_User>用户</Role_User>
+  <Role_Guest>游客</Role_Guest>
 
   <DayHourMinSec>{0}天{1}小时{2}分钟{3}秒</DayHourMinSec>
   <HourMinSec>{0}小时{1}分钟{2}秒</HourMinSec>
@@ -299,7 +375,10 @@
   <VIP_Privilege_Describe6>比赛积分额外+{0}%</VIP_Privilege_Describe6>
   <VIP_Privilege_Describe7>奖牌兑换次数+{0}</VIP_Privilege_Describe7>
   <VIP_Privilege_Describe8>充值返利{0}%</VIP_Privilege_Describe8>
-
+  <VIP_Desc_1>敬请期待</VIP_Desc_1>
+  <VIP_Desc_2>累计充值?元</VIP_Desc_2>
+  <VIP_Desc_3>免费获得 ? 炮</VIP_Desc_3>
+  <VIP_Desc_4>开启 ? 技能</VIP_Desc_4>
 
   <!-- 玩家本身的操作  -->
   <UOM_Role_ChangeFace_Sucess IsShow="1">头像修改成功</UOM_Role_ChangeFace_Sucess>
@@ -949,5 +1028,6 @@
   <UOM_Car_LeaveVip_Failed IsShow="1">离开贵宾席失败</UOM_Car_LeaveVip_Failed>
   <UOM_Car_LeaveVip_Failed_1 IsShow="1">离开贵宾席失败 不在贵宾席上</UOM_Car_LeaveVip_Failed_1>
   <UOM_Car_LeaveVip_Failed_2 IsShow="1">离开贵宾席失败 系统错误</UOM_Car_LeaveVip_Failed_2>
+
 
 </FishString>

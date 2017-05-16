@@ -92,9 +92,9 @@ class RoleGameData
         //将4个参数拼接为字符串
         string TimeStr = "";
         if (Hour > 0)
-            TimeStr = string.Format("" + Hour.ToString() + "小时+");
+            TimeStr = Hour.ToString() + StringTable.GetString("Global_Hour") + "+";
         else
-            TimeStr = string.Format("" + Min.ToString() + "分钟");
+            TimeStr = Min.ToString() + StringTable.GetString("Global_Minute");
         return TimeStr;
     }
     public string GetGoldStrBygold(UInt32 gold)
@@ -104,7 +104,7 @@ class RoleGameData
         if (gold >= 1000000)
         {
             gold /= 10000;
-            strGold = string.Format("" + gold.ToString() + "万+");
+            strGold = gold.ToString() + StringTable.GetString("Global_10_Thousand") + "+";
         }
         else
         {

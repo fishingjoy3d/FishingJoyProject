@@ -295,7 +295,7 @@ public class GlobalNameCards : BaseWnd
             m_CardsInfo.m_UICardsInfo[3].text = PlayerRole.Instance.CharmManager.GetCharmValue().ToString();
             m_CardsInfo.m_UICardsInfo[5].text = PlayerRole.Instance.RoleInfo.RoleMe.GetIPAddress();
             m_CardsInfo.m_labelgameid.text = PlayerRole.Instance.RoleInfo.RoleMe.GetGameID().ToString();
-            m_CardsInfo.m_UIWarring.text = "我收到的魅力道具";
+            m_CardsInfo.m_UIWarring.text = StringTable.GetString("Charm_My_Recv");
             ShowGif();
             m_CardsInfo.m_UIFace.mainTexture = m_FaceTex;
             if (PlayerRole.Instance.RoleInfo.RoleMe.GetVipLevel() > 0)
@@ -716,11 +716,11 @@ public class GlobalNameCards : BaseWnd
         {
             string str = "";
             if (PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel() < FishConfig.Instance.m_CharmInfo.CharmIndexMap[Index].UserGlobel)
-                str = "金币";
+                str = StringTable.GetString("Global_Gold");
             else if (PlayerRole.Instance.RoleInfo.RoleMe.GetCurrency() < FishConfig.Instance.m_CharmInfo.CharmIndexMap[Index].UserCurrcey)
-                str = "钻石";
+                str = StringTable.GetString("Global_Jewel");
             else
-                str = "奖牌";
+                str = StringTable.GetString("Global_Medal");
             GlobalEffectMgr.Instance.ShowMessageBox(str, MssageType.GoldLack_Msg_4);
             return;
         }

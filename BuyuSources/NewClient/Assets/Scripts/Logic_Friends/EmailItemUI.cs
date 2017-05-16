@@ -87,13 +87,13 @@ public class EmailItemUI : BaseWnd
         else
         {
             m_FaceTextrue.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[6];
-            m_TitleLable.text = "系统邮件";
+            m_TitleLable.text = StringTable.GetString("Mail_System");
         }
 
         if (m_MailItmeInfo.bDiffTime < 7)
-            m_VaildTime.text = string.Format("剩余时间：{0}天", (7 - m_MailItmeInfo.bDiffTime));
+            m_VaildTime.text = string.Format(StringTable.GetString("Mail_Valid_Time"), (7 - m_MailItmeInfo.bDiffTime));
         else
-            m_VaildTime.text = "一个星期以前";
+            m_VaildTime.text = StringTable.GetString("Mail_Valid_Time_2");
 
         UpdateState(m_MailItmeInfo.bIsRead);
     }

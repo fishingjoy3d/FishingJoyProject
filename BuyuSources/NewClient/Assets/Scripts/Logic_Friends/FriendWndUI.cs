@@ -96,7 +96,7 @@ public class FriendWndUI : BaseWnd
                 m_Grid[0].AddChild(m_FriendList[i].m_BaseTrans, false);
                 m_FriendList[i].RestLocalScale();
             }
-            m_FriendsCout.text = string.Format("当前好友数：{0}", m_FriendList.Count);
+            m_FriendsCout.text = string.Format(StringTable.GetString("Relation_Num"), m_FriendList.Count);
         }
     }
     public void UpdateApplyListData()
@@ -250,7 +250,7 @@ public class FriendWndUI : BaseWnd
         }
         m_ScrollTrans[0].localPosition = new Vector3(151, 46.8f, 0);
         m_UIPanel[0].clipOffset = new Vector2(0, -142);
-        m_FriendsCout.text = string.Format("当前好友数：{0}", m_FriendList.Count);
+        m_FriendsCout.text = string.Format(StringTable.GetString("Relation_Num"), m_FriendList.Count);
     }
     public void PressentScuess(uint userID)
     {

@@ -79,7 +79,7 @@ public class DllTest
 
         ofn.initialDir = UnityEngine.Application.dataPath;//
 
-        ofn.title = "选择头像";
+        ofn.title = StringTable.GetString("Open_Photo_Tittle");
 
         ofn.defExt = "JPG";//
 

@@ -182,7 +182,7 @@ public class HallLoinUI_SignIn : BaseWnd
             {
                 if (Index == 5)
                     break;
-                m_SignInChestsInfo[Index].m_SignInLevel.text = map.Key.ToString() + "天";
+                m_SignInChestsInfo[Index].m_SignInLevel.text = map.Key.ToString() + StringTable.GetString("Global_Day_2");
                 m_SignInChestsInfo[Index].m_RewardID = map.Value;
 
                 if (SignInSumDay >= map.Key)
@@ -204,7 +204,7 @@ public class HallLoinUI_SignIn : BaseWnd
                     Index++;
                     continue;
                 }
-                m_SignInChestsInfo[Index-2].m_SignInLevel.text = map.Key.ToString() + "天";
+                m_SignInChestsInfo[Index-2].m_SignInLevel.text = map.Key.ToString() + StringTable.GetString("Global_Day_2");
                 m_SignInChestsInfo[Index-2].m_RewardID = map.Value;
 
                 if (SignInSumDay >= map.Key)

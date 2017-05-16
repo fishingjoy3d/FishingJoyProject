@@ -42,11 +42,11 @@ public class PresentItemUI : BaseWnd
         else
             HeaderManager.Instance.GetPlayerHeader(m_PresentItemInfo.dwUserID, m_PresentItemInfo.dwFaceID, HeaderOptType.HEADER_FRIEND, (byte)WndType.Present_Wnd);
 
-        m_NickName.text = string.Format("[f8ea28]{0}[-]  赠送了您", m_PresentItemInfo.NickName);
+        m_NickName.text = string.Format(StringTable.GetString("Relation_Present"), m_PresentItemInfo.NickName);
         int time = 7 - m_PresentItemInfo.DiffTime;
         if (time < 0)
             time = 0;
-        m_VaildTime.text = string.Format("剩余时间：{0}天", time);
+        m_VaildTime.text = string.Format(StringTable.GetString("Mail_Valid_Time"), time);
 
     }
     public void SetHeader(Texture2D tex)

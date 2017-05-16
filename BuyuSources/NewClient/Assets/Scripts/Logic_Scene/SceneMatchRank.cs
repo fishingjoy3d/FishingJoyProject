@@ -127,7 +127,7 @@ class SceneMatchRankItem : BaseWnd
         if (pRankInfo.Index == 4)
             m_RankLabel.text = pRankInfo.Index.ToString();
         m_NameLabel.text = pRankInfo.NickName;
-        m_ScoreLabel.text = string.Format("分数: {0}", pRankInfo.Score);
+        m_ScoreLabel.text = string.Format(StringTable.GetString("Match_Score_2"), pRankInfo.Score);
         m_UserID = pRankInfo.dwUserID;
         if (pRankInfo.FaceID < ConstValue.CUSTOM_HEADER)
             m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[pRankInfo.FaceID];
@@ -150,7 +150,7 @@ class SceneMatchRankItem : BaseWnd
         }
         m_NameLabel.text = PlayerRole.Instance.RoleInfo.RoleMe.GetNickName();
         m_RankLabel.text = (PlayerRole.Instance.RoleInfo.RoleMe.GetMonthIndex() + 1).ToString();
-        m_ScoreLabel.text = string.Format("分数: {0}", PlayerRole.Instance.RoleInfo.RoleMe.GetMonthScore());
+        m_ScoreLabel.text = string.Format(StringTable.GetString("Match_Score_2"), PlayerRole.Instance.RoleInfo.RoleMe.GetMonthScore());
     }
     public void SetHeader(Texture2D tex)
     {

@@ -84,11 +84,11 @@ public class HallLoginUI_Achievement : HallLoginUI_BaseWind
     }
     public void UpdateMyAchievemetnData()
     {
-        m_AchieveInfo[0].text = "成就点：" + PlayerRole.Instance.RoleInfo.RoleMe.GetAchievementPoint().ToString();
+        m_AchieveInfo[0].text = StringTable.GetString("Achievement_Point") + PlayerRole.Instance.RoleInfo.RoleMe.GetAchievementPoint().ToString();
         if (PlayerRole.Instance.RoleInfo.RoleMe.GetAchievementIndex() == 0xffffffff)
-            m_AchieveInfo[1].text = "成就排名：" + FishConfig.Instance.m_SystemConfig.AchievementRankSum.ToString() + "名以后";
+            m_AchieveInfo[1].text = string.Format(StringTable.GetString("Achievement_Rank_Down"), FishConfig.Instance.m_SystemConfig.AchievementRankSum);
         else
-            m_AchieveInfo[1].text = "成就排名：" + (PlayerRole.Instance.RoleInfo.RoleMe.GetAchievementIndex()+1).ToString();
+            m_AchieveInfo[1].text = StringTable.GetString("Achievement_Rank") + (PlayerRole.Instance.RoleInfo.RoleMe.GetAchievementIndex() + 1).ToString();
     }
     public void UpdateOnlyAchievementDate(byte achieveID)
     {
@@ -361,7 +361,7 @@ public class AchieveItem : BaseWnd
             if (FishConfig.Instance.m_ItemInfo.m_ItemMap.ContainsKey(ItemID) != true)
                 continue;
             if (FishConfig.Instance.m_ItemInfo.m_ItemMap[ItemID].ItemTypeID == EItemType.IT_AchievementPoint)
-                m_AchievePoint.text = "成就点数：" + pReward.RewardItemVec[i].ItemSum.ToString();
+                m_AchievePoint.text = StringTable.GetString("Achievement_Point_2") + pReward.RewardItemVec[i].ItemSum.ToString();
             if (FishConfig.Instance.m_ItemInfo.m_ItemMap[ItemID].ItemTypeID == EItemType.IT_Title)
             {
                 m_AchieveName.text = FishConfig.Instance.m_TitleInfo.m_TileMap[(byte)pReward.RewardItemVec[i].ItemSum].TitleName; 

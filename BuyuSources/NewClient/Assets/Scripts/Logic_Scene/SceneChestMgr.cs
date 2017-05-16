@@ -437,7 +437,7 @@ public class SceneChestMgr
         m_BtnInfo[nIndex].m_sprBg.spriteName = "ChestBoxNum";
 
         m_BtnInfo[nIndex].m_goLabelNormal.SetActive(true);
-        m_BtnInfo[nIndex].m_labelNormal.text = "免费";
+        m_BtnInfo[nIndex].m_labelNormal.text = StringTable.GetString("Match_Free");
     }
     void ShowBg()
     {

@@ -638,8 +638,16 @@ class RoleDial
             Byte Index2 = (Byte)TableResult;
             Byte Rank = Convert.ToByte(AreaData.TableAreaData[Index1] / 4);
             Byte Value = Convert.ToByte(FishConfig.Instance.m_MiNiGameConfig.dialConfig.DialAreaData[Index2]);
-            string strRank = (Rank == 0 ? "红" : (Rank == 1 ? "黄" : "绿"));
-            string strValue = (Value == 0 ? "熊猫" : (Value == 1 ? "猴子" : (Value == 2 ? "兔子" : "狮子")));
+            string strRank = (Rank == 0 ?
+                StringTable.GetString("Dial_Red") : (Rank == 1 ?
+                StringTable.GetString("Dial_Yellow") :
+                StringTable.GetString("Dial_Green")));
+
+            string strValue = (Value == 0 ? 
+                StringTable.GetString("Dial_Panda") : (Value == 1 ?
+                StringTable.GetString("Dial_Monkey") : (Value == 2 ?
+                StringTable.GetString("Dial_Rabbit") :
+                StringTable.GetString("Dial_Lion"))));
             string strInfo = strValue + strRank;
             LogMgr.Log(strInfo);
         }

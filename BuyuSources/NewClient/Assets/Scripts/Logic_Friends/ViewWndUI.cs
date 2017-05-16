@@ -133,7 +133,7 @@ public class ViewWndUI : BaseWnd
             if (PlayerRole.Instance.RelationManager.GetFriendMap().ContainsKey(m_PlayerID) == true)
             {
                 //以后再处理弹出提示窗口消息
-                GlobalHallUIMgr.Instance.ShowSystemTipsUI("他已经是你好友了", 1, false);
+                GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Relation_Add_Fail_2"), 1, false);
                 return;
             }
             FriendRuntime.ApplyCodeUI.ShowApplyCodeWnd(m_PlayerID);

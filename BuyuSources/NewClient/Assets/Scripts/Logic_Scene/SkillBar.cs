@@ -597,7 +597,7 @@ public class SkillBar : BaseWnd
         else
         {
             //弹提示钻石不够框示框
-            GlobalEffectMgr.Instance.ShowMessageBox("钻石", MssageType.GoldLack_Msg_4);
+            GlobalEffectMgr.Instance.ShowMessageBox(StringTable.GetString("Global_Jewel"), MssageType.GoldLack_Msg_4);
 
         }
     }

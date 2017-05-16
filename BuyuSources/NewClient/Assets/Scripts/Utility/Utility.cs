@@ -389,4 +389,41 @@ public class Utility
         }
         return true;
     }
+
+    public static string NumToString(uint num)
+    {
+        if (num > 10000)
+        {
+            float wan = (num - num % 1000) / 10000f;
+            return wan.ToString() + StringTable.GetString("Global_10_Thousand");
+        }
+        return num.ToString();
+    }
+    public static string NumToString(int num)
+    {
+        if (num > 10000)
+        {
+            float wan = (num - num % 1000) / 10000f;
+            return wan.ToString() + StringTable.GetString("Global_10_Thousand");
+        }
+        return num.ToString();
+    }
+
+    public static string NumToThousand(uint num)
+    {
+        if (num >= 10000)
+        {
+            return (num / 1000).ToString() + "k";
+        }
+        return num.ToString();
+    }
+
+    public static string NumToThousand(int num)
+    {
+        if (num >= 10000)
+        {
+            return (num / 1000).ToString() + "k";
+        }
+        return num.ToString();
+    }
 }

@@ -363,11 +363,15 @@ public class HallLoginUI_Contest : HallLoginUI_BaseWind
         DateTime EndTime = new DateTime();
         PlayerRole.Instance.MonthManager.GetMonthRankTime((byte)m_CurMatchDetailID, ref BeginTime, ref EndTime);
 
-        string beginStr = BeginTime.Year.ToString() + "年" + BeginTime.Month.ToString() + "月" + BeginTime.Day.ToString() + "日" +
+        string strYear = StringTable.GetString("Global_Year");
+        string strMonth = StringTable.GetString("Global_Month");
+        string strDay = StringTable.GetString("Global_Day");
+
+        string beginStr = BeginTime.Year.ToString() + strYear + BeginTime.Month.ToString() + strMonth + BeginTime.Day.ToString() + strDay +
              BeginTime.Hour.ToString("D2") + ":" + BeginTime.Minute.ToString("D2");
-        string endStr = EndTime.Year.ToString() + "年" + EndTime.Month.ToString() + "月" + EndTime.Day.ToString() + "日" +
+        string endStr = EndTime.Year.ToString() + strYear + EndTime.Month.ToString() + strMonth + EndTime.Day.ToString() + strDay +
             EndTime.Hour.ToString("D2") + ":" + EndTime.Minute.ToString("D2");
-        m_MatchRankTime.text = ("比赛开始结束时间为") + beginStr + "-" + endStr;
+        m_MatchRankTime.text = string.Format(StringTable.GetString("Match_Time_Tips"), beginStr, endStr);
         //  m_ContestId
         //需要个根据上个界面点击的比赛的id来获得相应的数据
         CleanScrollView(m_MatchRankScrollView.m_grid);
@@ -561,7 +565,7 @@ class MatchViewItem : BaseWnd
         }
         else
         {
-            m_EntryFee.text = "免费";
+            m_EntryFee.text = StringTable.GetString("Match_Free");
         }
     }
     void ShowAward()
@@ -584,29 +588,29 @@ class MatchViewItem : BaseWnd
     {
         string desStr = "";
         if (SystemTime.Instance.GetSystemDateTime.Day == beginTime.Day)
-            return "今天";
+            return StringTable.GetString("Match_Today");
         switch(beginTime.DayOfWeek)
         {
             case DayOfWeek.Monday:
-                desStr =  "星期-";
+                desStr = StringTable.GetString("Match_Monday");
                 break;
             case DayOfWeek.Tuesday:
-                desStr = "星期二";
+                desStr = StringTable.GetString("Match_Tuesday");
                 break;
             case DayOfWeek.Wednesday:
-                desStr = "星期三";
+                desStr = StringTable.GetString("Match_Wednesday");
                 break;
             case DayOfWeek.Thursday:
-                desStr = "星期四";
+                desStr = StringTable.GetString("Match_Thursday");
                 break;
             case DayOfWeek.Friday:
-                desStr = "星期五";
+                desStr = StringTable.GetString("Match_Friday");
                 break;
             case DayOfWeek.Saturday:
-                desStr = "星期六";
+                desStr = StringTable.GetString("Match_Saturday");
                 break;
             case DayOfWeek.Sunday:
-                desStr = "星期日";
+                desStr = StringTable.GetString("Match_Sunday");
                 break;
         }
 
@@ -751,7 +755,7 @@ class MatchRankView : BaseWnd     //比赛排名信息
 
         m_Ranking.text = pRankingInfo.Index.ToString();
         m_Name.text = pRankingInfo.NickName;
-        m_Score.text = "积分 ："+pRankingInfo.Socres.ToString()+"(VIP加成: "+pRankingInfo.VipSocres.ToString() + ")";
+        m_Score.text = string.Format(StringTable.GetString("Match_Score"), pRankingInfo.Socres, pRankingInfo.VipSocres);
         m_UserID = pRankingInfo.UserID;
     }
     public void SetHeader(Texture2D tex)

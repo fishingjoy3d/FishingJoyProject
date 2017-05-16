@@ -122,10 +122,7 @@ public class ActivityRewardWnd : BaseWnd
                     Idx++;
                     continue;
                 }
-                if (pReward.RewardItemVec[j].ItemSum >= 10000)
-                    m_RewardNum[Idx].text = (pReward.RewardItemVec[j].ItemSum / 1000).ToString() + "k";
-                else
-                    m_RewardNum[Idx].text = pReward.RewardItemVec[j].ItemSum.ToString();
+                m_RewardNum[Idx].text = Utility.NumToThousand(pReward.RewardItemVec[j].ItemSum);
                 Idx++;
 
             }
@@ -149,10 +146,7 @@ public class ActivityRewardWnd : BaseWnd
                 m_Reward[i].height = 68;
                 continue;
             }
-            if (pReward.RewardItemVec[i].ItemSum >= 10000)
-                m_RewardNum[i].text = (pReward.RewardItemVec[i].ItemSum / 1000).ToString() + "k";
-            else
-                m_RewardNum[i].text = pReward.RewardItemVec[i].ItemSum.ToString();
+            m_RewardNum[i].text = Utility.NumToThousand(pReward.RewardItemVec[i].ItemSum);
         }
     }
     void OnClickPayGo(GameObject go)

@@ -757,10 +757,10 @@ class MsgEventHandle
                         {
                             if (ShopRuntime.Instance != null)
                                 ShopRuntime.ConfirmBuyUI.ShutDown();
-                            GlobalHallUIMgr.Instance.ShowSystemTipsUI("恭喜您购买成功", 0.5f, false);
+                            GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("GlobelShop_Sucess_2"), 0.5f, false);
                         }
                         else
-                            GlobalHallUIMgr.Instance.ShowSystemTipsUI("很可惜您的购买失败", 0.5f, false);
+                            GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("GlobelShop_Fail_2"), 0.5f, false);
                         ShopRuntime.ShopUI.UpdateKnapsackDate();
                     }
                 }

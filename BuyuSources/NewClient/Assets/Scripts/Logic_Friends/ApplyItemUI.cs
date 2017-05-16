@@ -74,7 +74,7 @@ public class ApplyItemUI  : BaseWnd
         else
             m_GenderSprite.spriteName = "female";
 
-        m_Message.text = "留言:"+pInfo.MessageInfo;
+        m_Message.text = StringTable.GetString("Relation_Message") + pInfo.MessageInfo;
     }
     public void SetMyHeader(Texture2D tex)
     {

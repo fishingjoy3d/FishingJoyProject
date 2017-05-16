@@ -64,15 +64,7 @@ public class ShopItemInfoUI : BaseWnd
         }
         if (m_ItemSum != null)
         {
-            uint num = ItemInfo.ItemInfo.ItemSum;
-            if (num > 10000)
-            {
-                m_ItemSum.text = "x " + ((num - num % 1000) / 10000f).ToString() + "万";
-            }
-            else
-            {
-                m_ItemSum.text = "x " + ItemInfo.ItemInfo.ItemSum.ToString();
-            }
+            m_ItemSum.text = "x " + Utility.NumToString(ItemInfo.ItemInfo.ItemSum);
         }
         SetGoodsPriceType(ItemInfo);
     }

@@ -218,11 +218,11 @@ public class SceneLotteryDraw : BaseWnd
             item.m_NumStr += pReward.RewardItemVec[0].ItemSum;
             if (pItme.ItemTypeID == EItemType.IT_Globel)
             {
-                item.m_NumStr += "金币";
+                item.m_NumStr += StringTable.GetString("Global_Gold");
             }
             else if (pItme.ItemTypeID == EItemType.IT_Currey)
             {
-                item.m_NumStr += "钻石";
+                item.m_NumStr += StringTable.GetString("Global_Jewel");
             }
             else
             {
@@ -258,19 +258,19 @@ public class SceneLotteryDraw : BaseWnd
                 switch (level)
                 {
                     case LotteryLevel.Level1:
-                        levelStr = "青铜";
+                        levelStr = StringTable.GetString("Lottery_Level_1");
                         break;
                     case LotteryLevel.Level2:
-                        levelStr = "白银";
+                        levelStr = StringTable.GetString("Lottery_Level_2");
                         break;
                     case LotteryLevel.Level3:
-                        levelStr = "黄金";
+                        levelStr = StringTable.GetString("Lottery_Level_3");
                         break;
                     case LotteryLevel.Level4:
-                        levelStr = "白金";
+                        levelStr = StringTable.GetString("Lottery_Level_4");
                         break;
                     case LotteryLevel.Level5:
-                        levelStr = "至尊";
+                        levelStr = StringTable.GetString("Lottery_Level_5");
                         break;
                 }
                 string str = string.Format(StringTable.GetString("UOM_Lottery_Notice"), levelStr, nextScore - currentScore);
@@ -432,11 +432,11 @@ public class CardChoose : BaseWnd
             item.m_IconName = pItme.ItemIcon;
             if (pItme.ItemTypeID == EItemType.IT_Globel)
             {
-                item.m_NameStr = "金币";
+                item.m_NameStr = StringTable.GetString("Global_Gold");
             }
             else if (pItme.ItemTypeID == EItemType.IT_Currey)
             {
-                item.m_NameStr = "钻石";
+                item.m_NameStr = StringTable.GetString("Global_Jewel");
             }
             else
             {
@@ -717,11 +717,11 @@ public class CardChoose : BaseWnd
         string typeStr;
         if (pItme.ItemTypeID == EItemType.IT_Globel)
         {
-            typeStr = "金币";
+            typeStr = StringTable.GetString("Global_Gold");
         }
         else if (pItme.ItemTypeID == EItemType.IT_Currey)
         {
-            typeStr = "钻石";
+            typeStr = StringTable.GetString("Global_Jewel");
         }
         else
         {

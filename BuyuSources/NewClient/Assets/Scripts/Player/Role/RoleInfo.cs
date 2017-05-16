@@ -356,7 +356,9 @@ class RoleInfo
             MsgEventHandle.HandleMsg(pUOM);
             return false;
         }
-        if(m_RoleInfo.GetNickName().IndexOf("游客") != 0 && m_RoleInfo.GetNickName().IndexOf("用户") != 0)//系统生成的名称 第一次是可以修改的 
+        string strUser = StringTable.GetString("Role_User");
+        string strGuest = StringTable.GetString("Role_Guest");
+        if(m_RoleInfo.GetNickName().IndexOf(strGuest) != 0 && m_RoleInfo.GetNickName().IndexOf(strUser) != 0)//系统生成的名称 第一次是可以修改的 
         {
             UInt32 ItemID = FishConfig.Instance.m_SystemConfig.ChangeNickNameNeedItemID;
             UInt32 ItemSum = FishConfig.Instance.m_SystemConfig.ChangeNickNameNeedItemSum;

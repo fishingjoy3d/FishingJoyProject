@@ -138,9 +138,9 @@ public class EmailWndUI : BaseWnd
                 ++i;
         }
         if (m_EmailList.Count > FishConfig.Instance.m_MailConfig.ClientShowMailSum)
-            m_EmailNum.text = string.Format("邮件数量：{0}/{1}", m_EmailList.Count, m_EmailList.Count);
+            m_EmailNum.text = string.Format(StringTable.GetString("Mail_Num"), m_EmailList.Count, m_EmailList.Count);
         else
-            m_EmailNum.text = string.Format("邮件数量：{0}/{1}", m_EmailList.Count, FishConfig.Instance.m_MailConfig.ClientShowMailSum);
+            m_EmailNum.text = string.Format(StringTable.GetString("Mail_Num"), m_EmailList.Count, FishConfig.Instance.m_MailConfig.ClientShowMailSum);
 
     }
     public void SetEamilListDate()
@@ -152,9 +152,9 @@ public class EmailWndUI : BaseWnd
             m_EmailList[i].ResetLocalScale();
         }
         if (m_EmailList.Count > FishConfig.Instance.m_MailConfig.ClientShowMailSum)
-            m_EmailNum.text = string.Format("邮件数量：{0}/{1}", m_EmailList.Count, m_EmailList.Count);
+            m_EmailNum.text = string.Format(StringTable.GetString("Mail_Num"), m_EmailList.Count, m_EmailList.Count);
         else
-            m_EmailNum.text = string.Format("邮件数量：{0}/{1}", m_EmailList.Count, FishConfig.Instance.m_MailConfig.ClientShowMailSum);
+            m_EmailNum.text = string.Format(StringTable.GetString("Mail_Num"), m_EmailList.Count, FishConfig.Instance.m_MailConfig.ClientShowMailSum);
 
     }
 

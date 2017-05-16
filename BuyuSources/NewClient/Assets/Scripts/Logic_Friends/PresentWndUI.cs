@@ -45,7 +45,7 @@ public class PresentWndUI : BaseWnd
             InitPresentItem(map.Key, map.Value);
         }
         SetPresentListDate();
-        m_ReceiveLable.text = string.Format("已领取：{0}/{1}", PlayerRole.Instance.RoleInfo.RoleMe.GetAcceptGiffSum(), FishConfig.Instance.m_GiffInfo.AcceptSubLimitByDay);
+        m_ReceiveLable.text = string.Format(StringTable.GetString("Relation_Accept_Present"), PlayerRole.Instance.RoleInfo.RoleMe.GetAcceptGiffSum(), FishConfig.Instance.m_GiffInfo.AcceptSubLimitByDay);
     }
     public void UpdateAddPresentDate(uint onlyID)
     {
@@ -130,7 +130,7 @@ public class PresentWndUI : BaseWnd
         if (m_BaseWndObject.activeSelf != true)
             return;
 
-        m_ReceiveLable.text = string.Format("今日已领取：{0}/{1}", PlayerRole.Instance.RoleInfo.RoleMe.GetAcceptGiffSum(), FishConfig.Instance.m_GiffInfo.AcceptSubLimitByDay);
+        m_ReceiveLable.text = string.Format(StringTable.GetString("Relation_Accept_Present_2"), PlayerRole.Instance.RoleInfo.RoleMe.GetAcceptGiffSum(), FishConfig.Instance.m_GiffInfo.AcceptSubLimitByDay);
     }
     void ClearPressentGridChild()
     {

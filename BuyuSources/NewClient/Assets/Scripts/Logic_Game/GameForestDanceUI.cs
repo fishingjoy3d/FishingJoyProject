@@ -430,14 +430,7 @@ public class GameForestDanceUI : BaseWnd
             return;
         }
         uint goldNum = PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel();
-        if (goldNum >= 10000)
-        {
-            m_GoldLabel.text = (goldNum / 10000) + "." + (goldNum / 1000 % 10) + " 万";
-        }
-        else
-        {
-            m_GoldLabel.GetComponent<UILabel>().text = goldNum.ToString();
-        }
+        m_GoldLabel.text = Utility.NumToString(goldNum);
     }
 
     void EventAddGoldClick(GameObject go)
@@ -788,9 +781,7 @@ public class GameForestDanceUI : BaseWnd
                 vipSeat[i].sitDownBtn.SetActive(false);
                 vipSeat[i].headObj.SetActive(true);
                 uint moneyNum = list.List[i].GlobelSum;
-                vipSeat[i].moneyLabel.text = moneyNum.ToString();
-                if (moneyNum > 10000)
-                    vipSeat[i].moneyLabel.text = (moneyNum / 10000) + "." + (moneyNum / 1000 % 10) + "万";
+                vipSeat[i].moneyLabel.text = Utility.NumToString(moneyNum);
                 vipSeat[i].moneyLabel.gameObject.SetActive(true);
 
                 uint ficeID = list.List[i].dwFaceID;
@@ -937,7 +928,7 @@ public class GameForestDanceUI : BaseWnd
         }
         if (list.MySeatIndex == 0xffffffff && !isHost)
         {
-            myLineNumLabel.text = "未排队";
+            myLineNumLabel.text = StringTable.GetString("NiuNiu_Not_In_Line");
         }
         else
         {
@@ -951,7 +942,7 @@ public class GameForestDanceUI : BaseWnd
                 hostBtn[3].SetActive(false);
             }
             else if (isHost)
-                myLineNumLabel.text = "正在上庄";
+                myLineNumLabel.text = StringTable.GetString("NiuNiu_AddBankerList");
         }
     }
 
@@ -999,7 +990,7 @@ public class GameForestDanceUI : BaseWnd
             hostHeadObj.SetActive(false);
             hostNameLabel.gameObject.SetActive(false);
             m_TitleTrans.GetChild(4).gameObject.SetActive(true);
-            hostName = "解闷大师";
+            hostName = StringTable.GetString("NiuNiu_Host");
             hostNameLineLabel.text = hostName;
             hostGameRestLabel.text = "";
             isMasterHost = true;
@@ -1034,11 +1025,7 @@ public class GameForestDanceUI : BaseWnd
             hostGameSum = info.GameSum;
             hostNameLabel.text = info.UserInfo.NickName;
             uint goldNum = info.UserInfo.GlobelSum;
-            hostGoldNumLabel.text = goldNum.ToString();
-            if (goldNum > 10000)
-            {
-                hostGoldNumLabel.text = (goldNum / 10000) + "." + (goldNum / 1000 % 10) + "万";
-            }
+            hostGoldNumLabel.text = Utility.NumToString(goldNum);
 
             hostNameLineLabel.text = hostName;
             hostGameRestLabel.text = (FishConfig.Instance.m_MiNiGameConfig.niuniuConfig.BankerGameSum - hostGameSum).ToString();
@@ -1060,7 +1047,7 @@ public class GameForestDanceUI : BaseWnd
 
             if (hostName.Equals(PlayerRole.Instance.RoleInfo.RoleMe.GetNickName()))
             {
-                myLineNumLabel.text = "正在上庄";
+                myLineNumLabel.text = StringTable.GetString("NiuNiu_AddBankerList");
                 isInLine = false;
                 isHost = true;
                 hostBtnObj[0].gameObject.SetActive(false);
@@ -1521,7 +1508,7 @@ class ForestDanceHostItem : BaseWnd
         goldNumLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
         lineNumLabel.text = lineNum.ToString();
         nameLabel.text = name;
-        goldNumLabel.text = (goldNum / 10000) + "." + (goldNum / 1000 % 10) + "万";
+        goldNumLabel.text = Utility.NumToString(goldNum);
         return m_BaseTrans;
     }
 }
@@ -1612,9 +1599,7 @@ class ForestDanceNormalItem : BaseWnd
         nameLabel = m_BaseTrans.GetChild(1).GetComponent<UILabel>();
         goldLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
         nameLabel.text = name;
-        goldLabel.text = gold.ToString();
-        if (gold > 10000)
-            goldLabel.text = (gold / 10000) + "." + (gold / 1000 % 10) + "万";
+        goldLabel.text = Utility.NumToString(gold);
         return m_BaseTrans;
     }
 }

@@ -291,14 +291,7 @@ public class GameNiuniuUI : BaseWnd
         if (!isAnim)
         {
             uint goldNum = PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel();
-            if (goldNum >= 10000)
-            {
-                m_HeadTrans.GetChild(8).GetComponent<UILabel>().text = (goldNum / 10000) + "." + (goldNum / 1000 % 10) + " 万";
-            }
-            else
-            {
-                m_HeadTrans.GetChild(8).GetComponent<UILabel>().text = goldNum.ToString();
-            }
+            m_HeadTrans.GetChild(8).GetComponent<UILabel>().text = Utility.NumToString(goldNum);
         }
     }
     void InitPlayerInfo()
@@ -621,7 +614,7 @@ public class GameNiuniuUI : BaseWnd
         }
         if (list.MySeatIndex == 0xffffffff && !isHost)
         {
-            myLineNumLabel.text = "未排队";
+            myLineNumLabel.text = StringTable.GetString("NiuNiu_Not_In_Line");
         }
         else
         {
@@ -635,7 +628,7 @@ public class GameNiuniuUI : BaseWnd
                 hostBtn[3].SetActive(false);
             }
             else if (isHost)
-                myLineNumLabel.text = "正在上庄";
+                myLineNumLabel.text = StringTable.GetString("NiuNiu_AddBankerList");
         }
     }
 
@@ -678,7 +671,7 @@ public class GameNiuniuUI : BaseWnd
             hostHeadObj.SetActive(false);
             hostNameLabel.gameObject.SetActive(false);
             m_TitleTrans.GetChild(7).gameObject.SetActive(true);
-            hostName = "解闷大师";
+            hostName = StringTable.GetString("NiuNiu_Host");
             hostNameLineLabel.text = hostName;
             hostGameRestLabel.text = "";
             isMasterHost = true;
@@ -713,11 +706,7 @@ public class GameNiuniuUI : BaseWnd
             hostGameSum = info.GameSum;
             hostNameLabel.text = info.UserInfo.NickName;
             uint goldNum = info.UserInfo.GlobelSum;
-            hostGoldNumLabel.text = goldNum.ToString();
-            if (goldNum > 10000)
-            {
-                hostGoldNumLabel.text = (goldNum / 10000) + "." + (goldNum / 1000 % 10) + "万";
-            }
+            hostGoldNumLabel.text = Utility.NumToString(goldNum);
 
             hostNameLineLabel.text = hostName;
             hostGameRestLabel.text = (FishConfig.Instance.m_MiNiGameConfig.niuniuConfig.BankerGameSum - hostGameSum).ToString();
@@ -739,7 +728,7 @@ public class GameNiuniuUI : BaseWnd
 
             if (hostName.Equals(PlayerRole.Instance.RoleInfo.RoleMe.GetNickName()))
             {
-                myLineNumLabel.text = "正在上庄";
+                myLineNumLabel.text = StringTable.GetString("NiuNiu_AddBankerList");
                 isInLine = false;
                 isHost = true;
                 hostBtnObj[0].gameObject.SetActive(false);
@@ -829,9 +818,7 @@ public class GameNiuniuUI : BaseWnd
                 vipSeat[i].sitDownBtn.SetActive(false);
                 vipSeat[i].headObj.SetActive(true);
                 uint moneyNum = list.List[i].GlobelSum;
-                vipSeat[i].moneyLabel.text = moneyNum.ToString();
-                if (moneyNum > 10000)
-                    vipSeat[i].moneyLabel.text = (moneyNum / 10000) + "." + (moneyNum / 1000 % 10) + "万";
+                vipSeat[i].moneyLabel.text = Utility.NumToString(moneyNum);
                 vipSeat[i].moneyLabel.gameObject.SetActive(true);
 
                 uint ficeID = list.List[i].dwFaceID;
@@ -1019,9 +1006,7 @@ public class GameNiuniuUI : BaseWnd
             return;
         if (vipSeat[seat].userId != 0)
             vipInfo[seat].weagerIndex[index] = true;
-        vipSeat[seat].moneyLabel.text = allGlobal.ToString();
-        if (allGlobal > 10000)
-            vipSeat[seat].moneyLabel.text = (allGlobal / 10000) + "." + (allGlobal / 1000 % 10) + "万";
+        vipSeat[seat].moneyLabel.text = Utility.NumToString(allGlobal);
         vipWeagerIndex = index;
         seatIndex = seat;
         vipWeagerCount = 0;
@@ -1033,9 +1018,7 @@ public class GameNiuniuUI : BaseWnd
     {
         if (id != 0)
         {
-            vipSeat[seat].moneyLabel.text = globalSum.ToString();
-            if (globalSum > 10000)
-                vipSeat[seat].moneyLabel.text = (globalSum / 10000) + "." + (globalSum / 1000 % 10) + "万";
+            vipSeat[seat].moneyLabel.text = Utility.NumToString(globalSum);
         }
     }
 
@@ -1596,9 +1579,7 @@ public class GameNiuniuUI : BaseWnd
                     vipInfo[i].newGoldNum = newVipInfo.List[i].GlobelSum;
                     vipInfo[i].oldGoldnum = oldVipInfo.List[i].GlobelSum;
                     uint global = oldVipInfo.List[i].GlobelSum;
-                    vipSeat[i].moneyLabel.text = global.ToString();
-                    if (global > 10000)
-                        vipSeat[i].moneyLabel.text = (global / 10000) + "." + (global / 1000 % 10) + "万";
+                    vipSeat[i].moneyLabel.text = Utility.NumToString(global);
                 }
             }
 
@@ -1746,11 +1727,8 @@ public class GameNiuniuUI : BaseWnd
     public void UpdateMyWeagerNum()                     //更新我的下注
     {
         myWeager[poorIndex] += levelArr[chooseLevel];
-        if (myWeager[poorIndex] > 10000)
-            m_PoolTrans.GetChild(poorIndex).GetChild(3).GetChild(0).GetComponent<UILabel>().text
-                = ((float)myWeager[poorIndex] / 10000).ToString() + " 万";
-        else
-            m_PoolTrans.GetChild(poorIndex).GetChild(3).GetChild(0).GetComponent<UILabel>().text = myWeager[poorIndex].ToString();
+
+        m_PoolTrans.GetChild(poorIndex).GetChild(3).GetChild(0).GetComponent<UILabel>().text = Utility.NumToString(myWeager[poorIndex]);
 
         totalNum[poorIndex] += (uint)levelArr[chooseLevel];
 
@@ -2111,7 +2089,7 @@ class HostItem : BaseWnd
         goldNumLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
         lineNumLabel.text = lineNum.ToString();
         nameLabel.text = name;
-        goldNumLabel.text = (goldNum / 10000) + "." + (goldNum / 1000 % 10) + "万";
+        goldNumLabel.text = Utility.NumToString(goldNum);
         return m_BaseTrans;
     }
 }
@@ -2202,9 +2180,7 @@ class NormalItem : BaseWnd
         nameLabel = m_BaseTrans.GetChild(1).GetComponent<UILabel>();
         goldLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
         nameLabel.text = name;
-        goldLabel.text = gold.ToString();
-        if (gold > 10000)
-            goldLabel.text = (gold / 10000) + "." + (gold / 1000 % 10) + "万";
+        goldLabel.text = Utility.NumToString(gold);
         return m_BaseTrans;
     }
 }

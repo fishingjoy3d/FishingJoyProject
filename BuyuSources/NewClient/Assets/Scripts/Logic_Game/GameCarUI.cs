@@ -1077,8 +1077,8 @@ public class GameCarUI
                 }
             }
         }
-       
-        m_labelresult.text = FormatNum(nNum);
+
+        m_labelresult.text = Utility.NumToString(nNum);
         m_goresultchar.SetActive(Mathf.Abs(nNum) >= 10000);
         GlobalHallUIMgr.Instance.GameShare.AddGlod(nNum);
     }
@@ -1144,10 +1144,10 @@ public class GameCarUI
         for (byte i = 0; i < m_areainfo.Length; i++)
         {
             m_areainfo[i].labelmy.gameObject.SetActive(m_nMyJetton[i] != 0);
-            m_areainfo[i].labelmy.text = FormatNum((int)m_nMyJetton[i]);
+            m_areainfo[i].labelmy.text = Utility.NumToString(m_nMyJetton[i]);
 
             m_areainfo[i].labeltotal.gameObject.SetActive(m_nTotalJetton[i] != 0);
-            m_areainfo[i].labeltotal.text = FormatNum((int)m_nTotalJetton[i]);
+            m_areainfo[i].labeltotal.text = Utility.NumToString(m_nTotalJetton[i]);
         }
     }
     public void UpdateCarMyWeagerNum()
@@ -1195,8 +1195,8 @@ public class GameCarUI
             hostHeadObj.SetActive(false);
             hostNameLabel.gameObject.SetActive(false);
             m_goSystem.SetActive(true);
-                    
-            hostNameLineLabel.text = "解闷大师";
+
+            hostNameLineLabel.text = StringTable.GetString("NiuNiu_Host");
             hostGameRestLabel.text = "";
             isMasterHost = true;
             if (isInLine)
@@ -1229,7 +1229,7 @@ public class GameCarUI
             hostGameSum = info.GameSum;
             hostNameLabel.text = info.UserInfo.NickName;
             uint goldNum = info.UserInfo.GlobelSum;
-            hostGoldNumLabel.text = FormatNum((int)goldNum); 
+            hostGoldNumLabel.text = Utility.NumToString(goldNum); 
             //goldNum.ToString();
             //if (goldNum > 10000)
             //{
@@ -1255,7 +1255,7 @@ public class GameCarUI
 
             if (info.UserInfo.NickName.Equals(PlayerRole.Instance.RoleInfo.RoleMe.GetNickName()))
             {
-                myLineNumLabel.text = "正在上庄";
+                myLineNumLabel.text = StringTable.GetString("NiuNiu_AddBankerList");
                 isInLine = false;
                 isHost = true;
                 hostBtnObj[0].gameObject.SetActive(false);
@@ -1313,7 +1313,7 @@ public class GameCarUI
         }
         if (list.MySeatIndex == 0xffffffff && !isHost)
         {
-            myLineNumLabel.text = "未排队";
+            myLineNumLabel.text = StringTable.GetString("NiuNiu_Not_In_Line");
         }
         else
         {
@@ -1327,7 +1327,7 @@ public class GameCarUI
                 hostBtn[3].SetActive(false);
             }
             else if (isHost)
-                myLineNumLabel.text = "正在上庄";
+                myLineNumLabel.text = StringTable.GetString("NiuNiu_AddBankerList");
         }
     }
     
@@ -1371,25 +1371,11 @@ public class GameCarUI
     {
 
     }
-    string FormatNum(int nNum)
-    {
-        string strNum="";       
-        if(Mathf.Abs(nNum)<10000)
-        {
-            strNum=nNum.ToString();
-        }
-        else 
-        {
-            //strNum = ((float)nNum / 10000).ToString();
-            strNum=string.Format("{0:F1}万",nNum/10000.0f);
-        }
-        return strNum;
-    }
    public void SetCarPlayerGold()
     {
         if(m_labelmygold&&!m_carmove.IsMoving())
         {
-            m_labelmygold.text = FormatNum((int)PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel());          
+            m_labelmygold.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel());          
         }
     }
     public void SetPlayerName()
@@ -1428,7 +1414,7 @@ public class GameCarUI
         newitem.SetActive(true);
         newitem.transform.GetChild(0).GetComponent<UILabel>().text = byOrder.ToString();
         newitem.transform.GetChild(1).GetComponent<UILabel>().text = name;
-        newitem.transform.GetChild(2).GetComponent<UILabel>().text = FormatNum(gold);
+        newitem.transform.GetChild(2).GetComponent<UILabel>().text = Utility.NumToString(gold);
         return newitem.transform;
     }
     Transform ClonePlayerListItem(Transform trans, string name, int gold)
@@ -1436,7 +1422,7 @@ public class GameCarUI
         GameObject newitem=GameObject.Instantiate(trans.gameObject);
         newitem.SetActive(true);
         newitem.transform.GetChild(1).GetComponent<UILabel>().text=name;
-        newitem.transform.GetChild(2).GetComponent<UILabel>().text=FormatNum(gold);
+        newitem.transform.GetChild(2).GetComponent<UILabel>().text = Utility.NumToString(gold);
         return newitem.transform;
     }
 //    class PlayListItem 
