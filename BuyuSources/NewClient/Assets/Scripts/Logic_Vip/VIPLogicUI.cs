@@ -313,8 +313,8 @@ public class VIPDetailItem : BaseWnd
         if (pVipInfo.VipLevel >= 5)
         {
             m_LaunchIcon.spriteName = "1305";
-            m_DescLabel[0].text = "免费获得 ? 炮";
-            m_DescLabel[1].text = "开启 ? 技能";
+            m_DescLabel[0].text = StringTable.GetString("VIP_Desc_3");
+            m_DescLabel[1].text = StringTable.GetString("VIP_Desc_4");
             return;
         }
 
