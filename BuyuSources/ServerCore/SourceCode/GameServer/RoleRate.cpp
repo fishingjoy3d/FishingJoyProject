@@ -107,7 +107,7 @@ void RoleRate::GetInitRateReward()
 				continue;
 			WORD RateSum = g_FishServer.GetTableManager()->GetGameConfig()->BulletMultiple(i);
 			//发送邮件
-			_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("解锁%u倍倍率奖励补偿"), RateSum);
+			_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(41), RateSum);
 			MailInfo.RewardID = RewardID;
 			MailInfo.RewardSum = 1;
 			msg.MailInfo = MailInfo;

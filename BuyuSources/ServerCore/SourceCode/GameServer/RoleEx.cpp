@@ -215,10 +215,19 @@ void CRoleEx::OnHandleRoleVersionChange()
 			//发送邮件
 			tagRoleMail	MailInfo;
 			MailInfo.bIsRead = false;
+			//if (ChangeRate == 2)
+			//	_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"),1302);
+			//else
+			//	_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的补偿款"), 1302);
 			if (ChangeRate == 2)
-				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"),1302);
+			{
+				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context),g_FishServer.GetFishConfig().GetConfigCharacters(38), 1302);
+			}
 			else
-				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的补偿款"), 1302);
+			{
+				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(39), 1302);
+				//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"), 1302);
+			}
 			MailInfo.RewardID = g_FishServer.GetFishConfig().GetSystemConfig().EmailCurrceyRewardID;
 			MailInfo.RewardSum = AddCurrcey;
 			MailInfo.MailID = 0;
@@ -245,10 +254,19 @@ void CRoleEx::OnHandleRoleVersionChange()
 			//发送邮件
 			tagRoleMail	MailInfo;
 			MailInfo.bIsRead = false;
+			//if (ChangeRate == 2)
+			//	_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"), 1303);
+			//else
+			//	_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的补偿款"), 1303);
 			if (ChangeRate == 2)
-				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"), 1303);
+			{
+				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(38), 1303);
+			}
 			else
-				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的补偿款"), 1303);
+			{
+				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(39), 1303);
+				//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"), 1302);
+			}
 			MailInfo.RewardID = g_FishServer.GetFishConfig().GetSystemConfig().EmailCurrceyRewardID;
 			MailInfo.RewardSum = AddCurrcey;
 			MailInfo.MailID = 0;
@@ -275,10 +293,19 @@ void CRoleEx::OnHandleRoleVersionChange()
 			//发送邮件
 			tagRoleMail	MailInfo;
 			MailInfo.bIsRead = false;
+			//if (ChangeRate == 2)
+			//	_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"), 1304);
+			//else
+			//	_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的补偿款"), 1304);
 			if (ChangeRate == 2)
-				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"), 1304);
+			{
+				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(38), 1304);
+			}
 			else
-				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的补偿款"), 1304);
+			{
+				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(39), 1304);
+				//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"), 1302);
+			}
 			MailInfo.RewardID = g_FishServer.GetFishConfig().GetSystemConfig().EmailCurrceyRewardID;
 			MailInfo.RewardSum = AddCurrcey;
 			MailInfo.MailID = 0;

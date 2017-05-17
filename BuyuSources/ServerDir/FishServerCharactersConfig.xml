@@ -1,0 +1,47 @@
+﻿<FishServerCharactersConfig>
+	<Info ID="1" Characters="恭喜您获得{MonthName:MonthID=%d}万金币赛的第%d名 得到以下奖励"/>
+	<Info ID="2" Characters="恭喜您充值成功 因为您不在线 所有充值奖励通过邮件发送给您"/>
+	<Info ID="3" Characters="手机话费充值失败 我们将奖牌通过邮件退还给您"/>
+	<Info ID="4" Characters="手机话费充值失败 我们将金币通过邮件退还给您"/>
+	<Info ID="5" Characters="手机话费充值失败 我们将钻石通过邮件退还给您"/>
+	<Info ID="6" Characters="恭喜您充值成功 所有充值奖励通过邮件发送给您"/>
+	<Info ID="7" Characters="您购买的{ItemName:ItemID=%u} 数量:%u 已经发货 快递单号为:%s"/>
+	<Info ID="8" Characters="用户"/>
+	<Info ID="9" Characters="方块"/>
+	<Info ID="10" Characters="梅花"/>
+	<Info ID="11" Characters="红桃"/>
+	<Info ID="12" Characters="黑桃"/>
+	<Info ID="13" Characters="未知"/>
+	<Info ID="14" Characters="兑换码获取奖励"/>
+	<Info ID="15" Characters="打开包裹物品 获得奖励"/>
+	<Info ID="16" Characters="手机话费充值失败 我们将奖牌通过邮件退还给您"/>
+	<Info ID="17" Characters="手机话费充值失败 我们将金币通过邮件退还给您"/>
+	<Info ID="18" Characters="手机话费充值失败 我们将钻石通过邮件退还给您"/>
+	<Info ID="19" Characters="充值获得钻石"/>
+	<Info ID="20" Characters="充值获得奖励"/>
+	<Info ID="21" Characters="游客"/>
+	<Info ID="22" Characters="开启新的倍率"/>
+	<Info ID="23" Characters="开启新的倍率失败退还钻石"/>
+	<Info ID="24" Characters="重置比赛 扣除货币"/>
+	<Info ID="25" Characters="重置比赛 扣除门票失败 归还已经扣除的奖牌"/>
+	<Info ID="26" Characters="重置比赛 扣除门票失败 归还已经扣除的钻石"/>
+	<Info ID="27" Characters="奔驰宝马下注失败 退还下注金币"/>
+	<Info ID="28" Characters="奔驰宝马结果 因为您不在线 奖励金币通过邮件发送给您"/>
+	<Info ID="29" Characters="奔驰宝马抢庄失败 退还金币"/>
+	<Info ID="30" Characters="森林舞会下注失败 退还下注金币"/>
+	<Info ID="31" Characters="森林舞会结果 因为您不在线 奖励金币通过邮件发送给您"/>
+	<Info ID="32" Characters="森林舞会抢庄失败 退还金币"/>
+	<Info ID="33" Characters="森林舞会下注失败 退还金币"/>
+	<Info ID="34" Characters="下注失败 退还下注金币"/>
+	<Info ID="35" Characters="牛牛结果 因为您不在线 奖励金币通过邮件发送给您"/>
+	<Info ID="36" Characters="因为您牛牛游戏失败 扣除您%d 的金币"/>
+	<Info ID="37" Characters="抢庄失败 退还金币"/>
+	<Info ID="38" Characters="{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的双倍补偿款"/>
+	<Info ID="39" Characters="{ItemName:ItemID=%u}炮 获取机制已经被修改 特退还您购买炮的补偿款"/>
+	<Info ID="40" Characters="%s 赠送了您 %u个 {ItemName:ItemID=%u}"/>
+	<Info ID="41" Characters="解锁%u倍倍率奖励补偿"/>
+	<Info ID="42" Characters="%s因为关系已满 无法添加"/>
+	<Info ID="43" Characters="因为关系已满 无法添加好友请求"/>
+	<Info ID="44" Characters="%s 拒绝了您的关系申请"/>
+	<Info ID="45" Characters="%s同意关系请求 但因为关系已经满了 添加失败"/>
+</FishServerCharactersConfig>

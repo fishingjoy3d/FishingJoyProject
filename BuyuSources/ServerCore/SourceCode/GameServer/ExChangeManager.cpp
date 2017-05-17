@@ -54,8 +54,10 @@ void ExChangeManager::OnUseExChangeCodeDBResult(DBO_Cmd_QueryExChange* pMsg)
 				pRole->ChangeRoleExChangeStates(States);
 
 				//·¢ËÍ½±Àø
-				pRole->OnAddRoleRewardByRewardID(Iter->second.RewardID, TEXT("¶Ò»»Âë»ñÈ¡½±Àø"));
-
+				
+				//pRole->OnAddRoleRewardByRewardID(Iter->second.RewardID, TEXT("¶Ò»»Âë»ñÈ¡½±Àø"));
+				pRole->OnAddRoleRewardByRewardID(Iter->second.RewardID, g_FishServer.GetFishConfig().GetConfigCharacters(14));
+				
 				//É¾³ý¶Ò»»Âë
 				DBR_Cmd_DelExChange msg;
 				SetMsgInfo(msg, DBR_DelExChange, sizeof(DBR_Cmd_DelExChange));

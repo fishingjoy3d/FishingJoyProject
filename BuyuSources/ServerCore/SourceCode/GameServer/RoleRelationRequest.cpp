@@ -240,7 +240,8 @@ void RoleRelationRequest::OnHandleRequest(DWORD ID, bool Result)
 			{
 				tagRoleMail	MailInfo;
 				MailInfo.bIsRead = false;
-				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s因为关系已满 无法添加"), m_pRole->GetRoleInfo().NickName);
+				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(42), m_pRole->GetRoleInfo().NickName);
+				//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s因为关系已满 无法添加"), m_pRole->GetRoleInfo().NickName);
 				MailInfo.RewardID = 0;
 				MailInfo.RewardSum = 0;
 				MailInfo.MailID = 0;
@@ -258,7 +259,8 @@ void RoleRelationRequest::OnHandleRequest(DWORD ID, bool Result)
 			{
 				tagRoleMail	MailInfo;
 				MailInfo.bIsRead = false;
-				TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("因为关系已满 无法添加好友请求"), _tcslen(TEXT("因为关系已满 无法添加好友请求")));
+				//TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("因为关系已满 无法添加好友请求"), _tcslen(TEXT("因为关系已满 无法添加好友请求")));
+				TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(43), _tcslen(g_FishServer.GetFishConfig().GetConfigCharacters(43)));
 				MailInfo.RewardID = 0;
 				MailInfo.RewardSum = 0;
 				MailInfo.MailID = 0;
@@ -305,7 +307,8 @@ void RoleRelationRequest::OnHandleRequest(DWORD ID, bool Result)
 		{
 			tagRoleMail	MailInfo;
 			MailInfo.bIsRead = false;
-			_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s 拒绝了您的关系申请"), m_pRole->GetRoleInfo().NickName);
+			//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s 拒绝了您的关系申请"), m_pRole->GetRoleInfo().NickName);
+			_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(44), m_pRole->GetRoleInfo().NickName);
 			MailInfo.RewardID = 0;
 			MailInfo.RewardSum = 0;
 			MailInfo.MailID = 0;
@@ -388,7 +391,9 @@ void RoleRelationRequest::OnAddRelationResult(DWORD SrcUserID, DWORD DestUserID,
 					{
 						tagRoleMail	MailInfo;
 						MailInfo.bIsRead = false;
-						_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s同意关系请求 但因为关系已经满了 添加失败"), Iter->second.Info.SrcNickName);
+						_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(45), Iter->second.Info.SrcNickName);
+
+						//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s同意关系请求 但因为关系已经满了 添加失败"), Iter->second.Info.SrcNickName);
 						MailInfo.RewardID = 0;
 						MailInfo.RewardSum = 0;
 						MailInfo.MailID = 0;
@@ -406,7 +411,8 @@ void RoleRelationRequest::OnAddRelationResult(DWORD SrcUserID, DWORD DestUserID,
 					{
 						tagRoleMail	MailInfo;
 						MailInfo.bIsRead = false;
-						TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("因为关系已满 无法添加好友请求"), _tcslen(TEXT("因为关系已满 无法添加好友请求")));
+						//TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("因为关系已满 无法添加好友请求"), _tcslen(TEXT("因为关系已满 无法添加好友请求")));
+						TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(43), _tcslen(g_FishServer.GetFishConfig().GetConfigCharacters(43)));
 						MailInfo.RewardID = 0;
 						MailInfo.RewardSum = 0;
 						MailInfo.MailID = 0;
@@ -442,7 +448,8 @@ void RoleRelationRequest::OnAddRelationResult(DWORD SrcUserID, DWORD DestUserID,
 					{
 						tagRoleMail	MailInfo;
 						MailInfo.bIsRead = false;
-						_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s因为关系已满 无法添加"), m_pRole->GetRoleInfo().NickName);
+						//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s因为关系已满 无法添加"), m_pRole->GetRoleInfo().NickName);
+						_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(42), m_pRole->GetRoleInfo().NickName);
 						MailInfo.RewardID = 0;
 						MailInfo.RewardSum = 0;
 						MailInfo.MailID = 0;
@@ -460,7 +467,8 @@ void RoleRelationRequest::OnAddRelationResult(DWORD SrcUserID, DWORD DestUserID,
 					{
 						tagRoleMail	MailInfo;
 						MailInfo.bIsRead = false;
-						TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("因为关系已满 无法添加好友请求"), _tcslen(TEXT("因为关系已满 无法添加好友请求")));
+						//TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("因为关系已满 无法添加好友请求"), _tcslen(TEXT("因为关系已满 无法添加好友请求")));
+						TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(43), _tcslen(g_FishServer.GetFishConfig().GetConfigCharacters(43)));
 						MailInfo.RewardID = 0;
 						MailInfo.RewardSum = 0;
 						MailInfo.MailID = 0;
@@ -522,7 +530,8 @@ void RoleRelationRequest::OnBeHandleRequest(tagRelationRequest& pRequest, bool R
 			{
 				tagRoleMail	MailInfo;
 				MailInfo.bIsRead = false;
-				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s同意关系请求 但因为关系已经满了 添加失败"), pRequest.SrcNickName);
+				//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s同意关系请求 但因为关系已经满了 添加失败"), pRequest.SrcNickName);
+				_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(45), pRequest.SrcNickName);
 				MailInfo.RewardID = 0;
 				MailInfo.RewardSum = 0;
 				MailInfo.MailID = 0;
@@ -540,7 +549,8 @@ void RoleRelationRequest::OnBeHandleRequest(tagRelationRequest& pRequest, bool R
 			{
 				tagRoleMail	MailInfo;
 				MailInfo.bIsRead = false;
-				TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("因为关系已满 无法添加好友请求"), _tcslen(TEXT("因为关系已满 无法添加好友请求")));
+				//TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("因为关系已满 无法添加好友请求"), _tcslen(TEXT("因为关系已满 无法添加好友请求")));
+				TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(43), _tcslen(g_FishServer.GetFishConfig().GetConfigCharacters(43)));
 				MailInfo.RewardID = 0;
 				MailInfo.RewardSum = 0;
 				MailInfo.MailID = 0;

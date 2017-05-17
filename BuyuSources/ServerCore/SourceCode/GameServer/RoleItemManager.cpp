@@ -222,7 +222,8 @@ bool RoleItemManger::OnTryAcceptItemToFriend(DWORD DestUserID,DWORD ItemOnlyID, 
 	tagRoleMail	MailInfo;
 	MailInfo.bIsRead = false;
 	//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 
-	_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s 赠送了您 %u个 {ItemName:ItemID=%u}"), m_pUser->GetRoleInfo().NickName,ItemSum,ItemID);
+	//_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), TEXT("%s 赠送了您 %u个 {ItemName:ItemID=%u}"), m_pUser->GetRoleInfo().NickName,ItemSum,ItemID);
+	_sntprintf_s(MailInfo.Context, CountArray(MailInfo.Context), g_FishServer.GetFishConfig().GetConfigCharacters(40), m_pUser->GetRoleInfo().NickName, ItemSum, ItemID);
 	//将ItemID 转化为 RewardID 或者邮件携带 物品进行处理? 
 	MailInfo.RewardID = static_cast<WORD>(pItemConfig->ItemParam);//聚宝盆的奖励ID 
 	MailInfo.RewardSum = ItemSum;
