@@ -227,7 +227,7 @@ void DlgGMToolListPage::RefrashRoleList()
 		m_ListCtrlRoles.SetItemText(i, 26, (LPCTSTR)sz);
 		swprintf_s(sz, TEXT("%llu"), role.GetMonthCardRewardTime);
 		m_ListCtrlRoles.SetItemText(i, 27, (LPCTSTR)sz);
-		swprintf_s(sz, TEXT("unkonow"));
+		swprintf_s(sz, TEXT("unknow"));
 		m_ListCtrlRoles.SetItemText(i, 28, (LPCTSTR)sz);
 		swprintf_s(sz, TEXT("%u"), role.CashSum);
 		m_ListCtrlRoles.SetItemText(i, 29, (LPCTSTR)sz);
