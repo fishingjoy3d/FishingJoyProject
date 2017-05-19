@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <FishString>
   <start_error>遊戲啟動失敗，請檢查磁碟空間是否已滿.</start_error>
   <update_error>遊戲更新失敗，請重新啟動再嘗試.</update_error>
@@ -1028,6 +1028,5 @@
   <UOM_Car_LeaveVip_Failed IsShow="1">離開貴賓席失敗</UOM_Car_LeaveVip_Failed>
   <UOM_Car_LeaveVip_Failed_1 IsShow="1">離開貴賓席失敗 不在貴賓席上</UOM_Car_LeaveVip_Failed_1>
   <UOM_Car_LeaveVip_Failed_2 IsShow="1">離開貴賓席失敗 系統錯誤</UOM_Car_LeaveVip_Failed_2>
-
 
 </FishString>

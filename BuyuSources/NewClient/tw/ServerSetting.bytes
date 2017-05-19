@@ -1,4 +1,4 @@
-﻿<Config>
+<Config>
     <ServerVersion version="0" maxbullet="20" maxfish="300" wonderful_base="300" />
     <Combo sustain_time="2" buff_cycle="10" bufferchance="0.500" />
     <Energy>
