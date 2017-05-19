@@ -1238,7 +1238,8 @@ bool FishServer::OnHandleQueryLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 
 	//用户名称
 	//参数一个随机长度的 名称 8个长度  游客+ '长度为6的 数据'
-	string strNickName = "用户";
+	string strNickName = "";
+	GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(8), strNickName);
 	for (size_t i = 0; i < MAX_NICKNAME - 2; ++i)
 	{
 		BYTE ID = RandUInt() % 62;//0-61
@@ -1346,7 +1347,11 @@ bool FishServer::OnHandleOperatorLogon(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	m_Sql[Index].GetMySqlEscapeString(MacAddress, Size, DestMacAddress);
 
 	//参数一个随机长度的 名称 8个长度  游客+ '长度为6的 数据'
-	string strNickName = "用户";
+	//GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(8), strNickName);
+	//GetFishConfig().GetConfigCharacters(8)
+	//string strNickName = "用户";
+	string strNickName = "";
+	GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(8), strNickName);
 	for (size_t i = 0; i < MAX_NICKNAME - 2; ++i)
 	{
 		BYTE ID = RandUInt() % 62;//0-61
@@ -1455,7 +1460,8 @@ bool FishServer::OnHandleAccountRsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	m_Sql[Index].GetMySqlEscapeString(MacAddress, Size, DestMacAddress);
 
 	//参数一个随机长度的 名称 8个长度  游客+ '长度为6的 数据'
-	string strNickName = "用户";
+	string strNickName = "";
+	GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(8), strNickName);
 	for (size_t i = 0; i < MAX_NICKNAME - 2; ++i)
 	{
 		BYTE ID = RandUInt() % 62;//0-61
@@ -1964,7 +1970,9 @@ bool FishServer::OnHandleGetNewAccount(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		strAccountName = strAccountName + ch;
 	}
 	//名称
-	string strNickName = "游客";;
+	//string strNickName = "游客";;
+	string strNickName = "";
+	GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(21), strNickName);
 	for (size_t i = 0; i < MAX_NICKNAME - 2; ++i)
 	{
 		BYTE ID = RandUInt() % 62;//0-61
@@ -5728,9 +5736,19 @@ bool FishServer::OnHandleLogNiuNiuTableInfo(BYTE Index, BYTE ClientID, NetCmd* p
 				ASSERT(false);
 				continue;
 			}
-
-			string TypeStr = (Type == 0 ? "方块" : (Type == 1 ? "梅花" : (Type == 2 ? "红桃" : (Type == 3 ? "黑桃" : "未知"))));
-			string ValueStr = (Value <= 10 ? ValueStrArray : (Value == 11 ? "J" : (Value == 12 ? "Q" : (Value == 13 ? "K" : "未知"))));
+			std::string temp_1 = "";//"方块";
+			std::string temp_2 = "";//"梅花";
+			std::string temp_3 = "";//"红桃";
+			std::string temp_4 = "";//"黑桃";
+			std::string temp_5 = "";//"未知";
+			
+			GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(9), temp_1);
+			GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(10), temp_2);
+			GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(11), temp_3);
+			GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(12), temp_4);
+			GetFishConfig().TCHAR2STRING(GetFishConfig().GetConfigCharacters(13), temp_5);
+			string TypeStr = (Type == 0 ? temp_1 : (Type == 1 ? temp_2 : (Type == 2 ? temp_3 : (Type == 3 ? temp_4 : temp_5))));
+			string ValueStr = (Value <= 10 ? ValueStrArray : (Value == 11 ? "J" : (Value == 12 ? "Q" : (Value == 13 ? "K" : temp_5))));
 
 			if (j == MAX_NIUNIU_BrandSum - 1)
 				BrandStr[i] += (TypeStr + ValueStr);

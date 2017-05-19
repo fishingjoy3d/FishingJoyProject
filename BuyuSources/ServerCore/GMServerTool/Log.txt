@@ -10,3 +10,5 @@
 ╤оят[2017 4 18 11:57:54]: e:\code\hardwareproject\hardwareproject\hardwareproject\buyusources\servercore\gmservertool\gmtoolmanager.cpp GMToolManager::SendNetCmdToControl 195
 ╤оят[2017 4 18 11:57:55]: e:\code\hardwareproject\hardwareproject\hardwareproject\buyusources\servercore\gmservertool\gmtoolmanager.cpp GMToolManager::SendNetCmdToControl 195
 ╤оят[2017 4 18 11:57:55]: e:\code\hardwareproject\hardwareproject\hardwareproject\buyusources\servercore\gmservertool\gmtoolmanager.cpp GMToolManager::SendNetCmdToControl 195
+╤оят[2017 5 17 11:50:38]: GMToolManager.cpp GMToolManager::SendNetCmdToControl 253
+╤оят[2017 5 17 11:50:41]: GMToolManager.cpp GMToolManager::SendNetCmdToControl 253

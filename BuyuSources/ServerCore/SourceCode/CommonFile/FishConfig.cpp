@@ -2803,7 +2803,7 @@ bool FishConfig::GetStrIndeof(TCHAR* pStr, TCHAR* FindStr)
 		return false;
 }
 
-void FishConfig::TCHAR2STRING(TCHAR *STR, std::string& out)
+void FishConfig::TCHAR2STRING(const TCHAR *STR, std::string& out)
 {
 
 	int iLen = WideCharToMultiByte(CP_ACP, 0,STR, -1, NULL, 0, NULL, NULL);
@@ -2812,8 +2812,44 @@ void FishConfig::TCHAR2STRING(TCHAR *STR, std::string& out)
 	out = chRtn;
 	
 }
+bool FishConfig::LoadWord()
+{
+	WHXml pXml;
+	if (!pXml.LoadXMLFilePath(TEXT("FishServerCharactersConfig.xml")))
+	{
+		ASSERT(false);
+		return false;
+	}
 
+	WCHAR temp_characters[1024];
+	WHXmlNode* pInfo = pXml.GetChildNodeByName(TEXT("Info"));
+	while (pInfo)
+	{
+		int ID = 0;
+		if (pInfo->GetAttribute(TEXT("ID"), ID) == false)
+		{
+			ASSERT(false);
+			return false;
+		}
 
+		if (!pInfo->GetAttribute(TEXT("Characters"), temp_characters, CountArray(temp_characters)))
+			return false;
+		std::wstring str = temp_characters;
+		m_configCharacters[ID] = str;
+	}
+	return true;
+}
+
+const WCHAR* FishConfig::GetConfigCharacters(int id)
+{
+	std::wstring entry;
+	HashMap<DWORD, std::wstring>::iterator it = m_configCharacters.find(id);
+	if (it != m_configCharacters.end())
+	{
+		return it->second.c_str();
+	}
+	return NULL;
+}
 
 bool FishConfig::LoadGMToolConfig(const TCHAR* FilePath)
 {

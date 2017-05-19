@@ -78,7 +78,8 @@ void FishPackageManager::OnOpenFishPackage(CRoleEx* pRole, DWORD ItemOnlyID, DWO
 			if (RankValue <= IterItem->RankValue)
 			{
 				//添加物品了
-				pRole->OnAddRoleRewardByRewardID(IterItem->RewardID,TEXT("打开包裹物品 获得奖励"));
+				//pRole->OnAddRoleRewardByRewardID(IterItem->RewardID,TEXT("打开包裹物品 获得奖励"));
+				pRole->OnAddRoleRewardByRewardID(IterItem->RewardID, g_FishServer.GetFishConfig().GetConfigCharacters(15));
 				msgOpen->RewardID[i] = IterItem->RewardID;
 				break;
 			}
@@ -126,7 +127,8 @@ void FishPackageManager::OnAutoOpenFishPackage(CRoleEx* pRole, DWORD PackageItem
 			if (RankValue <= IterItem->RankValue)
 			{
 				//添加物品了
-				pRole->OnAddRoleRewardByRewardID(IterItem->RewardID, TEXT("打开包裹物品 获得奖励"));
+				//pRole->OnAddRoleRewardByRewardID(IterItem->RewardID,TEXT("打开包裹物品 获得奖励"));
+				pRole->OnAddRoleRewardByRewardID(IterItem->RewardID, g_FishServer.GetFishConfig().GetConfigCharacters(15));
 				break;
 			}
 		}

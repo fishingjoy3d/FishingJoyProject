@@ -35,10 +35,13 @@ public:
 	FishConfig();
 	virtual ~FishConfig();
 
-	bool LoadConfigFilePath();
-	void OnDestroy();
-	void TCHAR2STRING(TCHAR *STR, std::string& out);
 
+
+	bool LoadConfigFilePath();
+	bool LoadWord();
+	void OnDestroy();
+	void TCHAR2STRING(const TCHAR *STR, std::string& out);
+	const WCHAR* GetConfigCharacters(int id);
 
 	RoleCheckConfig& GetCheckConfig(){ return m_CheckConfig; }
 	tagTaskMap&		 GetTaskConfig(){ return m_TaskConfig; }
@@ -154,7 +157,6 @@ private:
 	tagFishRechargesMap			m_FishRechargeMap;
 	//std::vector<TCHAR*>			m_ErrorStr;//屏蔽字
 	tagErrorMap					m_ErrorStr;
-
 	LevelRewardMap				m_LevelRewardMap;
 	tagExChangeMap				m_ExChangeMap;
 	tagRoleProtectConfig		m_RoleProctectMap;
@@ -162,12 +164,11 @@ private:
 	tagVipConfig				m_VipMap;
 	tagMonthCardConfig			m_MonthCardMap;
 	tagFishDropConfig			m_FishDropConfig;
-
 	tagMiNiGameConfig			m_MiniGameConfig;
-
 	tagGameRobotInfo			m_GameRobotConfig;
 	tgGMToolConfig				m_GMTool;
 	HashMap<DWORD,tagNotice>	m_NoticeMap;//公告的结构
 	tagOperatorShopCongfigMap   m_OperatorShopConfig;
 	HashMap<DWORD, tagChannelConfig>	m_ChannelConfig;
+	HashMap<DWORD, std::wstring>  m_configCharacters;
 };
