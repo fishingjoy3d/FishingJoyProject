@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<channel_setting>
+  <!-- 渠道比赛标题 -->
+  <match_title>
+    <item title="比赛专区" package="com.leduo.buyu"/>
+    <item title="360比赛专区" package="com.leduo.buyu.three"/>
+    <item title="当乐比赛专区" package="com.leduo.buyu.dangle"/>	
+    <item title="魅族比赛专区" package="com.leduo.buyu.mz"/>	
+    <item title="乐视比赛专区" package="com.leduo.buyu.leshi"/>
+	<item title="豌豆荚比赛专区" package="com.leduo.buyu.wdj"/>
+	<item title="电信比赛专区" package="com.leduo.buyu.egame"/>
+	<item title="OPPO比赛专区" package="com.leduo.buyu.nearme.gamecenter"/>	
+    <item title="阿里游戏专区" package="com.leduo.buyu.uc"/>
+    <item title="百度比赛专区" package="com.leduo.buyu.baidu"/>
+    <item title="安智比赛专区" package="com.leduo.buyu.anzhi"/>	
+    <item title="HTC聚乐比赛专区" package="com.leduo.buyu.htc"/>
+    <item title="猎宝比赛专区" package="com.leduo.buyu.lb"/>
+    <item title="虫虫助手比赛专区" package="com.leduo.buyu.chong"/>	
+    <item title="安趣比赛专区" package="com.leduo.buyu.anqu"/>	
+    <item title="07073比赛专区" package="com.cy.mobile.leduobuyu.shouyou"/>	
+    <item title="小米比赛专区" package="com.leduo.buyu.mi"/>
+    <item title="华为比赛专区" package="com.leduo.buyu.huawei"/>
+    <item title="顺网比赛专区" package="com.leduo.buyu.shunwang"/>		
+  </match_title>
+</channel_setting>

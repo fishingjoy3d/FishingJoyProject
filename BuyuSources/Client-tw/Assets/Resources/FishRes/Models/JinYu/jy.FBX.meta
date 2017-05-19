@@ -1,0 +1,171 @@
+fileFormatVersion: 2
+guid: a554c238056c7884ca52c68955cc37de
+timeCreated: 1442629812
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Bone001
+    100002: Bone002
+    100004: Bone003
+    100006: Bone004
+    100008: Bone005
+    100010: Bone006
+    100012: Bone006(mirrored)
+    100014: Bone007
+    100016: Bone007(mirrored)
+    100018: Bone008
+    100020: Bone008(mirrored)
+    100022: Bone009
+    100024: Bone009(mirrored)
+    100026: Bone010
+    100028: Bone010(mirrored)
+    100030: Bone011
+    100032: Bone011(mirrored)
+    100034: Bone012
+    100036: Bone012(mirrored)
+    100038: Bone013
+    100040: Bone013(mirrored)
+    100042: Bone014
+    100044: Bone014(mirrored)
+    100046: Bone015
+    100048: Bone015(mirrored)
+    100050: Bone016
+    100052: Bone016(mirrored)
+    100054: Bone017
+    100056: Bone017(mirrored)
+    100058: Bone018
+    100060: Bone018(mirrored)
+    100062: Bone019
+    100064: Bone020
+    100066: Bone021
+    100068: Bone022
+    100070: Bone023
+    100072: Bone023(mirrored)
+    100074: Bone024
+    100076: Bone024(mirrored)
+    100078: Bone025
+    100080: Bone025(mirrored)
+    100082: Bone026
+    100084: Bone026(mirrored)
+    100086: Box001
+    100088: Dummy002
+    100090: //RootNode
+    100092: Bone027
+    100094: Box00111
+    400000: Bone001
+    400002: Bone002
+    400004: Bone003
+    400006: Bone004
+    400008: Bone005
+    400010: Bone006
+    400012: Bone006(mirrored)
+    400014: Bone007
+    400016: Bone007(mirrored)
+    400018: Bone008
+    400020: Bone008(mirrored)
+    400022: Bone009
+    400024: Bone009(mirrored)
+    400026: Bone010
+    400028: Bone010(mirrored)
+    400030: Bone011
+    400032: Bone011(mirrored)
+    400034: Bone012
+    400036: Bone012(mirrored)
+    400038: Bone013
+    400040: Bone013(mirrored)
+    400042: Bone014
+    400044: Bone014(mirrored)
+    400046: Bone015
+    400048: Bone015(mirrored)
+    400050: Bone016
+    400052: Bone016(mirrored)
+    400054: Bone017
+    400056: Bone017(mirrored)
+    400058: Bone018
+    400060: Bone018(mirrored)
+    400062: Bone019
+    400064: Bone020
+    400066: Bone021
+    400068: Bone022
+    400070: Bone023
+    400072: Bone023(mirrored)
+    400074: Bone024
+    400076: Bone024(mirrored)
+    400078: Bone025
+    400080: Bone025(mirrored)
+    400082: Bone026
+    400084: Bone026(mirrored)
+    400086: Box001
+    400088: Dummy002
+    400090: //RootNode
+    400092: Bone027
+    400094: Box00111
+    4300000: Box001
+    4300002: Box00111
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Box001
+    13700002: Box00111
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
