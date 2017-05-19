@@ -1,0 +1,1033 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FishString>
+  <start_error>遊戲啟動失敗，請檢查磁碟空間是否已滿.</start_error>
+  <update_error>遊戲更新失敗，請重新啟動再嘗試.</update_error>
+  <res_save_error>資源保存失敗，請檢查存儲空間是否已滿.</res_save_error>
+  <res_connect_error>遊戲更新失敗，請檢查網路環境.</res_connect_error>
+  <check_wait>正在檢查更新，請稍候...</check_wait>
+  <res_downloading>正在下載{0}，請稍候...</res_downloading>
+  <res_load_err>資源載入失敗，請檢查版本更新.</res_load_err>
+  <res_loading>正在載入(不消耗網路流量)...</res_loading>
+  <health_advice1>抵制不良遊戲 拒絕盜版遊戲 注意自我保護 謹防受騙上當</health_advice1>
+  <health_advice2>適度遊戲益腦 沉迷遊戲傷身 合理安排時間 享受健康生活</health_advice2>
+  <update_restart>已更新到最新版本，請重新啟動遊戲!</update_restart>
+  <logon_wait>正在登陸，請稍候...</logon_wait>
+  <join_hall_wait>正在進入遊戲大廳，請稍候...</join_hall_wait>
+  <join_hall_error>進入遊戲大廳失敗.</join_hall_error>
+  <join_scene_error>無可用遊戲房間...</join_scene_error>
+  <join_room_failed1>當前金幣不足[ff0000]{0}[-]無法進入此房間，您請...</join_room_failed1>
+  <join_room_failed2>您的金幣超過[ff0000]{0}[-]…請點擊確定進入其他房間</join_room_failed2>
+  <join_room_failed3>需解鎖[ff0000]{0}[-]倍率，您當前已解鎖[ff0000]{1}[-]倍，是否消耗[ff0000]{2}[-]鑽石解鎖至[ff0000]{3}[-]倍？</join_room_failed3>
+  <join_room_failed4>您的等級超過[ff0000]{0}[-]…請點擊確定進入其他房間</join_room_failed4>
+	<join_room_unlock_sussess>恭喜您解鎖成功！</join_room_unlock_sussess>
+  <join_failed>登陸失敗，請重新輸入帳戶和密碼.</join_failed>
+  <connect_server_err>與伺服器連接失敗，請稍候重試.</connect_server_err>
+  <disconnect>與伺服器網路斷開連接.</disconnect>
+  <cmd_error>未能識別的網路命令，請升級用戶端版本!</cmd_error>
+  <need_ver_update>請升級用戶端到最新版本!</need_ver_update>
+  <need_res_update>請重啟更新資源後再進入遊戲!</need_res_update>
+  <client_ver_err>與伺服器版本不匹配，請先升級用戶端!</client_ver_err>
+  <uploadfailed>頭像上傳失敗，請稍候再嘗試!</uploadfailed>
+  <uploadok>頭像上傳成功!</uploadok>
+  <uploading>頭像上傳中 {0}%...</uploading>
+  <clearmsg>魚潮即將來臨，請稍作等待…</clearmsg>
+  <updating>正在下載更新 {0}%...</updating>
+  <pressquit>再按一次返回鍵退出遊戲!</pressquit>
+  <jointableerror>不滿足進入房間的條件!</jointableerror>
+  <joinmontherror>不滿足進入比賽條件!</joinmontherror>
+  <sdkiniterr>SDK初始化失敗，請重新啟動遊戲</sdkiniterr>
+  <sdklogonfailed>請求登錄失敗，請稍後重試!</sdklogonfailed>
+  <sdkwelcome>歡迎,{0}用戶:{1}</sdkwelcome>
+  <unzipfileerr>檔解壓失敗，請下載最新的安裝檔!</unzipfileerr>
+  <fistunzpping>第一次運行正在解壓檔:{0}%</fistunzpping>
+  <downres_queue>下載資源排隊中:第 {0} 位</downres_queue>
+  <downver_queue>檢查更新排隊中:第 {0} 位</downver_queue>
+  <sdkchannel>點擊螢幕開始登錄遊戲</sdkchannel>
+	<Exit_Tips>您確定要退出遊戲嗎？</Exit_Tips>
+	<Exit_Tips1>您確定退出場景嗎？</Exit_Tips1>
+
+  <Runtime_Title>樂魚天地3D</Runtime_Title>
+  <Open_Photo_Tittle>選擇頭像</Open_Photo_Tittle>
+
+  <Mail_Add_Field>添加郵件失敗</Mail_Add_Field>
+  <Mail_Add_Sucess>添加郵件成功</Mail_Add_Sucess>
+  <Mail_Del_Field>刪除郵件失敗</Mail_Del_Field>
+  <Mail_Del_Field1>該郵件存在未領取的物品，無法刪除</Mail_Del_Field1>
+  <Mail_Del_Sucess>刪除郵件成功</Mail_Del_Sucess>
+  <Mail_GetItem_Field>領取系統郵件物品失敗</Mail_GetItem_Field>
+  <Mail_GetItem_Sucess>領取系統郵件物品成功</Mail_GetItem_Sucess>
+  <Mail_Send_Field>郵件內容不能為空</Mail_Send_Field>
+  <Mail_System>系統郵件</Mail_System>
+  <Mail_Valid_Time>剩餘時間：{0}天</Mail_Valid_Time>
+  <Mail_Valid_Time_2>一個星期以前</Mail_Valid_Time_2>
+  <Mail_Num>郵件數量：{0}/{1}</Mail_Num>
+
+  <Relation_Add_Field>添加好友失敗</Relation_Add_Field>
+  <Relation_Add_Sucess>添加好友成功</Relation_Add_Sucess>
+  <Relation_Del_Field>刪除好友失敗</Relation_Del_Field>
+  <Relation_Del_Sucess>刪除好友成功</Relation_Del_Sucess>
+  <Relation_Change_Field>改變關係失敗</Relation_Change_Field>
+  <Relation_Change_Sucess>改變關係成功</Relation_Change_Sucess>
+	<Get_Relation_Field>獲取好友資訊失敗</Get_Relation_Field>
+	<Find_Relation_Field>找不到指定好友</Find_Relation_Field>
+  <Relation_Message>留言：</Relation_Message>
+  <Relation_Online>線上</Relation_Online>
+  <Relation_Offline>離線</Relation_Offline>
+  <Relation_Num>當前好友數：{0}</Relation_Num>
+  <Relation_Present>[f8ea28]{0}[-]  贈送了您</Relation_Present>
+  <Relation_Accept_Present>已領取：{0}/{1}</Relation_Accept_Present>
+  <Relation_Accept_Present_2>今日已領取：{0}/{1}</Relation_Accept_Present_2>
+  <Relation_Add_Fail_2>他已經是你好友了</Relation_Add_Fail_2>
+
+  <GlobelShop_Shop_Sucess>金幣商店購買成功</GlobelShop_Shop_Sucess>
+  <GlobelShop_Shop_Field>金幣商店購買失敗</GlobelShop_Shop_Field>
+  <GlobelShop_Shop_phone>話費兌換進行中，請注意查收</GlobelShop_Shop_phone>
+  <GlobelShop_Shop_Field1>您的獎牌不足，購買失敗</GlobelShop_Shop_Field1>
+	<Shop_Exchange_Sum>今天剩餘兌換次數: {0}</Shop_Exchange_Sum>
+  <GlobalShop_Exchange_Notice>[000000FF]玩家  [-]{0}\n[000000FF]換取了  [-][FF0000FF]{1}[-]</GlobalShop_Exchange_Notice>
+  <GlobelShop_Sucess_2>恭喜您購買成功</GlobelShop_Sucess_2>
+  <GlobelShop_Fail_2>很可惜您的購買失敗</GlobelShop_Fail_2>
+
+  <Global_Times>次</Global_Times>
+  <Global_Hour>小時</Global_Hour>
+  <Global_Minute>分鐘</Global_Minute>
+  <Global_10_Thousand>萬</Global_10_Thousand>
+  <Global_Year>年</Global_Year>
+  <Global_Month>月</Global_Month>
+  <Global_Day>日</Global_Day>
+  <Global_Day_2>天</Global_Day_2>
+  <Global_Level>級</Global_Level>
+  <Global_Jewel>鑽石</Global_Jewel>
+  <Global_Gold>金幣</Global_Gold>
+  <Global_Medal>獎牌</Global_Medal>
+
+  <Achievement_Point>成就點：</Achievement_Point>
+  <Achievement_Point_2>成就點數：</Achievement_Point_2>
+  <Achievement_Rank>成就排名：</Achievement_Rank>
+  <Achievement_Rank_Down>成就排名：{0}名以後</Achievement_Rank_Down>
+
+  <Charm_Sucess>使用魅力道具成功</Charm_Sucess>
+  <Charm_Field>使用魅力道具失敗</Charm_Field>
+  <Charm_Tips>向Ta使用道具</Charm_Tips>
+  <Charm_My_Recv >我收到的魅力道具</Charm_My_Recv>
+
+  <Entity_Sucess>資料修改成功</Entity_Sucess>
+  <Entity_Field>資料修改失敗</Entity_Field>
+  <Change_Header_Field>圖片大小超出限制</Change_Header_Field>
+
+  <Giff_Send_Sucess>贈送成功</Giff_Send_Sucess>
+  <Giff_Send_Field>贈送失敗 </Giff_Send_Field>
+  <Giff_Recv_Sucess>接受贈禮成功</Giff_Recv_Sucess>
+   <Giff_Recv_Field>接收贈禮失敗 </Giff_Recv_Field>
+
+   <Month_Name>萬金幣賽</Month_Name>
+   <Month_Sigup_Field>比賽報名失敗</Month_Sigup_Field>
+   <Month_Sigup_Sucess>比賽報名成功</Month_Sigup_Sucess>
+   <Month_Join_Field>比賽參加失敗</Month_Join_Field>
+   <Month_Join_Sucess>比賽參加成功</Month_Join_Sucess>
+   <Month_AddGlobel_Field> 比賽續幣失敗 </Month_AddGlobel_Field>
+   <Month_AddGlobel_Sucess>比賽續幣成功</Month_AddGlobel_Sucess>
+   <Month_Reset_Field> 比賽重置失敗 </Month_Reset_Field>
+   <Month_Reset_Sucess>比賽重置成功 </Month_Reset_Sucess>
+   <Match_Leave_Warning>[282858]在本場比賽尚未結束前，您隨時可進入並參與比賽[-]</Match_Leave_Warning>
+   <Match_Start_Warning>[282858]精彩比賽馬上開始！主人您是否馬上進入？[-]</Match_Start_Warning>
+   <Match_BuyGold_Warning>[282858]您已沒有比賽幣~現在您還能續幣[ff0000]{0}[-]次，本次續幣需消耗[ff0000]{1}{2}[-]，獲得[ff0000]{3}[-]比賽幣。[-]</Match_BuyGold_Warning>
+   <Match_BuyGold_Warning2>[282858]很抱歉您已經沒有續幣次數，您還可以參與其他比賽場次！[-]</Match_BuyGold_Warning2>
+	<Match_BuyGold_Warning3>很抱歉您的續幣所需消耗的[ff0000]{0}[-]不足！</Match_BuyGold_Warning3>
+	<Match_End_Warning>[282858]您在本場比賽中獲得[ff0000]{0}[-]積分(VIP額外增加[ff0000]{1}[-]積分)排名第[ff0000]{2}[-]位，獎勵將以郵件形式發放！[-]</Match_End_Warning>
+	<Match_End_Warning2>[282858]您在本場比賽中獲得[ff0000]{0}[-]積分(VIP額外增加[ff0000]{1}[-]積分)未獲得名次，請再接再厲哦！[-]</Match_End_Warning2>
+   <Match_Gold_NotEnough>金幣不足</Match_Gold_NotEnough>
+	<Match_ContinueGold_Success>恭喜您續幣成功！</Match_ContinueGold_Success>
+	<Match_OpenLock_Success>恭喜您提升至3級,解鎖了比賽模式，趕快去參加比賽贏大獎吧！</Match_OpenLock_Success>
+	<Match_Scene_Guide>哇~您已經3級了可以參加比賽了耶~海量精品獎勵~速速來領取！</Match_Scene_Guide>
+  <ProtectNewBody>啊哦，主人，您的金幣花完了...Orz！現在送您@金幣，請再接再厲！</ProtectNewBody>
+	<Match_Scene_Rank_Tips>Tips:排名資料每30秒更新，獎勵由郵件發放</Match_Scene_Rank_Tips>
+  <Match_Time_Tips>比賽開始結束時間為{0}-{1}</Match_Time_Tips>
+
+  <Match_Score>積分{0}（vip加成：{1}）</Match_Score>
+  <Match_Score_2>分數: {0}</Match_Score_2>
+  <Match_Free>免費</Match_Free>
+  <Match_Today>今天</Match_Today>
+  <Match_Monday>星期一</Match_Monday>
+  <Match_Tuesday>星期二</Match_Tuesday>
+  <Match_Wednesday>星期三</Match_Wednesday>
+  <Match_Thursday>星期四</Match_Thursday>
+  <Match_Friday>星期五</Match_Friday>
+  <Match_Saturday>星期六</Match_Saturday>
+  <Match_Sunday>星期日</Match_Sunday>
+
+   <Online_Sucess>領取線上獎勵成功</Online_Sucess>
+   <Online_Field>領取線上獎勵失敗</Online_Field>
+   <Activity_Reward_Success>活動獎勵領取成功</Activity_Reward_Success>
+   <Activity_Reward_Field>活動獎勵領取失敗</Activity_Reward_Field>
+
+	<Shop_Sucess>購買物品成功</Shop_Sucess>
+  <Shop_Field>購買物品失敗</Shop_Field>
+  <Shop_OnOKBuy>請您確認是否購買？</Shop_OnOKBuy>
+
+  <NiuNiu_Host>解悶大師</NiuNiu_Host>
+  <NiuNiu_Not_In_Line>未排隊</NiuNiu_Not_In_Line>
+  <NiuNiu_AddBankerList>正在上莊</NiuNiu_AddBankerList>
+
+  <Rank_History>上周排名：</Rank_History>
+  <Rank_History_Not_On_The_List>上周未上榜</Rank_History_Not_On_The_List>
+  <Rank_Now>當前排名:</Rank_Now>
+  <Rank_Not_On_The_List>當前未上榜</Rank_Not_On_The_List>
+
+  <Lottery_Level_1>青銅</Lottery_Level_1>
+  <Lottery_Level_2>白銀</Lottery_Level_2>
+  <Lottery_Level_3>黃金</Lottery_Level_3>
+  <Lottery_Level_4>白金</Lottery_Level_4>
+  <Lottery_Level_5>至尊</Lottery_Level_5>
+
+  <Dial_Red>紅</Dial_Red>
+  <Dial_Yellow>黃</Dial_Yellow>
+  <Dial_Green>綠</Dial_Green>
+  <Dial_Panda>熊貓</Dial_Panda>
+  <Dial_Monkey>猴子</Dial_Monkey>
+  <Dial_Rabbit>兔子</Dial_Rabbit>
+  <Dial_Lion>獅子</Dial_Lion>
+
+  <Role_User>用戶</Role_User>
+  <Role_Guest>遊客</Role_Guest>
+
+  <DayHourMinSec>{0}天{1}小時{2}分鐘{3}秒</DayHourMinSec>
+  <HourMinSec>{0}小時{1}分鐘{2}秒</HourMinSec>
+  <MinSec>{0}分鐘{1}秒</MinSec>
+  <Sec>{0}秒</Sec>
+  <GoldNotEnough>金幣不足</GoldNotEnough>
+  <ReConnect>正在重連伺服器...</ReConnect>
+  <WaitLoadFishRes>請稍候，正在載入魚類資源...</WaitLoadFishRes>
+
+  <EC_GlobelShop_ItemNotExites               >指定的物品在貨幣商店不存在</EC_GlobelShop_ItemNotExites               >
+  <EC_GlobelShop_CurreyError                 >貨幣不夠購買貨幣商店的指定物品</EC_GlobelShop_CurreyError                 >
+  <EC_Globel_Shop_Sucess                     >購買物品成功</EC_Globel_Shop_Sucess                     >
+  <EC_RoleAchievement_NotExites              >成就不存在</EC_RoleAchievement_NotExites              >
+  <EC_RoleAchievement_NotFinih               >成就條件未完成，無法提交完成</EC_RoleAchievement_NotFinih               >
+  <EC_RoleAction_NotExites                   >活動不存在</EC_RoleAction_NotExites                   >
+  <EC_RoleAction_NotFinih                    >活動條件未完成，無法提交完成</EC_RoleAction_NotFinih                    >
+  <EC_RoleCharm_NonMe                        >不可以給自己添加魅力物品</EC_RoleCharm_NonMe                        >
+  <EC_RoleCharm_NonItem                      >指定的魅力物品不存在</EC_RoleCharm_NonItem                      >
+  <EC_RoleCharm_GlobelError                  >指定魅力物品的數量不夠</EC_RoleCharm_GlobelError                  >
+  <EC_RoleCharm_Sucess                       >贈送魅力物品成功</EC_RoleCharm_Sucess                       >
+  <EC_RoleCharm_SystemError                  >系統錯誤 </EC_RoleCharm_SystemError                  >
+  <EC_RoleCharm_CenterFiled                  >未與中央伺服器連接</EC_RoleCharm_CenterFiled                  >
+  <Ec_RoleCharm_GlodNotEnough				 >您的{0}不足以購買，請快快補充</Ec_RoleCharm_GlodNotEnough>
+  <EC_RoleCheck_CheckNowDayError             >今天已經簽到過</EC_RoleCheck_CheckNowDayError             >
+  <EC_RoleCheck_CheckOtherMoneyError         >貨幣不夠 無法補簽</EC_RoleCheck_CheckOtherMoneyError         >
+  <EC_RoleCheck_CheckOtherError              >無法補簽 因為沒有需要補簽的日期</EC_RoleCheck_CheckOtherError              >
+  <EC_RoleEntity_NameError                   >實際名稱長度不正確，無法修改</EC_RoleEntity_NameError                   >
+  <EC_RoleEntity_Phone                       >實際手機號碼不正確，無法修改</EC_RoleEntity_Phone                       >
+  <EC_RoleEntity_EMail                       >實際郵箱地址不正確，無法修改</EC_RoleEntity_EMail                       >
+  <EC_RoleEntity_Address                     >實際用戶地址不正確，無法修改</EC_RoleEntity_Address                     >
+  <EC_RoleEntity_EntityID                    >實際用戶的身份證號碼不正確 無法修改</EC_RoleEntity_EntityID                    >
+  <EC_RoleGiff_NotMe                         >不可以給自己發送贈送</EC_RoleGiff_NotMe                         >
+  <EC_RoleGiff_SendMaxSum                    >今天贈送次數已達上限</EC_RoleGiff_SendMaxSum                    >
+  <EC_RoleGiff_SendOnceUserSum               >今天該玩家被贈送次數已達上限</EC_RoleGiff_SendOnceUserSum               >
+  <EC_RoleGiff_RecvMaxSum                    >今天接受贈禮次數已達上限</EC_RoleGiff_RecvMaxSum                    >
+  <EC_RoleGiff_GiffNotExites                 >當前贈送不存在，無法接收</EC_RoleGiff_GiffNotExites                 >
+  <EC_RoleGiff_GiffNull                      >沒有可領取的贈禮</EC_RoleGiff_GiffNull                      >
+  <EC_RoleGiff_TargetGiffMax                 >對方有太多贈禮未領取，無法被贈送</EC_RoleGiff_TargetGiffMax                 >
+  <EC_RoleGiff_CenterFiled                   >未連接中央伺服器</EC_RoleGiff_CenterFiled                   >
+  <EC_RoleMail_NotMe                         >不可以給自己發送郵件</EC_RoleMail_NotMe                         >
+  <EC_RoleMail_MailNull                      >目標郵件不存在</EC_RoleMail_MailNull                      >
+  <EC_RoleMail_ItemNonExites                 >當前郵件無附件，無法領取</EC_RoleMail_ItemNonExites                 >
+  <EC_RoleMail_ContextError                  >郵件主體長度不正確，無法發送</EC_RoleMail_ContextError                  >
+  <EC_RoleMail_SendTargetMailFull            >郵件發送失敗 目標郵箱已經滿 </EC_RoleMail_SendTargetMailFull            >
+  <EC_RoleMail_DelMailError                  >目標郵件不存在 無法刪除</EC_RoleMail_DelMailError                  >
+  <EC_RoleMail_CenterField                   >無法連接中央伺服器</EC_RoleMail_CenterField                   >
+  <EC_RoleMail_SendSucess                    >郵件發送成功</EC_RoleMail_SendSucess                    >
+  <EC_RoleMonth_SigUpMonthNotExists          >當前比賽不存在 無法報名</EC_RoleMonth_SigUpMonthNotExists          >
+  <EC_RoleMonth_SigUpMonthTimeError          >當前比賽不在報名時間 無法報名</EC_RoleMonth_SigUpMonthTimeError          >
+  <EC_RoleMonth_SigUpMonthError              >已經報名當前比賽 無法繼續報名</EC_RoleMonth_SigUpMonthError              >
+  <EC_RoleMonth_SigUpMonthTableError         >無法加入放棄比賽的桌子的限制 無法報名比賽</EC_RoleMonth_SigUpMonthTableError         >
+  <EC_RoleMonth_SigUpMonthMoneyError         >貨幣不夠 無法報名比賽</EC_RoleMonth_SigUpMonthMoneyError         >
+  <EC_RoleMonth_SigUpMonthItemError          >物品不夠 無法報名比賽</EC_RoleMonth_SigUpMonthItemError          >
+  <EC_RoleMonth_JoinMonthNotExists           >當前比賽不存在 無法創建</EC_RoleMonth_JoinMonthNotExists           >
+  <EC_RoleMonth_JoinMonthTimeError           >當前比賽不在參加時間 無法參加</EC_RoleMonth_JoinMonthTimeError           >
+  <EC_RoleMonth_JoinMonthError               >未報名當前比賽 無法繼續參加</EC_RoleMonth_JoinMonthError               >
+  <EC_RoleMonth_JoinMonthTableError          >無法加入放棄比賽的桌子的限制 無法參加比賽</EC_RoleMonth_JoinMonthTableError          >
+  <EC_RoleMonth_AddMonthGlobelMonthError     >當前比賽不存在 無法續幣</EC_RoleMonth_AddMonthGlobelMonthError     >
+  <EC_RoleMonth_AddMonthGlobelSumError       >無法繼續續幣 到達最大次數</EC_RoleMonth_AddMonthGlobelSumError       >
+  <EC_RoleMonth_AddMonthGlobelMoneyError     >無法續幣 貨幣不夠</EC_RoleMonth_AddMonthGlobelMoneyError     >
+  <EC_RoleMonth_ResetMonthMonthError         >重置比賽失敗 當前比賽不存在</EC_RoleMonth_ResetMonthMonthError         >
+  <EC_RoleMonth_ResetMonthMoneyError         >貨幣不夠 無法重置比賽</EC_RoleMonth_ResetMonthMoneyError         >
+  <EC_RoleMonth_ResetMonthItemError          >物品不夠 無法重置比賽</EC_RoleMonth_ResetMonthItemError          >
+  <EC_RoleOnlineReward_RewardIDError         >當前線上獎勵不存在 無法領取</EC_RoleOnlineReward_RewardIDError         >
+  <EC_RoleOnlineReward_OnlineMinError        >無法領取線上獎勵 線上時間不夠</EC_RoleOnlineReward_OnlineMinError        >
+  <EC_RoleOnlineReward_Error                 >已經領取過線上獎勵 無法繼續領取</EC_RoleOnlineReward_Error                 >
+  <EC_RoleOnlineReward_Sucess                >領取線上獎勵成功</EC_RoleOnlineReward_Sucess                >
+  <EC_QueryRole_RoleNameError                >查詢名稱長度不正確 無法查詢</EC_QueryRole_RoleNameError                >
+  <EC_QueryRole_QueryMeError                 >不可以查詢自己</EC_QueryRole_QueryMeError                 >
+  <EC_RoleRank_WeekReward_RankNotExites      >指定排行榜不存在</EC_RoleRank_WeekReward_RankNotExites      >
+  <EC_RoleRank_WeekReward_NotInRank          >上周未上榜 無法領取獎勵</EC_RoleRank_WeekReward_NotInRank          >
+  <EC_RoleRank_WeekReward_Error              >已經領取獎勵 無法繼續領取</EC_RoleRank_WeekReward_Error              >
+  <EC_RoleRelation_Add_NotMe                 >不可以添加自己為好友</EC_RoleRelation_Add_NotMe                 >
+  <EC_RoleRelation_Add_RelationExists        >已經存在關係 無法繼續添加</EC_RoleRelation_Add_RelationExists        >
+  <EC_RoleRelation_Add_RelationIsFull        >關係列表已經滿 無法繼續添加</EC_RoleRelation_Add_RelationIsFull        >
+  <EC_RoleRelation_Del_RelationNotExists     >關係不存在 無法刪除</EC_RoleRelation_Del_RelationNotExists     >
+  <EC_RoleRelation_Change_RelationNotExists  >指定關係不存在 無法修改</EC_RoleRelation_Change_RelationNotExists  >
+  <EC_RoleRelation_Change_Error              >當前關係為發生變化 無法修改</EC_RoleRelation_Change_Error              >
+  <EC_RoleShop_ShopError                     >指定商店不存在 無法購買</EC_RoleShop_ShopError                     >
+  <EC_RoleShop_ItemNotExists                 >指定商店的物品不在 無法購買</EC_RoleShop_ItemNotExists                 >
+  <EC_RoleShop_ItemNotinTime                 >指定物品未啟動 無法購買</EC_RoleShop_ItemNotinTime                 >
+  <EC_RoleShop_EntityItemError               >購買實體物品 必須完善顯示位址和資料 </EC_RoleShop_EntityItemError               >
+  <EC_RoleShop_MoneyError                    >購買物品失敗 貨幣不夠</EC_RoleShop_MoneyError                    >
+  <EC_RoleTable_TableError                   >指定桌子不存在 無法進入</EC_RoleTable_TableError                   >
+  <EC_RoleTable_GlobelMin                    >金幣數量太少 無法進入桌子</EC_RoleTable_GlobelMin                    >
+  <EC_RoleTable_GlobelMax                    >金幣數量太多 無法進入桌子</EC_RoleTable_GlobelMax                    >
+  <EC_RoleTable_CurreyMin                    >樂幣數量太少 無法進入桌子</EC_RoleTable_CurreyMin                    >
+  <EC_RoleTable_CurreyMax                    >樂幣數量太多 無法進入桌子</EC_RoleTable_CurreyMax                    >
+  <EC_RoleTable_ItemError                    >進入桌子需要的物品不符合 無法進入桌子</EC_RoleTable_ItemError                    >
+  <EC_RoleTask_NotExites                     >任務不存在</EC_RoleTask_NotExites                     >
+  <EC_RoleTask_NotFinih                      >任務條件未完成 無法提交完成</EC_RoleTask_NotFinih                      >
+  <EC_RoleTitle_NonTitle                     >稱號不存在 無法切換稱號</EC_RoleTitle_NonTitle                     >
+  <EC_Package_NonItem                        >禮包不存在</EC_Package_NonItem                        >
+  <EC_Package_BagNonItem                     >背包裡沒有禮包存在</EC_Package_BagNonItem                     >
+  <EC_Package_Null                           >禮包為空</EC_Package_Null                           >
+  <EC_Package_Succes                         >禮包打開成功</EC_Package_Succes                         >
+  <EC_Message_Length                         >消息的長度不正確</EC_Message_Length                         >
+  <EC_Message_Type                           >發送消息的類型不正確</EC_Message_Type                         >
+  <EC_Verification_Sucess>實名驗證成功</EC_Verification_Sucess>
+  <EC_Verification_IsExists>錯誤 重複提交實名驗證 </EC_Verification_IsExists>
+  <EC_Verification_Filed>實名驗證失敗</EC_Verification_Filed>
+	<EC_BindPhone_PhoneIsEmpty>手機號不能為空</EC_BindPhone_PhoneIsEmpty>
+	<Ec_PhoneLogon_Error>手機號錯誤</Ec_PhoneLogon_Error>
+	<Ec_BindPhone_GetCode>發送成功，請注意查收[ff0000]({0})[-]</Ec_BindPhone_GetCode>
+	<Ec_BindPhone_GetCode1>拖動滑塊獲得驗證碼</Ec_BindPhone_GetCode1>
+  
+  <Ec_BindPhone_psemtpy>密碼為空</Ec_BindPhone_psemtpy>
+  <Ec_BindPhone_ps2emtpy>確認密碼為空</Ec_BindPhone_ps2emtpy>
+  <Ec_BindPhone_psnotsame>兩次密碼不一致</Ec_BindPhone_psnotsame>
+  <Ec_BindPhone_codeempty>驗證碼為空</Ec_BindPhone_codeempty>
+  <Ec_BindPhone_invaliedcode>驗證碼無效</Ec_BindPhone_invaliedcode>  
+  
+	<EC_BindPhone_PhoneNumberSucess>手機驗證碼已經發送成功</EC_BindPhone_PhoneNumberSucess>
+  <EC_BindPhone_PhoneNumberFailed>手機驗證碼發送失敗</EC_BindPhone_PhoneNumberFailed>
+  <EC_BindPhone_PhoneNumberIsExists>錯誤 手機驗證碼重複發送</EC_BindPhone_PhoneNumberIsExists>
+  <EC_BindPhone_Sucess>綁定手機成功</EC_BindPhone_Sucess>
+  <EC_BindPhone_Failed>綁定手機失敗</EC_BindPhone_Failed>
+  <EC_EntityItem_Failed>購買實體物品失敗</EC_EntityItem_Failed>
+  <EC_EntityItem_Sucess>購買實體物品成功</EC_EntityItem_Sucess>
+  <EC_Recharge_Sucess>充值處理中，請稍候...</EC_Recharge_Sucess>
+  <EC_Recharge_Failed>充值失敗</EC_Recharge_Failed>
+  <EC_ResetPassword_Sucess>修改密碼成功</EC_ResetPassword_Sucess>
+  <EC_ResetPassword_Failed>修改密碼失敗</EC_ResetPassword_Failed>
+  <EC_UseItem_Sucess>使用物品成功</EC_UseItem_Sucess>
+  <EC_UseItem_Failed>使用物品失敗</EC_UseItem_Failed>
+  <EC_BindEMail_Failed>綁定郵箱失敗</EC_BindEMail_Failed>
+  <EC_BindEMail_Sucess>綁定郵箱成功</EC_BindEMail_Sucess>
+  <EC_BindEmail_IsUse>失敗 郵箱已經被使用</EC_BindEmail_IsUse>
+  <EC_Logon_AccountNotExists>登陸失敗 帳號不存在</EC_Logon_AccountNotExists>
+  <EC_Logon_PasswordError>登陸失敗 密碼錯誤</EC_Logon_PasswordError>
+  <EC_Rsg_AccountExists>註冊失敗 帳號已經存在</EC_Rsg_AccountExists>
+  <EC_AccountName_StringError>帳號名錯誤 長度錯誤或者含有非法字</EC_AccountName_StringError>
+  <EC_Password_StringError>密碼錯誤 長度錯誤或者含有非法字</EC_Password_StringError>
+  <EC_NickName_StringError>用戶名錯誤 長度錯誤或者含有非法字</EC_NickName_StringError>
+  <EC_NickName_IsExists>帳號名重複</EC_NickName_IsExists>
+  <EC_MailContext_StringError>郵件內容錯誤 長度錯誤或者含有非法字</EC_MailContext_StringError>
+  <EC_ChangePassword_Error>兩次輸入的密碼不一致</EC_ChangePassword_Error>
+  <EC_ChangePassword_Error2>密碼不能為空</EC_ChangePassword_Error2>
+  <EC_ChangePassword_Error1>舊密碼不能為空</EC_ChangePassword_Error1>
+  <EC_ResetAccount_Error>非遊客帳號 無法重置帳號</EC_ResetAccount_Error>
+  <EC_ResetAccount_Error1>重置帳號不能為空</EC_ResetAccount_Error1>
+  <EC_ResetAccount_ServerError>帳號已經被其他人使用 或者 密碼錯誤 無法重置帳號</EC_ResetAccount_ServerError>
+  <EC_Verification_NameError>名字不能為空</EC_Verification_NameError>
+  <EC_Verification_NameError2>身份證號不能為空</EC_Verification_NameError2>
+	<Ec_Change_Address_Failed>收件名字不人不能為空</Ec_Change_Address_Failed>
+	<Ec_Change_Address_Failed1>祥細位址不能為空</Ec_Change_Address_Failed1>
+	<Select_Match_Failed>LV.3解鎖競賽模式</Select_Match_Failed>
+	<Select_Match_Failed1>尚未開放，敬請期待！</Select_Match_Failed1>
+	<LimitTime_Launcher_Tips>贈送體驗炮@分鐘</LimitTime_Launcher_Tips>
+
+  <Title_Tips> 您當前沒有任何稱號 </Title_Tips>
+  <Account_OtherLogon>您的帳號已經在其他地方登陸</Account_OtherLogon>
+  <Skill_Tip_cd>技能冷卻時間</Skill_Tip_cd>
+  <Skill_Tip_count>技能卡數量不夠</Skill_Tip_count>
+  <Skill_Tip_invalid>無效參數</Skill_Tip_invalid>
+  <Achievement_Finish_Tips>您可在[ff9b0e]成就[-]介面領取獎勵</Achievement_Finish_Tips>
+  <Task_Finish_Tips>您可在[ff9b0e]任務[-]介面領取獎勵</Task_Finish_Tips>
+  <Item_No_Exist>該物品不存在</Item_No_Exist>
+	<Finish_Achievement>恭喜您領取{0}成就獎勵</Finish_Achievement>
+
+  <EC_NickName_Error>用戶名稱錯誤 無法使用</EC_NickName_Error>
+  <EC_AccountName_Error>帳戶名錯誤 無法使用</EC_AccountName_Error>
+  <EC_Account_IsExists>帳戶已經存在 無法註冊</EC_Account_IsExists>
+  <EC_Password_Error>密碼錯誤 無法使用</EC_Password_Error>
+  <EC_Logon_Error>連接伺服器失敗</EC_Logon_Error>
+	
+  <Del_Friend_Tips>你確定刪除{0}好友關係？</Del_Friend_Tips>
+  <Treasurebowl_Tips1>[282858]您確定使用[ff0000]{0}[-]個 聚寶盆 ？[-]</Treasurebowl_Tips1>
+  <Treasurebowl_InputId>ID6位以上</Treasurebowl_InputId>
+  <Treasurebowl_InputId2>ID無效</Treasurebowl_InputId2>
+  <Treasurebowl_Tips2>[282858]您確定向[ff0000]{0}[-]贈送[ff0000]{1}[-]個 聚寶盆 ？[-]</Treasurebowl_Tips2>
+  <VIP_UnLock_Tips>[282858]使用該技能需要[ff0000]VIP{0}[-]，是否打開VIP特權介面？[-]</VIP_UnLock_Tips>
+  <Pay_Tips>您不滿足解鎖條件，是否補充鑽石？</Pay_Tips>
+  <VIP_Present_Tips>VIP2以下不允許贈送</VIP_Present_Tips>
+  <VIP_Pay_Sum>再充值{0}元升級到VIP{1}，高級VIP可同時享有所有低級特權</VIP_Pay_Sum>
+  <VIP_Pay_Sum1>VIP5暫未開放，您的充值金額能持續累積！</VIP_Pay_Sum1>
+  <VIP_Privilege_Describe0>免費獲得[fff000]{0}[-]</VIP_Privilege_Describe0>
+  <VIP_Privilege_Describe1>開啟炮彈鎖定技能</VIP_Privilege_Describe1>
+  <VIP_Privilege_Describe2>開啟{0}技能</VIP_Privilege_Describe2>
+  <VIP_Privilege_Describe3>子彈穿透次數+{0}</VIP_Privilege_Describe3>
+  <VIP_Privilege_Describe4>救濟金領取次數+{0}</VIP_Privilege_Describe4>
+  <VIP_Privilege_Describe5>救濟金數額*{0}</VIP_Privilege_Describe5>
+  <VIP_Privilege_Describe6>比賽積分額外+{0}%</VIP_Privilege_Describe6>
+  <VIP_Privilege_Describe7>獎牌兌換次數+{0}</VIP_Privilege_Describe7>
+  <VIP_Privilege_Describe8>充值返利{0}%</VIP_Privilege_Describe8>
+  <VIP_Desc_1>敬請期待</VIP_Desc_1>
+  <VIP_Desc_2>累計充值?元</VIP_Desc_2>
+  <VIP_Desc_3>免費獲得 ? 炮</VIP_Desc_3>
+  <VIP_Desc_4>開啟 ? 技能</VIP_Desc_4>
+
+  <!-- 玩家本身的操作  -->
+  <UOM_Role_ChangeFace_Sucess IsShow="1">頭像修改成功</UOM_Role_ChangeFace_Sucess>
+  <UOM_Role_ChangeFace_Failed IsShow="1">頭像修改失敗</UOM_Role_ChangeFace_Failed>
+  <UOM_Role_ChangeFace_Failed_1 IsShow="0">修改系統頭像失敗 選擇頭像與玩家當前頭像一樣</UOM_Role_ChangeFace_Failed_1>
+
+  <UOM_Role_Gender_Sucess IsShow="1">性別修改成功</UOM_Role_Gender_Sucess>
+  <UOM_Role_Gender_Failed IsShow="1">性別修改失敗</UOM_Role_Gender_Failed>
+  <UOM_Role_Gender_Failed_1 IsShow="0">修改性別失敗 選擇性別與當前性別相同</UOM_Role_Gender_Failed_1>
+  <UOM_Role_Gender_Failed_2 IsShow="1">性別卡不夠 無法修改性別</UOM_Role_Gender_Failed_2>
+
+  <UOM_Role_NickName_Sucess IsShow="1">昵稱修改成功</UOM_Role_NickName_Sucess>
+  <UOM_Role_NickName_Failed IsShow="1">昵稱修改失敗</UOM_Role_NickName_Failed>
+  <UOM_Role_NickName_Failed_1 IsShow="1">修改的昵稱不合法(限長度2~8個漢字)</UOM_Role_NickName_Failed_1>
+  <UOM_Role_NickName_Failed_2 IsShow="0">修改名稱失敗 修改前和修改後的名稱一樣 無變化</UOM_Role_NickName_Failed_2>
+  <UOM_Role_NickName_Failed_3 IsShow="1">該昵稱已被佔用</UOM_Role_NickName_Failed_3>
+  <UOM_Role_NickName_Failed_4 IsShow="1">改名卡不夠 無法修改昵稱</UOM_Role_NickName_Failed_4>
+
+  <UOM_Role_IsShowIpAddress_Sucess IsShow="1">設置地理位置共用成功</UOM_Role_IsShowIpAddress_Sucess>
+  <UOM_Role_IsShowIpAddress_Failed IsShow="1">關閉地理位置共用</UOM_Role_IsShowIpAddress_Failed>
+  <UOM_Role_IsShowIpAddress_Failed_1 IsShow="0">是否顯示位址 修改失敗 新狀態和以前的狀態一樣 無須修改</UOM_Role_IsShowIpAddress_Failed_1>
+
+  <UOM_Role_ChangePassword_Sucess IsShow="1">密碼修改成功</UOM_Role_ChangePassword_Sucess>
+  <UOM_Role_ChangePassword_Failed IsShow="1">密碼修改失敗</UOM_Role_ChangePassword_Failed>
+  <UOM_Role_ChangePassword_Failed_1 IsShow="1">舊密碼錯誤</UOM_Role_ChangePassword_Failed_1>
+  <UOM_Role_ChangePassword_Failed_2 IsShow="1">密碼長度限制3~32個字元並只支援英文和數字</UOM_Role_ChangePassword_Failed_2>
+  <UOM_Role_ChangePassword_Failed_3 IsShow="1">新密碼與舊密碼相同，修改失敗 </UOM_Role_ChangePassword_Failed_3>
+  <UOM_Role_ChangePassword_Failed_4 IsShow="1">修改密碼失敗 舊密碼轉化失敗</UOM_Role_ChangePassword_Failed_4>
+  <UOM_Role_ChangePassword_Failed_5 IsShow="1">修改密碼失敗 新密碼轉化失敗</UOM_Role_ChangePassword_Failed_5>
+  <UOM_Role_ChangePassword_Failed_6 IsShow="1">舊密碼錯誤</UOM_Role_ChangePassword_Failed_6>
+
+  <UOM_Role_ResetAccount_Sucess IsShow="1">帳號綁定成功</UOM_Role_ResetAccount_Sucess>
+  <UOM_Role_ResetAccount_Failed IsShow="1">帳號綁定失敗</UOM_Role_ResetAccount_Failed>
+  <UOM_Role_ResetAccount_Failed_1 IsShow="1">非遊客用戶無法綁定帳號</UOM_Role_ResetAccount_Failed_1>
+  <UOM_Role_ResetAccount_Failed_2 IsShow="1">帳號無法使用(帳號長度必須為4~32個字元並只支援英文和數字)</UOM_Role_ResetAccount_Failed_2>
+  <UOM_Role_ResetAccount_Failed_3 IsShow="1">密碼長度限制3~32個字元並只支援英文和數字</UOM_Role_ResetAccount_Failed_3>
+  <UOM_Role_ResetAccount_Failed_4 IsShow="1">綁定帳號失敗 密碼轉化失敗</UOM_Role_ResetAccount_Failed_4>
+  <UOM_Role_ResetAccount_Failed_5 IsShow="1">該帳號已被使用</UOM_Role_ResetAccount_Failed_5>
+
+  <UOM_Role_CustFace_Sucess IsShow="1">自訂頭像成功</UOM_Role_CustFace_Sucess>
+  <UOM_Role_CustFace_Failed IsShow="1">自訂頭像失敗</UOM_Role_CustFace_Failed>
+
+  <UOM_Role_MonthCardReward_Sucess IsShow="1">月卡禮包領取成功</UOM_Role_MonthCardReward_Sucess>
+  <UOM_Role_MonthCardReward_Failed IsShow="1">月卡禮包領取失敗</UOM_Role_MonthCardReward_Failed>
+  <UOM_Role_MonthCardReward_Failed_1 IsShow="0">月卡禮包領取失敗 非月卡用戶</UOM_Role_MonthCardReward_Failed_1>
+  <UOM_Role_MonthCardReward_Failed_2 IsShow="1">月卡禮包領取失敗 今天已經領取了</UOM_Role_MonthCardReward_Failed_2>
+  <UOM_Role_MonthCardReward_Failed_3 IsShow="1">月卡禮包領取失敗 系統錯誤</UOM_Role_MonthCardReward_Failed_3>
+
+  <!-- 成就 -->
+  <UOM_Achievement_GetReward_Sucess IsShow="0">成就獎勵領取成功</UOM_Achievement_GetReward_Sucess>
+  <UOM_Achievement_GetReward_Failed IsShow="0">成就獎勵領取失敗</UOM_Achievement_GetReward_Failed>
+  <UOM_Achievement_GetReward_Failed_1 IsShow="0">該成就不存在</UOM_Achievement_GetReward_Failed_1>
+  <UOM_Achievement_GetReward_Failed_2 IsShow="0">您未完成該成就</UOM_Achievement_GetReward_Failed_2>
+  
+  <!-- 活動 -->
+  <UOM_Action_GetReward_Sucess IsShow="0">活動獎勵領取成功</UOM_Action_GetReward_Sucess>
+  <UOM_Action_GetReward_Failed IsShow="1">活動獎勵領取失敗</UOM_Action_GetReward_Failed>
+  <UOM_Action_GetReward_Failed_1 IsShow="1">該活動不存在</UOM_Action_GetReward_Failed_1>
+  <UOM_Action_GetReward_Failed_2 IsShow="1">該活動階段不存在</UOM_Action_GetReward_Failed_2>
+  <UOM_Action_GetReward_Failed_3 IsShow="1">您未完成該活動</UOM_Action_GetReward_Failed_3>
+  <UOM_Action_GetReward_Failed_4 IsShow="1">您已經領取過該活動獎勵</UOM_Action_GetReward_Failed_4>
+  <UOM_Action_GetReward_Failed_5 IsShow="1">該活動已過期，無法領取</UOM_Action_GetReward_Failed_5>
+  
+  <!-- 魅力 -->
+  <UOM_Charm_SendCharm_Sucess IsShow="0">魅力贈送成功</UOM_Charm_SendCharm_Sucess>
+  <UOM_Charm_SendCharm_Failed IsShow="1">魅力贈送失敗</UOM_Charm_SendCharm_Failed>
+  <UOM_Charm_SendCharm_Failed_1 IsShow="1">無法給自己贈送道具</UOM_Charm_SendCharm_Failed_1>
+  <UOM_Charm_SendCharm_Failed_2 IsShow="1">該魅力道具不存在</UOM_Charm_SendCharm_Failed_2>
+  <UOM_Charm_SendCharm_Failed_3 IsShow="0">您沒有道具或者足夠的貨幣</UOM_Charm_SendCharm_Failed_3>
+  <UOM_Charm_SendCharm_Failed_4 IsShow="1">您使用的物件不存在</UOM_Charm_SendCharm_Failed_4>
+  
+  <!-- 簽到 -->
+  <UOM_Check_NowDay_Sucess IsShow="0">簽到成功</UOM_Check_NowDay_Sucess>
+  <UOM_Check_NowDay_Failed IsShow="1">簽到失敗</UOM_Check_NowDay_Failed>
+  <UOM_Check_NowDay_Failed_1 IsShow="1">今天已簽到</UOM_Check_NowDay_Failed_1>
+
+  <UOM_Check_OtherDay_Sucess IsShow="0">補簽成功</UOM_Check_OtherDay_Sucess>
+  <UOM_Check_OtherDay_Failed IsShow="1">補簽失敗</UOM_Check_OtherDay_Failed>
+  <UOM_Check_OtherDay_Failed_1 IsShow="1">您沒有足夠的鑽石進行補簽</UOM_Check_OtherDay_Failed_1>
+  <UOM_Check_OtherDay_Failed_2 IsShow="1">補簽失敗，當天已經補簽了</UOM_Check_OtherDay_Failed_2>
+  <UOM_Check_OtherDay_Failed_3 IsShow="1">補簽失敗，系統錯誤</UOM_Check_OtherDay_Failed_3>
+  
+  <!-- 寶箱 -->
+  <UOM_Chest_OpenChest_Sucess IsShow="0">寶箱開啟成功</UOM_Chest_OpenChest_Sucess>
+  <UOM_Chest_OpenChest_Failed IsShow="1">寶箱開啟失敗</UOM_Chest_OpenChest_Failed>
+  <UOM_Chest_OpenChest_Failed_1 IsShow="1">當前沒有啟動的寶箱</UOM_Chest_OpenChest_Failed_1>
+  <UOM_Chest_OpenChest_Failed_2 IsShow="1">指定位置被開啟</UOM_Chest_OpenChest_Failed_2>
+  <UOM_Chest_OpenChest_Failed_3 IsShow="1">指定寶箱不存在</UOM_Chest_OpenChest_Failed_3>
+  <UOM_Chest_OpenChest_Failed_4 IsShow="1">寶箱開啟次數已經到達上限</UOM_Chest_OpenChest_Failed_4>
+  <UOM_Chest_OpenChest_Failed_5 IsShow="1">開啟寶箱的貨幣不夠</UOM_Chest_OpenChest_Failed_5>
+  <UOM_Chest_OpenChest_Failed_6 IsShow="1">開啟寶箱失敗，系統錯誤</UOM_Chest_OpenChest_Failed_6>
+
+  <UOM_Chest_CloseChest_Sucess IsShow="0">關閉寶箱成功</UOM_Chest_CloseChest_Sucess>
+  <UOM_Chest_CloseChest_Failed IsShow="0">關閉寶箱失敗</UOM_Chest_CloseChest_Failed>
+  <UOM_Chest_CloseChest_Failed_1 IsShow="0">關閉寶箱失敗 指定寶箱不存在</UOM_Chest_CloseChest_Failed_1>
+  <UOM_Chest_CloseChest_Failed_2 IsShow="0">關閉寶箱失敗 系統錯誤</UOM_Chest_CloseChest_Failed_2>
+  <!-- 實體資料 -->
+  <UOM_Entity_EntityItemUseAddress_Sucess IsShow="1">收貨位址設置成功</UOM_Entity_EntityItemUseAddress_Sucess>
+  <UOM_Entity_EntityItemUseAddress_Failed IsShow="1">收貨位址設置失敗</UOM_Entity_EntityItemUseAddress_Failed>
+  <UOM_Entity_EntityItemUseAddress_Failed_1 IsShow="1">收貨位址錯誤(收貨位址長度為1~128字元且不可含非法字)</UOM_Entity_EntityItemUseAddress_Failed_1>
+
+  <UOM_Entity_EntityItemUsePhone_Sucess IsShow="1">電話號碼設置成功</UOM_Entity_EntityItemUsePhone_Sucess>
+  <UOM_Entity_EntityItemUsePhone_Failed IsShow="1">電話號碼設置失敗</UOM_Entity_EntityItemUsePhone_Failed>
+  <UOM_Entity_EntityItemUsePhone_Failed_1 IsShow="1">電話號碼錯誤(電話號碼長度為8~32位)</UOM_Entity_EntityItemUsePhone_Failed_1>
+
+  <UOM_Entity_EntityItemUseName_Sucess IsShow="1">收貨人設置成功</UOM_Entity_EntityItemUseName_Sucess>
+  <UOM_Entity_EntityItemUseName_Failed IsShow="1">收貨人設置失敗</UOM_Entity_EntityItemUseName_Failed>
+  <UOM_Entity_EntityItemUseName_Failed_1 IsShow="1">收貨人名稱錯誤(收貨人名稱長度為2~10字元且不可含非法字)</UOM_Entity_EntityItemUseName_Failed_1>
+  
+  <!-- 贈送 -->
+  <UOM_Giff_GetAllGiff_Sucess IsShow="0">全部贈禮領取成功</UOM_Giff_GetAllGiff_Sucess>
+  <UOM_Giff_GetAllGiff_Failed IsShow="1">全部贈禮領取失敗</UOM_Giff_GetAllGiff_Failed>
+  <UOM_Giff_GetAllGiff_Failed_1 IsShow="1">今天領取的贈禮次數已達上限</UOM_Giff_GetAllGiff_Failed_1>
+  <UOM_Giff_GetAllGiff_Failed_2 IsShow="1">沒有可領取的贈禮</UOM_Giff_GetAllGiff_Failed_2>
+
+  <UOM_Giff_SendGiff_Sucess IsShow="0">贈禮成功</UOM_Giff_SendGiff_Sucess>
+  <UOM_Giff_SendGiff_Failed IsShow="1">贈禮失敗</UOM_Giff_SendGiff_Failed>
+  <UOM_Giff_SendGiff_Failed_1 IsShow="1">今天贈送次數已達上限</UOM_Giff_SendGiff_Failed_1>
+  <UOM_Giff_SendGiff_Failed_2 IsShow="1">今天您已向對方發過贈禮</UOM_Giff_SendGiff_Failed_2>
+  <UOM_Giff_SendGiff_Failed_3 IsShow="1">不可向自己贈禮</UOM_Giff_SendGiff_Failed_3>
+  <UOM_Giff_SendGiff_Failed_4 IsShow="1">該玩家不存在或對方無法接受更多贈禮</UOM_Giff_SendGiff_Failed_4>
+
+  <UOM_Giff_AcceptGiff_Sucess IsShow="0">贈禮領取成功</UOM_Giff_AcceptGiff_Sucess>
+  <UOM_Giff_AcceptGiff_Failed IsShow="1">贈禮領取失敗</UOM_Giff_AcceptGiff_Failed>
+  <UOM_Giff_AcceptGiff_Failed_1 IsShow="1">今天領取的贈禮次數已達上限</UOM_Giff_AcceptGiff_Failed_1>
+  <UOM_Giff_AcceptGiff_Failed_2 IsShow="1">沒有可領取的贈禮</UOM_Giff_AcceptGiff_Failed_2>
+  
+  <!-- 物品 -->
+  <UOM_Item_UseItem_Sucess IsShow="1">道具使用成功</UOM_Item_UseItem_Sucess>
+  <UOM_Item_UseItem_Failed IsShow="1">道具使用失敗</UOM_Item_UseItem_Failed>
+  <UOM_Item_UseItem_Failed_1 IsShow="1">使用道具數量不可為0</UOM_Item_UseItem_Failed_1>
+  <UOM_Item_UseItem_Failed_2 IsShow="1">背包裡不存在該道具</UOM_Item_UseItem_Failed_2>
+  <UOM_Item_UseItem_Failed_3 IsShow="1">道具數量不夠</UOM_Item_UseItem_Failed_3>
+  <UOM_Item_UseItem_Failed_4 IsShow="1">道具錯誤</UOM_Item_UseItem_Failed_4>
+  <UOM_Item_UseItem_Failed_5 IsShow="1">使用物品失敗，系統錯誤</UOM_Item_UseItem_Failed_5>
+  <UOM_Item_UseItem_Failed_6 IsShow="1">使用物品失敗，當前物品不可以同時使用多個</UOM_Item_UseItem_Failed_6>
+  <UOM_Item_UseItem_Failed_7 IsShow="1">使用物品失敗，當前物品不可以重複使用</UOM_Item_UseItem_Failed_7>
+
+  <UOM_Item_AcceptItem_Sucess IsShow="1">道具贈送成功</UOM_Item_AcceptItem_Sucess>
+  <UOM_Item_AcceptItem_Failed IsShow="1">道具贈送失敗</UOM_Item_AcceptItem_Failed>
+  <UOM_Item_AcceptItem_Failed_1 IsShow="1">贈送道具數量不可為0</UOM_Item_AcceptItem_Failed_1>
+  <UOM_Item_AcceptItem_Failed_2 IsShow="1">背包裡不存在該道具</UOM_Item_AcceptItem_Failed_2>
+  <UOM_Item_AcceptItem_Failed_3 IsShow="1">道具數量不夠</UOM_Item_AcceptItem_Failed_3>
+  <UOM_Item_AcceptItem_Failed_4 IsShow="1">道具錯誤</UOM_Item_AcceptItem_Failed_4>
+  <UOM_Item_AcceptItem_Failed_5 IsShow="1">贈送物品失敗，目標不存在</UOM_Item_AcceptItem_Failed_5>
+  <UOM_Item_AcceptItem_Failed_6 IsShow="1">贈送物品失敗，目標不是自己的好友</UOM_Item_AcceptItem_Failed_6>
+  
+  <!-- 郵件 -->
+  <UOM_Mail_GetNormalContext_Sucess IsShow="0">打開郵件成功</UOM_Mail_GetNormalContext_Sucess>
+  <UOM_Mail_GetNormalContext_Failed IsShow="1">打開用戶郵件失敗</UOM_Mail_GetNormalContext_Failed>
+
+  <UOM_Mail_GetSystemContext_Sucess IsShow="0">打開系統郵件成功</UOM_Mail_GetSystemContext_Sucess>
+  <UOM_Mail_GetSystemContext_Failed IsShow="1">打開系統郵件失敗</UOM_Mail_GetSystemContext_Failed>
+
+  <UOM_Mail_SendMail_Sucess IsShow="1">郵件發送成功</UOM_Mail_SendMail_Sucess>
+  <UOM_Mail_SendMail_Failed IsShow="1">郵件發送失敗</UOM_Mail_SendMail_Failed>
+  <UOM_Mail_SendMail_Failed_1 IsShow="1">郵件內容不合法(內容長度為1~64字元)</UOM_Mail_SendMail_Failed_1>
+  <UOM_Mail_SendMail_Failed_2 IsShow="1">無法向自己發送郵件</UOM_Mail_SendMail_Failed_2>
+  <UOM_Mail_SendMail_Failed_3 IsShow="1">郵件發送對象不存在或對方郵箱已滿</UOM_Mail_SendMail_Failed_3>
+
+  <UOM_Mail_DelMail_Sucess IsShow="0">刪除郵件成功</UOM_Mail_DelMail_Sucess>
+  <UOM_Mail_DelMail_Failed IsShow="1">刪除郵件失敗</UOM_Mail_DelMail_Failed>
+  <UOM_Mail_DelMail_Failed_1 IsShow="1">指定郵件不存在</UOM_Mail_DelMail_Failed_1>
+
+  <UOM_Mail_GetSystemMailItem_Sucess IsShow="1">郵件物品領取成功</UOM_Mail_GetSystemMailItem_Sucess>
+  <UOM_Mail_GetSystemMailItem_Failed IsShow="1">郵件物品領取失敗</UOM_Mail_GetSystemMailItem_Failed>
+  <UOM_Mail_GetSystemMailItem_Failed_1 IsShow="1">郵件不存在</UOM_Mail_GetSystemMailItem_Failed_1>
+  <UOM_Mail_GetSystemMailItem_Failed_2 IsShow="1">郵件物品不存在</UOM_Mail_GetSystemMailItem_Failed_2>
+  <UOM_Mail_GetSystemMailItem_Failed_3 IsShow="1">郵件物品已被領取</UOM_Mail_GetSystemMailItem_Failed_3>
+  <UOM_Mail_GetSystemMailItem_Failed_4 IsShow="1">領取郵件物品失敗，系統錯誤</UOM_Mail_GetSystemMailItem_Failed_4>
+  
+  <!-- 聊天 -->
+  <UOM_Message_SendMessage_Sucess IsShow="1">消息發送成功</UOM_Message_SendMessage_Sucess>
+  <UOM_Message_SendMessage_Failed IsShow="1">消息發送失敗</UOM_Message_SendMessage_Failed>
+  <UOM_Message_SendMessage_Failed_1 IsShow="1">消息內容長度需1~32字元並不可含非法字</UOM_Message_SendMessage_Failed_1>
+  <UOM_Message_SendMessage_Failed_2 IsShow="1">發送消息失敗，物品不夠</UOM_Message_SendMessage_Failed_2>
+  
+  <!-- 比賽 -->
+  <UOM_Month_SignUpMonth_Sucess IsShow="1">報名比賽成功</UOM_Month_SignUpMonth_Sucess>
+  <UOM_Month_SignUpMonth_Failed IsShow="1">報名比賽失敗</UOM_Month_SignUpMonth_Failed>
+  <UOM_Month_SignUpMonth_Failed_1 IsShow="1">該比賽不存在</UOM_Month_SignUpMonth_Failed_1>
+  <UOM_Month_SignUpMonth_Failed_2 IsShow="1">該比賽不在報名時間</UOM_Month_SignUpMonth_Failed_2>
+  <UOM_Month_SignUpMonth_Failed_3 IsShow="1">您已報名該比賽</UOM_Month_SignUpMonth_Failed_3>
+  <UOM_Month_SignUpMonth_Failed_4 IsShow="1">您缺少報名該比賽所需貨幣</UOM_Month_SignUpMonth_Failed_4>
+  <UOM_Month_SignUpMonth_Failed_5 IsShow="1">您缺少報名該比賽所需道具</UOM_Month_SignUpMonth_Failed_5>
+  <UOM_Month_SignUpMonth_Failed_6 IsShow="1">指定比賽桌子不存在</UOM_Month_SignUpMonth_Failed_6>
+  <UOM_Month_SignUpMonth_Failed_7 IsShow="1">報名比賽失敗，系統錯誤</UOM_Month_SignUpMonth_Failed_7>
+  <UOM_Month_SignUpMonth_Failed_8 IsShow="1">您的等級低於3級無法報名比賽</UOM_Month_SignUpMonth_Failed_8>
+  <UOM_Month_SignUpMonth_Failed_9 IsShow="1">您未解鎖{0}倍率無法報名該比賽</UOM_Month_SignUpMonth_Failed_9>
+
+  <UOM_Month_JoinMonth_Sucess IsShow="1">進入比賽成功</UOM_Month_JoinMonth_Sucess>
+  <UOM_Month_JoinMonth_Failed IsShow="1">進入比賽失敗</UOM_Month_JoinMonth_Failed>
+  <UOM_Month_JoinMonth_Failed_1 IsShow="1">指定比賽不存在</UOM_Month_JoinMonth_Failed_1>
+  <UOM_Month_JoinMonth_Failed_2 IsShow="1">指定比賽不在開始時間</UOM_Month_JoinMonth_Failed_2>
+  <UOM_Month_JoinMonth_Failed_3 IsShow="1">您沒有報名該比賽</UOM_Month_JoinMonth_Failed_3>
+  <UOM_Month_JoinMonth_Failed_4 IsShow="1">您不滿足進入比賽條件</UOM_Month_JoinMonth_Failed_4>
+  <UOM_Month_JoinMonth_Failed_5 IsShow="1">進入比賽失敗，系統錯誤</UOM_Month_JoinMonth_Failed_5>
+  <UOM_Month_JoinMonth_Failed_6 IsShow="1">進入比賽失敗，等級不夠</UOM_Month_JoinMonth_Failed_6>
+
+  <UOM_Month_AddMonthGlobel_Sucess IsShow="1">續幣成功</UOM_Month_AddMonthGlobel_Sucess>
+  <UOM_Month_AddMonthGlobel_Failed IsShow="1">續幣失敗</UOM_Month_AddMonthGlobel_Failed>
+  <UOM_Month_AddMonthGlobel_Failed_1 IsShow="1">指定比賽不存在</UOM_Month_AddMonthGlobel_Failed_1>
+  <UOM_Month_AddMonthGlobel_Failed_2 IsShow="1">續幣次數已達最大上限</UOM_Month_AddMonthGlobel_Failed_2>
+  <UOM_Month_AddMonthGlobel_Failed_3 IsShow="0">比賽續幣失敗 續幣所需的貨幣不夠</UOM_Month_AddMonthGlobel_Failed_3>
+
+  <UOM_Month_ResetMonth_Sucess IsShow="1">重置比賽成功</UOM_Month_ResetMonth_Sucess>
+  <UOM_Month_ResetMonth_Failed IsShow="1">重置比賽失敗</UOM_Month_ResetMonth_Failed>
+  <UOM_Month_ResetMonth_Failed_1 IsShow="1">重置比賽失敗 指定比賽不存在</UOM_Month_ResetMonth_Failed_1>
+  <UOM_Month_ResetMonth_Failed_2 IsShow="1">重置比賽失敗 指定比賽未報名</UOM_Month_ResetMonth_Failed_2>
+  <UOM_Month_ResetMonth_Failed_3 IsShow="1">重置比賽失敗 指定比賽不在進行階段</UOM_Month_ResetMonth_Failed_3>
+  <UOM_Month_ResetMonth_Failed_4 IsShow="1">重置比賽失敗 重置比賽貨幣不夠</UOM_Month_ResetMonth_Failed_4>
+  <UOM_Month_ResetMonth_Failed_5 IsShow="1">重置比賽失敗 重置比賽門票不夠</UOM_Month_ResetMonth_Failed_5>
+  <UOM_Month_ResetMonth_Failed_6 IsShow="1">重置比賽失敗 系統錯誤</UOM_Month_ResetMonth_Failed_6>
+  
+  <!-- 線上獎勵 -->
+  <UOM_OnlineReward_GetReward_Sucess IsShow="0">線上獎勵領取成功</UOM_OnlineReward_GetReward_Sucess>
+  <UOM_OnlineReward_GetReward_Failed IsShow="1">線上獎勵領取失敗</UOM_OnlineReward_GetReward_Failed>
+  <UOM_OnlineReward_GetReward_Failed_1 IsShow="1">該線上獎勵不存在</UOM_OnlineReward_GetReward_Failed_1>
+  <UOM_OnlineReward_GetReward_Failed_2 IsShow="1">該獎勵不存在</UOM_OnlineReward_GetReward_Failed_2>
+  <UOM_OnlineReward_GetReward_Failed_3 IsShow="1">您的線上時間不滿足條件</UOM_OnlineReward_GetReward_Failed_3>
+  <UOM_OnlineReward_GetReward_Failed_4 IsShow="1">您已經領取過該線上獎勵</UOM_OnlineReward_GetReward_Failed_4>
+  <UOM_OnlineReward_GetReward_Failed_5 IsShow="1">線上獎勵領取失敗，系統錯誤</UOM_OnlineReward_GetReward_Failed_5>
+  
+  <!-- 運營 -->
+  <UOM_Operate_RealNameVerification_Sucess IsShow="1">實名認證成功</UOM_Operate_RealNameVerification_Sucess>
+  <UOM_Operate_RealNameVerification_Failed_1 IsShow="1">姓名長度不符合條件或含非法字)</UOM_Operate_RealNameVerification_Failed_1>
+  <UOM_Operate_RealNameVerification_Failed_2 IsShow="1">身份證不符合條件或含非法字</UOM_Operate_RealNameVerification_Failed_2>
+  <UOM_Operate_RealNameVerification_Failed_3 IsShow="1">身份證格式不正確</UOM_Operate_RealNameVerification_Failed_3>
+  <UOM_Operate_RealNameVerification_Failed_4 IsShow="1">姓名和身份證已被佔用</UOM_Operate_RealNameVerification_Failed_4>
+  <UOM_Operate_RealNameVerification_Failed_5 IsShow="1">姓名和身份證不相符</UOM_Operate_RealNameVerification_Failed_5>
+  <UOM_Operate_RealNameVerification_Failed_6 IsShow="1">實名認證超時</UOM_Operate_RealNameVerification_Failed_6>
+  <UOM_Operate_RealNameVerification_Failed_7 IsShow="1">重複提交</UOM_Operate_RealNameVerification_Failed_7>
+
+  <UOM_Operate_GetPhoneVerificationNum_Sucess IsShow="1">獲手機驗證碼取成功</UOM_Operate_GetPhoneVerificationNum_Sucess>
+  <UOM_Operate_GetPhoneVerificationNum_Failed_1 IsShow="1">手機號碼長度不符合條件或含非法字)</UOM_Operate_GetPhoneVerificationNum_Failed_1>
+  <UOM_Operate_GetPhoneVerificationNum_Failed_2 IsShow="1">手機號碼不存在</UOM_Operate_GetPhoneVerificationNum_Failed_2>
+  <UOM_Operate_GetPhoneVerificationNum_Failed_3 IsShow="1">手機號碼已被佔用</UOM_Operate_GetPhoneVerificationNum_Failed_3>
+  <UOM_Operate_GetPhoneVerificationNum_Failed_4 IsShow="1">重複提交</UOM_Operate_GetPhoneVerificationNum_Failed_4>
+
+  <UOM_Operate_BindPhone_Sucess IsShow="1">綁定手機成功</UOM_Operate_BindPhone_Sucess>
+  <UOM_Operate_BindPhone_Sucess_1 IsShow="3">等待伺服器端發送驗證短信</UOM_Operate_BindPhone_Sucess_1>
+  <UOM_Operate_BindPhone_Failed IsShow="1">綁定手機失敗</UOM_Operate_BindPhone_Failed>
+  <UOM_Operate_BindPhone_Failed_1 IsShow="1">驗證碼錯誤</UOM_Operate_BindPhone_Failed_1>
+  <UOM_Operate_BindPhone_Failed_2 IsShow="1">驗證碼超時</UOM_Operate_BindPhone_Failed_2>
+  <UOM_Operate_BindPhone_Failed_3 IsShow="1">驗證碼發送失敗</UOM_Operate_BindPhone_Failed_3>
+  
+
+  <UOM_Operate_BindEmail_Sucess IsShow="1">綁定郵箱成功</UOM_Operate_BindEmail_Sucess>
+  <UOM_Operate_BindEmail_Failed IsShow="1">綁定郵箱失敗</UOM_Operate_BindEmail_Failed>
+  <UOM_Operate_BindEmail_Failed_1 IsShow="1">郵箱位址錯誤</UOM_Operate_BindEmail_Failed_1>
+  <UOM_Operate_BindEmail_Failed_2 IsShow="1">郵箱地址已被佔用</UOM_Operate_BindEmail_Failed_2>
+  <UOM_Operate_BindEmail_Failed_3 IsShow="1">郵箱地址不存在</UOM_Operate_BindEmail_Failed_3>
+
+  <UOM_Operate_EntityItem_Sucess IsShow="1">購買成功，訂單已生成</UOM_Operate_EntityItem_Sucess>
+  <UOM_Operate_EntityItem_Failed IsShow="1">購買失敗</UOM_Operate_EntityItem_Failed>
+  <UOM_Operate_EntityItem_Failed_1 IsShow="1">購買失敗，系統錯誤</UOM_Operate_EntityItem_Failed_1>
+
+  <UOM_Operate_PhonePay_Sucess IsShow="1">手機話費充值成功</UOM_Operate_PhonePay_Sucess>
+  <UOM_Operate_PhonePay_Failed IsShow="1">手機話費充值失敗</UOM_Operate_PhonePay_Failed>
+  <UOM_Operate_PhonePay_Failed_1 IsShow="1">手機話費充值失敗 系統錯誤</UOM_Operate_PhonePay_Failed_1>
+  <UOM_Operate_PhonePay_Failed_2 IsShow="1">手機話費充值失敗 充值介面錯誤</UOM_Operate_PhonePay_Failed_2>
+  <!-- 查詢 -->
+  <UOM_Query_QueryName_Sucess IsShow="0">查詢名稱成功</UOM_Query_QueryName_Sucess>
+  <UOM_Query_QueryName_Failed IsShow="1">查詢失敗</UOM_Query_QueryName_Failed>
+  <UOM_Query_QueryName_Failed_1 IsShow="1">查詢的名稱長度不符合條件或含非法字)</UOM_Query_QueryName_Failed_1>
+
+  <UOM_Query_QueryID_Sucess IsShow="0">查詢資訊成功</UOM_Query_QueryID_Sucess>
+  <UOM_Query_QueryID_Failed IsShow="1">查詢資訊失敗</UOM_Query_QueryID_Failed>
+  <UOM_Query_QueryID_Failed_1 IsShow="0">無法查看自己</UOM_Query_QueryID_Failed_1>
+  
+  <!-- 排行榜 -->
+  <UOM_Rank_GetWeekReward_Sucess IsShow="0">排行榜獎勵領取成功</UOM_Rank_GetWeekReward_Sucess>
+  <UOM_Rank_GetWeekReward_Failed IsShow="1">排行榜獎勵領取失敗</UOM_Rank_GetWeekReward_Failed>
+  <UOM_Rank_GetWeekReward_Failed_1 IsShow="1">該排行榜不存在</UOM_Rank_GetWeekReward_Failed_1>
+  <UOM_Rank_GetWeekReward_Failed_2 IsShow="1">抱歉，您上周沒有上榜</UOM_Rank_GetWeekReward_Failed_2>
+  <UOM_Rank_GetWeekReward_Failed_3 IsShow="1">您已經領取過該獎勵</UOM_Rank_GetWeekReward_Failed_3>
+  
+  <!-- 充值 -->
+  <UOM_Recharge_SendRecharge_Sucess IsShow="0">充值成功</UOM_Recharge_SendRecharge_Sucess>
+  <UOM_Recharge_SendRecharge_Failed IsShow="1">充值失敗</UOM_Recharge_SendRecharge_Failed>
+  <UOM_Recharge_SendRecharge_Failed_1 IsShow="1">該充值商品不存在</UOM_Recharge_SendRecharge_Failed_1>
+  <UOM_Recharge_SendRecharge_Failed_2 IsShow="1">充值失敗</UOM_Recharge_SendRecharge_Failed_2>
+  <UOM_Recharge_SendRecharge_Failed_3 IsShow="1">充值失敗 已經首沖過了</UOM_Recharge_SendRecharge_Failed_3>
+  <UOM_Recharge_SendRecharge_Failed_4 IsShow="1">充值失敗 金幣已經到達最大上限</UOM_Recharge_SendRecharge_Failed_4>
+
+  <UOM_Recharge_GetOrderID_Success IsShow="1">獲取訂單號成功</UOM_Recharge_GetOrderID_Success>
+  <UOM_Recharge_GetOrderID_Failed IsShow="1">獲取訂單號失敗</UOM_Recharge_GetOrderID_Failed>
+  <UOM_Recharge_GetOrderID_Failed_1 IsShow="1">獲取訂單號失敗 系統錯誤</UOM_Recharge_GetOrderID_Failed_1>
+  <!-- 關係 -->
+  <UOM_Relation_AddRelation_Sucess IsShow="1">添加關係成功</UOM_Relation_AddRelation_Sucess>
+  <UOM_Relation_AddRelation_Failed IsShow="1">添加關係失敗</UOM_Relation_AddRelation_Failed>
+  <UOM_Relation_AddRelation_Failed_1 IsShow="1">不可添加自己為好友</UOM_Relation_AddRelation_Failed_1>
+  <UOM_Relation_AddRelation_Failed_2 IsShow="1">對方已在您的關係列表</UOM_Relation_AddRelation_Failed_2>
+  <UOM_Relation_AddRelation_Failed_3 IsShow="1">關係列表已滿，添加失敗</UOM_Relation_AddRelation_Failed_3>
+  <UOM_Relation_AddRelation_Failed_4 IsShow="1">添加關係失敗，系統錯誤</UOM_Relation_AddRelation_Failed_4>
+
+  <UOM_Relation_DelRelation_Sucess IsShow="0">刪除關係成功</UOM_Relation_DelRelation_Sucess>
+  <UOM_Relation_DelRelation_Failed IsShow="1">刪除關係失敗</UOM_Relation_DelRelation_Failed>
+  <UOM_Relation_DelRelation_Failed_1 IsShow="1">對方不是您的好友</UOM_Relation_DelRelation_Failed_1>
+  <UOM_Relation_DelRelation_Failed_2 IsShow="1">刪除好友失敗，系統錯誤</UOM_Relation_DelRelation_Failed_2>
+
+  <UOM_Relation_ChangeRelation_Sucess IsShow="0">刪除關係成功</UOM_Relation_ChangeRelation_Sucess>
+  <UOM_Relation_ChangeRelation_Failed IsShow="1">刪除關係失敗</UOM_Relation_ChangeRelation_Failed>
+  <UOM_Relation_ChangeRelation_Failed_1 IsShow="1">刪除好友失敗，系統錯誤</UOM_Relation_ChangeRelation_Failed_1>
+  
+  <!-- 商店 -->
+  <UOM_Shop_BuyItem_Sucess IsShow="1">購買成功</UOM_Shop_BuyItem_Sucess>
+  <UOM_Shop_BuyItem_Failed IsShow="1">購買失敗</UOM_Shop_BuyItem_Failed>
+  <UOM_Shop_BuyItem_Failed_1 IsShow="1">指定商品不存在</UOM_Shop_BuyItem_Failed_1>
+  <UOM_Shop_BuyItem_Failed_2 IsShow="1">物品不存在</UOM_Shop_BuyItem_Failed_2>
+  <UOM_Shop_BuyItem_Failed_3 IsShow="1">指定商品已下架</UOM_Shop_BuyItem_Failed_3>
+  <UOM_Shop_BuyItem_Failed_4 IsShow="1">請先完善您的實名認證、手機號碼、收貨位址</UOM_Shop_BuyItem_Failed_4>
+  <UOM_Shop_BuyItem_Failed_5 IsShow="0">您的貨幣不足</UOM_Shop_BuyItem_Failed_5>
+  <UOM_Shop_BuyItem_Failed_6 IsShow="1">購買失敗，系統錯誤</UOM_Shop_BuyItem_Failed_6>
+  <UOM_Shop_BuyItem_Failed_7 IsShow="1">手機話費充值失敗 請先綁定手機號碼</UOM_Shop_BuyItem_Failed_7>
+  <UOM_Shop_BuyItem_Failed_8 IsShow="1">不可以一次購買多個當前物品</UOM_Shop_BuyItem_Failed_8>
+  <UOM_Shop_BuyItem_Failed_9 IsShow="1">實體物品和手機號碼兌換次數超出當天限制</UOM_Shop_BuyItem_Failed_9>
+  <UOM_Shop_BuyItem_Failed_10 IsShow="1">必須先分享才可以兌換</UOM_Shop_BuyItem_Failed_10>
+
+    <!-- 桌子 -->
+  <UOM_Table_JoinTable_Sucess IsShow="0">進入桌子成功</UOM_Table_JoinTable_Sucess>
+  <UOM_Table_JoinTable_Failed IsShow="1">進入房間失敗</UOM_Table_JoinTable_Failed>
+  <UOM_Table_JoinTable_Failed_1 IsShow="1">指定房間類型不存在</UOM_Table_JoinTable_Failed_1>
+  <UOM_Table_JoinTable_Failed_2 IsShow="0">您不符合進入條件</UOM_Table_JoinTable_Failed_2>
+  <UOM_Table_JoinTable_Failed_3 IsShow="0">您不符合進入條件</UOM_Table_JoinTable_Failed_3>
+  <UOM_Table_JoinTable_Failed_4 IsShow="0">您不符合進入條件</UOM_Table_JoinTable_Failed_4>
+  <UOM_Table_JoinTable_Failed_5 IsShow="0">您不符合進入條件</UOM_Table_JoinTable_Failed_5>
+  <UOM_Table_JoinTable_Failed_6 IsShow="1">您缺少進入房間的所需物品</UOM_Table_JoinTable_Failed_6>
+  <UOM_Table_JoinTable_Failed_7 IsShow="1">進入房間失敗，系統錯誤</UOM_Table_JoinTable_Failed_7>
+  <UOM_Table_JoinTable_Failed_8 IsShow="1">進入房間失敗，未開啟最低倍率</UOM_Table_JoinTable_Failed_8>
+  <UOM_Table_JoinTable_Failed_9 IsShow="1">您不符合進入條件</UOM_Table_JoinTable_Failed_9>
+  <UOM_Table_JoinTable_Failed_10 IsShow="1">您不符合進入條件</UOM_Table_JoinTable_Failed_10>
+  
+  <!-- 任務 -->
+  <UOM_Task_GetReward_Sucess IsShow="0">任務獎勵領取成功</UOM_Task_GetReward_Sucess>
+  <UOM_Task_GetReward_Failed IsShow="0">任務獎勵領取失敗</UOM_Task_GetReward_Failed>
+  <UOM_Task_GetReward_Failed_1 IsShow="0">任務不存在</UOM_Task_GetReward_Failed_1>
+  <UOM_Task_GetReward_Failed_2 IsShow="0">您未完成該任務</UOM_Task_GetReward_Failed_2>
+
+  <!-- 登陸 -->
+  <UOM_Logon_NormalLogon_Sucess IsShow="0">普通登陸成功</UOM_Logon_NormalLogon_Sucess>
+  <UOM_Logon_NormalLogon_Failed IsShow="1">登陸失敗</UOM_Logon_NormalLogon_Failed>
+  <UOM_Logon_NormalLogon_Failed_1 IsShow="1">帳號錯誤</UOM_Logon_NormalLogon_Failed_1>
+  <UOM_Logon_NormalLogon_Failed_2 IsShow="1">密碼錯誤</UOM_Logon_NormalLogon_Failed_2>
+  <UOM_Logon_NormalLogon_Failed_3 IsShow="1">密碼轉化失敗</UOM_Logon_NormalLogon_Failed_3>
+  <UOM_Logon_NormalLogon_Failed_4 IsShow="1">帳號不存在或密碼錯誤</UOM_Logon_NormalLogon_Failed_4>
+
+  <UOM_Logon_Register_Sucess IsShow="0">註冊帳號成功</UOM_Logon_Register_Sucess>
+  <UOM_Logon_Register_Failed IsShow="1">註冊帳號失敗</UOM_Logon_Register_Failed>
+  <UOM_Logon_Register_Failed_1 IsShow="1">輸入的帳號不合法</UOM_Logon_Register_Failed_1>
+  <UOM_Logon_Register_Failed_2 IsShow="1">輸入的密碼不合法</UOM_Logon_Register_Failed_2>
+  <UOM_Logon_Register_Failed_3 IsShow="1">註冊帳號失敗，密碼轉化失敗</UOM_Logon_Register_Failed_3>
+  <UOM_Logon_Register_Failed_4 IsShow="1">該帳號已被使用</UOM_Logon_Register_Failed_4>
+  <UOM_Logon_Register_psnotsame IsShow="1">兩次密碼不一致</UOM_Logon_Register_psnotsame>
+  
+  <UOM_Logon_FastRegister_Sucess IsShow="0">快速註冊帳號成功</UOM_Logon_FastRegister_Sucess>
+  <UOM_Logon_FastRegister_Failed IsShow="1">快速註冊帳號失敗</UOM_Logon_FastRegister_Failed>
+  <UOM_Logon_FastRegister_Failed_1 IsShow="1">輸入的密碼不合法</UOM_Logon_FastRegister_Failed_1>
+  <UOM_Logon_FastRegister_Failed_2 IsShow="1">快速註冊帳號失敗，密碼轉化失敗</UOM_Logon_FastRegister_Failed_2>
+  <UOM_Logon_FastRegister_Failed_3 IsShow="1">快速註冊帳號失敗，系統錯誤</UOM_Logon_FastRegister_Failed_3>
+
+  <UOM_Logon_Channel_Sucess IsShow="0">平臺登錄成功</UOM_Logon_Channel_Sucess>
+  <UOM_Logon_Channel_Failed IsShow="0">平臺登錄失敗</UOM_Logon_Channel_Failed>
+  <UOM_Logon_Channel_Failed_1 IsShow="1">親愛的{0}用戶，您的登錄驗證失敗</UOM_Logon_Channel_Failed_1>
+
+  <UOM_PhoneLogon_Check_Success IsShow="1">獲取驗證碼成功</UOM_PhoneLogon_Check_Success>
+  <UOM_PhoneLogon_Check_Failed IsShow="1">獲取驗證碼失敗</UOM_PhoneLogon_Check_Failed>
+  <UOM_PhoneLogon_Check_Failed_1 IsShow="1">手機號碼錯誤</UOM_PhoneLogon_Check_Failed_1>
+  <UOM_PhoneLogon_Check_Failed_2 IsShow="1">當前手機號碼未綁定帳號 請聯繫客服</UOM_PhoneLogon_Check_Failed_2>
+  <UOM_PhoneLogon_Check_Failed_3 IsShow="1">驗證碼發送失敗</UOM_PhoneLogon_Check_Failed_3>
+  <UOM_PhoneLogon_Check_Failed_4 IsShow="1">系統錯誤</UOM_PhoneLogon_Check_Failed_4>
+
+  <UOM_PhoneLog_Success IsShow="1">登陸成功</UOM_PhoneLog_Success>
+  <UOM_PhoneLog_Failed IsShow="1">登陸失敗</UOM_PhoneLog_Failed>
+  <UOM_PhoneLog_Failed_1 IsShow="1">手機號碼錯誤</UOM_PhoneLog_Failed_1>
+  <UOM_PhoneLog_Failed_2 IsShow="1">密碼無法使用</UOM_PhoneLog_Failed_2>
+  <UOM_PhoneLog_Failed_3 IsShow="1">密碼轉化失敗</UOM_PhoneLog_Failed_3>
+  <UOM_PhoneLog_Failed_4 IsShow="1">驗證碼錯誤</UOM_PhoneLog_Failed_4>
+  <UOM_PhoneLog_Failed_5 IsShow="1">無登陸信息</UOM_PhoneLog_Failed_5>
+
+  <UOM_SecPass_Success IsShow="1">手機登陸 成功</UOM_SecPass_Success>
+  <UOM_SecPass_Failed IsShow="1">手機登陸 失敗</UOM_SecPass_Failed>
+  <UOM_SecPass_Failed_1 IsShow="1">手機登陸 手機號碼錯誤</UOM_SecPass_Failed_1>
+  <UOM_SecPass_Failed_2 IsShow="1">手機登陸 密碼錯誤</UOM_SecPass_Failed_2>
+  <UOM_SecPass_Failed_3 IsShow="1">手機登陸 密碼轉化錯誤</UOM_SecPass_Failed_3>
+
+  <UOM_ChangeSecPass_Success IsShow="1">修改手機登陸密碼成功</UOM_ChangeSecPass_Success>
+  <UOM_ChangeSecPass_Failed IsShow="1">修改手機登陸密碼失敗</UOM_ChangeSecPass_Failed>
+  <UOM_ChangeSecPass_Failed_1 IsShow="1">修改手機登陸密碼失敗 舊密碼錯誤</UOM_ChangeSecPass_Failed_1>
+  <UOM_ChangeSecPass_Failed_2 IsShow="1">修改手機登陸密碼失敗 新密碼錯誤</UOM_ChangeSecPass_Failed_2>
+  <UOM_ChangeSecPass_Failed_3 IsShow="1">修改手機登陸密碼失敗 新舊密碼一樣</UOM_ChangeSecPass_Failed_3>
+  <UOM_ChangeSecPass_Failed_4 IsShow="1">修改手機登陸密碼失敗 舊密碼轉化錯誤</UOM_ChangeSecPass_Failed_4>
+  <UOM_ChangeSecPass_Failed_5 IsShow="1">修改手機登陸密碼失敗 新密碼轉化錯誤</UOM_ChangeSecPass_Failed_5>
+  <UOM_ChangeSecPass_Failed_6 IsShow="1">修改手機登陸密碼失敗 密碼錯誤</UOM_ChangeSecPass_Failed_6>
+
+  <UOM_WeiXinLogon_Success IsShow="1">微信登陸成功</UOM_WeiXinLogon_Success>
+  <UOM_WeiXinLogon_Faile IsShow="1">微信登陸失敗</UOM_WeiXinLogon_Faile>
+  <UOM_WeiXinLogon_Faile_1 IsShow="1">微信登陸失敗</UOM_WeiXinLogon_Faile_1>
+
+
+  <UOM_QQLogon_Success IsShow="1">QQ登陸成功</UOM_QQLogon_Success>
+  <UOM_QQLogon_Faile IsShow="1">QQ登陸失敗</UOM_QQLogon_Faile>
+  <UOM_QQLogon_Faile_1 IsShow="1">QQ登陸失敗</UOM_QQLogon_Faile_1>
+  
+
+  <UOM_Logon_Version_Error IsShow="3">請升級用戶端版本後重新登陸</UOM_Logon_Version_Error>
+  <UOM_Logon_Reset_Error IsShow="3">重新連接伺服器失敗!</UOM_Logon_Reset_Error>
+  <UOM_Logon_Account_Freeze IsShow="5">帳號凍結結束時間為{0}</UOM_Logon_Account_Freeze>
+  <UOM_Logon_Account_Freeze_2 IsShow="6">連結伺服器失敗，請稍後再試(261)</UOM_Logon_Account_Freeze_2>
+
+  <UOM_Logon_ContactService>客服QQ：177765715 歡迎騷擾~~</UOM_Logon_ContactService>
+  <UOM_Login_GetNoticeError>獲取公告失敗</UOM_Login_GetNoticeError>
+  <!-- 忘記密碼-->
+  <UOM_FetchPs_Notsame IsShow="1">兩次密碼不一致</UOM_FetchPs_Notsame>
+  <!-- 稱號-->
+  <UOM_Title_Sucess IsShow="1">稱號更換成功</UOM_Title_Sucess>
+  <UOM_Title_Failed IsShow="1">稱號更換失敗</UOM_Title_Failed>
+  <UOM_Title_Failed_1 IsShow="1">該稱號不存在</UOM_Title_Failed_1>
+  
+  <!-- 兌換碼 -->
+  <UOM_ExChange_Sucess IsShow="1">兌換碼使用成功</UOM_ExChange_Sucess>
+  <UOM_ExChange_Failed IsShow="1">兌換碼使用失敗</UOM_ExChange_Failed>
+  <UOM_ExChange_Failed_1 IsShow="1">換碼長度不正確或者包含非法字</UOM_ExChange_Failed_1>
+  <UOM_ExChange_Failed_2 IsShow="1">兌換碼不存在</UOM_ExChange_Failed_2>
+  <UOM_ExChange_Failed_3 IsShow="1">已使用相同類型的兌換碼</UOM_ExChange_Failed_3>
+  <UOM_ExChange_Failed_4 IsShow="1">當前平臺無法使用</UOM_ExChange_Failed_4>
+
+   <!-- 抽獎-->
+  <UOM_Lottery_Sucess IsShow="0">抽獎成功</UOM_Lottery_Sucess>
+  <UOM_Lottery_Failed IsShow="1">抽獎失敗</UOM_Lottery_Failed>
+  <UOM_Lottery_Failed_1 IsShow="1">抽獎失敗 指定抽獎不存在</UOM_Lottery_Failed_1>
+  <UOM_Lottery_Failed_2 IsShow="1">抽獎失敗 抽獎積分不夠</UOM_Lottery_Failed_2>
+  <UOM_Lottery_Failed_3 IsShow="1">抽獎失敗 系統錯誤</UOM_Lottery_Failed_3>
+  <UOM_Lottery_Failed_4 IsShow="1">抽獎失敗 獎金魚數量不夠</UOM_Lottery_Failed_4>
+  <UOM_Lottery_Notice>[242858FF]距離{0}抽獎還有[FF0000FF]{1}[-]金幣了！你確定要繼續抽卡嗎？[-]</UOM_Lottery_Notice>
+  <UOM_LOttery_GoldFishDes>只有擊殺這些魚，才能累積獎池。累積金額為魚價值/50，並受倍率影響。</UOM_LOttery_GoldFishDes>
+<!--救濟金-->
+<BenefitGold>[003959]您很富裕,無需領取[-]</BenefitGold>
+<BenefitCount>[003959]今天救濟金次數已領完[-]</BenefitCount>
+<BenefitTime>[003959]領取救濟金CD中[-]</BenefitTime>
+<BenefitFetch>[003959]您已經領取了救濟金,今天還可以領取[-][ff0000]{0}[-][003959]次[-]</BenefitFetch>
+
+  <!-- 牛牛 -->
+  <UOM_NiuNiu_JoinRoom_Sucess IsShow="0">進入房間成功</UOM_NiuNiu_JoinRoom_Sucess>
+  <UOM_NiuNiu_JoinRoom_Failed IsShow="1">進入房間失敗</UOM_NiuNiu_JoinRoom_Failed>
+  <UOM_NiuNiu_JoinRoom_Failed_1 IsShow="1">進入需要金幣{0}</UOM_NiuNiu_JoinRoom_Failed_1>
+  <UOM_NiuNiu_JoinRoom_Failed_2 IsShow="1">進入房間失敗 系統錯誤</UOM_NiuNiu_JoinRoom_Failed_2>
+
+  <UOM_NiuNiu_AddGlobel_Sucess IsShow="0">下注成功</UOM_NiuNiu_AddGlobel_Sucess>
+  <UOM_NiuNiu_AddGlobel_Failed  IsShow="1">下注失敗</UOM_NiuNiu_AddGlobel_Failed>
+  <UOM_NiuNiu_AddGlobel_Failed_1 IsShow="1">下注區失敗</UOM_NiuNiu_AddGlobel_Failed_1>
+  <UOM_NiuNiu_AddGlobel_Failed_2 IsShow="1">下注金額不可超過擁有金幣的1/{0}</UOM_NiuNiu_AddGlobel_Failed_2>
+  <UOM_NiuNiu_AddGlobel_Failed_3 IsShow="1">下注金額不可超過{0}</UOM_NiuNiu_AddGlobel_Failed_3>
+  <UOM_NiuNiu_AddGlobel_Failed_4 IsShow="1">押注金幣超出莊家上限</UOM_NiuNiu_AddGlobel_Failed_4>
+  <UOM_NiuNiu_AddGlobel_Failed_5 IsShow="1">下注失敗 系統錯誤</UOM_NiuNiu_AddGlobel_Failed_5>
+  <UOM_NiuNiu_AddGlobel_Failed_6 IsShow="1">下注失敗 莊家不可以下注</UOM_NiuNiu_AddGlobel_Failed_6>
+
+  <UOM_NiuNiu_AddBankerList_Sucess IsShow="1">上莊成功</UOM_NiuNiu_AddBankerList_Sucess>
+  <UOM_NiuNiu_AddBankerList_Failed IsShow="1">上莊失敗</UOM_NiuNiu_AddBankerList_Failed>
+  <UOM_NiuNiu_AddBankerList_Failed_1 IsShow="0">上莊需要金幣超過{0}</UOM_NiuNiu_AddBankerList_Failed_1>
+  <UOM_NiuNiu_AddBankerList_Failed_2 IsShow="1">上莊失敗 系統錯誤</UOM_NiuNiu_AddBankerList_Failed_2>
+  <UOM_NiuNiu_AddBankerList_Failed_3 IsShow="1">上莊失敗 已經在佇列裡面了</UOM_NiuNiu_AddBankerList_Failed_3>
+
+  <UOM_NiuNiu_NextBankerSeat_Sucess IsShow="1">搶莊成功</UOM_NiuNiu_NextBankerSeat_Sucess>
+  <UOM_NiuNiu_NextBankerSeat_Failed IsShow="1">搶莊失敗</UOM_NiuNiu_NextBankerSeat_Failed>
+  <UOM_NiuNiu_NextBankerSeat_Failed_1 IsShow="1">搶莊失敗 不在上莊佇列裡面</UOM_NiuNiu_NextBankerSeat_Failed_1>
+  <UOM_NiuNiu_NextBankerSeat_Failed_2 IsShow="1">搶莊需要金幣{0}</UOM_NiuNiu_NextBankerSeat_Failed_2>
+  <UOM_NiuNiu_NextBankerSeat_Failed_3 IsShow="1">搶莊失敗 系統錯誤</UOM_NiuNiu_NextBankerSeat_Failed_3>
+  <UOM_NiuNiu_NextBankerSeat_Failed_4 IsShow="1">搶莊失敗 已經排在第一位</UOM_NiuNiu_NextBankerSeat_Failed_4>
+  
+
+  <UOM_NiuNiu_LeaveBankerList_Sucess IsShow="1">離開佇列成功</UOM_NiuNiu_LeaveBankerList_Sucess>
+  <UOM_NiuNiu_LeaveBankerList_Failed IsShow="1">離開佇列失敗</UOM_NiuNiu_LeaveBankerList_Failed>
+  <UOM_NiuNiu_LeaveBankerList_Failed_1 IsShow="1">離開佇列失敗 不在上莊佇列裡面</UOM_NiuNiu_LeaveBankerList_Failed_1>
+  <UOM_NiuNiu_LeaveBankerList_Failed_2 IsShow="1">離開佇列失敗 系統錯誤</UOM_NiuNiu_LeaveBankerList_Failed_2>
+
+  <UOM_NiuNiu_CanelBanker_Sucess IsShow="1">下莊成功</UOM_NiuNiu_CanelBanker_Sucess>
+  <UOM_NiuNiu_CanelBanker_Failed IsShow="1">下莊失敗</UOM_NiuNiu_CanelBanker_Failed>
+  <UOM_NiuNiu_CanelBanker_Failed_1 IsShow="1">下莊失敗 不是莊家</UOM_NiuNiu_CanelBanker_Failed_1>
+  <UOM_NiuNiu_CanelBanker_Failed_2 IsShow="1">下莊失敗 系統錯誤</UOM_NiuNiu_CanelBanker_Failed_2>
+
+  <UOM_Niuniu_LeaveRoom>如果本局您已下注，現在離開房間下注金額不會退返，確定離開？</UOM_Niuniu_LeaveRoom>
+  <UOM_Niuniu_UpHostFail>上莊失敗，您的金幣數少於@，是否前去充值</UOM_Niuniu_UpHostFail>
+  <UOM_Niuniu_SnatchHost>搶莊需要消耗@金幣，是否確定？</UOM_Niuniu_SnatchHost>
+  <UOM_Niuniu_HostLeave>退出房間將自動下莊，是否確定？</UOM_Niuniu_HostLeave>
+  <UOM_Niuniu_LineLeave>退出房間將離開上莊排隊，是否確定？</UOM_Niuniu_LineLeave>
+  <UOM_Niuniu_JoinVip_Fail>很遺憾！VIP才能入座貴賓席，是否前往充值？</UOM_Niuniu_JoinVip_Fail>
+  <UOM_Niuniu_JoinVip_Fail2>入座失敗，您的VIP等級低於該玩家，是否提升VIP等級？</UOM_Niuniu_JoinVip_Fail2>
+  <UOM_Niuniu_JoinVip_Fail3>玩家@佔據了您的位置，是否提升VIP等級？</UOM_Niuniu_JoinVip_Fail3>
+  <UOM_Niuniu_NextPage_Fail>當前已經是最後一頁</UOM_Niuniu_NextPage_Fail>
+  <UOM_Niuniu_FrontPage_Fail>當前已經是第一頁</UOM_Niuniu_FrontPage_Fail>
+  <UOM_Niuniu_Normal_Sum>當前大眾席共有[FF0000FF]@[-]人</UOM_Niuniu_Normal_Sum>
+  
+
+  <UOM_NiuNiu_JoinVip_Sucess IsShow="1">進入貴賓席成功</UOM_NiuNiu_JoinVip_Sucess>
+  <UOM_NiuNiu_JoinVip_Failed IsShow="1">進入貴賓席失敗</UOM_NiuNiu_JoinVip_Failed>
+  <UOM_NiuNiu_JoinVip_Failed_1 IsShow="1">進入貴賓席失敗 位置錯誤</UOM_NiuNiu_JoinVip_Failed_1>
+  <UOM_NiuNiu_JoinVip_Failed_2 IsShow="1">進入貴賓席失敗 非VIP玩家</UOM_NiuNiu_JoinVip_Failed_2>
+  <UOM_NiuNiu_JoinVip_Failed_3 IsShow="1">進入貴賓席失敗 目標VIP等級高於你</UOM_NiuNiu_JoinVip_Failed_3>
+  <UOM_NiuNiu_JoinVip_Failed_4 IsShow="1">進入貴賓席失敗 已經在貴賓席上了</UOM_NiuNiu_JoinVip_Failed_4>
+  <UOM_NiuNiu_JoinVip_Failed_5 IsShow="1">進入貴賓席失敗 莊家不可以進入貴賓席</UOM_NiuNiu_JoinVip_Failed_5>
+
+  <UOM_NiuNiu_LeaveVip_Sucess IsShow="1">離開貴賓席成功</UOM_NiuNiu_LeaveVip_Sucess>
+  <UOM_NiuNiu_LeaveVip_Failed IsShow="1">離開貴賓席失敗</UOM_NiuNiu_LeaveVip_Failed>
+  <UOM_NiuNiu_LeaveVip_Failed_1 IsShow="1">離開貴賓席失敗 不在貴賓席上</UOM_NiuNiu_LeaveVip_Failed_1>
+  <UOM_NiuNiu_LeaveVip_Failed_2 IsShow="1">離開貴賓席失敗 系統錯誤</UOM_NiuNiu_LeaveVip_Failed_2>
+
+  <UOM_Lock_Globel IsShow="1">金幣被鎖定 無法使用 鎖定結束時間為{0}</UOM_Lock_Globel>
+  <UOM_Lock_Currcey IsShow="1">鑽石被鎖定 無法使用 鎖定結束時間為{0}</UOM_Lock_Currcey>
+  <UOM_Lock_Medal IsShow="1">獎牌被鎖定 無法使用 鎖定結束時間為{0}</UOM_Lock_Medal>
+
+
+  <UOM_RelationRequest_SendRequest_Sucess IsShow="1">發送請求成功</UOM_RelationRequest_SendRequest_Sucess>
+  <UOM_RelationRequest_SendRequest_Failed IsShow="1">發送請求失敗</UOM_RelationRequest_SendRequest_Failed>
+  <UOM_RelationRequest_SendRequest_Failed_1 IsShow="1">發送請求失敗 關係類型不正確</UOM_RelationRequest_SendRequest_Failed_1>
+  <UOM_RelationRequest_SendRequest_Failed_2 IsShow="1">發送請求失敗 包含非法字元或者長度不正確</UOM_RelationRequest_SendRequest_Failed_2>
+  <UOM_RelationRequest_SendRequest_Failed_3 IsShow="1">發送請求失敗 目標玩家已經存在關係</UOM_RelationRequest_SendRequest_Failed_3>
+  <UOM_RelationRequest_SendRequest_Failed_4 IsShow="1">發送請求失敗 重複發送申請</UOM_RelationRequest_SendRequest_Failed_4>
+  <UOM_RelationRequest_SendRequest_Failed_5 IsShow="1">發送請求失敗 目標已經向你發送相同申請了</UOM_RelationRequest_SendRequest_Failed_5>
+  <UOM_RelationRequest_SendRequest_Failed_6 IsShow="1">發送請求失敗 已經和目標玩家是好友了</UOM_RelationRequest_SendRequest_Failed_6>
+  <UOM_RelationRequest_SendRequest_Failed_7 IsShow="1">發送請求失敗 目標玩家和你已經是好友了</UOM_RelationRequest_SendRequest_Failed_7>
+  <UOM_RelationRequest_SendRequest_Failed_8 IsShow="1">發送請求失敗 目標的好友清單已經滿了</UOM_RelationRequest_SendRequest_Failed_8>
+  <UOM_RelationRequest_SendRequest_Failed_9 IsShow="1">發送請求失敗 你的好友列表已經滿了</UOM_RelationRequest_SendRequest_Failed_9>
+  <UOM_RelationRequest_SendRequest_Failed_10 IsShow="1">發送請求失敗 目標玩家申請清單已經滿了</UOM_RelationRequest_SendRequest_Failed_10>
+
+  <UOM_RelationRequest_HandleRequest_Sucess IsShow="1">處理請求成功</UOM_RelationRequest_HandleRequest_Sucess>
+  <UOM_RelationRequest_HandleRequest_Failed IsShow="1">處理請求失敗</UOM_RelationRequest_HandleRequest_Failed>
+  <UOM_RelationRequest_HandleRequest_Failed_1 IsShow="1">處理請求失敗 請求不存在</UOM_RelationRequest_HandleRequest_Failed_1>
+
+  <UOM_RoleChar_SendChar_Sucess IsShow="1">聊天發送成功</UOM_RoleChar_SendChar_Sucess>
+  <UOM_RoleChar_SendChar_Failed IsShow="1">聊天發送失敗</UOM_RoleChar_SendChar_Failed>
+  <UOM_RoleChar_SendChar_Failed_1 IsShow="1">聊天發送失敗 目標不是好友</UOM_RoleChar_SendChar_Failed_1>
+  <UOM_RoleChar_SendChar_Failed_2 IsShow="1">聊天發送失敗 包含非法字元</UOM_RoleChar_SendChar_Failed_2>
+
+
+  <!-- dial -->
+  <UOM_Dial_JoinRoom_Sucess IsShow="0">進入房間成功</UOM_Dial_JoinRoom_Sucess>
+  <UOM_Dial_JoinRoom_Failed IsShow="1">進入房間失敗</UOM_Dial_JoinRoom_Failed>
+  <UOM_Dial_JoinRoom_Failed_1 IsShow="1">進入需要金幣{0}</UOM_Dial_JoinRoom_Failed_1>
+  <UOM_Dial_JoinRoom_Failed_2 IsShow="1">進入房間失敗 系統錯誤</UOM_Dial_JoinRoom_Failed_2>
+
+  <UOM_Dial_AddGlobel_Sucess IsShow="0">下注成功</UOM_Dial_AddGlobel_Sucess>
+  <UOM_Dial_AddGlobel_Failed  IsShow="1">下注失敗</UOM_Dial_AddGlobel_Failed>
+  <UOM_Dial_AddGlobel_Failed_1 IsShow="1">下注區失敗</UOM_Dial_AddGlobel_Failed_1>
+  <UOM_Dial_AddGlobel_Failed_2 IsShow="1">下注金額不可超過擁有金幣的1/{0}</UOM_Dial_AddGlobel_Failed_2>
+  <UOM_Dial_AddGlobel_Failed_3 IsShow="1">下注金額不可超過{0}</UOM_Dial_AddGlobel_Failed_3>
+  <UOM_Dial_AddGlobel_Failed_4 IsShow="1">押注金幣超出莊家上限</UOM_Dial_AddGlobel_Failed_4>
+  <UOM_Dial_AddGlobel_Failed_5 IsShow="1">下注失敗 系統錯誤</UOM_Dial_AddGlobel_Failed_5>
+  <UOM_Dial_AddGlobel_Failed_6 IsShow="1">下注失敗 莊家不可以下注</UOM_Dial_AddGlobel_Failed_6>
+  <UOM_Dial_AddGlobel_Failed_7 IsShow="1">下注失敗 非下注時間</UOM_Dial_AddGlobel_Failed_7>
+  <UOM_Dial_AddGlobel_Failed_8 IsShow="1">下注失敗 下注金幣不可以為0</UOM_Dial_AddGlobel_Failed_8>
+  <UOM_Dial_AddGlobel_Failed_9 IsShow="1">下注失敗 玩家金幣不夠</UOM_Dial_AddGlobel_Failed_9>
+  <UOM_Dial_AddGlobel_Failed_10 IsShow="1">下注失敗 非月卡用戶不可以續壓</UOM_Dial_AddGlobel_Failed_10>
+  
+
+  <UOM_Dial_AddBankerList_Sucess IsShow="1">上莊成功</UOM_Dial_AddBankerList_Sucess>
+  <UOM_Dial_AddBankerList_Failed IsShow="1">上莊失敗</UOM_Dial_AddBankerList_Failed>
+  <UOM_Dial_AddBankerList_Failed_1 IsShow="0">上莊需要金幣超過{0}</UOM_Dial_AddBankerList_Failed_1>
+  <UOM_Dial_AddBankerList_Failed_2 IsShow="1">上莊失敗 系統錯誤</UOM_Dial_AddBankerList_Failed_2>
+  <UOM_Dial_AddBankerList_Failed_3 IsShow="1">上莊失敗 已經在佇列裡面了</UOM_Dial_AddBankerList_Failed_3>
+
+  <UOM_Dial_NextBankerSeat_Sucess IsShow="1">搶莊成功</UOM_Dial_NextBankerSeat_Sucess>
+  <UOM_Dial_NextBankerSeat_Failed IsShow="1">搶莊失敗</UOM_Dial_NextBankerSeat_Failed>
+  <UOM_Dial_NextBankerSeat_Failed_1 IsShow="1">搶莊失敗 不在上莊佇列裡面</UOM_Dial_NextBankerSeat_Failed_1>
+  <UOM_Dial_NextBankerSeat_Failed_2 IsShow="1">搶莊需要金幣{0}</UOM_Dial_NextBankerSeat_Failed_2>
+  <UOM_Dial_NextBankerSeat_Failed_3 IsShow="1">搶莊失敗 系統錯誤</UOM_Dial_NextBankerSeat_Failed_3>
+  <UOM_Dial_NextBankerSeat_Failed_4 IsShow="1">搶莊失敗 已經排在第一位</UOM_Dial_NextBankerSeat_Failed_4>
+
+
+  <UOM_Dial_LeaveBankerList_Sucess IsShow="1">離開佇列成功</UOM_Dial_LeaveBankerList_Sucess>
+  <UOM_Dial_LeaveBankerList_Failed IsShow="1">離開佇列失敗</UOM_Dial_LeaveBankerList_Failed>
+  <UOM_Dial_LeaveBankerList_Failed_1 IsShow="1">離開佇列失敗 不在上莊佇列裡面</UOM_Dial_LeaveBankerList_Failed_1>
+  <UOM_Dial_LeaveBankerList_Failed_2 IsShow="1">離開佇列失敗 系統錯誤</UOM_Dial_LeaveBankerList_Failed_2>
+
+  <UOM_Dial_CanelBanker_Sucess IsShow="1">下莊成功</UOM_Dial_CanelBanker_Sucess>
+  <UOM_Dial_CanelBanker_Failed IsShow="1">下莊失敗</UOM_Dial_CanelBanker_Failed>
+  <UOM_Dial_CanelBanker_Failed_1 IsShow="1">下莊失敗 不是莊家</UOM_Dial_CanelBanker_Failed_1>
+  <UOM_Dial_CanelBanker_Failed_2 IsShow="1">下莊失敗 系統錯誤</UOM_Dial_CanelBanker_Failed_2>
+
+  <UOM_Dial_JoinVip_Sucess IsShow="1">進入貴賓席成功</UOM_Dial_JoinVip_Sucess>
+  <UOM_Dial_JoinVip_Failed IsShow="1">進入貴賓席失敗</UOM_Dial_JoinVip_Failed>
+  <UOM_Dial_JoinVip_Failed_1 IsShow="1">進入貴賓席失敗 位置錯誤</UOM_Dial_JoinVip_Failed_1>
+  <UOM_Dial_JoinVip_Failed_2 IsShow="1">進入貴賓席失敗 非VIP玩家</UOM_Dial_JoinVip_Failed_2>
+  <UOM_Dial_JoinVip_Failed_3 IsShow="1">進入貴賓席失敗 目標VIP等級高於你</UOM_Dial_JoinVip_Failed_3>
+  <UOM_Dial_JoinVip_Failed_4 IsShow="1">進入貴賓席失敗 已經在貴賓席上了</UOM_Dial_JoinVip_Failed_4>
+  <UOM_Dial_JoinVip_Failed_5 IsShow="1">進入貴賓席失敗 莊家不可以進入貴賓席</UOM_Dial_JoinVip_Failed_5>
+
+  <UOM_Dial_LeaveVip_Sucess IsShow="1">離開貴賓席成功</UOM_Dial_LeaveVip_Sucess>
+  <UOM_Dial_LeaveVip_Failed IsShow="1">離開貴賓席失敗</UOM_Dial_LeaveVip_Failed>
+  <UOM_Dial_LeaveVip_Failed_1 IsShow="1">離開貴賓席失敗 不在貴賓席上</UOM_Dial_LeaveVip_Failed_1>
+  <UOM_Dial_LeaveVip_Failed_2 IsShow="1">離開貴賓席失敗 系統錯誤</UOM_Dial_LeaveVip_Failed_2>
+
+
+  <!-- Car -->
+  <UOM_Car_JoinRoom_Sucess IsShow="0">進入房間成功</UOM_Car_JoinRoom_Sucess>
+  <UOM_Car_JoinRoom_Failed IsShow="1">進入房間失敗</UOM_Car_JoinRoom_Failed>
+  <UOM_Car_JoinRoom_Failed_1 IsShow="1">進入需要金幣{0}</UOM_Car_JoinRoom_Failed_1>
+  <UOM_Car_JoinRoom_Failed_2 IsShow="1">進入房間失敗 系統錯誤</UOM_Car_JoinRoom_Failed_2>
+
+  <UOM_Car_AddGlobel_Sucess IsShow="0">下注成功</UOM_Car_AddGlobel_Sucess>
+  <UOM_Car_AddGlobel_Failed  IsShow="1">下注失敗</UOM_Car_AddGlobel_Failed>
+  <UOM_Car_AddGlobel_Failed_1 IsShow="1">下注區失敗</UOM_Car_AddGlobel_Failed_1>
+  <UOM_Car_AddGlobel_Failed_2 IsShow="1">下注金額不可超過擁有金幣的1/{0}</UOM_Car_AddGlobel_Failed_2>
+  <UOM_Car_AddGlobel_Failed_3 IsShow="1">下注金額不可超過{0}</UOM_Car_AddGlobel_Failed_3>
+  <UOM_Car_AddGlobel_Failed_4 IsShow="1">押注金幣超出莊家上限</UOM_Car_AddGlobel_Failed_4>
+  <UOM_Car_AddGlobel_Failed_5 IsShow="1">下注失敗 系統錯誤</UOM_Car_AddGlobel_Failed_5>
+  <UOM_Car_AddGlobel_Failed_6 IsShow="1">下注失敗 莊家不可以下注</UOM_Car_AddGlobel_Failed_6>
+  <UOM_Car_AddGlobel_Failed_7 IsShow="1">下注失敗 非下注時間</UOM_Car_AddGlobel_Failed_7>
+  <UOM_Car_AddGlobel_Failed_8 IsShow="1">下注失敗 下注金幣不可以為0</UOM_Car_AddGlobel_Failed_8>
+  <UOM_Car_AddGlobel_Failed_9 IsShow="1">下注失敗 玩家金幣不夠</UOM_Car_AddGlobel_Failed_9>
+  <UOM_Car_AddGlobel_Failed_10 IsShow="1">下注失敗 非月卡用戶不可以續壓</UOM_Car_AddGlobel_Failed_10>
+  
+
+  <UOM_Car_AddBankerList_Sucess IsShow="1">上莊成功</UOM_Car_AddBankerList_Sucess>
+  <UOM_Car_AddBankerList_Failed IsShow="1">上莊失敗</UOM_Car_AddBankerList_Failed>
+  <UOM_Car_AddBankerList_Failed_1 IsShow="0">上莊需要金幣超過{0}</UOM_Car_AddBankerList_Failed_1>
+  <UOM_Car_AddBankerList_Failed_2 IsShow="1">上莊失敗 系統錯誤</UOM_Car_AddBankerList_Failed_2>
+  <UOM_Car_AddBankerList_Failed_3 IsShow="1">上莊失敗 已經在佇列裡面了</UOM_Car_AddBankerList_Failed_3>
+
+  <UOM_Car_NextBankerSeat_Sucess IsShow="1">搶莊成功</UOM_Car_NextBankerSeat_Sucess>
+  <UOM_Car_NextBankerSeat_Failed IsShow="1">搶莊失敗</UOM_Car_NextBankerSeat_Failed>
+  <UOM_Car_NextBankerSeat_Failed_1 IsShow="1">搶莊失敗 不在上莊佇列裡面</UOM_Car_NextBankerSeat_Failed_1>
+  <UOM_Car_NextBankerSeat_Failed_2 IsShow="1">搶莊需要金幣{0}</UOM_Car_NextBankerSeat_Failed_2>
+  <UOM_Car_NextBankerSeat_Failed_3 IsShow="1">搶莊失敗 系統錯誤</UOM_Car_NextBankerSeat_Failed_3>
+  <UOM_Car_NextBankerSeat_Failed_4 IsShow="1">搶莊失敗 已經排在第一位</UOM_Car_NextBankerSeat_Failed_4>
+
+
+  <UOM_Car_LeaveBankerList_Sucess IsShow="1">離開佇列成功</UOM_Car_LeaveBankerList_Sucess>
+  <UOM_Car_LeaveBankerList_Failed IsShow="1">離開佇列失敗</UOM_Car_LeaveBankerList_Failed>
+  <UOM_Car_LeaveBankerList_Failed_1 IsShow="1">離開佇列失敗 不在上莊佇列裡面</UOM_Car_LeaveBankerList_Failed_1>
+  <UOM_Car_LeaveBankerList_Failed_2 IsShow="1">離開佇列失敗 系統錯誤</UOM_Car_LeaveBankerList_Failed_2>
+
+  <UOM_Car_CanelBanker_Sucess IsShow="1">下莊成功</UOM_Car_CanelBanker_Sucess>
+  <UOM_Car_CanelBanker_Failed IsShow="1">下莊失敗</UOM_Car_CanelBanker_Failed>
+  <UOM_Car_CanelBanker_Failed_1 IsShow="1">下莊失敗 不是莊家</UOM_Car_CanelBanker_Failed_1>
+  <UOM_Car_CanelBanker_Failed_2 IsShow="1">下莊失敗 系統錯誤</UOM_Car_CanelBanker_Failed_2>
+
+  <UOM_Car_JoinVip_Sucess IsShow="1">進入貴賓席成功</UOM_Car_JoinVip_Sucess>
+  <UOM_Car_JoinVip_Failed IsShow="1">進入貴賓席失敗</UOM_Car_JoinVip_Failed>
+  <UOM_Car_JoinVip_Failed_1 IsShow="1">進入貴賓席失敗 位置錯誤</UOM_Car_JoinVip_Failed_1>
+  <UOM_Car_JoinVip_Failed_2 IsShow="1">進入貴賓席失敗 非VIP玩家</UOM_Car_JoinVip_Failed_2>
+  <UOM_Car_JoinVip_Failed_3 IsShow="1">進入貴賓席失敗 目標VIP等級高於你</UOM_Car_JoinVip_Failed_3>
+  <UOM_Car_JoinVip_Failed_4 IsShow="1">進入貴賓席失敗 已經在貴賓席上了</UOM_Car_JoinVip_Failed_4>
+  <UOM_Car_JoinVip_Failed_5 IsShow="1">進入貴賓席失敗 莊家不可以進入貴賓席</UOM_Car_JoinVip_Failed_5>
+
+  <UOM_Car_LeaveVip_Sucess IsShow="1">離開貴賓席成功</UOM_Car_LeaveVip_Sucess>
+  <UOM_Car_LeaveVip_Failed IsShow="1">離開貴賓席失敗</UOM_Car_LeaveVip_Failed>
+  <UOM_Car_LeaveVip_Failed_1 IsShow="1">離開貴賓席失敗 不在貴賓席上</UOM_Car_LeaveVip_Failed_1>
+  <UOM_Car_LeaveVip_Failed_2 IsShow="1">離開貴賓席失敗 系統錯誤</UOM_Car_LeaveVip_Failed_2>
+
+
+</FishString>
