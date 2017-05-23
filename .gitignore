@@ -240,3 +240,5 @@ pip-log.txt
 .coverage
 .tox
 BuyuSources/Client-tw/Library/
+BuyuSources/Client-tw/Assets/atlas_tw/
+BuyuSources/Client-tw/Assets/atlas_tw.meta

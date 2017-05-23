@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<SdkConfig>
-    <!-- 宝玩渠道：CHA000001 冰趣渠道：CHA000002 -->
-    <ChannelId>CHA000001</ChannelId>
-	<SdkVersion>10009</SdkVersion>
-</SdkConfig>

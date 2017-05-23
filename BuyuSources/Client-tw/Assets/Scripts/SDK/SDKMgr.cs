@@ -12,6 +12,7 @@ public enum ChannelType
 {
     Self_ChannelType = 0,
     Dome_ChannelType = 1, //冰穹渠道
+    TW_ChannelType = 2, // 台湾繁体版
 }
 
 public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
@@ -72,6 +73,9 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
 #if DOME
             m_Interface = new SDKChannelDome();
             CHANNEL_TYPE = ChannelType.Dome_ChannelType;
+#elif TW
+            m_Interface = new SDKChannelTW();
+            CHANNEL_TYPE = ChannelType.TW_ChannelType;
 #else
             m_Interface = new SDKChannel();
 #endif
