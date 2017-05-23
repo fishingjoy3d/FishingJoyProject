@@ -12,6 +12,7 @@ using Facebook.Unity;
 public class SDKChannelTW : SDKChannel
 {
     const string channel_name = "TW";
+    const bool mDebug = true;
 
     public override void GlobalInit()
     {
@@ -86,12 +87,17 @@ public class SDKChannelTW : SDKChannel
         {
             // AccessToken class will have session details
             var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
-            // Print current access token's User ID
-            Debug.Log(aToken.UserId);
-            // Print current access token's granted permissions
-            foreach (string perm in aToken.Permissions)
+
+            if(mDebug)
             {
-                Debug.Log(perm);
+                AN_PoupsProxy.ShowToast("User login " + aToken.UserId + " token " + aToken.TokenString);
+                string permissions = string.Empty;
+                // Print current access token's granted permissions
+                foreach (string perm in aToken.Permissions)
+                {
+                    permissions += perm + " ";
+                }
+                AN_PoupsProxy.ShowToast(permissions);
             }
             lr.Result = LoginState.LOGIN_OK;
             lr.UID = aToken.UserId;
@@ -99,7 +105,10 @@ public class SDKChannelTW : SDKChannel
         }
         else
         {
-            Debug.Log("User cancelled login");
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("User cancelled login");
+            }
             //登陆失败
             lr.Result = LoginState.LOGIN_FAILED;
         }

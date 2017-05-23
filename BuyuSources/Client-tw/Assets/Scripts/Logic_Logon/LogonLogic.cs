@@ -1540,8 +1540,8 @@ public class LogonLogic : ILogic, ICmdHandler
         CL_Cmd_OperatorLogon cmd = new CL_Cmd_OperatorLogon();
         cmd.logon = new LogonInfo();
         cmd.SetCmdType(NetCmdType.CMD_CL_OperatorLogon);
-        string userID = "";
-        string password = "";
+        string userID = string.Empty;
+        string external = string.Empty;
         uint CRC1 = 0;
         uint CRC2 = 0;
         uint CRC3 = 0;
@@ -1550,6 +1550,9 @@ public class LogonLogic : ILogic, ICmdHandler
         {
 #if DOME
             userID = SDKMgr.Instance.LoginData.UID;
+#elif TW
+            userID = SDKMgr.Instance.LoginData.UID;
+            external = SDKMgr.Instance.LoginData.Token;
 #endif
         }
         else
@@ -1572,7 +1575,7 @@ public class LogonLogic : ILogic, ICmdHandler
         cmd.logon.AccountName = userID;
 
         cmd.logon.ClientIP = 0;
-        cmd.logon.External = "";
+        cmd.logon.External = external;
 
         cmd.logon.PasswordCrc1 = CRC1;
         cmd.logon.PasswordCrc2 = CRC2;
