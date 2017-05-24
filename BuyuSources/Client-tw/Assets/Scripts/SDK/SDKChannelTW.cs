@@ -75,56 +75,104 @@ public class SDKChannelTW : SDKChannel
         {
             SDKMgr.Instance.SetLogonStateBegin();
 
-            var perms = new List<string>() { "public_profile", "email", "user_friends" };
-            FB.LogInWithReadPermissions(perms, AuthCallback);
+            if (FB.IsLoggedIn)
+            {
+                OnLoginSuccess();
+            }
+            else
+            {
+                var perms = new List<string>() { "public_profile", "email", "user_friends" };
+                FB.LogInWithReadPermissions(perms, AuthCallback);
+            }
         }
     }
 
     private void AuthCallback(ILoginResult result)
     {
-        SDKLoginResult lr = new SDKLoginResult();
         if (FB.IsLoggedIn)
         {
-            // AccessToken class will have session details
-            var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
-
-            if(mDebug)
-            {
-                AN_PoupsProxy.ShowToast("User login " + aToken.UserId + " token " + aToken.TokenString);
-                string permissions = string.Empty;
-                // Print current access token's granted permissions
-                foreach (string perm in aToken.Permissions)
-                {
-                    permissions += perm + " ";
-                }
-                AN_PoupsProxy.ShowToast(permissions);
-            }
-            lr.Result = LoginState.LOGIN_OK;
-            lr.UID = aToken.UserId;
-            lr.Token = aToken.TokenString;
+            OnLoginSuccess();
         }
         else
         {
-            if (mDebug)
-            {
-                AN_PoupsProxy.ShowToast("User cancelled login");
-            }
-            //登陆失败
-            lr.Result = LoginState.LOGIN_FAILED;
+            OnLoginFail();
         }
+    }
+
+    private void OnLoginSuccess()
+    {
+        // AccessToken class will have session details
+        var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
+
+        if (mDebug)
+        {
+            AN_PoupsProxy.ShowToast("User login " + aToken.UserId + " token " + aToken.TokenString);
+            string permissions = string.Empty;
+            // Print current access token's granted permissions
+            foreach (string perm in aToken.Permissions)
+            {
+                permissions += perm + " ";
+            }
+            AN_PoupsProxy.ShowToast(permissions);
+        }
+        SDKLoginResult lr = new SDKLoginResult();
+        lr.Result = LoginState.LOGIN_OK;
+        lr.UID = aToken.UserId;
+        lr.Token = aToken.TokenString;
+        SDKMgr.Instance.SDKCallback.LoginCallback(lr);
+    }
+
+    private void OnLoginFail()
+    {
+        if (mDebug)
+        {
+            AN_PoupsProxy.ShowToast("User cancelled login");
+        }
+        //登陆失败
+        SDKLoginResult lr = new SDKLoginResult();
+        lr.Result = LoginState.LOGIN_FAILED;
         SDKMgr.Instance.SDKCallback.LoginCallback(lr);
     }
 
     public override void Logout(string customparms)
     {
-        FB.LogOut();
+        //FB.LogOut();
         SDKMgr.Instance.GlobalInit();
     }
 
     public override void Pay(int itemID, string chargePointName, string orderID, string url, string secret_key)
     {
-
+        FB.Canvas.Pay(chargePointName, callback: this.HandleResult);
     }
+
+    private string Status;
+    protected void HandleResult(IPayResult result)
+    {
+        if (result == null)
+        {
+            this.Status = "Null";
+            return;
+        }
+
+        // Some platforms return the empty string instead of null.
+        if (!string.IsNullOrEmpty(result.Error))
+        {
+            this.Status = "Error";
+        }
+        else if (result.Cancelled)
+        {
+            this.Status = "Cancelled";
+        }
+        else if (!string.IsNullOrEmpty(result.RawResult))
+        {
+            this.Status = "Success";
+        }
+        else
+        {
+            this.Status = "Empty";
+        }
+    }
+
     public override void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
     {
         //m_AndroidContext.Call("setExtData", id, roleId, roleName, roleLevel, zoneId, zoneName, balance, vip, partyName);

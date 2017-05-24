@@ -44,15 +44,7 @@ public class StringTable
             return false;
         TextAsset ta = obj as TextAsset;
         XmlDocument doc = new XmlDocument();
-        try
-        {
-            doc.LoadXml(ta.text);
-        }
-        catch(System.Exception e)
-        {
-            Debug.LogError("LoadXml Error " + e);
-        }
-
+        doc.LoadXml(ta.text);
         XmlElement ele = doc.DocumentElement;
         foreach (XmlNode node in ele.ChildNodes)
         {
