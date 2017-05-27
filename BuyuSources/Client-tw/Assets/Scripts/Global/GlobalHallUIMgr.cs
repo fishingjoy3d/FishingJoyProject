@@ -554,12 +554,13 @@ public class GlobalHallUIMgr : Singleton<GlobalHallUIMgr>
     TweenScale m_scale = null;
     TipBox_0 m_TipBox_0 = new TipBox_0();
     Object[] m_FriendSysObj = new Object[5];
-    Object[] m_ShopSysObj = new Object[9];
+    Object[] m_ShopSysObj = new Object[10];
     Object[] m_GlobalUIObject = new Object[6];  //'0' 账号管理 ‘1’系统提示 ‘2’玩家小名片 '3' 比赛提示框'4'奖励标框 5分享
     Object m_objGiftBtneff;//礼物按钮效果
     FriendSysMgr m_FriendSysMgr = new FriendSysMgr();
     ShopLogicMgr m_ShopLogicMgr = new ShopLogicMgr();
     PayLogicUI m_PayLogicUI = new PayLogicUI();
+    SelectPayChannelLogicUI m_SelectPayChannelUI = new SelectPayChannelLogicUI();
     Account_MgrUI m_AccountMgrUI = new Account_MgrUI();       //账号管理窗口
     GlobalSystemTipsUI m_SysTipsUI = new GlobalSystemTipsUI();
     GlobalNameCards m_NameCardsUI = new GlobalNameCards();      //玩家小名片
@@ -868,9 +869,15 @@ public class GlobalHallUIMgr : Singleton<GlobalHallUIMgr>
         }
         //ShowMask(true);
     }
+    // 选择充值的支付方式
+    public void ShowSelectPayChannelWnd(uint itemID)
+    {
+        m_SelectPayChannelUI.ShowSelectPayChannelWnd(itemID);
+    }
     public void ShutDownPayWnd()
     {
         m_PayLogicUI.CloseWnd();
+        m_SelectPayChannelUI.CloseWnd();
     }
     //账号管理
     public void ShowAccountMgrWnd(Acoount_MgrUI_Type type)
@@ -936,9 +943,9 @@ public class GlobalHallUIMgr : Singleton<GlobalHallUIMgr>
         m_MatchMsgBox.ShowMatchMsgBox(strDec, MatchID, type);
     }
     //商店充值确认框
-    public void ShowmPayBuyConfirm(byte ID, uint amount, uint count, PayType type, string productID)
+    public void ShowmPayBuyConfirm(uint itemID)
     {
-        m_PayBuyConfirmUI.ShowPayBuyConfirm(ID, amount, count, type, productID);
+        m_PayBuyConfirmUI.ShowPayBuyConfirm(itemID);
     }
     public void ShutDownPayBuyConfirm()
     {
