@@ -15,12 +15,12 @@
     <Ping>1</Ping>
   </Params>
   <Server>
-    <Publish  resftp="ftp://121.43.187.210/fishpublish" ftpport="45045" runftp="ftp://121.43.187.210/FishPublish" verdir="test/test_version">
-      <IP port="40056">121.43.187.210</IP>
+    <Publish  resftp="ftp://47.52.92.120/fishpublish" ftpport="45045" runftp="ftp://47.52.92.120/FishPublish" verdir="test/test_version">
+      <IP port="40056">47.52.92.120</IP>
     </Publish>
     <!--<Publish  resftp="ftp://121.40.17.214/fishpublish" ftpport="45045" runftp="ftp://121.40.17.214/FishPublish" verdir="version"/>-->
     <Test     resftp="ftp://121.40.17.214/fishpublish" ftpport="45045" runftp="ftp://121.40.17.214/FishPublish" verdir="test/test_version" />
-    <Editor   resftp="ftp://121.43.187.210/fishpublish"  ftpport="45045" runftp="ftp://121.43.187.210/FishPublish"  verdir="test/test_version">
+    <Editor   resftp="ftp://47.52.92.120/fishpublish"  ftpport="45045" runftp="ftp://47.52.92.120/FishPublish"  verdir="test/test_version">
       <IP port="40056">121.43.187.210</IP>
     </Editor>
     <!--<Editor  resftp="ftp://192.168.0.106/fishpublish"  ftpport="45045" runftp="ftp://192.168.0.106/FishPublish"  verdir="test/test_version">
@@ -29,5 +29,5 @@
   </Server>
   <Services>http://www.baidu.com</Services>
   <!--<Reporter port="45065">192.168.0.106</Reporter>-->
-  <Reporter port="45065">121.43.187.210</Reporter>
+  <Reporter port="45065">47.52.92.120</Reporter>
 </Setting>

@@ -19,7 +19,11 @@ public class LogonInitWnd
     GameObject      m_NoticeObj;
     Transform       m_NoticeTrans;
     GameObject      m_NoticeLabelItem;
-    string          m_NoticeContent;   
+    string          m_NoticeContent;
+
+    GameObject m_FacebookObj;
+    GameObject m_GuestObj;
+
     public void Init(Object obj)
     {
         if (m_Handle != null)

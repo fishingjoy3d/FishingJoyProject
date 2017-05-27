@@ -32,12 +32,13 @@ public class TipBox_0 : GlobalBaseWind
             m_goItem[i] = (GameObject)GameObject.Instantiate(m_objItem);
             m_goItem[i].SetActive(false);
 
-            UISprite sp = m_goItem[i].transform.GetChild(3).GetComponent<UISprite>();
-            UILabel label = m_goItem[i].transform.GetChild(1).GetComponent<UILabel>();
+            UISprite sp = m_goItem[i].transform.GetChild(3).GetComponentInChildren<UISprite>();
+            UILabel label = m_goItem[i].transform.GetChild(1).GetComponentInChildren<UILabel>();
 
             sp.spriteName = FishConfig.Instance.m_ItemInfo.m_ItemMap[pItems[i].ItemID].ItemIcon;
             label.text = pItems[i].ItemSum.ToString();
 
+            float yOffset = 0; // -6.3f;
 
             if (byCount == 0)
             {
@@ -45,32 +46,32 @@ public class TipBox_0 : GlobalBaseWind
             }
             else if (byCount == 1)
             {
-                m_goItem[i].transform.position = new Vector3(0f, -6.3f, 0f);
+                m_goItem[i].transform.position = new Vector3(0f, yOffset, 0f);
             }
             else if (byCount == 2)
             {
                 if (i == 0)
                 {
-                    m_goItem[i].transform.position = new Vector3(-77f, -6.3f, 0f);
+                    m_goItem[i].transform.position = new Vector3(-90f, yOffset, 0f);
                 }
                 else if (i == 1)
                 {
-                    m_goItem[i].transform.position = new Vector3(77f, -6.3f, 0f);
+                    m_goItem[i].transform.position = new Vector3(90f, yOffset, 0f);
                 }
             }
             else if (byCount == 3)
             {
                 if (i == 0)
                 {
-                    m_goItem[i].transform.position = new Vector3(-127f, -6.3f, 0f);
+                    m_goItem[i].transform.position = new Vector3(-140f, yOffset, 0f);
                 }
                 else if (i == 1)
                 {
-                    m_goItem[i].transform.position = new Vector3(0f, -6.3f, 0f);
+                    m_goItem[i].transform.position = new Vector3(0f, yOffset, 0f);
                 }
                 else if (i == 2)
                 {
-                    m_goItem[i].transform.position = new Vector3(127f, -6.3f, 0f);
+                    m_goItem[i].transform.position = new Vector3(140f, yOffset, 0f);
                 }
             }
             m_goItem[i].transform.SetParent(BaseTranF.transform, false);

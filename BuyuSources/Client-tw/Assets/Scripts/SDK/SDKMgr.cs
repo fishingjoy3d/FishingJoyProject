@@ -12,7 +12,7 @@ public enum ChannelType
 {
     Self_ChannelType = 0,
     Dome_ChannelType = 1, //冰穹渠道
-    TW_ChannelType = 0, // 台湾繁体版
+    TW_ChannelType = 2, // 台湾繁体版
 }
 
 // 支付渠道
