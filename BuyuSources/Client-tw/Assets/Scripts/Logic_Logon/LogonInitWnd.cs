@@ -45,13 +45,18 @@ public class LogonInitWnd
         }
         m_LabelObject = m_BaseTransform.GetChild(7).gameObject;
         m_UITips = m_LabelObject.GetComponent<UILabel>();
+
+        m_FacebookObj = m_BaseTransform.GetChild(8).gameObject;
+        m_GuestObj = m_BaseTransform.GetChild(9).gameObject;
+
         UIEventListener.Get(m_LabelObject).onClick = OnClickChannelLogon;
         UIEventListener.Get(m_BaseTransform.GetChild(4).gameObject).onClick = ContentServiceEvent;
         UIEventListener.Get(m_BaseTransform.GetChild(5).gameObject).onClick = ContentNoticeEvnet;
         UIEventListener.Get(m_NoticeTrans.GetChild(0).gameObject).onClick = CloseNoticeEvent;
         UIEventListener.Get(m_NoticeTrans.GetChild(2).GetChild(0).gameObject).onClick = BackNoticeEvent;
 
-
+        UIEventListener.Get(m_FacebookObj).onClick = OnClickFB;
+        UIEventListener.Get(m_GuestObj).onClick = OnClickGuest;
         ////return;
         //if (SDKMgr.IS_SDK_CHANNEL || ServerSetting.ShowThirdLoginBtn == false || RuntimeInfo.GetPlatform() == PlatformType.Windows)
         //{
@@ -60,12 +65,12 @@ public class LogonInitWnd
         //}
 
 
-     
+
         if (SDKMgr.IS_SDK_CHANNEL)
         {
-            m_LabelObject.SetActive(true);
-            m_UITips.text = StringTable.GetString("sdkchannel");
-
+            //m_LabelObject.SetActive(true);
+            //m_UITips.text = StringTable.GetString("sdkchannel");
+            m_FacebookObj.SetActive(true);
             for (byte i = 0; i < m_BtnObject.Length; ++i)
             {
                 m_BtnObject[i].SetActive(false);
@@ -245,13 +250,23 @@ public class LogonInitWnd
             {
                 //点击登录
                 m_LabelObject.SetActive(false);
+                m_FacebookObj.SetActive(false);
                 LogonRuntime.LogonLogic.SDKLogin();
             }
         }
     }
     public void IsShowLabel(bool IsShow)
     {
-        m_LabelObject.SetActive(IsShow);
+        //m_LabelObject.SetActive(IsShow);
+        m_FacebookObj.SetActive(IsShow);
+    }
+    void OnClickFB(GameObject go)
+    {
+        OnClickChannelLogon(null);
+    }
+    void OnClickGuest(GameObject go)
+    {
+
     }
 }
 
