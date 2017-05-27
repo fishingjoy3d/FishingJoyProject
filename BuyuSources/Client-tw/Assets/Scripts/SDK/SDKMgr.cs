@@ -12,8 +12,16 @@ public enum ChannelType
 {
     Self_ChannelType = 0,
     Dome_ChannelType = 1, //冰穹渠道
-    TW_ChannelType = 2, // 台湾繁体版
+    TW_ChannelType = 0, // 台湾繁体版
 }
+
+// 支付渠道
+public enum PayChannelType
+{
+    Facebook = 0,
+    GooglePlay = 1,
+}
+
 
 public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
 {
@@ -34,6 +42,8 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
 #endif
     bool m_bSDKInitOK        = false;
     SDKLoginResult      m_LoginData         = new SDKLoginResult();
+    SDKPayData m_PayData = new SDKPayData();
+
     public static void SetPackageName(string name)
     {
         PACKAGE_NAME = name;
@@ -168,6 +178,11 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
         {
             return m_bSDKInitOK;
         }
+    }
+    public SDKPayData PayData
+    {
+        get { return m_PayData; }
+        set { m_PayData = value; }
     }
     public void InitCallback(bool bResult)
     {

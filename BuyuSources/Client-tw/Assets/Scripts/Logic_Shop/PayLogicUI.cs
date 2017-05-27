@@ -21,8 +21,8 @@ public class PayLogicUI : BaseWnd
     PayType             m_PayType;
     Scroll              m_Scroll = new Scroll();
     List<PayItemInfo>   m_PayInfoList = new List<PayItemInfo>();
+    Transform m_ScaleTrans;
 
-    
     public void Init()
     {
         m_BaseWndObject = GameObject.Instantiate(GlobalHallUIMgr.Instance.ShopSysObj[2]) as GameObject;
@@ -31,13 +31,15 @@ public class PayLogicUI : BaseWnd
         if (m_BaseWndObject.activeSelf != true)
             m_BaseWndObject.SetActive(true);
 
+        m_ScaleTrans = m_BaseTrans.GetChild(0);
+
         InitTopBtn();
         InitView();
         CheckHighLight(m_PayType);
     }
     void InitTopBtn()
     {
-        Transform BaseTr = m_BaseTrans.GetChild(0);
+        Transform BaseTr = m_ScaleTrans.GetChild(0);
         m_TopBtn[0].m_BtnObj = BaseTr.GetChild(0).gameObject;
         m_TopBtn[0].m_BtnTrans = BaseTr.GetChild(0);
         m_TopBtn[1].m_BtnObj = BaseTr.GetChild(1).gameObject;
@@ -50,11 +52,11 @@ public class PayLogicUI : BaseWnd
         UIEventListener.Get(m_TopBtn[0].m_BtnObj).onClick = OnDiamondBtnMsg;
         UIEventListener.Get(m_TopBtn[1].m_BtnObj).onClick = OnGoldBtnMsg;
 
-        UIEventListener.Get(m_BaseTrans.GetChild(2).gameObject).onClick = OnCloseBtnMsg;
+        UIEventListener.Get(m_ScaleTrans.GetChild(2).gameObject).onClick = OnCloseBtnMsg;
     }
     void InitView()
     {
-        Transform baseTR = m_BaseTrans.GetChild(1);
+        Transform baseTR = m_ScaleTrans.GetChild(1);
         m_Scroll.m_Grid = new UIGrid[1];
         m_Scroll.m_BaseChild = baseTR.GetChild(0).gameObject;
         
@@ -244,12 +246,9 @@ public class PayItemInfo : BaseWnd
     void OnClickBuy(GameObject go)
     {
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_CloseUI);
-        uint amount = uint.Parse(m_ItemCurPrice.text);
-        uint count = uint.Parse(m_DesItemSum.text);
-        if (m_Paytype == PayType.Gold)
-            GlobalHallUIMgr.Instance.ShowmPayBuyConfirm((byte)m_ItemID, amount, count, PayType.Gold, m_ProductID);
-        else
-            GlobalHallUIMgr.Instance.ShowmPayBuyConfirm((byte)m_ItemID, amount, count, PayType.Diamond, m_ProductID);
 
+        //GlobalHallUIMgr.Instance.ShowmPayBuyConfirm((byte)m_ItemID);
+        SDKMgr.Instance.PayData.ItemID = m_ItemID;
+        GlobalHallUIMgr.Instance.ShowSelectPayChannelWnd((uint)m_ItemID);
     }
 }

@@ -30,6 +30,12 @@ public class SDKLoginResult
     public string   UserName;
     public string   CustomParams;
 }
+public class SDKPayData
+{
+    public PayChannelType PayChannel;
+    public uint ItemID;
+}
+
 public interface ISDKCallback
 {
     void InitCallback(bool bResult);

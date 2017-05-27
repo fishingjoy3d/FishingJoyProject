@@ -249,11 +249,7 @@ public class GlobalSystemTipsUI : BaseWnd
 public class PayBuyConfirmUI : BaseWnd
 {
     UILabel m_DescLabel;
-    PayType m_PayType;
-    byte m_ItemID;
-    int m_Amount;
-    int m_Count;
-    string m_ProductID;
+    uint m_ItemID;
 
     public void Init()
     {
@@ -267,7 +263,7 @@ public class PayBuyConfirmUI : BaseWnd
         UIEventListener.Get(m_BaseTrans.GetChild(0).gameObject).onClick = OnClickOnOK;
         UIEventListener.Get(m_BaseTrans.GetChild(1).gameObject).onClick = OnClickClose;
     }
-    public void ShowPayBuyConfirm(byte ID, uint amount, uint count, PayType type, string productID)
+    public void ShowPayBuyConfirm(uint ID)
     {
         if (m_BaseWndObject == null)
         {
@@ -275,51 +271,20 @@ public class PayBuyConfirmUI : BaseWnd
             WndManager.Instance.Push(m_BaseWndObject);
         }
         m_ItemID = ID;
-        m_PayType = type;
-        m_Amount = (int)amount;
-        m_Count = (int)count;
-        m_ProductID = productID;
-        if (m_PayType == PayType.Gold)
-            m_DescLabel.text = StringTable.GetString("Shop_OnOKBuy");
-        else
-            m_DescLabel.text = StringTable.GetString("Shop_OnOKBuy");
-
-
-
+        m_DescLabel.text = StringTable.GetString("Shop_OnOKBuy");
     }
     void OnClickOnOK(GameObject go)
     {
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_BtnMusic);
 
-        //if (SDKMgr.IS_SDK_CHANNEL || SDKMgr.IS_APP_STORE_VER)
-        {
-            //System.UInt64 user_item_id = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
-            //user_item_id = (user_item_id << 32) | m_ItemID;
-            //const int change = 100;
-            //if (m_PayType == PayType.Diamond)
-            //{
-            //    SDKMgr.Instance.SDK.Pay(m_Amount * change, "钻石", m_Count,m_ProductID, user_item_id.ToString(), m_ItemID);
-            //}
-            //else if (m_PayType == PayType.Gold)
-            //{
-            //    SDKMgr.Instance.SDK.Pay(m_Amount * change, "金币", m_Count, m_ProductID, user_item_id.ToString(), m_ItemID);
-            //}
-
-            CG_Cmd_CreateOrder ncb = new CG_Cmd_CreateOrder();
-            ncb.SetCmdType(NetCmdType.CMD_CG_CreateOrder);
-            ncb.ID = m_ItemID;
-            NetServices.Instance.Send<CG_Cmd_CreateOrder>(ncb);
-        }
-        //else
-        //{
-        //    PlayerRole.Instance.RoleRecharge.SendRecharge(m_ItemID, SDKMgr.Instance.IsServerOrder);
-        //}
+        CG_Cmd_CreateOrder ncb = new CG_Cmd_CreateOrder();
+        ncb.SetCmdType(NetCmdType.CMD_CG_CreateOrder);
+        ncb.ID = (int)m_ItemID;
+        NetServices.Instance.Send<CG_Cmd_CreateOrder>(ncb);
 
         ShutDown();
         GlobalHallUIMgr.Instance.ShutDownPayWnd();
-        //SDKMgr.Instance.SDK.Pay();
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_CloseUI);
-       // ShutDown();
     }
     void OnClickClose(GameObject go)
     {

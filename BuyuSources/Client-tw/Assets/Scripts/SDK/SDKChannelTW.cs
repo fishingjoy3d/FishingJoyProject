@@ -142,35 +142,41 @@ public class SDKChannelTW : SDKChannel
 
     public override void Pay(int itemID, string chargePointName, string orderID, string url, string secret_key)
     {
-        FB.Canvas.Pay(chargePointName, callback: this.HandleResult);
+        FBPay(chargePointName);
     }
 
-    private string Status;
-    protected void HandleResult(IPayResult result)
+    private void FBPay(string productId)
     {
+        FB.Canvas.Pay(productId, callback: this.HandlePayResult);
+    }
+
+    protected void HandlePayResult(IPayResult result)
+    {
+        bool bSuccess = false;
         if (result == null)
         {
-            this.Status = "Null";
-            return;
+            //this.Status = "Null";
         }
 
         // Some platforms return the empty string instead of null.
         if (!string.IsNullOrEmpty(result.Error))
         {
-            this.Status = "Error";
+            //this.Status = "Error";
         }
         else if (result.Cancelled)
         {
-            this.Status = "Cancelled";
+            //this.Status = "Cancelled";
         }
         else if (!string.IsNullOrEmpty(result.RawResult))
         {
-            this.Status = "Success";
+            //this.Status = "Success";
+            bSuccess = true;
         }
         else
         {
-            this.Status = "Empty";
+            //this.Status = "Empty";
         }
+        SDKMgr.Instance.SDKCallback.PayCallback(bSuccess);
     }
 
     public override void SetExtraData(string id, string roleId, string roleName, int roleLevel, int zoneId, string zoneName, int balance, int vip, string partyName)
