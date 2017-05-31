@@ -43,6 +43,7 @@ struct ActivityBtn
 
 public class HallLoginUI_Activity : HallLoginUI_BaseWind
 {
+    Transform                   m_ScaleTran;
     GameObject[]                m_ActivityTitle = new GameObject[(byte)ActivityType.ActivityMax_Num]; 
     GameObject[]                m_ActivityChildWndObj = new GameObject[(byte)ActivityType.ActivityMax_Num];
     ActivityBtn[]               m_ActivityBtn = new ActivityBtn[(byte)ActivityType.ActivityMax_Num];
@@ -74,17 +75,18 @@ public class HallLoginUI_Activity : HallLoginUI_BaseWind
             WindObj.SetActive(true);
             WndManager.Instance.Push(WindObj);
         }
-        m_ActivityDetail.m_DetailObj = BaseTranF.GetChild(2).gameObject;
-        m_ActivityDetail.m_DetailLabel = BaseTranF.GetChild(2).GetComponent<UILabel>();
-        GetBtnLister(BaseTranF.GetChild(1).gameObject).onClick = OnClickActivityDetail;
-        GetBtnLister(BaseTranF.GetChild(8).gameObject).onClick = OnClickCloseWind;
+        m_ScaleTran = BaseTranF.GetChild(0);
+        m_ActivityDetail.m_DetailObj = m_ScaleTran.GetChild(2).gameObject;
+        m_ActivityDetail.m_DetailLabel = m_ScaleTran.GetChild(2).GetComponent<UILabel>();
+        GetBtnLister(m_ScaleTran.GetChild(1).gameObject).onClick = OnClickActivityDetail;
+        GetBtnLister(m_ScaleTran.GetChild(8).gameObject).onClick = OnClickCloseWind;
 
         for (byte i = 0; i < (byte)ActivityType.ActivityMax_Num; ++i )
         {
-            m_ActivityTitle[i] = BaseTranF.GetChild(0).GetChild(i).gameObject;
+            m_ActivityTitle[i] = m_ScaleTran.GetChild(0).GetChild(i).gameObject;
 
-            m_ActivityBtn[i].m_BtnObj = BaseTranF.GetChild(3).GetChild(i).gameObject;
-            m_ActivityBtn[i].m_BtnBg = BaseTranF.GetChild(3).GetChild(i).GetChild(0).GetComponent<UISprite>();
+            m_ActivityBtn[i].m_BtnObj = m_ScaleTran.GetChild(3).GetChild(i).gameObject;
+            m_ActivityBtn[i].m_BtnBg = m_ScaleTran.GetChild(3).GetChild(i).GetChild(0).GetComponent<UISprite>();
             m_ActivityBtn[i].m_Tag = i;
             if (i == (byte)ActivityType.LevelActivity_UI)
                 m_ActivityBtn[i].m_IsChecked = true;
@@ -92,7 +94,7 @@ public class HallLoginUI_Activity : HallLoginUI_BaseWind
                 m_ActivityBtn[i].m_IsChecked = false;
             GetBtnLister(m_ActivityBtn[i].m_BtnObj).onClick = OnChangeActivityWnd;
 
-            m_WarningObj[i] = BaseTranF.GetChild(3).GetChild(4 + i).gameObject;
+            m_WarningObj[i] = m_ScaleTran.GetChild(3).GetChild(4 + i).gameObject;
         }
         m_bTimeLimitExist = m_ActivityTimeLimitWnd.CheckActivityIsExist() ;
         SetInitalWnd();
@@ -105,7 +107,7 @@ public class HallLoginUI_Activity : HallLoginUI_BaseWind
     {
         for (byte i = 0; i < (byte)ActivityType.ActivityMax_Num; ++i)
         {
-            m_ActivityChildWndObj[i] = BaseTranF.GetChild(4 + i).gameObject;
+            m_ActivityChildWndObj[i] = m_ScaleTran.GetChild(4 + i).gameObject;
         }
         //m_ActivityChildWndObj[(byte)m_ActivityType].SetActive(true);
         //初始化签到活动

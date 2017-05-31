@@ -131,7 +131,7 @@ public class HallLoinUI_SignIn : BaseWnd
             m_SignInBtn[0].isEnabled = false;
             m_AgainSignInBtnBg[0].SetActive(false);
             m_AgainSignInBtnBg[1].SetActive(true);
-            ChangeBtnBg(m_SignInBtn[0], "Btn_Bg_2");
+            //ChangeBtnBg(m_SignInBtn[0], "Btn_Bg_2");
         }
         else
         {
@@ -139,22 +139,22 @@ public class HallLoinUI_SignIn : BaseWnd
             m_SignInBtn[0].isEnabled = true;
             m_AgainSignInBtnBg[0].SetActive(true);
             m_AgainSignInBtnBg[1].SetActive(false);
-            ChangeBtnBg(m_SignInBtn[0], "Btn_Bg_0");
+            //ChangeBtnBg(m_SignInBtn[0], "Btn_Bg_0");
         }
         //签到按纽状态刷新
         if (!PlayerRole.Instance.CheckManager.IsCanCheckNowDay())
         {
             m_SignInBtn[1].isEnabled = false;
             m_SignInBtnBg.spriteName = "Activity_SigInBtn1";
-            m_SignInBtnBg.width = 84;
-            ChangeBtnBg(m_SignInBtn[1], "Btn_Bg_2");
+            //m_SignInBtnBg.width = 84;
+            //ChangeBtnBg(m_SignInBtn[1], "Btn_Bg_2");
         }
         else
         {
             m_SignInBtn[1].isEnabled = true;
             m_SignInBtnBg.spriteName = "Activity_SigInBtn0";
-            m_SignInBtnBg.width = 64;
-            ChangeBtnBg(m_SignInBtn[1], "Btn_Bg_0");
+            //m_SignInBtnBg.width = 64;
+            //ChangeBtnBg(m_SignInBtn[1], "Btn_Bg_0");
         }
         UpdateSignInPropState();
         UpdateSignInChestsState();
@@ -211,17 +211,17 @@ public class HallLoinUI_SignIn : BaseWnd
                 {
                     m_SignInChestsInfo[Index-2].m_SignInChestsBtn.isEnabled = false;
                     m_SignInChestsInfo[Index-2].m_GetFlagObj.SetActive(true);
-                    m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.normalSprite = GetDisableSpriteName(Index);
-                    m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.disabledSprite = GetDisableSpriteName(Index);
+                    //m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.normalSprite = GetDisableSpriteName(Index);
+                    //m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.disabledSprite = GetDisableSpriteName(Index);
                 }
                 else
                 {
                     m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.isEnabled = true;
                     m_SignInChestsInfo[Index - 2].m_GetFlagObj.SetActive(false);
-                    m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.normalSprite = GetNormalSpriteName(Index);
-                    m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.hoverSprite = GetNormalSpriteName(Index);
-                    m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.pressedSprite = GetNormalSpriteName(Index);
-                    m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.disabledSprite = GetNormalSpriteName(Index);
+                    //m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.normalSprite = GetNormalSpriteName(Index);
+                    //m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.hoverSprite = GetNormalSpriteName(Index);
+                    //m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.pressedSprite = GetNormalSpriteName(Index);
+                    //m_SignInChestsInfo[Index - 2].m_SignInChestsBtn.disabledSprite = GetNormalSpriteName(Index);
                 }
                 Index++;
 
