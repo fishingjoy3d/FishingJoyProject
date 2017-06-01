@@ -44,10 +44,12 @@ public class MonthCardLogicUI : BaseWnd
                 //    SDKMgr.Instance.SDK.Pay(price, "月卡", 1, info.ProductID, user_item_id.ToString(), (int)ItemID);
                 //}
 
-                CG_Cmd_CreateOrder ncb = new CG_Cmd_CreateOrder();
-                ncb.SetCmdType(NetCmdType.CMD_CG_CreateOrder);
-                ncb.ID = 13;
-                NetServices.Instance.Send<CG_Cmd_CreateOrder>(ncb);
+                //CG_Cmd_CreateOrder ncb = new CG_Cmd_CreateOrder();
+                //ncb.SetCmdType(NetCmdType.CMD_CG_CreateOrder);
+                //ncb.ID = 13;
+                //NetServices.Instance.Send<CG_Cmd_CreateOrder>(ncb);
+
+                GlobalHallUIMgr.Instance.ShowSelectPayChannelWnd(13);
             }
             else
             {

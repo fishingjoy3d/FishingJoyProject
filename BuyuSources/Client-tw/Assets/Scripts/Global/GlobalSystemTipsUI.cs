@@ -279,7 +279,8 @@ public class PayBuyConfirmUI : BaseWnd
 
         CG_Cmd_CreateOrder ncb = new CG_Cmd_CreateOrder();
         ncb.SetCmdType(NetCmdType.CMD_CG_CreateOrder);
-        ncb.ID = (int)m_ItemID;
+        ncb.ID = (int)SDKMgr.Instance.PayData.ItemID;
+        ncb.PayType = (int)SDKMgr.Instance.PayData.PayChannel;
         NetServices.Instance.Send<CG_Cmd_CreateOrder>(ncb);
 
         ShutDown();

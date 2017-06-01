@@ -3512,6 +3512,8 @@ public class CG_Cmd_CreateOrder : NetCmdBase
 {
     [TypeInfo(0)]
     public int ID;
+    [TypeInfo(1)]
+    public int PayType;
 }
 public class GC_Cmd_CreateOrder : NetCmdBase
 {
@@ -3523,6 +3525,8 @@ public class GC_Cmd_CreateOrder : NetCmdBase
     public string ProductID;
     [TypeInfo(3, FishDataInfo.MAX_UrlLength)]
     public string notify_url;
+    [TypeInfo(4)]
+    public int PayType;
 }
 
 //Announcement

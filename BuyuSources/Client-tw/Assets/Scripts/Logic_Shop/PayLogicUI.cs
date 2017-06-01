@@ -248,7 +248,6 @@ public class PayItemInfo : BaseWnd
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_CloseUI);
 
         //GlobalHallUIMgr.Instance.ShowmPayBuyConfirm((byte)m_ItemID);
-        SDKMgr.Instance.PayData.ItemID = m_ItemID;
         GlobalHallUIMgr.Instance.ShowSelectPayChannelWnd((uint)m_ItemID);
     }
 }

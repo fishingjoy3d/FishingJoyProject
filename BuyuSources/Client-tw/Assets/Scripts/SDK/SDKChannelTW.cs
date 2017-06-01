@@ -5,14 +5,14 @@ using Facebook.Unity;
 
 /// <summary>
 /// 台湾繁体版
-/// Facebook登录
+/// Facebook登录、支付
 /// GooglePlay支付
 /// </summary>
 #if UNITY_ANDROID
 public class SDKChannelTW : SDKChannel
 {
     const string channel_name = "TW";
-    const bool mDebug = true;
+    const bool mDebug = false;
 
     public override void GlobalInit()
     {
@@ -107,13 +107,14 @@ public class SDKChannelTW : SDKChannel
         if (mDebug)
         {
             AN_PoupsProxy.ShowToast("User login " + aToken.UserId + " token " + aToken.TokenString);
-            string permissions = string.Empty;
+
             // Print current access token's granted permissions
-            foreach (string perm in aToken.Permissions)
-            {
-                permissions += perm + " ";
-            }
-            AN_PoupsProxy.ShowToast(permissions);
+            //string permissions = string.Empty;
+            //foreach (string perm in aToken.Permissions)
+            //{
+            //    permissions += perm + " ";
+            //}
+            //AN_PoupsProxy.ShowToast(permissions);
         }
         SDKLoginResult lr = new SDKLoginResult();
         lr.Result = LoginState.LOGIN_OK;
@@ -140,14 +141,32 @@ public class SDKChannelTW : SDKChannel
         SDKMgr.Instance.GlobalInit();
     }
 
-    public override void Pay(int itemID, string chargePointName, string orderID, string url, string secret_key)
+    public override void Pay(int itemID, string productID, string orderID, string url, string secret_key)
     {
-        FBPay(chargePointName);
+        switch (SDKMgr.Instance.PayData.PayChannel)
+        {
+            case PayChannelType.Facebook:
+                {
+                    FBPay(productID);
+                    break;
+                }
+            case PayChannelType.GooglePlay:
+                {
+                    GPPay(productID);
+                    break;
+                }
+
+        }
     }
 
-    private void FBPay(string productId)
+    private void FBPay(string productID)
     {
-        FB.Canvas.Pay(productId, callback: this.HandlePayResult);
+        FB.Canvas.Pay(productID, callback: this.HandlePayResult);
+    }
+
+    private void GPPay(string productID)
+    {
+
     }
 
     protected void HandlePayResult(IPayResult result)
