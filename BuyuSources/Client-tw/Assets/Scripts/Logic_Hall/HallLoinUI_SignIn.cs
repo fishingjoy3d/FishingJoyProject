@@ -246,18 +246,18 @@ public class HallLoinUI_SignIn : BaseWnd
         }
         if (day > 10 && day <= 20)
         {
-            m_ScrollTrans.localPosition = new Vector3(0, 270, 0);
-            m_UIPanel.clipOffset = new Vector2(0, -270);
+            m_ScrollTrans.localPosition = new Vector3(0, 310, 0);
+            m_UIPanel.clipOffset = new Vector2(0, -310);
         }
         else if (day > 20 && day <= 30)
         {
-            m_ScrollTrans.localPosition = new Vector3(0, 500, 0);
-            m_UIPanel.clipOffset = new Vector2(0, -500);
+            m_ScrollTrans.localPosition = new Vector3(0, 555, 0);
+            m_UIPanel.clipOffset = new Vector2(0, -555);
         }
         else if (day > 30)
         {
-            m_ScrollTrans.localPosition = new Vector3(0, 600, 0);
-            m_UIPanel.clipOffset = new Vector2(0, -600);
+            m_ScrollTrans.localPosition = new Vector3(0, 643, 0);
+            m_UIPanel.clipOffset = new Vector2(0, -643);
         }
 
     }
