@@ -12,6 +12,7 @@ public class VIPLogicUI : BaseWnd
     GameObject[]        m_GridBaseItem = new GameObject[2];
     UIGrid[]            m_UIGrid = new UIGrid[2];
     TweenScale[]        m_WndTweenAnim = new TweenScale[2];
+    Transform m_ScaleTran;
 
     public void InitObj()
     {
@@ -22,9 +23,10 @@ public class VIPLogicUI : BaseWnd
         m_BaseWndObject = GameObject.Instantiate(m_Obj) as GameObject;
         m_BaseTrans = m_BaseWndObject.transform;
         m_BaseTrans.SetParent(SceneObjMgr.Instance.UIPanelTransform, false);
+        m_ScaleTran = m_BaseTrans.GetChild(0);
 
         for (byte i = 0; i < m_ChildObj.Length; ++i)
-            m_ChildObj[i] = m_BaseTrans.GetChild(i).gameObject;
+            m_ChildObj[i] = m_ScaleTran.GetChild(i).gameObject;
 
         InitVipPrivilege();
         InitVipPrivilegeDetail();

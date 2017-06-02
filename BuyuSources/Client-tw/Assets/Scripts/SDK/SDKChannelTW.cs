@@ -106,7 +106,7 @@ public class SDKChannelTW : SDKChannel
 
         if (mDebug)
         {
-            AN_PoupsProxy.ShowToast("User login " + aToken.UserId + " token " + aToken.TokenString);
+            AN_PoupsProxy.ShowToast("User login id " + aToken.UserId + " token " + aToken.TokenString);
 
             // Print current access token's granted permissions
             //string permissions = string.Empty;
@@ -147,7 +147,7 @@ public class SDKChannelTW : SDKChannel
         {
             case PayChannelType.Facebook:
                 {
-                    FBPay(productID);
+                    FBPay(productID, orderID);
                     break;
                 }
             case PayChannelType.GooglePlay:
@@ -159,9 +159,9 @@ public class SDKChannelTW : SDKChannel
         }
     }
 
-    private void FBPay(string productID)
+    private void FBPay(string productID, string orderID)
     {
-        FB.Canvas.Pay(productID, callback: this.HandlePayResult);
+        FB.Canvas.PayWithProductId(productID, requestId: orderID, callback: this.HandlePayResult);
     }
 
     private void GPPay(string productID)
@@ -190,6 +190,10 @@ public class SDKChannelTW : SDKChannel
         {
             //this.Status = "Success";
             bSuccess = true;
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast(result.RawResult);
+            }
         }
         else
         {
