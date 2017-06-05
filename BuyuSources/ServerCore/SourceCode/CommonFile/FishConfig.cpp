@@ -65,6 +65,10 @@ bool FishConfig::LoadConfigFilePath()
 		return false;			 
 	}
 	//1.加载配置文件
+	if (!LoadWord())
+	{
+		return false;
+	}
 	WHXml pXml;
 	if (!pXml.LoadXMLFilePath(TEXT("FishConfig.xml")))
 	{
@@ -1669,13 +1673,25 @@ bool FishConfig::LoadFishRechargeConfig(WHXmlNode* pFishConfig)
 		if (!pFishRecharge->GetAttribute(TEXT("Name"), pInfo.Name, CountArray(pInfo.Name)))
 			return false;
 
-		if (!pFishRecharge->GetAttribute(TEXT("PayNO"), pInfo.PayNO, CountArray(pInfo.PayNO)))
-			return false;
+		//if (!pFishRecharge->GetAttribute(TEXT("PayNO"), pInfo.PayNO, CountArray(pInfo.PayNO)))
+			//return false;
 		if (!pFishRecharge->GetAttribute(TEXT("Icon"), pInfo.Icon, CountArray(pInfo.Icon)))
 			return false;
 		if (!pFishRecharge->GetAttribute(TEXT("DisCountPicName"), pInfo.DisCountPicName, CountArray(pInfo.DisCountPicName)))
 			return false;
 
+		WHXmlNode* pPayNOInfo = pFishRecharges->GetChildNodeByName(TEXT("Info"));
+		while (pPayNOInfo)
+		{
+			tagFishPayType tagPay;
+			if (!pFishRecharge->GetAttribute(TEXT("PayType"), tagPay.Type))
+				return false;
+
+			if (!pPayNOInfo->GetAttribute(TEXT("PayNO"), tagPay.PayNO, CountArray(tagPay.PayNO)))
+				return false;
+			pInfo.PayNO[tagPay.Type] = tagPay;
+			pPayNOInfo = pPayNOInfo->GetNextSignelNode();
+		}
 		/*pInfo.IsCurreyOrGlobel = (IsCurrcey == 1 ? true : false);
 		BYTE IsFistPay;
 		if (!pFishRecharge->GetAttribute(TEXT("IsFirstPay"), IsFistPay))
@@ -2812,6 +2828,27 @@ void FishConfig::TCHAR2STRING(const TCHAR *STR, std::string& out)
 	out = chRtn;
 	
 }
+std::wstring Utf8ToUnicode(const std::string& str) {
+	// 预算-缓冲区中宽字节的长度    
+	int unicodeLen = MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, nullptr, 0);
+	// 给指向缓冲区的指针变量分配内存    
+	wchar_t *pUnicode = (wchar_t*)malloc(sizeof(wchar_t)*unicodeLen);
+	// 开始向缓冲区转换字节    
+	MultiByteToWideChar(CP_UTF8, 0, str.c_str(), -1, pUnicode, unicodeLen);
+	wstring ret_str = pUnicode;
+	free(pUnicode);
+	return ret_str;
+}
+
+void UTF_8ToUnicode(WCHAR* pOut, const char *pText)
+{
+	char* uchar = (char *)pOut;
+
+	uchar[1] = ((pText[0] & 0x0F) << 4) + ((pText[1] >> 2) & 0x0F);
+	uchar[0] = ((pText[1] & 0x03) << 6) + (pText[2] & 0x3F);
+	return;
+}
+
 bool FishConfig::LoadWord()
 {
 	WHXml pXml;
@@ -2822,7 +2859,12 @@ bool FishConfig::LoadWord()
 	}
 
 	WCHAR temp_characters[1024];
-	WHXmlNode* pInfo = pXml.GetChildNodeByName(TEXT("Info"));
+	WHXmlNode* pXmlChar =  pXml.GetChildNodeByName(TEXT("FishServerCharactersConfig"));
+	if (!pXmlChar)
+	{
+		return false;
+	}
+	WHXmlNode* pInfo = pXmlChar->GetChildNodeByName(TEXT("Info"));
 	while (pInfo)
 	{
 		int ID = 0;
@@ -2834,11 +2876,17 @@ bool FishConfig::LoadWord()
 
 		if (!pInfo->GetAttribute(TEXT("Characters"), temp_characters, CountArray(temp_characters)))
 			return false;
-		std::wstring str = temp_characters;
-		m_configCharacters[ID] = str;
+		//std::wstring str = temp_characters;
+		//std::string out;
+		//TCHAR2STRING(str.c_str(), out);
+		//std::wstring temp = Utf8ToUnicode(out);
+		//UTF_8ToUnicode(temp_characters, out.c_str());
+		m_configCharacters[ID] = temp_characters;
+		pInfo = pInfo->GetNextSignelNode();
 	}
 	return true;
 }
+
 
 const WCHAR* FishConfig::GetConfigCharacters(int id)
 {

@@ -4410,11 +4410,7 @@ bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
 		ASSERT(false);
 		return false;
 	}
-	UINT count;
-	GC_Cmd_CreateOrder msg;
-	SetMsgInfo(msg, GetMsgType(Main_Recharge, GC_CreateOrder), sizeof(msg));
-	msg.OrderID = pMsg->order_id;
-	msg.ItemID = pMsg->shop_id;
+
 
 	const tagChannelConfig* channel_config = g_FishServer.GetFishConfig().GetChannelConfig(pRole->GetOperatorChannelID());
 	if (channel_config == null)
@@ -4423,22 +4419,33 @@ bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
 	}
 	else
 	{
-		char* notify_data = WCharToChar(channel_config->notify_pay_url, count);
-		std::string notifyUrl = notify_data;
-		//LogInfoToFile("DomePay.txt", "签名结果[%s]", data.c_str());
-		TCHARCopy(msg.ProductID, CountArray(msg.ProductID), pMsg->good_id, _tcslen(pMsg->good_id));
-		WCHAR* url = CharToWChar(notifyUrl.c_str(), count);
-		TCHARCopy(msg.notify_url, CountArray(msg.notify_url), url, _tcslen(url));
-		free(url);
-		pRole->SendDataToClient(&msg);
-		DBR_Cmd_Deal_Create_Log msg_log;
-		msg_log.ItemID = msg.ItemID;
-		msg_log.OrderID = msg.OrderID;
-		msg_log.UserID = pMsg->user_id;
-		msg_log.ChannelID = pRole->GetOperatorChannelID();
-		TCHARCopy(msg_log.ProductID, CountArray(msg_log.ProductID), pMsg->good_id, _tcslen(pMsg->good_id));
-		SetMsgInfo(msg_log, DBR_Deal_Create_Log, sizeof(msg_log));
-		SendLogDB(&msg_log);		
+		if (pRole->GetOperatorChannelID() == Dome_ChannelType)
+		{
+			UINT count;
+			GC_Cmd_CreateOrder msg;
+			SetMsgInfo(msg, GetMsgType(Main_Recharge, GC_CreateOrder), sizeof(msg));
+			msg.OrderID = pMsg->order_id;
+			msg.ItemID = pMsg->shop_id;
+			char* notify_data = WCharToChar(channel_config->notify_pay_url, count);
+			std::string notifyUrl = notify_data;
+			//LogInfoToFile("DomePay.txt", "签名结果[%s]", data.c_str());
+			TCHARCopy(msg.ProductID, CountArray(msg.ProductID), pMsg->good_id, _tcslen(pMsg->good_id));
+			//WCHAR* url = CharToWChar(notifyUrl.c_str(), count);
+			TCHARCopy(msg.notify_url, CountArray(msg.notify_url), channel_config->notify_pay_url, _tcslen(channel_config->notify_pay_url));
+			free(notify_data);
+			pRole->SendDataToClient(&msg);
+			DBR_Cmd_Deal_Create_Log msg_log;
+			msg_log.ItemID = msg.ItemID;
+			msg_log.OrderID = msg.OrderID;
+			msg_log.UserID = pMsg->user_id;
+			msg_log.ChannelID = pRole->GetOperatorChannelID();
+			msg_log.PayType = pMsg->pay_type;
+			TCHARCopy(msg_log.ProductID, CountArray(msg_log.ProductID), pMsg->good_id, _tcslen(pMsg->good_id));
+			SetMsgInfo(msg_log, DBR_Deal_Create_Log, sizeof(msg_log));
+			SendLogDB(&msg_log);
+		}
+
+		
 	}
 	return true;
 }
@@ -7013,28 +7020,67 @@ bool FishServer::OnHandleTCPNetworkRecharge(ServerClientData* pClient, NetCmd* p
 					break;
 				}
 			}
+
+			tagFishPayType PayEntry;
 			if (find)
 			{
-				DBR_Cmd_Deal_Create msg;
-				msg.shop_id = entry.ID;
-				msg.channel_id = pRole->GetChannelID();
-				msg.user_id = pRole->GetUserID();
-				SetMsgInfo(msg, DBR_Deal_Create, sizeof(msg));
-				TCHARCopy(msg.good_id, CountArray(msg.good_id), entry.PayNO, _tcslen(entry.PayNO));
-				LogInfoToFile("DomePay.txt", "玩家[%d]向数据库申请创建订单[%d]", msg.user_id, pMsg->ShopIndex);
-				SendNetCmdToDB(&msg);
+				find = false;
+				HashMap<WORD, tagFishPayType>::iterator it_pay = entry.PayNO.find(pMsg->PayType);
+				if (it_pay != entry.PayNO.end())
+				{
+					PayEntry = it_pay->second;
+					find = true;
 
-				DBR_Cmd_Deal_Apply_Create_Log msg_log;
-				msg_log.ItemID = msg.shop_id;
-				msg_log.UserID = msg.user_id;
-				msg_log.ChannelID = msg.channel_id;
-				SetMsgInfo(msg_log, DBR_Deal_Apply_Create_Log, sizeof(msg_log));
-				SendNetCmdToLogDB(&msg_log);
+				}
+			}
+			if (find)
+			{
+				int operator_channel_id = pRole->GetOperatorChannelID();
+				if (operator_channel_id == Dome_ChannelType || operator_channel_id == Facebook_ChannelType)
+				{
+					DBR_Cmd_Deal_Create msg;
+					msg.shop_id = entry.ID;
+					msg.channel_id = operator_channel_id;
+					msg.user_id = pRole->GetUserID();
+					msg.pay_type = pMsg->PayType;
+					SetMsgInfo(msg, DBR_Deal_Create, sizeof(msg));
+					TCHARCopy(msg.good_id, CountArray(msg.good_id), PayEntry.PayNO, _tcslen(PayEntry.PayNO));
+					LogInfoToFile("DomePay.txt", "玩家[%d]向数据库申请创建订单[%d]", msg.user_id, pMsg->ShopIndex);
+					SendNetCmdToDB(&msg);
+					DBR_Cmd_Deal_Apply_Create_Log msg_log;
+					msg_log.ItemID = msg.shop_id;
+					msg_log.UserID = msg.user_id;
+					msg_log.ChannelID = msg.channel_id;
+					msg_log.PayType = pMsg->PayType;
+					SetMsgInfo(msg_log, DBR_Deal_Apply_Create_Log, sizeof(msg_log));
+					SendNetCmdToLogDB(&msg_log);
+				}
+				/*
+				else if(operator_channel_id == Facebook_ChannelType)
+				{
+					const tagChannelConfig* channel_config = g_FishServer.GetFishConfig().GetChannelConfig(pRole->GetOperatorChannelID());
+					if (channel_config != NULL)
+					{
+						UINT count;
+						GC_Cmd_CreateOrder msg;
+						SetMsgInfo(msg, GetMsgType(Main_Recharge, GC_CreateOrder), sizeof(msg));
+						msg.OrderID = 0;
+						msg.ItemID = entry.ID;
+						msg.PayType = pMsg->PayType;
+						char* notify_data = WCharToChar(channel_config->notify_pay_url, count);
+						std::string notifyUrl = notify_data;						
+						TCHARCopy(msg.ProductID, CountArray(msg.ProductID), PayEntry.PayNO, _tcslen(PayEntry.PayNO));
+						TCHARCopy(msg.notify_url, CountArray(msg.notify_url), channel_config->notify_pay_url, _tcslen(channel_config->notify_pay_url));
+						pRole->SendDataToClient(&msg);
+					}
+
+				}
+				*/
 				//msg.good_id
 			}
 			else
 			{
-				LogInfoToFile("DomePay.txt", "玩家跑[%d]创建订单失败没有找到商品 %d", pRole->GetUserID(), pMsg->ShopIndex);
+				LogInfoToFile("PayError.txt", "玩家跑[%d]创建订单失败没有找到商品 %d", pRole->GetUserID(), pMsg->ShopIndex);
 			}
 		}
 		break;

@@ -12,6 +12,7 @@ HttpNewServer::HttpNewServer()
 	_HttpCallBacks["DomeTestLogin"] = &HttpNewServer::DomeTestLogin;
 	_HttpCallBacks["DomePay"] = &HttpNewServer::DomePay;
 	_HttpCallBacks["DomeTestPay"] = &HttpNewServer::DomeTestPay;
+	_HttpCallBacks["FacebookPay"] = &HttpNewServer::FacebookPay;
 	//Call("DomePay", "responseCode=1000&errorCode=&errorMsg=&data=%7B%22orderNo%22%3A%2256%22%2C%22sdkflowId%22%3A%22201705031539515146290%22%7D&signCode=qxD9lzq8tJn%2BN%2FJ6TnAbfAbT1e5gbySFoOt1RVhgmx6IbUu8uDsVwwR7zDPozMmgVjBMaBTg9AEffRWy7GpFe19tuPsT1SGQrIlqUs7nrOCeoHRBKvdeinj21RNHGnxvcEew138MG4QtkbWcdBqqapmPdXbiMITvEufQlYT9jlM%3D", NULL);
 	//std::string source = "loginNo = 81646809760111260474 & userId = bq_000080143&appCode = D0000356";
 	//std::map<std::string, std::string> map_entry;
@@ -230,6 +231,7 @@ void HttpNewServer::DomePay(const char* data, HttpClientData* c)
 				int sdk_flow_id = atoi(jsonRoot["sdkflowId"].asString().c_str());// jsonRoot["sdkflowId"].asUInt();
 				DBR_Cmd_Deal_Third_Platform_Verify msg;
 				msg.Order_id = order_id;
+				msg.channel_type = Dome_ChannelType;
 				SetMsgInfo(msg, DBR_Deal_Third_Platform_Verify, sizeof(msg));
 				g_FishServer.SendNetCmdToDB(&msg);
 				successful = true;
@@ -288,7 +290,7 @@ void HttpNewServer::DomeTestLogin(const char* data, HttpClientData* c)
 }
 void HttpNewServer::DomeLogin(const char* data, HttpClientData* c)
 {
-	LogInfoToFile("Log", "http DomeLogin 接收到数据 %s", data);
+	LogInfoToFile("HttpDomeLoginLog.txt", "http DomeLogin 接收到数据 %s", data);
 	std::map<std::string, std::string> map_argu;
 	DomeArguHelp(data, map_argu);
 	std::string user_id = map_argu["userId"];
@@ -301,4 +303,243 @@ void HttpNewServer::DomeLogin(const char* data, HttpClientData* c)
 	GetGMTTimeStr(strTime, sizeof(strTime));
 	//SendResponse(c, strTime, "isSuccess=true");
 	delete[] entry;
+}
+
+struct FaceBookTag
+{
+	enum FaceBookType
+	{
+		FaceBookType_unknow,
+		FaceBookType_charge,
+		FaceBookType_refund
+	};
+	enum FaceBookState
+	{
+		FaceBookState_unknow,
+		FaceBookState_completed,
+		FaceBookState_initiated
+	};
+	enum FaceBookCurrencyType
+	{
+		FaceBookCurrencyType_unknow,
+		FaceBookCurrencyType_USD
+	};
+	FaceBookType Type_;
+	FaceBookState State_;
+	FaceBookCurrencyType CurrencyType_;
+	int amount;
+
+	FaceBookTag()
+	{
+		Type_ = FaceBookType_unknow;
+		State_ = FaceBookState_unknow;
+		CurrencyType_ = FaceBookCurrencyType_unknow;
+		amount = 0;
+	}
+};
+
+struct FaceBookItemTag
+{
+	std::string product_;
+	int quantity_;
+};
+void HttpNewServer::FacebookPay(const char* data, HttpClientData* c)
+{
+	LogInfoToFile("FacebookPayLog.txt", "http FacebookPay 接收到数据 %s", data);
+	Json::Reader jsonReader;
+	Json::Value jsonRoot;
+
+	if (!jsonReader.parse(data, jsonRoot))
+	{
+		ASSERT(false);
+		return;
+	}
+	if (!jsonRoot["id"].isNull() && !jsonRoot["user"].isNull())
+	{
+		long global_id = jsonRoot["id"].asUInt();
+		long user_id = 0;
+		Json::Value JsonValue = jsonRoot["user"];
+		std::string name;
+		if (!JsonValue["name"].isNull() && !JsonValue["id"].isNull())
+		{
+			user_id = JsonValue["id"].asUInt();
+			name = JsonValue["name"].asString();
+		}
+		
+		int length = 0;
+		if (!jsonRoot["actions"].isNull() && !jsonRoot["items"].isNull())
+		{
+			std::vector<FaceBookItemTag> VcFaceBookItemTag;
+			std::vector<FaceBookTag> VcFaceBookTag;
+			Json::Value actionsJsonValue = jsonRoot["actions"];
+			Json::Value itemsJsonValue = jsonRoot["items"];
+			if (actionsJsonValue.isArray())
+			{
+				length = actionsJsonValue.size();
+				for (size_t i = 0; i < length; i++)
+				{				
+					FaceBookTag tag_entry;
+					Json::Value JsonAction = actionsJsonValue[i];
+					if (JsonAction["type"].isString() && JsonAction["status"].isString() && JsonAction["currency"].isString() && JsonAction["amount"].isNull() && JsonAction["time_created"].isString()
+						&& JsonAction["time_created"].isString())
+					{
+						if (JsonAction["type"].asString() == "charge")
+						{
+							tag_entry.Type_ = FaceBookTag::FaceBookType_charge;
+						}
+						else if (JsonAction["type"].asString() == "refund")
+						{
+							tag_entry.Type_ = FaceBookTag::FaceBookType_refund;
+						}
+						if (JsonAction["status"].asString() == "completed")
+						{
+							tag_entry.State_ = FaceBookTag::FaceBookState_completed;
+						}
+						else if (JsonAction["status"].asString() == "initiated")
+						{
+							tag_entry.State_ = FaceBookTag::FaceBookState_initiated;
+						}
+
+						if (JsonAction["currency"].asString() == "USD")
+						{
+							tag_entry.CurrencyType_ = FaceBookTag::FaceBookCurrencyType_USD;
+						}
+
+						float amount_entry =  atof(JsonAction["amount"].asString().c_str());
+						tag_entry.amount = amount_entry * 100;
+						VcFaceBookTag.push_back(tag_entry);
+					}
+
+				}
+				if (itemsJsonValue.isArray())
+				{
+					length = itemsJsonValue.size();
+					for (size_t i = 0; i < length; i++)
+					{
+						Json::Value JsonItem = itemsJsonValue[i];
+						if (JsonItem["product"].isString() && JsonItem["quantity"].isInt())
+						{
+							FaceBookItemTag entry;
+							entry.product_ = JsonItem["product"].asString();
+							entry.quantity_ = JsonItem["quantity"].asInt();
+							VcFaceBookItemTag.push_back(entry);
+						}
+
+					}
+				}
+				
+				
+				bool find_ret = false;
+				std::vector<FaceBookTag>::iterator it = VcFaceBookTag.begin();
+				for (; it != VcFaceBookTag.end(); ++ it)
+				{
+					FaceBookTag entryItem = (*it);
+					if (entryItem.CurrencyType_ == FaceBookTag::FaceBookState_initiated)
+					{
+						std::vector<FaceBookItemTag>::iterator it_item = VcFaceBookItemTag.begin();
+						for (; it_item != VcFaceBookItemTag.end(); ++ it_item)
+						{
+							FaceBookItemTag entry = (*it_item);
+							find_ret = true;
+							if (entry.product_.size() < MAX_PayNOLength)
+							{
+
+								WCHAR sz_temp_payNO[MAX_PayNOLength];
+								UINT count_temp = 0;
+								WCHAR* temp_PayNO =  CharToWChar(entry.product_.c_str(), count_temp);
+								int shop_id = 0;
+								
+								TCHARCopy(sz_temp_payNO, CountArray(sz_temp_payNO), temp_PayNO, _tcslen(temp_PayNO));
+								free(temp_PayNO);
+								HashMap<DWORD, tagFishRechargeInfo>::iterator it = g_FishServer.GetFishConfig().GetFishRechargesConfig().m_FishRechargeMap.begin();
+								for (; it != g_FishServer.GetFishConfig().GetFishRechargesConfig().m_FishRechargeMap.end(); ++ it)
+								{
+									const tagFishRechargeInfo& config_entry = it->second;
+									HashMap<WORD, tagFishPayType>::const_iterator it_pay_type = config_entry.PayNO.find(FaceBook_ChannelPayType);
+									if (it_pay_type != config_entry.PayNO.end())
+									{
+										if (wcscmp(it_pay_type->second.PayNO, sz_temp_payNO) == 0)
+										{
+											shop_id = config_entry.ID;
+											break;
+										}
+									}
+									
+								}
+								if (shop_id != 0)
+								{
+									DBR_Cmd_Deal_Third_Platform_Create_And_Verify msg;
+									msg.channel_type = Facebook_ChannelType;
+									msg.shop_id = shop_id;
+									if (name.size() < 256)
+									{
+										strcpy_s(msg.account_name, name.c_str());
+									}
+									
+									msg.pay_type = FaceBook_ChannelPayType;
+									strcpy_s(msg.good_id, entry.product_.c_str());
+									SetMsgInfo(msg, DBR_Deal_Third_Platform_Create_And_Verify, sizeof(msg));
+									g_FishServer.SendNetCmdToDB(&msg);
+								}
+								else
+								{
+
+								}
+								
+							}
+							else
+							{
+
+							}
+							
+
+							break;
+						}
+						break;
+					}
+				}
+			}
+		
+		}
+
+		if (!jsonRoot["disputes"].isNull())
+		{
+			if (!jsonRoot["disputes"].isArray())
+			{
+				Json::Value JsonDisputesArray = jsonRoot["disputes"];
+				length = JsonDisputesArray.size();
+				for (size_t i = 0; i < length; i++)
+				{
+					Json::Value JsonDisputes = JsonDisputesArray[i];
+					if (JsonDisputes["user_comment"].isString() && JsonDisputes["time_created"].isString() && JsonDisputes["user_email"].isString()
+						&& JsonDisputes["status"].isString() && JsonDisputes["reason"].isString())
+					{
+						std::string user_comment = JsonDisputes["user_comment"].asString();
+						std::string time_created = JsonDisputes["time_created"].asString();
+						std::string user_email = JsonDisputes["user_email"].asString();
+						std::string status = JsonDisputes["status"].asString();
+						std::string reason = JsonDisputes["reason"].asString();
+					}
+					
+
+				}
+
+			}
+		}
+	}
+
+	char strTime[128] = { 0 };
+
+	char sz_send[1024];
+	std::string ret = "";
+	
+	
+	ret = "{\"isSuccess\":\"false\"}";
+
+
+	GetGMTTimeStr(strTime, sizeof(strTime));
+
+	int nret = sprintf_s(sz_send, sizeof(sz_send), "HTTP/1.1 200 OK\r\nServer: vata/0.0.1\r\n\r\n%s", ret.c_str());
+	int count = send(c->Socket, sz_send, nret, 0);
+
 }
