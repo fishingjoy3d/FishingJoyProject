@@ -262,7 +262,12 @@ public class PayBuyConfirmUI : BaseWnd
 
         m_DescLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
 
+        GameObject OKObj = m_BaseTrans.GetChild(0).gameObject;
+        m_OKSprite = OKObj.transform.GetChild(1).GetComponent<UISprite>();
 
+        UIEventListener.Get(OKObj).onPress = OnPressOK;
+        UIEventListener.Get(OKObj).onHover = OnPressOK;
+        UIEventListener.Get(OKObj).onClick = OnClickOnOK;
         UIEventListener.Get(m_BaseTrans.GetChild(1).gameObject).onClick = OnClickClose;
     }
     public void ShowPayBuyConfirm(uint ID)
