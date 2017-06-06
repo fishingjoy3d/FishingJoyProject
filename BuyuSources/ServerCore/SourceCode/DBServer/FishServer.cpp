@@ -1004,6 +1004,8 @@ bool FishServer::HandleDataBaseMsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		return OnHandleDelRelationRequest(Index, ClientID, pCmd);
 	case DBR_Deal_Third_Platform_Verify:
 		return OnThirdPlatformVerify(Index, ClientID, pCmd);
+	case DBR_Deal_Third_Platform_Create_And_Verify:
+		return OnThirdPlatformCreateAndVerify(Index, ClientID, pCmd);
 	default:
 		return false;
 	}
@@ -1028,7 +1030,7 @@ bool FishServer::OnHandleDealApplyCreateLog(BYTE Index, BYTE ClientID, NetCmd* p
 	}
 	SqlTable pTable1;
 	char SqlStr[MAXSQL_LENGTH] = { 0 };
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealApplyCreateOrderLog('%u','%u','%u','%d-%d-%d %d:%d:%d');", pMsg->UserID, pMsg->ChannelID, pMsg->ItemID, pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealApplyCreateOrderLog('%u','%u','%u','%u','%d-%d-%d %d:%d:%d');", pMsg->UserID, pMsg->ChannelID, pMsg->ItemID, pMsg->PayType,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
 
 	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
 	if (!Result)
@@ -1056,7 +1058,7 @@ bool FishServer::OnHandleDealCreateLog(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	}
 	SqlTable pTable1;
 	char SqlStr[MAXSQL_LENGTH] = { 0 };
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealCreateOrderLog('%u','%u','%u','%u','%s','%d-%d-%d %d:%d:%d');", pMsg->UserID, pMsg->ChannelID, pMsg->ItemID, pMsg->OrderID,pMsg->ProductID,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealCreateOrderLog('%u','%u','%u','%u','%s','%u','%d-%d-%d %d:%d:%d');", pMsg->UserID, pMsg->ChannelID, pMsg->ItemID, pMsg->OrderID,pMsg->ProductID, pMsg->PayType,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
 
 	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
 	if (!Result)
@@ -1086,7 +1088,7 @@ bool FishServer::OnHandleDealThirdPlatformVerifyLog(BYTE Index, BYTE ClientID, N
 	}
 	SqlTable pTable1;
 	char SqlStr[MAXSQL_LENGTH] = { 0 };
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealThirdVerifyLog('%u','%u','%u','%s','%d-%d-%d %d:%d:%d');", pMsg->SDKFlowID, pMsg->OrderID, pMsg->ChannelID, "", pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealThirdVerifyLog('%u','%u','%u','%s','%u','%d-%d-%d %d:%d:%d');", pMsg->SDKFlowID, pMsg->OrderID, pMsg->ChannelID, "", pMsg->PayType,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
 	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
 	if (!Result)
 	{
@@ -1114,7 +1116,7 @@ bool FishServer::OnHandleDealPayLog(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	}
 	SqlTable pTable1;
 	char SqlStr[MAXSQL_LENGTH] = { 0 };
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealPayLog('%u','%u','%u','%u','%s','%d-%d-%d %d:%d:%d');", pMsg->user_id, pMsg->OrderID, pMsg->ChannelID, pMsg->Price, pMsg->good_id, pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealPayLog('%u','%u','%u','%u','%s','%u','%d-%d-%d %d:%d:%d');", pMsg->user_id, pMsg->OrderID, pMsg->ChannelID, pMsg->Price, pMsg->good_id, pMsg->PayType,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
 	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
 	if (!Result)
 	{
@@ -6365,7 +6367,7 @@ bool FishServer::OnCreateDealOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	SqlTable pTable1;
 	char SqlStr[MAXSQL_LENGTH] = { 0 };
 	//IN `good_id` varchar(255), IN `shop_id` int unsigned, IN `user_id` int unsigned, IN `channel` int unsigned
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishCreateDeal('%s', '%u', '%u', '%u');", pMsg->good_id, pMsg->shop_id, pMsg->user_id, pMsg->channel_id);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishCreateDeal('%s', '%u', '%u', '%u','%u');", pMsg->good_id, pMsg->shop_id, pMsg->user_id, pMsg->channel_id,pMsg->pay_type);
 	int order_id = 0;
 	if (m_Sql[Index].Select(SqlStr, 1, pTable1, true))
 	{
@@ -6380,6 +6382,8 @@ bool FishServer::OnCreateDealOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	msg->order_id = order_id;
 	msg->shop_id = pMsg->shop_id;
 	msg->user_id = pMsg->user_id;
+	msg->pay_type = pMsg->pay_type;
+	
 	TCHARCopy(msg->good_id, CountArray(msg->good_id), pMsg->good_id, _tcslen(pMsg->good_id));	
 	OnAddDBResult(Index, ClientID, msg);
 	return true;
@@ -7119,6 +7123,43 @@ bool FishServer::OnHandleAddRelationRequest(BYTE Index, BYTE ClientID, NetCmd* p
 	return true;
 }
 
+bool FishServer::OnThirdPlatformCreateAndVerify(BYTE Index, BYTE ClientID, NetCmd* pCmd)
+{
+	DBR_Cmd_Deal_Third_Platform_Create_And_Verify* pMsg = (DBR_Cmd_Deal_Third_Platform_Create_And_Verify*)pCmd;
+	if (!pMsg)
+	{
+		ASSERT(false);
+		return false;
+	}
+	SqlTable pTable1;
+	char SqlStr[MAXSQL_LENGTH] = { 0 };
+	DBO_Cmd_Deal_Third_Platform_Verify * msg = (DBO_Cmd_Deal_Third_Platform_Verify*)CreateCmd(DBO_Deal_Third_Platform_Verify, sizeof(DBO_Cmd_Deal_Third_Platform_Verify));
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealCreateAndVerify('%s', '%u', '%s', '%u', '%u');", pMsg->good_id, pMsg->shop_id, pMsg->account_name, pMsg->channel_type, pMsg->pay_type);
+	if (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1)
+	{
+		if (pTable1.Rows() != 0)
+		{
+			msg->result = true;
+			msg->info.order_id = pTable1.GetUint(0, 0);
+			msg->info.user_id = pTable1.GetUint(0, 1);
+			msg->info.channel_id = pMsg->channel_type;
+			msg->info.shop_id = pMsg->shop_id;
+			msg->info.pay_type = pMsg->pay_type;
+			UINT count = 0;
+			TCHAR* good_id = CharToWChar(pMsg->good_id, count);
+			TCHARCopy(msg->info.good_id, CountArray(msg->info.good_id), good_id, _tcslen(good_id));
+			free(good_id);
+		}		
+	}
+	else
+	{
+		LogInfoToFile(DBErrorSqlFileName, SqlStr);
+		OnAddDBResult(Index, ClientID, msg);
+		ASSERT(false);
+	}
+	OnAddDBResult(Index, ClientID, msg);
+	return true;
+}
 
 bool FishServer::OnThirdPlatformVerify(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 {

@@ -1693,6 +1693,17 @@ enum RechargeType
 	RT_Reward = 5,//充值奖励ID
 };
 //人民币转 乐币操作
+
+struct tagFishPayType
+{
+	DWORD       Type;
+	WCHAR       PayNO[MAX_PayNOLength];
+};
+enum FaceBookChannelPayType
+{
+	FaceBook_ChannelPayType,
+	Google_ChannelPayType
+};
 struct tagFishRechargeInfo
 {
 	DWORD		ID;
@@ -1702,8 +1713,8 @@ struct tagFishRechargeInfo
 	BYTE		RechargeType;//充值类型
 	DWORD		AddMoney;//添加货币类型
 	WCHAR       Name[MAX_OperatorTitleLength];
-	WCHAR       PayNO[MAX_PayNOLength];
-
+	//WCHAR       PayNO[MAX_PayNOLength];
+	HashMap<WORD, tagFishPayType> PayNO;
 	WCHAR		Icon[MAX_IconLength];
 	WCHAR		DisCountPicName[MAX_DisCountPicNameLength];
 	
@@ -2735,7 +2746,8 @@ enum FishDBCmd
 		DBR_Deal_Apply_Create_Log,
 		DBR_Deal_Create_Log,
 		DBR_Deal_ThirdPlatform_Verify_Log,
-		DBR_Deal_Pay_Log
+		DBR_Deal_Pay_Log,
+		DBR_Deal_Third_Platform_Create_And_Verify
 };
 
 
@@ -2744,6 +2756,7 @@ struct DBR_Cmd_Deal_Apply_Create_Log : public NetCmd
 	int ItemID;
 	int ChannelID;
 	DWORD UserID;
+	int PayType;
 };
 
 struct DBR_Cmd_Deal_Create_Log : public NetCmd
@@ -2753,6 +2766,7 @@ struct DBR_Cmd_Deal_Create_Log : public NetCmd
 	DWORD OrderID;
 	DWORD ChannelID;
 	WCHAR ProductID[MAX_PayNOLength];
+	int PayType;
 };
 
 struct DBR_Cmd_Deal_ThirdPlatform_Verify_Log : public NetCmd
@@ -2761,6 +2775,7 @@ struct DBR_Cmd_Deal_ThirdPlatform_Verify_Log : public NetCmd
 	DWORD OrderID;
 	int ChannelID;
 	char ExternalData[256];
+	int PayType;
 };
 
 struct DBR_Cmd_Deal_Pay_Log : public NetCmd
@@ -2771,6 +2786,7 @@ struct DBR_Cmd_Deal_Pay_Log : public NetCmd
 	int Price;
 	WCHAR good_id[MAX_PayNOLength];
 	int ShopItem;
+	int PayType;
 };
 
 
@@ -2778,7 +2794,18 @@ struct DBR_Cmd_Deal_Pay_Log : public NetCmd
 struct DBR_Cmd_Deal_Third_Platform_Verify : public NetCmd
 {
 	DWORD Order_id;
-	//WCHAR good_id[MAX_PayNOLength];
+	int channel_type;
+};
+
+
+struct DBR_Cmd_Deal_Third_Platform_Create_And_Verify : public NetCmd
+{
+	int shop_id;
+	int channel_type;
+	char good_id[MAX_PayNOLength];
+	char account_name[256];
+	int pay_type;
+	
 };
 
 struct tagDeal
@@ -2788,6 +2815,7 @@ struct tagDeal
 	DWORD channel_id;
 	DWORD shop_id;
 	WCHAR good_id[MAX_PayNOLength];
+	DWORD pay_type;
 };
 struct DBO_Cmd_Deal_Third_Platform_Verify : public NetCmd
 {
@@ -2801,6 +2829,7 @@ struct DBR_Cmd_Deal_Create : public NetCmd
 	DWORD		shop_id;
 	DWORD		user_id;
 	DWORD		channel_id;
+	DWORD		pay_type;
 };
 
 
@@ -2810,6 +2839,7 @@ struct DBO_Cmd_Deal_Create : public NetCmd
 	DWORD	   shop_id;
 	DWORD	   user_id;
 	WCHAR       good_id[MAX_PayNOLength];
+	DWORD		pay_type;
 };
 
 
@@ -4552,6 +4582,7 @@ enum ChannelType
 {
 	Self_ChannelType,
 	Dome_ChannelType, //冰穹渠道
+	Facebook_ChannelType
 
 };
 
@@ -7808,7 +7839,8 @@ struct LC_Cmd_BindPhone : public NetCmd
 struct CG_Cmd_CreateOrder : public NetCmd
 {
 	int ShopIndex;
-	int Price;
+	//int Price;
+	int PayType;
 };
 
 struct GC_Cmd_CreateOrder : public NetCmd
@@ -7818,6 +7850,7 @@ struct GC_Cmd_CreateOrder : public NetCmd
 	WCHAR ProductID[MAX_PayNOLength];
 //	WCHAR sign_code[MAX_SIGN_CODE];
 	WCHAR notify_url[MAX_UrlLength];
+	int PayType;
 };
 
 //3.实体物品购买 有充值类型的 或者是 邮递类型的 外部控制 

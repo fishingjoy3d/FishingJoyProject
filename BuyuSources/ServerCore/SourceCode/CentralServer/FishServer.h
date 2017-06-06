@@ -57,7 +57,7 @@ private:
 	bool ConnectClient();
 	bool ConnectControl();
 	bool ConnectLogDB();
-	void ThirdPlatformBuy(int shopID, DWORD user_id, int channel_id, int order_id);
+	void ThirdPlatformBuy(int shopID, DWORD user_id, int channel_id, int order_id, int pay_type);
 	void HandleAllMsg();
 
 	void OnTcpServerLeave(BYTE ServerID, ServerClientData* pClient);

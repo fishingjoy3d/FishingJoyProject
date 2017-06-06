@@ -1441,7 +1441,7 @@ void FishServer::HandleClientMsg(ServerClientData* pClient, NetCmd* pCmd)
 			LogInfoToFile("LogonError.txt", TEXT("¿Í»§¶Ë°æ±¾´íÎó ÇþµÀµÇÂ½Ê§°Ü"));
 			return;
 		}
-		if (pMsg->logon.ChannelID == 0)
+		if (pMsg->logon.ChannelID == 0 || pMsg->logon.ChannelID == Facebook_ChannelType)
 		{
 			OperatorLogon(pMsg->logon, pClient);
 		}

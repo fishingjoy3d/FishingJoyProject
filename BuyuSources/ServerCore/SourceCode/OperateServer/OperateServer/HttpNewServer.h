@@ -23,6 +23,7 @@ protected:
 	void DomePay(const char* data, HttpClientData* c);
 	void DomeTestPay(const char* data, HttpClientData* c);	
 	void DomeArguHelp(const char* data, std::map<std::string, std::string>& map);
+	void FacebookPay(const char* data, HttpClientData* c);
 
 	MAP_CALL_BACKS _HttpCallBacks;
 };

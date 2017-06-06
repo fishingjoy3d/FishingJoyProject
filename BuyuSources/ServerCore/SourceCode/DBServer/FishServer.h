@@ -241,6 +241,7 @@ private:
 	bool OnDelExChange(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	//Recharge
 	bool OnThirdPlatformVerify(BYTE Index, BYTE ClientID, NetCmd* pCmd);
+	bool OnThirdPlatformCreateAndVerify(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnAddRecharge(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnLoadRechargeOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnAddRechargeOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd);
