@@ -12,6 +12,7 @@ public struct PayTopBtn
 {
     public GameObject   m_BtnObj;
     public Transform    m_BtnTrans;
+    public UISprite m_Sprite;
 }
 
 public class PayLogicUI : BaseWnd
@@ -42,8 +43,11 @@ public class PayLogicUI : BaseWnd
         Transform BaseTr = m_ScaleTrans.GetChild(0);
         m_TopBtn[0].m_BtnObj = BaseTr.GetChild(0).gameObject;
         m_TopBtn[0].m_BtnTrans = BaseTr.GetChild(0);
+        m_TopBtn[0].m_Sprite = m_TopBtn[0].m_BtnTrans.GetChild(0).GetComponent<UISprite>();
+
         m_TopBtn[1].m_BtnObj = BaseTr.GetChild(1).gameObject;
         m_TopBtn[1].m_BtnTrans = BaseTr.GetChild(1);
+        m_TopBtn[1].m_Sprite = m_TopBtn[1].m_BtnTrans.GetChild(0).GetComponent<UISprite>();
 
         m_MaskObj.m_Mask = BaseTr.GetChild(2).gameObject;
         m_MaskObj.m_MaskTrans = BaseTr.GetChild(2);
@@ -121,6 +125,9 @@ public class PayLogicUI : BaseWnd
         m_MaskObj.m_TweenAnim.from = FromPos;
         m_MaskObj.m_TweenAnim.to = ToPos;
         m_MaskObj.m_TweenAnim.PlayForward();
+
+        m_TopBtn[0].m_Sprite.spriteName = (m_PayType == PayType.Diamond) ? "buyGold-check" : "buyGold-uncheck";
+        m_TopBtn[1].m_Sprite.spriteName = (m_PayType == PayType.Diamond) ? "buyJewel-uncheck" : "buyJewel-check";
         SetScrollViewDate();
     }
     void OnDiamondBtnMsg(GameObject go)

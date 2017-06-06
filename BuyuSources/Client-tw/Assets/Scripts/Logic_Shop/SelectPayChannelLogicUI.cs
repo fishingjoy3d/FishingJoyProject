@@ -7,6 +7,7 @@ using UnityEngine;
 /// </summary>
 public class SelectPayChannelLogicUI : BaseWnd
 {
+    UISprite m_ExitSprite;
     Scroll m_Scroll = new Scroll();
     List<PayChannelItemInfo> m_PayInfoList = new List<PayChannelItemInfo>();
     Transform m_ScaleTrans;
@@ -26,7 +27,11 @@ public class SelectPayChannelLogicUI : BaseWnd
     }
     void InitBtn()
     {
-        UIEventListener.Get(m_ScaleTrans.GetChild(1).gameObject).onClick = OnCloseBtn;
+        GameObject closeObj = m_ScaleTrans.GetChild(1).gameObject;
+        m_ExitSprite = closeObj.transform.GetChild(0).GetComponent<UISprite>();
+        UIEventListener.Get(closeObj).onClick = OnCloseBtn;
+        UIEventListener.Get(closeObj).onPress = OnPressClose;
+        UIEventListener.Get(closeObj).onHover = OnPressClose;
     }
     void InitView()
     {
@@ -64,6 +69,10 @@ public class SelectPayChannelLogicUI : BaseWnd
         ShutDown();
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_CloseUI);
     }
+    void OnPressClose(GameObject go, bool state)
+    {
+        m_ExitSprite.spriteName = state ? "exit-click" : "exit";
+    }
     void ClearPayGrid()
     {
         List<Transform> gridChid = m_Scroll.m_Grid[0].GetChildList();
@@ -93,7 +102,8 @@ public class SelectPayChannelLogicUI : BaseWnd
 
 public class PayChannelItemInfo : BaseWnd
 {
-    UISprite m_PayChannelIcon;
+    UISprite m_PayIcon;
+    UISprite m_PayLabel;
     PayChannelType m_PayChannel;
 
     public void Init(GameObject go)
@@ -103,7 +113,8 @@ public class PayChannelItemInfo : BaseWnd
         if (m_BaseWndObject.activeSelf != true)
             m_BaseWndObject.SetActive(true);
 
-        m_PayChannelIcon = m_BaseTrans.GetChild(1).GetComponent<UISprite>();
+        m_PayIcon = m_BaseTrans.GetChild(1).GetComponent<UISprite>();
+        m_PayLabel = m_BaseTrans.GetChild(2).GetComponent<UISprite>();
         UIEventListener.Get(m_BaseWndObject).onClick = OnClickSelect;
     }
 
@@ -113,13 +124,15 @@ public class PayChannelItemInfo : BaseWnd
 
         if (m_PayChannel == PayChannelType.Facebook)
         {
-            m_PayChannelIcon.spriteName = "facebook";
+            m_PayIcon.spriteName = "FB-icon";
+            m_PayLabel.spriteName = "facebook";
         }
         else if (m_PayChannel == PayChannelType.GooglePlay)
         {
-            m_PayChannelIcon.spriteName = "googleplay";
+            m_PayIcon.spriteName = "GP-icon";
+            m_PayLabel.spriteName = "googleplay";
         }
-        m_PayChannelIcon.MakePixelPerfect();
+        m_PayIcon.MakePixelPerfect();
     }
 
     public void ResetLocalScale()

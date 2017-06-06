@@ -249,6 +249,7 @@ public class GlobalSystemTipsUI : BaseWnd
 public class PayBuyConfirmUI : BaseWnd
 {
     UILabel m_DescLabel;
+    UISprite m_OKSprite;
     uint m_ItemID;
 
     public void Init()
@@ -260,7 +261,8 @@ public class PayBuyConfirmUI : BaseWnd
             m_BaseWndObject.SetActive(true);
 
         m_DescLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
-        UIEventListener.Get(m_BaseTrans.GetChild(0).gameObject).onClick = OnClickOnOK;
+
+
         UIEventListener.Get(m_BaseTrans.GetChild(1).gameObject).onClick = OnClickClose;
     }
     public void ShowPayBuyConfirm(uint ID)
@@ -292,6 +294,10 @@ public class PayBuyConfirmUI : BaseWnd
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_CloseUI);
 
         ShutDown();
+    }
+    void OnPressOK(GameObject go, bool state)
+    {
+        m_OKSprite.spriteName = state ? "OK-click" : "OK";
     }
     public void ShutDown()
     {
