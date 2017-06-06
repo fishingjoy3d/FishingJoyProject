@@ -250,6 +250,7 @@ public class PayBuyConfirmUI : BaseWnd
 {
     UILabel m_DescLabel;
     UISprite m_OKSprite;
+    UISprite m_CancelSprite;
     uint m_ItemID;
 
     public void Init()
@@ -264,11 +265,16 @@ public class PayBuyConfirmUI : BaseWnd
 
         GameObject OKObj = m_BaseTrans.GetChild(0).gameObject;
         m_OKSprite = OKObj.transform.GetChild(1).GetComponent<UISprite>();
+        GameObject cancelObj = m_BaseTrans.GetChild(1).gameObject;
+        m_CancelSprite = cancelObj.transform.GetChild(1).GetComponent<UISprite>();
 
         UIEventListener.Get(OKObj).onPress = OnPressOK;
         UIEventListener.Get(OKObj).onHover = OnPressOK;
         UIEventListener.Get(OKObj).onClick = OnClickOnOK;
-        UIEventListener.Get(m_BaseTrans.GetChild(1).gameObject).onClick = OnClickClose;
+
+        UIEventListener.Get(cancelObj).onPress = OnPressClose;
+        UIEventListener.Get(cancelObj).onHover = OnPressClose;
+        UIEventListener.Get(cancelObj).onClick = OnClickClose;
     }
     public void ShowPayBuyConfirm(uint ID)
     {
@@ -303,6 +309,10 @@ public class PayBuyConfirmUI : BaseWnd
     void OnPressOK(GameObject go, bool state)
     {
         m_OKSprite.spriteName = state ? "OK-click" : "OK";
+    }
+    void OnPressClose(GameObject go, bool state)
+    {
+        m_CancelSprite.spriteName = state ? "cancel-click" : "cancel";
     }
     public void ShutDown()
     {

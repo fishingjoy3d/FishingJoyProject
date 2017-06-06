@@ -219,12 +219,12 @@ public class PayItemInfo : BaseWnd
         if (type == PayType.Gold)
         {
             m_DesItemIcon.spriteName = "HallBtn_Gold";
-            m_ItemPriceIcon.spriteName = "rmb_logo";
+            //m_ItemPriceIcon.spriteName = "rmb_logo";
         }
         else
         {
             m_DesItemIcon.spriteName = "HallBtn_Diamond";
-            m_ItemPriceIcon.spriteName = "rmb_logo";
+            //m_ItemPriceIcon.spriteName = "rmb_logo";
         }
         m_DesItemSum.text = payInfo.AddMoney.ToString();
         m_DisCountIcon.spriteName = payInfo.sDisCountPicName;
