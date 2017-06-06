@@ -11,6 +11,7 @@ public class TipBox_0 : GlobalBaseWind
     Object m_objItem;
     GameObject[] m_goItem = new GameObject[3];
     GameObject m_goOk;
+    UISprite m_spriteOK;
     public Object Init()
     {
         m_objItem = ResManager.Instance.LoadObject("TipBox_1", "ExtraRes/UI/Predab/", ResType.ExtraRes, false);//Item
@@ -23,7 +24,10 @@ public class TipBox_0 : GlobalBaseWind
         Init_GameObj(true);
         BaseTranF.GetChild(1).GetComponent<UISprite>().spriteName = ZiTiType.ToString();
         m_goOk = BaseTranF.GetChild(2).gameObject;
+        m_spriteOK = m_goOk.transform.GetChild(1).GetComponent<UISprite>();
         UIEventListener.Get(m_goOk).onClick = OnOK;
+        UIEventListener.Get(m_goOk).onPress = OnPressOK;
+        UIEventListener.Get(m_goOk).onHover = OnPressOK;
         m_goOk.SetActive(false);
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_GoldJump);
         WndManager.Instance.Push(BaseTranF);
@@ -112,6 +116,10 @@ public class TipBox_0 : GlobalBaseWind
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_CloseUI);
 
         DestorySelf();
+    }
+    void OnPressOK(GameObject go, bool state)
+    {
+        m_spriteOK.spriteName = state ? "OK-click" : "OK";
     }
     public void DestorySelf()
     {
