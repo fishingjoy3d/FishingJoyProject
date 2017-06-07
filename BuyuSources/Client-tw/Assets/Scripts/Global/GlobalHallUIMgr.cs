@@ -67,7 +67,7 @@ public class TipBox_0 : GlobalBaseWind
             {
                 if (i == 0)
                 {
-                    m_goItem[i].transform.position = new Vector3(-140f, yOffset, 0f);
+                    m_goItem[i].transform.position = new Vector3(-120f, yOffset, 0f);
                 }
                 else if (i == 1)
                 {
@@ -75,7 +75,7 @@ public class TipBox_0 : GlobalBaseWind
                 }
                 else if (i == 2)
                 {
-                    m_goItem[i].transform.position = new Vector3(140f, yOffset, 0f);
+                    m_goItem[i].transform.position = new Vector3(120f, yOffset, 0f);
                 }
             }
             m_goItem[i].transform.SetParent(BaseTranF.transform, false);

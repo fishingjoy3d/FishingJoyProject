@@ -10,7 +10,19 @@ struct SignInChestsInfo
     public UILabel          m_SignInLevel;         //签到等级
     public ushort           m_RewardID;
 }
-
+class SignInButtonInfo
+{
+    public GameObject       m_Obj;
+    public UIButton         m_Button;
+    public UISprite[]       m_BG = new UISprite[2];   //签到，补签背景
+    public GameObject       m_CanSign;                //可签到，可补签
+    public GameObject       m_AlreadySign;            //已签到，剩余补签次数为0
+    public UILabel          m_DayTime;                //签到的天数、剩余补签天数
+    public SignInButtonInfo()
+    {
+        m_BG = new UISprite[2];
+    }
+}
 class SignInPropReward
 {
     public UISprite         m_PropReward;           //某天签到奖励
@@ -42,13 +54,13 @@ class SignInPropReward
 
     }
 }
-
 public class HallLoinUI_SignIn : BaseWnd
 {
     SignInChestsInfo[]  m_SignInChestsInfo = new SignInChestsInfo[5];
     UIButton[]          m_SignInBtn = new UIButton[2];          //签到、补签按纽 
-    UISprite            m_SignInBtnBg;                          //签到背景
-    UILabel[]           m_SignInDayTime = new UILabel[2];       //签到的天数、剩余补签天数
+    SignInButtonInfo[]  m_SignInBtns = new SignInButtonInfo[2]; //签到、补签按纽 
+
+
     UILabel             m_RetroactivePrice;                     //补签所需钻石数
     UIPanel             m_UIPanel;
     Transform           m_ScrollTrans;
@@ -71,21 +83,28 @@ public class HallLoinUI_SignIn : BaseWnd
             m_SignInChestsInfo[i].m_SignInLevel = m_BaseTrans.GetChild(i).GetChild(0).GetComponent<UILabel>();
             UIEventListener.Get(m_SignInChestsInfo[i].m_SignInChestsBtn.gameObject).onClick = OnClickChestsReward;
         }
-        for (byte i = 0; i < m_SignInBtn.Length; ++i)
+        for (byte i = 0; i < m_SignInBtns.Length; ++i)
         {
-            m_SignInBtn[i] = m_BaseTrans.GetChild(8 + i).GetComponent<UIButton>();
-            
-            m_SignInDayTime[i] = m_BaseTrans.GetChild(6 + i).GetComponent<UILabel>();
+            m_SignInBtns[i] = new SignInButtonInfo();
+
+            m_SignInBtns[i].m_Button = m_BaseTrans.GetChild(8 + i).GetComponent<UIButton>();
+            m_SignInBtns[i].m_Obj = m_SignInBtns[i].m_Button.gameObject;
+            m_SignInBtns[i].m_DayTime = m_BaseTrans.GetChild(6 + i).GetComponent<UILabel>();
+            m_SignInBtns[i].m_BG[0] = m_BaseTrans.GetChild(8 + i).GetChild(1).GetComponent<UISprite>();
+            m_SignInBtns[i].m_BG[1] = m_SignInBtns[i].m_BG[0].transform.GetChild(0).GetComponent<UISprite>();
+            m_SignInBtns[i].m_CanSign = m_BaseTrans.GetChild(8).GetChild(0).gameObject;
+            m_SignInBtns[i].m_AlreadySign = m_BaseTrans.GetChild(8).GetChild(2).gameObject;
             if (i == 0)
             {
-                m_AgainSignInBtnBg[0] = m_BaseTrans.GetChild(8).GetChild(0).gameObject;
-                m_AgainSignInBtnBg[1] = m_BaseTrans.GetChild(8).GetChild(2).gameObject;
-                UIEventListener.Get(m_SignInBtn[i].gameObject).onClick = OnClickRepeatSignIn;
+                UIEventListener.Get(m_SignInBtns[i].m_Obj).onClick = OnClickRepeatSignIn;
+                UIEventListener.Get(m_SignInBtns[i].m_Obj).onPress = OnPressRepeatSignIn;
+                UIEventListener.Get(m_SignInBtns[i].m_Obj).onHover = OnPressRepeatSignIn;
             }
             else
             {
-                m_SignInBtnBg = m_BaseTrans.GetChild(8 + i).GetChild(1).GetComponent<UISprite>();
-                UIEventListener.Get(m_SignInBtn[i].gameObject).onClick = OnClickSignIn;
+                UIEventListener.Get(m_SignInBtns[i].m_Obj).onClick = OnClickSignIn;
+                UIEventListener.Get(m_SignInBtns[i].m_Obj).onPress = OnPressSignIn;
+                UIEventListener.Get(m_SignInBtns[i].m_Obj).onHover = OnPressSignIn;
             }
         }
         m_RetroactivePrice = m_BaseTrans.GetChild(8).GetChild(0).GetComponent<UILabel>();
@@ -117,44 +136,48 @@ public class HallLoinUI_SignIn : BaseWnd
     }
     public void UpdateSignInData()
     {
-        if (m_SignInDayTime == null || m_SignInDayTime[0] == null || m_SignInDayTime[1] == null || m_RetroactivePrice == null) 
+        if (m_SignInBtns == null || m_SignInBtns[0].m_DayTime == null || m_SignInBtns[1].m_DayTime == null || m_RetroactivePrice == null) 
             return;
 
-        m_SignInDayTime[0].text = PlayerRole.Instance.CheckManager.GetMonthCheckDaySum().ToString();
-        m_SignInDayTime[1].text = PlayerRole.Instance.CheckManager.GetCanCheckOtherSum().ToString();
+        m_SignInBtns[0].m_DayTime.text = PlayerRole.Instance.CheckManager.GetMonthCheckDaySum().ToString();
+        m_SignInBtns[1].m_DayTime.text = PlayerRole.Instance.CheckManager.GetCanCheckOtherSum().ToString();
         m_RetroactivePrice.text = FishConfig.Instance.m_CheckInfo.CheckOtherUser.ToString();
         
         //补签按纽状态刷新
         if (PlayerRole.Instance.CheckManager.GetCanCheckOtherSum() == 0)
         {
             m_RetroactivePrice.gameObject.SetActive(false);
-            m_SignInBtn[0].isEnabled = false;
-            m_AgainSignInBtnBg[0].SetActive(false);
-            m_AgainSignInBtnBg[1].SetActive(true);
-            //ChangeBtnBg(m_SignInBtn[0], "Btn_Bg_2");
+            m_SignInBtns[0].m_Button.isEnabled = false;
+            m_SignInBtns[0].m_AlreadySign.SetActive(true);
+            m_SignInBtns[0].m_CanSign.SetActive(false);
+            m_SignInBtns[0].m_BG[0].spriteName = GetDisabledName();
+            m_SignInBtns[0].m_BG[1].spriteName = GetDisabledName();
         }
         else
         {
             m_RetroactivePrice.gameObject.SetActive(true);
-            m_SignInBtn[0].isEnabled = true;
-            m_AgainSignInBtnBg[0].SetActive(true);
-            m_AgainSignInBtnBg[1].SetActive(false);
-            //ChangeBtnBg(m_SignInBtn[0], "Btn_Bg_0");
+            m_SignInBtns[0].m_Button.isEnabled = true;
+            m_SignInBtns[0].m_AlreadySign.SetActive(false);
+            m_SignInBtns[0].m_CanSign.SetActive(true);
+            m_SignInBtns[0].m_BG[0].spriteName = GetSpriteName(false);
+            m_SignInBtns[1].m_BG[1].spriteName = GetSpriteName(false);
         }
         //签到按纽状态刷新
         if (!PlayerRole.Instance.CheckManager.IsCanCheckNowDay())
         {
-            m_SignInBtn[1].isEnabled = false;
-            m_SignInBtnBg.spriteName = "Activity_SigInBtn1";
-            //m_SignInBtnBg.width = 84;
-            //ChangeBtnBg(m_SignInBtn[1], "Btn_Bg_2");
+            m_SignInBtns[1].m_Button.isEnabled = false;
+            m_SignInBtns[1].m_AlreadySign.SetActive(true);
+            m_SignInBtns[1].m_CanSign.SetActive(false);
+            m_SignInBtns[1].m_BG[0].spriteName = GetDisabledName();
+            m_SignInBtns[1].m_BG[1].spriteName = GetDisabledName();
         }
         else
         {
-            m_SignInBtn[1].isEnabled = true;
-            m_SignInBtnBg.spriteName = "Activity_SigInBtn0";
-            //m_SignInBtnBg.width = 64;
-            //ChangeBtnBg(m_SignInBtn[1], "Btn_Bg_0");
+            m_SignInBtns[1].m_Button.isEnabled = true;
+            m_SignInBtns[1].m_AlreadySign.SetActive(false);
+            m_SignInBtns[1].m_CanSign.SetActive(true);
+            m_SignInBtns[1].m_BG[0].spriteName = GetSpriteName(false);
+            m_SignInBtns[1].m_BG[1].spriteName = GetSpriteName(false);
         }
         UpdateSignInPropState();
         UpdateSignInChestsState();
@@ -329,29 +352,32 @@ public class HallLoinUI_SignIn : BaseWnd
 
         PlayerRole.Instance.CheckManager.CheckNowDay();
     }
-    string GetDisableSpriteName(byte Index)
+    void OnPressRepeatSignIn(GameObject go, bool state)
     {
-        if (Index < 3)
-            return "Activity_SignIn_Chests0";
-        else if (Index >= 3 && Index < 6)
-            return "Activity_SignIn_Chests2";
-        else
-            return "Activity_SignIn_Chests4";
-
+        string spriteName = GetSpriteName(state);
+        m_SignInBtns[0].m_BG[0].spriteName = spriteName;
+        m_SignInBtns[0].m_BG[1].spriteName = spriteName;
     }
-    string GetNormalSpriteName(byte Index)
+    void OnPressSignIn(GameObject go, bool state)
     {
-        if (Index < 3)
-            return "Activity_SignIn_Chests1";
-        else if (Index >= 3 && Index < 6)
-            return "Activity_SignIn_Chests3";
-        else
-            return "Activity_SignIn_Chests5";
+        string spriteName = GetSpriteName(state);
+        m_SignInBtns[1].m_BG[0].spriteName = spriteName;
+        m_SignInBtns[1].m_BG[1].spriteName = spriteName;
     }
-    void ChangeBtnBg(UIButton btn, string str)
+    /// <summary>
+    /// true 按下
+    /// false 抬起
+    /// </summary>
+    /// <param name="state"></param>
+    /// <returns></returns>
+    string GetSpriteName(bool state)
     {
-        btn.normalSprite = str;
-        btn.disabledSprite = str;
+        string spriteName = state ? "yellowBtn-click" : "yellowBtn";
+        return spriteName;
+    }
+    string GetDisabledName()
+    {
+        return "yellowBtn-click";
     }
     void ClearGird()
     {

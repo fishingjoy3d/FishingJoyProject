@@ -37,6 +37,7 @@ struct ActivityBtn
 {
     public GameObject   m_BtnObj;
     public UISprite     m_BtnBg;
+    public UISprite     m_BtnBg2;
     public byte         m_Tag;
     public bool         m_IsChecked;
 }
@@ -87,6 +88,7 @@ public class HallLoginUI_Activity : HallLoginUI_BaseWind
 
             m_ActivityBtn[i].m_BtnObj = m_ScaleTran.GetChild(3).GetChild(i).gameObject;
             m_ActivityBtn[i].m_BtnBg = m_ScaleTran.GetChild(3).GetChild(i).GetChild(0).GetComponent<UISprite>();
+            m_ActivityBtn[i].m_BtnBg2 = m_ActivityBtn[i].m_BtnBg.transform.GetChild(0).GetComponent<UISprite>();
             m_ActivityBtn[i].m_Tag = i;
             if (i == (byte)ActivityType.LevelActivity_UI)
                 m_ActivityBtn[i].m_IsChecked = true;
@@ -281,9 +283,15 @@ public class HallLoginUI_Activity : HallLoginUI_BaseWind
         for (byte i = 0; i < (byte)ActivityType.ActivityMax_Num; ++i)
         {
             if (m_ActivityBtn[i].m_IsChecked)
-                m_ActivityBtn[i].m_BtnBg.spriteName = "Activity_SelectBtn_Bg0";
+            {
+                m_ActivityBtn[i].m_BtnBg.spriteName = "yellowToggle-click";
+                m_ActivityBtn[i].m_BtnBg2.spriteName = "yellowToggle-click";
+            }
             else
-                m_ActivityBtn[i].m_BtnBg.spriteName = "Activity_SelectBtn_Bg1";
+            {
+                m_ActivityBtn[i].m_BtnBg.spriteName = "yellowToggle";
+                m_ActivityBtn[i].m_BtnBg2.spriteName = "yellowToggle";
+            }
         }
     }
     void UpdateWndUIData(ActivityType statue)
@@ -908,7 +916,7 @@ class ActivityPayWnd : BaseWnd
     void SetNodeState(byte Indx, uint RewardID, uint NodeID, uint FinishValue)
     {
         m_PayNodeItem[Indx].m_LevelNodeBtn.isEnabled = false;
-        m_PayNodeItem[Indx].m_LevelLabel.text = FinishValue.ToString() + " RMB";
+        m_PayNodeItem[Indx].m_LevelLabel.text = FinishValue.ToString();// + " RMB";
         m_PayNodeItem[Indx].m_LevelBg.spriteName = "Activity_Pay_NumBg1";
         m_PayNodeItem[Indx].m_LightBg.spriteName = "Activity_Pay_Nod0";
         ChangeButtonBg(m_PayNodeItem[Indx].m_LevelNodeBtn, "Activity_Pay_Chests2");
