@@ -58,8 +58,9 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
             {
                 m_CenterRightBtn[i].m_bLock = true;
                 m_CenterRightBtn[i].m_Btn.m_IsChecked = false;
-                m_CenterRightBtn[i].m_Lock.SetActive(true);
-               // m_CenterRightBtn[i].m_Btn.m_Btn.isEnabled = false;
+                if (i != 2)
+                    m_CenterRightBtn[i].m_Lock.SetActive(true);
+                // m_CenterRightBtn[i].m_Btn.m_Btn.isEnabled = false;
             }
             m_CenterRightBtn[i].m_Btn.m_Tag = i;
             GetBtnLister(m_CenterRightBtn[i].m_Btn.m_BtnObj).onClick = OnCheckCenterRightBtn;
@@ -93,7 +94,7 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
         m_CenterLiftBtn.m_BtnTag = 0;
         
         Center_L_BtnBgChange(0);
-        m_CenterRightBtn[2].m_Btn.m_BtnObj.SetActive(ServerSetting.ShowMatch);
+        //m_CenterRightBtn[2].m_Btn.m_BtnObj.SetActive(ServerSetting.ShowMatch);
     }
     void InitLiftBtn()
     {
@@ -249,7 +250,7 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
                     GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Select_Match_Failed"), 0.8f);
                     return;
                 }
-                if (m_CenterRightBtn[i].m_bLock && i == 2)
+                if (i==2)//(m_CenterRightBtn[i].m_bLock && i == 2)
                 {
                     GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Select_Match_Failed1"), 0.8f);
                     return;
@@ -338,10 +339,10 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
             {
                 m_CenterRightBtn[1].m_bLock = false;
                 m_CenterRightBtn[1].m_Lock.SetActive(false);
-               // m_CenterRightBtn[1].m_Btn.m_Btn.isEnabled = true;
+                // m_CenterRightBtn[1].m_Btn.m_Btn.isEnabled = true;
             }
         }
-       
+
     }
     public void OpenRightLock()
     {
