@@ -43,9 +43,11 @@ public class  GameShare
 
         GameObject goFriend = m_gownd.transform.GetChild(2).gameObject;
         GameObject goFriends = m_gownd.transform.GetChild(3).gameObject;
+        GameObject goFB = m_gownd.transform.GetChild(9).gameObject;
 
         UIEventListener.Get(goFriend).onClick = EventFriend;
         UIEventListener.Get(goFriends).onClick = EventFriends;
+        UIEventListener.Get(goFB).onClick = EventFB;
 
         m_goWndExchage = m_gownd.transform.GetChild(4).gameObject;       
         m_sprItemExchage = m_goWndExchage.transform.GetChild(3).GetComponent<UISprite>();
@@ -150,6 +152,10 @@ public class  GameShare
     void EventFriends(GameObject go)
     {
         SceneMain.Instance.CaptureAndShare(false,m_texturbg);
+    }
+    void EventFB(GameObject go)
+    {
+
     }
     public void EnterGame()
     {

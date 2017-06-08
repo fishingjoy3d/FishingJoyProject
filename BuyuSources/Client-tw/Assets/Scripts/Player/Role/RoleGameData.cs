@@ -103,8 +103,8 @@ class RoleGameData
         //100W以上缩为简写
         if (gold >= 1000000)
         {
-            gold /= 10000;
-            strGold = gold.ToString() + StringTable.GetString("Global_10_Thousand") + "+";
+            gold /= 1000;
+            strGold = gold.ToString() + StringTable.GetString("Global_Thousand") + "+";
         }
         else
         {

@@ -100,6 +100,7 @@
   <Global_Jewel>鑽石</Global_Jewel>
   <Global_Gold>金幣</Global_Gold>
   <Global_Medal>獎牌</Global_Medal>
+  <Global_Thousand>K</Global_Thousand>
 
   <Achievement_Point>成就點：</Achievement_Point>
   <Achievement_Point_2>成就點數：</Achievement_Point_2>
