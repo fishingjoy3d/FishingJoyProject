@@ -26,7 +26,7 @@ class SignInButtonInfo
 class SignInPropReward
 {
     public UISprite         m_PropReward;           //某天签到奖励
-    public UISprite         m_PropRewardBg;         
+    public UISprite[]       m_PropRewardBg = new UISprite[2];         
     public UILabel          m_PropNum;
     public UILabel          m_DateTime;
     public GameObject       m_AlreadyGetFlag;
@@ -36,7 +36,8 @@ class SignInPropReward
     public void Init(Transform trans)
     {
         m_PropReward = trans.GetComponent<UISprite>();
-        m_PropRewardBg = trans.GetChild(2).GetComponent<UISprite>();
+        m_PropRewardBg[0] = trans.GetChild(2).GetComponent<UISprite>();
+        m_PropRewardBg[1] = m_PropRewardBg[0].transform.GetChild(0).GetComponent<UISprite>();
         m_PropNum = trans.GetChild(3).GetComponent<UILabel>();
         m_DateTime = trans.GetChild(4).GetComponent<UILabel>();
         m_AlreadyGetFlag = trans.GetChild(0).gameObject;
@@ -300,10 +301,15 @@ public class HallLoinUI_SignIn : BaseWnd
         if (PlayerRole.Instance.CheckManager.IsCheckByDay(day) )
         {
             prop.m_PropReward.color = new Color(0.5f, 0.5f, 0.5f);
-            prop.m_PropRewardBg.color = new Color(0.5f, 0.5f, 0.5f);
+            prop.m_PropRewardBg[0].color = new Color(0.5f, 0.5f, 0.5f);
+            prop.m_PropRewardBg[1].color = new Color(0.5f, 0.5f, 0.5f);
             prop.m_PropNum.text = "";
             prop.m_AlreadyGetFlag.SetActive(true);
             prop.m_PropHight.SetActive(false);
+
+            string bgName = GetRewardBgName(0);
+            prop.m_PropRewardBg[0].spriteName = bgName;
+            prop.m_PropRewardBg[1].spriteName = bgName;
         }
         else
         {
@@ -312,11 +318,21 @@ public class HallLoinUI_SignIn : BaseWnd
             //int NowDay= SystemTime.Instance.GetSystemDateTime.Day;//1-31
             int NowDay = PlayerRole.Instance.CheckManager.GetNowDay();
             if (day == NowDay)
+            {
                 prop.m_PropHight.SetActive(true);
+                string bgName = GetRewardBgName(1);
+                prop.m_PropRewardBg[0].spriteName = bgName;
+                prop.m_PropRewardBg[1].spriteName = bgName;
+            }
             else if (day < NowDay)
             {
                 prop.m_PropReward.color = new Color(0.5f, 0.5f, 0.5f);
-                prop.m_PropRewardBg.color = new Color(0.5f, 0.5f, 0.5f);
+                prop.m_PropRewardBg[0].color = new Color(0.5f, 0.5f, 0.5f);
+                prop.m_PropRewardBg[1].color = new Color(0.5f, 0.5f, 0.5f);
+
+                string bgName = GetRewardBgName(2);
+                prop.m_PropRewardBg[0].spriteName = bgName;
+                prop.m_PropRewardBg[1].spriteName = bgName;
             }
 
         }
@@ -392,5 +408,19 @@ public class HallLoinUI_SignIn : BaseWnd
             m_UIGrid[i].transform.DetachChildren();
         }
 
+    }
+    // 0之前 1今天 2以后
+    string GetRewardBgName(int index)
+    {
+        string str = "unsign";
+        if (index == 0)
+        {
+            str = "signed";
+        }
+        else if (index == 1)
+        {
+            str = "sign-today";
+        }
+        return str;
     }
 }
