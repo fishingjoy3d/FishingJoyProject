@@ -392,38 +392,44 @@ public class Utility
 
     public static string NumToString(uint num)
     {
-        if (num > 10000)
-        {
-            float wan = (num - num % 1000) / 10000f;
-            return wan.ToString() + StringTable.GetString("Global_10_Thousand");
-        }
-        return num.ToString();
+        //if (num > 10000)
+        //{
+        //    float wan = (num - num % 1000) / 10000f;
+        //    return wan.ToString() + StringTable.GetString("Global_10_Thousand");
+        //}
+        //return num.ToString();
+        return NumToThousand(num);
     }
     public static string NumToString(int num)
     {
-        if (num > 10000)
-        {
-            float wan = (num - num % 1000) / 10000f;
-            return wan.ToString() + StringTable.GetString("Global_10_Thousand");
-        }
-        return num.ToString();
+        //if (num > 10000)
+        //{
+        //    float wan = (num - num % 1000) / 10000f;
+        //    return wan.ToString() + StringTable.GetString("Global_10_Thousand");
+        //}
+        //return num.ToString();
+        return NumToThousand(num);
     }
 
     public static string NumToThousand(uint num)
     {
         if (num >= 10000)
         {
-            return (num / 1000).ToString() + "k";
+            uint thou = num / 1000;
+            string str = thou.ToString("N0") + StringTable.GetString("Global_Thousand");
+            return str;
         }
-        return num.ToString();
+        return num.ToString("N0");
     }
 
     public static string NumToThousand(int num)
     {
         if (num >= 10000)
         {
-            return (num / 1000).ToString() + "k";
+            int thou = num / 1000;
+            string str = thou.ToString("N0") + StringTable.GetString("Global_Thousand");
+            return str;
         }
-        return num.ToString();
+        return num.ToString("N0");
     }
 }
