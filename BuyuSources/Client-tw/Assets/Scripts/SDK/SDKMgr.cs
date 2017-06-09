@@ -42,7 +42,8 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
 #endif
     bool m_bSDKInitOK        = false;
     SDKLoginResult      m_LoginData         = new SDKLoginResult();
-    SDKPayData m_PayData = new SDKPayData();
+    SDKPayData          m_PayData           = new SDKPayData();
+    public bool         m_IsGuest           = false;
 
     public static void SetPackageName(string name)
     {
@@ -184,6 +185,12 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
         get { return m_PayData; }
         set { m_PayData = value; }
     }
+    public bool IsGuest
+    {
+        get { return m_IsGuest; }
+        set { m_IsGuest = value; }
+    }
+
     public void InitCallback(bool bResult)
     {
         if (bResult)

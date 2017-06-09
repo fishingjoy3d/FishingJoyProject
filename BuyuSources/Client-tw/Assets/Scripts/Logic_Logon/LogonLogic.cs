@@ -73,8 +73,8 @@ public class LogonLogic : ILogic, ICmdHandler
             else
             {
                 //启动时直接登陆
-                if(SDKMgr.Instance.InitOK)
-                    SDKLogin();
+                //if(SDKMgr.Instance.InitOK)
+                //    SDKLogin();
             }
         }
         else
