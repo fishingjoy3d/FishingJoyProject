@@ -58,9 +58,7 @@ class SignInPropReward
 public class HallLoinUI_SignIn : BaseWnd
 {
     SignInChestsInfo[]  m_SignInChestsInfo = new SignInChestsInfo[5];
-    UIButton[]          m_SignInBtn = new UIButton[2];          //签到、补签按纽 
-    SignInButtonInfo[]  m_SignInBtns = new SignInButtonInfo[2]; //签到、补签按纽 
-
+    SignInButtonInfo[]  m_SignInBtns = new SignInButtonInfo[2]; //签到、补签按纽
 
     UILabel             m_RetroactivePrice;                     //补签所需钻石数
     UIPanel             m_UIPanel;
@@ -126,12 +124,12 @@ public class HallLoinUI_SignIn : BaseWnd
             {
                 m_bPlayBtnCD = false;
                 if (PlayerRole.Instance.CheckManager.GetCanCheckOtherSum() != 0)
-                    m_SignInBtn[0].isEnabled = true;
+                    m_SignInBtns[0].m_Button.isEnabled = true;
             }
             else
             {
-                if (m_SignInBtn[0].isEnabled != false)
-                    m_SignInBtn[0].isEnabled = false;
+                if (m_SignInBtns[0].m_Button.isEnabled != false)
+                    m_SignInBtns[0].m_Button.isEnabled = false;
             }
         }
     }
@@ -161,7 +159,7 @@ public class HallLoinUI_SignIn : BaseWnd
             m_SignInBtns[0].m_AlreadySign.SetActive(false);
             m_SignInBtns[0].m_CanSign.SetActive(true);
             m_SignInBtns[0].m_BG[0].spriteName = GetSpriteName(false);
-            m_SignInBtns[1].m_BG[1].spriteName = GetSpriteName(false);
+            m_SignInBtns[0].m_BG[1].spriteName = GetSpriteName(false);
         }
         //签到按纽状态刷新
         if (!PlayerRole.Instance.CheckManager.IsCanCheckNowDay())
@@ -360,7 +358,7 @@ public class HallLoinUI_SignIn : BaseWnd
         PlayerRole.Instance.CheckManager.CheckOtherDay();
         m_bPlayBtnCD = true;
         m_BtnCDTime = 0;
-        m_SignInBtn[0].isEnabled = false;
+        m_SignInBtns[0].m_Button.isEnabled = false;
     }
     void OnClickSignIn(GameObject go)
     {
