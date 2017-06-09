@@ -245,7 +245,7 @@ public class LogonInitWnd
     {
         if (SDKMgr.IS_SDK_CHANNEL)
         {
-            LogicManager.Instance.LogOff();
+            //LogicManager.Instance.LogOff();
             if (LogonRuntime.LogonLogic.IsWaitLogon)
             {
                 //点击登录
@@ -262,10 +262,12 @@ public class LogonInitWnd
     }
     void OnClickFB(GameObject go)
     {
+        SDKMgr.Instance.IsGuest = false;
         OnClickChannelLogon(null);
     }
     void OnClickGuest(GameObject go)
     {
+        SDKMgr.Instance.IsGuest = true;
         SDKMgr.Instance.SDK.ShowAndroidToast("Guest Login");
     }
 }
