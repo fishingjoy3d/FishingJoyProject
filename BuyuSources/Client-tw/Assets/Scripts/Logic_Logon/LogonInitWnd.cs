@@ -269,6 +269,7 @@ public class LogonInitWnd
     {
         SDKMgr.Instance.IsGuest = true;
         SDKMgr.Instance.SDK.ShowAndroidToast("Guest Login");
+        LogonRuntime.LogonLogic.GuestLogon();
     }
 }
 

@@ -378,18 +378,22 @@ public class HeadWind : GlobalBaseWind
     }
     public void SetHeadInf()
     {
-        uint ficeID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
-        if (ficeID < ConstValue.CUSTOM_HEADER)
-        {
-            m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
-        }
-        else
-        {
-            //获取头像
-            //  m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[0];
-            HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), ficeID, HeaderOptType.HEADER_ME, null);
-        }
+        //uint ficeID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+        //if (ficeID < ConstValue.CUSTOM_HEADER)
+        //{
+        //    m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
+        //}
+        //else
+        //{
+        //    //获取头像
+        //    //  m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[0];
+        //    HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), ficeID, HeaderOptType.HEADER_ME, null);
+        //}
         //m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
+        uint faceID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+        uint playerID = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
+        HeaderManager.Instance.SetHead(m_HeadTexture, faceID, playerID, faceID, HeaderOptType.HEADER_ME, null);
+
         m_NormalHeadExp_label.text = PlayerRole.Instance.RoleInfo.RoleMe.GetLevel().ToString();
         m_NormalHeadExp_Sprite.fillAmount = GetCurExperience();
         if (PlayerRole.Instance.RoleInfo.RoleMe.GetVipLevel() > 0)

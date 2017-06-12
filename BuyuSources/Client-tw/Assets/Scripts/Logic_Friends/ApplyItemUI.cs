@@ -59,10 +59,12 @@ public class ApplyItemUI  : BaseWnd
         m_ID = pInfo.ID;
         m_UserID = pInfo.SrcUserID;
         //头像显示
-        if (pInfo.SrcFaceID < ConstValue.CUSTOM_HEADER)
-            m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[pInfo.SrcFaceID];
-        else
-            HeaderManager.Instance.GetPlayerHeader(pInfo.SrcUserID, pInfo.SrcFaceID, HeaderOptType.HEADER_FRIEND,
+        //if (pInfo.SrcFaceID < ConstValue.CUSTOM_HEADER)
+        //    m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[pInfo.SrcFaceID];
+        //else
+        //    HeaderManager.Instance.GetPlayerHeader(pInfo.SrcUserID, pInfo.SrcFaceID, HeaderOptType.HEADER_FRIEND,
+        //        (byte)WndType.Friend_Wnd);
+        HeaderManager.Instance.SetHead(m_FaceTexture, pInfo.SrcFaceID, pInfo.SrcUserID, pInfo.SrcFaceID, HeaderOptType.HEADER_FRIEND,
                 (byte)WndType.Friend_Wnd);
 
         m_NickName.text = pInfo.SrcNickName;

@@ -108,10 +108,14 @@ public class HallLoginUI_UserInfo : HallLoginUI_BaseWind
         m_labelgameid.text = PlayerRole.Instance.RoleInfo.RoleMe.GetGameID().ToString();
         m_Gender.spriteName = GetUserSEX();
         //获取头像
-        if (PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID() < ConstValue.CUSTOM_HEADER)
-            m_HeadTex.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID()];
-        else
-            HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID(), HeaderOptType.HEADER_UPLOAD, null);
+        //if (PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID() < ConstValue.CUSTOM_HEADER)
+        //    m_HeadTex.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID()];
+        //else
+        //    HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID(), HeaderOptType.HEADER_UPLOAD, null);
+
+        uint faceID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+        uint playerID = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
+        HeaderManager.Instance.SetHead(m_HeadTex, faceID, playerID, faceID, HeaderOptType.HEADER_UPLOAD, null);
 
         //经验显示
         m_Experience.m_LevelLabel.text = PlayerRole.Instance.RoleInfo.RoleMe.GetLevel().ToString();

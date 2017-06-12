@@ -73,11 +73,13 @@ public class ViewWndUI : BaseWnd
             m_Address.text = m_QueryInfo.GetIPAddress(); ;
             ShowQueryGender();
             //显示头像
-            if (m_QueryInfo.GetFaceID() < ConstValue.CUSTOM_HEADER)
-                m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_QueryInfo.GetFaceID()];
-            else
-                HeaderManager.Instance.GetPlayerHeader(m_QueryInfo.GetUserID(), m_QueryInfo.GetFaceID(), HeaderOptType.HEADER_FIND, null);
-           
+            //if (m_QueryInfo.GetFaceID() < ConstValue.CUSTOM_HEADER)
+            //    m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_QueryInfo.GetFaceID()];
+            //else
+            //    HeaderManager.Instance.GetPlayerHeader(m_QueryInfo.GetUserID(), m_QueryInfo.GetUserID(), HeaderOptType.HEADER_FIND, null);
+            uint faceID = m_QueryInfo.GetFaceID();
+            uint playerID = m_QueryInfo.GetUserID();
+            HeaderManager.Instance.SetHead(m_FaceTexture, faceID, playerID, faceID, HeaderOptType.HEADER_FIND,null);
         }
         else if (m_BlacklistInfo != null)
         {
@@ -87,10 +89,13 @@ public class ViewWndUI : BaseWnd
             m_Address.text = m_BlacklistInfo.GetIPAddress();
             ShowBlacklistGender();
             //显示头像
-            if (m_BlacklistInfo.GetFaceID() < ConstValue.CUSTOM_HEADER)
-                m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_BlacklistInfo.GetFaceID()];
-            else
-                HeaderManager.Instance.GetPlayerHeader(m_BlacklistInfo.GetUserID(), m_BlacklistInfo.GetFaceID(), HeaderOptType.HEADER_BLACK, null);
+            //if (m_BlacklistInfo.GetFaceID() < ConstValue.CUSTOM_HEADER)
+            //    m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_BlacklistInfo.GetFaceID()];
+            //else
+            //    HeaderManager.Instance.GetPlayerHeader(m_BlacklistInfo.GetUserID(), m_BlacklistInfo.GetFaceID(), HeaderOptType.HEADER_BLACK, null);
+            uint faceID = m_BlacklistInfo.GetFaceID();
+            uint playerID = m_BlacklistInfo.GetUserID();
+            HeaderManager.Instance.SetHead(m_FaceTexture, faceID, playerID, faceID, HeaderOptType.HEADER_BLACK, null);
         }
         
 

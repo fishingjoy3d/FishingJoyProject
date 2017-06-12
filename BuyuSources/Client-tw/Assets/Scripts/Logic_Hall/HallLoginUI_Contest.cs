@@ -746,12 +746,15 @@ class MatchRankView : BaseWnd     //比赛排名信息
         }
         else
             m_CrowineSp.spriteName = "";
-        if (pRankingInfo.FaceID< ConstValue.CUSTOM_HEADER)
-            m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[pRankingInfo.FaceID];
-        else
-        {
-            HeaderManager.Instance.GetPlayerHeader(pRankingInfo.UserID, pRankingInfo.FaceID, HeaderOptType.HEADER_MATCH, null);     //别人的附加数据为2 自己为1
-        }
+        //if (pRankingInfo.FaceID< ConstValue.CUSTOM_HEADER)
+        //    m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[pRankingInfo.FaceID];
+        //else
+        //{
+        //    HeaderManager.Instance.GetPlayerHeader(pRankingInfo.UserID, pRankingInfo.FaceID, HeaderOptType.HEADER_MATCH, null);     //别人的附加数据为2 自己为1
+        //}
+        uint faceID = pRankingInfo.FaceID;
+        uint playerID = pRankingInfo.UserID;
+        HeaderManager.Instance.SetHead(m_HeadTexture, faceID, playerID, faceID, HeaderOptType.HEADER_MATCH, null);
 
         m_Ranking.text = pRankingInfo.Index.ToString();
         m_Name.text = pRankingInfo.NickName;

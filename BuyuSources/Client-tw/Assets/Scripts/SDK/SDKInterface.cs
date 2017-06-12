@@ -123,4 +123,6 @@ public interface ISDKInterface
     void ShowAndroidToast(string info);
     //释放资源
     void ReleaseResource();
+    void Share(string path);
+    string GetHeadUrl();
 }

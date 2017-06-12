@@ -82,11 +82,14 @@ public class FriendItemUI  : BaseWnd
     void ShowListItemInfo()
     {
         //头像显示
-        if (m_FriendItemInfo.GetFaceID() < ConstValue.CUSTOM_HEADER)
-            m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_FriendItemInfo.GetFaceID()];
-        else 
-            HeaderManager.Instance.GetPlayerHeader(m_FriendItemInfo.GetUserID(), m_FriendItemInfo.GetFaceID(), HeaderOptType.HEADER_FRIEND, 
-                (byte)WndType.Friend_Wnd);
+        //if (m_FriendItemInfo.GetFaceID() < ConstValue.CUSTOM_HEADER)
+        //    m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_FriendItemInfo.GetFaceID()];
+        //else 
+        //    HeaderManager.Instance.GetPlayerHeader(m_FriendItemInfo.GetUserID(), m_FriendItemInfo.GetFaceID(), HeaderOptType.HEADER_FRIEND, 
+        //        (byte)WndType.Friend_Wnd);
+        uint faceID = m_FriendItemInfo.GetFaceID();
+        uint playerID = m_FriendItemInfo.GetUserID();
+        HeaderManager.Instance.SetHead(m_FaceTexture, faceID, playerID,faceID, HeaderOptType.HEADER_FRIEND, (byte)WndType.Friend_Wnd);
 
         m_NickName.text = m_FriendItemInfo.GetNickName();
         m_Level.text = m_FriendItemInfo.GetLevel().ToString();

@@ -37,10 +37,14 @@ public class PresentItemUI : BaseWnd
     }
     public void ShowItemInfo()
     {
-        if (m_PresentItemInfo.dwFaceID < ConstValue.CUSTOM_HEADER)
-            m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_PresentItemInfo.dwFaceID];
-        else
-            HeaderManager.Instance.GetPlayerHeader(m_PresentItemInfo.dwUserID, m_PresentItemInfo.dwFaceID, HeaderOptType.HEADER_FRIEND, (byte)WndType.Present_Wnd);
+        //if (m_PresentItemInfo.dwFaceID < ConstValue.CUSTOM_HEADER)
+        //    m_FaceTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_PresentItemInfo.dwFaceID];
+        //else
+        //    HeaderManager.Instance.GetPlayerHeader(m_PresentItemInfo.dwUserID, m_PresentItemInfo.dwFaceID, HeaderOptType.HEADER_FRIEND, (byte)WndType.Present_Wnd);
+
+        uint faceID = m_PresentItemInfo.dwFaceID;
+        uint playerID = m_PresentItemInfo.dwUserID;
+        HeaderManager.Instance.SetHead(m_FaceTexture, faceID, playerID, faceID, HeaderOptType.HEADER_FRIEND, (byte)WndType.Present_Wnd);
 
         m_NickName.text = string.Format(StringTable.GetString("Relation_Present"), m_PresentItemInfo.NickName);
         int time = 7 - m_PresentItemInfo.DiffTime;

@@ -52,4 +52,12 @@ public class SDKDerived : ISDKInterface
     {
         Application.Quit();
     }
+    public void Share(string path)
+    {
+
+    }
+    public string GetHeadUrl()
+    {
+        return null;
+    }
 }

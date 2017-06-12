@@ -854,5 +854,10 @@ public class Launcher
         get { return m_LauncherSetting; }
         set { m_LauncherSetting = value; }
     }
+    public UITexture FaceTextute
+    {
+        get { return m_FaceTexture; }
+        set { m_FaceTexture = value; }
+    }
 }
 

@@ -312,10 +312,14 @@ public class GlobalNameCards : BaseWnd
                 ShutDown();
                 return;
             }
-            if (PlayerRole.Instance.TableManager.GetTableRole(m_PlayerID).GetFaceID() < ConstValue.CUSTOM_HEADER)
-                m_CardsInfo.m_UIFace.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[PlayerRole.Instance.TableManager.GetTableRole(m_PlayerID).GetFaceID()];
-            else
-                HeaderManager.Instance.GetPlayerHeader(m_PlayerID, PlayerRole.Instance.TableManager.GetTableRole(m_PlayerID).GetFaceID(), HeaderOptType.HEADER_CARDS, null);
+            uint faceID = PlayerRole.Instance.TableManager.GetTableRole(m_PlayerID).GetFaceID();
+            HeaderManager.Instance.SetHead(m_CardsInfo.m_UIFace, faceID, m_PlayerID, 
+                PlayerRole.Instance.TableManager.GetTableRole(m_PlayerID).GetFaceID(),
+                HeaderOptType.HEADER_CARDS, null);
+            //if (PlayerRole.Instance.TableManager.GetTableRole(m_PlayerID).GetFaceID() < ConstValue.CUSTOM_HEADER)
+            //    m_CardsInfo.m_UIFace.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[PlayerRole.Instance.TableManager.GetTableRole(m_PlayerID).GetFaceID()];
+            //else
+            //    HeaderManager.Instance.GetPlayerHeader(m_PlayerID, PlayerRole.Instance.TableManager.GetTableRole(m_PlayerID).GetFaceID(), HeaderOptType.HEADER_CARDS, null);
             if (!PlayerRole.Instance.TableManager.GetTableRole(m_PlayerID).GetGender())
                 m_CardsInfo.m_UIGender.spriteName = "male";
             else
@@ -343,10 +347,13 @@ public class GlobalNameCards : BaseWnd
         {
            // m_CardsInfo.m_UIAddFriendBtn.isEnabled = true;
             RelationRole pRelation = PlayerRole.Instance.RelationManager.GetFriendMap()[m_PlayerID];
-            if (pRelation.GetFaceID() < ConstValue.CUSTOM_HEADER)
-                m_CardsInfo.m_UIFace.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[pRelation.GetFaceID()];
-            else
-                HeaderManager.Instance.GetPlayerHeader(m_PlayerID, pRelation.GetFaceID(), HeaderOptType.HEADER_CARDS, null);
+            //if (pRelation.GetFaceID() < ConstValue.CUSTOM_HEADER)
+            //    m_CardsInfo.m_UIFace.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[pRelation.GetFaceID()];
+            //else
+            //    HeaderManager.Instance.GetPlayerHeader(m_PlayerID, pRelation.GetFaceID(), HeaderOptType.HEADER_CARDS, null);
+            uint faceID = pRelation.GetFaceID();
+            HeaderManager.Instance.SetHead(m_CardsInfo.m_UIFace, faceID, m_PlayerID, faceID, HeaderOptType.HEADER_CARDS, null);
+
             if (!pRelation.GetGender())
                 m_CardsInfo.m_UIGender.spriteName = "male";
             else

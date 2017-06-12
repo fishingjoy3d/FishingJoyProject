@@ -65,6 +65,14 @@ public class SDKChannel:ISDKInterface
     {
         m_AndroidContext.Call("releaseResource");
     }
+    public virtual void Share(string path)
+    {
+
+    }
+    public virtual string GetHeadUrl()
+    {
+        return null;
+    }
 }
 #else
 public class SDKChannel:ISDKInterface

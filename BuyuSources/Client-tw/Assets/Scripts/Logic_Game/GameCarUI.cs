@@ -1242,17 +1242,19 @@ public class GameCarUI
             if (info.UserInfo.NickName.Length > 4)
                 hostNameLabel.text = info.UserInfo.NickName.Substring(0, 4) + "...";
 
-            uint ficeID = info.UserInfo.dwFaceID;
-            if (ficeID < ConstValue.CUSTOM_HEADER)
-            {
-                hostHeadObj.transform.GetChild(0).GetComponent<UITexture>().mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
-            }
-            else
-            {
-                //获取头像
-                HeaderManager.Instance.GetPlayerHeader(info.UserInfo.dwUserID, ficeID, HeaderOptType.HEADER_CAR_HOST, null);
-            }
-
+            //uint ficeID = info.UserInfo.dwFaceID;
+            //if (ficeID < ConstValue.CUSTOM_HEADER)
+            //{
+            //    hostHeadObj.transform.GetChild(0).GetComponent<UITexture>().mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
+            //}
+            //else
+            //{
+            //    //获取头像
+            //    HeaderManager.Instance.GetPlayerHeader(info.UserInfo.dwUserID, ficeID, HeaderOptType.HEADER_CAR_HOST, null);
+            //}
+            uint faceID = info.UserInfo.dwFaceID;
+            uint playerID = info.UserInfo.dwUserID;
+            HeaderManager.Instance.SetHead(hostHeadObj.transform.GetChild(0).GetComponent<UITexture>(), faceID, playerID, faceID, HeaderOptType.HEADER_CAR_HOST, null);
             if (info.UserInfo.NickName.Equals(PlayerRole.Instance.RoleInfo.RoleMe.GetNickName()))
             {
                 myLineNumLabel.text = StringTable.GetString("NiuNiu_AddBankerList");
@@ -1353,18 +1355,21 @@ public class GameCarUI
             m_gridPlayerlist.AddChild(itemTrans);
             itemTrans.localScale = Vector3.one;
 
-            uint ficeID = array[i].dwFaceID;
-            if (ficeID < ConstValue.CUSTOM_HEADER)
-            {
-                //item.headTex = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
-                itemTrans.GetChild(0).GetComponent<UITexture>().mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
-               // itemTrans.headObj.GetComponent<UITexture>().mainTexture = item.headTex;
-            }
-            else
-            {
-                //获取头像
-                HeaderManager.Instance.GetPlayerHeader(array[i].dwUserID, ficeID, HeaderOptType.HEADER_CAR_PlAYER_LIST, i);
-            }
+            //uint ficeID = array[i].dwFaceID;
+            //if (ficeID < ConstValue.CUSTOM_HEADER)
+            //{
+            //    //item.headTex = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
+            //    itemTrans.GetChild(0).GetComponent<UITexture>().mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
+            //   // itemTrans.headObj.GetComponent<UITexture>().mainTexture = item.headTex;
+            //}
+            //else
+            //{
+            //    //获取头像
+            //    HeaderManager.Instance.GetPlayerHeader(array[i].dwUserID, ficeID, HeaderOptType.HEADER_CAR_PlAYER_LIST, i);
+            //}
+            uint faceID = array[i].dwFaceID;
+            uint playerID = array[i].dwUserID;
+            HeaderManager.Instance.SetHead(itemTrans.GetChild(0).GetComponent<UITexture>(), faceID, playerID, faceID, HeaderOptType.HEADER_CAR_PlAYER_LIST, i);
         }
     }
     public void CarStopWeager()
@@ -1385,16 +1390,20 @@ public class GameCarUI
             m_labelnmynickname.text = PlayerRole.Instance.RoleInfo.RoleMe.GetNickName();
         }
 
-        uint ficeID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
-        if (ficeID < ConstValue.CUSTOM_HEADER)
-        {           
-            m_texmyavatar.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
-        }
-        else
-        {            
-            HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), ficeID, HeaderOptType.HEADER_CAR_SELF, null);
-        }
-   }
+        //uint ficeID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+        //if (ficeID < ConstValue.CUSTOM_HEADER)
+        //{           
+        //    m_texmyavatar.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
+        //}
+        //else
+        //{            
+        //    HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), ficeID, HeaderOptType.HEADER_CAR_SELF, null);
+        //}
+        uint faceID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+        uint playerID = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
+        HeaderManager.Instance.SetHead(m_texmyavatar, faceID, playerID, faceID, HeaderOptType.HEADER_CAR_SELF, null);
+
+    }
     void SetTip()
     {
         m_gotip[0].SetActive(CanBet());

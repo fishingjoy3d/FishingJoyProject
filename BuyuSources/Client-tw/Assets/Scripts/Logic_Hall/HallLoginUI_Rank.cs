@@ -169,11 +169,16 @@ public class HallLoginUI_Rank : HallLoginUI_BaseWind
             else
                 m_MyRankItem.m_Number[i-1].m_BaseObj.SetActive(false);
         }
-        if (PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID() < ConstValue.CUSTOM_HEADER)
-            m_MyRankItem.m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID()];
-        else
-            HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID(),
-                HeaderOptType.HEADER_RANK, (byte)1);
+        //if (PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID() < ConstValue.CUSTOM_HEADER)
+        //    m_MyRankItem.m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID()];
+        //else
+        //    HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID(),
+        //        HeaderOptType.HEADER_RANK, (byte)1);
+
+        uint faceID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+        uint playerID = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
+        HeaderManager.Instance.SetHead(m_MyRankItem.m_HeadTexture, faceID, playerID, faceID, HeaderOptType.HEADER_RANK, (byte)1);
+
         QueryMyRank();
         SetMyRankNumber();
         CheckIsHaveReward();
@@ -447,12 +452,16 @@ public class RankItemUI : BaseWnd
             m_Crown.spriteName = string.Format("Information_Rank_Crown"+m_RankInfo.bIndex.ToString());
             m_Crown.gameObject.SetActive(true);
         }
-        if (m_RankInfo.dwFaceID < ConstValue.CUSTOM_HEADER)
-            m_HeadTextrue.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_RankInfo.dwFaceID];
-        else
-        {
-            HeaderManager.Instance.GetPlayerHeader(m_RankInfo.dwUserID, m_RankInfo.dwFaceID, HeaderOptType.HEADER_RANK, (byte)2);     //别人的附加数据为2 自己为1
-        }
+        //if (m_RankInfo.dwFaceID < ConstValue.CUSTOM_HEADER)
+        //    m_HeadTextrue.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_RankInfo.dwFaceID];
+        //else
+        //{
+        //    HeaderManager.Instance.GetPlayerHeader(m_RankInfo.dwUserID, m_RankInfo.dwFaceID, HeaderOptType.HEADER_RANK, (byte)2);     //别人的附加数据为2 自己为1
+        //}
+        uint faceID = m_RankInfo.dwFaceID;
+        uint playerID = m_RankInfo.dwUserID;
+        HeaderManager.Instance.SetHead(m_HeadTextrue, faceID, playerID, faceID, HeaderOptType.HEADER_RANK, (byte)2);
+
         m_NameLabel.text = m_RankInfo.NickName;
         m_Number[(int)m_RankType-1].m_BaseObj.SetActive(true);
         m_Number[(int)m_RankType-1].m_Label.text = m_RankInfo.Param.ToString();

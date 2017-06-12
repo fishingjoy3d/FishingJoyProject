@@ -129,25 +129,31 @@ class SceneMatchRankItem : BaseWnd
         m_NameLabel.text = pRankInfo.NickName;
         m_ScoreLabel.text = string.Format(StringTable.GetString("Match_Score_2"), pRankInfo.Score);
         m_UserID = pRankInfo.dwUserID;
-        if (pRankInfo.FaceID < ConstValue.CUSTOM_HEADER)
-            m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[pRankInfo.FaceID];
-        else
-            HeaderManager.Instance.GetPlayerHeader(pRankInfo.dwUserID, pRankInfo.FaceID, HeaderOptType.HEADER_MATCHRANK, null);
-
+        //if (pRankInfo.FaceID < ConstValue.CUSTOM_HEADER)
+        //    m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[pRankInfo.FaceID];
+        //else
+        //    HeaderManager.Instance.GetPlayerHeader(pRankInfo.dwUserID, pRankInfo.FaceID, HeaderOptType.HEADER_MATCHRANK, null);
+        uint faceID = pRankInfo.FaceID;
+        uint playerID = pRankInfo.dwUserID;
+        HeaderManager.Instance.SetHead(m_HeadTexture, faceID, playerID, faceID, HeaderOptType.HEADER_MATCHRANK, null);
     }
     public void SetMyInfo()
     {
         m_bMySelf = true;
-        uint ficeID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
-        if (ficeID < ConstValue.CUSTOM_HEADER)
-        {
-            m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
-        }
-        else
-        {
-            //获取头像
-            HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), ficeID, HeaderOptType.HEADER_ME, null);
-        }
+        //uint ficeID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+        //if (ficeID < ConstValue.CUSTOM_HEADER)
+        //{
+        //    m_HeadTexture.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
+        //}
+        //else
+        //{
+        //    //获取头像
+        //    HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), ficeID, HeaderOptType.HEADER_ME, null);
+        //}
+        uint faceID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+        uint playerID = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
+        HeaderManager.Instance.SetHead(m_HeadTexture, faceID, playerID, faceID, HeaderOptType.HEADER_ME, null);
+
         m_NameLabel.text = PlayerRole.Instance.RoleInfo.RoleMe.GetNickName();
         m_RankLabel.text = (PlayerRole.Instance.RoleInfo.RoleMe.GetMonthIndex() + 1).ToString();
         m_ScoreLabel.text = string.Format(StringTable.GetString("Match_Score_2"), PlayerRole.Instance.RoleInfo.RoleMe.GetMonthScore());

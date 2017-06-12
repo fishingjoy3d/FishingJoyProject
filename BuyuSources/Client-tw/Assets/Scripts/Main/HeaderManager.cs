@@ -447,4 +447,34 @@ public class HeaderManager:Singleton<HeaderManager>
                 }
         }
     }
+
+    public void SetHead(UITexture tex, uint faceID, uint playerID, uint crc, HeaderOptType opt, object extraData = null)
+    {
+        string url = SDKMgr.Instance.SDK.GetHeadUrl();
+        bool optValid = false;
+        switch (opt)
+        {
+            case HeaderOptType.HEADER_GAME_SHARE:
+            case HeaderOptType.HEADER_ME:
+            case HeaderOptType.HEADER_CAR_SELF:
+            case HeaderOptType.HEADER_UPLOAD:
+                optValid = true;
+                break;
+        }
+        if (!string.IsNullOrEmpty(url) && optValid)
+        {
+            AsyncImageDownload.Instance.SetAsyncImage(url, tex);
+        }
+        else
+        {
+            if (faceID < ConstValue.CUSTOM_HEADER)
+            {
+                tex.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[faceID];
+            }
+            else
+            {
+                GetPlayerHeader(playerID, crc, opt, extraData);
+            }
+        }
+    }
 }

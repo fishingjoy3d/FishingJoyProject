@@ -77,10 +77,12 @@ public class EmailItemUI : BaseWnd
 
         if (m_MailItmeInfo.bType == (byte)EmailType.Normal_Email)
         {
-            if (m_MailItmeInfo.SrcFaceID < ConstValue.CUSTOM_HEADER)
-                m_FaceTextrue.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_MailItmeInfo.SrcFaceID];
-            else
-                HeaderManager.Instance.GetPlayerHeader(m_MailItmeInfo.SrcUserID, m_MailItmeInfo.SrcFaceID, HeaderOptType.HEADER_FRIEND, (byte)WndType.Emanil_Wnd);
+            //if (m_MailItmeInfo.SrcFaceID < ConstValue.CUSTOM_HEADER)
+            //    m_FaceTextrue.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[m_MailItmeInfo.SrcFaceID];
+            //else
+            //    HeaderManager.Instance.GetPlayerHeader(m_MailItmeInfo.SrcUserID, m_MailItmeInfo.SrcFaceID, HeaderOptType.HEADER_FRIEND, (byte)WndType.Emanil_Wnd);
+            HeaderManager.Instance.SetHead(m_FaceTextrue, m_MailItmeInfo.SrcFaceID, m_MailItmeInfo.SrcUserID, m_MailItmeInfo.SrcFaceID,
+                HeaderOptType.HEADER_FRIEND, (byte)WndType.Emanil_Wnd);
             UIEventListener.Get(m_BaseTrans.GetChild(3).gameObject).onClick = OnClickAvatarMsg;
             m_TitleLable.text = m_MailItmeInfo.SrcNickName;
         }

@@ -160,9 +160,6 @@ public class NativeInterface
     public static void InitShare(string wxid, string wxpwd, string sinaid, string sinapwd, string qqid, string qqpwd)
     {
 #if UNITY_ANDROID && !UNITY_EDITOR
-#if TW
-
-#endif
         //SDKMgr.Instance.AndroidObj.CallStatic("_InitShare", wxid, wxpwd, sinaid, sinapwd, qqid, qqpwd);
 #elif UNITY_IOS
         _InitShare(wxid, wxpwd, sinaid, sinapwd, qqid, qqpwd);

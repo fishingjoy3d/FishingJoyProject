@@ -382,7 +382,8 @@ public class SceneMain : MonoBehaviour {
         string path = RuntimeInfo.GetLocalPath(imgstr);
         System.IO.File.WriteAllBytes(path, byt);
         */
-        NativeInterface.BeginShare(toFriend, ServerSetting.ShareTxt, path);
+        //NativeInterface.BeginShare(toFriend, ServerSetting.ShareTxt, path);
+        SDKMgr.Instance.SDK.Share(path);
         yield break;
     }
     public void OnThirdLogin(string openid_access_token)

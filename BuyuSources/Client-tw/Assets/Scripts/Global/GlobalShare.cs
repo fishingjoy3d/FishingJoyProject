@@ -88,15 +88,18 @@ public class  GameShare
             m_labellv.text = PlayerRole.Instance.RoleInfo.RoleMe.GetLevel().ToString();
 
 
-            uint ficeID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
-            if (ficeID < ConstValue.CUSTOM_HEADER)
-            {
-                m_avatar.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
-            }
-            else
-            {
-                HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), ficeID, HeaderOptType.HEADER_GAME_SHARE, null);
-            }
+            //uint ficeID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+            //if (ficeID < ConstValue.CUSTOM_HEADER)
+            //{
+            //    m_avatar.mainTexture = GlobalHallUIMgr.Instance.m_HeadTextureUI[ficeID];
+            //}
+            //else
+            //{
+            //    HeaderManager.Instance.GetPlayerHeader(PlayerRole.Instance.RoleInfo.RoleMe.GetUserID(), ficeID, HeaderOptType.HEADER_GAME_SHARE, null);
+            //}
+            uint faceID = PlayerRole.Instance.RoleInfo.RoleMe.GetFaceID();
+            uint playerID = PlayerRole.Instance.RoleInfo.RoleMe.GetUserID();
+            HeaderManager.Instance.SetHead(m_avatar, faceID, playerID, faceID, HeaderOptType.HEADER_GAME_SHARE);
         }
         WndManager.Instance.Push(m_gownd);
     }

@@ -140,10 +140,13 @@ public class ScenePlayerMgr
         if (clientSeat != MyClientSeat)
         {
             //获取头像
-            if (player.playerData.ImgCrc < ConstValue.CUSTOM_HEADER)
-                sp.Launcher.SetPlayerImg(null, player.playerData.ImgCrc);
-            else
-                HeaderManager.Instance.GetPlayerHeader(player.playerData.ID, player.playerData.ImgCrc, HeaderOptType.HEADER_SCENE, clientSeat);
+            //if (player.playerData.ImgCrc < ConstValue.CUSTOM_HEADER)
+            //    sp.Launcher.SetPlayerImg(null, player.playerData.ImgCrc);
+            //else
+            //    HeaderManager.Instance.GetPlayerHeader(player.playerData.ID, player.playerData.ImgCrc, HeaderOptType.HEADER_SCENE, clientSeat);
+            uint faceID = player.playerData.ImgCrc;
+            uint playerID = player.playerData.ID;
+            HeaderManager.Instance.SetHead(sp.Launcher.FaceTextute, faceID, playerID, faceID, HeaderOptType.HEADER_SCENE, clientSeat);
         }
         else
         {
@@ -159,11 +162,14 @@ public class ScenePlayerMgr
     }
     public void SetPlayerHeader(uint playerID, byte seat, Texture2D tex)
     {
-        if (GetPlayer(seat) == null)
+        ScenePlayer sp = GetPlayer(seat);
+        if (sp == null)
             return;
-        if (playerID == GetPlayer(seat).Player.playerData.ID)
+        if (playerID == sp.Player.playerData.ID)
         {
-            GetPlayer(seat).Launcher.SetPlayerImg(tex, GetPlayer(seat).Player.playerData.ImgCrc);
+            //GetPlayer(seat).Launcher.SetPlayerImg(tex, GetPlayer(seat).Player.playerData.ImgCrc);
+            uint faceID = sp.Player.playerData.ImgCrc;
+            HeaderManager.Instance.SetHead(sp.Launcher.FaceTextute, faceID, playerID, faceID, HeaderOptType.HEADER_SCENE, seat);
         }
     }
     public void PlayerLeave(byte clientSeat)

@@ -78,6 +78,14 @@ public class SDKBase:ISDKInterface
     {
         Application.Quit();
     }
+    public void Share(string path)
+    {
+
+    }
+    public string GetHeadUrl()
+    {
+        return null;
+    }
 }
 
 
@@ -128,6 +136,14 @@ public class SDKBaseNoSDK : ISDKInterface
     public void ReleaseResource()
     {
         Application.Quit();
+    }
+    public void Share(string path)
+    {
+
+    }
+    public string GetHeadUrl()
+    {
+        return null;
     }
 }
 

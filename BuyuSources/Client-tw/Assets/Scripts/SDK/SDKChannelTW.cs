@@ -12,7 +12,8 @@ using Facebook.Unity;
 public class SDKChannelTW : SDKChannel
 {
     const string channel_name = "TW";
-    const bool mDebug = false;
+    const bool mDebug = true;
+    const string Share_Uri = "https://www.facebook.com/Fishing3D.Sega";
 
     public override void GlobalInit()
     {
@@ -155,7 +156,6 @@ public class SDKChannelTW : SDKChannel
                     GPPay(productID);
                     break;
                 }
-
         }
     }
 
@@ -223,6 +223,51 @@ public class SDKChannelTW : SDKChannel
     {
         //m_AndroidContext.Call("releaseResource");
     }
+
+    public override void Share(string path)
+    {
+        AN_PoupsProxy.ShowToast("Share path " + path);
+        FB.ShareLink(new System.Uri(Share_Uri), "Share", "Share Desc", new System.Uri(path), ShareCallback);
+    }
+
+    private void ShareCallback(IShareResult result)
+    {
+        if (result == null)
+        {
+            AN_PoupsProxy.ShowToast("Share null");
+        }
+
+        // Some platforms return the empty string instead of null.
+        if (!string.IsNullOrEmpty(result.Error))
+        {
+            AN_PoupsProxy.ShowToast("Share Error");
+        }
+        else if (result.Cancelled)
+        {
+            AN_PoupsProxy.ShowToast("Share Cancelled");
+        }
+        else if (!string.IsNullOrEmpty(result.PostId))
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast(result.PostId);
+            }
+            AN_PoupsProxy.ShowToast("Share success");
+        }
+        else
+        {
+            AN_PoupsProxy.ShowToast("Share empty");
+        }
+        AN_PoupsProxy.ShowToast("Share Callback");
+    }
+
+    public override string GetHeadUrl()
+    {
+        string userId = SDKMgr.Instance.LoginData.UID;
+        string url = "http://graph.facebook.com/" + userId + "/picture?type=large";
+        return url;
+    }
+
 }
 #else
 
