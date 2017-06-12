@@ -22,6 +22,7 @@ public struct GameModelInfo
 public class HallLoginUI_UserInfo : HallLoginUI_BaseWind
 {
     UITexture                   m_HeadTex;
+    GameObject                  m_ChangeHeadObj;
     UILabel                     m_UINickName;       //
     UILabel                     m_labelgameid;
     UILabel                     m_MeiLiLabel;
@@ -41,7 +42,18 @@ public class HallLoginUI_UserInfo : HallLoginUI_BaseWind
         WindObj = go;
         BaseTranF = WindObj.transform;
         m_HeadTex = BaseTranF.GetChild(0).GetChild(0).GetComponent<UITexture>();
-        GetBtnLister(BaseTranF.GetChild(1).gameObject, true).onClick = OnChangeHeader;
+
+        m_ChangeHeadObj = BaseTranF.GetChild(1).gameObject;
+        string url = SDKMgr.Instance.SDK.GetHeadUrl();
+        if(!string.IsNullOrEmpty(url))
+        {
+            m_ChangeHeadObj.SetActive(false);
+        }
+        else
+        {
+            GetBtnLister(m_ChangeHeadObj, true).onClick = OnChangeHeader;
+        }
+
        // UIEventListener.Get(BaseTranF.GetChild(1).gameObject).onClick = OnChangeHeader;
         m_UINickName = BaseTranF.GetChild(2).GetComponent<UILabel>();
         m_labelgameid = BaseTranF.GetChild(12).GetComponent<UILabel>();

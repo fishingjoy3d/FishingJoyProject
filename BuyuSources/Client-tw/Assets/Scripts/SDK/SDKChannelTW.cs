@@ -240,7 +240,7 @@ public class SDKChannelTW : SDKChannel
         // Some platforms return the empty string instead of null.
         if (!string.IsNullOrEmpty(result.Error))
         {
-            AN_PoupsProxy.ShowToast("Share Error");
+            AN_PoupsProxy.ShowToast("Share Error "+ result.Error);
         }
         else if (result.Cancelled)
         {
