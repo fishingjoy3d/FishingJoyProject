@@ -86,13 +86,14 @@ public class HallLoinUI_SignIn : BaseWnd
         {
             m_SignInBtns[i] = new SignInButtonInfo();
 
-            m_SignInBtns[i].m_Button = m_BaseTrans.GetChild(8 + i).GetComponent<UIButton>();
-            m_SignInBtns[i].m_Obj = m_SignInBtns[i].m_Button.gameObject;
+            Transform tran = m_BaseTrans.GetChild(8 + i);
+            m_SignInBtns[i].m_Button = tran.GetComponent<UIButton>();
+            m_SignInBtns[i].m_Obj = tran.gameObject;
             m_SignInBtns[i].m_DayTime = m_BaseTrans.GetChild(6 + i).GetComponent<UILabel>();
-            m_SignInBtns[i].m_BG[0] = m_BaseTrans.GetChild(8 + i).GetChild(1).GetComponent<UISprite>();
+            m_SignInBtns[i].m_BG[0] = tran.GetChild(1).GetComponent<UISprite>();
             m_SignInBtns[i].m_BG[1] = m_SignInBtns[i].m_BG[0].transform.GetChild(0).GetComponent<UISprite>();
-            m_SignInBtns[i].m_CanSign = m_BaseTrans.GetChild(8).GetChild(0).gameObject;
-            m_SignInBtns[i].m_AlreadySign = m_BaseTrans.GetChild(8).GetChild(2).gameObject;
+            m_SignInBtns[i].m_CanSign = tran.GetChild(0).gameObject;
+            m_SignInBtns[i].m_AlreadySign = tran.GetChild(2).gameObject;
             if (i == 0)
             {
                 UIEventListener.Get(m_SignInBtns[i].m_Obj).onClick = OnClickRepeatSignIn;
@@ -124,12 +125,20 @@ public class HallLoinUI_SignIn : BaseWnd
             {
                 m_bPlayBtnCD = false;
                 if (PlayerRole.Instance.CheckManager.GetCanCheckOtherSum() != 0)
+                {
                     m_SignInBtns[0].m_Button.isEnabled = true;
+                    //m_SignInBtns[0].m_BG[0].spriteName = GetPressedName(false);
+                    //m_SignInBtns[0].m_BG[1].spriteName = GetPressedName(false);
+                }
             }
             else
             {
                 if (m_SignInBtns[0].m_Button.isEnabled != false)
+                {
                     m_SignInBtns[0].m_Button.isEnabled = false;
+                    //m_SignInBtns[0].m_BG[0].spriteName= GetDisabledName();
+                    //m_SignInBtns[0].m_BG[1].spriteName = GetDisabledName();
+                }
             }
         }
     }
@@ -158,8 +167,8 @@ public class HallLoinUI_SignIn : BaseWnd
             m_SignInBtns[0].m_Button.isEnabled = true;
             m_SignInBtns[0].m_AlreadySign.SetActive(false);
             m_SignInBtns[0].m_CanSign.SetActive(true);
-            m_SignInBtns[0].m_BG[0].spriteName = GetSpriteName(false);
-            m_SignInBtns[0].m_BG[1].spriteName = GetSpriteName(false);
+            m_SignInBtns[0].m_BG[0].spriteName = GetPressedName(false);
+            m_SignInBtns[0].m_BG[1].spriteName = GetPressedName(false);
         }
         //签到按纽状态刷新
         if (!PlayerRole.Instance.CheckManager.IsCanCheckNowDay())
@@ -175,8 +184,8 @@ public class HallLoinUI_SignIn : BaseWnd
             m_SignInBtns[1].m_Button.isEnabled = true;
             m_SignInBtns[1].m_AlreadySign.SetActive(false);
             m_SignInBtns[1].m_CanSign.SetActive(true);
-            m_SignInBtns[1].m_BG[0].spriteName = GetSpriteName(false);
-            m_SignInBtns[1].m_BG[1].spriteName = GetSpriteName(false);
+            m_SignInBtns[1].m_BG[0].spriteName = GetPressedName(false);
+            m_SignInBtns[1].m_BG[1].spriteName = GetPressedName(false);
         }
         UpdateSignInPropState();
         UpdateSignInChestsState();
@@ -268,18 +277,18 @@ public class HallLoinUI_SignIn : BaseWnd
         }
         if (day > 10 && day <= 20)
         {
-            m_ScrollTrans.localPosition = new Vector3(0, 310, 0);
-            m_UIPanel.clipOffset = new Vector2(0, -310);
+            m_ScrollTrans.localPosition = new Vector3(0, 260, 0);
+            m_UIPanel.clipOffset = new Vector2(0, -260);
         }
         else if (day > 20 && day <= 30)
         {
-            m_ScrollTrans.localPosition = new Vector3(0, 555, 0);
-            m_UIPanel.clipOffset = new Vector2(0, -555);
+            m_ScrollTrans.localPosition = new Vector3(0, 450, 0);
+            m_UIPanel.clipOffset = new Vector2(0, -450);
         }
         else if (day > 30)
         {
-            m_ScrollTrans.localPosition = new Vector3(0, 643, 0);
-            m_UIPanel.clipOffset = new Vector2(0, -643);
+            m_ScrollTrans.localPosition = new Vector3(0, 520, 0);
+            m_UIPanel.clipOffset = new Vector2(0, -520);
         }
 
     }
@@ -359,6 +368,8 @@ public class HallLoinUI_SignIn : BaseWnd
         m_bPlayBtnCD = true;
         m_BtnCDTime = 0;
         m_SignInBtns[0].m_Button.isEnabled = false;
+        m_SignInBtns[0].m_BG[0].spriteName = GetPressedName(false);
+        m_SignInBtns[0].m_BG[1].spriteName = GetPressedName(false);
     }
     void OnClickSignIn(GameObject go)
     {
@@ -368,13 +379,13 @@ public class HallLoinUI_SignIn : BaseWnd
     }
     void OnPressRepeatSignIn(GameObject go, bool state)
     {
-        string spriteName = GetSpriteName(state);
+        string spriteName = GetPressedName(state);
         m_SignInBtns[0].m_BG[0].spriteName = spriteName;
         m_SignInBtns[0].m_BG[1].spriteName = spriteName;
     }
     void OnPressSignIn(GameObject go, bool state)
     {
-        string spriteName = GetSpriteName(state);
+        string spriteName = GetPressedName(state);
         m_SignInBtns[1].m_BG[0].spriteName = spriteName;
         m_SignInBtns[1].m_BG[1].spriteName = spriteName;
     }
@@ -384,7 +395,7 @@ public class HallLoinUI_SignIn : BaseWnd
     /// </summary>
     /// <param name="state"></param>
     /// <returns></returns>
-    string GetSpriteName(bool state)
+    string GetPressedName(bool state)
     {
         string spriteName = state ? "yellowBtn-click" : "yellowBtn";
         return spriteName;
