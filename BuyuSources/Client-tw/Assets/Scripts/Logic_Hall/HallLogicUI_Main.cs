@@ -15,6 +15,8 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
    // Object              m_effectReward = new Object();
     Transform[]         m_LeftTrans = new Transform[2];
     Vector3             m_CDKeyOldPos;
+    HallLogicUI_RotateBtns m_RotateBtns = new HallLogicUI_RotateBtns();
+
     public Object Init()
     {
         Object obj = Initobj("MianHallWind");
@@ -41,6 +43,8 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
         //Right
         Transform baseTr_R = BaseTranF.GetChild(0);
         m_INfObj[0] = baseTr_R.gameObject;
+
+        m_RotateBtns.Init(baseTr_R);
         m_CenterRightBtn = new CenterRightBtn[baseTr_R.childCount];
         
         for (byte i = 0; i < baseTr_R.childCount; ++i)
@@ -63,13 +67,22 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
                 // m_CenterRightBtn[i].m_Btn.m_Btn.isEnabled = false;
             }
             m_CenterRightBtn[i].m_Btn.m_Tag = i;
-            GetBtnLister(m_CenterRightBtn[i].m_Btn.m_BtnObj).onClick = OnCheckCenterRightBtn;
+            UIEventListener listener = GetBtnLister(m_CenterRightBtn[i].m_Btn.m_BtnObj);
+            listener.onClick = OnCheckCenterRightBtn;
+            listener.onDrag = m_RotateBtns.OnDrag;
+            listener.onDragEnd = m_RotateBtns.OnDragEnd;
+
             m_CenterRightBtn[i].m_Tween.m_alpha = m_CenterRightBtn[i].m_Btn.m_Btn.gameObject.GetComponent<TweenAlpha>();
             m_CenterRightBtn[i].m_Tween.m_Pos = m_CenterRightBtn[i].m_Btn.m_Btn.gameObject.GetComponent<TweenPosition>();
             //GameObject GEobj = GameObject.Instantiate(m_EffectRigthBtn[i]) as GameObject;
             //GEobj.transform.SetParent(m_CenterRightBtn[i].m_Btn.m_BtnObj.transform,false);
         }
         m_CenterRightBtn[2].m_Btn.m_BtnObj.SetActive(ServerSetting.ShowHallThirdBtn);
+
+        Transform rotateBG = BaseTranF.GetChild(3);
+        GetBtnLister(rotateBG.gameObject).onDrag = m_RotateBtns.OnDrag;
+        GetBtnLister(rotateBG.gameObject).onDragEnd = m_RotateBtns.OnDragEnd;
+
         //left
         Transform baseTr_L = BaseTranF.GetChild(1);
         m_CenterObj = baseTr_L.gameObject;

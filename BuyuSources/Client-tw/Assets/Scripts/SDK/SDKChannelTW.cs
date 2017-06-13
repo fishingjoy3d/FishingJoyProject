@@ -227,7 +227,7 @@ public class SDKChannelTW : SDKChannel
     public override void Share(string path)
     {
         AN_PoupsProxy.ShowToast("Share path " + path);
-        FB.ShareLink(new System.Uri(Share_Uri), "Share", "Share Desc", new System.Uri(path), ShareCallback);
+        FB.ShareLink(new System.Uri(Share_Uri), "Share Title", "Share Desc", callback: ShareCallback);
     }
 
     private void ShareCallback(IShareResult result)
