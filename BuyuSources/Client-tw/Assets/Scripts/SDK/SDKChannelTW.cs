@@ -226,39 +226,48 @@ public class SDKChannelTW : SDKChannel
 
     public override void Share(string path)
     {
-        AN_PoupsProxy.ShowToast("Share path " + path);
-        FB.ShareLink(new System.Uri(Share_Uri), "Share Title", "Share Desc", callback: ShareCallback);
+        FB.ShareLink(new System.Uri(Share_Uri), callback: ShareCallback);
     }
 
     private void ShareCallback(IShareResult result)
     {
         if (result == null)
         {
-            AN_PoupsProxy.ShowToast("Share null");
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("Share null");
+            }
         }
 
         // Some platforms return the empty string instead of null.
         if (!string.IsNullOrEmpty(result.Error))
         {
-            AN_PoupsProxy.ShowToast("Share Error "+ result.Error);
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("Share Error " + result.Error);
+            }
         }
         else if (result.Cancelled)
         {
-            AN_PoupsProxy.ShowToast("Share Cancelled");
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("Share Cancelled");
+            }
         }
         else if (!string.IsNullOrEmpty(result.PostId))
         {
             if (mDebug)
             {
-                AN_PoupsProxy.ShowToast(result.PostId);
+                AN_PoupsProxy.ShowToast("Share Success "+result.PostId);
             }
-            AN_PoupsProxy.ShowToast("Share success");
         }
         else
         {
-            AN_PoupsProxy.ShowToast("Share empty");
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("Share Success PostId IsNullOrEmpty");
+            }
         }
-        AN_PoupsProxy.ShowToast("Share Callback");
     }
 
     public override string GetHeadUrl()

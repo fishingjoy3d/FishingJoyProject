@@ -9,7 +9,7 @@ public class HallLogicUI_RotateBtns
     RatateBtnInfo[] m_RotateInfos;
 
     AnimationCurve m_Curve;
-    float m_RotateSpeed = 1f;
+    float m_RotateSpeed = 0.001f;
     int m_CurrentIndex = 0;
     public void Init(Transform tran)
     {
@@ -56,6 +56,7 @@ public class HallLogicUI_RotateBtns
             }
         }
         m_Curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        m_RotateSpeed = 1.5f * Screen.width / (1024f * 1024f);
     }
 
     bool m_DragStart = false;
@@ -67,14 +68,13 @@ public class HallLogicUI_RotateBtns
             m_DragStart = true;
             m_Accumulate = 0;
         }
-        m_Accumulate += delta.x / Screen.width;
-        float t = m_Accumulate * m_RotateSpeed;
+        m_Accumulate += delta.x * m_RotateSpeed;
+        float t = m_Accumulate;
         Slerp(t);
     }
 
     public void OnDragEnd(GameObject go)
     {
-        Debug.Log("OnDragEnd");
         ResetBtns();
         m_DragStart = false;
         m_Accumulate = 0;
@@ -118,7 +118,7 @@ public class HallLogicUI_RotateBtns
 
     void ResetBtns()
     {
-        float t = m_Accumulate * m_RotateSpeed;
+        float t = m_Accumulate;
         int round = Mathf.RoundToInt(t);
         m_CurrentIndex += Slerp(round);
     }
