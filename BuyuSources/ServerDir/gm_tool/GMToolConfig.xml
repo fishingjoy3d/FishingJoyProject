@@ -1,6 +1,6 @@
 ﻿<FishGMToolConfig GMToolNetWorkID="13">
   <ControlServer ControlID="220"
-  ControlServerNetworkID="1" ControlServerIP="121.43.187.210" ControlServerPort="32001"
+  ControlServerNetworkID="1" ControlServerIP="47.52.92.120" ControlServerPort="32001"
               ControlServerListenCount="16"
               ControlServerMaxSendCountPerFrame="10240"
               ControlServerMaxAcceptNumPerFrame="16"
