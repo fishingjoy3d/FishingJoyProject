@@ -354,6 +354,10 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
                 m_CenterRightBtn[1].m_Lock.SetActive(false);
                 // m_CenterRightBtn[1].m_Btn.m_Btn.isEnabled = true;
             }
+            else
+            {
+                m_RotateBtns.ShowMatchGuide();
+            }
         }
 
     }

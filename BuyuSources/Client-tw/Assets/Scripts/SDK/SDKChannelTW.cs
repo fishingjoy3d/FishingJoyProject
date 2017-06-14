@@ -276,7 +276,10 @@ public class SDKChannelTW : SDKChannel
         string url = "http://graph.facebook.com/" + userId + "/picture?type=large";
         return url;
     }
-
+    public override string GetUserName()
+    {
+        return "";
+    }
 }
 #else
 

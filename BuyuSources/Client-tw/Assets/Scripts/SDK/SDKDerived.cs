@@ -60,4 +60,8 @@ public class SDKDerived : ISDKInterface
     {
         return null;
     }
+    public string GetUserName()
+    {
+        return null;
+    }
 }

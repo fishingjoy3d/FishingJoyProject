@@ -86,6 +86,10 @@ public class SDKBase:ISDKInterface
     {
         return null;
     }
+    public string GetUserName()
+    {
+        return null;
+    }
 }
 
 
@@ -142,6 +146,10 @@ public class SDKBaseNoSDK : ISDKInterface
 
     }
     public string GetHeadUrl()
+    {
+        return null;
+    }
+    public string GetUserName()
     {
         return null;
     }

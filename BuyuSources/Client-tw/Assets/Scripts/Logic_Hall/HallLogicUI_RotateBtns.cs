@@ -122,6 +122,12 @@ public class HallLogicUI_RotateBtns
         int round = Mathf.RoundToInt(t);
         m_CurrentIndex += Slerp(round);
     }
+
+    public void ShowMatchGuide()
+    {
+        m_CurrentIndex = 1;
+        Slerp(0);
+    }
 }
 
 struct RatateBtnInfo

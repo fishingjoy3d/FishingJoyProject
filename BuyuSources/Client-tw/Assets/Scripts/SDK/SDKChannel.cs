@@ -73,6 +73,10 @@ public class SDKChannel:ISDKInterface
     {
         return null;
     }
+    public virtual string GetUserName()
+    {
+        return null;
+    }
 }
 #else
 public class SDKChannel:ISDKInterface
