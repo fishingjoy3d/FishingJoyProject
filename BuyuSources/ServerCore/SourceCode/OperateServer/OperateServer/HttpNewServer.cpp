@@ -519,11 +519,8 @@ void HttpNewServer::FacebookPay(const char* data, HttpClientData* c)
 						std::string user_email = JsonDisputes["user_email"].asString();
 						std::string status = JsonDisputes["status"].asString();
 						std::string reason = JsonDisputes["reason"].asString();
-					}
-					
-
+					}					
 				}
-
 			}
 		}
 	}
