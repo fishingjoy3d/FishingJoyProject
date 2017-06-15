@@ -16,6 +16,7 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
     Transform[]         m_LeftTrans = new Transform[2];
     Vector3             m_CDKeyOldPos;
     HallLogicUI_RotateBtns m_RotateBtns = new HallLogicUI_RotateBtns();
+    GameObject[]        m_RealRightBtn;
 
     public Object Init()
     {
@@ -52,10 +53,10 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
             m_CenterRightBtn[i].m_Btn.m_BtnObj = baseTr_R.GetChild(i).gameObject;
             m_CenterRightBtn[i].m_Btn.m_Btn = m_CenterRightBtn[i].m_Btn.m_BtnObj.GetComponent<UIButton>();
             m_CenterRightBtn[i].m_Lock = baseTr_R.GetChild(i).GetChild(1).gameObject;
-            if (i == 0)
+            if (i == 1)
             {
                 m_CenterRightBtn[i].m_Btn.m_IsChecked = true;
-                m_CenterRightBtn[i].m_Btn.m_Btn.isEnabled = true;
+                //m_CenterRightBtn[i].m_Btn.m_Btn.isEnabled = true;
                 m_CenterRightBtn[i].m_bLock = false;
             }
             else
@@ -67,10 +68,10 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
                 // m_CenterRightBtn[i].m_Btn.m_Btn.isEnabled = false;
             }
             m_CenterRightBtn[i].m_Btn.m_Tag = i;
-            UIEventListener listener = GetBtnLister(m_CenterRightBtn[i].m_Btn.m_BtnObj);
-            listener.onClick = OnCheckCenterRightBtn;
-            listener.onDrag = m_RotateBtns.OnDrag;
-            listener.onDragEnd = m_RotateBtns.OnDragEnd;
+            //UIEventListener listener = GetBtnLister(m_CenterRightBtn[i].m_Btn.m_BtnObj);
+            //listener.onClick = OnCheckCenterRightBtn;
+            //listener.onDrag = m_RotateBtns.OnDrag;
+            //listener.onDragEnd = m_RotateBtns.OnDragEnd;
 
             m_CenterRightBtn[i].m_Tween.m_alpha = m_CenterRightBtn[i].m_Btn.m_Btn.gameObject.GetComponent<TweenAlpha>();
             m_CenterRightBtn[i].m_Tween.m_Pos = m_CenterRightBtn[i].m_Btn.m_Btn.gameObject.GetComponent<TweenPosition>();
@@ -82,6 +83,15 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
         Transform rotateBG = BaseTranF.GetChild(3);
         GetBtnLister(rotateBG.gameObject).onDrag = m_RotateBtns.OnDrag;
         GetBtnLister(rotateBG.gameObject).onDragEnd = m_RotateBtns.OnDragEnd;
+
+        m_RealRightBtn = new GameObject[baseTr_R.childCount];
+        for(int i=0;i< baseTr_R.childCount;i++)
+        {
+            m_RealRightBtn[i] = BaseTranF.GetChild(4 + i).gameObject;
+            GetBtnLister(m_RealRightBtn[i]).onClick = OnClickRealRightBtn;
+            GetBtnLister(m_RealRightBtn[i]).onDrag = m_RotateBtns.OnDrag;
+            GetBtnLister(m_RealRightBtn[i]).onDragEnd = m_RotateBtns.OnDragEnd;
+        }
 
         //left
         Transform baseTr_L = BaseTranF.GetChild(1);
@@ -258,7 +268,7 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
         {
             if (m_CenterRightBtn[i].m_Btn.m_Btn.gameObject == go)
             {
-                if (m_CenterRightBtn[i].m_bLock && i == 1)
+                if (m_CenterRightBtn[i].m_bLock && i ==0)
                 {
                     GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Select_Match_Failed"), 0.8f);
                     return;
@@ -330,11 +340,11 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
     void OnClickCenterLiftBtn(GameObject go)
     {
         PlayBtnMusic();
-        if (m_CenterLiftBtn.m_BtnTag == 0)
+        if (m_CenterLiftBtn.m_BtnTag == 1)
         {
             HallRunTimeInfo.Instance_UI.m_loginUi.ChangeHallWind(HallLogicUIStatue.Hall_State.Hall_SelectRoom);
         }
-        else if (m_CenterLiftBtn.m_BtnTag == 1)
+        else if (m_CenterLiftBtn.m_BtnTag == 0)
         {//比赛 
             HallRunTimeInfo.Login_UI.ChangeHallWind(HallLogicUIStatue.Hall_State.Hall_Contest);
             HallRunTimeInfo.Login_UI.ShowMainWindCenterInf(false);
@@ -344,14 +354,51 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
         }
 
     }
+    void OnClickRealRightBtn(GameObject go)
+    {
+        int index = -1;
+        for (int i = 0; i < m_RealRightBtn.Length; i++)
+        {
+            if (m_RealRightBtn[i] == go)
+            {
+                index = i;
+                break;
+            }
+        }
+
+        if (index >= 0)
+        {
+            int rotateIndex = Period(m_RotateBtns.CurrentIndex, m_RealRightBtn.Length);
+            Debug.Log("index " + index + " CurrentIndex " + m_RotateBtns.CurrentIndex + " rotateIndex " + rotateIndex);
+
+            index -= rotateIndex;
+            index = Period(index, m_RealRightBtn.Length);
+            OnCheckCenterRightBtn(m_CenterRightBtn[index].m_Btn.m_Btn.gameObject);
+        }
+    }
+
+    private int Period(int amount, int period)
+    {
+        int v = amount;
+        if (v > 0)
+        {
+            v = v % period;
+        }
+        else if (v < 0)
+        {
+            int times = Mathf.CeilToInt((-v) * 1.0f / period);
+            v = v + times * period;
+        }
+        return v;
+    }
     public void UpdateMatchSate()
     {
         if (PlayerRole.Instance.RoleInfo.RoleMe.GetLevel() >= FishConfig.Instance.m_MatchInfo.BeginMonthLevel)
         {
             if (!HallRunTimeInfo.Login_UI.MatchGuide.GetMathGuide())
             {
-                m_CenterRightBtn[1].m_bLock = false;
-                m_CenterRightBtn[1].m_Lock.SetActive(false);
+                m_CenterRightBtn[0].m_bLock = false;
+                m_CenterRightBtn[0].m_Lock.SetActive(false);
                 // m_CenterRightBtn[1].m_Btn.m_Btn.isEnabled = true;
             }
             else
@@ -363,8 +410,8 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
     }
     public void OpenRightLock()
     {
-        m_CenterRightBtn[1].m_Lock.SetActive(false);
-        m_CenterRightBtn[1].m_bLock = false;
+        m_CenterRightBtn[0].m_Lock.SetActive(false);
+        m_CenterRightBtn[0].m_bLock = false;
 
       //  m_CenterRightBtn[1].m_Btn.m_Btn.isEnabled = true;
 

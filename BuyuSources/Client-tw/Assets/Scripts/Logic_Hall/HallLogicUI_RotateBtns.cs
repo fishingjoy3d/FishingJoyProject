@@ -22,18 +22,7 @@ public class HallLogicUI_RotateBtns
 
         for (int i = 0; i < count; i++)
         {
-            if (i == 0)
-            {
-                m_Btns[i] = m_BaseTran.GetChild(1);
-            }
-            else if (i == 1)
-            {
-                m_Btns[i] = m_BaseTran.GetChild(0);
-            }
-            else
-            {
-                m_Btns[i] = m_BaseTran.GetChild(i);
-            }
+            m_Btns[i] = m_BaseTran.GetChild(i);
         }
 
         for (int i = 0; i < count; i++)
@@ -57,6 +46,7 @@ public class HallLogicUI_RotateBtns
         }
         m_Curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         m_RotateSpeed = 1.5f * Screen.width / (1024f * 1024f);
+        m_CurrentIndex = 0;
     }
 
     bool m_DragStart = false;
@@ -127,6 +117,11 @@ public class HallLogicUI_RotateBtns
     {
         m_CurrentIndex = 1;
         Slerp(0);
+    }
+
+    public int CurrentIndex
+    {
+        get { return m_CurrentIndex; }
     }
 }
 
