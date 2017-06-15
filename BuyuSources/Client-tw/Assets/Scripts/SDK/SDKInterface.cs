@@ -125,5 +125,5 @@ public interface ISDKInterface
     void ReleaseResource();
     void Share(string path);
     string GetHeadUrl();
-    string GetUserName();
+    bool HaveNickname();
 }

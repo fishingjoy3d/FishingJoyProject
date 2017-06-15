@@ -86,9 +86,9 @@ public class SDKBase:ISDKInterface
     {
         return null;
     }
-    public string GetUserName()
+    public bool HaveNickname()
     {
-        return null;
+        return false;
     }
 }
 
@@ -149,9 +149,9 @@ public class SDKBaseNoSDK : ISDKInterface
     {
         return null;
     }
-    public string GetUserName()
+    public bool HaveNickname()
     {
-        return null;
+        return false;
     }
 }
 

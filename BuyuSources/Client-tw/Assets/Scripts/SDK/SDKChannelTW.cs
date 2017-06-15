@@ -108,20 +108,13 @@ public class SDKChannelTW : SDKChannel
         if (mDebug)
         {
             AN_PoupsProxy.ShowToast("User login id " + aToken.UserId + " token " + aToken.TokenString);
-
-            // Print current access token's granted permissions
-            //string permissions = string.Empty;
-            //foreach (string perm in aToken.Permissions)
-            //{
-            //    permissions += perm + " ";
-            //}
-            //AN_PoupsProxy.ShowToast(permissions);
         }
         SDKLoginResult lr = new SDKLoginResult();
         lr.Result = LoginState.LOGIN_OK;
         lr.UID = aToken.UserId;
         lr.Token = aToken.TokenString;
         SDKMgr.Instance.SDKCallback.LoginCallback(lr);
+        //QueryNickname();
     }
 
     private void OnLoginFail()
@@ -144,6 +137,10 @@ public class SDKChannelTW : SDKChannel
 
     public override void Pay(int itemID, string productID, string orderID, string url, string secret_key)
     {
+        if (mDebug)
+        {
+            AN_PoupsProxy.ShowToast("Pay productID " + productID + " orderID " + orderID);
+        }
         switch (SDKMgr.Instance.PayData.PayChannel)
         {
             case PayChannelType.Facebook:
@@ -254,31 +251,77 @@ public class SDKChannelTW : SDKChannel
                 AN_PoupsProxy.ShowToast("Share Cancelled");
             }
         }
-        else if (!string.IsNullOrEmpty(result.PostId))
+        else if (!string.IsNullOrEmpty(result.RawResult))
         {
             if (mDebug)
             {
-                AN_PoupsProxy.ShowToast("Share Success "+result.PostId);
+                AN_PoupsProxy.ShowToast("Share Success RawResult " + result.RawResult);
             }
         }
         else
         {
             if (mDebug)
             {
-                AN_PoupsProxy.ShowToast("Share Success PostId IsNullOrEmpty");
+                AN_PoupsProxy.ShowToast("Share Success RawResult IsNullOrEmpty");
             }
         }
     }
 
     public override string GetHeadUrl()
     {
-        string userId = SDKMgr.Instance.LoginData.UID;
-        string url = "http://graph.facebook.com/" + userId + "/picture?type=large";
-        return url;
+        return null;
+        //string userId = SDKMgr.Instance.LoginData.UID;
+        //string url = "http://graph.facebook.com/" + userId + "/picture?type=large";
+        //return url;
     }
-    public override string GetUserName()
+    public override bool HaveNickname()
     {
-        return "";
+        return false;
+    }
+
+    public void QueryNickname()
+    {
+        FB.API("me", HttpMethod.GET, QueryNicknameCallback);
+    }
+    private void QueryNicknameCallback(IGraphResult result)
+    {
+        if (result == null)
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("QueryNickname null");
+            }
+        }
+
+        // Some platforms return the empty string instead of null.
+        if (!string.IsNullOrEmpty(result.Error))
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("QueryNickname Error " + result.Error);
+            }
+        }
+        else if (result.Cancelled)
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("QueryNickname Cancelled");
+            }
+        }
+        else if (!string.IsNullOrEmpty(result.RawResult))
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("QueryNickname Success " + result.RawResult);
+            }
+        }
+        else
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("QueryNickname Success RawResult IsNullOrEmpty ");
+            }
+        }
     }
 }
 #else

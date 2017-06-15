@@ -73,9 +73,9 @@ public class SDKChannel:ISDKInterface
     {
         return null;
     }
-    public virtual string GetUserName()
+    public virtual bool HaveNickname()
     {
-        return null;
+        return false;
     }
 }
 #else
