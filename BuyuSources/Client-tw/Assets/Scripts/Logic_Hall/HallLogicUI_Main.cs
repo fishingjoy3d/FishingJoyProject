@@ -270,12 +270,12 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
             {
                 if (m_CenterRightBtn[i].m_bLock && i ==0)
                 {
-                    GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Select_Match_Failed"), 0.8f);
+                    GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Select_Match_Failed"), 1.5f);
                     return;
                 }
                 if (i==2)//(m_CenterRightBtn[i].m_bLock && i == 2)
                 {
-                    GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Select_Match_Failed1"), 0.8f);
+                    GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Select_Match_Failed1"), 1.5f);
                     return;
                 }
                 if (m_CenterRightBtn[i].m_Btn.m_IsChecked)
