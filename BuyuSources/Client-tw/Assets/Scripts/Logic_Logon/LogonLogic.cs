@@ -66,14 +66,14 @@ public class LogonLogic : ILogic, ICmdHandler
         if (SDKMgr.IS_SDK_CHANNEL)
         {
             //渠道包
-            if(obj != null)
+            if (obj != null)
             {
                 //返回到登陆界面，点击登陆
             }
             else
             {
                 //启动时直接登陆
-                //if(SDKMgr.Instance.InitOK)
+                //if (SDKMgr.Instance.InitOK)
                 //    SDKLogin();
             }
         }
@@ -117,7 +117,8 @@ public class LogonLogic : ILogic, ICmdHandler
         {
             return;
         }
-        if (GlobalLogon.Instance.AccountData != null)
+        AccountData data = GlobalLogon.Instance.AccountData;
+        if (data != null && !string.IsNullOrEmpty(data.AccountInfo.UID))
             _Logon(GlobalLogon.Instance.AccountData.AccountInfo);
         else
             _FastLogon();

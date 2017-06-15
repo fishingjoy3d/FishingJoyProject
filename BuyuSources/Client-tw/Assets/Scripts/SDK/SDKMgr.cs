@@ -282,7 +282,7 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
         {
             yield return  new WaitForEndOfFrame();
         }
-        m_AndroidObj.Call("androidKillProcess");
+        //m_AndroidObj.Call("androidKillProcess");
         Application.Quit();
         yield break;
     }

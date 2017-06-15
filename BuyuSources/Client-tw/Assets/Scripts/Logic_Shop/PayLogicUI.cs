@@ -126,8 +126,9 @@ public class PayLogicUI : BaseWnd
         m_MaskObj.m_TweenAnim.to = ToPos;
         m_MaskObj.m_TweenAnim.PlayForward();
 
-        m_TopBtn[0].m_Sprite.spriteName = (m_PayType == PayType.Diamond) ? "buyGold-check" : "buyGold-uncheck";
-        m_TopBtn[1].m_Sprite.spriteName = (m_PayType == PayType.Diamond) ? "buyJewel-uncheck" : "buyJewel-check";
+        m_TopBtn[0].m_Sprite.spriteName = (m_PayType == PayType.Diamond) ? "buyJewel-uncheck" : "buyJewel-check";
+        m_TopBtn[1].m_Sprite.spriteName = (m_PayType == PayType.Diamond) ? "buyGold-check" : "buyGold-uncheck";
+
         SetScrollViewDate();
     }
     void OnDiamondBtnMsg(GameObject go)

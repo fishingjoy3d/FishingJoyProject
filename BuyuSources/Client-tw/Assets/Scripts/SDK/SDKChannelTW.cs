@@ -207,10 +207,10 @@ public class SDKChannelTW : SDKChannel
     {
         return channel_name;
     }
-    //public override void Exit()
-    //{
-    //    DomePayAndroid.Instance.ExitWithUI(SDKMgr.Instance.CallbackObjName, "ExitCallback");
-    //}
+    public override void Exit()
+    {
+        SDKMgr.Instance.ExitCallback(true);
+    }
 
     public override void ShowAndroidToast(string info)
     {
