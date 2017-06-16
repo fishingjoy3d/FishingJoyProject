@@ -232,16 +232,16 @@ public class PayItemInfo : BaseWnd
         //不打折扣
         if (payInfo.dDisCountPrice == payInfo.dPreDisCountPrice)
         {
-            m_ItemOldPrice.text = payInfo.dDisCountPrice.ToString();
+            //m_ItemOldPrice.text = payInfo.dDisCountPrice.ToString();
             m_ItemCurPrice.text = payInfo.dDisCountPrice.ToString();
-            m_ItemCurPrice.gameObject.SetActive(false);
-            m_OverLine.SetActive(false);
+            //m_ItemCurPrice.gameObject.SetActive(false);
+            //m_OverLine.SetActive(false);
         }
         else
         {
-            m_ItemOldPrice.text = payInfo.dPreDisCountPrice.ToString();
+            //m_ItemOldPrice.text = payInfo.dPreDisCountPrice.ToString();
             m_ItemCurPrice.text = payInfo.dDisCountPrice.ToString();
-            m_OverLine.SetActive(true);
+            //m_OverLine.SetActive(true);
 
         }
 
