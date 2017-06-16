@@ -2967,6 +2967,12 @@ SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeI
 	<Time BeginYear="2014" BeginMonth="1" BeginDay="1" BeginHour="1" BeginMin="1" LastHour="10000" />
 -->
     <Shop ID="1">
+      <Item ID="21" ItemID="103" ItemSum="500000" ItemName="50萬金幣" ItemIcon="103" ItemDec="50萬金幣" LastMin="0" PriceGlobel="0" PriceMabel="1000" PriceCurrey="0" IsEntityItem="0" />
+
+      <Item ID="22" ItemID="103" ItemSum="1000000" ItemName="100萬金幣" ItemIcon="103" ItemDec="100萬金幣" LastMin="0" PriceGlobel="0" PriceMabel="2000" PriceCurrey="0" IsEntityItem="0" />
+
+      <Item ID="23" ItemID="103" ItemSum="2000000" ItemName="200萬金幣" ItemIcon="103" ItemDec="200萬金幣" LastMin="0" PriceGlobel="0" PriceMabel="4000" PriceCurrey="0" IsEntityItem="0" />
+
       <Item ID="1" ItemID="900" ItemSum="1" ItemName="閃電卡" ItemIcon="900" ItemDec="使用閃電技能需消耗50張閃電卡" LastMin="0" PriceGlobel="0" PriceMabel="0" PriceCurrey="2"
 
 IsEntityItem="0" />
@@ -3377,19 +3383,19 @@ MapName="4">
     RT_Reward = 5,//儲值獎勵ID
 };
 	-->
-    <FishRecharge ID="1" Name="首充專享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30000" DisCountPicName="Pay_300" RechargeType="2" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="2" Name="少量金幣" Icon="101" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60000" DisCountPicName="Gold_0" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="3" Name="小堆金幣" Icon="102" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360000" DisCountPicName="Gold_6" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="4" Name="小袋金幣" Icon="103" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800000" DisCountPicName="Gold_12" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="5" Name="大袋金幣" Icon="104" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600000" DisCountPicName="Gold_32" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="6" Name="滿箱金幣" Icon="105" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300000" DisCountPicName="Gold_102" RechargeType="4" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="7" Name="首充專享" Icon="1000" DisCountPrice="1" PreDisCountPrice="3" AddMoney="30" DisCountPicName="Pay_300" RechargeType="1" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="8" Name="少量鑽石" Icon="501" DisCountPrice="6" PreDisCountPrice="6" AddMoney="60" DisCountPicName="Jewel_0" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="9" Name="小堆鑽石" Icon="502" DisCountPrice="30" PreDisCountPrice="36" AddMoney="360" DisCountPicName="Jewel_6" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="10" Name="小袋鑽石" Icon="503" DisCountPrice="68" PreDisCountPrice="80" AddMoney="800" DisCountPicName="Jewel_12" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="11" Name="大袋鑽石" Icon="504" DisCountPrice="128" PreDisCountPrice="160" AddMoney="1600" DisCountPicName="Jewel_32" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="12" Name="滿箱鑽石" Icon="505" DisCountPrice="328" PreDisCountPrice="430" AddMoney="4300" DisCountPicName="Jewel_102" RechargeType="3" AddRewardID="0" PayNO="PayNO"/>
-    <FishRecharge ID="13" Name="購買月卡" Icon="505" DisCountPrice="28" PreDisCountPrice="28" AddMoney="0" DisCountPicName="Jewel_0" RechargeType="5" AddRewardID="13" PayNO="PayNO"/>
+    <FishRecharge ID="2" Name="少量金幣" Icon="101" DisCountPrice="8" PreDisCountPrice="8" AddMoney="60000" DisCountPicName="Gold_0" RechargeType="4" AddRewardID="0" PayNO="g_8"/>
+    <FishRecharge ID="1" Name="首充專享" Icon="1000" DisCountPrice="16" PreDisCountPrice="18" AddMoney="135000" DisCountPicName="Pay_300" RechargeType="4" AddRewardID="0" PayNO="g_16"/>
+    <FishRecharge ID="3" Name="小堆金幣" Icon="102" DisCountPrice="40" PreDisCountPrice="46" AddMoney="345000" DisCountPicName="Gold_6" RechargeType="4" AddRewardID="0" PayNO="g_40"/>
+    <FishRecharge ID="4" Name="小袋金幣" Icon="103" DisCountPrice="80" PreDisCountPrice="90" AddMoney="675000" DisCountPicName="Gold_12" RechargeType="4" AddRewardID="0" PayNO="g_80"/>
+    <FishRecharge ID="5" Name="大袋金幣" Icon="104" DisCountPrice="160" PreDisCountPrice="180" AddMoney="1350000" DisCountPicName="Gold_32" RechargeType="4" AddRewardID="0" PayNO="g_160"/>
+    <FishRecharge ID="6" Name="滿箱金幣" Icon="105" DisCountPrice="400" PreDisCountPrice="460" AddMoney="3450000" DisCountPicName="Gold_102" RechargeType="4" AddRewardID="0" PayNO="g_400"/>
+    <FishRecharge ID="8" Name="少量鑽石" Icon="501" DisCountPrice="8" PreDisCountPrice="8" AddMoney="60" DisCountPicName="Jewel_0" RechargeType="3" AddRewardID="0" PayNO="j_8"/>
+    <FishRecharge ID="7" Name="首充專享" Icon="1000" DisCountPrice="16" PreDisCountPrice="18" AddMoney="135" DisCountPicName="Pay_300" RechargeType="3" AddRewardID="0" PayNO="j_16"/>
+    <FishRecharge ID="9" Name="小堆鑽石" Icon="502" DisCountPrice="40" PreDisCountPrice="46" AddMoney="345" DisCountPicName="Jewel_6" RechargeType="3" AddRewardID="0" PayNO="j_40"/>
+    <FishRecharge ID="10" Name="小袋鑽石" Icon="503" DisCountPrice="80" PreDisCountPrice="90" AddMoney="675" DisCountPicName="Jewel_12" RechargeType="3" AddRewardID="0" PayNO="j_80"/>
+    <FishRecharge ID="11" Name="大袋鑽石" Icon="504" DisCountPrice="160" PreDisCountPrice="180" AddMoney="1350" DisCountPicName="Jewel_32" RechargeType="3" AddRewardID="0" PayNO="j_160"/>
+    <FishRecharge ID="12" Name="滿箱鑽石" Icon="505" DisCountPrice="400" PreDisCountPrice="460" AddMoney="3450" DisCountPicName="Jewel_102" RechargeType="3" AddRewardID="0" PayNO="j_400"/>
+    <FishRecharge ID="13" Name="購買月卡" Icon="505" DisCountPrice="40" PreDisCountPrice="40" AddMoney="0" DisCountPicName="Jewel_0" RechargeType="5" AddRewardID="13" PayNO="m_1"/>
   </FishRecharges>
   <FishScript>
     <!--
