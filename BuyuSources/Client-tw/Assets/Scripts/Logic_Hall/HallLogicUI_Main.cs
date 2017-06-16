@@ -114,9 +114,9 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
             GlobalEffectMgr.SetEffectOnUI(m_CenterLiftBtn.m_Effect[i]);
         }
         GlobalEffectMgr.SetEffectOnUI(baseTr_L.GetChild(0).GetChild(0).gameObject);
-        m_CenterLiftBtn.m_BtnTag = 0;
+        m_CenterLiftBtn.m_BtnTag = 1;
         
-        Center_L_BtnBgChange(0);
+        Center_L_BtnBgChange(1);
         //m_CenterRightBtn[2].m_Btn.m_BtnObj.SetActive(ServerSetting.ShowMatch);
     }
     void InitLiftBtn()
@@ -278,13 +278,8 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
                     GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("Select_Match_Failed1"), 1.5f);
                     return;
                 }
-                if (m_CenterRightBtn[i].m_Btn.m_IsChecked)
-                    OnClickCenterLiftBtn(null);
                 checktag = m_CenterRightBtn[i].m_Btn.m_Tag;
-                m_CenterRightBtn[i].m_Btn.m_IsChecked = true;
             }
-            else
-                m_CenterRightBtn[i].m_Btn.m_IsChecked = false;
         }
         Center_L_BtnBgChange(checktag);
 

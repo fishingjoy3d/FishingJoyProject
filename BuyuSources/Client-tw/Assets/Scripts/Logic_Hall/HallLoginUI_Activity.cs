@@ -872,7 +872,7 @@ class ActivityPayWnd : BaseWnd
                         //该活动结点达到完成条件可以领取奖励了
                         if (pActivityMap.pActionInfo.ActionValue >= map.Value.FinishValue)
                         {
-                            m_PayNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString() + " RMB";
+                            m_PayNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString();// + " RMB";
                             m_PayNodeItem[Indx].m_LevelBg.spriteName = "Activity_Pay_NumBg0";
                             m_PayNodeItem[Indx].m_LightBg.spriteName = "Activity_Pay_Nod1";
                             ChangeButtonBg(m_PayNodeItem[Indx].m_LevelNodeBtn, "123");
@@ -885,7 +885,7 @@ class ActivityPayWnd : BaseWnd
                         }
                         else
                         {
-                            m_PayNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString() + " RMB";
+                            m_PayNodeItem[Indx].m_LevelLabel.text = map.Value.FinishValue.ToString();// + " RMB";
                             m_PayNodeItem[Indx].m_LevelBg.spriteName = "Activity_Pay_NumBg0";
                             ChangeButtonBg(m_PayNodeItem[Indx].m_LevelNodeBtn, "Activity_Pay_Chests0");
                             m_PayNodeItem[Indx].m_NodeID = map.Value.ID;
