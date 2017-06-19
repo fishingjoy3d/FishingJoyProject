@@ -144,5 +144,10 @@ class SDKSceneCallback:MonoBehaviour
         }
         SDKMgr.Instance.SDKCallback.PayCallback(ret == SDK.RESULT_OK);
     }
+
+    public void GPCallback(string str)
+    {
+
+    }
 #endif
 }
