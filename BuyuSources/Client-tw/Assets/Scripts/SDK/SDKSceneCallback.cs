@@ -147,7 +147,17 @@ class SDKSceneCallback:MonoBehaviour
 
     public void GPCallback(string str)
     {
+        bool isValid = false;
+        if (str == "0")
+        {
+            isValid = true;
+        }
+        SDKMgr.Instance.SDKCallback.PayCallback(isValid);
 
+        CG_Cmd_VerifyOrder ncb = new CG_Cmd_VerifyOrder();
+        ncb.SetCmdType(NetCmdType.CMD_CG_VerifyOrder);
+        ncb.OrderID = SDKMgr.Instance.PayData.OrderID;
+        NetServices.Instance.Send<CG_Cmd_VerifyOrder>(ncb);
     }
 #endif
 }

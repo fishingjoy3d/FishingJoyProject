@@ -593,6 +593,8 @@ public enum Recharge_SubCmd
 
     CG_Sub_CreateOrder = 10,
     GC_Sub_CreateOrder = 11,
+
+    CG_Sub_VerifyOrder = 12,
 }
 public enum Operate_SubCmd
 {
@@ -1248,6 +1250,7 @@ public enum NetCmdType
     CMD_CL_IOSRecharge                  = (int)(MainCmdType.CMD_Main_Recharge << 8) | (int)(Recharge_SubCmd.CL_Sub_IOSRecharge),
     CMD_CG_CreateOrder                  = (int)(MainCmdType.CMD_Main_Recharge << 8) | (int)(Recharge_SubCmd.CG_Sub_CreateOrder),
     CMD_GC_CreateOrder                  = (int)(MainCmdType.CMD_Main_Recharge << 8) | (int)(Recharge_SubCmd.GC_Sub_CreateOrder),
+    CMD_CG_VerifyOrder                  = (int)(MainCmdType.CMD_Main_Recharge << 8) | (int)(Recharge_SubCmd.CG_Sub_VerifyOrder),
 
     //Announcement
     CMD_CL_GetAllAnnouncement                           = (int)(MainCmdType.CMD_Main_Announcement << 8) | (int)(Announcement_SubCmd.CL_Sub_GetAllAnnouncement      ),
@@ -1919,6 +1922,7 @@ public class NetCmdMapping
         bRet &= InitCmdTypeInfo<CL_Cmd_IOSRecharge>(NetCmdType.CMD_CL_IOSRecharge);
         bRet &= InitCmdTypeInfo<CG_Cmd_CreateOrder>(NetCmdType.CMD_CG_CreateOrder);
         bRet &= InitCmdTypeInfo<GC_Cmd_CreateOrder>(NetCmdType.CMD_GC_CreateOrder);
+        bRet &= InitCmdTypeInfo<CG_Cmd_VerifyOrder>(NetCmdType.CMD_CG_VerifyOrder);
 
         //Announcement
         bRet &= InitCmdTypeInfo<CL_Cmd_GetAllAnnouncement>(NetCmdType.CMD_CL_GetAllAnnouncement);

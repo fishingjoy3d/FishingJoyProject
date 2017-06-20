@@ -12,7 +12,7 @@ using Facebook.Unity;
 public class SDKChannelTW : SDKChannel
 {
     const string channel_name = "TW";
-    const bool mDebug = false;
+    const bool mDebug = true;
     const string Share_Uri = "https://www.facebook.com/Fishing3D.Sega";
 
     public override void GlobalInit()
@@ -135,12 +135,8 @@ public class SDKChannelTW : SDKChannel
         SDKMgr.Instance.GlobalInit();
     }
 
-    public override void Pay(int itemID, string productID, string orderID, string url, string secret_key)
+    public override void Pay(int itemID, string productID, int orderID, string url, string signCode)
     {
-        if (mDebug)
-        {
-            AN_PoupsProxy.ShowToast("Pay productID " + productID + " orderID " + orderID);
-        }
         switch (SDKMgr.Instance.PayData.PayChannel)
         {
             case PayChannelType.Facebook:
@@ -156,13 +152,21 @@ public class SDKChannelTW : SDKChannel
         }
     }
 
-    private void FBPay(string productID, string orderID)
+    private void FBPay(string productID, int orderID)
     {
-        FB.Canvas.PayWithProductId(productID, requestId: orderID, callback: this.HandlePayResult);
+        if (mDebug)
+        {
+            AN_PoupsProxy.ShowToast("FBPay productID " + productID + " orderID " + orderID);
+        }
+        FB.Canvas.PayWithProductId(productID, requestId: orderID.ToString(), callback: this.HandlePayResult);
     }
 
     private void GPPay(string buyKey)
     {
+        if (mDebug)
+        {
+            AN_PoupsProxy.ShowToast("GPPay buyKey " + buyKey);
+        }
         m_AndroidContext.Call("Pay", buyKey, SDKMgr.Instance.CallbackObjName, "GPCallback");
     }
 

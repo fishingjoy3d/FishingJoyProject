@@ -36,7 +36,7 @@ public class SDKChannel:ISDKInterface
         m_AndroidContext.Call("pay", SDKMgr.Instance.CallbackObjName, "PayCallback", amount, itemName, count, chargePointName, customParams, ServerSetting.CALLBACK_URL);
     }
 
-    public virtual void Pay(int itemID, string chargePointName, string orderID, string url, string signCode)
+    public virtual void Pay(int itemID, string chargePointName, int orderID, string url, string signCode)
     {
         m_AndroidContext.Call("pay", SDKMgr.Instance.CallbackObjName, "PayCallback", itemID, chargePointName, orderID, chargePointName, url, signCode);
     }

@@ -34,6 +34,7 @@ public class SDKPayData
 {
     public PayChannelType PayChannel;
     public uint ItemID;
+    public int OrderID;
 }
 
 public interface ISDKCallback
@@ -85,7 +86,7 @@ public interface ISDKInterface
      */
     void Pay(int amount, string itemName, int count, string chargePointName, string customParams, int itemID);
 
-    void Pay(int itemID, string chargePointName, string orderID, string url, string signCode);
+    void Pay(int itemID, string chargePointName, int orderID, string url, string signCode);
     //退出游戏
     /*
     在游戏退出前调用退出接口，会有如下不同处理：

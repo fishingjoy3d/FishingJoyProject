@@ -47,7 +47,7 @@ public class SDKChannelDome : SDKChannel
         SDKMgr.Instance.GlobalInit();
     }
 
-    public override void Pay(int itemID, string chargePointName, string orderID, string url, string secret_key)
+    public override void Pay(int itemID, string chargePointName, int orderID, string url, string secret_key)
     {
         //m_AndroidContext.Call("pay", SDKMgr.Instance.CallbackObjName, "PayCallback", amount, itemName, count, chargePointName, customParams, ServerSetting.CALLBACK_URL);
 
@@ -57,7 +57,7 @@ public class SDKChannelDome : SDKChannel
             AN_PoupsProxy.ShowToast("orderID " + orderID + "url " + url_encoder);
         }
 
-        string info = GetPayInfo(APP_CODE, chargePointName, orderID, url_encoder);
+        string info = GetPayInfo(APP_CODE, chargePointName, orderID.ToString(), url_encoder);
         info += "&signCode=" + GetSignCode(info, PRIVATE_KEY);
         DomePayAndroid.Instance.pay(info, SDKMgr.Instance.CallbackObjName, "PayDomeCallBack");
     }

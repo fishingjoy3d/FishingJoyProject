@@ -48,7 +48,7 @@ public class SDKBase:ISDKInterface
 #endif
     }
 
-    public void Pay(int itemID, string chargePointName, string orderID, string url, string signCode)
+    public void Pay(int itemID, string chargePointName, int orderID, string url, string signCode)
     {
 
     }
@@ -112,7 +112,7 @@ public class SDKBaseNoSDK : ISDKInterface
     public void Pay(int amount, string itemName, int count, string chargePointName, string customParams, int itemID)
     {
     }
-    public void Pay(int itemID, string chargePointName, string orderID, string url, string signCode)
+    public void Pay(int itemID, string chargePointName, int orderID, string url, string signCode)
     {
 
     }

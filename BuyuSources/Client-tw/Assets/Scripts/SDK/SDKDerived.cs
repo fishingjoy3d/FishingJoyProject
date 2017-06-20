@@ -23,7 +23,7 @@ public class SDKDerived : ISDKInterface
         PlayerRole.Instance.RoleRecharge.SendRecharge(uint.Parse(chargePointName));
     }
 
-    public void Pay(int itemID, string chargePointName, string orderID, string url, string signCode)
+    public void Pay(int itemID, string chargePointName, int orderID, string url, string signCode)
     {
 
     }

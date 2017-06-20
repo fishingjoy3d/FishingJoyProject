@@ -3529,6 +3529,12 @@ public class GC_Cmd_CreateOrder : NetCmdBase
     public int PayType;
 }
 
+public class CG_Cmd_VerifyOrder : NetCmdBase
+{
+    [TypeInfo(0)]
+    public int OrderID;
+}
+
 //Announcement
 public class AnnouncementOnce
 {
