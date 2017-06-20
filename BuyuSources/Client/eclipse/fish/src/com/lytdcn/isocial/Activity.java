@@ -7,21 +7,13 @@ import com.util.Inventory;
 import com.util.Purchase;
 
 import android.app.AlertDialog;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 public class Activity extends UnityPlayerActivity {
 
 	private String mCallbackObj = "SDKCallbackObj";
-	private String mCallbackMothod = "GPCallback";
+	private String mCallbackMethod = "GPCallback";
 
 	// ___________________________________________________________
 	// The helper object
@@ -53,7 +45,7 @@ public class Activity extends UnityPlayerActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtBVdoRrdD/oCWHYgzhT4TBIh0AZ80n0Sf1uXD8gWQ1H9LdpOB4MX4QG9RP9pBbS0e6W8f7E91bjKyicEa6LetTxpg1Gf+3N0L0c9E2G3RwIO9SXaRUNfzjHN2lzaspLQ52Kj5+SLpT8JD6ISVuro7OS4nxmi7xQT0lx/dPOAOs8mQ/1qmlgwsJRybqWQ+hAvu1fchMggT50TAyG1RyqKTJNErlNYTvog7ZQjjvCZXW5aDBnGeEjFoI79Lnt5XAoaUpuObmbkoCOkJeSiUTQqD+mqAQCvXnBhUso2klLDlOhTz0FUT7X19KZ68OU1Q+lXqNlJ6GurXzhFguvhdo+3DQIDAQAB";
+		String base64EncodedPublicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAj1OYX8daVsCD2Z9GrNHc4ZCZsAceOK1w21ZkWZaBqp02yBkvAUHWd5AUuooMF5ay1cfW93J7dnuXIvWqOFKlOjV+ZGAb7NwT62MM7v0qGC799vo6/+sRYY033Qyfor6WOsjlnJORUPVUzUX449IJ57y4rRv6k0JeDvQoWBKfZUATtQJOqQod1q9lSHaYqZsFfFxhT++WVa87PG5pBZxr6fnRCeVvo6qZHKyEAj8LgMkhGLeLEOqU/3ebfPLi3CVo7e2MoPXpcyGx7YREo28klOzkeSv/JFmeABat1YBu15e3B7aNMFWZjSExyXwfNaCV1gF7yE4R3vvmQ7KS1ePMvQIDAQAB";
 
 		// Create the helper, passing it our contextand the public key to verify
 		// signatures with
@@ -90,11 +82,18 @@ public class Activity extends UnityPlayerActivity {
 		});
 	}
 
+	@Override
+	public void onDestroy() {
+	   super.onDestroy();
+	   if (mHelper != null) mHelper.dispose();
+	   mHelper = null;
+	}
+	
 	public void Pay(final String buykey, final String callbackObj,
 			final String callbackMothod) {
 
 		mCallbackObj = callbackObj;
-		mCallbackMothod = callbackMothod;
+		mCallbackMethod = callbackMothod;
 
 		SKU_consume = "com.lytdcn.isocial.g_001";
 
@@ -253,7 +252,7 @@ public class Activity extends UnityPlayerActivity {
 
 	// 向unity发送消息
 	void SendToUnityMessage(String Sendmessage) {
-		UnityPlayer.UnitySendMessage("mCallbackObj", mCallbackMothod,
+		UnityPlayer.UnitySendMessage(mCallbackObj, mCallbackMethod,
 				Sendmessage);
 	}
 }
