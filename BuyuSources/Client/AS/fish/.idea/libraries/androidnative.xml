@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="androidnative">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/androidnative.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
