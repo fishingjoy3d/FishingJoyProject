@@ -392,23 +392,11 @@ public class Utility
 
     public static string NumToString(uint num)
     {
-        //if (num > 10000)
-        //{
-        //    float wan = (num - num % 1000) / 10000f;
-        //    return wan.ToString() + StringTable.GetString("Global_10_Thousand");
-        //}
-        //return num.ToString();
-        return NumToThousand(num);
+        return num.ToString("N0");
     }
     public static string NumToString(int num)
     {
-        //if (num > 10000)
-        //{
-        //    float wan = (num - num % 1000) / 10000f;
-        //    return wan.ToString() + StringTable.GetString("Global_10_Thousand");
-        //}
-        //return num.ToString();
-        return NumToThousand(num);
+        return num.ToString("N0");
     }
 
     public static string NumToThousand(uint num)

@@ -1078,7 +1078,7 @@ public class GameCarUI
             }
         }
 
-        m_labelresult.text = Utility.NumToString(nNum);
+        m_labelresult.text = Utility.NumToThousand(nNum);
         m_goresultchar.SetActive(Mathf.Abs(nNum) >= 10000);
         GlobalHallUIMgr.Instance.GameShare.AddGlod(nNum);
     }
@@ -1144,10 +1144,10 @@ public class GameCarUI
         for (byte i = 0; i < m_areainfo.Length; i++)
         {
             m_areainfo[i].labelmy.gameObject.SetActive(m_nMyJetton[i] != 0);
-            m_areainfo[i].labelmy.text = Utility.NumToString(m_nMyJetton[i]);
+            m_areainfo[i].labelmy.text = Utility.NumToThousand(m_nMyJetton[i]);
 
             m_areainfo[i].labeltotal.gameObject.SetActive(m_nTotalJetton[i] != 0);
-            m_areainfo[i].labeltotal.text = Utility.NumToString(m_nTotalJetton[i]);
+            m_areainfo[i].labeltotal.text = Utility.NumToThousand(m_nTotalJetton[i]);
         }
     }
     public void UpdateCarMyWeagerNum()
@@ -1229,7 +1229,7 @@ public class GameCarUI
             hostGameSum = info.GameSum;
             hostNameLabel.text = info.UserInfo.NickName;
             uint goldNum = info.UserInfo.GlobelSum;
-            hostGoldNumLabel.text = Utility.NumToString(goldNum); 
+            hostGoldNumLabel.text = Utility.NumToThousand(goldNum); 
             //goldNum.ToString();
             //if (goldNum > 10000)
             //{
@@ -1380,7 +1380,7 @@ public class GameCarUI
     {
         if(m_labelmygold&&!m_carmove.IsMoving())
         {
-            m_labelmygold.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel());          
+            m_labelmygold.text = Utility.NumToThousand(PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel());          
         }
     }
     public void SetPlayerName()
@@ -1423,7 +1423,7 @@ public class GameCarUI
         newitem.SetActive(true);
         newitem.transform.GetChild(0).GetComponent<UILabel>().text = byOrder.ToString();
         newitem.transform.GetChild(1).GetComponent<UILabel>().text = name;
-        newitem.transform.GetChild(2).GetComponent<UILabel>().text = Utility.NumToString(gold);
+        newitem.transform.GetChild(2).GetComponent<UILabel>().text = Utility.NumToThousand(gold);
         return newitem.transform;
     }
     Transform ClonePlayerListItem(Transform trans, string name, int gold)
@@ -1431,7 +1431,7 @@ public class GameCarUI
         GameObject newitem=GameObject.Instantiate(trans.gameObject);
         newitem.SetActive(true);
         newitem.transform.GetChild(1).GetComponent<UILabel>().text=name;
-        newitem.transform.GetChild(2).GetComponent<UILabel>().text = Utility.NumToString(gold);
+        newitem.transform.GetChild(2).GetComponent<UILabel>().text = Utility.NumToThousand(gold);
         return newitem.transform;
     }
 //    class PlayListItem 

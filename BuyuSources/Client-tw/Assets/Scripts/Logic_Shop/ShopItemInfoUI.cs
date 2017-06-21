@@ -64,7 +64,7 @@ public class ShopItemInfoUI : BaseWnd
         }
         if (m_ItemSum != null)
         {
-            m_ItemSum.text = "x " + Utility.NumToString(ItemInfo.ItemInfo.ItemSum);
+            m_ItemSum.text = "x " + Utility.NumToThousand(ItemInfo.ItemInfo.ItemSum);
         }
         SetGoodsPriceType(ItemInfo);
     }

@@ -118,7 +118,7 @@ public class  GameShare
     {
         m_sharetype = ShareType.SHARE_GOLD;
         InIt();
-        m_labelWin.text = Utility.NumToString(nGold);
+        m_labelWin.text = Utility.NumToThousand(nGold);
         m_labelgametime.text = nTime.ToString() + StringTable.GetString("Global_Minute");
 
         uint nMaxWin = 0;
@@ -136,7 +136,7 @@ public class  GameShare
             RuntimeInfo.SaveLocalFile(RuntimeInfo.GameShareMaxWin(), ms.ToArray());
         }
 
-        m_labelmaxwin.text = Utility.NumToString(nMaxWin);
+        m_labelmaxwin.text = Utility.NumToThousand(nMaxWin);
     }
     public void ShutDown()
    {

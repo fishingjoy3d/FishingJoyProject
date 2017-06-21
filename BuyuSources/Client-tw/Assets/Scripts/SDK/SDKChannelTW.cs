@@ -12,7 +12,7 @@ using Facebook.Unity;
 public class SDKChannelTW : SDKChannel
 {
     const string channel_name = "TW";
-    const bool mDebug = true;
+    const bool mDebug = false;
     const string Share_Uri = "https://www.facebook.com/Fishing3D.Sega";
 
     public override void GlobalInit()

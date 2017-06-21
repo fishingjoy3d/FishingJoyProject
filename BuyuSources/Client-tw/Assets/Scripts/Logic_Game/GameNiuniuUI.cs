@@ -291,7 +291,7 @@ public class GameNiuniuUI : BaseWnd
         if (!isAnim)
         {
             uint goldNum = PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel();
-            m_HeadTrans.GetChild(8).GetComponent<UILabel>().text = Utility.NumToString(goldNum);
+            m_HeadTrans.GetChild(8).GetComponent<UILabel>().text = Utility.NumToThousand(goldNum);
         }
     }
     void InitPlayerInfo()
@@ -706,7 +706,7 @@ public class GameNiuniuUI : BaseWnd
             hostGameSum = info.GameSum;
             hostNameLabel.text = info.UserInfo.NickName;
             uint goldNum = info.UserInfo.GlobelSum;
-            hostGoldNumLabel.text = Utility.NumToString(goldNum);
+            hostGoldNumLabel.text = Utility.NumToThousand(goldNum);
 
             hostNameLineLabel.text = hostName;
             hostGameRestLabel.text = (FishConfig.Instance.m_MiNiGameConfig.niuniuConfig.BankerGameSum - hostGameSum).ToString();
@@ -818,7 +818,7 @@ public class GameNiuniuUI : BaseWnd
                 vipSeat[i].sitDownBtn.SetActive(false);
                 vipSeat[i].headObj.SetActive(true);
                 uint moneyNum = list.List[i].GlobelSum;
-                vipSeat[i].moneyLabel.text = Utility.NumToString(moneyNum);
+                vipSeat[i].moneyLabel.text = Utility.NumToThousand(moneyNum);
                 vipSeat[i].moneyLabel.gameObject.SetActive(true);
 
                 uint ficeID = list.List[i].dwFaceID;
@@ -1006,7 +1006,7 @@ public class GameNiuniuUI : BaseWnd
             return;
         if (vipSeat[seat].userId != 0)
             vipInfo[seat].weagerIndex[index] = true;
-        vipSeat[seat].moneyLabel.text = Utility.NumToString(allGlobal);
+        vipSeat[seat].moneyLabel.text = Utility.NumToThousand(allGlobal);
         vipWeagerIndex = index;
         seatIndex = seat;
         vipWeagerCount = 0;
@@ -1018,7 +1018,7 @@ public class GameNiuniuUI : BaseWnd
     {
         if (id != 0)
         {
-            vipSeat[seat].moneyLabel.text = Utility.NumToString(globalSum);
+            vipSeat[seat].moneyLabel.text = Utility.NumToThousand(globalSum);
         }
     }
 
@@ -1579,7 +1579,7 @@ public class GameNiuniuUI : BaseWnd
                     vipInfo[i].newGoldNum = newVipInfo.List[i].GlobelSum;
                     vipInfo[i].oldGoldnum = oldVipInfo.List[i].GlobelSum;
                     uint global = oldVipInfo.List[i].GlobelSum;
-                    vipSeat[i].moneyLabel.text = Utility.NumToString(global);
+                    vipSeat[i].moneyLabel.text = Utility.NumToThousand(global);
                 }
             }
 
@@ -1728,7 +1728,7 @@ public class GameNiuniuUI : BaseWnd
     {
         myWeager[poorIndex] += levelArr[chooseLevel];
 
-        m_PoolTrans.GetChild(poorIndex).GetChild(3).GetChild(0).GetComponent<UILabel>().text = Utility.NumToString(myWeager[poorIndex]);
+        m_PoolTrans.GetChild(poorIndex).GetChild(3).GetChild(0).GetComponent<UILabel>().text = Utility.NumToThousand(myWeager[poorIndex]);
 
         totalNum[poorIndex] += (uint)levelArr[chooseLevel];
 
@@ -2089,7 +2089,7 @@ class HostItem : BaseWnd
         goldNumLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
         lineNumLabel.text = lineNum.ToString();
         nameLabel.text = name;
-        goldNumLabel.text = Utility.NumToString(goldNum);
+        goldNumLabel.text = Utility.NumToThousand(goldNum);
         return m_BaseTrans;
     }
 }
@@ -2180,7 +2180,7 @@ class NormalItem : BaseWnd
         nameLabel = m_BaseTrans.GetChild(1).GetComponent<UILabel>();
         goldLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
         nameLabel.text = name;
-        goldLabel.text = Utility.NumToString(gold);
+        goldLabel.text = Utility.NumToThousand(gold);
         return m_BaseTrans;
     }
 }

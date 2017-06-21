@@ -290,9 +290,9 @@ public class HallLoginUI_Btns : HallLoginUI_BaseWind
             return;
         if (m_RichInf[0].m_GoldLabel == null || m_RichInf[1].m_GoldLabel == null || m_RichInf[2].m_GoldLabel == null)
             return;
-        m_RichInf[0].m_GoldLabel.text = PlayerRole.Instance.RoleInfo.RoleMe.GetMedal().ToString("N0");
-        m_RichInf[1].m_GoldLabel.text = PlayerRole.Instance.RoleInfo.RoleMe.GetCurrency().ToString("N0");
-        m_RichInf[2].m_GoldLabel.text = PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel().ToString("N0");
+        m_RichInf[0].m_GoldLabel.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetMedal());
+        m_RichInf[1].m_GoldLabel.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetCurrency());
+        m_RichInf[2].m_GoldLabel.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel());
     }
     public void UpdateWarningState(byte type)   //'1' 邮件赠礼 '2' 排名  ‘4’成就
     {

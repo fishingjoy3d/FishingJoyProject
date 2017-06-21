@@ -430,7 +430,7 @@ public class GameForestDanceUI : BaseWnd
             return;
         }
         uint goldNum = PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel();
-        m_GoldLabel.text = Utility.NumToString(goldNum);
+        m_GoldLabel.text = Utility.NumToThousand(goldNum);
     }
 
     void EventAddGoldClick(GameObject go)
@@ -781,7 +781,7 @@ public class GameForestDanceUI : BaseWnd
                 vipSeat[i].sitDownBtn.SetActive(false);
                 vipSeat[i].headObj.SetActive(true);
                 uint moneyNum = list.List[i].GlobelSum;
-                vipSeat[i].moneyLabel.text = Utility.NumToString(moneyNum);
+                vipSeat[i].moneyLabel.text = Utility.NumToThousand(moneyNum);
                 vipSeat[i].moneyLabel.gameObject.SetActive(true);
 
                 uint ficeID = list.List[i].dwFaceID;
@@ -1025,7 +1025,7 @@ public class GameForestDanceUI : BaseWnd
             hostGameSum = info.GameSum;
             hostNameLabel.text = info.UserInfo.NickName;
             uint goldNum = info.UserInfo.GlobelSum;
-            hostGoldNumLabel.text = Utility.NumToString(goldNum);
+            hostGoldNumLabel.text = Utility.NumToThousand(goldNum);
 
             hostNameLineLabel.text = hostName;
             hostGameRestLabel.text = (FishConfig.Instance.m_MiNiGameConfig.niuniuConfig.BankerGameSum - hostGameSum).ToString();
@@ -1508,7 +1508,7 @@ class ForestDanceHostItem : BaseWnd
         goldNumLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
         lineNumLabel.text = lineNum.ToString();
         nameLabel.text = name;
-        goldNumLabel.text = Utility.NumToString(goldNum);
+        goldNumLabel.text = Utility.NumToThousand(goldNum);
         return m_BaseTrans;
     }
 }
@@ -1599,7 +1599,7 @@ class ForestDanceNormalItem : BaseWnd
         nameLabel = m_BaseTrans.GetChild(1).GetComponent<UILabel>();
         goldLabel = m_BaseTrans.GetChild(2).GetComponent<UILabel>();
         nameLabel.text = name;
-        goldLabel.text = Utility.NumToString(gold);
+        goldLabel.text = Utility.NumToThousand(gold);
         return m_BaseTrans;
     }
 }
