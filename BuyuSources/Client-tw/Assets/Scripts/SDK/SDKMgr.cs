@@ -311,6 +311,7 @@ public class SDKMgr : Singleton<SDKMgr>, ISDKCallback
             GlobalHallUIMgr.Instance.ShowSystemTipsUI(StringTable.GetString("EC_Recharge_Sucess"), 2.0f, false);
             //GlobalHallUIMgr.Instance.ShutDownPayBuyConfirm();
             //GlobalHallUIMgr.Instance.ShutDownPayWnd();
+            GlobalHallUIMgr.Instance.ShutDownPayWnd();
         }
     }
 }

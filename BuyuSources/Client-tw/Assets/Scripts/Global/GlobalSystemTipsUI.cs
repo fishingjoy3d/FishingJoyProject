@@ -297,7 +297,7 @@ public class PayBuyConfirmUI : BaseWnd
         NetServices.Instance.Send<CG_Cmd_CreateOrder>(ncb);
 
         ShutDown();
-        GlobalHallUIMgr.Instance.ShutDownPayWnd();
+        //GlobalHallUIMgr.Instance.ShutDownPayWnd();
         GlobalAudioMgr.Instance.PlayOrdianryMusic(Audio.OrdianryMusic.m_CloseUI);
     }
     void OnClickClose(GameObject go)

@@ -9,6 +9,7 @@ import com.util.Purchase;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.content.Intent;
 
 import com.androidnative.popups.PopUpsManager;
 
@@ -91,13 +92,27 @@ public class Activity extends UnityPlayerActivity {
         mHelper = null;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d(TAG, "onActivityResult(" + requestCode + "," + resultCode + "," + data);
+        if (mHelper == null) return;
+
+        // Pass on the activity result to the helper for handling
+        if (!mHelper.handleActivityResult(requestCode, resultCode, data)) {
+            // not handled, so handle it ourselves (here's where you'd
+            // perform any handling of activity results not related to in-app
+            // billing...
+            super.onActivityResult(requestCode, resultCode, data);
+        } else {
+            Log.d(TAG, "onActivityResult handled by IABUtil.");
+        }
+    }
+
     public void Pay(final String buykey, final String callbackObj,
                     final String callbackMothod) {
 
         mCallbackObj = callbackObj;
         mCallbackMethod = callbackMothod;
-
-        PopUpsManager.showToast("GP Pay Start " + buykey);
 
         String sku = "com.lytdcn.isocial." + buykey;
 
@@ -211,6 +226,7 @@ public class Activity extends UnityPlayerActivity {
             Log.d(TAG, "End consumptionflow.");
         }
     };
+
 
     /**
      * Verifies the developer payload of apurchase.

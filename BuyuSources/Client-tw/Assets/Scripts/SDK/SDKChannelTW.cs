@@ -163,10 +163,6 @@ public class SDKChannelTW : SDKChannel
 
     private void GPPay(string buyKey)
     {
-        if (mDebug)
-        {
-            AN_PoupsProxy.ShowToast("GPPay buyKey " + buyKey);
-        }
         m_AndroidContext.Call("Pay", buyKey, SDKMgr.Instance.CallbackObjName, "GPCallback");
     }
 
