@@ -274,16 +274,16 @@ public class HallLoginUI_Rank : HallLoginUI_BaseWind
         switch (m_RankType)
         {
             case RankType.Achievement_Rank:
-                m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = PlayerRole.Instance.RoleInfo.RoleMe.GetAchievementPoint().ToString();
+                m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetAchievementPoint());
                 break;
             case RankType.Gold_Rank:
-                m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel().ToString();
+                m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel());
                 break;
             case RankType.Level_Rank:
-                m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = PlayerRole.Instance.RoleInfo.RoleMe.GetLevel().ToString();
+                m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetLevel());
                 break;
             case RankType.Medal_Rank:
-                m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = PlayerRole.Instance.RoleInfo.RoleMe.GetMedal().ToString();
+                m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetMedal());
                 break;
             case RankType.Enchantment_Rank:     //魅力榜
                 {
@@ -295,7 +295,7 @@ public class HallLoginUI_Rank : HallLoginUI_BaseWind
                         if (FishConfig.Instance.m_CharmInfo.CharmIndexMap.TryGetValue(i, out charmOnce))
                             charmSun += (int)PlayerRole.Instance.RoleInfo.RoleMe.GetCharmInfo()[i] * charmOnce.ChangeCharmValue;
                     }
-                    m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = charmSun.ToString();
+                    m_MyRankItem.m_Number[(int)m_RankType - 1].m_Label.text = Utility.NumToString(charmSun);
                 }
                 break;
             default:

@@ -227,13 +227,13 @@ public class PayItemInfo : BaseWnd
             m_DesItemIcon.spriteName = "HallBtn_Diamond";
             //m_ItemPriceIcon.spriteName = "rmb_logo";
         }
-        m_DesItemSum.text = Utility.NumToThousand(payInfo.AddMoney);//.ToString();
+        m_DesItemSum.text = Utility.NumToThousand(payInfo.AddMoney);
         m_DisCountIcon.spriteName = payInfo.sDisCountPicName;
         //不打折扣
         if (payInfo.dDisCountPrice == payInfo.dPreDisCountPrice)
         {
             //m_ItemOldPrice.text = payInfo.dDisCountPrice.ToString();
-            m_ItemCurPrice.text = payInfo.dDisCountPrice.ToString();
+            m_ItemCurPrice.text = Utility.NumToString(payInfo.dDisCountPrice);
             //m_ItemCurPrice.gameObject.SetActive(false);
             //m_OverLine.SetActive(false);
         }

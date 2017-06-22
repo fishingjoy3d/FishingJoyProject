@@ -97,17 +97,17 @@ public class ShopItemInfoUI : BaseWnd
     {
         if (ItemInfo.PriceGlobel > 0)
         {
-            m_ItemPrice.text = ItemInfo.PriceGlobel.ToString();
+            m_ItemPrice.text = Utility.NumToString(ItemInfo.PriceGlobel);
             m_ItemPriceIcon.spriteName = "HallBtn_Gold";
         }
         else if (ItemInfo.PriceCurrey > 0)
         {
-            m_ItemPrice.text = ItemInfo.PriceCurrey.ToString();
+            m_ItemPrice.text = Utility.NumToString(ItemInfo.PriceCurrey);
             m_ItemPriceIcon.spriteName = "HallBtn_Diamond";
         }
         else
         {
-            m_ItemPrice.text = ItemInfo.PriceMabel.ToString();
+            m_ItemPrice.text = Utility.NumToString(ItemInfo.PriceMabel);
             m_ItemPriceIcon.spriteName = "HallBtn_Medal";
         }
     }

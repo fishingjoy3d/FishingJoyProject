@@ -457,7 +457,7 @@ public class HeadWind : GlobalBaseWind
             return;
         if (m_HeadWindGameObj[1].activeSelf != true)
             return;
-        m_MatchInfo_Label[0].text = PlayerRole.Instance.RoleInfo.RoleMe.GetMonthScore().ToString();
+        m_MatchInfo_Label[0].text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetMonthScore());
     }
     public void UpdateMyMatchInfoDate()
     {
@@ -465,8 +465,8 @@ public class HeadWind : GlobalBaseWind
             return;
         if (m_HeadWindGameObj[1].activeSelf != true)
             return;
-        m_MatchInfo_Label[1].text = (PlayerRole.Instance.RoleInfo.RoleMe.GetMonthIndex() + 1).ToString();
-        m_MatchInfo_Label[0].text = PlayerRole.Instance.RoleInfo.RoleMe.GetMonthScore().ToString();
+        m_MatchInfo_Label[1].text = Utility.NumToString((PlayerRole.Instance.RoleInfo.RoleMe.GetMonthIndex() + 1));
+        m_MatchInfo_Label[0].text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetMonthScore());
         if (FishConfig.Instance.m_MatchInfo.m_MonthStr.ContainsKey(PlayerRole.Instance.RoleInfo.RoleMe.GetMonthID()))
             m_MatchInfo_Label[2].text = FishConfig.Instance.m_MatchInfo.m_MonthStr[PlayerRole.Instance.RoleInfo.RoleMe.GetMonthID()].MonthName + StringTable.GetString("Month_Name");
         m_MatchInfo_Label[3].text = PlayerRole.Instance.MonthManager.GetMonthSigUpPlayerSum(PlayerRole.Instance.RoleInfo.RoleMe.GetMonthID()).ToString();

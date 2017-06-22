@@ -226,9 +226,9 @@ public class ShopLogicMgr : BaseWnd
     }
     public void UpdateUserGold()
     {
-        m_WndTopInfo.m_DiamondLabel.text = PlayerRole.Instance.RoleInfo.RoleMe.GetCurrency().ToString();
-        m_WndTopInfo.m_GoldLabel.text = PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel().ToString();
-        m_WndTopInfo.m_MeadlLabel.text = PlayerRole.Instance.RoleInfo.RoleMe.GetMedal().ToString();
+        m_WndTopInfo.m_DiamondLabel.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetCurrency());
+        m_WndTopInfo.m_GoldLabel.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetGlobel());
+        m_WndTopInfo.m_MeadlLabel.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetMedal());
     }
     void OnClickBackMsg(GameObject go)
     {
