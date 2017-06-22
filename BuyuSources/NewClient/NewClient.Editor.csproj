@@ -213,6 +213,7 @@
     <Compile Include="Assets\NGUI\Scripts\Editor\UIWidgetContainerEditor.cs" />
     <Compile Include="Assets\NGUI\Scripts\Editor\UIWidgetInspector.cs" />
     <Compile Include="Assets\NGUI\Scripts\Editor\UIWrapContentEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\CheckPrefab.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\NGUI\ReadMe - 3.8.0.txt" />
