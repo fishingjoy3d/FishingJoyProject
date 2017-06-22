@@ -158,7 +158,7 @@ public class  GameShare
     }
     void EventFB(GameObject go)
     {
-
+        SDKMgr.Instance.SDK.Share("");
     }
     public void EnterGame()
     {
