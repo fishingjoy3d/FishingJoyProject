@@ -114,7 +114,7 @@ public class Activity extends UnityPlayerActivity {
         mCallbackObj = callbackObj;
         mCallbackMethod = callbackMothod;
 
-        String sku = "com.lytdcn.isocial." + buykey;
+        String sku = buykey; //com.lytdcn.isocial
 
         SKU_consume = sku;
 
@@ -152,8 +152,11 @@ public class Activity extends UnityPlayerActivity {
                 alert("Thank you forupgrading to premium!");
                 mIsPremium = true;
             }
-            SendToUnityMessage("0");
+            String orderId = purchase.getOrderId();
+            String signature = purchase.getSignature();
 
+            PopUpsManager.showToast("orderId " + orderId + " signature " + signature);
+            SendToUnityMessage("0");
         }
     };
 
