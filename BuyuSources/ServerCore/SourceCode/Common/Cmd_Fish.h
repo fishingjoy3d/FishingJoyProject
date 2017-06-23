@@ -2747,7 +2747,9 @@ enum FishDBCmd
 		DBR_Deal_Create_Log,
 		DBR_Deal_ThirdPlatform_Verify_Log,
 		DBR_Deal_Pay_Log,
-		DBR_Deal_Third_Platform_Create_And_Verify
+		DBR_Deal_Third_Platform_Create_And_Verify,
+		DBR_Verify_Order,
+		DBO_Verify_Order,
 };
 
 
@@ -2818,6 +2820,17 @@ struct tagDeal
 	DWORD pay_type;
 };
 struct DBO_Cmd_Deal_Third_Platform_Verify : public NetCmd
+{
+	tagDeal info;
+	bool result;
+};
+
+struct DBR_Cmd_Verify_Order : public NetCmd
+{
+	int order_id;
+};
+
+struct DBO_Cmd_Verify_Order : public NetCmd
 {
 	tagDeal info;
 	bool result;
@@ -4582,7 +4595,8 @@ enum ChannelType
 {
 	Self_ChannelType,
 	Dome_ChannelType, //冰穹渠道
-	Facebook_ChannelType
+	Facebook_ChannelType,
+	Google_ChannelType,
 
 };
 
@@ -7569,7 +7583,8 @@ enum RechargeSub
 	GO_IOSRecharge = 5,//IOS平台充值
 
 	CG_CreateOrder = 10,
-	GC_CreateOrder = 11
+	GC_CreateOrder = 11,
+	CG_VerifyOrder = 12,
 };
 struct CL_Cmd_Recharge : public NetCmd
 {
@@ -7851,6 +7866,12 @@ struct GC_Cmd_CreateOrder : public NetCmd
 //	WCHAR sign_code[MAX_SIGN_CODE];
 	WCHAR notify_url[MAX_UrlLength];
 	int PayType;
+};
+
+
+struct CG_Cmd_VerifyOrder : public NetCmd
+{
+	int OrderID;
 };
 
 //3.实体物品购买 有充值类型的 或者是 邮递类型的 外部控制 

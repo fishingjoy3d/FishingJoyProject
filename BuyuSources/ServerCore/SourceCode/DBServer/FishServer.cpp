@@ -980,6 +980,8 @@ bool FishServer::HandleDataBaseMsg(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		return OnDleRechargeOrderInfo(Index, ClientID, pCmd);
 	case DBR_Deal_Create:
 		return OnCreateDealOrderID(Index, ClientID, pCmd);
+	case DBR_Verify_Order:
+		return OnVerifyOrder(Index, ClientID, pCmd);
 	//Control
 	case DBR_ResetUserPassword:
 		return OnResetUserPassword(Index, ClientID, pCmd);
@@ -2040,8 +2042,11 @@ bool FishServer::OnHandleGetNewAccount(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	std::string RateValue_temp = GetRateValueString(RateValue);
 	//char pRateStates[MAXBLOB_LENGTH] = { 0 };
 	//m_Sql[Index].GetMySqlEscapeString((char*)&RateValue, sizeof(RateValue), pRateStates);
-
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishGetNewAccount('%s','%s','%u','%u','%u','%s',%d ,'%u','%d.%d.%d.%d','%d-%d-%d %d:%d:%d','%s');", strAccountName.c_str(), DestMacAddress, pMsg->PasswordCrc1, pMsg->PasswordCrc2, pMsg->PasswordCrc3, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, pMsg->ClientIP & 0xff, (pMsg->ClientIP >> 8) & 0xff, (pMsg->ClientIP >> 16) & 0xff, (pMsg->ClientIP >> 24) & 0xff, NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec, RateValue_temp.c_str());
+			sprintf_s(SqlStr, sizeof(SqlStr), "call ChannelLogon('%s','%s','%u','%u','%u','%u','%s',%d,'%u','%s','%d.%d.%d.%d','%d-%d-%d %d:%d:%d');", strAccountName.c_str(), DestMacAddress,
+				pMsg->PasswordCrc1, pMsg->PasswordCrc2, pMsg->PasswordCrc3, 0, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, RateValue_temp.c_str(),
+				pMsg->ClientIP & 0xff, (pMsg->ClientIP >> 8) & 0xff, (pMsg->ClientIP >> 16) & 0xff, (pMsg->ClientIP >> 24) & 0xff,
+		NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec);
+	//sprintf_s(SqlStr, sizeof(SqlStr), "call FishGetNewAccount('%s','%s','%u','%u','%u','%s',%d ,'%u','%d.%d.%d.%d','%d-%d-%d %d:%d:%d','%s');", strAccountName.c_str(), DestMacAddress, pMsg->PasswordCrc1, pMsg->PasswordCrc2, pMsg->PasswordCrc3, strNickName.c_str(), 1, m_Config.GetSystemConfig().RsgInitGlobelSum, pMsg->ClientIP & 0xff, (pMsg->ClientIP >> 8) & 0xff, (pMsg->ClientIP >> 16) & 0xff, (pMsg->ClientIP >> 24) & 0xff, NowTime.tm_year + 1900, NowTime.tm_mon + 1, NowTime.tm_mday, NowTime.tm_hour, NowTime.tm_min, NowTime.tm_sec, RateValue_temp.c_str());
 
 	free(DestMacAddress);
 	free(MacAddress);
@@ -2051,10 +2056,10 @@ bool FishServer::OnHandleGetNewAccount(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		msg->Result = true;
 		const TCHAR* pStr = pTable1.GetStr(0, 0);
 		TCHARCopy(msg->AccountName, CountArray(msg->AccountName), pStr, _tcslen(pStr));
-		msg->PasswordCrc1 = pTable1.GetUint(0, 1);
-		msg->PasswordCrc2 = pTable1.GetUint(0, 2);
-		msg->PasswordCrc3 = pTable1.GetUint(0, 3);
-		msg->dwUserID = pTable1.GetUint(0, 4);
+		msg->PasswordCrc1 = pMsg->PasswordCrc1;
+		msg->PasswordCrc2 = pMsg->PasswordCrc2;
+		msg->PasswordCrc3 = pMsg->PasswordCrc3;
+		msg->dwUserID = pTable1.GetUint(0, 0);
 	}
 	else
 	{
@@ -6356,6 +6361,44 @@ bool FishServer::OnQueryRechargeOrderInfo(BYTE Index, BYTE ClientID, NetCmd* pCm
 	return true;
 }
 
+bool FishServer::OnVerifyOrder(BYTE Index, BYTE ClientID, NetCmd* pCmd)
+{
+	DBR_Cmd_Verify_Order* pMsg = (DBR_Cmd_Verify_Order*)pCmd;
+		if (!pMsg)
+	{
+		ASSERT(false);
+		return false;
+	}
+	SqlTable pTable1;
+	char SqlStr[MAXSQL_LENGTH] = { 0 };
+	DBO_Cmd_Verify_Order * msg = (DBO_Cmd_Verify_Order*)CreateCmd(DBO_Verify_Order, sizeof(DBO_Cmd_Verify_Order));
+
+	msg->info.order_id = pMsg->order_id;
+	msg->result = false;
+	//SqlTable pTable1;
+	//char SqlStr[MAXSQL_LENGTH] = { 0 };
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishVerifyDeal('%u');", pMsg->order_id);
+	if (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1)
+	{
+
+		//user_id`, `order_id`, `channel`, `good_id`, `shop_id
+		msg->result = true;
+		msg->info.user_id = pTable1.GetUint(0, 0);
+		msg->info.order_id = pTable1.GetUint(0, 1);
+		msg->info.channel_id = pTable1.GetUint(0, 2);
+		const TCHAR* good_id = pTable1.GetStr(0, 3);
+		TCHARCopy(msg->info.good_id, CountArray(msg->info.good_id), good_id, _tcslen(good_id));
+		msg->info.shop_id = pTable1.GetUint(0, 4);
+	}
+	else
+	{
+		LogInfoToFile(DBErrorSqlFileName, SqlStr);
+		ASSERT(false);
+	}
+	OnAddDBResult(Index, ClientID, msg);
+	return true;
+}
+
 bool FishServer::OnCreateDealOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 {
 	DBR_Cmd_Deal_Create* pMsg = (DBR_Cmd_Deal_Create*)pCmd;
@@ -6377,7 +6420,11 @@ bool FishServer::OnCreateDealOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 			order_id = pTable1.GetUint(0, 0);
 		}		
 	}
-
+	else
+	{
+		LogInfoToFile(DBErrorSqlFileName, SqlStr);
+		ASSERT(false);
+	}
 	DBO_Cmd_Deal_Create* msg = (DBO_Cmd_Deal_Create*)CreateCmd(DBO_Deal_Create, sizeof(DBO_Cmd_Deal_Create));
 	msg->order_id = order_id;
 	msg->shop_id = pMsg->shop_id;

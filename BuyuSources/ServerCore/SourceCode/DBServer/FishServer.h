@@ -252,7 +252,7 @@ private:
 	bool OnGetRechargeOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnQueryRechargeOrderInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnDleRechargeOrderInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd);
-
+	bool OnVerifyOrder(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	bool OnCreateDealOrderID(BYTE Index, BYTE ClientID, NetCmd* pCmd);
 	//Control
 	bool OnResetUserPassword(BYTE Index, BYTE ClientID, NetCmd* pCmd);

@@ -190,6 +190,8 @@ private:
 	bool OnHandleGameIDConvertUserID(NetCmd* pCmd);
 	//DEAL
 	bool OnHandleCreateDeal(NetCmd* pCmd);
+	bool OnHandleVerifyDeal(NetCmd* pCmd);
+
 	//≤È—Ø
 	bool OnHandleTCPNetworkQuery(ServerClientData* pClient, NetCmd* pCmd);
 	bool OnHandleDataBaseLoadQueryUserInfo(NetCmd* pCmd);

@@ -69,6 +69,10 @@ bool FishConfig::LoadConfigFilePath()
 	{
 		return false;
 	}
+	if (!LoadRechargeConfig())
+	{
+		return false;
+	}
 	WHXml pXml;
 	if (!pXml.LoadXMLFilePath(TEXT("FishConfig.xml")))
 	{
@@ -212,11 +216,11 @@ bool FishConfig::LoadConfigFilePath()
 		ASSERT(false);
 		return false;
 	}
-	if (!LoadFishRechargeConfig(pFishConfig))//¼ÓÔØRMB³äÖµÅäÖÃ
-	{
-		ASSERT(false);
-		return false;
-	}
+	//if (!LoadFishRechargeConfig(pFishConfig))//¼ÓÔØRMB³äÖµÅäÖÃ
+	//{
+	//	ASSERT(false);
+	//	return false;
+	//}
 	if (!LoadFishLevelReward(pFishConfig))
 	{
 		ASSERT(false);
@@ -1680,11 +1684,11 @@ bool FishConfig::LoadFishRechargeConfig(WHXmlNode* pFishConfig)
 		if (!pFishRecharge->GetAttribute(TEXT("DisCountPicName"), pInfo.DisCountPicName, CountArray(pInfo.DisCountPicName)))
 			return false;
 
-		WHXmlNode* pPayNOInfo = pFishRecharges->GetChildNodeByName(TEXT("Info"));
+		WHXmlNode* pPayNOInfo = pFishRecharge->GetChildNodeByName(TEXT("Info"));
 		while (pPayNOInfo)
 		{
 			tagFishPayType tagPay;
-			if (!pFishRecharge->GetAttribute(TEXT("PayType"), tagPay.Type))
+			if (!pPayNOInfo->GetAttribute(TEXT("PayType"), tagPay.Type))
 				return false;
 
 			if (!pPayNOInfo->GetAttribute(TEXT("PayNO"), tagPay.PayNO, CountArray(tagPay.PayNO)))
@@ -2848,6 +2852,19 @@ void UTF_8ToUnicode(WCHAR* pOut, const char *pText)
 	uchar[0] = ((pText[1] & 0x03) << 6) + (pText[2] & 0x3F);
 	return;
 }
+bool FishConfig::LoadRechargeConfig()
+{
+	WHXml pXml;
+	if (!pXml.LoadXMLFilePath(TEXT("FishRechargeConfig.xml")))
+	{
+		ASSERT(false);
+		return false;
+	}
+	
+	WHXmlNode* pXmlChar = pXml.GetChildNodeByName(TEXT("Info"));
+	return LoadFishRechargeConfig(pXmlChar);
+}
+
 
 bool FishConfig::LoadWord()
 {

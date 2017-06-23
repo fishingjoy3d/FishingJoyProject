@@ -39,6 +39,7 @@ public:
 
 	bool LoadConfigFilePath();
 	bool LoadWord();
+	bool LoadRechargeConfig();
 	void OnDestroy();
 	void TCHAR2STRING(const TCHAR *STR, std::string& out);
 	const WCHAR* GetConfigCharacters(int id);

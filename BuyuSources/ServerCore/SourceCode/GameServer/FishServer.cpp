@@ -1546,7 +1546,8 @@ bool FishServer::HandleDataBaseMsg(NetCmd* pCmd)
 		return OnHandleGameIDConvertUserID(pCmd);
 	case DBO_Deal_Create:
 		return OnHandleCreateDeal(pCmd);
-
+	case DBO_Verify_Order:
+		return OnHandleVerifyDeal(pCmd);
 	}
 	
 	return true;
@@ -4395,7 +4396,12 @@ bool FishServer::OnHandleChangeRoleSecPassword(NetCmd* pCmd)
 	pRole->SendDataToClient(&msg);
 	return true;
 }
-
+bool FishServer::OnHandleVerifyDeal(NetCmd* pCmd)
+{
+	DBO_Cmd_Verify_Order* pMsg = (DBO_Cmd_Verify_Order*)pCmd;
+	ThirdPlatformPay(pMsg->info.shop_id, pMsg->info.user_id);
+	return true;
+}
 bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
 {
 	DBO_Cmd_Deal_Create* pMsg = (DBO_Cmd_Deal_Create*)pCmd;
@@ -4419,20 +4425,23 @@ bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
 	}
 	else
 	{
-		if (pRole->GetOperatorChannelID() == Dome_ChannelType)
+		if (pRole->GetOperatorChannelID() == Dome_ChannelType || pRole->GetOperatorChannelID() == Self_ChannelType || pRole->GetOperatorChannelID() == Facebook_ChannelType)
 		{
 			UINT count;
 			GC_Cmd_CreateOrder msg;
 			SetMsgInfo(msg, GetMsgType(Main_Recharge, GC_CreateOrder), sizeof(msg));
 			msg.OrderID = pMsg->order_id;
 			msg.ItemID = pMsg->shop_id;
-			char* notify_data = WCharToChar(channel_config->notify_pay_url, count);
-			std::string notifyUrl = notify_data;
-			//LogInfoToFile("DomePay.txt", "Ç©Ãû½á¹û[%s]", data.c_str());
+			msg.PayType = pMsg->pay_type;			
 			TCHARCopy(msg.ProductID, CountArray(msg.ProductID), pMsg->good_id, _tcslen(pMsg->good_id));
-			//WCHAR* url = CharToWChar(notifyUrl.c_str(), count);
-			TCHARCopy(msg.notify_url, CountArray(msg.notify_url), channel_config->notify_pay_url, _tcslen(channel_config->notify_pay_url));
-			free(notify_data);
+			
+			if ((pRole->GetOperatorChannelID() == Facebook_ChannelType && pMsg->pay_type == 2) || pRole->GetOperatorChannelID() == Dome_ChannelType)
+			{
+				char* notify_data = WCharToChar(channel_config->notify_pay_url, count);
+				std::string notifyUrl = notify_data;
+				TCHARCopy(msg.notify_url, CountArray(msg.notify_url), channel_config->notify_pay_url, _tcslen(channel_config->notify_pay_url));
+				free(notify_data);
+			}						
 			pRole->SendDataToClient(&msg);
 			DBR_Cmd_Deal_Create_Log msg_log;
 			msg_log.ItemID = msg.ItemID;
@@ -4443,9 +4452,7 @@ bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
 			TCHARCopy(msg_log.ProductID, CountArray(msg_log.ProductID), pMsg->good_id, _tcslen(pMsg->good_id));
 			SetMsgInfo(msg_log, DBR_Deal_Create_Log, sizeof(msg_log));
 			SendLogDB(&msg_log);
-		}
-
-		
+		}		
 	}
 	return true;
 }
@@ -7001,6 +7008,21 @@ bool FishServer::OnHandleTCPNetworkRecharge(ServerClientData* pClient, NetCmd* p
 	}
 	switch (pCmd->SubCmdType)
 	{
+	case CG_VerifyOrder:
+		{
+			CG_Cmd_VerifyOrder* pMsg = (CG_Cmd_VerifyOrder*)pCmd;
+			int operator_channel_id = pRole->GetOperatorChannelID();
+			if (Google_ChannelType == operator_channel_id || Self_ChannelType == operator_channel_id || operator_channel_id == Facebook_ChannelType)
+			{
+				DBR_Cmd_Verify_Order msg;
+				SetMsgInfo(msg, DBR_Verify_Order, sizeof(msg));
+				msg.order_id = pMsg->OrderID;
+				SendNetCmdToDB(&msg);
+			}
+			
+
+		}
+		break;
 	case CG_CreateOrder:
 		{
 

@@ -76,7 +76,7 @@
       <WarningLevel>Level3</WarningLevel>
       <TreatWarningAsError>false</TreatWarningAsError>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalOptions>/Zm110 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-Zm168 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Common.lib;%(AdditionalDependencies)</AdditionalDependencies>

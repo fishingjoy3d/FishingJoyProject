@@ -1,0 +1,61 @@
+  <Info>
+	  <FishRecharges>
+	  
+		<FishRecharge ID="1" Name="金幣60K" Icon="100" DisCountPrice="8" PreDisCountPrice="8" AddMoney="60000" DisCountPicName="Gold_0" RechargeType="4" AddRewardID="0">
+			<Info PayType="1" PayNO="c0002494"/>
+			<Info PayType="2" PayNO="g_001"/>
+		</FishRecharge>
+		<FishRecharge ID="2" Name="金幣135K" Icon="101" DisCountPrice="16" PreDisCountPrice="18" AddMoney="135000" DisCountPicName="Gold_15" RechargeType="4" AddRewardID="0">
+			<Info PayType="1" PayNO="c0002495"/>
+			<Info PayType="2" PayNO="g_002"/>
+		</FishRecharge>
+		<FishRecharge ID="3" Name="金幣345K" Icon="102" DisCountPrice="40" PreDisCountPrice="46" AddMoney="345000" DisCountPicName="Gold_45" RechargeType="4" AddRewardID="0">
+			<Info PayType="1" PayNO="c0002496"/>
+			<Info PayType="2" PayNO="g_003"/>
+		</FishRecharge>
+		<FishRecharge ID="4" Name="金幣675K" Icon="103" DisCountPrice="80" PreDisCountPrice="90" AddMoney="675000" DisCountPicName="Gold_75" RechargeType="4" AddRewardID="0">
+			<Info PayType="1" PayNO="c0002497"/>
+			<Info PayType="2" PayNO="g_004"/>
+		</FishRecharge>
+		<FishRecharge ID="5" Name="金幣1350K" Icon="104" DisCountPrice="160" PreDisCountPrice="180" AddMoney="1350000" DisCountPicName="Gold_150" RechargeType="4" AddRewardID="0">
+			<Info PayType="1" PayNO="c0002498"/>
+			<Info PayType="2" PayNO="g_005"/>
+		</FishRecharge>
+		<FishRecharge ID="6" Name="金幣3450K" Icon="105" DisCountPrice="400" PreDisCountPrice="460" AddMoney="3450000" DisCountPicName="Gold_450" RechargeType="4" AddRewardID="0">
+			<Info PayType="1" PayNO="c0002499"/>
+			<Info PayType="2" PayNO="g_006"/>
+		</FishRecharge>
+		
+		<FishRecharge ID="7" Name="鑽石60" Icon="500" DisCountPrice="8" PreDisCountPrice="8" AddMoney="60" DisCountPicName="Jewel_0" RechargeType="3" AddRewardID="0">
+			<Info PayType="1" PayNO="c000501"/>
+			<Info PayType="2" PayNO="d_001"/>
+		</FishRecharge>
+		<FishRecharge ID="8" Name="鑽石135" Icon="501" DisCountPrice="16" PreDisCountPrice="18" AddMoney="135" DisCountPicName="Jewel_15" RechargeType="3" AddRewardID="0">
+			<Info PayType="1" PayNO="c000502"/>
+			<Info PayType="2" PayNO="d_002"/>
+		</FishRecharge>
+		
+		<FishRecharge ID="9" Name="鑽石345" Icon="502" DisCountPrice="40" PreDisCountPrice="46" AddMoney="345" DisCountPicName="Jewel_45" RechargeType="3" AddRewardID="0">
+			<Info PayType="1" PayNO="c000503"/>
+			<Info PayType="2" PayNO="d_003"/>
+		</FishRecharge>
+		<FishRecharge ID="10" Name="鑽石675" Icon="503" DisCountPrice="80" PreDisCountPrice="90" AddMoney="675" DisCountPicName="Jewel_75" RechargeType="3" AddRewardID="0">
+			<Info PayType="1" PayNO="c000504"/>
+			<Info PayType="2" PayNO="d_004"/>
+		</FishRecharge>		
+		<FishRecharge ID="11" Name="鑽石1350" Icon="504" DisCountPrice="160" PreDisCountPrice="180" AddMoney="1350" DisCountPicName="Jewel_150" RechargeType="3" AddRewardID="0">
+			<Info PayType="1" PayNO="c000505"/>
+			<Info PayType="2" PayNO="d_005"/>
+		</FishRecharge>			
+		<FishRecharge ID="12" Name="鑽石3450" Icon="505" DisCountPrice="400" PreDisCountPrice="460" AddMoney="3450" DisCountPicName="Jewel_450" RechargeType="3" AddRewardID="0">
+			<Info PayType="1" PayNO="c000500"/>
+			<Info PayType="2" PayNO="d_006"/>
+		</FishRecharge>
+		
+		<FishRecharge ID="13" Name="購買月卡" Icon="505" DisCountPrice="40" PreDisCountPrice="40" AddMoney="0" DisCountPicName="Jewel_0" RechargeType="5" AddRewardID="13">
+			<Info PayType="1" PayNO="c000506"/>
+			<Info PayType="2" PayNO="s_001"/>
+		</FishRecharge>
+		
+	  </FishRecharges>
+  </Info>
