@@ -805,7 +805,7 @@ public class FishDataInfo
     public const int PasswordMinLength = 3;
 
     public const int NickNameLength = 16;
-    public const int NickNameMinLength = 1;
+    public const int NickNameMinLength = 2;
 
     //public const int MaxAdderLength = 32;
     //public const int MinAdderLength = 1;

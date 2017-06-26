@@ -394,7 +394,7 @@
 
   <UOM_Role_NickName_Sucess IsShow="1">昵稱修改成功</UOM_Role_NickName_Sucess>
   <UOM_Role_NickName_Failed IsShow="1">昵稱修改失敗</UOM_Role_NickName_Failed>
-  <UOM_Role_NickName_Failed_1 IsShow="1">修改的昵稱不合法(限長度1~16個任意字符)</UOM_Role_NickName_Failed_1>
+  <UOM_Role_NickName_Failed_1 IsShow="1">修改的昵稱不合法(限長度2~16個任意字符)</UOM_Role_NickName_Failed_1>
   <UOM_Role_NickName_Failed_2 IsShow="0">修改名稱失敗 修改前和修改後的名稱一樣 無變化</UOM_Role_NickName_Failed_2>
   <UOM_Role_NickName_Failed_3 IsShow="1">該昵稱已被佔用</UOM_Role_NickName_Failed_3>
   <UOM_Role_NickName_Failed_4 IsShow="1">改名卡不夠 無法修改昵稱</UOM_Role_NickName_Failed_4>
