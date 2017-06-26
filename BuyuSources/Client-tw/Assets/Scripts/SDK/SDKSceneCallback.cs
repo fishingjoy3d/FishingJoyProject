@@ -147,10 +147,16 @@ class SDKSceneCallback:MonoBehaviour
 
     public void GPCallback(string str)
     {
+        string[] results = str.Split('|');
         bool isValid = false;
-        if (str == "0")
+        if (results[0] == "0")
         {
             isValid = true;
+            if (results.Length >= 3)
+            {
+                string json = results[1];
+                string signature = results[2];
+            }
         }
         SDKMgr.Instance.SDKCallback.PayCallback(isValid);
 

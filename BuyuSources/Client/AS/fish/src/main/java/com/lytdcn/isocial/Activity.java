@@ -152,11 +152,11 @@ public class Activity extends UnityPlayerActivity {
                 alert("Thank you forupgrading to premium!");
                 mIsPremium = true;
             }
-            String orderId = purchase.getOrderId();
+            String originalJson = purchase.getOriginalJson();
             String signature = purchase.getSignature();
 
-            PopUpsManager.showToast("orderId " + orderId + " signature " + signature);
-            SendToUnityMessage("0");
+            PopUpsManager.showToast("originalJson " + originalJson + " signature " + signature);
+            SendToUnityMessage("0|" + originalJson + "|" + signature);
         }
     };
 
