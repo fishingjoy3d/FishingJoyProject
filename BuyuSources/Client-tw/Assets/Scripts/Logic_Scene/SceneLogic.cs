@@ -269,7 +269,7 @@ public class SceneLogic:ILogic, ICmdHandler
     {
         byte serverSeat = jrd.Seat;
         byte serverLauncherType = jrd.LauncherType;
-        SceneObjMgr.Instance.SwapBackgroundImage(jrd.BackgroundImage);
+        SceneObjMgr.Instance.SwapBackgroundImage(jrd.BackgroundImage, false);
         m_RoomType = jrd.RoomID;
         m_RoomRateIndex = FishConfig.Instance.m_TableInfo.m_TableConfig[m_RoomType].MinRate;// ExtraSetting.RoomDataList[m_RoomType].RoomRateIdx;
         //管理器初始化

@@ -170,12 +170,14 @@ class RoleRank
         catch (Exception ex)
         {
 
-            string FtpFileName = ServerSetting.RT_XML_DIR + FileName;
+            //string FtpFileName = ServerSetting.RT_XML_DIR + FileName;
             //从FTP下载文件
-            FTPClient.Instance.AddDownload(DownloadType.DOWNLOAD_RANK_INFO, FtpFileName, null);
+            //FTPClient.Instance.AddDownload(DownloadType.DOWNLOAD_RANK_INFO, FtpFileName, null);
+
+            string fileUrl = ServerSetting.HTTP_XML_DIR + FileName;
+            ResourceProcess.Instance.AddDownloadFile(DownloadType.DOWNLOAD_RANK_INFO, fileUrl);
             return false;
         }
-
     }
     private bool LoadRoleRankXml(bool IsError = false)
     {

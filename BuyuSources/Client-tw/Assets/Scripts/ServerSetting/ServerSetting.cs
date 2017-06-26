@@ -63,6 +63,7 @@ public class ServerSetting
     public static bool      ShowThirdLoginBtn = false;//显示第三方登录按钮
     public static bool      ShowShare = false;//显示分享按钮
     public static bool      SendOperatorLogon = true;//统一的登录接口
+    public static string    HTTP_XML_DIR = "http://47.52.92.120/xml/";
 
     public static void GlobalInit()
     {

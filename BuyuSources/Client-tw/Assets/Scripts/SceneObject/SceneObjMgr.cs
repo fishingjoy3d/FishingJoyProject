@@ -37,6 +37,7 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
     Animator     m_BackAnim;
     Texture2D    m_BackTex;
     GameObject   m_NewBackground;
+    GameObject   m_SceneLogo;
     UILabel      m_LogLabel;
     UILabel      m_VerLabel;
     string       m_VerText;
@@ -117,17 +118,6 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
             return m_BackTex;
         }
     }
-    public GameObject NewBackground
-    {
-        get
-        {
-            if (m_NewBackground == null)
-            {
-                m_NewBackground = m_UIRoot.transform.GetChild(1).GetChild(1).gameObject;
-            }
-            return m_NewBackground;
-        }
-    }
     public void PlayBack(BackAnimType eType)
     {
         switch (eType)
@@ -155,12 +145,12 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
                 break;
         }
     }
-    public void ResetBackTex()
+    public void ResetBackTex(bool showLogo = true)
     {
         m_BackImageIdx = 255;
-        ReplaceBackImg(BackgroundTex);
+        ReplaceBackImg(BackgroundTex, showLogo);
     }
-    public void SwapBackgroundImage(byte imgIdx)
+    public void SwapBackgroundImage(byte imgIdx, bool showLogo = true)
     {
         if (m_BackImageIdx == imgIdx)
             return;
@@ -171,9 +161,9 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
             m_BackImageIdx = 0;
             tex = (Texture2D)ResManager.Instance.LoadObject("BackImg" + m_BackImageIdx, "SceneRes/BackImages/", ResType.SceneRes, typeof(Texture2D), false);
         }
-        ReplaceBackImg(tex);
+        ReplaceBackImg(tex, showLogo);
     }
-    void ReplaceBackImg(Texture2D tex)
+    void ReplaceBackImg(Texture2D tex, bool showLogo = true)
     {
         Texture2D texold = (Texture2D)m_Background.GetComponent<Renderer>().material.mainTexture;
         if (texold != null && texold != m_BackTex)
@@ -186,6 +176,7 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
             m_NewBackground.SetActive(true);
         }
         m_Background.GetComponent<Renderer>().material.mainTexture = tex;
+        m_SceneLogo.SetActive(showLogo);
     }
     public GameObject SceneBackground
     {
@@ -201,12 +192,20 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
             return m_SceneCamera;
         }
     }
+    public GameObject SceneLogo
+    {
+        get
+        {
+            return m_SceneLogo;
+        }
+    }
     void GetSceneObj()
     {
         m_SceneCamera   = GameObject.Find("SceneCamera");
         m_UIRoot        = GameObject.Find("SceneUIRoot");
         m_Background    = GameObject.Find("SceneBackground");
         m_NewBackground = m_UIRoot.transform.GetChild(1).GetChild(1).gameObject;
+        m_SceneLogo     = m_NewBackground.transform.GetChild(0).gameObject;
         InitUIRoot();
         return;
     }

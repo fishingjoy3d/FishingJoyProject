@@ -19,6 +19,7 @@ public class HallLogic:ILogic, ICmdHandler
         HallRunTimeInfo.Init(this);
         NetServices.Instance.CmdHandler = this;
         State = HallState.HALL_WAIT;
+        SceneObjMgr.Instance.ResetBackTex(false);
         return true;
     }
     public void ResetHall()

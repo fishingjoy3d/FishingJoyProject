@@ -43,7 +43,7 @@ public class LogonLogicUI : ILogicUI
                 BeginChangeLogonWnd();
             }
         }
-        SceneObjMgr.Instance.ResetBackTex();
+        SceneObjMgr.Instance.ResetBackTex(true);
         LogicManager.Instance.InitCompletion();
         return true;
     }

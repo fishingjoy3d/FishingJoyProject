@@ -207,10 +207,13 @@ class RoleMonth
         }
         catch (Exception ex)
         {
-            m_MonthRankMap.m_RankInfo.Remove(MonthID);
+            //m_MonthRankMap.m_RankInfo.Remove(MonthID);
             //进行FTP下载 等待回调处理
-            string FtpFileName = ServerSetting.RT_XML_DIR + FileName;
-            FTPClient.Instance.AddDownload(DownloadType.DOWNLOAD_Month_Rank, FtpFileName, FileName);//
+            //string FtpFileName = ServerSetting.RT_XML_DIR + FileName;
+            //FTPClient.Instance.AddDownload(DownloadType.DOWNLOAD_Month_Rank, FtpFileName, FileName);//
+
+            string fileUrl = ServerSetting.HTTP_XML_DIR + FileName;
+            ResourceProcess.Instance.AddDownloadFile(DownloadType.DOWNLOAD_Month_Rank, fileUrl);
             return false;
         }
     }
