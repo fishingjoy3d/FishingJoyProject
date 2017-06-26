@@ -883,6 +883,7 @@ public class FishDataInfo
 
     public const int MAX_SIGN_CODE = 1024;
     public const int MAX_UrlLength = 512;
+    public const int MAX_Channel_Order_ID = 128;
 
     public static bool IsCanUsePhone(UInt64 PhoneNumber)
     {
@@ -3532,7 +3533,9 @@ public class GC_Cmd_CreateOrder : NetCmdBase
 public class CG_Cmd_VerifyOrder : NetCmdBase
 {
     [TypeInfo(0)]
-    public int OrderID;
+    public int GameOrderID;
+    [TypeInfo(1, FishDataInfo.MAX_Channel_Order_ID)]
+    public string ChannelOrderID;
 }
 
 //Announcement

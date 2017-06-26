@@ -169,14 +169,12 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
         if (texold != null && texold != m_BackTex)
         {
             Resources.UnloadAsset(texold);
-            m_NewBackground.SetActive(false);
-        }
-        else
-        {
-            m_NewBackground.SetActive(true);
         }
         m_Background.GetComponent<Renderer>().material.mainTexture = tex;
+
+        m_NewBackground.SetActive(tex == m_BackTex);
         m_SceneLogo.SetActive(showLogo);
+        
     }
     public GameObject SceneBackground
     {

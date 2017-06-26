@@ -152,21 +152,18 @@ class SDKSceneCallback:MonoBehaviour
         if (results[0] == "0")
         {
             isValid = true;
-            if (results.Length >= 3)
+            if (results.Length >= 2)
             {
-                string json = results[1];
-                string signature = results[2];
+               string channelOrderID = results[1];
+
+                CG_Cmd_VerifyOrder ncb = new CG_Cmd_VerifyOrder();
+                ncb.SetCmdType(NetCmdType.CMD_CG_VerifyOrder);
+                ncb.GameOrderID = SDKMgr.Instance.PayData.OrderID;
+                ncb.ChannelOrderID = channelOrderID;
+                NetServices.Instance.Send<CG_Cmd_VerifyOrder>(ncb);
             }
         }
         SDKMgr.Instance.SDKCallback.PayCallback(isValid);
-
-        if(isValid)
-        {
-            CG_Cmd_VerifyOrder ncb = new CG_Cmd_VerifyOrder();
-            ncb.SetCmdType(NetCmdType.CMD_CG_VerifyOrder);
-            ncb.OrderID = SDKMgr.Instance.PayData.OrderID;
-            NetServices.Instance.Send<CG_Cmd_VerifyOrder>(ncb);
-        }
     }
 #endif
 }
