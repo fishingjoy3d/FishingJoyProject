@@ -12,8 +12,8 @@ using Facebook.Unity;
 public class SDKChannelTW : SDKChannel
 {
     const string channel_name = "TW";
-    const bool mDebug = false;
-    const string Share_Uri = "https://www.facebook.com/Fishing3D.Sega";
+    const bool mDebug = true;
+    const string Share_Uri = "https://www.facebook.com/517655241715082";
     const string FB_Link = "https://www.facebook.com/517655241715082";
 
     public override void GlobalInit()
@@ -331,12 +331,22 @@ public class SDKChannelTW : SDKChannel
         }
     }
 
-    public override void GetAppLink()
+    public override void GetAppLink(int index)
     {
-        FB.GetAppLink(GetAppLinkCallback);
+        switch (index)
+        {
+            case 1:
+                FB.API(FB_Link, HttpMethod.POST, callback: GetAppLinkCallback);
+                break;
+
+            default:
+                FB.ShareLink(new System.Uri(Share_Uri), callback: ShareCallback);
+                break;
+        }
+
     }
 
-    private void GetAppLinkCallback(IAppLinkResult result)
+    private void GetAppLinkCallback(IGraphResult result)
     {
         if (result == null)
         {

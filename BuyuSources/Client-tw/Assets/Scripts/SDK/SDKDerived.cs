@@ -64,7 +64,7 @@ public class SDKDerived : ISDKInterface
     {
         return false;
     }
-    public void GetAppLink()
+    public void GetAppLink(int index)
     {
 
     }
