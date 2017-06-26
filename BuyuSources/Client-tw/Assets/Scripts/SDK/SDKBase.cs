@@ -90,6 +90,10 @@ public class SDKBase:ISDKInterface
     {
         return false;
     }
+    public void GetAppLink()
+    {
+
+    }
 }
 
 
@@ -152,6 +156,10 @@ public class SDKBaseNoSDK : ISDKInterface
     public bool HaveNickname()
     {
         return false;
+    }
+    public void GetAppLink()
+    {
+
     }
 }
 

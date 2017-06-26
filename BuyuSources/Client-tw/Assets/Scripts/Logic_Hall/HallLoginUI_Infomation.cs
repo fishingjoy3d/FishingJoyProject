@@ -528,11 +528,11 @@ public class HallLoginUI_Infomation : HallLoginUI_BaseWind
                 }                
             case 9:     //修改昵称
                 {
-                    if (m_ChangeUserInFInPut.value.Length < 1)
-                    {
-                        GlobalHallUIMgr.Instance.ShowSystemTipsUI("昵称不能为空", 1, false);
-                        return;
-                    }
+                    //if (m_ChangeUserInFInPut.value.Length < 1)
+                    //{
+                    //    GlobalHallUIMgr.Instance.ShowSystemTipsUI("昵称不能为空", 1, false);
+                    //    return;
+                    //}
                     PlayerRole.Instance.RoleInfo.ChangeNickName(m_ChangeUserInFInPut.value);
                     break;
                 }                        

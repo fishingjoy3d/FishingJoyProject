@@ -178,6 +178,7 @@ public class ApplyCodeWnd : BaseWnd
         m_UIInput = m_BaseTrans.GetChild(1).GetComponent<UIInput>();
         UIEventListener.Get(m_BaseTrans.GetChild(0).gameObject).onClick = CloseMsg;
         UIEventListener.Get(m_BaseTrans.GetChild(2).gameObject).onClick = OnOK;
+        m_UIInput.value = StringTable.GetString("Relation_Add_Message");
     }
     public void ShowApplyCodeWnd(uint UserID)
     {

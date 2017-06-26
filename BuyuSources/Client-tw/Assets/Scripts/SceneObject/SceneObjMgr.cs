@@ -36,6 +36,7 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
     byte         m_BackImageIdx;
     Animator     m_BackAnim;
     Texture2D    m_BackTex;
+    GameObject   m_NewBackground;
     UILabel      m_LogLabel;
     UILabel      m_VerLabel;
     string       m_VerText;
@@ -116,6 +117,17 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
             return m_BackTex;
         }
     }
+    public GameObject NewBackground
+    {
+        get
+        {
+            if (m_NewBackground == null)
+            {
+                m_NewBackground = m_UIRoot.transform.GetChild(1).GetChild(1).gameObject;
+            }
+            return m_NewBackground;
+        }
+    }
     public void PlayBack(BackAnimType eType)
     {
         switch (eType)
@@ -165,7 +177,14 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
     {
         Texture2D texold = (Texture2D)m_Background.GetComponent<Renderer>().material.mainTexture;
         if (texold != null && texold != m_BackTex)
+        {
             Resources.UnloadAsset(texold);
+            m_NewBackground.SetActive(false);
+        }
+        else
+        {
+            m_NewBackground.SetActive(true);
+        }
         m_Background.GetComponent<Renderer>().material.mainTexture = tex;
     }
     public GameObject SceneBackground
@@ -187,6 +206,7 @@ public class SceneObjMgr:Singleton<SceneObjMgr>
         m_SceneCamera   = GameObject.Find("SceneCamera");
         m_UIRoot        = GameObject.Find("SceneUIRoot");
         m_Background    = GameObject.Find("SceneBackground");
+        m_NewBackground = m_UIRoot.transform.GetChild(1).GetChild(1).gameObject;
         InitUIRoot();
         return;
     }

@@ -53,7 +53,7 @@ class RoleRelationRequest
             MsgEventHandle.HandleMsg(pUOM);
             return false;
         }
-        if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(1, FishDataInfo.MAX_RelationRequest_MsgLength, MessageInfo, StringCheckType.SCT_Normal))
+        if (!FishConfig.Instance.m_ErrorString.CheckStringIsError(0, FishDataInfo.MAX_RelationRequest_MsgLength, MessageInfo, StringCheckType.SCT_Normal))
         {
             tagUserOperationEvent pUOM = new tagUserOperationEvent(UserOperateMessage.UOM_RelationRequest_SendRequest_Failed_2);
             MsgEventHandle.HandleMsg(pUOM);

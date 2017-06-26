@@ -8,7 +8,7 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
     GameObject          m_CenterObj;
     GameObject[]        m_INfObj = new GameObject[3];
     GameObject[]        m_LeftWarning = new GameObject[2];     //有任务完成或活动完成界面红点提示
-    WindBtn[]           m_LiftBtn = new WindBtn[4];
+    WindBtn[]           m_LiftBtn = new WindBtn[5];
     Benefit m_benefit = new Benefit();
     Object[]            m_EffectRigthBtn = new Object[3];
     Object[]            m_EffectLiftBtn = new Object[3];
@@ -135,13 +135,14 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
                 m_LiftBtn[i].m_BtnObj = baseT.GetChild(i).gameObject;
                 m_LeftTrans[i - 2] = baseT.GetChild(i);
                 m_CDKeyOldPos = m_LeftTrans[i - 2].localPosition;
-
-
             }
             else
             {
                 m_LiftBtn[i].m_BtnObj = baseT.GetChild(i).gameObject;
-                m_LeftWarning[i] = baseT.GetChild(i).GetChild(0).gameObject;
+                if (i <= 1)
+                {
+                    m_LeftWarning[i] = baseT.GetChild(i).GetChild(0).gameObject;
+                }
             }
             m_LiftBtn[i].m_Btn = m_LiftBtn[i].m_BtnObj.GetComponent<UIButton>();
             m_LiftBtn[i].m_IsChecked = false;
@@ -325,6 +326,11 @@ public class HallLogicUI_Main:HallLoginUI_BaseWind
                 case 3:         //对兑码
                     {
                         HallRunTimeInfo.Instance_UI.m_loginUi.CDKeyWnd.ShowCDKeyWnd();
+                        break;
+                    }
+                case 4:         // 签到
+                    {
+                        HallRunTimeInfo.Login_UI.ChangeHallWind(HallLogicUIStatue.Hall_State.Hall_Activity);
                         break;
                     }
                 default:

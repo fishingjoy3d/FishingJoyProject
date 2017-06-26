@@ -29,12 +29,16 @@ class SettingWind : GlobalBaseWind
         m_BgVBar.m_Bar.value = m_BgValue;
         m_BgVBar.m_SpWidth = -m_BgVBar.m_ValueBg.GetViewSize().x;
         m_BgVBar.render = m_BgVBar.m_Bar.transform.GetComponent<Renderer>();
+        m_BgVBar.m_Overline = BaseTranF.GetChild(1).GetChild(1).GetComponent<UISprite>();
+        m_BgVBar.m_Overline.gameObject.SetActive(m_BgVBar.m_Bar.value == 0);
 
         m_VBg.m_Bar = BaseTranF.GetChild(2).GetChild(0).GetComponent<UIScrollBar>();
         m_VBg.m_ValueBg = BaseTranF.GetChild(2).GetChild(0).GetChild(2).GetComponent<UIPanel>();
         m_VBg.m_Bar.value = m_Value;
         m_VBg.m_SpWidth = -m_VBg.m_ValueBg.GetViewSize().x;
         m_VBg.render = m_VBg.m_Bar.transform.GetComponent<Renderer>();
+        m_VBg.m_Overline = BaseTranF.GetChild(2).GetChild(1).GetComponent<UISprite>();
+        m_VBg.m_Overline.gameObject.SetActive(m_VBg.m_Bar.value == 0);
 
         for (byte i = 0; i < Btns.Length; ++i)//0 鱼类图鉴  1 关于我们 2 返回上一级 3 关闭窗口
         {
@@ -72,12 +76,14 @@ class SettingWind : GlobalBaseWind
             m_BgValue = m_BgVBar.m_Bar.value;
             SetBgValueOffset();
             GlobalAudioMgr.Instance.SetBGMusicVolue(m_BgValue);
+            m_BgVBar.m_Overline.gameObject.SetActive(m_BgVBar.m_Bar.value == 0);
         }
         if (m_Value != (1 - m_VBg.m_Bar.value) || m_VBg.m_Bar.value == 0 || m_VBg.m_Bar.value == 1)
         {
             m_Value = m_VBg.m_Bar.value;
             SetValueOffset();
             GlobalAudioMgr.Instance.SetMusicVolue(m_Value);
+            m_VBg.m_Overline.gameObject.SetActive(m_VBg.m_Bar.value == 0);
         }
     }
     //读取SD卡的音效
@@ -153,6 +159,7 @@ class SettingWind : GlobalBaseWind
         public UIScrollBar m_Bar;
         public float m_SpWidth;
         public Renderer render;
+        public UISprite m_Overline;
     }
 }
 class FishShow : GlobalBaseWind
@@ -353,9 +360,14 @@ public class AboutOur : GlobalBaseWind
     {
         Init_GameObj(false);
         UIEventListener.Get(BaseTranF.GetChild(0).gameObject).onClick = OnCloseWnd;
+        UIEventListener.Get(BaseTranF.GetChild(1).gameObject).onClick = OnClickLink;
     }
     void OnCloseWnd(GameObject go)
     {
         GlobalHallUIMgr.Instance.CloseAboutOurWnd();
+    }
+    void OnClickLink(GameObject go)
+    {
+        SDKMgr.Instance.SDK.GetAppLink();
     }
 }

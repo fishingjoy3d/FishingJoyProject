@@ -78,6 +78,7 @@
   <Relation_Accept_Present>已領取：{0}/{1}</Relation_Accept_Present>
   <Relation_Accept_Present_2>今日已領取：{0}/{1}</Relation_Accept_Present_2>
   <Relation_Add_Fail_2>他已經是你好友了</Relation_Add_Fail_2>
+  <Relation_Add_Message>我可以邀請您成爲我的朋友麼？</Relation_Add_Message>
 
   <GlobelShop_Shop_Sucess>金幣商店購買成功</GlobelShop_Shop_Sucess>
   <GlobelShop_Shop_Field>金幣商店購買失敗</GlobelShop_Shop_Field>
@@ -365,7 +366,7 @@
   <VIP_UnLock_Tips>[282858]使用該技能需要[ff0000]VIP{0}[-]，是否打開VIP特權介面？[-]</VIP_UnLock_Tips>
   <Pay_Tips>您不滿足解鎖條件，是否補充鑽石？</Pay_Tips>
   <VIP_Present_Tips>VIP2以下不允許贈送</VIP_Present_Tips>
-  <VIP_Pay_Sum>再充值{0}元升級到VIP{1}，高級VIP可同時享有所有低級特權</VIP_Pay_Sum>
+  <VIP_Pay_Sum>再儲值HK${0}，您就可以升級到VIP{1}了哦！高等級VIP也可以同時享受低等級的VIP特權哦！</VIP_Pay_Sum>
   <VIP_Pay_Sum1>VIP5暫未開放，您的充值金額能持續累積！</VIP_Pay_Sum1>
   <VIP_Privilege_Describe0>免費獲得[fff000]{0}[-]</VIP_Privilege_Describe0>
   <VIP_Privilege_Describe1>開啟炮彈鎖定技能</VIP_Privilege_Describe1>
@@ -393,7 +394,7 @@
 
   <UOM_Role_NickName_Sucess IsShow="1">昵稱修改成功</UOM_Role_NickName_Sucess>
   <UOM_Role_NickName_Failed IsShow="1">昵稱修改失敗</UOM_Role_NickName_Failed>
-  <UOM_Role_NickName_Failed_1 IsShow="1">修改的昵稱不合法(限長度2~8個漢字)</UOM_Role_NickName_Failed_1>
+  <UOM_Role_NickName_Failed_1 IsShow="1">修改的昵稱不合法(限長度1~16個任意字符)</UOM_Role_NickName_Failed_1>
   <UOM_Role_NickName_Failed_2 IsShow="0">修改名稱失敗 修改前和修改後的名稱一樣 無變化</UOM_Role_NickName_Failed_2>
   <UOM_Role_NickName_Failed_3 IsShow="1">該昵稱已被佔用</UOM_Role_NickName_Failed_3>
   <UOM_Role_NickName_Failed_4 IsShow="1">改名卡不夠 無法修改昵稱</UOM_Role_NickName_Failed_4>

@@ -12,8 +12,9 @@ using Facebook.Unity;
 public class SDKChannelTW : SDKChannel
 {
     const string channel_name = "TW";
-    const bool mDebug = false;
+    const bool mDebug = true;
     const string Share_Uri = "https://www.facebook.com/Fishing3D.Sega";
+    const string FB_Link = "https://www.facebook.com/517655241715082";
 
     public override void GlobalInit()
     {
@@ -320,6 +321,52 @@ public class SDKChannelTW : SDKChannel
             if (mDebug)
             {
                 AN_PoupsProxy.ShowToast("QueryNickname Success RawResult IsNullOrEmpty ");
+            }
+        }
+    }
+
+    public override void GetAppLink()
+    {
+        FB.GetAppLink(GetAppLinkCallback);
+    }
+
+    private void GetAppLinkCallback(IAppLinkResult result)
+    {
+        if (result == null)
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("GetAppLink null");
+            }
+        }
+
+        // Some platforms return the empty string instead of null.
+        if (!string.IsNullOrEmpty(result.Error))
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("GetAppLink Error " + result.Error);
+            }
+        }
+        else if (result.Cancelled)
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("GetAppLink Cancelled");
+            }
+        }
+        else if (!string.IsNullOrEmpty(result.RawResult))
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("GetAppLink Success RawResult " + result.RawResult);
+            }
+        }
+        else
+        {
+            if (mDebug)
+            {
+                AN_PoupsProxy.ShowToast("GetAppLink Success RawResult IsNullOrEmpty");
             }
         }
     }

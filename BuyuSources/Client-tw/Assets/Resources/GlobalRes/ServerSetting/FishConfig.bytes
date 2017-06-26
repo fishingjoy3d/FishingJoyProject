@@ -3578,19 +3578,19 @@ VIP 配置
         AddUseMedalSum 當前VIP提升的每天兌換次數
         AddCatchFishRate 當前VIP 提升的捕魚概率  50表示提升 50%		
 	-->
-    <Vip VipLevel="1" UpperVipLevel="2" VipName="累積儲值 10 元" VipTitle="VIP1" VipDec="救濟金領取次數 +2" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="2" AddAlmsRate="0"
+    <Vip VipLevel="1" UpperVipLevel="2" VipName="累計儲值HK$20" VipTitle="VIP1" VipDec="救濟金領取次數 +2" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="2" AddAlmsRate="0"
 
-AddMonthScoreRate="0" AddReChargeRate="0" RechargeRMBSum="10" AddLauncherID="1" AddUseMedalSum="1" AddCatchFishRate="0" />
-    <Vip VipLevel="2" UpperVipLevel="3" VipName="累積儲值 50 元" VipTitle="VIP2" VipDec="開啟“炮彈鎖定”技能" LauncherReBoundNum="1" IsCanLauncherLocking="1" AddAlmsSum="3"
+AddMonthScoreRate="0" AddReChargeRate="0" RechargeRMBSum="20" AddLauncherID="1" AddUseMedalSum="1" AddCatchFishRate="0" />
+    <Vip VipLevel="2" UpperVipLevel="3" VipName="累計儲值HK$50" VipTitle="VIP2" VipDec="開啟“炮彈鎖定”技能" LauncherReBoundNum="1" IsCanLauncherLocking="1" AddAlmsSum="3"
 
 AddAlmsRate="0" AddMonthScoreRate="0" AddReChargeRate="10" RechargeRMBSum="50" AddLauncherID="2" AddUseMedalSum="1" AddCatchFishRate="0" />
-    <Vip VipLevel="3" UpperVipLevel="4" VipName="累積儲值 200 元" VipTitle="VIP3" VipDec="儲值額外返利 10%" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="0"
+    <Vip VipLevel="3" UpperVipLevel="4" VipName="累計儲值HK$100" VipTitle="VIP3" VipDec="儲值額外返利 10%" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="0"
 
-AddAlmsRate="50" AddMonthScoreRate="0" AddReChargeRate="0" RechargeRMBSum="200" AddLauncherID="3" AddUseMedalSum="1" AddCatchFishRate="0" />
-    <Vip VipLevel="4" UpperVipLevel="0" VipName="累積儲值 800 元" VipTitle="VIP4" VipDec="比賽額外積分 +2%" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="0" AddAlmsRate="0"
+AddAlmsRate="50" AddMonthScoreRate="0" AddReChargeRate="0" RechargeRMBSum="100" AddLauncherID="3" AddUseMedalSum="1" AddCatchFishRate="0" />
+    <Vip VipLevel="4" UpperVipLevel="0" VipName="累計儲值HK$200" VipTitle="VIP4" VipDec="比賽額外積分 +2%" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="0" AddAlmsRate="0"
 
-AddMonthScoreRate="2" AddReChargeRate="0" RechargeRMBSum="800" AddLauncherID="4" AddUseMedalSum="1" AddCatchFishRate="0" />
-    <Vip VipLevel="5" UpperVipLevel="0" VipName="累積儲值 999999 元" VipTitle="VIP5" VipDec="額外提升捕魚幾率" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="0"
+AddMonthScoreRate="2" AddReChargeRate="0" RechargeRMBSum="200" AddLauncherID="4" AddUseMedalSum="1" AddCatchFishRate="0" />
+    <Vip VipLevel="5" UpperVipLevel="0" VipName="累計儲值HK$999999" VipTitle="VIP5" VipDec="額外提升捕魚幾率" LauncherReBoundNum="1" IsCanLauncherLocking="0" AddAlmsSum="0"
 
 AddAlmsRate="0" AddMonthScoreRate="0" AddReChargeRate="0" RechargeRMBSum="999999" AddLauncherID="5" AddUseMedalSum="1" AddCatchFishRate="0" />
   </FishVips>

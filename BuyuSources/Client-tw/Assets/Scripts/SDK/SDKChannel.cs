@@ -77,6 +77,10 @@ public class SDKChannel:ISDKInterface
     {
         return false;
     }
+    public virtual void GetAppLink()
+    {
+
+    }
 }
 #else
 public class SDKChannel:ISDKInterface
