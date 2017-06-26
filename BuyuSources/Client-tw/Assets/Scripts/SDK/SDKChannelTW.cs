@@ -12,7 +12,7 @@ using Facebook.Unity;
 public class SDKChannelTW : SDKChannel
 {
     const string channel_name = "TW";
-    const bool mDebug = true;
+    const bool mDebug = false;
     const string Share_Uri = "https://www.facebook.com/Fishing3D.Sega";
     const string FB_Link = "https://www.facebook.com/517655241715082";
 
@@ -165,6 +165,12 @@ public class SDKChannelTW : SDKChannel
     private void GPPay(string buyKey)
     {
         m_AndroidContext.Call("Pay", buyKey, SDKMgr.Instance.CallbackObjName, "GPCallback");
+
+        //SDKSceneCallback sceneCallback = GameObject.FindObjectOfType<SDKSceneCallback>();
+        //if (sceneCallback != null)
+        //{
+        //    sceneCallback.GPCallback("0|GPA.3678-3274-3426-267890");
+        //}
     }
 
     protected void HandlePayResult(IPayResult result)
