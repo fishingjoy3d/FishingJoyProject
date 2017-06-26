@@ -375,14 +375,14 @@ public class Launcher
     {
         if (m_bMyself)
         {
-            m_LabelDiamond.text = PlayerRole.Instance.RoleInfo.RoleMe.GetCurrency().ToString();
+            m_LabelDiamond.text = Utility.NumToString(PlayerRole.Instance.RoleInfo.RoleMe.GetCurrency());
         }
         else
         {
             if (SceneRuntime.PlayerMgr.GetPlayer(clientSeat) == null)
                 return;
         }
-        m_LabelScore.text = PlayerRole.Instance.GetPlayerGlobelBySeat(clientSeat).ToString();
+        m_LabelScore.text = Utility.NumToString(PlayerRole.Instance.GetPlayerGlobelBySeat(clientSeat));
     }
     public void UpdateVipLevelData(uint UserID)
     {
