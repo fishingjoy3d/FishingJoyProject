@@ -333,17 +333,31 @@ public class SDKChannelTW : SDKChannel
 
     public override void GetAppLink(int index)
     {
+        string url = FB_Link;
+        HttpMethod method = HttpMethod.POST;
         switch (index)
         {
             case 1:
-                FB.API(FB_Link, HttpMethod.POST, callback: GetAppLinkCallback);
+                url = FB_Link;
+                method = HttpMethod.POST;
                 break;
-
+            case 2:
+                url = FB_Link;
+                method = HttpMethod.GET;
+                break;
+            case 3:
+                url = "https://www.facebook.com/517655241715082/dialog/pagetab?app_id=" + FB.AppId + "&redirect_uri=" + FB_Link;
+                method = HttpMethod.POST;
+                break;
+            case 4:
+                url = "https://www.facebook.com/517655241715082/dialog/pagetab?app_id=" + FB.AppId + "&redirect_uri=" + FB_Link;
+                method = HttpMethod.GET;
+                break;
             default:
-                FB.ShareLink(new System.Uri(Share_Uri), callback: ShareCallback);
+                //FB.ShareLink(new System.Uri(Share_Uri), callback: ShareCallback);
                 break;
         }
-
+        FB.API(url, method, callback: GetAppLinkCallback);
     }
 
     private void GetAppLinkCallback(IGraphResult result)
