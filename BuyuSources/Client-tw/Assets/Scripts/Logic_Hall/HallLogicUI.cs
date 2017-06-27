@@ -105,10 +105,12 @@ public class HallLogicUI:ILogicUI
         LogicManager.Instance.InitCompletion();
         GlobalEffectMgr.Instance.CloseLoadingMessage();
         GlobalHallUIMgr.Instance.AdjustNoticePos();
-        if (PlayerRole.Instance.RoleStatesMessage.GetCheckStates())
-        {
-            ChangeHallWind(HallLogicUIStatue.Hall_State.Hall_Activity);
-        }
+
+        GlobalHallUIMgr.Instance.ShowMonthCardWnd();
+        //if (PlayerRole.Instance.RoleStatesMessage.GetCheckStates())
+        //{
+        //    ChangeHallWind(HallLogicUIStatue.Hall_State.Hall_Activity);
+        //}
         yield break;
     }
     public void SetMyHeader(Texture2D tex)
