@@ -77,7 +77,7 @@ public class SDKChannel:ISDKInterface
     {
         return false;
     }
-    public virtual void GetAppLink(int index)
+    public virtual void OpenFacebook()
     {
 
     }

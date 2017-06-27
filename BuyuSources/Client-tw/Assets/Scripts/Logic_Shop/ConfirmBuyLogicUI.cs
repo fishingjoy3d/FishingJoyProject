@@ -94,7 +94,7 @@ public class ConfirmBuyLogicUI : BaseWnd
         }
         else
         {
-            m_GoodsSum.text = "x " + FishConfig.Instance.m_ShopInfo.ShopMap[shopID].ShopItemMap[onlyID].ItemInfo.ItemSum.ToString();
+            m_GoodsSum.text = "x " + Utility.NumToThousand(FishConfig.Instance.m_ShopInfo.ShopMap[shopID].ShopItemMap[onlyID].ItemInfo.ItemSum);
             m_ItemSum = itemSum;
             m_ItemSumLabel.text = m_ItemSum.ToString();
         }

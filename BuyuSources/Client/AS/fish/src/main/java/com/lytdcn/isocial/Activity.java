@@ -7,9 +7,11 @@ import com.util.Inventory;
 import com.util.Purchase;
 
 import android.app.AlertDialog;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
+import android.content.Context;
 
 import com.androidnative.popups.PopUpsManager;
 
@@ -285,5 +287,20 @@ public class Activity extends UnityPlayerActivity {
     void SendToUnityMessage(String Sendmessage) {
         UnityPlayer.UnitySendMessage(mCallbackObj, mCallbackMethod,
                 Sendmessage);
+    }
+
+    Intent getOpenFacebookIntent(Context context) {
+
+        try {
+            context.getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/517655241715082"));
+        } catch (Exception e) {
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/517655241715082"));
+        }
+    }
+
+    public void openFacebookIntent() {
+        Intent intent = getOpenFacebookIntent(Activity.this.getApplicationContext());
+        startActivity(intent);
     }
 }

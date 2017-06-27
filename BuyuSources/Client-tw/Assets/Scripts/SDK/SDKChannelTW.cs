@@ -12,7 +12,7 @@ using Facebook.Unity;
 public class SDKChannelTW : SDKChannel
 {
     const string channel_name = "TW";
-    const bool mDebug = true;
+    const bool mDebug = false;
     const string Share_Uri = "https://www.facebook.com/517655241715082";
     const string FB_Link = "https://www.facebook.com/517655241715082";
 
@@ -331,74 +331,9 @@ public class SDKChannelTW : SDKChannel
         }
     }
 
-    public override void GetAppLink(int index)
+    public override void OpenFacebook()
     {
-        string url = FB_Link;
-        HttpMethod method = HttpMethod.POST;
-        switch (index)
-        {
-            case 1:
-                url = FB_Link;
-                method = HttpMethod.POST;
-                break;
-            case 2:
-                url = FB_Link;
-                method = HttpMethod.GET;
-                break;
-            case 3:
-                url = "https://www.facebook.com/517655241715082/dialog/pagetab?app_id=" + FB.AppId + "&redirect_uri=" + FB_Link;
-                method = HttpMethod.POST;
-                break;
-            case 4:
-                url = "https://www.facebook.com/517655241715082/dialog/pagetab?app_id=" + FB.AppId + "&redirect_uri=" + FB_Link;
-                method = HttpMethod.GET;
-                break;
-            default:
-                //FB.ShareLink(new System.Uri(Share_Uri), callback: ShareCallback);
-                break;
-        }
-        FB.API(url, method, callback: GetAppLinkCallback);
-    }
-
-    private void GetAppLinkCallback(IGraphResult result)
-    {
-        if (result == null)
-        {
-            if (mDebug)
-            {
-                AN_PoupsProxy.ShowToast("GetAppLink null");
-            }
-        }
-
-        // Some platforms return the empty string instead of null.
-        if (!string.IsNullOrEmpty(result.Error))
-        {
-            if (mDebug)
-            {
-                AN_PoupsProxy.ShowToast("GetAppLink Error " + result.Error);
-            }
-        }
-        else if (result.Cancelled)
-        {
-            if (mDebug)
-            {
-                AN_PoupsProxy.ShowToast("GetAppLink Cancelled");
-            }
-        }
-        else if (!string.IsNullOrEmpty(result.RawResult))
-        {
-            if (mDebug)
-            {
-                AN_PoupsProxy.ShowToast("GetAppLink Success RawResult " + result.RawResult);
-            }
-        }
-        else
-        {
-            if (mDebug)
-            {
-                AN_PoupsProxy.ShowToast("GetAppLink Success RawResult IsNullOrEmpty");
-            }
-        }
+        m_AndroidContext.Call("openFacebookIntent");
     }
 }
 #else

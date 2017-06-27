@@ -368,6 +368,6 @@ public class AboutOur : GlobalBaseWind
     }
     void OnClickLink(GameObject go)
     {
-        SDKMgr.Instance.SDK.GetAppLink(0);
+        SDKMgr.Instance.SDK.OpenFacebook();
     }
 }

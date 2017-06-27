@@ -127,5 +127,5 @@ public interface ISDKInterface
     void Share(string path);
     string GetHeadUrl();
     bool HaveNickname();
-    void GetAppLink(int index);
+    void OpenFacebook();
 }

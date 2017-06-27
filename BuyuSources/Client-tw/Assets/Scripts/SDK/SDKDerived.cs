@@ -64,7 +64,7 @@ public class SDKDerived : ISDKInterface
     {
         return false;
     }
-    public void GetAppLink(int index)
+    public void OpenFacebook()
     {
 
     }

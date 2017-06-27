@@ -54,7 +54,8 @@ public class SelectPayChannelLogicUI : BaseWnd
     void SetScrollViewDate()
     {
         ClearPayGrid();
-        List<PayChannelType> channelList = new List<PayChannelType>() { PayChannelType.Facebook, PayChannelType.GooglePlay };
+        //List<PayChannelType> channelList = new List<PayChannelType>() { PayChannelType.Facebook, PayChannelType.GooglePlay };
+        List<PayChannelType> channelList = new List<PayChannelType>() {PayChannelType.GooglePlay };
         for (int i = 0; i < channelList.Count; i++)
         {
             PayChannelItemInfo item = new PayChannelItemInfo();

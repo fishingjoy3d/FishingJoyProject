@@ -90,7 +90,7 @@ public class SDKBase:ISDKInterface
     {
         return false;
     }
-    public void GetAppLink(int index)
+    public void OpenFacebook()
     {
 
     }
@@ -157,7 +157,7 @@ public class SDKBaseNoSDK : ISDKInterface
     {
         return false;
     }
-    public void GetAppLink(int index)
+    public void OpenFacebook()
     {
 
     }
