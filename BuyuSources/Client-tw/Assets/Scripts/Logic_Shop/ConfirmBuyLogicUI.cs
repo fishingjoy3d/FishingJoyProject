@@ -7,6 +7,7 @@ public class ConfirmBuyLogicUI : BaseWnd
     UIButton[]          m_UIButton = new UIButton[3];
     UISprite            m_GoodsSprite;
     UISprite            m_MoneyTypeSprite;
+    UISprite            m_SpriteOK;
     GameObject          m_FishIcon;
     UILabel             m_ItemSumLabel;
     UILabel             m_ItemPriceLabel;
@@ -41,6 +42,9 @@ public class ConfirmBuyLogicUI : BaseWnd
             UIEventListener.Get(m_BtnObj[i]).onClick = OnClickBtnMsg;
             UIEventListener.Get(m_BtnObj[i]).onPress = OnPressBtnMsg;
         }
+        m_SpriteOK = m_BaseTrans.GetChild(1).GetChild(1).GetComponent<UISprite>();
+
+
         m_TweenAnim = m_BaseWndObject.GetComponent<TweenScale>();
         m_ItemSumLabel = m_BaseTrans.GetChild(4).GetComponent<UILabel>();
         m_ItemPriceLabel = m_BaseTrans.GetChild(5).GetComponent<UILabel>();
@@ -307,11 +311,12 @@ public class ConfirmBuyLogicUI : BaseWnd
             m_PressSub = false;
             m_PressInterval = 0;
             m_PressTime = 0;
-
         }
-
+        if (go == m_BtnObj[1])
+        {
+            m_SpriteOK.spriteName = state ? "OK-click" : "OK";
+        }
     }
-
     public void ShutDown()
     {
         if (m_BaseWndObject != null)
