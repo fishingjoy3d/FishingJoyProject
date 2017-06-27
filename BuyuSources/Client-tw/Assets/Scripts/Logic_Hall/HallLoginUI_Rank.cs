@@ -464,7 +464,7 @@ public class RankItemUI : BaseWnd
 
         m_NameLabel.text = m_RankInfo.NickName;
         m_Number[(int)m_RankType-1].m_BaseObj.SetActive(true);
-        m_Number[(int)m_RankType-1].m_Label.text = m_RankInfo.Param.ToString();
+        m_Number[(int)m_RankType - 1].m_Label.text = Utility.NumToString((int)m_RankInfo.Param);
     }
     
     void OnClickHead(GameObject go)
