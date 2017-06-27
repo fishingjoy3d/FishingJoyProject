@@ -786,7 +786,7 @@ JoinLevel="2">
     </Action>
     <Action ID="2" GroupName="儲值獎勵" BeginYear="2015" BeginMonth="9" BeginDay="1" BeginHour="0" BeginMin="0" LastHour="0">
       <Event ID="12" BindParam="0">
-        <Once ID="1" Common="1元" FinishParam="1" RewardID="3005" />
+        <Once ID="1" Common="10元" FinishParam="10" RewardID="3005" />
         <Once ID="2" Common="20元" FinishParam="20" RewardID="3006" />
         <Once ID="4" Common="50元" FinishParam="50" RewardID="3007" />
         <Once ID="8" Common="100元" FinishParam="100" RewardID="3008" />
