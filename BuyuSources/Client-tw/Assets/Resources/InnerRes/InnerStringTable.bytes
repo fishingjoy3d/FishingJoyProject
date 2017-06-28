@@ -74,7 +74,7 @@
   <Relation_Online>線上</Relation_Online>
   <Relation_Offline>離線</Relation_Offline>
   <Relation_Num>當前好友數：{0}</Relation_Num>
-  <Relation_Present>[f8ea28]{0}[-]  贈送了您</Relation_Present>
+  <Relation_Present>[f8ea28]{0}[-]  贈送了您500金幣</Relation_Present>
   <Relation_Accept_Present>已領取：{0}/{1}</Relation_Accept_Present>
   <Relation_Accept_Present_2>今日已領取：{0}/{1}</Relation_Accept_Present_2>
   <Relation_Add_Fail_2>他已經是你好友了</Relation_Add_Fail_2>
@@ -501,14 +501,14 @@
   <UOM_Giff_GetAllGiff_Failed_1 IsShow="1">今天領取的贈禮次數已達上限</UOM_Giff_GetAllGiff_Failed_1>
   <UOM_Giff_GetAllGiff_Failed_2 IsShow="1">沒有可領取的贈禮</UOM_Giff_GetAllGiff_Failed_2>
 
-  <UOM_Giff_SendGiff_Sucess IsShow="0">贈禮成功</UOM_Giff_SendGiff_Sucess>
+  <UOM_Giff_SendGiff_Sucess IsShow="1">贈禮成功</UOM_Giff_SendGiff_Sucess>
   <UOM_Giff_SendGiff_Failed IsShow="1">贈禮失敗</UOM_Giff_SendGiff_Failed>
   <UOM_Giff_SendGiff_Failed_1 IsShow="1">今天贈送次數已達上限</UOM_Giff_SendGiff_Failed_1>
   <UOM_Giff_SendGiff_Failed_2 IsShow="1">今天您已向對方發過贈禮</UOM_Giff_SendGiff_Failed_2>
   <UOM_Giff_SendGiff_Failed_3 IsShow="1">不可向自己贈禮</UOM_Giff_SendGiff_Failed_3>
   <UOM_Giff_SendGiff_Failed_4 IsShow="1">該玩家不存在或對方無法接受更多贈禮</UOM_Giff_SendGiff_Failed_4>
 
-  <UOM_Giff_AcceptGiff_Sucess IsShow="0">贈禮領取成功</UOM_Giff_AcceptGiff_Sucess>
+  <UOM_Giff_AcceptGiff_Sucess IsShow="1">贈禮領取成功</UOM_Giff_AcceptGiff_Sucess>
   <UOM_Giff_AcceptGiff_Failed IsShow="1">贈禮領取失敗</UOM_Giff_AcceptGiff_Failed>
   <UOM_Giff_AcceptGiff_Failed_1 IsShow="1">今天領取的贈禮次數已達上限</UOM_Giff_AcceptGiff_Failed_1>
   <UOM_Giff_AcceptGiff_Failed_2 IsShow="1">沒有可領取的贈禮</UOM_Giff_AcceptGiff_Failed_2>

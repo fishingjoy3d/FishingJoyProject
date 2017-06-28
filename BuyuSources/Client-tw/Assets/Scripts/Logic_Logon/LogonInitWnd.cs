@@ -268,7 +268,7 @@ public class LogonInitWnd
     void OnClickGuest(GameObject go)
     {
         SDKMgr.Instance.IsGuest = true;
-        SDKMgr.Instance.SDK.ShowAndroidToast("Guest Login");
+        //SDKMgr.Instance.SDK.ShowAndroidToast("Guest Login");
         LogonRuntime.LogonLogic.GuestLogon();
     }
 }
