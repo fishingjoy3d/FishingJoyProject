@@ -112,6 +112,11 @@
   <Charm_Field>使用魅力道具失敗</Charm_Field>
   <Charm_Tips>向Ta使用道具</Charm_Tips>
   <Charm_My_Recv >我收到的魅力道具</Charm_My_Recv>
+  
+  <Name_Card_Name>稱號</Name_Card_Name>
+  <Name_Card_IP_Address>地區</Name_Card_IP_Address>
+  <Name_Card_Charm>魅力</Name_Card_Charm>
+  <Name_Card_Achievement>成就</Name_Card_Achievement>
 
   <Entity_Sucess>資料修改成功</Entity_Sucess>
   <Entity_Field>資料修改失敗</Entity_Field>

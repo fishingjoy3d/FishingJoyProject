@@ -28,6 +28,7 @@ public struct CardsInfo
     public UISprite[]       m_UIGifPriceIcon;
     public GameObject[]     m_GifGoldObj;
     public UILabel          m_labelgameid;
+    public UILabel[]        m_UICardsLabels;
 }
 public class EffItem
 {
@@ -228,6 +229,11 @@ public class GlobalNameCards : BaseWnd
         {
             m_CardsInfo.m_UICardsInfo[i] = CardsTrans.GetChild(i).GetComponent<UILabel>();
         }
+        m_CardsInfo.m_UICardsLabels = new UILabel[4];
+        for (byte i = 0; i < m_CardsInfo.m_UICardsLabels.Length; ++i)
+        {
+            m_CardsInfo.m_UICardsLabels[i] = CardsTrans.GetChild(i + 2).GetChild(0).GetComponent<UILabel>();
+        }
         for (byte j = 0; j < m_CardsInfo.m_UIGift.Length; ++j)
         {
             m_CardsInfo.m_UIGift[j] = CardsTrans.GetChild(j + 7).GetChild(0).GetComponent<UISprite>();
@@ -280,6 +286,11 @@ public class GlobalNameCards : BaseWnd
     }
     void SetCardsInfo()
     {
+        m_CardsInfo.m_UICardsLabels[0].text = StringTable.GetString("Name_Card_Name");
+        m_CardsInfo.m_UICardsLabels[1].text = StringTable.GetString("Name_Card_Charm");
+        m_CardsInfo.m_UICardsLabels[2].text = StringTable.GetString("Name_Card_Achievement");
+        m_CardsInfo.m_UICardsLabels[3].text = StringTable.GetString("Name_Card_IP_Address");
+
         //m_CardsInfo.m_UIAddFriendBtn.enabled = false;
         if (m_bMysSelf)
         {
