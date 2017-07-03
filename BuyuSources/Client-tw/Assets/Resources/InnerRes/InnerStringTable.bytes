@@ -162,6 +162,10 @@
   <Match_Friday>星期五</Match_Friday>
   <Match_Saturday>星期六</Match_Saturday>
   <Match_Sunday>星期日</Match_Sunday>
+  <Match_Info>比賽訊息</Match_Info>
+  <Match_Open_Time>開賽時間</Match_Open_Time>
+  <Match_Entry_Fee>報名費</Match_Entry_Fee>
+  <Match_Reward_Info>獎勵資訊</Match_Reward_Info>
 
    <Online_Sucess>領取線上獎勵成功</Online_Sucess>
    <Online_Field>領取線上獎勵失敗</Online_Field>

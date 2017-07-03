@@ -2,7 +2,7 @@
 <channel_setting>
   <!-- 渠道比赛标题 -->
   <match_title>
-    <item title="比赛专区" package="com.leduo.buyu"/>
+    <item title="競賽專區" package="com.leduo.buyu"/>
     <item title="360比赛专区" package="com.leduo.buyu.three"/>
     <item title="当乐比赛专区" package="com.leduo.buyu.dangle"/>	
     <item title="魅族比赛专区" package="com.leduo.buyu.mz"/>	

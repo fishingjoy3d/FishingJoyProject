@@ -38,6 +38,7 @@ public class HallLoginUI_Contest : HallLoginUI_BaseWind
     Dictionary<Byte, tagMonthConfig>                    m_GoingMap = new Dictionary<Byte, tagMonthConfig>();        //进行中列表
     int                                                 m_CurMatchDetailID; //当前显示的比赛祥情的比赛ID
     float                                               m_Elapsed = 0;
+    UILabel[]                                           m_MatchInfo;        //比赛信息
 
     internal Dictionary<Byte, tagMonthConfig> GoingMap
     {
@@ -85,7 +86,19 @@ public class HallLoginUI_Contest : HallLoginUI_BaseWind
         m_UIScrollView = BaseTranF.GetChild(1).GetComponent<UIScrollView>();
         m_ScrollViewTans = BaseTranF.GetChild(1);
         m_ScrollPanel = BaseTranF.GetChild(1).GetComponent<UIPanel>();
+
         SetMatchTitleName();
+
+        m_MatchInfo = new UILabel[4];
+        m_MatchInfo[0] = BaseTopBtn.GetChild(0).GetComponent<UILabel>();
+        m_MatchInfo[1] = BaseTranF.GetChild(3).GetChild(0).GetComponent<UILabel>();
+        m_MatchInfo[2] = BaseTranF.GetChild(3).GetChild(1).GetComponent<UILabel>();
+        m_MatchInfo[3] = BaseTranF.GetChild(3).GetChild(2).GetComponent<UILabel>();
+
+        m_MatchInfo[0].text = StringTable.GetString("Match_Open_Time");
+        m_MatchInfo[1].text = StringTable.GetString("Match_Info");
+        m_MatchInfo[2].text = StringTable.GetString("Match_Entry_Fee");
+        m_MatchInfo[3].text = StringTable.GetString("Match_Reward_Info");
     }
     void InitMatchDetailUI()//初始化竞赛二级界面
     {
@@ -439,7 +452,7 @@ class MatchViewItem : BaseWnd
     UIButton            m_EntryBtn;         //报名按纽
     MatchType           m_MatchType;        //当前显示的比赛类型
     uint                m_DayTime;
-    byte                m_MatchID;         //比赛ID
+    byte                m_MatchID;          //比赛ID
 
     public void Init(GameObject go)
     {

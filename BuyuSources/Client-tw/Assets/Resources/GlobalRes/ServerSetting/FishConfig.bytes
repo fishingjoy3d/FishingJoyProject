@@ -1256,9 +1256,9 @@ JoinLevel="2">
 					BeginIndex  EndIndex 從1到65535 比賽獎勵開始 和 結束的名稱 [BeginIndex,EndIndex]
 					RewardID  獎勵的ID 從1到65535  引用 FishReward.xml
 -->
-    <Month ID="1" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比賽時長：10分鐘/n報名條件：免費/n續幣次數上限：3/n/n參賽後獲得系統贈與的10000比賽幣，每捕獲一條魚獲得相應的積分，比賽
+    <Month ID="1" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比賽時長：10分鐘/n報名條件：5鑽石/n續幣次數上限：3/n/n參賽後獲得系統贈與的10000比賽幣，每捕獲一條魚獲得相應的積分，比賽
 
-幣消耗殆盡後可續幣補充。/n比賽結束時根據積分排定名次並通過電郵發送獎勵，第1名將獲得獎牌，獎牌可用于兌換金幣或技能等物品。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
+幣消耗殆盡後可續幣補充。/n比賽結束時根據積分排定名次並通過電郵發送獎勵，第1名將獲得獎牌，獎牌可用于兌換金幣或技能等物品。" SignGlobel="0" SignMedal="0" SignCurrey="5" SignItemID="0"
 
 SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="0" TypeID="1">
       <Converts>
@@ -1290,9 +1290,9 @@ SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRat
         <Robot Level="12" AddScore="0" Rate="0" Sum="10" MaxScore="0" SumRate="50" />
       </Robots>
     </Month>
-    <Month ID="2" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比賽時長：10分鐘/n報名條件：免費/n續幣次數上限：3/n/n參賽後獲得系統贈與的10000比賽幣，每捕獲一條魚獲得相應的積分，比賽
+    <Month ID="2" MonthName="1" MonthIcon="Match_Kind_1" MonthDec="比賽時長：10分鐘/n報名條件：5鑽石/n續幣次數上限：3/n/n參賽後獲得系統贈與的10000比賽幣，每捕獲一條魚獲得相應的積分，比賽
 
-幣消耗殆盡後可續幣補充。/n比賽結束時根據積分排定名次並通過電郵發送獎勵，第1名將獲得獎牌，獎牌可用于兌換金幣或技能等物品。" SignGlobel="0" SignMedal="0" SignCurrey="0" SignItemID="0"
+幣消耗殆盡後可續幣補充。/n比賽結束時根據積分排定名次並通過電郵發送獎勵，第1名將獲得獎牌，獎牌可用于兌換金幣或技能等物品。" SignGlobel="0" SignMedal="0" SignCurrey="5" SignItemID="0"
 
 SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="0" TypeID="1">
       <Converts>
@@ -1324,11 +1324,11 @@ SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRat
         <Robot Level="12" AddScore="0" Rate="0" Sum="10" MaxScore="0" SumRate="50" />
       </Robots>
     </Month>
-    <Month ID="3" MonthName="10" MonthIcon="Match_Kind_2" MonthDec="比賽時長：10分鐘/n報名條件：10000金幣/n續幣次數上限：3/n/n參賽後獲得系統贈與的10000比賽幣，每捕獲一條魚獲得相應的積分
+    <Month ID="3" MonthName="10" MonthIcon="Match_Kind_2" MonthDec="比賽時長：10分鐘/n報名條件：15鑽石/n續幣次數上限：3/n/n參賽後獲得系統贈與的10000比賽幣，每捕獲一條魚獲得相應的積分
 
-，比賽幣消耗殆盡後可續幣補充。/n比賽結束時根據積分排定名次並通過電郵發送獎勵，前20名都將獲得對應名次的獎牌，獎牌可用于兌換金幣或技能等物品。" SignGlobel="10000" SignMedal="0"
+，比賽幣消耗殆盡後可續幣補充。/n比賽結束時根據積分排定名次並通過電郵發送獎勵，前20名都將獲得對應名次的獎牌，獎牌可用于兌換金幣或技能等物品。" SignGlobel="0" SignMedal="0"
 
-SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="17" TypeID="2">
+SignCurrey="15" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="17" TypeID="2">
       <Converts>
         <Convert BeginSum="1" EndSum="1" LostGlobel="0" LostMedal="0" LostCurrey="1" AddMonthGlobel="10000" />
         <Convert BeginSum="2" EndSum="3" LostGlobel="0" LostMedal="0" LostCurrey="5" AddMonthGlobel="10000" />
@@ -1360,11 +1360,11 @@ SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeI
         <Robot Level="14" AddScore="0" Rate="0" Sum="5" MaxScore="0" SumRate="50" />
       </Robots>
     </Month>
-    <Month ID="4" MonthName="50" MonthIcon="Match_Kind_3" MonthDec="比賽時長：20分鐘/n報名條件：50000金幣/n續幣次數上限：3/n/n參賽後獲得系統贈與的10000比賽幣，每捕獲一條魚獲得相應的積分
+    <Month ID="4" MonthName="50" MonthIcon="Match_Kind_3" MonthDec="比賽時長：20分鐘/n報名條件：50鑽石/n續幣次數上限：3/n/n參賽後獲得系統贈與的10000比賽幣，每捕獲一條魚獲得相應的積分
 
-，比賽幣消耗殆盡後可續幣補充。/n比賽結束時根據積分排定名次並通過電郵發送獎勵，前20名都將獲得對應名次的獎牌，獎牌可用于兌換金幣或技能等物品。" SignGlobel="50000" SignMedal="0"
+，比賽幣消耗殆盡後可續幣補充。/n比賽結束時根據積分排定名次並通過電郵發送獎勵，前20名都將獲得對應名次的獎牌，獎牌可用于兌換金幣或技能等物品。" SignGlobel="0" SignMedal="0"
 
-SignCurrey="0" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="27" TypeID="3">
+SignCurrey="50" SignItemID="0" SignItemSum="0" InitMatchGlobel="10000" TableTypeID="4" RankSum="20" MonthMinRateLimit="27" TypeID="3">
       <Converts>
         <Convert BeginSum="1" EndSum="1" LostGlobel="0" LostMedal="0" LostCurrey="1" AddMonthGlobel="10000" />
         <Convert BeginSum="2" EndSum="3" LostGlobel="0" LostMedal="0" LostCurrey="5" AddMonthGlobel="10000" />
