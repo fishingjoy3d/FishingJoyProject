@@ -157,7 +157,7 @@ public class Activity extends UnityPlayerActivity {
             String orderId = purchase.getOrderId();
             String signature = purchase.getSignature();
 
-            PopUpsManager.showToast("orderId " + orderId + " signature " + signature);
+            //PopUpsManager.showToast("orderId " + orderId + " signature " + signature);
             SendToUnityMessage("0|" + orderId);
         }
     };
