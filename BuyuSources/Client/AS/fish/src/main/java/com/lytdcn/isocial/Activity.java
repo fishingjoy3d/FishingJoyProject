@@ -116,7 +116,7 @@ public class Activity extends UnityPlayerActivity {
         mCallbackObj = callbackObj;
         mCallbackMethod = callbackMothod;
 
-        String sku = buykey; //com.lytdcn.isocial
+        String sku = buykey;
 
         SKU_consume = sku;
 
@@ -151,7 +151,7 @@ public class Activity extends UnityPlayerActivity {
                 mHelper.consumeAsync(purchase, mConsumeFinishedListener);
             } else if (purchase.getSku().equals(SKU_noconsume)) {
                 Log.d(TAG, "Purchase ispremium upgrade. Congratulating user.");
-                alert("Thank you forupgrading to premium!");
+                alert("Thank you for upgrading to premium!");
                 mIsPremium = true;
             }
             String orderId = purchase.getOrderId();
@@ -173,7 +173,7 @@ public class Activity extends UnityPlayerActivity {
                 return;
             // Is it a failure?
             if (result.isFailure()) {
-                complain("Failed to queryinventory: " + result);
+                complain("Failed to query inventory: " + result);
                 return;
             }
 
@@ -200,13 +200,13 @@ public class Activity extends UnityPlayerActivity {
                 return;
             }
 
-            Log.d(TAG, "Initial inventoryquery finished; enabling main UI.");
+            Log.d(TAG, "Initial inventory query finished; enabling main UI.");
         }
     };
     // Called when consumption is complete
     IabHelper.OnConsumeFinishedListener mConsumeFinishedListener = new IabHelper.OnConsumeFinishedListener() {
         public void onConsumeFinished(Purchase purchase, IabResult result) {
-            Log.d(TAG, "Consumptionfinished. Purchase: " + purchase
+            Log.d(TAG, "Consumption finished. Purchase: " + purchase
                     + ", result: " + result);
 
             // if we were disposed of in themeantime, quit.
@@ -223,12 +223,12 @@ public class Activity extends UnityPlayerActivity {
                 // our
                 // game world's logic, which inour case means filling the gas
                 // tank a bit
-                Log.d(TAG, "Consumptionsuccessful. Provisioning.");
+                Log.d(TAG, "Consumption successful. Provisioning.");
             } else {
-                complain("Error whileconsuming: " + result);
+                complain("Error while consuming: " + result);
             }
 
-            Log.d(TAG, "End consumptionflow.");
+            Log.d(TAG, "End consumption flow.");
         }
     };
 
@@ -269,7 +269,7 @@ public class Activity extends UnityPlayerActivity {
     }
 
     void complain(String message) {
-        Log.e(TAG, "**** TrivialDrive Error: " + message);
+        Log.e(TAG, "**** Trivial Drive Error: " + message);
         alert("Error: " + message);
     }
 

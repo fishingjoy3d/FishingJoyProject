@@ -2,7 +2,7 @@
 <Setting>
   <Params>
     <!-- 版本号 -->
-    <Version>0_1_0_1</Version>
+    <Version>0_1_0_3</Version>
     <!-- 资源版本号 -->
     <Resource>0_0_3_5</Resource>
     <!-- SDK类型 0：自有散包、1：渠道包、2：派生包 -->

@@ -37,7 +37,7 @@ public class VersionManager
         ServerSetting.SHOW_PING = uint.Parse(ele.SelectSingleNode("Params/Ping").FirstChild.Value) != 0;
         ServerSetting.RES_VERSION = Utility.VersionToUint(resverstr);
         ServerSetting.ClientVer = Utility.VersionToUint(verstr);
-        SceneObjMgr.Instance.SetVerText("Version:CH-" + verstr.Replace("_", ".").Remove(0, 2));
+        SceneObjMgr.Instance.SetVerText("Version:" + verstr.Replace("_", ".").Remove(0, 2));
         int sdkType = int.Parse(ele.SelectSingleNode("Params/Sdk").FirstChild.Value);
 #if UNITY_EDITOR
         editor = 1;
