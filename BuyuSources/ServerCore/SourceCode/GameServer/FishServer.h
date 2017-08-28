@@ -105,7 +105,7 @@ public:
 
 	string GetUserMacAddress(DWORD dwUserID);
 	string GetUserIpAddress(DWORD dwUserID);
-	void ThirdPlatformPay(int ShopItem, DWORD dwUserID);
+	void ThirdPlatformPay(const  tagDeal deal, DWORD dwUserID);
 private:
 	bool ConnectFTP();
 	bool ConnectDB();

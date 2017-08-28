@@ -1985,8 +1985,8 @@ bool FishServer::HandleCenterMsg(NetCmd* pCmd)
 			{
 			case CG_Deal_NotifyPay:
 				{
-					CG_Cmd_Deal_NotifyPay* pMsg = (CG_Cmd_Deal_NotifyPay*)pCmd;
-					ThirdPlatformPay(pMsg->dwShopItem, pMsg->dwUserid);
+					//CG_Cmd_Deal_NotifyPay* pMsg = (CG_Cmd_Deal_NotifyPay*)pCmd;
+					//ThirdPlatformPay(pMsg->dwShopItem, pMsg->dwUserid);
 					/*
 					CRoleEx* pRole = GetRoleManager()->QueryUser(pMsg->dwUserid);
 					int AddRechargeSum = pMsg->dwAddRechargeSum;
@@ -2368,103 +2368,126 @@ void FishServer::OnHandlePhonePay(CG_Cmd_PhonePay* pMsg)
 }
 
 
-void FishServer::ThirdPlatformPay(int ShopItem, DWORD dwUserID)
+void FishServer::ThirdPlatformPay(const tagDeal deal, DWORD dwUserID)
 {
-	HashMap<DWORD, tagFishRechargeInfo>::iterator Iter = m_FishConfig.GetFishRechargesConfig().m_FishRechargeMap.find(ShopItem);
+
+	HashMap<DWORD, tagFishRechargeInfo>::iterator Iter = m_FishConfig.GetFishRechargesConfig().m_FishRechargeMap.find(deal.shop_id);
 	if (Iter != m_FishConfig.GetFishRechargesConfig().m_FishRechargeMap.end())
 	{
+
+
 		tagFishRechargeInfo entry_info = Iter->second;
 		CRoleEx* pRole = m_RoleManager.QueryUser(dwUserID);
-		if (!pRole)
-		{
 
-			tagFishRechargeInfo entry = Iter->second;
-			CRoleEx* pRole = m_RoleManager.QueryUser(dwUserID);
-			//tagFishRechargeInfo entry = it->second;
-			if (entry.IsAddCurrcey() || entry.IsAddGlobel() || entry.IsAddReward())
+		
+		HashMap<WORD, tagFishPayType>::iterator it_pay_type = entry_info.PayNO.find(deal.pay_type);
+		if (it_pay_type != entry_info.PayNO.end())
+		{
+			DBR_Cmd_Deal_Pay_Log msg_log;
+			msg_log.user_id = dwUserID;
+			msg_log.ChannelID = deal.channel_id;
+			msg_log.OrderID = deal.order_id;
+			msg_log.Price = entry_info.dDisCountPrice;
+			msg_log.PayType = deal.pay_type;
+			TCHARCopy(msg_log.good_id, CountArray(msg_log.good_id), entry_info.PayNO[deal.pay_type].PayNO, _tcslen(entry_info.PayNO[deal.pay_type].PayNO));
+			msg_log.ShopItem = deal.shop_id;
+			SetMsgInfo(msg_log, DBR_Deal_Pay_Log, sizeof(msg_log));
+			g_FishServer.SendNetCmdToLogDB(&msg_log);
+			if (!pRole)
 			{
-				tagRoleMail	MailInfo;
-				MailInfo.bIsRead = false;
-				//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
-				std::wstring wstr_config = m_FishConfig.GetConfigCharacters(6);
-				TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), wstr_config.c_str(), wstr_config.size());
-				//TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您")));
-				if (entry.IsAddCurrcey())
+
+				tagFishRechargeInfo entry = Iter->second;
+				//CRoleEx* pRole = m_RoleManager.QueryUser(dwUserID);
+				//tagFishRechargeInfo entry = it->second;
+				if (entry.IsAddCurrcey() || entry.IsAddGlobel() || entry.IsAddReward())
 				{
-					MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailCurrceyRewardID;
-					MailInfo.RewardSum = entry.AddMoney;
+					tagRoleMail	MailInfo;
+					MailInfo.bIsRead = false;
+					//比赛的内容需要特殊的处理 我们想要一个 特殊的转义字符串 客户端 和 服务器通用的 .
+					std::wstring wstr_config = m_FishConfig.GetConfigCharacters(6);
+					TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), wstr_config.c_str(), wstr_config.size());
+					//TCHARCopy(MailInfo.Context, CountArray(MailInfo.Context), TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您"), _tcslen(TEXT("恭喜您充值成功 所有充值奖励通过邮件发送给您")));
+					if (entry.IsAddCurrcey())
+					{
+						MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailCurrceyRewardID;
+						MailInfo.RewardSum = entry.AddMoney;
+					}
+					else if (entry.IsAddGlobel())
+					{
+						MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailGlobelRewardID;
+						MailInfo.RewardSum = entry.AddMoney;
+					}
+					else if (entry.IsAddReward())
+					{
+						MailInfo.RewardID = entry.RewardID;
+						MailInfo.RewardSum = 1;
+					}
+					MailInfo.MailID = 0;
+					MailInfo.SendTimeLog = time(NULL);
+					MailInfo.SrcFaceID = 0;
+					TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
+					MailInfo.SrcUserID = 0;//系统发送
+					MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
+					DBR_Cmd_AddUserMail msg;
+					SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
+					msg.dwDestUserID = dwUserID;
+					msg.MailInfo = MailInfo;
+					g_FishServer.SendNetCmdToDB(&msg);
 				}
-				else if (entry.IsAddGlobel())
-				{
-					MailInfo.RewardID = GetFishConfig().GetSystemConfig().EmailGlobelRewardID;
-					MailInfo.RewardSum = entry.AddMoney;
-				}
-				else if (entry.IsAddReward())
-				{
-					MailInfo.RewardID = entry.RewardID;
-					MailInfo.RewardSum = 1;
-				}
-				MailInfo.MailID = 0;
-				MailInfo.SendTimeLog = time(NULL);
-				MailInfo.SrcFaceID = 0;
-				TCHARCopy(MailInfo.SrcNickName, CountArray(MailInfo.SrcNickName), TEXT(""), 0);
-				MailInfo.SrcUserID = 0;//系统发送
-				MailInfo.bIsExistsReward = (MailInfo.RewardID != 0 && MailInfo.RewardSum != 0);
-				DBR_Cmd_AddUserMail msg;
-				SetMsgInfo(msg, DBR_AddUserMail, sizeof(DBR_Cmd_AddUserMail));
-				msg.dwDestUserID = dwUserID;
-				msg.MailInfo = MailInfo;
+				DBR_Cmd_AddRoleTotalRecharge msg;
+				SetMsgInfo(msg, DBR_AddRoleTotalRecharge, sizeof(DBR_Cmd_AddRoleTotalRecharge));
+				msg.dwUserID = dwUserID;
+				msg.Sum = entry_info.dDisCountPrice;
 				g_FishServer.SendNetCmdToDB(&msg);
 			}
-			DBR_Cmd_AddRoleTotalRecharge msg;
-			SetMsgInfo(msg, DBR_AddRoleTotalRecharge, sizeof(DBR_Cmd_AddRoleTotalRecharge));
-			msg.dwUserID = dwUserID;
-			msg.Sum = entry_info.dDisCountPrice;
-			g_FishServer.SendNetCmdToDB(&msg);
+			else
+			{
+
+				//直接操作玩家
+				DWORD AddMoney = entry_info.AddMoney;
+				if (entry_info.IsAddCurrcey())
+				{
+					DWORD  OldCurrcey = pRole->GetRoleInfo().dwCurrencyNum;
+					DWORD  OldGlobel = pRole->GetRoleInfo().dwGlobeNum;
+
+
+					//pRole->ChangeRoleCurrency(AddMoney, TEXT("充值获得钻石"));
+					pRole->ChangeRoleCurrency(AddMoney, m_FishConfig.GetConfigCharacters(19));
+					if (Iter->second.IsFirstAdd())
+						pRole->ChangeRoleIsFirstPayCurrcey();
+				}
+				else if (entry_info.IsAddGlobel())
+				{
+					DWORD  OldCurrcey = pRole->GetRoleInfo().dwCurrencyNum;
+					DWORD  OldGlobel = pRole->GetRoleInfo().dwGlobeNum;
+					pRole->ChangeRoleGlobe(AddMoney, true, true, true);
+					if (Iter->second.IsFirstAdd())
+						pRole->ChangeRoleIsFirstPayGlobel();
+				}
+				else if (entry_info.IsAddReward())
+				{
+					//pRole->OnAddRoleRewardByRewardID(Iter->second.RewardID, TEXT("充值获得奖励"));
+					pRole->OnAddRoleRewardByRewardID(Iter->second.RewardID, m_FishConfig.GetConfigCharacters(20));
+
+				}
+				pRole->ChangeRoleTotalRechargeSum(Iter->second.dDisCountPrice);//添加玩家总充值数
+				pRole->OnHandleEvent(true, true, true, ET_Recharge, 0, pRole->GetRoleInfo().TotalRechargeSum /*Iter->second.dDisCountPrice*/);//充值记录
+				LC_Cmd_Recharge msg;
+				SetMsgInfo(msg, GetMsgType(Main_Recharge, LC_Recharge), sizeof(LC_Cmd_Recharge));
+				msg.Result = true;
+				msg.ID = deal.shop_id;;
+				pRole->SendDataToClient(&msg);
+				return;
+			}
 		}
 		else
 		{
-
-			//直接操作玩家
-			DWORD AddMoney = entry_info.AddMoney;
-			if (entry_info.IsAddCurrcey())
-			{
-				DWORD  OldCurrcey = pRole->GetRoleInfo().dwCurrencyNum;
-				DWORD  OldGlobel = pRole->GetRoleInfo().dwGlobeNum;
-				
-
-				//pRole->ChangeRoleCurrency(AddMoney, TEXT("充值获得钻石"));
-				pRole->ChangeRoleCurrency(AddMoney, m_FishConfig.GetConfigCharacters(19));
-				if (Iter->second.IsFirstAdd())
-					pRole->ChangeRoleIsFirstPayCurrcey();
-			}
-			else if (entry_info.IsAddGlobel())
-			{
-				DWORD  OldCurrcey = pRole->GetRoleInfo().dwCurrencyNum;
-				DWORD  OldGlobel = pRole->GetRoleInfo().dwGlobeNum;
-				pRole->ChangeRoleGlobe(AddMoney, true, true, true);
-				if (Iter->second.IsFirstAdd())
-					pRole->ChangeRoleIsFirstPayGlobel();
-			}
-			else if (entry_info.IsAddReward())
-			{
-				//pRole->OnAddRoleRewardByRewardID(Iter->second.RewardID, TEXT("充值获得奖励"));
-				pRole->OnAddRoleRewardByRewardID(Iter->second.RewardID, m_FishConfig.GetConfigCharacters(20));
-				
-			}
-			pRole->ChangeRoleTotalRechargeSum(Iter->second.dDisCountPrice);//添加玩家总充值数
-			pRole->OnHandleEvent(true, true, true, ET_Recharge, 0, pRole->GetRoleInfo().TotalRechargeSum /*Iter->second.dDisCountPrice*/);//充值记录
-			LC_Cmd_Recharge msg;
-			SetMsgInfo(msg, GetMsgType(Main_Recharge, LC_Recharge), sizeof(LC_Cmd_Recharge));
-			msg.Result = true;
-			msg.ID = ShopItem;
-			pRole->SendDataToClient(&msg);
-			return;
+			LogInfoToFile("DomePay.txt", "支付失败，找不到配置信息pay_type[%d]", deal.pay_type);
 		}
 	}
 	else
 	{
-		LogInfoToFile("DomePay.txt", "支付失败，找不到配置信息[%d]", ShopItem);
+		LogInfoToFile("DomePay.txt", "支付失败，找不到配置信息[%d]", deal.shop_id);
 	}
 
 
@@ -4399,7 +4422,7 @@ bool FishServer::OnHandleChangeRoleSecPassword(NetCmd* pCmd)
 bool FishServer::OnHandleVerifyDeal(NetCmd* pCmd)
 {
 	DBO_Cmd_Verify_Order* pMsg = (DBO_Cmd_Verify_Order*)pCmd;
-	ThirdPlatformPay(pMsg->info.shop_id, pMsg->info.user_id);
+	ThirdPlatformPay(pMsg->info, pMsg->info.user_id);
 	return true;
 }
 bool FishServer::OnHandleCreateDeal(NetCmd* pCmd)
@@ -7016,17 +7039,14 @@ bool FishServer::OnHandleTCPNetworkRecharge(ServerClientData* pClient, NetCmd* p
 			{
 				DBR_Cmd_Verify_Order msg;
 				SetMsgInfo(msg, DBR_Verify_Order, sizeof(msg));
+				TCHARCopy(msg.external_code, CountArray(msg.external_code), pMsg->external_code, _tcslen(pMsg->external_code));
 				msg.order_id = pMsg->OrderID;
 				SendNetCmdToDB(&msg);
-			}
-			
-
+			}			
 		}
 		break;
 	case CG_CreateOrder:
 		{
-
-
 			CG_Cmd_CreateOrder* pMsg = (CG_Cmd_CreateOrder*)pCmd;
 			tagFishRechargesMap config = m_FishConfig.GetFishRechargesConfig();
 			HashMap<DWORD, tagFishRechargeInfo>::iterator it = config.m_FishRechargeMap.begin();
@@ -7058,7 +7078,7 @@ bool FishServer::OnHandleTCPNetworkRecharge(ServerClientData* pClient, NetCmd* p
 			if (find)
 			{
 				int operator_channel_id = pRole->GetOperatorChannelID();
-				if (operator_channel_id == Dome_ChannelType || operator_channel_id == Facebook_ChannelType)
+				if (operator_channel_id == Self_ChannelType|| operator_channel_id == Dome_ChannelType || operator_channel_id == Facebook_ChannelType)
 				{
 					DBR_Cmd_Deal_Create msg;
 					msg.shop_id = entry.ID;

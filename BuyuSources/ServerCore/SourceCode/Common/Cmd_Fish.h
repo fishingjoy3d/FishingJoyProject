@@ -5,7 +5,7 @@
 #include <time.h>
 #include <set>
 //一些常量的定义
-#define MAX_NICKNAME 8   //玩家昵称的长度
+#define MAX_NICKNAME 16   //玩家昵称的长度
 #define MIN_NICKNAME 2
 
 #define MAX_ERRORSTR_LENGTH 16
@@ -107,7 +107,7 @@
 #define MAX_IconLength 64
 #define MAX_DisCountPicNameLength 64
 #define MAX_OperatorTitleLength 24
-
+#define Max_ExternalCode 128
 
 #define MAX_SIGN_CODE 1024
 #define MAX_UrlLength 512
@@ -2828,6 +2828,7 @@ struct DBO_Cmd_Deal_Third_Platform_Verify : public NetCmd
 struct DBR_Cmd_Verify_Order : public NetCmd
 {
 	int order_id;
+	WCHAR external_code[Max_ExternalCode];
 };
 
 struct DBO_Cmd_Verify_Order : public NetCmd
@@ -7872,6 +7873,7 @@ struct GC_Cmd_CreateOrder : public NetCmd
 struct CG_Cmd_VerifyOrder : public NetCmd
 {
 	int OrderID;
+	WCHAR external_code[Max_ExternalCode];
 };
 
 //3.实体物品购买 有充值类型的 或者是 邮递类型的 外部控制 

@@ -1116,9 +1116,10 @@ bool FishServer::OnHandleDealPayLog(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		ASSERT(false);
 		return false;
 	}
+	
 	SqlTable pTable1;
 	char SqlStr[MAXSQL_LENGTH] = { 0 };
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealPayLog('%u','%u','%u','%u','%s','%u','%d-%d-%d %d:%d:%d');", pMsg->user_id, pMsg->OrderID, pMsg->ChannelID, pMsg->Price, pMsg->good_id, pMsg->PayType,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishDealPayLog('%u','%u','%u','%u','%s','%u','%u','%d-%d-%d %d:%d:%d');", pMsg->user_id, pMsg->OrderID, pMsg->ChannelID, pMsg->Price, pMsg->good_id, pMsg->PayType, pMsg->ShopItem,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
 	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
 	if (!Result)
 	{
@@ -5863,7 +5864,7 @@ bool FishServer::OnHandleLogLotteryInfo(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	}
 	SqlTable pTable1;
 	char SqlStr[MAXSQL_LENGTH] = { 0 };
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishAddLotteryInfo('%u','%u','%u','%d-%d-%d %d:%d:%d');",pMsg->dwUserID, pMsg->LotteryID,pMsg->RewardID,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishAddLotteryInfoLog('%u','%u','%u','%d-%d-%d %d:%d:%d');",pMsg->dwUserID, pMsg->LotteryID,pMsg->RewardID,pNowTime.tm_year + 1900, pNowTime.tm_mon + 1, pNowTime.tm_mday, pNowTime.tm_hour, pNowTime.tm_min, pNowTime.tm_sec);
 
 	bool Result = (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1);
 	if (!Result)
@@ -6374,14 +6375,13 @@ bool FishServer::OnVerifyOrder(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 	DBO_Cmd_Verify_Order * msg = (DBO_Cmd_Verify_Order*)CreateCmd(DBO_Verify_Order, sizeof(DBO_Cmd_Verify_Order));
 
 	msg->info.order_id = pMsg->order_id;
+	
 	msg->result = false;
 	//SqlTable pTable1;
 	//char SqlStr[MAXSQL_LENGTH] = { 0 };
-	sprintf_s(SqlStr, sizeof(SqlStr), "call FishVerifyDeal('%u');", pMsg->order_id);
+	sprintf_s(SqlStr, sizeof(SqlStr), "call FishVerifyDeal('%u', '%s');", pMsg->order_id, pMsg->external_code);
 	if (m_Sql[Index].Select(SqlStr, 0, pTable1, true) && pTable1.Rows() == 1)
 	{
-
-		//user_id`, `order_id`, `channel`, `good_id`, `shop_id
 		msg->result = true;
 		msg->info.user_id = pTable1.GetUint(0, 0);
 		msg->info.order_id = pTable1.GetUint(0, 1);
@@ -6389,6 +6389,7 @@ bool FishServer::OnVerifyOrder(BYTE Index, BYTE ClientID, NetCmd* pCmd)
 		const TCHAR* good_id = pTable1.GetStr(0, 3);
 		TCHARCopy(msg->info.good_id, CountArray(msg->info.good_id), good_id, _tcslen(good_id));
 		msg->info.shop_id = pTable1.GetUint(0, 4);
+		msg->info.pay_type = pTable1.GetUint(0, 5);
 	}
 	else
 	{

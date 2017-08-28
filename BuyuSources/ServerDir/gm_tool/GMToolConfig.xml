@@ -34,24 +34,4 @@
             ControlClientAcceptSleepTime = "1"
             ControlClientTimeOut = "100000"
             ControlClientBuffSize = "1024" LogDBID="10"/>
-
-<MiniGameServer NetworkID="221" IP="127.0.0.1" Port="12154"
-              ListenCount="16"
-              MaxSendCountPerFrame="10240"
-              MaxAcceptNumPerFrame="16"
-              MaxRecvCmdCount="10240" 
-              MaxSendCmdCount="10240" 
-              SceneHearbeatTick="100" 
-              RecvBuffSize="1232896" 
-              SendBuffSize="1232896" 
-              RecvThreadSum="4" 
-              SendThreadSum="4" 
-              SleepTime="1"
-              AcceptSleepTime="1"  
-              TimeOut="100000"
-              BuffSize="1232896" 
-		BeginRobotUserID="0" EndRobotUserID="0"
-              DBNetworkID ="6"
-	      LogDBNetworkID="10"/>
-  
 </FishGMToolConfig>
